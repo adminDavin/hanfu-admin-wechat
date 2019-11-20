@@ -1,0 +1,52 @@
+<view>
+  <view style="background:#F2994A;height:340rpx;display:flex;align-items:center;justify-content:space-between;padding:0 30rpx;padding-right:45rpx;">
+    <view style="">
+      <view style="color:#fff;font-size:50rpx;">
+        王昭君
+      </view>
+      <view style="color:#fff;margin-top:10rpx;font-size:32rpx;">18963965648</view>
+    </view>
+    <image src="../img/img.png" style="width:140rpx;height:140rpx;border-radius:50%;"></image>
+  </view>
+  <view style="background:#fff;margin-top:60rpx;">
+
+    <view style="display:flex;justify-content:space-between;align-items:center;padding-left:40rpx;">
+      <view>
+        <image src="../img/record.png" style="width:40rpx;height:45rpx;"></image>
+      </view>
+      <view style="padding:50rpx 0;border-bottom:1rpx solid #E5E5E5;width:90%;">参选记录</view>
+    </view>
+
+    <view style="display:flex;justify-content:space-between;align-items:center;padding-left:40rpx;">
+      <view>
+        <image src="../img/toupiao.png" style="width:45rpx;height:45rpx;"></image>
+      </view>
+      <view style="padding:50rpx 0;border-bottom:1rpx solid #E5E5E5;width:90%;">参选记录</view>
+    </view>
+    <view style="display:flex;justify-content:space-between;align-items:center;padding-left:40rpx;">
+      <view>
+        <image src="../img/wode.png" style="width:45rpx;height:45rpx;"></image>
+      </view>
+      <view style="padding:50rpx 0;border-bottom:1rpx solid #E5E5E5;width:90%;">我的信息</view>
+    </view>
+    <view style="display:flex;justify-content:space-between;align-items:center;padding-left:40rpx;">
+      <view>
+        <image src="../img/tou.png" style="width:40rpx;height:45rpx;"></image>
+      </view>
+      <view style="padding:50rpx 0;border-bottom:1rpx solid #E5E5E5;width:90%;">投票管理</view>
+    </view>
+    <view style="display:flex;justify-content:space-between;align-items:center;padding-left:40rpx;">
+      <view>
+        <image src="../img/lian.png" style="width:45rpx;height:45rpx;"></image>
+      </view>
+      <view style="padding:50rpx 0;border-bottom:1rpx solid #E5E5E5;width:90%;">联系我们</view>
+    </view>
+    <view style="display:flex;justify-content:space-between;align-items:center;padding-left:40rpx;">
+      <view>
+        <image src="../img/shezhi.png" style="width:45rpx;height:45rpx;"></image>
+      </view>
+      <view style="padding:50rpx 0;border-bottom:1rpx solid #E5E5E5;width:90%;">系统设置</view>
+    </view>
+  </view>
+
+</view>

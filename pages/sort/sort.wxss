@@ -1,0 +1,142 @@
+/**index.wxss**/
+
+.u-wrp-bnr {
+  width: 100%;
+  height: 200rpx;
+  display: block;
+  background: #f0f0f0;
+}
+
+.u-img-slide {
+  width: 100%;
+  height: inherit;
+}
+
+.container{
+  padding: 0;
+  font-family: "黑体";
+  background: #f8f8f8;
+  min-height: 100%;
+}
+page{
+  font-size: 20rpx;
+  background:#F5F5F5;
+}
+ 
+/* 主体 */
+/* 分类栏 */
+.header {
+    box-sizing: border-box;
+    border-top: 1rpx solid #ececec;
+    width: 100%;
+    height: 100rpx;
+    line-height: 100rpx;
+    text-align: center;
+    z-index: 1;
+   
+}
+.scroll_w{
+  width: 100%;
+  height: 100rpx;
+  white-space: nowrap;
+}
+.header .item{
+  color:#999999;
+  height: 75rpx;
+  width: 170rpx;
+  font-size:35rpx;
+  display: inline-block;
+  
+ 
+  line-height: 75rpx;
+  /* background: #fb5858; */
+  border-radius: 80rpx;
+  margin: 10rpx;
+}
+::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    color: transparent;
+}
+.header .on{ 
+  color: #FF0000;
+  font-size:40rpx; 
+  /* font-weight:bold; */
+  font-weight:500;
+  /* background: linear-gradient(to right, #6E7AEA, #A25EF1); */
+}   
+.swiper-box{ 
+  display: block; 
+  width: 100%; 
+  overflow: hidden;
+  margin-top: 11%; 
+}
+.noneCoupon{
+  padding: 36%;
+  font-size: 30rpx;
+  padding-bottom:100%;
+}
+.noneCoupon image{
+  width: 228rpx;
+  height: 228rpx;
+  position: relative;
+  left: -13%;
+}
+/* 优惠券 */
+.list{
+  width: 90%;
+  margin-left: 4%;
+  height: 200rpx;
+  background: #fff;
+  font-size: 20rpx;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  border-radius: 2%;
+  box-sizing:border-box;
+  padding-top: 2%;
+}
+ 
+
+.coupon_title .title{
+  margin-top: 5%;
+}
+.coupon_title .title_2{
+  color:#d81e06;
+ 
+}
+.coupon_status{
+  position: relative;
+  margin-left: 2%;
+  width: 100%;
+  line-height: 50rpx;
+  top:30rpx;
+}
+.coupon_status .title,.coupon_status .button{
+  float: left;
+}
+.coupon_status .title{
+  font-size: 20rpx;
+  color:#666666;
+}
+.coupon_status .button{
+  width: 150rpx;
+  height: 52rpx;
+  line-height: 52rpx;
+  position:absolute;
+  right:7%;
+  border:1rpx solid #fb5858;
+  border-radius:80rpx;
+}
+.button button{
+  width:130rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  background:#FFFFFF;
+  color:#fb5858;
+  font-size: 26rpx;
+  border-radius:80rpx;
+}
+.button button::after{
+  border: none;
+ 
+}

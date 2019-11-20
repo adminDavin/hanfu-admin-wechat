@@ -1,0 +1,4 @@
+/* pages/person/person.wxss */
+page{
+  background:#F5F5F5;
+}
