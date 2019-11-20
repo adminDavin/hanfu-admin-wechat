@@ -1,0 +1,52 @@
+<!--index.wxml-->
+<view>
+  <swiper class='u-wrp-bnr' indicator-active-color='rgba(255,255,255,0.11)' indicator-color="#fff" style="height:440rpx;" indicator-dots='true' autoplay='true' interval='5000' duration='1000' circular='true'>
+    <block wx:for="{{bnrUrl}}" wx:for-index="index">
+      <swiper-item>
+        <image src='{{item.url}}' class='u-img-slide' mode='aspectFill'></image>
+      </swiper-item>
+    </block>
+  </swiper>
+
+  <!-- 优惠券列表的位置 -->
+  <view class='header'>
+    <scroll-view class='scroll_w' scroll-x scroll-left="{{scrollLeft}}">
+      <block wx:for="{{topNavs}}" wx:key="{{this}}">
+        <view class="item {{currentTab==index ? 'on' : ''}}" bindtap='topNavChange' data-current="{{index}}">{{item}}</view>
+      </block>
+    </scroll-view>
+  </view>
+  <!-- list -->
+  <view style="display:flex;flex-wrap: wrap;justify-content:space-between;padding:0 39rpx;margin-top:30rpx;">
+    <view style="margin-bottom:18px;">
+      <image src="../img/img.png" style="width:324rpx;height:286rpx;border-radius:10px;"></image>
+      <view style="font-size:34rpx;margin-left:20rpx;margin-top:4px;">姓名</view>
+      <view style="font-size:30rpx;color:#999899;margin-left:20rpx;margin-top:4px;">部门名称</view>
+    </view>
+    <view style="margin-bottom:18px;">
+      <image src="../img/img.png" style="width:324rpx;height:286rpx;border-radius:10px;"></image>
+      <view style="font-size:34rpx;margin-left:20rpx;margin-top:4px;">姓名</view>
+      <view style="font-size:30rpx;color:#999899;margin-left:20rpx;margin-top:4px;">部门名称</view>
+    </view>
+    <view style="margin-bottom:18px;">
+      <image src="../img/img.png" style="width:324rpx;height:286rpx;border-radius:10px;"></image>
+      <view style="font-size:34rpx;margin-left:20rpx;margin-top:4px;">姓名</view>
+      <view style="font-size:30rpx;color:#999899;margin-left:20rpx;margin-top:4px;">部门名称</view>
+    </view>
+    <view style="margin-bottom:18px;">
+      <image src="../img/img.png" style="width:324rpx;height:286rpx;border-radius:10px;"></image>
+      <view style="font-size:34rpx;margin-left:20rpx;margin-top:4px;">姓名</view>
+      <view style="font-size:30rpx;color:#999899;margin-left:20rpx;margin-top:4px;">部门名称</view>
+    </view>
+  </view>
+    <view style="width:100%;height:100%;background:rgba(0,0,0,0.5);position:fixed;top:0;left:0;">
+        <view style="width:90%;background:#fff;padding:60rpx;">
+            <view style="color:#333333;font-size:20px;font-weight:blod;display:flex;justify-content:center;">你还未登录</view>
+            <view style="color:#999999;font-size:14px;font-weight:blod;justify-content:center;">请先登录再进行操作</view>
+            <image src="../img/weixin.png" style="width:178rpx;height:178rpx;"></image>
+        </view>
+    </view>
+
+
+
+</view>
