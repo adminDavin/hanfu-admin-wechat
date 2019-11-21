@@ -115,8 +115,8 @@ Page({
       data: {
         remark: arr[e.currentTarget.dataset.parent].imgs[e.currentTarget.dataset.index].id,
         ruleInstanceId:2,
-        electedUserId: arr[e.currentTarget.dataset.parent].id,
-        userId:9,
+        electedUserId: arr[e.currentTarget.dataset.parent].userId,
+        userId:7,
         activityId: this.data.activeId
         // electedUserId: arr[e.currentTarget.dataset.parent].
       },
