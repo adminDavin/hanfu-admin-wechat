@@ -1,23 +1,15 @@
 <view style="padding:40rpx 30rpx; ">
-
-  <view style="display:flex;justify-content:space-between;background:#fff;align-items:center;margin-bottom:30rpx;padding:10rpx;">
+  <view wx:for="{{activeList}}" wx:for-index="idx" wx:for-item="item"  style="display:flex;justify-content:space-between;background:#fff;align-items:center;margin-bottom:30rpx;padding:10rpx;">
     <view style="margin-left:40rpx;">
       活动名称
     </view>
-    <view style="display:flex;align-items:center;padding:40rpx;">
+    <view style="display:flex;align-items:center;padding:40rpx;" wx:if="{{item.isTimingStart==1}}" data-id="{{item.id}}" bindtap="goVote">
       <view style="color:#DC0000;margin-right:15rpx;">去投票</view>
       <image src="../img/back.png" style="width:20rpx;height:24rpx;"></image>
     </view>
-  </view>
-
-  <view style="display:flex;justify-content:space-between;background:#fff;align-items:center;">
-    <view style="margin-left:40rpx;color:#999999;">
-      活动名称
-    </view>
-    <view style="display:flex;align-items:center;padding:40rpx;">
+    <view style="display:flex;align-items:center;padding:40rpx;" wx:if="{{item.isTimingStart==0}}">
       <image src="../img/wei.png" style="width:36rpx;height:36rpx;"></image>
       <view style="color:#DC0000;margin-right:15rpx;color:#999999;margin-left:10rpx">活动尚未开启</view>
     </view>
   </view>
-
 </view>

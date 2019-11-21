@@ -1,13 +1,47 @@
 // pages/activeList/activeList.js
+const app = getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    activeList:[]
   },
-
+  goVote:function(e){
+    console.log(e);
+    console.log(e.currentTarget.dataset.id);
+    wx.navigateTo({
+      url: '../power/power?id=' + e.currentTarget.dataset.id,
+    })
+  },
+// 活动列表
+   list : function (even) {
+     var main=this;
+    wx.showLoading({
+      title: '请稍后',
+    })
+    console.log(1111)
+    wx.request({
+      url: app.globalData.url +'/activity/listActivity',
+      method: 'get',
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },     
+      success: function (res) {
+        console.log("查找成功");
+        console.log(res);
+        wx.hideLoading();
+        main.setData({
+          activeList: res.data.data
+        })
+      },
+      fail: function (res) {
+        console.log("查找失败：");
+       
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -26,7 +60,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.list()
   },
 
   /**

@@ -7,7 +7,9 @@
     "pages/person/person",
     "pages/sort/sort",
     "pages/power/power",
-    "pages/record/record"
+    "pages/record/record",
+    "pages/login/login"
+
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -35,12 +37,6 @@
       {
         "selectedIconPath": "pages/img/shua.png",
         "iconPath": "pages/img/shua.png",
-        "pagePath": "pages/vote/vote",
-        "text": "投票"
-      },
-      {
-        "selectedIconPath": "pages/img/shua.png",
-        "iconPath": "pages/img/shua.png",
         "pagePath": "pages/sort/sort",
         "text": "排名"
       },
@@ -51,5 +47,6 @@
         "text": "我的"
       }
     ]
-  }
+  },
+  "sitemapLocation": "sitemap0.json"
 }

@@ -1,4 +1,19 @@
 /**index.wxss**/
+.itembox {
+  display: flex;
+  align-items: center;
+}
+.scorePin{
+  font-size:26rpx;
+  font-weight: 600;
+}
+ 
+.star {
+  width: 36rpx;
+  height: 36rpx;
+  margin: 0 5rpx;
+  vertical-align: middle;
+}
 
 .u-wrp-bnr {
   width: 100%;

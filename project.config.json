@@ -57,6 +57,20 @@
 					"id": -1,
 					"name": "pages/record/record",
 					"pathName": "pages/record/record",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/activeList/activeList",
+					"pathName": "pages/activeList/activeList",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/login/login",
+					"pathName": "pages/login/login",
 					"scene": null
 				}
 			]
