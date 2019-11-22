@@ -6,6 +6,7 @@ Page({
   data: {
     listId:'',
     userdata:[],
+    userdata1:[],
     imgs: [{
       id: 1
     }, {
@@ -40,9 +41,44 @@ Page({
     scrollLeft: 0,
     list: [],
     activeId:'',
-    listId:''
+    listId:'',
+    picdata:[]
 
   },
+  // 获取轮播图
+  getPic: function () {
+    wx.showLoading({
+      title: '请稍后',
+    })
+    var main = this;
+    wx.request({
+      url: app.globalData.url + '/strategy/findlunbotu',
+      method: 'get',
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      data: {
+        activityId: main.data.activeId
+      },
+      success: function (res) {
+        console.log("查找成功：");
+        console.log(res);
+        for (var i = 0; i < res.data.data.length; i++) {
+          res.data.data[i].img = app.globalData.url + '/wareHouse/getFile?fileId=' + res.data.data[i].id;
+        }
+        main.setData({
+          picdata: res.data.data
+        })
+       
+      },
+      fail: function (res) {
+        console.log("查找失败：");
+        console.log(res);
+        wx.hideLoading();
+      }
+    })
+  },
+
   // 获取被投票人
   user: function () {
     wx.showLoading({
@@ -61,6 +97,9 @@ Page({
       success: function (res) {
         console.log("查找成功：");
         console.log(res);
+        for (var i = 0; i < res.data.data.length; i++) {
+          res.data.data[i].img = app.globalData.url + '/wareHouse/getFile?fileId=' + res.data.data[i].fileId;
+        }
         main.setData({
            userdata: res.data.data
         })
@@ -93,7 +132,7 @@ Page({
   select(e) {
     console.log(111)
     console.log(e);
-  
+    
     this.data.starId = e.currentTarget.dataset.index;
     let arr = this.data.userdata;
     console.log(arr[e.currentTarget.dataset.parent].imgs[e.currentTarget.dataset.index])
@@ -105,7 +144,7 @@ Page({
     wx.showLoading({
       title: '请稍后',
     })
-    console.log()
+    console.log();
     wx.request({
       url: app.globalData.url + '/wareHouse/voteTicket',
       method: 'POST',
@@ -116,15 +155,30 @@ Page({
         remark: arr[e.currentTarget.dataset.parent].imgs[e.currentTarget.dataset.index].id,
         ruleInstanceId:2,
         electedUserId: arr[e.currentTarget.dataset.parent].userId,
-        userId:7,
+        userId:1,
         activityId: this.data.activeId
         // electedUserId: arr[e.currentTarget.dataset.parent].
       },
       success: function (res) {
         console.log("查找成功：");
         console.log(res);
-        wx.hideLoading();
-       
+        if (res.data.data == "不能重复投"){
+          wx.showToast({
+            icon:'none',
+            title: '不能重复投此人',
+          })
+
+        }else if (res.data.data == "此分数已经使用") {
+          wx.showToast({
+            icon: 'none',
+            title: '此分数不能重复使用',
+          })
+        }else{
+          wx.showToast({
+          
+            title: '投票成功',
+          })
+        }  
       },
       fail: function (res) {
         console.log("查找失败：");
@@ -206,6 +260,9 @@ Page({
         }
       })
     }
+  },
+  onShow:function(){
+    this.getPic()
   },
   getUserInfo: function (e) {
     console.log(e)

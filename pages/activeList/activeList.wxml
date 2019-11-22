@@ -1,7 +1,7 @@
 <view style="padding:40rpx 30rpx; ">
   <view wx:for="{{activeList}}" wx:for-index="idx" wx:for-item="item"  style="display:flex;justify-content:space-between;background:#fff;align-items:center;margin-bottom:30rpx;padding:10rpx;">
     <view style="margin-left:40rpx;">
-      活动名称
+      {{item.activityName }}
     </view>
     <view style="display:flex;align-items:center;padding:40rpx;" wx:if="{{item.isTimingStart==1}}" data-id="{{item.id}}" bindtap="goVote">
       <view style="color:#DC0000;margin-right:15rpx;">去投票</view>

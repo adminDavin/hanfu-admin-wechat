@@ -1,9 +1,10 @@
 <!--index.wxml-->
 <view>
+
   <swiper class='u-wrp-bnr' indicator-active-color='rgba(255,255,255,0.11)' indicator-color="#fff" style="height:440rpx;" indicator-dots='true' autoplay='true' interval='5000' duration='1000' circular='true'>
-    <block wx:for="{{bnrUrl}}" wx:for-index="index">
+    <block wx:for="{{picdata}}" wx:for-index="index">
       <swiper-item>
-        <image src='{{item.url}}' class='u-img-slide' mode='aspectFill'></image>
+        <image src='{{item.img}}' class='u-img-slide' mode='aspectFill'></image>
       </swiper-item>
     </block>
   </swiper>
@@ -39,7 +40,7 @@
       <view style="font-size:30rpx;color:#999899;margin-left:20rpx;margin-top:4px;">部门名称</view>
     </view>
   </view>
-  <view style="width:100%;height:100%;background:rgba(0,0,0,0.5);position:fixed;top:0;left:0;">
+  <view style="width:100%;height:100%;background:rgba(0,0,0,0.5);position:fixed;top:0;left:0;" wx:if="{{show}}">
     <view style="width:87%;background:#fff;padding:10rpx 2% ;margin-left:4%;padding-bottom:60rpx;padding-top:100rpx;border-radius:10px; margin-top:200rpx;">
       <view style="color:#333333;font-size:20px;font-weight:blod;display:flex;justify-content:center;">你还未登录</view>
       <view style="color:#999999;font-size:14px;font-weight:blod;justify-content:center;display:flex;margin-top:16rpx;">请先登录再进行操作</view>

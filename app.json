@@ -8,8 +8,8 @@
     "pages/sort/sort",
     "pages/power/power",
     "pages/record/record",
-    "pages/login/login"
-
+    "pages/login/login",
+    "pages/empower/empower"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -23,26 +23,27 @@
     "borderStyle": "black",
     "list": [
       {
-        "selectedIconPath": "pages/img/shua.png",
-        "iconPath": "pages/img/shua.png",
+        "selectedIconPath": "pages/img/xin.png",
+        "iconPath": "pages/img/xin.png",
         "pagePath": "pages/index/index",
         "text": "首页"
       },
       {
-        "selectedIconPath": "pages/img/shua.png",
-        "iconPath": "pages/img/shua.png",
-        "pagePath": "pages/activeList/activeList",
-        "text": "活动列表"
-      },
-      {
-        "selectedIconPath": "pages/img/shua.png",
-        "iconPath": "pages/img/shua.png",
+        "selectedIconPath": "pages/img/zhengshu.png",
+        "iconPath": "pages/img/zhengshu.png",
         "pagePath": "pages/sort/sort",
         "text": "排名"
       },
       {
-        "selectedIconPath": "pages/img/shua.png",
-        "iconPath": "pages/img/shua.png",
+        "selectedIconPath": "pages/img/zhengshu.png",
+        "iconPath": "pages/img/zhengshu.png",
+        "pagePath": "pages/activeList/activeList",
+        "text": "活动列表"
+      },
+      
+      {
+        "selectedIconPath": "pages/img/zhi.png",
+        "iconPath": "pages/img/zhi.png",
         "pagePath": "pages/person/person",
         "text": "我的"
       }

@@ -4,6 +4,8 @@ const app = getApp()
 
 Page({
   data: {
+    picdata:[],
+    show:false,
     "bnrUrl": [{
       "url": "../img/img.png"
     }, {
@@ -26,9 +28,51 @@ Page({
      * scroll-view 横向滚动条位置
      */
     scrollLeft: 0,
-    list: []
+    list: [],
+    picdata:[]
 
 
+  },
+  topNavChange: function (e) {
+    console.log(e.currentTarget.dataset.current);
+
+    this.setData({
+      currentTab: e.currentTarget.dataset.current
+    })
+  },
+  // 获取轮播图
+  getPic: function () {
+    wx.showLoading({
+      title: '请稍后',
+    })
+    var main = this;
+    wx.request({
+      url: app.globalData.url + '/strategy/findlunbotu',
+      method: 'get',
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      data: {
+        activityId: main.data.activeId
+      },
+      success: function (res) {
+        console.log("查找成功：");
+        console.log(res);
+        for (var i = 0; i < res.data.data.length; i++) {
+          res.data.data[i].img = app.globalData.url + '/wareHouse/getFile?fileId=' + res.data.data[i].id;
+        }
+        wx.hideLoading();
+        main.setData({
+          picdata: res.data.data
+        })
+
+      },
+      fail: function (res) {
+        console.log("查找失败：");
+        console.log(res);
+        wx.hideLoading();
+      }
+    })
   },
   //事件处理函数
   bindViewTap: function() {
@@ -63,6 +107,9 @@ Page({
         }
       })
     }
+  },
+  onShow:function(){
+    this.getPic()
   },
   getUserInfo: function(e) {
     console.log(e)

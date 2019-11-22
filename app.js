@@ -1,41 +1,44 @@
 //app.js
 
 App({
-  onLaunch: function () {
-    // 展示本地存储能力
-    var logs = wx.getStorageSync('logs') || []
-    logs.unshift(Date.now())
-    wx.setStorageSync('logs', logs)
-
-    // 登录
-    wx.login({
-      success: res => {
-        // 发送 res.code 到后台换取 openId, sessionKey, unionId
-      }
-    })
-    // 获取用户信息
+  onLaunch: function() {
+    var main=this;
     wx.getSetting({
-      success: res => {
+      success(res) {
+        // console.log("res", res)
         if (res.authSetting['scope.userInfo']) {
-          // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
+          console.log("已授权=====")
+          // 已经授权，可以直接调用 getUserInfo 获取头像昵称
           wx.getUserInfo({
-            success: res => {
-              // 可以将 res 发送给后台解码出 unionId
-              this.globalData.userInfo = res.userInfo
-
-              // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-              // 所以此处加入 callback 以防止这种情况
-              if (this.userInfoReadyCallback) {
-                this.userInfoReadyCallback(res)
-              } 
+            success(res) {
+              console.log("获取用户信息成功", res)
+              // that.setData({
+              //   name: res.userInfo.nickName
+              // })
+              main.globalData.userInfo = res.userInfo;
+              console.log(main.globalData.userInfo)
+              wx.setStorage({
+                key: 'userInfo',
+                data: res.userInfo 
+              })
+            },
+            fail(res) {
+              
             }
           })
+        } else {
+          console.log("未授权=====");
+          wx.reLaunch({
+            url: '/pages/empower/empower',
+          })
+          // that.showSettingToast("请授权")
         }
       }
     })
   },
   globalData: {
     userInfo: null,
-    url:'http://192.168.1.103:9200'
+    url: 'http://192.168.1.103:9200',
+    urlLogin: 'http://192.168.1.104:8082'
   }
 })

@@ -1,6 +1,4 @@
 <view>
-  
-
   <view style="display:flex;justify-content:center;">
     <image src="../img/suo.png" style="width:300rpx;height:350rpx;margin-top:100rpx;"></image>
   </view>
@@ -13,6 +11,5 @@
     <image src="../img/tishi.png" style="width:38rpx;height:38rpx;"></image>
     <view style="color:#999899;font-size:30rpx;display:flex;justify-content:center;margin-left:20rpx;">一个密保仅可使用一次</view> 
   </view>
-
   <view bindtap="ma" style="color:#fff;border-radius:60rpx; display:flex;align-items:center;justify-content:center; margin:0 auto;margin-top:40rpx; width:80%;height:80rpx; background: linear-gradient(to right, #F49E31, #ED733D);">提交</view>
 </view>

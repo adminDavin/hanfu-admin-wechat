@@ -7,14 +7,14 @@ Page({
    */
   data: {
     activeId:'',
-    code:'xk5V'
+    code:'ZmXb'
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options)
+    console.log(options);
     this.setData({
       activeId: options.id,
     })
@@ -26,6 +26,7 @@ Page({
     wx.showLoading({
       title: '请稍后',
     })
+    console.log(main.data.activeId)
     wx.request({
       url: app.globalData.url +'/activity/listActivityCode',
       method: 'POST',
@@ -33,15 +34,24 @@ Page({
         "Content-Type": "application/x-www-form-urlencoded"
       },
       data: {
-        code:'xk5V'
+        activityId: main.data.activeId,
+        code:'ZmXb'
       },
       success: function (res) {
         console.log("查找成功：");
         console.log(res);
         wx.hideLoading();
-        wx.navigateTo({
-          url: '../vote/vote?id=' + main.data.activeId
-        })
+        if(res.data.data==true){
+          wx.navigateTo({
+            url: '../vote/vote?id=' + main.data.activeId
+          })
+        }else{
+          wx.showToast({
+            icon:'none',
+            title: '参与码不正确',
+          })
+        }
+        
       },
       fail: function (res) {
         console.log("查找失败：");

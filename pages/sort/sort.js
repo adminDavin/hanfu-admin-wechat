@@ -1,16 +1,20 @@
 // pages/sort/sort.js
+const app = getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    firstid:'',
+    activeList:[],
     "bnrUrl": [{
       "url": "../img/img.png"
     }, {
       "url": "../img/img.png"
     }, {
-      "url": "../img/img.png"
+      "url": "../img/img.png"   
+
     }, {
       "url": "../img/img.png"
     }],
@@ -27,7 +31,7 @@ Page({
      * scroll-view 横向滚动条位置
      */
     scrollLeft: 0,
-    list: []
+    listdata: []
   },
 
   /**
@@ -36,7 +40,117 @@ Page({
   onLoad: function (options) {
 
   },
+  
+  topNavChange:function(e){
+    console.log(e,e.currentTarget.dataset.current, e.currentTarget.dataset.id);
+    
+    this.setData({
+      currentTab: e.currentTarget.dataset.current
+    })
+    var main = this;
+    wx.showLoading({
+      title: '请稍后',
+    })
+    console.log(1111)
+    wx.request({
+      url: app.globalData.url + '/activity/findActivityResult?',
+      method: 'get',
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      data: {
+        activityId: e.currentTarget.dataset.id
+        
+      },
+     
+      success: function (res) {
+        console.log("查找成功");
+        console.log(res);
+        for (var i = 0; i < res.data.data.length; i++) {
+          res.data.data[i].img = app.globalData.url + '/wareHouse/getFile?fileId=' + res.data.data[i].fileId;
+        }
+        wx.hideLoading();
+        main.setData({
+          listdata: res.data.data
+        })
+      },
+      fail: function (res) {
+        console.log("查找失败：");
 
+      }
+    })
+
+  },
+  // 获取头部导航
+  list: function () {
+    var main = this;
+    wx.showLoading({
+      title: '请稍后',
+    })
+    console.log(1111)
+    wx.request({
+      url: app.globalData.url + '/activity/listActivity',
+      method: 'get',
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      success: function (res) {
+        console.log("查找成功");
+        console.log(res);
+        wx.hideLoading();
+        if (res.data.data.length>0){
+          main.setData({
+            firstid: res.data.data[0].id
+          }) 
+        }
+       main.list1();
+        console.log(main.data.firstid)
+        main.setData({
+          activeList: res.data.data
+        })
+      },
+      fail: function (res) {
+        console.log("查找失败：");
+
+      }
+    })
+  },
+  // 获取排名
+  list1: function () {
+    var main = this;
+    wx.showLoading({
+      title: '请稍后',
+    })
+    console.log(1111)
+    wx.request({
+      url: app.globalData.url + '/activity/findActivityResult?',
+      method: 'get',
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      data: {
+        activityId: main.data.firstid
+
+      },
+
+      success: function (res) {
+        console.log("查找成功");
+        console.log(res);
+        wx.hideLoading();
+        for (var i = 0; i < res.data.data.length;i++){
+          res.data.data[i].img = app.globalData.url + '/wareHouse/getFile?fileId=' + res.data.data[i].fileId;
+        }
+        main.setData({
+          listdata: res.data.data
+        })
+        console.log(main.data.listdata)
+      },
+      fail: function (res) {
+        console.log("查找失败：");
+
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -48,6 +162,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    this.list();
 
   },
 
