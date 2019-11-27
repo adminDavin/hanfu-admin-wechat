@@ -1,0 +1,29 @@
+<view>
+  <view style="display:flex;align-items:center;justify-content:center;margin-top：50rpx;">
+    <image src="../img/img.png" style="width:150rpx;height:150rpx;border-radius:50%;"></image>
+  </view>
+  <view style="margin-left:10%;">
+    <view style="display:flex;align-items:center;margin-top:70rpx;">
+      <view style="height:30rpx;line-height:30rpx;">
+        真实姓名:
+      </view>
+      <input placeholder="真实姓名" style="border-bottom:1rpx solid #eee;margin-left:20rpx;"></input>
+    </view>
+    <view style="display:flex;align-items:center;margin-top:60rpx;">
+      <view style="height:30rpx;line-height:30rpx;">
+        部门:
+      </view>
+      <input placeholder="部门" style="border-bottom:1rpx solid #eee;margin-left:20rpx;"></input>
+    </view>
+    <view style="display:flex;align-items:center;margin-top:60rpx;">
+      <view style="height:30rpx;line-height:30rpx;">
+        入职时间:
+      </view>
+      <input placeholder="入职时间" style="border-bottom:1rpx solid #eee;margin-left:20rpx;"></input>
+    </view>
+    <view style="margin-top:60rpx;">
+      <view style="margin-top:30rpx;">个人工作经历:</view>
+      <textarea style="border:1rpx solid #ddd;height:170rpx;margin-top:30rpx;width:85%;"></textarea>
+    </view>
+  </view>
+</view>

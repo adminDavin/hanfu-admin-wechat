@@ -4,6 +4,7 @@ const app = getApp()
 
 Page({
   data: {
+    type:'',//活动类型
     listId:'',
     userdata:[],
     userdata1:[],
@@ -45,6 +46,7 @@ Page({
     picdata:[]
 
   },
+
   // 获取轮播图
   getPic: function () {
     wx.showLoading({
@@ -228,10 +230,15 @@ Page({
       url: '../logs/logs'
     })
   },
+ 
   onLoad: function (options) {
-    console.log(options)
+    console.log(options);
+    this.setData({
+     
+    })
     this.setData({
       activeId: options.id,
+      type: options.type
     })
     this.user();
     if (app.globalData.userInfo) {
@@ -260,6 +267,14 @@ Page({
         }
       })
     }
+  },
+  ping: function () {
+    if (this.data.type == 'score') {
+      wx.navigateTo({
+        url: '../score/score?id='
+      })
+    }
+
   },
   onShow:function(){
     this.getPic()

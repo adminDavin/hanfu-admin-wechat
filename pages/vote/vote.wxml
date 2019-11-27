@@ -17,21 +17,21 @@
     </scroll-view>
   </view> -->
   <!-- list -->
-  <view style="display:flex;flex-wrap: wrap;justify-content:space-between;padding:0 39rpx;margin-top:30rpx;">
-    <view style="margin-bottom:18px;" wx:for="{{userdata}}" wx:for-index="idx" wx:for-item="item">
+  <view style="display:flex;flex-wrap: wrap;justify-content:space-between;padding:0 39rpx;margin-top:30rpx;" >
+    <view style="margin-bottom:18px;" wx:for="{{userdata}}" wx:for-index="idx" wx:for-item="item"  bindtap="ping">
       <image src="{{item.img}}" style="width:324rpx;height:286rpx;border-radius:10px;"></image>
       <view style="display:flex;align-items:center;margin-top:4px;justify-content:space-between;">
         <view>
           <view style="font-size:34rpx;margin-left:20rpx;width:100rpx;word-break: break-all;overflow: hidden;text-overflow:ellipsis;white-space: nowrap;">{{item.username}}</view>
           <view style="font-size:30rpx;color:#999899;margin-left:20rpx;margin-top:4px;">部门名称</view>
         </view>
-        <view class='itembox'>
-          <view wx:for="{{item.imgs}}" wx:for-index="idx1"  wx:for-item="item1" bindtap='select' data-parent="{{idx}}"   data-index="{{idx1}}">
+        <view class='itembox' wx:if="{{type=='ticket_count'}}">
+          <view wx:for="{{item.imgs}}" wx:for-index="idx1" wx:for-item="item1" bindtap='select' data-parent="{{idx}}" data-index="{{idx1}}">
             <image class="star" src="{{item1.id>item.starId?src2:src1}}"></image>
           </view>
-         
+
         </view>
       </view>
-    </view>  
+    </view>
   </view>
 </view>

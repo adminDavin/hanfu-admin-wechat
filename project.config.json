@@ -78,6 +78,20 @@
 					"id": -1,
 					"name": "pages/empower/empower",
 					"pathName": "pages/empower/empower",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/score/score",
+					"pathName": "pages/score/score",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/information/information",
+					"pathName": "pages/information/information",
 					"scene": null
 				}
 			]

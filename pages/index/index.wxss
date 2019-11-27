@@ -30,7 +30,7 @@ page{
     width: 100%;
     height: 100rpx;
     line-height: 100rpx;
-    text-align: center;
+    
     z-index: 1;
    
 }
@@ -40,15 +40,18 @@ page{
   white-space: nowrap;
 }
 .header .item{
+  color: #F2C81E;
+  text-align: center;
   height: 75rpx;
-  width: 170rpx;
+  max-width:200rpx;
   display: inline-block;
   font-size: 34rpx;
-  color: #FFFFFF;
   line-height: 75rpx;
-  background: #fb5858;
+  /* background: #fb5858; */
   border-radius: 80rpx;
   margin: 10rpx;
+  margin-right: 50rpx;
+  font-size: 40rpx;
 }
 ::-webkit-scrollbar {
     width: 0;
@@ -56,8 +59,10 @@ page{
     color: transparent;
 }
 .header .on{ 
-  color: #FFFFFF;  
-  background: linear-gradient(to right, #6E7AEA, #A25EF1);
+  color: #E83818;  
+  font-size:45rpx;
+   max-width:230rpx;
+  /* background: linear-gradient(to right, #6E7AEA, #A25EF1); */
 }   
 .swiper-box{ 
   display: block; 

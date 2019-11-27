@@ -3,8 +3,9 @@
     <view style="margin-left:40rpx;">
       {{item.activityName }}
     </view>
-    <view style="display:flex;align-items:center;padding:40rpx;" wx:if="{{item.isTimingStart==1}}" data-id="{{item.id}}" bindtap="goVote">
-      <view style="color:#DC0000;margin-right:15rpx;">去投票</view>
+    <view style="display:flex;align-items:center;padding:40rpx;" wx:if="{{item.isTimingStart==1}}" data-id="{{item.id}}"  data-type="{{item.type}}" bindtap="goVote">
+      <view style="color:#DC0000;margin-right:15rpx;" wx:if="{{item.type=='ticket_count'}}">去投票</view>
+      <view style="color:#DC0000;margin-right:15rpx;" wx:if="{{item.type=='score'}}">去打分</view>
       <image src="../img/back.png" style="width:20rpx;height:24rpx;"></image>
     </view>
     <view style="display:flex;align-items:center;padding:40rpx;" wx:if="{{item.isTimingStart==0}}">

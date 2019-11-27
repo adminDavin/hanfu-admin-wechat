@@ -3,7 +3,7 @@
     <image src="../img/suo.png" style="width:300rpx;height:350rpx;margin-top:100rpx;"></image>
   </view>
   <view style="padding:0 90rpx;margin-top:100rpx;">
-    <input style="border:1rpx solid #094DD6;height:75rpx;border-radius:5px;margin-top:60rpx;padding-left:30rpx;" value="{{code}}" ></input>
+    <input bindblur="bindKeyInput"  style="border:1rpx solid #094DD6;height:75rpx;border-radius:5px;margin-top:60rpx;padding-left:30rpx;" value="{{code}}" ></input>
   </view>
   
   <view style="color:#999899;font-size:30rpx;display:flex;justify-content:center;margin-top:20rpx;">请输入正确的邀请密保</view>

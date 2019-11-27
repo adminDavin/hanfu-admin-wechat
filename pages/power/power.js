@@ -7,7 +7,8 @@ Page({
    */
   data: {
     activeId:'',
-    code:'ZmXb'
+    code:'',
+    type:''
   },
 
   /**
@@ -17,15 +18,21 @@ Page({
     console.log(options);
     this.setData({
       activeId: options.id,
+      type: options.type,
     })
   },
-  
+  bindKeyInput: function (e) {
+    this.setData({
+      code: e.detail.value
+    })
+  },
   // 根据邀请码进入投票页面
   ma : function () {
     var main=this;
     wx.showLoading({
       title: '请稍后',
     })
+    console.log(main.data.code)
     console.log(main.data.activeId)
     wx.request({
       url: app.globalData.url +'/activity/listActivityCode',
@@ -35,7 +42,7 @@ Page({
       },
       data: {
         activityId: main.data.activeId,
-        code:'ZmXb'
+        code:main.data.code
       },
       success: function (res) {
         console.log("查找成功：");
@@ -43,7 +50,7 @@ Page({
         wx.hideLoading();
         if(res.data.data==true){
           wx.navigateTo({
-            url: '../vote/vote?id=' + main.data.activeId
+            url: '../vote/vote?id=' + main.data.activeId + '&type=' + main.data.type
           })
         }else{
           wx.showToast({

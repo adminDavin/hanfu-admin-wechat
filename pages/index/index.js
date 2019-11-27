@@ -4,6 +4,8 @@ const app = getApp()
 
 Page({
   data: {
+    activeId:'',
+    activeList:[],
     picdata:[],
     show:false,
     "bnrUrl": [{
@@ -28,8 +30,9 @@ Page({
      * scroll-view 横向滚动条位置
      */
     scrollLeft: 0,
-    list: [],
-    picdata:[]
+   
+    picdata:[],
+    personList:[]
 
 
   },
@@ -37,7 +40,118 @@ Page({
     console.log(e.currentTarget.dataset.current);
 
     this.setData({
-      currentTab: e.currentTarget.dataset.current
+      currentTab: e.currentTarget.dataset.current,
+      activeId: this.data.activeList[e.currentTarget.dataset.current].id
+    })
+    this.getPerson()
+  },
+  list: function (even) {
+    var main = this;
+    wx.showLoading({
+      title: '请稍后',
+    })
+    console.log(1111)
+    wx.request({
+      url: app.globalData.url + '/activity/listActivity',
+      method: 'get',
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      success: function (res) {
+        console.log("查找成功");
+        console.log(res);
+        wx.hideLoading();
+        main.setData({
+          activeList: res.data.data
+        })
+        main.getPerson1()
+      },
+      fail: function (res) {
+        console.log("查找失败：");
+
+      }
+    })
+  },
+  getPerson1:function(){
+    wx.showLoading({
+      title: '请稍后',
+    })
+    var main = this;
+    if (main.data.activeList[0]){
+      wx.request({
+        url: app.globalData.url + '/wareHouse/listActivityUser',
+        method: 'get',
+        header: {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        data: {
+          activityId: main.data.activeList[0].id
+        },
+        success: function (res) {
+          console.log("查找成功：");
+          console.log(res);
+
+          for (var i = 0; i < res.data.data.length; i++) {
+            res.data.data[i].img = app.globalData.url + '/wareHouse/getFile?fileId=' + res.data.data[i].id;
+          }
+          wx.hideLoading();
+          main.setData({
+            personList: res.data.data
+          })
+
+        },
+        fail: function (res) {
+          console.log("查找失败：");
+          console.log(res);
+          wx.hideLoading();
+        }
+      })
+    }else{
+      wx.hideLoading();
+    }
+   
+   
+  },
+  getPerson: function () {
+    wx.showLoading({
+      title: '请稍后',
+    })
+    var main = this;
+    wx.request({
+      url: app.globalData.url + '/wareHouse/listActivityUser',
+      method: 'get',
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      data: {
+        activityId: main.data.activeId
+      },
+      success: function (res) {
+        console.log("查找成功：");
+        console.log(res);
+        if (res.data.data){
+          for (var i = 0; i < res.data.data.length; i++) {
+            res.data.data[i].img = app.globalData.url + '/wareHouse/getFile?fileId=' + res.data.data[i].id;
+          }
+          main.setData({
+            personList: res.data.data
+          })
+        }else{
+          main.setData({
+            personList: []
+          })
+        }
+        
+        
+        
+        console.log(main.data.personList)
+        wx.hideLoading();
+      },
+      fail: function (res) {
+        console.log("查找失败：");
+        console.log(res);
+        wx.hideLoading();
+      }
     })
   },
   // 获取轮播图
@@ -109,7 +223,8 @@ Page({
     }
   },
   onShow:function(){
-    this.getPic()
+    this.getPic();
+    this.list();
   },
   getUserInfo: function(e) {
     console.log(e)

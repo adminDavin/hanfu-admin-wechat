@@ -1,0 +1,33 @@
+<view style="padding-left:30rpx;padding-top:70rpx;">
+
+  <view style="margin-bottom:40rpx;">
+    <view>礼仪</view>
+    <view style="display:flex;align-items:center;margin-top:40rpx;">
+      <input style="border:1rpx solid #000;width:40%;"></input>
+      <input style="border:1rpx solid #000;width:40%;margin-left:10rpx;" type='number'></input>
+    </view>
+  </view>
+  <view style="margin-bottom:40rpx;">
+    <view>礼仪</view>
+    <view style="display:flex;align-items:center;margin-top:40rpx;">
+      <input style="border:1rpx solid #000;width:40%;"></input>
+      <input style="border:1rpx solid #000;width:40%;margin-left:10rpx;"></input>
+    </view>
+  </view>
+  <view style="margin-bottom:40rpx;">
+    <view>礼仪</view>
+    <view style="display:flex;align-items:center;margin-top:40rpx;">
+      <input style="border:1rpx solid #000;width:40%;"></input>
+      <input style="border:1rpx solid #000;width:40%;margin-left:10rpx;"></input>
+    </view>
+  </view>
+  <view style="margin-bottom:40rpx;">
+    <view>礼仪</view>
+    <view style="display:flex;align-items:center;margin-top:40rpx;">
+      <input style="border:1rpx solid #000;width:40%;"></input>
+      <input style="border:1rpx solid #000;width:40%;margin-left:10rpx;"></input>
+    </view>
+  </view>
+
+  <view style="border:1rpx solid #000;width:100rpx;text-align:center;" >提交</view>
+</view>

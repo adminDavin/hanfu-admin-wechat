@@ -1,4 +1,5 @@
-// pages/person/person.js
+// pages/score/score.js
+const app = getApp()
 Page({
 
   /**
@@ -7,22 +8,49 @@ Page({
   data: {
 
   },
-  personalEvaluation:function(){
-    // wx.navigateTo({
-    //   url: '../personalEvaluation/personalEvaluation?id='',
-    // })
-  },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+
   },
-  infor:function(){
-    wx.navigateTo({
-      url: '../information/information',
+ 
+ list: function (even) {
+    var main = this;
+    wx.showLoading({
+      title: '请稍后',
+    })
+    console.log(1111)
+    wx.request({
+      url: app.globalData.url + '/wareHouse/recordScore',
+      method: 'get',
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      data:{
+        activityId:'',
+        remark :'',
+        userId:''
+      },
+      success: function (res) {
+        console.log("查找成功");
+        console.log(res);
+        wx.hideLoading();
+        main.setData({
+          activeList: res.data.data
+        })
+        main.getPerson1()
+      },
+      fail: function (res) {
+        console.log("查找失败：");
+
+      }
     })
   },
+
+
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

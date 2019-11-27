@@ -9,7 +9,10 @@
     "pages/power/power",
     "pages/record/record",
     "pages/login/login",
-    "pages/empower/empower"
+    "pages/empower/empower",
+    "pages/score/score",
+    "pages/personalEvaluation/personalEvaluation",
+    "pages/information/information"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -40,7 +43,6 @@
         "pagePath": "pages/activeList/activeList",
         "text": "活动列表"
       },
-      
       {
         "selectedIconPath": "pages/img/zhi.png",
         "iconPath": "pages/img/zhi.png",
