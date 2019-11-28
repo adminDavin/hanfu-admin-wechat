@@ -28,7 +28,7 @@
       </view>
       <view style="padding:30rpx 0;border-bottom:1rpx solid #E5E5E5;width:90%;">参选记录</view>
     </view>
-    <view style="display:flex;justify-content:space-between;align-items:center;padding-left:40rpx;">
+    <view style="display:flex;justify-content:space-between;align-items:center;padding-left:40rpx;" bindtap="infor">
       <view>
         <image src="../img/wode.png" style="width:45rpx;height:45rpx;"></image>
       </view>

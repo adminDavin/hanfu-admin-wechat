@@ -6,7 +6,8 @@ Page({
    */
   
   data: {
-    name:''
+    name:'',
+    show: false,
   },
   onLoad: function () {
     // this.getuser()

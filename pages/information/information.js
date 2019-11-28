@@ -1,20 +1,26 @@
 // pages/information/information.js
+var app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    show: false,
+    statusBarHeight:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+   
   },
-
+  showping:function(){
+    this.setData({
+      show: true
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -26,7 +32,15 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    var main=this;
+    wx.getSystemInfo({
+      success: function(res) {
+        console.log(res.statusBarHeight) ;
+        main.setData({
+          statusBarHeight: res.statusBarHeight
+        })
+      },
+    })
   },
 
   /**
@@ -60,7 +74,7 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  // onShareAppMessage: function () {
 
-  }
+  // }
 })
