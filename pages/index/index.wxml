@@ -20,10 +20,10 @@
   <!-- list -->
   <view style="display:flex;flex-wrap: wrap;justify-content:space-between;padding:0 39rpx;margin-top:30rpx;"
    >
-    <view style="margin-bottom:18px;"  wx:for="{{personList}}" wx:for-index="idx" wx:for-item="item">
-      <image src="{{item.img}}" style="width:324rpx;height:286rpx;border-radius:10px;"></image>
-      <view style="width:100rpx;font-size:34rpx;margin-left:20rpx;margin-top:4px;word-break: break-all;overflow: hidden;text-overflow:ellipsis;white-space: nowrap;">{{item.username}}</view>
-      <view style="font-size:30rpx;color:#999899;margin-left:20rpx;margin-top:4px;">部门名称</view>
+    <view style="margin-bottom:18px; border:2px solid #F5E2AB;border-top:1.5px solid #F5E2AB;border-radius:8px;padding-bottom:25rpx;"  wx:for="{{personList}}" wx:for-index="idx" wx:for-item="item">
+      <image src="{{item.img}}" style="width:324rpx;height:286rpx;border-radius:6px;"></image>
+      <view style="width:200rpx;font-size:34rpx;margin-left:20rpx;margin-top:4px;word-break: break-all;overflow: hidden;text-overflow:ellipsis;white-space: nowrap;color:#FFE18E;">{{item.username}}</view>
+      <view style="font-size:30rpx;color:#999899;margin-left:20rpx;margin-top:4px;color:#FFE18E;">{{item.departmentName}}</view>
     </view>
   </view>
   <view style="width:100%;height:100%;background:rgba(0,0,0,0.5);position:fixed;top:0;left:0;" wx:if="{{show}}">

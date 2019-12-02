@@ -1,16 +1,17 @@
 <view style="padding:40rpx 30rpx; ">
-  <view wx:for="{{activeList}}" wx:for-index="idx" wx:for-item="item"  style="display:flex;justify-content:space-between;background:#fff;align-items:center;margin-bottom:30rpx;padding:10rpx;">
-    <view style="margin-left:40rpx;">
+  <view wx:for="{{activeList}}" wx:for-index="idx" wx:for-item="item"  
+  style="display:flex;justify-content:space-between;background:#1B1B1B;align-items:center;margin-bottom:30rpx;padding:10rpx;border:1px solid #F5E2AB;border-radius:10px;">
+    <view style="margin-left:40rpx;color:#fff;">
       {{item.activityName }}
     </view>
     <view style="display:flex;align-items:center;padding:40rpx;" wx:if="{{item.isTimingStart==1}}" data-id="{{item.id}}"  data-type="{{item.type}}" bindtap="goVote">
-      <view style="color:#DC0000;margin-right:15rpx;" wx:if="{{item.type=='ticket_count'}}">去投票</view>
-      <view style="color:#DC0000;margin-right:15rpx;" wx:if="{{item.type=='score'}}">去打分</view>
-      <image src="../img/back.png" style="width:20rpx;height:24rpx;"></image>
+      <view style="color:rgba(245,226,171,1);margin-right:15rpx;background:rgba(27,27,27,1);" wx:if="{{item.type=='ticket_count'}}">去投票</view>
+      <view style="color:rgba(245,226,171,1);;margin-right:15rpx;" wx:if="{{item.type=='score'}}">去打分</view>
+      <image src="../img/back.png" style="width:16rpx;height:27rpx;"></image>
     </view>
     <view style="display:flex;align-items:center;padding:40rpx;" wx:if="{{item.isTimingStart==0}}">
-      <image src="../img/wei.png" style="width:36rpx;height:36rpx;"></image>
-      <view style="color:#DC0000;margin-right:15rpx;color:#999999;margin-left:10rpx">活动尚未开启</view>
+      <image src="../img/wei.png" style="width:36rpx;height:35rpx;"></image>
+      <view style="color:#DC0000;margin-right:15rpx;color:#7A7A7A;margin-left:10rpx">活动尚未开启</view>
     </view>
   </view>
 </view>

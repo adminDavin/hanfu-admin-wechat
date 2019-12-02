@@ -1,0 +1,28 @@
+<view>
+  <view style="display:flex;align-items:center;padding:100rpx 5% 0 5%; width:100%;flex-wrap:wrap;">
+  <view style="display:flex;flex-direction:column;align-items:center;width:30%;margin-bottom:60rpx;position:relative;">
+    <image src="../img/person.png" style="width:140rpx;height:140rpx;"></image>
+    <view style="color:#FFE18E;margin-top:20rpx;">姓名</view>
+     <image src="../img/fang.png" style="width:35rpx;height:35rpx;position:absolute;top:120rpx;right:60rpx;"></image>
+  </view>
+  <view style="display:flex;flex-direction:column;align-items:center;width:30%;margin-bottom:60rpx;position:relative;">
+    <image src="../img/person.png" style="width:140rpx;height:140rpx;"></image>
+    <view style="color:#FFE18E;margin-top:20rpx;">姓名</view>
+     <image src="../img/fang.png" style="width:35rpx;height:35rpx;position:absolute;top:120rpx;right:60rpx;"></image>
+  </view>
+   <view style="display:flex;flex-direction:column;align-items:center;width:30%;margin-bottom:60rpx;position:relative;">
+    <image src="../img/person.png" style="width:140rpx;height:140rpx;"></image>
+    <view style="color:#FFE18E;margin-top:20rpx;">姓名</view>
+     <image src="../img/fang.png" style="width:35rpx;height:35rpx;position:absolute;top:120rpx;right:60rpx;"></image>
+  </view>
+   <view style="display:flex;flex-direction:column;align-items:center;width:30%;margin-bottom:60rpx;position:relative;">
+    <image src="../img/person.png" style="width:140rpx;height:140rpx;"></image>
+    <view style="color:#FFE18E;margin-top:20rpx;">姓名</view>
+     <image src="../img/fang.png" style="width:35rpx;height:35rpx;position:absolute;top:120rpx;right:60rpx;"></image>
+  </view>
+  
+</view>
+<view class="que">
+  确认点赞
+  </view>
+</view>

@@ -1,56 +1,56 @@
 <view>
-  <view style="background:#F2994A;height:340rpx;display:flex;align-items:center;justify-content:space-between;padding:0 30rpx;padding-right:45rpx;">
+  <view style="height:340rpx;display:flex;align-items:center;justify-content:space-between;padding:0 30rpx;padding-right:45rpx;">
     <view style="">
-      <view style="color:#fff;font-size:50rpx;">
+      <view style="color:#fff;font-size:50rpx;background:linear-gradient(180deg,rgba(245,226,171,1) 0%, rgba(184,146,69,1) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">
         王昭君
       </view>
-      <view style="color:#fff;margin-top:10rpx;font-size:32rpx;">18963965648</view>
+      <view style="color:rgba(245,226,171,1);margin-top:10rpx;font-size:25rpx;">18963965648</view>
     </view>
     <image src="../img/img.png" style="width:140rpx;height:140rpx;border-radius:50%;" bindtap="infor"></image>
   </view>
-  <view style="background:#fff;margin-top:40rpx;">
+  <view style="margin-top:40rpx;background:#141414;">
     <view style="display:flex;justify-content:space-between;align-items:center;padding-left:40rpx;" bindtap="personalEvaluation">
       <view>
         <image src="../img/record.png" style="width:40rpx;height:45rpx;"></image>
       </view>
-      <view style="padding:30rpx 0;border-bottom:1rpx solid #E5E5E5;width:90%;">个人评价</view>
+      <view style="padding:30rpx 0;border-bottom:1rpx solid #535353;width:90%;color:#F5E2AB;">个人评价</view>
     </view>
     <view style="display:flex;justify-content:space-between;align-items:center;padding-left:40rpx;">
       <view>
         <image src="../img/record.png" style="width:40rpx;height:45rpx;"></image>
       </view>
-      <view style="padding:30rpx 0;border-bottom:1rpx solid #E5E5E5;width:90%;">参选记录</view>
+      <view style="padding:30rpx 0;border-bottom:1rpx solid #535353;width:90%;color:#F5E2AB;">参选记录</view>
     </view>
 
     <view style="display:flex;justify-content:space-between;align-items:center;padding-left:40rpx;">
       <view>
         <image src="../img/toupiao.png" style="width:45rpx;height:45rpx;"></image>
       </view>
-      <view style="padding:30rpx 0;border-bottom:1rpx solid #E5E5E5;width:90%;">参选记录</view>
+      <view style="padding:30rpx 0;border-bottom:1rpx solid #535353;width:90%;color:#F5E2AB;">参选记录</view>
     </view>
     <view style="display:flex;justify-content:space-between;align-items:center;padding-left:40rpx;" bindtap="infor">
       <view>
-        <image src="../img/wode.png" style="width:45rpx;height:45rpx;"></image>
+        <image src="../img/wo.png" style="width:45rpx;height:45rpx;"></image>
       </view>
-      <view style="padding:30rpx 0;border-bottom:1rpx solid #E5E5E5;width:90%;">我的信息</view>
+      <view style="padding:30rpx 0;border-bottom:1rpx solid #535353;width:90%;color:#F5E2AB;">我的信息</view>
     </view>
     <view style="display:flex;justify-content:space-between;align-items:center;padding-left:40rpx;">
       <view>
         <image src="../img/tou.png" style="width:40rpx;height:45rpx;"></image>
       </view>
-      <view style="padding:30rpx 0;border-bottom:1rpx solid #E5E5E5;width:90%;">投票管理</view>
+      <view style="padding:30rpx 0;border-bottom:1rpx solid #535353;width:90%;color:#F5E2AB;">投票管理</view>
     </view>
     <view style="display:flex;justify-content:space-between;align-items:center;padding-left:40rpx;">
       <view>
         <image src="../img/lian.png" style="width:45rpx;height:45rpx;"></image>
       </view>
-      <view style="padding:30rpx 0;border-bottom:1rpx solid #E5E5E5;width:90%;">联系我们</view>
+      <view style="padding:30rpx 0;border-bottom:1rpx solid #535353;width:90%;color:#F5E2AB;">联系我们</view>
     </view>
     <view style="display:flex;justify-content:space-between;align-items:center;padding-left:40rpx;">
       <view>
         <image src="../img/shezhi.png" style="width:45rpx;height:45rpx;"></image>
       </view>
-      <view style="padding:30rpx 0;width:90%;">系统设置</view>
+      <view style="padding:30rpx 0;width:90%;color:#F5E2AB;">系统设置</view>
     </view>
   </view>
 

@@ -12,7 +12,10 @@
     "pages/empower/empower",
     "pages/score/score",
     "pages/personalEvaluation/personalEvaluation",
-    "pages/information/information"
+    "pages/information/information",
+    "pages/job/job",
+    "pages/updatePerson/updatePerson",
+    "pages/dailyPraise/dailyPraise"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -21,8 +24,9 @@
     "navigationBarTextStyle": "black"
   },
   "tabBar": {
-    "color": "#a9b7b7",
-    "selectedColor": "#11cd6e",
+    "backgroundColor": "#50412B",
+    "color": "#F2DEA6",
+    "selectedColor": "#000",
     "borderStyle": "black",
     "list": [
       {
@@ -38,14 +42,14 @@
         "text": "排名"
       },
       {
-        "selectedIconPath": "pages/img/zhengshu.png",
-        "iconPath": "pages/img/zhengshu.png",
+        "selectedIconPath": "pages/img/list.png",
+        "iconPath": "pages/img/list.png",
         "pagePath": "pages/activeList/activeList",
         "text": "活动列表"
       },
       {
-        "selectedIconPath": "pages/img/zhi.png",
-        "iconPath": "pages/img/zhi.png",
+        "selectedIconPath": "pages/img/wode.png",
+        "iconPath": "pages/img/wode.png",
         "pagePath": "pages/person/person",
         "text": "我的"
       }

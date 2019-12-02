@@ -35,7 +35,7 @@
   </view>
 
 <!-- 自我评价弹框 -->
-  <view wx:if="{{show}}" style="border-left:50rpx solid #000; border-top:57rpx solid #000; border-bottom:157rpx solid #000; border-right:50rpx solid #000; display:flex; background:rgba(0,0,0,0.6);z-index:100;position:fixed;top:0;left:0;overflow-y:scroll;height:90%;z-index:100;display:flex;width:87%;padding-top:{{statusBarHeight}}px">
+  <view wx:if="{{show}}" style="border-left:50rpx solid #000; border-top:57rpx solid #000; border-bottom:157rpx solid #000; border-right:50rpx solid #000; display:flex; background:rgba(0,0,0,0.6);z-index:100;position:fixed;top:0;left:0;overflow-y:scroll;height:80%;z-index:100;display:flex;width:87%;padding-top:50px">
 
     <view style="flex:1; border:1rpx solid #CBB15D;padding-bottom:40rpx;margin:0 auto;border-radius:10rpx;">
       <view class="zi">自我评价</view>

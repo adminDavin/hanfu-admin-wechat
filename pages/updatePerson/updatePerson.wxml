@@ -1,0 +1,37 @@
+<view>
+  <view style="display:flex;align-items:center;margin-top:55rpx;">
+    <image src="../img/person.png" style="width:150rpx;height:150rpx;margin:0 auto;"></image>
+  </view>
+  <view style="color:#fff;font-size:30rpx;text-align:center;margin-top:27rpx;">点击修改头像</view>
+
+
+  <view style="color:#F5E2AB;text-align:center;font-size:35rpx;margin-top:60rpx;font-family:PingFang SC;font-family:PingFang SC;">真实姓名</view>
+  <view style="color:#fff;text-align:center;font-size:29rpx;margin-top:15rpx;">王昭君</view>
+  <view style="color:#F5E2AB;text-align:center;font-size:35rpx;margin-top:90rpx;font-family:PingFang SC;font-family:PingFang SC;">性别</view>
+  <view style="display:flex;align-items:center;margin-top:30rpx;">
+    <image src="../img/nan.png" style="width:50rpx;height:50rpx;margin:0 auto;"></image>
+  </view>
+  <view style="color:#F5E2AB;text-align:center;font-size:35rpx;margin-top:90rpx;font-family:PingFang SC;font-family:PingFang SC;">手机号</view>
+  <view style="color:#fff;text-align:center;font-size:29rpx;margin-top:15rpx;">18296539562</view>
+  <view style="display:flex;align-items:center;justify-content:space-between;padding:0 10%;margin-top:100rpx;">
+    <view style="flex:1;border-right:1rpx solid #fff;">
+      <view style="color:#fff;font-size:35rpx;">
+        1995年
+      </view>
+      <view style="color:#F5E2AB;font-size:24rpx;margin-top:50rpx;">出生年月</view>
+    </view>
+    <view style="width: 38%;display:flex;flex-direction:column;align-items:center;border-right:1rpx solid #fff;">
+      <view style="color:#fff;font-size:35rpx;">
+        1995年
+      </view>
+      <view style="color:#F5E2AB;font-size:24rpx;margin-top:50rpx;">出生年月</view>
+    </view>
+    <view style="flex:1;display:flex;flex-direction:column;align-items:flex-end;">
+      <view style="color:#fff;font-size:35rpx;">
+        1995年
+      </view>
+      <view style="color:#F5E2AB;font-size:24rpx;margin-top:50rpx;">出生年月</view>
+    </view>
+  </view>
+  <view class="btn">保存</view>
+</view>

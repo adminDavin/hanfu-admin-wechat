@@ -99,6 +99,41 @@
 					"id": -1,
 					"name": "pages/personalEvaluation/personalEvaluation",
 					"pathName": "pages/personalEvaluation/personalEvaluation",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/job/job",
+					"pathName": "pages/job/job",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/person/person",
+					"pathName": "pages/person/person",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/updatePerson/updatePerson",
+					"pathName": "pages/updatePerson/updatePerson",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/dailyPraise/dailyPraise",
+					"pathName": "pages/dailyPraise/dailyPraise",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/power/power",
+					"pathName": "pages/power/power",
 					"scene": null
 				}
 			]

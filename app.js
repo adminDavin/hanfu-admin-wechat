@@ -20,6 +20,11 @@ App({
               wx.setStorage({
                 key: 'userInfo',
                 data: res.userInfo 
+              })  
+              wx.login({
+                success: function(res){
+                    console.log(res)
+                }
               })
             },
             fail(res) {
@@ -38,7 +43,7 @@ App({
   },
   globalData: {
     userInfo: null,
-    url: 'http://192.168.1.103:9200',
-    urlLogin: 'http://192.168.1.104:8082'
+    url: 'http://192.168.1.105:9200',
+    urlLogin: 'http://192.168.1.105:8082'
   }
 })

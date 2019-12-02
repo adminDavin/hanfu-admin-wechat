@@ -79,7 +79,7 @@ Page({
     var main = this;
     if (main.data.activeList[0]){
       wx.request({
-        url: app.globalData.url + '/wareHouse/listActivityUser',
+        url: app.globalData.url + '/activity/listActivityUser',
         method: 'get',
         header: {
           "Content-Type": "application/x-www-form-urlencoded"
@@ -90,10 +90,12 @@ Page({
         success: function (res) {
           console.log("查找成功：");
           console.log(res);
-
-          for (var i = 0; i < res.data.data.length; i++) {
-            res.data.data[i].img = app.globalData.url + '/wareHouse/getFile?fileId=' + res.data.data[i].id;
+          if (res.data.data){
+            for (var i = 0; i < res.data.data.length; i++) {
+              res.data.data[i].img = app.globalData.url + '/wareHouse/getFile?fileId=' + res.data.data[i].id;
+            }
           }
+         
           wx.hideLoading();
           main.setData({
             personList: res.data.data
@@ -118,7 +120,7 @@ Page({
     })
     var main = this;
     wx.request({
-      url: app.globalData.url + '/wareHouse/listActivityUser',
+      url: app.globalData.url + '/activity/listActivityUser',
       method: 'get',
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
@@ -131,7 +133,7 @@ Page({
         console.log(res);
         if (res.data.data){
           for (var i = 0; i < res.data.data.length; i++) {
-            res.data.data[i].img = app.globalData.url + '/wareHouse/getFile?fileId=' + res.data.data[i].id;
+            res.data.data[i].img = app.globalData.url + '/wareHouse/getFile?fileId=' + res.data.data[i].fileId;
           }
           main.setData({
             personList: res.data.data
@@ -172,13 +174,17 @@ Page({
       success: function (res) {
         console.log("查找成功：");
         console.log(res);
-        for (var i = 0; i < res.data.data.length; i++) {
-          res.data.data[i].img = app.globalData.url + '/wareHouse/getFile?fileId=' + res.data.data[i].id;
+        if (res.data.data.length>0){
+          for (var i = 0; i < res.data.data.length; i++) {
+            res.data.data[i].img = app.globalData.url + '/wareHouse/getFile?fileId=' + res.data.data[i].id;
+          }
+         
+          main.setData({
+            picdata: res.data.data
+          })
         }
         wx.hideLoading();
-        main.setData({
-          picdata: res.data.data
-        })
+       
 
       },
       fail: function (res) {

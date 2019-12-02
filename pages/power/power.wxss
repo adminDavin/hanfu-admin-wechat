@@ -1,1 +1,3 @@
-/* pages/power/power.wxss */
+page{
+  background: #141414;
+}
