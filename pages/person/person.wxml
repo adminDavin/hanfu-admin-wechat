@@ -2,11 +2,11 @@
   <view style="height:340rpx;display:flex;align-items:center;justify-content:space-between;padding:0 30rpx;padding-right:45rpx;">
     <view style="">
       <view style="color:#fff;font-size:50rpx;background:linear-gradient(180deg,rgba(245,226,171,1) 0%, rgba(184,146,69,1) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">
-        王昭君
+       {{userInfo.nickName}}
       </view>
       <view style="color:rgba(245,226,171,1);margin-top:10rpx;font-size:25rpx;">18963965648</view>
     </view>
-    <image src="../img/img.png" style="width:140rpx;height:140rpx;border-radius:50%;" bindtap="infor"></image>
+    <image src="{{userInfo.avatarUrl}}" style="width:140rpx;height:140rpx;border-radius:50%;" bindtap="infor"></image>
   </view>
   <view style="margin-top:40rpx;background:#141414;">
     <view style="display:flex;justify-content:space-between;align-items:center;padding-left:40rpx;" bindtap="personalEvaluation">

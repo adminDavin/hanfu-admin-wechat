@@ -5,9 +5,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    userInfo:{}
   },
-  personalEvaluation:function(){
+  personalEvaluation: function () {
     // wx.navigateTo({
     //   url: '../personalEvaluation/personalEvaluation?id='',
     // })
@@ -16,9 +16,18 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    wx.hideShareMenu();
+    var that=this;
+    wx.getStorage({
+      key: 'userInfo',
+      success: function (res) {
+        console.log(res)
+        that.setData({
+          userInfo: res.data,
+        })
+      }
+    })
   },
-  infor:function(){
+  infor: function () {
     wx.navigateTo({
       url: '../information/information',
     })
@@ -34,7 +43,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    wx.hideShareMenu()
   },
 
   /**
@@ -68,7 +77,7 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  // onShareAppMessage: function () {
+  onShareAppMessage: function () {
 
-  // }
+  }
 })

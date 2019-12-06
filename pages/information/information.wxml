@@ -1,5 +1,5 @@
 <view style="width:100%;height:100%;">
-  <image src="../img/left.png" style="width:27rpx;height:43rpx;margin-top:50rpx;margin-left:30rpx;"></image>
+  <image src="../img/left.png" style="width:27rpx;height:43rpx;margin-top:50rpx;margin-left:30rpx;" bindtap="back"></image>
   <view style="display:flex;justify-content:flex-end;">
     <image src="../img/bian.png" style="width:30rpx;height:30rpx;margin-right:35rpx;margin-top:30rpx;"></image>
   </view>
@@ -35,10 +35,19 @@
   </view>
 
 <!-- 自我评价弹框 -->
-  <view wx:if="{{show}}" style="border-left:50rpx solid #000; border-top:57rpx solid #000; border-bottom:157rpx solid #000; border-right:50rpx solid #000; display:flex; background:rgba(0,0,0,0.6);z-index:100;position:fixed;top:0;left:0;overflow-y:scroll;height:80%;z-index:100;display:flex;width:87%;padding-top:50px">
+  <view wx:if="{{show}}" style="border-left:50rpx solid #000; border-top:57rpx solid #000; border-bottom:157rpx solid #000; border-right:50rpx solid #000; display:flex; background:rgba(0,0,0,0.6);z-index:100;position:fixed;top:0;left:0;overflow-y:scroll;height:87%;z-index:100;display:flex;width:87%;padding-top:50px">
 
     <view style="flex:1; border:1rpx solid #CBB15D;padding-bottom:40rpx;margin:0 auto;border-radius:10rpx;">
-      <view class="zi">自我评价</view>
+      <view >
+      <view style="display:flex;justify-content:flex-end;margin-top:10px;margin-right:10px;" bindtap="clocetoast">
+         <image src="../img/close.png" style="width:30px;height:30px;"></image>
+      </view>
+      
+         <view class="zi">自我评价</view>
+        
+      </view>
+     
+
       <view style="padding-left:7.5%">
         <view style="margin-bottom:30rpx;">
           <view class="ai">

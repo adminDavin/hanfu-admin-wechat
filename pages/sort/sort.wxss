@@ -11,7 +11,12 @@
   width: 100%;
   height: inherit;
 }
-
+.xingxing{
+ display:flex;align-items:center;margin-left:30rpx;
+}
+.xingxing1{
+display:flex;align-items:center;
+}
 .container{
   padding: 0;
   font-family: "黑体";

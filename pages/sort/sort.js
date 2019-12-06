@@ -6,6 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    type:'',
     firstid:'',
     activeList:[],
     "bnrUrl": [{
@@ -42,10 +43,11 @@ Page({
   },
   
   topNavChange:function(e){
-    console.log(e,e.currentTarget.dataset.current, e.currentTarget.dataset.id);
+    console.log(e, e.currentTarget.dataset.current, e.currentTarget.dataset.id, e.currentTarget.dataset.type);
     
     this.setData({
-      currentTab: e.currentTarget.dataset.current
+      currentTab: e.currentTarget.dataset.current,
+      type:e.currentTarget.dataset.type
     })
     var main = this;
     wx.showLoading({
@@ -67,11 +69,17 @@ Page({
         console.log("查找成功");
         console.log(res);
         for (var i = 0; i < res.data.data.length; i++) {
-          res.data.data[i].img = app.globalData.url + '/wareHouse/getFile?fileId=' + res.data.data[i].fileId;
+      
+          if (res.data.data[i].fileId) {
+            res.data.data[i].img = app.globalData.url + '/wareHouse/getFile?fileId=' + res.data.data[i].fileId;
+          } else {
+            res.data.data[i].img = '../img/pic.png';
+          }
         }
         wx.hideLoading();
         main.setData({
           listdata: res.data.data
+
         })
       },
       fail: function (res) {
@@ -100,7 +108,8 @@ Page({
         wx.hideLoading();
         if (res.data.data.length>0){
           main.setData({
-            firstid: res.data.data[0].id
+            firstid: res.data.data[0].id,
+            type: res.data.data[0].type
           }) 
         }
        main.list1();
@@ -138,10 +147,16 @@ Page({
         console.log(res);
         wx.hideLoading();
         for (var i = 0; i < res.data.data.length;i++){
-          res.data.data[i].img = app.globalData.url + '/wareHouse/getFile?fileId=' + res.data.data[i].fileId;
+          if (res.data.data[i].fileId){
+            res.data.data[i].img = app.globalData.url + '/wareHouse/getFile?fileId=' + res.data.data[i].fileId;
+          }else{
+            res.data.data[i].img = '../img/pic.png';
+          }
+         
         }
         main.setData({
-          listdata: res.data.data
+          listdata: res.data.data,
+          // type:
         })
         console.log(main.data.listdata)
       },

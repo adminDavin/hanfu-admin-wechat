@@ -2,7 +2,7 @@
   <view class='header' style="position:fixed;top:0;">
     <scroll-view class='scroll_w' scroll-x scroll-left="{{scrollLeft}}">
       <block wx:for="{{activeList}}" wx:key="{{this}}">
-        <view class="item {{currentTab==index ? 'on' : ''}}" bindtap='topNavChange' data-id="{{item.id}}" data-current="{{index}}">{{item.activityName}}</view>
+        <view class="item {{currentTab==index ? 'on' : ''}}" bindtap='topNavChange' data-id="{{item.id}}" data-current="{{index}}" data-type="{{type}}">{{item.activityName}}</view>
       </block>
     </scroll-view>
   </view>
@@ -25,11 +25,11 @@
             {{item.username}}
           </view>
           <view style="display:flex;margin-top:30rpx;">
-            <view style="display:flex;align-items:center;">
+            <view style="display:flex;align-items:center;" wx:if="{{type!='praise'}}">
               <image src="../img/huang.png" style="width:18px;height:15px;"> </image>
-              <view style="font-size:35rpx;color:#333333;margin-left:5rpx;color:#fff;margin-left:10rpx;">{{item.socre}}</view>
+              <view style="font-size:35rpx;color:#333333;margin-left:5rpx;color:#fff;margin-left:10rpx;" >{{item.socre}}</view>
             </view>
-            <view style="display:flex;align-items:center;margin-left:30rpx;">
+            <view  class="{{type=='praise'?'xingxing1':'xingxing'}}">
               <image src="../img/xihuan.png" style="width:16px;height:16px;"> </image>
               <view style="font-size:35rpx;color:#333333;margin-left:5rpx;color:#fff;margin-left:10rpx;">{{item.voteCount}}</view>
             </view>
@@ -48,11 +48,11 @@
         <view style="display:flex;flex-direction:column;align-items:flex-start;margin-left:45rpx;">
           <view style="color:#EADE8C;font-size:30rpx;width:200rpx;word-break: break-all;overflow: hidden;text-overflow:ellipsis;white-space: nowrap;">{{item.username}}</view>
           <view style="display:flex;margin-top:30rpx;">
-            <view style="display:flex;align-items:center;">
+            <view style="display:flex;align-items:center;" wx:if="{{type!='praise'}}">
               <image src="../img/huang.png" style="width:18px;height:15px;"> </image>
               <view style="font-size:35rpx;color:#333333;margin-left:5rpx;color:#fff;margin-left:10rpx;">{{item.socre}}</view>
             </view>
-            <view style="display:flex;align-items:center;margin-left:30rpx;">
+            <view  class="{{type=='praise'?'xingxing1':'xingxing'}}">
               <image src="../img/xihuan.png" style="width:16px;height:16px;"> </image>
               <view style="font-size:35rpx;color:#333333;margin-left:5rpx;color:#fff;margin-left:10rpx;">{{item.voteCount}}</view>
             </view>
@@ -61,7 +61,7 @@
           <image src="../img/jiang.png" style="width:45rpx;height:55rpx;margin-left:30rpx;"></image>
       </view>
       <view wx:if="{{idx==2}}" style="border-radius:80px; display:flex;margin-bottom:30rpx;align-items:center;background:#222;padding:5px 0;padding-left:30rpx;">
-        <view style="font-size:40rpx;color:#C0C0C0;font-style:oblique;">
+        <view style="font-size:40rpx;color:#BA6A40;font-style:oblique;">
           NO.{{idx+1}}
         </view>
         <view style="margin-left:40rpx;position:relative;">
@@ -71,17 +71,17 @@
         <view style="display:flex;flex-direction:column;align-items:flex-start;margin-left:45rpx;">
           <view style="color:#EADE8C;font-size:30rpx;width:200rpx;word-break: break-all;overflow: hidden;text-overflow:ellipsis;white-space: nowrap;">{{item.username}}</view>
           <view style="display:flex;margin-top:30rpx;">
-            <view style="display:flex;align-items:center;">
+            <view style="display:flex;align-items:center;" wx:if="{{type!='praise'}}">
               <image src="../img/huang.png" style="width:18px;height:15px;"> </image>
               <view style="font-size:35rpx;color:#333333;margin-left:5rpx;color:#fff;margin-left:10rpx;">{{item.socre}}</view>
             </view>
-            <view style="display:flex;align-items:center;margin-left:30rpx;">
+            <view  class="{{type=='praise'?'xingxing1':'xingxing'}}" >
               <image src="../img/xihuan.png" style="width:16px;height:16px;"> </image>
               <view style="font-size:35rpx;color:#333333;margin-left:5rpx;color:#fff;margin-left:10rpx;">{{item.voteCount}}</view>
             </view>
           </view>
         </view>
-          <image src="../img/jiang.png" style="width:45rpx;height:55rpx;margin-left:30rpx;"></image>
+          <image src="../img/jiang.png"  style="width:45rpx;height:55rpx;margin-left:30rpx;"></image>
       </view>
 
     </view>

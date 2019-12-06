@@ -26,8 +26,15 @@ Page({
             success(res) {
               console.log("获取用户信息成功", res)
               that.setData({
-                name: res.userInfo.nickName
+                name: res
               })
+              if (res.data.status == 200) {
+                wx.setStorage({
+                  key: 'user',
+                  data: res.data.data
+                })
+                
+              }
               wx.reLaunch({
                 url: '/pages/index/index',
               })

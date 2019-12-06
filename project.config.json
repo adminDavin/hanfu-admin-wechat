@@ -134,6 +134,13 @@
 					"id": -1,
 					"name": "pages/power/power",
 					"pathName": "pages/power/power",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/ping/ping",
+					"pathName": "pages/ping/ping",
 					"scene": null
 				}
 			]

@@ -15,7 +15,8 @@
     "pages/information/information",
     "pages/job/job",
     "pages/updatePerson/updatePerson",
-    "pages/dailyPraise/dailyPraise"
+    "pages/dailyPraise/dailyPraise",
+    "pages/ping/ping"
   ],
   "window": {
     "backgroundTextStyle": "light",

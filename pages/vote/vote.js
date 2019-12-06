@@ -100,7 +100,12 @@ Page({
         console.log("查找成功：");
         console.log(res);
         for (var i = 0; i < res.data.data.length; i++) {
-          res.data.data[i].img = app.globalData.url + '/wareHouse/getFile?fileId=' + res.data.data[i].fileId;
+       
+          if (res.data.data[i].fileId) {
+            res.data.data[i].img = app.globalData.url + '/wareHouse/getFile?fileId=' + res.data.data[i].fileId;
+          } else {
+            res.data.data[i].img = '../img/pic.png';
+          }
         }
         main.setData({
            userdata: res.data.data

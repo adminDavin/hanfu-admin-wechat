@@ -4,6 +4,8 @@ const app = getApp()
 
 Page({
   data: {
+    global:{},
+    user:false,
     activeId:'',
     activeList:[],
     picdata:[],
@@ -36,6 +38,7 @@ Page({
 
 
   },
+
   topNavChange: function (e) {
     console.log(e.currentTarget.dataset.current);
 
@@ -92,7 +95,12 @@ Page({
           console.log(res);
           if (res.data.data){
             for (var i = 0; i < res.data.data.length; i++) {
-              res.data.data[i].img = app.globalData.url + '/wareHouse/getFile?fileId=' + res.data.data[i].id;
+              if (res.data.data[i].id) {
+                res.data.data[i].img = app.globalData.url + '/wareHouse/getFile?fileId=' + res.data.data[i].id;
+              } else {
+                res.data.data[i].img = '../img/pic.png';
+              }
+              
             }
           }
          
@@ -133,7 +141,12 @@ Page({
         console.log(res);
         if (res.data.data){
           for (var i = 0; i < res.data.data.length; i++) {
-            res.data.data[i].img = app.globalData.url + '/wareHouse/getFile?fileId=' + res.data.data[i].fileId;
+            if (res.data.data[i].id) {
+              res.data.data[i].img = app.globalData.url + '/wareHouse/getFile?fileId=' + res.data.data[i].id;
+            } else {
+              res.data.data[i].img = '../img/pic.png';
+            }
+
           }
           main.setData({
             personList: res.data.data
@@ -182,6 +195,8 @@ Page({
           main.setData({
             picdata: res.data.data
           })
+        }else{
+         
         }
         wx.hideLoading();
        
@@ -200,44 +215,169 @@ Page({
       url: '../logs/logs'
     })
   },
-  onLoad: function () {
-    if (app.globalData.userInfo) {
-      this.setData({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: true
-      })
-    } else if (this.data.canIUse){
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
-      app.userInfoReadyCallback = res => {
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
-        })
-      }
-    } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
-          })
-        }
-      })
-    }
-  },
+
   onShow:function(){
+  
+  
     this.getPic();
     this.list();
   },
-  getUserInfo: function(e) {
-    console.log(e)
-    app.globalData.userInfo = e.detail.userInfo
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
+  everyday: function (e) {
+    var main = this;
+ if (e.currentTarget.dataset.id == 34) {
+    wx.request({
+      url: app.globalData.url + '/wareHouse/findIsPraise',
+      method: 'get',
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      data: {
+        userId: 46
+      },
+      success: function (res) {
+        console.log(res);
+        if(res.data.data){
+
+        }else{
+          wx.navigateTo({
+            url: '../dailyPraise/dailyPraise',
+          })
+        }
+        
+      },
+      fail: function (res) {
+        console.log("查找失败：");
+        console.log(res);
+        // wx.hideLoading();
+      }
     })
+   
+      console.log(1);
+     
+    }
+  },
+
+  getUserInfo: function (e) {
+    let main = this;
+    // console.log(e)
+    // 获取用户信息
+    main.setData({
+      show:false
+    })
+    console.log(main.data.show)
+    wx.getSetting({
+      success(res) {
+        // console.log("res", res)
+        if (res.authSetting['scope.userInfo']) {
+          console.log("已授权=====")
+          // 已经授权，可以直接调用 getUserInfo 获取头像昵称
+          wx.getUserInfo({
+            success(res) {
+              wx.getUserInfo({
+                success(res) {
+                  console.log("获取用户信息成功", res)
+                  // that.setData({
+                  //   name: res.userInfo.nickName
+                  // })
+                  main.data.global.userInfo = res.userInfo;
+                  // console.log(main.globalData.userInfo);
+                  main.data.global.encryptedData = res.encryptedData;
+                  main.data.global.iv = res.iv;
+                  main.data.global.rawData = res.rawData;
+                  main.data.global.signature = res.signature;
+                  wx.setStorage({
+                    key: 'userInfo',
+                    data: res.userInfo
+                  })
+                  wx.login({
+                    success: function (res) {
+                      // console.log(main.globalData.urlLogin + '/user/wxLogin');
+                      // console.log(main.globalData.encryptedData, main.globalData.iv, main.globalData.rawData, main.globalData.signature)
+                      wx.request({
+                        url: app.globalData.urlLogin + '/user/wxLogin',
+                        method: 'get',
+                        header: {
+                          "Content-Type": "application/x-www-form-urlencoded"
+                        },
+                        data: {
+                          code: res.code,
+                          encryptedData: main.data.global.encryptedData,
+                          iv: main.data.global.iv,
+                          rawData: main.data.global.rawData,
+                          signature: main.data.global.signature
+                        },
+
+                        success: function (res) {
+                          console.log("登录", res);
+                          if (res.data.status == 200) {
+                            wx.setStorage({
+                              key: 'user',
+                              data: res.data.data
+                            })
+
+                          }
+
+                        },
+                        fail: function (res) {
+                          console.log("查找失败：");
+
+                        }
+                      })
+                    }
+                  })
+                },
+                fail(res) {
+
+                }
+              })
+
+              
+             
+
+            },
+            fail(res) {
+              console.log("获取用户信息失败", res)
+            }
+          })
+        } else {
+          console.log("未授权=====")
+          // that.showSettingToast("请授权")
+        }
+      }
+    })
+  },
+  onLoad(){
+    var that = this;
+    wx.getStorage({
+      key: 'user',
+      success: function (res) {
+        console.log('缓存', res)
+        that.setData({
+          user: res.data,
+
+        })
+
+        console.log(19009)
+      },
+      fail:function(){
+     
+          console.log(1111111111)
+          that.setData({
+            show: true
+          })
+        
+      }
+
+    })
+    
+  
   }
+  // getUserInfo: function(e) {
+  //   console.log(e)
+  //   app.globalData.userInfo = e.detail.userInfo
+  //   // this.setData({
+  //   //   userInfo: e.detail.userInfo,
+  //   //   hasUserInfo: true
+  //   // })
+  // }
 })
