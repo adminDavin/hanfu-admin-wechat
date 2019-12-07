@@ -96,9 +96,9 @@
 					"scene": null
 				},
 				{
-					"id": -1,
-					"name": "pages/personalEvaluation/personalEvaluation",
-					"pathName": "pages/personalEvaluation/personalEvaluation",
+					"id": 7,
+					"name": "pages/personEvaluate/personEvaluate",
+					"pathName": "pages/personEvaluate/personEvaluate",
 					"query": "",
 					"scene": null
 				},
@@ -141,6 +141,35 @@
 					"id": -1,
 					"name": "pages/ping/ping",
 					"pathName": "pages/ping/ping",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/personEvaluate/personEvaluate",
+					"pathName": "pages/personEvaluate/personEvaluate",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/pingjia/pingjia",
+					"pathName": "pages/pingjia/pingjia",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/pingyou/pingyou",
+					"pathName": "pages/pingyou/pingyou",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/pingyou/pingyou",
+					"pathName": "pages/pingyou/pingyou",
+					"query": "",
 					"scene": null
 				}
 			]

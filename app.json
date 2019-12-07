@@ -11,12 +11,14 @@
     "pages/login/login",
     "pages/empower/empower",
     "pages/score/score",
-    "pages/personalEvaluation/personalEvaluation",
     "pages/information/information",
     "pages/job/job",
     "pages/updatePerson/updatePerson",
     "pages/dailyPraise/dailyPraise",
-    "pages/ping/ping"
+    "pages/ping/ping",
+    "pages/pingjia/pingjia",
+    "pages/pingyou/pingyou",
+    "pages/huo/huo"
   ],
   "window": {
     "backgroundTextStyle": "light",

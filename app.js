@@ -25,42 +25,42 @@ App({
                 key: 'userInfo',
                 data: res.userInfo 
               })  
-              wx.login({
-                success: function(res){
-                  // console.log(main.globalData.urlLogin + '/user/wxLogin');
-                  // console.log(main.globalData.encryptedData, main.globalData.iv, main.globalData.rawData, main.globalData.signature)
-                  wx.request({
-                    url: main.globalData.urlLogin + '/user/wxLogin',
-                    method: 'get',
-                    header: {
-                      "Content-Type": "application/x-www-form-urlencoded"
-                    },
-                    data:{
-                      code:res.code,
-                      encryptedData: main.globalData.encryptedData,
-                      iv: main.globalData.iv,
-                      rawData: main.globalData.rawData,
-                      signature: main.globalData.signature
-                    },
+              // wx.login({
+              //   success: function(res){
+              //     // console.log(main.globalData.urlLogin + '/user/wxLogin');
+              //     // console.log(main.globalData.encryptedData, main.globalData.iv, main.globalData.rawData, main.globalData.signature)
+              //     wx.request({
+              //       url: main.globalData.urlLogin + '/user/wxLogin',
+              //       method: 'get',
+              //       header: {
+              //         "Content-Type": "application/x-www-form-urlencoded"
+              //       },
+              //       data:{
+              //         code:res.code,
+              //         encryptedData: main.globalData.encryptedData,
+              //         iv: main.globalData.iv,
+              //         rawData: main.globalData.rawData,
+              //         signature: main.globalData.signature
+              //       },
 
-                    success: function (res) {
-                      console.log("登录",res);
-                      if(res.data.status==200){
-                        wx.setStorage({
-                          key: 'user',
-                          data: res.data.data
-                        })  
+              //       success: function (res) {
+              //         console.log("登录",res);
+              //         if(res.data.status==200){
+              //           wx.setStorage({
+              //             key: 'user',
+              //             data: res.data.data
+              //           })  
                       
-                      }
+              //         }
                      
-                    },
-                    fail: function (res) {
-                      console.log("查找失败：");
+              //       },
+              //       fail: function (res) {
+              //         console.log("查找失败：");
 
-                    }
-                  })
-                }
-              })
+              //       }
+              //     })
+              //   }
+              // })
             },
             fail(res) {
               

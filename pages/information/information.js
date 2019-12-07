@@ -7,19 +7,66 @@ Page({
    */
   data: {
     show: false,
-    statusBarHeight:''
+    statusBarHeight:'',
+    user:'',
+    wo:{}
   },
-
+ 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-   
+  onLoad() {
+    var that = this;
+    wx.getStorage({
+      key: 'user',
+      success: function (res) {
+        console.log('缓存', res)
+        that.setData({
+          user: res.data.userId,
+
+        })
+        console.log(that.data.user)
+
+      },
+      fail: function () {
+
+        console.log(1111111111)
+        that.setData({
+          show: true
+        })
+
+      }
+
+    })
+    this.getinfor()
   },
   clocetoast:function(){
     this.setData({
       show: false
     })
+  },
+  getinfor:function(){
+    var main = this;
+    // main.todaypraise();
+
+    wx.request({
+      url: app.globalData.url + '/wareHouse/findUserFormInfo',
+      method: 'get',
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      data: {
+       
+        userId: 12
+      },
+      success: function (res) {
+       
+       console.log(res);
+        main.setData({
+          wo: res.data.data
+        })
+
+    }})
   },
   back:function(){
     wx.switchTab({
@@ -27,10 +74,19 @@ Page({
     })
     console.log(11)
   },
-  showping:function(){
-    this.setData({
-      show: true
+  gophone: function () {
+    wx.navigateTo({
+      url: '../updatePerson/updatePerson',
     })
+  },
+  showping:function(){
+    // this.setData({
+    //   show: true
+    // })
+    wx.navigateTo({
+      url: '../pingjia/pingjia',
+    })
+
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

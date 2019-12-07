@@ -1,21 +1,19 @@
 <view style="width:100%;height:100%;">
   <image src="../img/left.png" style="width:27rpx;height:43rpx;margin-top:50rpx;margin-left:30rpx;" bindtap="back"></image>
   <view style="display:flex;justify-content:flex-end;">
-    <image src="../img/bian.png" style="width:30rpx;height:30rpx;margin-right:35rpx;margin-top:30rpx;"></image>
+    <image src="../img/bian.png" style="width:30rpx;height:30rpx;margin-right:35rpx;margin-top:30rpx;" bindtap="gophone"></image>
   </view>
 
   <view style="display:flex;align-items:center;justify-content:space-between;width:100%;">
     <view>
-
-
       <view class="name" style="display:flex;align-items:center;flex-direction:column;">
-        <text>王昭君</text>
-        <image src="../img/di.png" style="width:200rpx;height:15rpx;"></image>
+        <text>{{wo.username}}</text>
+        <image src="../img/di.png" style="width:200rpx;height:15rpx;"  ></image>
       </view>
       
       <view class="first">第一事业部</view>
-      <view class="phone" style="margin-top:20rpx;">入职时间:2019.11.16</view>
-      <view class="phone">联系电话:18963965648</view>
+      <view class="phone" style="margin-top:20rpx;">入职时间:{{wo.hiredate}}</view>
+      <view class="phone">联系电话:{{wo.phone}}</view>
     </view>
     <image src="../img/person.png" style="width:127rpx;height:127rpx;margin-right:63rpx;margin-top:28rpx;"></image>
 
@@ -25,7 +23,9 @@
     <view style="display:flex;align-items:center;justify-content:space-between;">
       <view class="person">个人评价</view>
       <image src="../img/bian.png" style="width:30rpx;height:30rpx;margin-right:35rpx;" bindtap="showping"></image>
+      
     </view>
+    <view style="color:#fff;">{{wo.evaluation}}</view>
   </view>
   <view style="background:#141414;height:440rpx;margin-top:70rpx;padding-left:40rpx;padding-top:23rpx;">
     <view style="display:flex;align-items:center;justify-content:space-between;">

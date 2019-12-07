@@ -1,18 +1,49 @@
-// pages/personalEvaluation/personalEvaluation.js
+// pages/pingyou/pingyou.js
+const app = getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    show:false,
+    id:''
   },
 
+  // goVote: function (e) {
+  //   console.log(this.data.user)
+  // var main=this;
+  //   wx.request({
+  //     url: app.globalData.url + '/strategy/findUserEvaluationTemplate',
+  //     method: 'post',
+  //     header: {
+  //       "Content-Type": "application/x-www-form-urlencoded"
+  //     },
+  //     data: {
+  //       activityId:,
+  //       userId: this.data.user
+  //     },
+  //     success: function (res) {
+        
+
+  //     },
+  //     fail: function (res) {
+  //       console.log("查找失败：");
+
+  //     }
+  //   })
+
+
+
+  // },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    console.log(options)
+    this.setData({
+      id: options.id,
+    })
+    console.log(this.data.id)
   },
 
   /**

@@ -1,19 +1,18 @@
 <view>
   <view style="display:flex;align-items:center;margin-top:55rpx;">
-    <image src="../img/person.png" style="width:150rpx;height:150rpx;margin:0 auto;"></image>
+    <image src="{{imgs}}" style="width:150rpx;height:150rpx;margin:0 auto;border-radius:50%;" bindtap="pic"></image>
   </view>
-  <view style="color:#fff;font-size:30rpx;text-align:center;margin-top:27rpx;">点击修改头像</view>
-
-
+  <view style="color:#fff;font-size:30rpx;text-align:center;margin-top:27rpx;" wx:if="{{show}}">点击修改头像</view>
   <view style="color:#F5E2AB;text-align:center;font-size:35rpx;margin-top:60rpx;font-family:PingFang SC;font-family:PingFang SC;">真实姓名</view>
-  <view style="color:#fff;text-align:center;font-size:29rpx;margin-top:15rpx;">王昭君</view>
+  <view style="color:#fff;text-align:center;font-size:29rpx;margin-top:15rpx;">  <input value="{{name}}"  placeholder="请填写姓名" bindblur="ming" ></input></view>
+
   <view style="color:#F5E2AB;text-align:center;font-size:35rpx;margin-top:90rpx;font-family:PingFang SC;font-family:PingFang SC;">性别</view>
   <view style="display:flex;align-items:center;margin-top:30rpx;">
     <image src="../img/nan.png" style="width:50rpx;height:50rpx;margin:0 auto;"></image>
   </view>
   <view style="color:#F5E2AB;text-align:center;font-size:35rpx;margin-top:90rpx;font-family:PingFang SC;font-family:PingFang SC;">手机号</view>
-  <view style="color:#fff;text-align:center;font-size:29rpx;margin-top:15rpx;">18296539562</view>
-  <view style="display:flex;align-items:center;justify-content:space-between;padding:0 10%;margin-top:100rpx;">
+  <view style="color:#fff;text-align:center;font-size:29rpx;margin-top:15rpx;"><input value="{{phone}}" placeholder="请填写手机号" bindblur="phoneperson" ></input></view>
+  <!-- <view style="display:flex;align-items:center;justify-content:space-between;padding:0 10%;margin-top:100rpx;">
     <view style="flex:1;border-right:1rpx solid #fff;">
       <view style="color:#fff;font-size:35rpx;">
         1995年
@@ -32,6 +31,12 @@
       </view>
       <view style="color:#F5E2AB;font-size:24rpx;margin-top:50rpx;">出生年月</view>
     </view>
-  </view>
-  <view class="btn">保存</view>
+  </view> -->
+  <view class="section">
+  <view  style="color:#F5E2AB;text-align:center;font-size:35rpx;margin-top:90rpx;font-family:PingFang SC;font-family:PingFang SC;">入职日期</view>
+  <picker mode="date" value="{{date}}" start="2015-09-01" end="2017-09-01" bindchange="bindDateChange">
+    <view style="color:#fff;text-align:center;font-size:29rpx;margin-top:15rpx;"><input value="{{date}}" placeholder="请选择入职日期" bindblur="phonedate" ></input></view>
+  </picker>
+</view>
+  <view class="btn" bindtap="ping">保存</view>
 </view>

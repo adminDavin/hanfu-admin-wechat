@@ -1,4 +1,5 @@
 // pages/person/person.js
+const app = getApp();
 Page({
 
   /**
@@ -11,6 +12,11 @@ Page({
     // wx.navigateTo({
     //   url: '../personalEvaluation/personalEvaluation?id='',
     // })
+  },
+  jiang:function(){
+    wx.navigateTo({
+      url: '../huo/huo',
+    })
   },
   /**
    * 生命周期函数--监听页面加载

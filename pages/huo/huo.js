@@ -7,9 +7,10 @@ Page({
    */
   data: {
     activeList: [],
-    user:''
+    user: ''
   },
-  goVote: function(e) {
+  
+  goVote: function (e) {
     console.log(this.data.user)
 
     wx.request({
@@ -22,7 +23,7 @@ Page({
         activityId: e.currentTarget.dataset.id,
         userId: this.data.user
       },
-      success: function(res) {
+      success: function (res) {
         console.log("查找成功");
         console.log(res);
         wx.hideLoading();
@@ -37,14 +38,14 @@ Page({
           wx.navigateTo({
             url: '../power/power?id=' + e.currentTarget.dataset.id + '&type=' + e.currentTarget.dataset.type,
           })
-        }else{
+        } else {
           wx.navigateTo({
             url: '../vote/vote?id=' + e.currentTarget.dataset.id + '&type=' + e.currentTarget.dataset.type,
           })
         }
-       
+
       },
-      fail: function(res) {
+      fail: function (res) {
         console.log("查找失败：");
 
       }
@@ -57,7 +58,7 @@ Page({
 
   },
   // 活动列表
-  list: function(even) {
+  list: function (even) {
     var main = this;
     wx.showLoading({
       title: '请稍后',
@@ -69,7 +70,7 @@ Page({
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
       },
-      success: function(res) {
+      success: function (res) {
         console.log("查找成功");
         console.log(res);
         wx.hideLoading();
@@ -77,7 +78,7 @@ Page({
           activeList: res.data.data
         })
       },
-      fail: function(res) {
+      fail: function (res) {
         console.log("查找失败：");
 
       }
@@ -86,7 +87,7 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad: function (options) {
     var that = this;
     wx.getStorage({
       key: 'user',
@@ -110,53 +111,57 @@ Page({
 
     })
   },
-
+  pingyou:function(e){
+    wx.navigateTo({
+      url: '../pingyou/pingyou?id=' + e.currentTarget.dataset.id,
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function() {
+  onReady: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {
+  onShow: function () {
     this.list()
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function() {
+  onHide: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function() {
+  onUnload: function () {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function() {
+  onPullDownRefresh: function () {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function() {
+  onReachBottom: function () {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function() {
+  onShareAppMessage: function () {
 
   }
 })

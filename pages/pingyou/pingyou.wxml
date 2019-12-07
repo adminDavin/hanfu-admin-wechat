@@ -1,0 +1,18 @@
+<view style="padding-top:19px;">
+  <view style="color:#fff; margin-left:4%;margin-bottom:30rpx;">价值贡献</view>
+  <view style="margin:0 auto;margin-bottom:60rpx; width:90%;border:1rpx solid #EADE8C;height:90px;border-radius:8rpx;padding-top:5px;padding-left:3px;">
+    <textarea placeholder="请输入对自己的评价" style="width:94%;height:100%;color:#fff;margin:0 auto;"></textarea>
+  </view>
+  <view style="color:#fff; margin-left:4%;margin-bottom:30rpx;">价值贡献</view>
+  <view style="margin:0 auto;margin-bottom:60rpx; width:90%;border:1rpx solid #EADE8C;height:90px;border-radius:8rpx;padding-top:5px;padding-left:3px;">
+    <textarea placeholder="请输入对自己的评价" style="width:94%;height:100%;color:#fff;margin:0 auto;"></textarea>
+  </view>
+  <view style="color:#fff; margin-left:4%;margin-bottom:30rpx;">价值贡献</view>
+  <view style="margin:0 auto;margin-bottom:60rpx; width:90%;border:1rpx solid #EADE8C;height:90px;border-radius:8rpx;padding-top:5px;padding-left:3px;">
+    <textarea placeholder="请输入对自己的评价" style="width:94%;height:100%;color:#fff;margin:0 auto;"></textarea>
+  </view>
+  <view style="color:#fff; margin-left:4%;margin-bottom:30rpx;">价值贡献</view>
+  <view style="margin:0 auto;margin-bottom:60rpx; width:90%;border:1rpx solid #EADE8C;height:90px;border-radius:8rpx;padding-top:5px;padding-left:3px;">
+    <textarea placeholder="请输入对自己的评价" style="width:94%;height:100%;color:#fff;margin:0 auto;"></textarea>
+  </view>
+</view>

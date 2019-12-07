@@ -1,5 +1,5 @@
 <view style="padding:40rpx 30rpx; ">
-  <view wx:for="{{activeList}}" wx:for-index="idx" wx:for-item="item"  
+  <view wx:for="{{activeList}}" wx:for-index="idx" wx:for-item="item" wx:if="{{item.type!='praise'&&item.type!='election'}}"
   style="display:flex;justify-content:space-between;background:#1B1B1B;align-items:center;margin-bottom:30rpx;padding:10rpx;border:1px solid #F5E2AB;border-radius:10px;">
     <view style="margin-left:40rpx;color:#fff;">
       {{item.activityName }}
