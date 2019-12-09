@@ -71,7 +71,7 @@ Page({
         main.setData({
           picdata: res.data.data
         })
-       
+        wx.hideLoading();
       },
       fail: function (res) {
         console.log("查找失败：");
@@ -273,10 +273,11 @@ Page({
       })
     }
   },
-  ping: function () {
+  ping: function (e) {
+    console.log(e)
     if (this.data.type == 'score') {
       wx.navigateTo({
-        url: '../score/score?id='
+        url: '../persondetail/persondetail?id=' + e.currentTarget.dataset.userid + '&activeId=' + this.data.activeId
       })
     }
 

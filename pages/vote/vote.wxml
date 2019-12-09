@@ -18,7 +18,7 @@
   </view> -->
   <!-- list -->
   <view style="display:flex;flex-wrap: wrap;justify-content:space-between;padding:0 39rpx;margin-top:30rpx;" >
-    <view style="padding-bottom:15px; border:2px solid #F5E2AB;border-radius:10px;   margin-bottom:18px;" wx:for="{{userdata}}" wx:for-index="idx" wx:for-item="item"  bindtap="ping">
+    <view style="padding-bottom:15px; border:2px solid #F5E2AB;border-radius:10px;   margin-bottom:18px;" wx:for="{{userdata}}" wx:for-index="idx" wx:for-item="item"  bindtap="ping" data-userId="{{item.userId}}">
       <image src="{{item.img}}" style="width:324rpx;height:286rpx;border-radius:7px;"></image>
       <view style="display:flex;align-items:center;margin-top:4px;justify-content:space-between;">
         <view>
@@ -26,7 +26,7 @@
           <view style="font-size:30rpx;color:#FFE18E; margin-left:20rpx;margin-top:4px;">部门名称</view>
         </view>
         <view class='itembox' wx:if="{{type=='ticket_count'}}">
-          <view wx:for="{{item.imgs}}" wx:for-index="idx1" wx:for-item="item1" bindtap='select' data-parent="{{idx}}" data-index="{{idx1}}">
+          <view wx:for="{{item.imgs}}" wx:for-index="idx1" wx:for-item="item1" bindtap='select'  data-parent="{{idx}}" data-index="{{idx1}}">
             <image class="star" src="{{item1.id>item.starId?src2:src1}}"></image>
           </view>
 

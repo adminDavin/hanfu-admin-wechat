@@ -6,41 +6,71 @@ Page({
    * 页面的初始数据
    */
   data: {
-    arr:[],
-    arrid:[],
-    txt:'',
-    id:'',
-    list:[]
+    activeId: '',
+    arr: [],
+    arrid: [],
+    txt: '',
+    id: '',
+    list: []
   },
-  getVal:function(e){
+  getVal: function (e) {
     console.log(e.detail.value);
     let arr = this.data.arr;
     arr[e.currentTarget.dataset.index] = e.detail.value;
     this.setData({
-     arr :arr
+      arr: arr
     })
     console.log(this.data.arr);
   },
-  tijiao:function(){
+  tijiao: function () {
     var main = this;
+    let num = 0;
+    for (var i = 0; i < main.data.arr.length; i++) {
+      if (main.data.arr[i] == "") {
+        wx.show
+        
+        Toast({
+          title: '有未打分项',
+          icon: 'none'
+        })
+        return;
+      } else {
+        num += Number(main.data.arr[i])
+      }
+    }
+    if (num > 100) {
+      wx.showToast({
+        title: '总分不能超过100分',
+        icon: 'none'
+      })
+      return;
+    }
+    console.log(num)
     console.log(main.data.arrid, main.data.arr)
     wx.request({
-      url: app.globalData.url + '/strategy/userAddEvaluation',
+      url: app.globalData.url + '/wareHouse/recordScore',
       method: 'post',
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
       },
       data: {
-        evaluateTemplateId: main.data.arrid,
-        evaluateContent:main.data.arr,
-        userId:12
+        electedUserId: 12,
+        remark: main.data.arr,
+        activityId: main.data.activeId,
+        userId: 12,
+        type:1
       },
       success: function (res) {
         console.log(res);
-        if (res.statusCode==200){
-         wx.showToast({
-           title:'提交成功'
-         })
+        if (res.statusCode == 200) {
+          wx.showToast({
+            title: '提交成功'
+          })
+          setTimeout(function () {
+            wx.switchTab({
+              url: '../activeList/activeList',
+            })
+          }, 1000)
         }
       },
       fail: function (res) {
@@ -49,9 +79,9 @@ Page({
       }
     })
   },
-  check:function(){
-      var main=this;
-    console.log(main.data.id)
+  check: function () {
+    var main = this;
+    console.log(main.data.id, main.data.activeId)
     wx.request({
       url: app.globalData.url + '/strategy/findUserEvaluationTemplate',
       method: 'get',
@@ -59,33 +89,22 @@ Page({
         "Content-Type": "application/x-www-form-urlencoded"
       },
       data: {
-        userId:12,
-        type:0,
-        activityId:main.data.id,
+        type: 1,
+        activityId: main.data.activeId,
       },
       success: function (res) {
         console.log(res);
         main.setData({
-          list  :res.data.data
+          list: res.data.data
         })
-        let arr=[];
-        let arr1 = [];
-        for (var i = 0; i < main.data.list.length;i++){
-          if (main.data.list[i].evaluateContent){
-            arr[i] = main.data.list[i].evaluateContent;
-          }else{
-            arr[i] ='';
-          }
-          
-
-          arr1[i] = main.data.list[i].evaluateTemplateId
+        let arr = [];
+        for (var i = 0; i < main.data.list.length; i++) {
+          arr[i] = '';
         }
-        console.log(arr);
         main.setData({
           arr: arr,
-          arrid:arr1
         })
-        console.log(arr1)
+
       },
       fail: function (res) {
         console.log("查找失败：");
@@ -107,7 +126,7 @@ Page({
   //       userId: this.data.user
   //     },
   //     success: function (res) {
-        
+
 
   //     },
   //     fail: function (res) {
@@ -126,6 +145,7 @@ Page({
     console.log(options)
     this.setData({
       id: options.id,
+      activeId: options.activeId
     })
     console.log(this.data.id);
     this.check();

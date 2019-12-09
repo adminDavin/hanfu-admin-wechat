@@ -171,6 +171,19 @@
 					"pathName": "pages/pingyou/pingyou",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/navpic/navpic",
+					"pathName": "pages/navpic/navpic",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/persondetail/persondetail",
+					"pathName": "pages/persondetail/persondetail",
+					"scene": null
 				}
 			]
 		}

@@ -18,7 +18,11 @@
     "pages/ping/ping",
     "pages/pingjia/pingjia",
     "pages/pingyou/pingyou",
-    "pages/huo/huo"
+    "pages/huo/huo",
+    "pages/navpic/navpic",
+    "pages/persondetail/persondetail",
+    "pages/xianChang/xianChang",
+    "pages/checkperson/checkperson"
   ],
   "window": {
     "backgroundTextStyle": "light",

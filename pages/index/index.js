@@ -38,7 +38,12 @@ Page({
 
 
   },
-
+  goinfer:function(e){
+    console.log(e)
+    wx.navigateTo({
+      url: '../checkperson/checkperson?id=' + e.currentTarget.dataset.userid
+    })
+  },
   topNavChange: function (e) {
     console.log(e.currentTarget.dataset.current);
 
@@ -95,8 +100,9 @@ Page({
           console.log(res);
           if (res.data.data){
             for (var i = 0; i < res.data.data.length; i++) {
-              if (res.data.data[i].id) {
-                res.data.data[i].img = app.globalData.url + '/wareHouse/getFile?fileId=' + res.data.data[i].id;
+              
+              if (res.data.data[i].fileId) {
+                res.data.data[i].img = app.globalData.url + '/wareHouse/getFile?fileId=' + res.data.data[i].fileId;
               } else {
                 res.data.data[i].img = '../img/pic.png';
               }
