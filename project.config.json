@@ -183,6 +183,13 @@
 					"id": -1,
 					"name": "pages/persondetail/persondetail",
 					"pathName": "pages/persondetail/persondetail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/company/company",
+					"pathName": "pages/company/company",
 					"scene": null
 				}
 			]

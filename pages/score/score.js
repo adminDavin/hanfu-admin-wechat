@@ -6,12 +6,14 @@ Page({
    * 页面的初始数据
    */
   data: {
+    userid:'',
     activeId:'',
     arr: [],
     arrid: [],
     txt: '',
     id: '',
-    list: []
+    list: [],
+    isscore:false
   },
   getVal: function (e) {
     console.log(e.detail.value);
@@ -45,7 +47,7 @@ Page({
       return;
     }
     console.log(num)
-    console.log(main.data.arrid, main.data.arr)
+    console.log(main.data.userid,main.data.arrid, main.data.arr)
     wx.request({
       url: app.globalData.url + '/wareHouse/recordScore',
       method: 'post',
@@ -53,17 +55,17 @@ Page({
         "Content-Type": "application/x-www-form-urlencoded"
       },
       data: {
-        electedUserId:12,
+        electedUserId:main.data.id,
         remark: main.data.arr,
         activityId: main.data.activeId,
-        userId: 12,
-        type: 1
+        userId: main.data.userid,
+        type: 0
       },
       success: function (res) {
         console.log(res);
         if (res.statusCode == 200) {
           wx.showToast({
-            title: '提交成功'
+            title: '打分成功'
           })
         setTimeout(function(){
           wx.switchTab({
@@ -71,6 +73,40 @@ Page({
           })
         },1000)
         }
+      },
+      fail: function (res) {
+        console.log("查找失败：");
+
+      }
+    })
+  },
+  // 查看是否给此人打过份
+  isvote: function () {
+    var main = this;
+    console.log(main.data.activeId)
+    wx.request({
+      url: app.globalData.url + '/strategy/findUserIsRecord',
+      method: 'get',
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      data: {
+        type: 0,
+        activityId: main.data.activeId,
+        electedId: main.data.id,
+        userId: main.data.userid
+      },
+      success: function (res) {
+        console.log("查找成功");
+        console.log(res);
+        if(res.data.data){
+          console.log(2)
+          main.setData({
+            isscore:true
+          })
+         
+        }
+
       },
       fail: function (res) {
         console.log("查找失败：");
@@ -88,22 +124,33 @@ Page({
         "Content-Type": "application/x-www-form-urlencoded"
       },
       data: {
-        userId: 12,
+       
         type: 0,
         activityId: main.data.activeId,
+        electedId: main.data.id,
+        userId: main.data.userid
+
+
       },
       success: function (res) {
         console.log(res);
         main.setData({
           list: res.data.data
         })
+
         let arr = [];
-        for (var i = 0; i < main.data.list.length; i++) {
+        let arr1 = [];
+        if (main.data.list.length>0){
+          for (var i = 0; i < main.data.list.length; i++) {
             arr[i] = '';
+            
+          }
+          main.setData({
+            arr: arr,
+            
+          })
         }
-        main.setData({
-          arr: arr,
-        })
+        
         
       },
       fail: function (res) {
@@ -148,7 +195,30 @@ Page({
       activeId: options.activeId
     })
     console.log(this.data.id);
-    this.check();
+    
+    var that = this;
+    wx.getStorage({
+      key: 'user',
+      success: function (res) {
+        console.log('缓存', res)
+        that.setData({
+          userid: res.data.userId,
+
+        })
+        that.check();
+        that.isvote();
+        console.log(19009)
+      },
+      fail: function () {
+
+        console.log(1111111111)
+        that.setData({
+          show: true
+        })
+
+      }
+
+    })
   },
 
   /**

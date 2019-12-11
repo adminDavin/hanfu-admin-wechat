@@ -6,6 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    userid:'',
     show:true,
     imgs:'../img/person.png',
     name:'',
@@ -18,6 +19,25 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var that = this;
+    wx.getStorage({
+      key: 'user',
+      success: function (res) {
+        console.log('缓存', res)
+        that.setData({
+          userid: res.data.userId,
+
+        })
+        
+      },
+      fail: function () {
+
+        console.log(1111111111)
+        
+
+      }
+
+    })
 
   },
   bindDateChange: function (e) {
@@ -78,7 +98,7 @@ Page({
       method: 'post',
       data: {
         fileInfo: main.data.pic[0],
-        userId: 12,
+        userId: main.data.userid,
         hiredate: main.data.date,
         phone:main.data.phone,
         username: main.data.name

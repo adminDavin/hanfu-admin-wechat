@@ -43,7 +43,8 @@ Page({
     list: [],
     activeId:'',
     listId:'',
-    picdata:[]
+    picdata:[],
+    userid:''
 
   },
 
@@ -162,7 +163,7 @@ Page({
         remark: arr[e.currentTarget.dataset.parent].imgs[e.currentTarget.dataset.index].id,
         ruleInstanceId:2,
         electedUserId: arr[e.currentTarget.dataset.parent].userId,
-        userId:1,
+        userId:main.data.userid,
         activityId: this.data.activeId
         // electedUserId: arr[e.currentTarget.dataset.parent].
       },
@@ -238,14 +239,12 @@ Page({
  
   onLoad: function (options) {
     console.log(options);
-    this.setData({
-     
-    })
+  
     this.setData({
       activeId: options.id,
       type: options.type
     })
-    this.user();
+   
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -272,6 +271,29 @@ Page({
         }
       })
     }
+    var that = this;
+    wx.getStorage({
+      key: 'user',
+      success: function (res) {
+        console.log('缓存', res)
+        that.setData({
+          userid: res.data.userId,
+
+        })
+        that.user();
+        that.isvote();
+        console.log(19009)
+      },
+      fail: function () {
+
+        console.log(1111111111)
+        that.setData({
+          show: true
+        })
+
+      }
+
+    })
   },
   ping: function (e) {
     console.log(e)

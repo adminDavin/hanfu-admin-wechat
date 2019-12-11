@@ -238,7 +238,7 @@ Page({
         "Content-Type": "application/x-www-form-urlencoded"
       },
       data: {
-        userId: 46
+        userId: main.data.user.userId
       },
       success: function (res) {
         console.log(res);
@@ -264,6 +264,8 @@ Page({
   },
 
   getUserInfo: function (e) {
+
+    
     let main = this;
     // console.log(e)
     // 获取用户信息

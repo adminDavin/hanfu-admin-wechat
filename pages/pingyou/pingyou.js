@@ -6,6 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    userid:'',
     arr:[],
     arrid:[],
     txt:'',
@@ -22,6 +23,7 @@ Page({
     console.log(this.data.arr);
   },
   tijiao:function(){
+    
     var main = this;
     console.log(main.data.arrid, main.data.arr)
     wx.request({
@@ -33,7 +35,7 @@ Page({
       data: {
         evaluateTemplateId: main.data.arrid,
         evaluateContent:main.data.arr,
-        userId:12
+        userId:main.data.userid
       },
       success: function (res) {
         console.log(res);
@@ -59,7 +61,7 @@ Page({
         "Content-Type": "application/x-www-form-urlencoded"
       },
       data: {
-        userId:12,
+        electedId:main.data.userid,
         type:0,
         activityId:main.data.id,
       },
@@ -78,9 +80,9 @@ Page({
           }
           
 
-          arr1[i] = main.data.list[i].evaluateTemplateId
+          arr1[i] = main.data.list[i].evaluateTemplateId;
         }
-        console.log(arr);
+        console.log(arr1);
         main.setData({
           arr: arr,
           arrid:arr1
@@ -128,7 +130,30 @@ Page({
       id: options.id,
     })
     console.log(this.data.id);
-    this.check();
+    var that = this;
+    wx.getStorage({
+      key: 'user',
+      success: function (res) {
+        console.log('缓存', res)
+        that.setData({
+          userid: res.data.userId,
+
+        })
+        that.check();
+      
+        console.log(19009)
+      },
+      fail: function () {
+
+        console.log(1111111111)
+        that.setData({
+          show: true
+        })
+
+      }
+
+    })
+   
   },
 
   /**

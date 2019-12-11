@@ -26,7 +26,7 @@ Page({
 
         })
         console.log(that.data.user)
-
+        that.getinfor()
       },
       fail: function () {
 
@@ -38,7 +38,7 @@ Page({
       }
 
     })
-    this.getinfor()
+    
   },
   clocetoast:function(){
     this.setData({
@@ -57,7 +57,7 @@ Page({
       },
       data: {
        
-        userId: 12
+        userId: main.data.user
       },
       success: function (res) {
        

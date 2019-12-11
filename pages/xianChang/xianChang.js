@@ -6,12 +6,16 @@ Page({
    * 页面的初始数据
    */
   data: {
+    userid:'',
+    isscore:false,
     activeId: '',
     arr: [],
     arrid: [],
     txt: '',
     id: '',
-    list: []
+    list: [],
+    top:'',
+    height:''
   },
   getVal: function (e) {
     console.log(e.detail.value);
@@ -54,10 +58,10 @@ Page({
         "Content-Type": "application/x-www-form-urlencoded"
       },
       data: {
-        electedUserId: 12,
+        electedUserId: main.data.id,
         remark: main.data.arr,
         activityId: main.data.activeId,
-        userId: 12,
+        userId: main.data.userid,
         type:1
       },
       success: function (res) {
@@ -79,6 +83,8 @@ Page({
       }
     })
   },
+ 
+
   check: function () {
     var main = this;
     console.log(main.data.id, main.data.activeId)
@@ -89,6 +95,8 @@ Page({
         "Content-Type": "application/x-www-form-urlencoded"
       },
       data: {
+        electedId: main.data.id,
+        userId: main.data.userid,
         type: 1,
         activityId: main.data.activeId,
       },
@@ -98,12 +106,49 @@ Page({
           list: res.data.data
         })
         let arr = [];
-        for (var i = 0; i < main.data.list.length; i++) {
-          arr[i] = '';
+        if (main.data.list.length>0){
+          for (var i = 0; i < main.data.list.length; i++) {
+            arr[i] = '';
+          }
+          main.setData({
+            arr: arr,
+          })
         }
-        main.setData({
-          arr: arr,
-        })
+       
+
+      },
+      fail: function (res) {
+        console.log("查找失败：");
+
+      }
+    })
+  },
+  // 查看是否给此人打过份
+  isvote: function () {
+    var main = this;
+    console.log(main.data.activeId)
+    wx.request({
+      url: app.globalData.url + '/strategy/findUserIsRecord',
+      method: 'get',
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      data: {
+        type: 1,
+        activityId: main.data.activeId,
+        electedId: main.data.id,
+        userId: main.data.userid
+      },
+      success: function (res) {
+        console.log("查找成功");
+        console.log(res);
+        if (res.data.data) {
+          console.log(2)
+          main.setData({
+            isscore: true
+          })
+
+        }
 
       },
       fail: function (res) {
@@ -142,13 +187,61 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options)
+  
+
     this.setData({
       id: options.id,
       activeId: options.activeId
     })
     console.log(this.data.id);
-    this.check();
+    
+    var that=this;
+    var query = wx.createSelectorQuery();
+    setTimeout(function(){
+      wx.createSelectorQuery().select('#zuo').boundingClientRect(function (rect) {
+        // rect.id      // 节点的ID
+        // rect.dataset // 节点的dataset
+        // rect.left    // 节点的左边界坐标
+        // rect.right   // 节点的右边界坐标
+        // rect.top     // 节点的上边界坐标
+        // rect.bottom  // 节点的下边界坐标
+        // rect.width   // 节点的宽度
+        // rect.height  // 节点的高度
+        console.log(rect);
+        let windowHeight = wx.getSystemInfoSync().windowHeight
+        that.setData({
+          height: windowHeight - rect.top + 'px'
+        })
+        console.log(that.data.height);
+      }).exec()
+   
+    },1000)
+   
+    //选择id
+    var that = this;
+    wx.getStorage({
+      key: 'user',
+      success: function (res) {
+        console.log('缓存', res)
+        that.setData({
+          userid: res.data.userId,
+
+        })
+        that.check();
+        that.isvote();
+        console.log(19009)
+      },
+      fail: function () {
+
+        console.log(1111111111)
+        that.setData({
+          show: true
+        })
+
+      }
+
+    })
+    
   },
 
   /**

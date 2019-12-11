@@ -9,6 +9,7 @@ Page({
     activeList: [],
     user:''
   },
+  
   goVote: function(e) {
     console.log(this.data.user)
 
@@ -87,7 +88,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+   
     var that = this;
+    console.log(that.data.user)
     wx.getStorage({
       key: 'user',
       success: function (res) {

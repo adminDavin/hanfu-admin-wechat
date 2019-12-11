@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/navpic/navpic",
     "pages/index/index",
     "pages/logs/logs",
     "pages/vote/vote",
@@ -19,10 +20,10 @@
     "pages/pingjia/pingjia",
     "pages/pingyou/pingyou",
     "pages/huo/huo",
-    "pages/navpic/navpic",
     "pages/persondetail/persondetail",
     "pages/xianChang/xianChang",
-    "pages/checkperson/checkperson"
+    "pages/checkperson/checkperson",
+    "pages/company/company"
   ],
   "window": {
     "backgroundTextStyle": "light",
