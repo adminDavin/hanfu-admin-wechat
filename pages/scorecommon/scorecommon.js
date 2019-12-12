@@ -6,14 +6,14 @@ Page({
    * 页面的初始数据
    */
   data: {
-    userid:'',
-    activeId:'',
+    userid: '',
+    activeId: '',
     arr: [],
     arrid: [],
     txt: '',
     id: '',
     list: [],
-    isscore:false
+    isscore: false
   },
   getVal: function (e) {
     console.log(e.detail.value);
@@ -26,28 +26,28 @@ Page({
   },
   tijiao: function () {
     var main = this;
-    let num=0;
-    for (var i = 0; i < main.data.arr.length;i++){
-      if (main.data.arr[i]==""){
+    let num = 0;
+    for (var i = 0; i < main.data.arr.length; i++) {
+      if (main.data.arr[i] == "") {
         wx.showToast({
           title: '有未打分项',
           icon: 'none'
         })
         return;
-      }else{
-        num += Number(main.data.arr[i]) 
+      } else {
+        num += Number(main.data.arr[i])
       }
-       
+
     }
-    if (num>100){
+    if (num > 100) {
       wx.showToast({
         title: '总分不能超过100分',
-        icon:'none'
+        icon: 'none'
       })
       return;
     }
     console.log(num)
-    console.log(main.data.userid,main.data.arrid, main.data.arr)
+    console.log(main.data.userid, main.data.arrid, main.data.arr)
     wx.request({
       url: app.globalData.url + '/wareHouse/recordScore',
       method: 'post',
@@ -55,7 +55,7 @@ Page({
         "Content-Type": "application/x-www-form-urlencoded"
       },
       data: {
-        electedUserId:main.data.id,
+        electedUserId: main.data.id,
         remark: main.data.arr,
         activityId: main.data.activeId,
         userId: main.data.userid,
@@ -67,11 +67,11 @@ Page({
           wx.showToast({
             title: '打分成功'
           })
-        setTimeout(function(){
-          wx.switchTab({
-            url: '../activeList/activeList',
-          })
-        },1000)
+          setTimeout(function () {
+            wx.switchTab({
+              url: '../activeList/activeList',
+            })
+          }, 1000)
         }
       },
       fail: function (res) {
@@ -99,12 +99,12 @@ Page({
       success: function (res) {
         console.log("查找成功");
         console.log(res);
-        if(res.data.data){
+        if (res.data.data) {
           console.log(2)
           main.setData({
-            isscore:true
+            isscore: true
           })
-         
+
         }
 
       },
@@ -124,11 +124,11 @@ Page({
         "Content-Type": "application/x-www-form-urlencoded"
       },
       data: {
-       
+
         type: 0,
         activityId: main.data.activeId,
         electedId: main.data.id,
-        userId: main.data.userid
+       
 
 
       },
@@ -138,20 +138,20 @@ Page({
           list: res.data.data
         })
 
-        let arr = [];
-        let arr1 = [];
-        if (main.data.list.length>0){
-          for (var i = 0; i < main.data.list.length; i++) {
-            arr[i] = '';
-            
-          }
-          main.setData({
-            arr: arr,
-            
-          })
-        }
-        
-        
+        // let arr = [];
+        // let arr1 = [];
+        // if (main.data.list.length > 0) {
+        //   for (var i = 0; i < main.data.list.length; i++) {
+        //     arr[i] = '';
+
+        //   }
+        //   main.setData({
+        //     arr: arr,
+
+        //   })
+        // }
+
+
       },
       fail: function (res) {
         console.log("查找失败：");
@@ -195,7 +195,7 @@ Page({
       activeId: options.activeId
     })
     console.log(this.data.id);
-    
+
     var that = this;
     wx.getStorage({
       key: 'user',
@@ -206,8 +206,8 @@ Page({
 
         })
         that.check();
-        that.isvote();
-        
+        // that.isvote();
+
       },
       fail: function () {
 

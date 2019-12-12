@@ -281,7 +281,7 @@ Page({
 
         })
         that.user();
-        that.isvote();
+  
         console.log(19009)
       },
       fail: function () {
@@ -299,7 +299,8 @@ Page({
     console.log(e)
     if (this.data.type == 'score') {
       wx.navigateTo({
-        url: '../persondetail/persondetail?id=' + e.currentTarget.dataset.userid + '&activeId=' + this.data.activeId
+        url: '../persondetail/persondetail?id=' + e.currentTarget.dataset.userid + '&activeId=' + this.data.activeId+'&type='
+          + this.data.type + '&common=1'
       })
     }
 

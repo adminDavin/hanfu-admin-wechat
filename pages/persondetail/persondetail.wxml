@@ -10,10 +10,10 @@
   <view bindtap="check" style="font-size:32rpx;font-family:PingFang SC;color:rgba(238,223,119,1);width:91%;height:90rpx;background:rgba(255,255,255,0);border:1px solid rgba(253,255,167,1);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-top:100rpx;">
     查看个人履历
   </view>
-  <view bindtap="pingyou" style="font-size:32rpx;font-family:PingFang SC;color:rgba(238,223,119,1);width:91%;height:90rpx;background:rgba(255,255,255,0);border:1px solid rgba(253,255,167,1);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-top:25rpx;">
+  <view  bindtap="pingyou" style="font-size:32rpx;font-family:PingFang SC;color:rgba(238,223,119,1);width:91%;height:90rpx;background:rgba(255,255,255,0);border:1px solid rgba(253,255,167,1);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-top:25rpx;">
     评优事迹
   </view>
-  <view bindtap="xianchang"  style="font-size:32rpx;font-family:PingFang SC;color:rgba(238,223,119,1);width:91%;height:90rpx;background:rgba(255,255,255,0);border:1px solid rgba(253,255,167,1);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-top:25rpx;">
+  <view bindtap="xianchang" wx:if="{{type=='score'}}" style="font-size:32rpx;font-family:PingFang SC;color:rgba(238,223,119,1);width:91%;height:90rpx;background:rgba(255,255,255,0);border:1px solid rgba(253,255,167,1);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-top:25rpx;">
    现场汇报
   </view>
   <view>

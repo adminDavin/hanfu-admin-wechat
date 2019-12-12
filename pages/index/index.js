@@ -34,20 +34,74 @@ Page({
     scrollLeft: 0,
    
     picdata:[],
-    personList:[]
-
+    personList:[],
+    type:''
 
   },
+  praise: function () {
+    // wx.showLoading({
+    //   title: '请稍后',
+    // })
+    var main = this;
+    // main.todaypraise();
+
+    wx.request({
+      url: app.globalData.url + '/wareHouse/clickPraise',
+      method: 'post',
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      data: {
+        activityId: main.data.activeId,
+        electedUserId: main.data.elected,
+        userId: main.data.elected
+      },
+      success: function (res) {
+        console.log("查找成功：");
+        console.log(res);
+        // wx.hideLoading();
+        // if (res.data.data) {
+        //   wx.showToast({
+        //     title: '今天已经投完票',
+        //     icon:'none'
+        //   })
+        //   return false;
+        // }
+        if (res.data.status == 200) {
+          main.setData({
+            show: true
+          })
+        }
+        setTimeout(function () {
+          main.setData({
+            show: false
+          })
+        }, 2000)
+        setTimeout(function () {
+          wx.switchTab({
+            url: '../index/index',
+          })
+        }, 1000)
+      },
+      fail: function (res) {
+        console.log("查找失败：");
+        console.log(res);
+        // wx.hideLoading();
+      }
+    })
+  },
   goinfer:function(e){
-    console.log(e)
+    console.log(e, this.data.type, this.data.activeId);
     wx.navigateTo({
-      url: '../checkperson/checkperson?id=' + e.currentTarget.dataset.userid
+      url: '../persondetail/persondetail?id=' + e.currentTarget.dataset.userid + '&type=' + this.data.type + '&activeId=' + this.data.activeId + '&common=0' 
     })
   },
   topNavChange: function (e) {
+    console.log(e)
     console.log(e.currentTarget.dataset.current);
 
     this.setData({
+      type: e.currentTarget.dataset.type,
       currentTab: e.currentTarget.dataset.current,
       activeId: this.data.activeList[e.currentTarget.dataset.current].id
     })
@@ -69,9 +123,17 @@ Page({
         console.log("查找成功");
         console.log(res);
         wx.hideLoading();
+        
         main.setData({
           activeList: res.data.data
+
         })
+        if (main.data.activeList.length>0){
+          main.setData({
+            type: main.data.activeList[0].type,
+            activeId: main.data.activeList[0].id
+          })
+        }
         main.getPerson1()
       },
       fail: function (res) {
@@ -79,6 +141,71 @@ Page({
 
       }
     })
+  },
+  dianzan:function(e){
+    console.log(e);
+    var that=this;
+    let arr = that.data.personList;
+    for (var i = 0; i < arr.length; i++) {
+      if (arr[i].select == 1) {
+        arr[i].select = 0;
+      }
+    }
+    that.setData({
+      personList: arr
+    })
+    if (arr[e.currentTarget.dataset.index].select==0){
+      arr[e.currentTarget.dataset.index].select = 1;
+      console.log(that.data.activeId, that.data.personList[e.currentTarget.dataset.index].userId, that.data.user)
+      wx.request({
+        url: app.globalData.url + '/wareHouse/clickPraise',
+        method: 'post',
+        header: {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        data: {
+          activityId: that.data.activeId,
+          electedUserId: that.data.personList[e.currentTarget.dataset.index].userId,
+          userId: that.data.user
+        },
+        success: function (res) {
+          console.log("查找成功：");
+          console.log(res);
+          // wx.hideLoading();
+          for (var i = 0; i < arr.length; i++) {
+              arr[i].select = 0;
+          }
+          that.setData({
+            personList: arr
+          })
+          if (res.data.data =='今日票数已经用完') {
+            wx.showToast({
+              title: '每天只能投一票',
+              icon:'none'
+            })
+            return false;
+          }else{
+            wx.showToast({
+              title: '投票成功',
+            })
+          }
+        },
+        fail: function (res) {
+          console.log("查找失败：");
+          console.log(res);
+          // wx.hideLoading();
+        }
+      })
+
+    }else{
+      
+
+    }
+    that.setData({
+      personList :arr
+    })
+
+
   },
   getPerson1:function(){
     wx.showLoading({
@@ -100,6 +227,8 @@ Page({
           console.log(res);
           if (res.data.data){
             for (var i = 0; i < res.data.data.length; i++) {
+              
+                res.data.data[i].select = 0;
               
               if (res.data.data[i].fileId) {
                 res.data.data[i].img = app.globalData.url + '/wareHouse/getFile?fileId=' + res.data.data[i].fileId;
@@ -147,8 +276,9 @@ Page({
         console.log(res);
         if (res.data.data){
           for (var i = 0; i < res.data.data.length; i++) {
-            if (res.data.data[i].id) {
-              res.data.data[i].img = app.globalData.url + '/wareHouse/getFile?fileId=' + res.data.data[i].id;
+            res.data.data[i].select = 0;
+            if (res.data.data[i].fileId) {
+              res.data.data[i].img = app.globalData.url + '/wareHouse/getFile?fileId=' + res.data.data[i].fileId;
             } else {
               res.data.data[i].img = '../img/pic.png';
             }
@@ -361,7 +491,7 @@ Page({
       success: function (res) {
         console.log('缓存', res)
         that.setData({
-          user: res.data,
+          user: res.data.userId,
 
         })
 

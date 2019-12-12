@@ -8,7 +8,9 @@ Page({
   data: {
     wo:{},
     id:'',
-    activeId:''
+    activeId:'',
+    type:"",
+    common:''
   },
 
   /**
@@ -18,7 +20,9 @@ Page({
     console.log(options)
     this.setData({
       id: options.id,
-      activeId: options.activeId
+      type: options.type,
+      activeId: options.activeId,
+      common: options.common
     })
     this.getinfor()
   },
@@ -57,9 +61,17 @@ Page({
     })
   },
   pingyou:function(){
-    wx.navigateTo({
-      url: '../score/score?id=' + this.data.id + '&activeId=' + this.data.activeId
-    })
+    if(this.data.type=='score'&&this.data.common==1){
+      wx.navigateTo({
+        url: '../score/score?id=' + this.data.id + '&activeId=' + this.data.activeId
+      })
+    }else{
+      wx.navigateTo({
+        url: '../scorecommon/scorecommon?id=' + this.data.id + '&activeId=' + this.data.activeId
+      })
+      
+    }
+    
   },
  
   /**

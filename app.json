@@ -23,7 +23,8 @@
     "pages/persondetail/persondetail",
     "pages/xianChang/xianChang",
     "pages/checkperson/checkperson",
-    "pages/company/company"
+    "pages/company/company",
+    "pages/scorecommon/scorecommon"
   ],
   "window": {
     "backgroundTextStyle": "light",

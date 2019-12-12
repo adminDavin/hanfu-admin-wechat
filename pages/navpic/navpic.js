@@ -8,8 +8,9 @@ Page({
   data: {
     show:false,
     global: {},
+    issub:false
   },
-
+  //  
   /**
    * 生命周期函数--监听页面加载
    */
@@ -24,10 +25,46 @@ Page({
 
         })
         if (that.data.user) {
+          wx.request({
+            url: app.globalData.url + '/strategy/findUserIsDepartment',
+            method: 'get',
+            header: {
+              "Content-Type": "application/x-www-form-urlencoded"
+            },
+            data: {
+              userId: that.data.user.userId
+            },
+            success: function (res) {
+              console.log("查找成功：");
+              console.log(res);
+              if(res.data.data==true){
+                that.setData({
+                  issub:true
+                })
+              }
+            },
+            fail: function (res) {
+              console.log("查找失败：");
+              console.log(res);
+              // wx.hideLoading();
+            }
+          })
+           
+
+
+
           setTimeout(function () {
-            wx.switchTab({
-              url: '../index/index'
-            })
+            
+            if (that.data.issub==true){
+              wx.switchTab({
+                url: '../index/index',
+              })
+            }else{
+              wx.navigateTo({
+               url: '../company/company',
+              })
+            }
+           
           }, 1000)
         }else{
           
@@ -35,10 +72,12 @@ Page({
         console.log(19009)
       },
       fail: function () {
-
-        that.setData({
-          show: true
-        })
+        setTimeout(function(){
+          that.setData({
+            show: true
+          })
+        },700)
+       
         
 
       }
@@ -103,11 +142,11 @@ Page({
                               key: 'user',
                               data: res.data.data
                             })
-                            setTimeout(function () {
-                              wx.switchTab({
-                                url: '../index/index'
+                           
+                              wx.navigateTo({
+                                url: '../company/company',
                               })
-                            }, 100)
+                            
                           }
 
                         },
