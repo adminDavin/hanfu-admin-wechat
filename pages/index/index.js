@@ -4,6 +4,7 @@ const app = getApp()
 
 Page({
   data: {
+    dianguo:0,
     global:{},
     user:'',
     activeId:'',
@@ -42,6 +43,7 @@ Page({
     // wx.showLoading({
     //   title: '请稍后',
     // })
+    console.log(111);
     var main = this;
     // main.todaypraise();
 
@@ -164,12 +166,14 @@ Page({
           wx.showToast({
             title: '取消成功 ',
           })
+          that.pan()
           let arr = that.data.personList;
           for (var i = 0; i < arr.length; i++) {
             if (arr[i].select == 1) {
               arr[i].select = 0;
             }
           }
+
           wx.request({
             url: app.globalData.url + '/activity/listActivityUser',
             method: 'get',
@@ -220,7 +224,17 @@ Page({
   },
   dianzan:function(e){
     console.log(e);
+    
     var that=this;
+    that.pan()
+    console.log(that.data.dianguo);
+    if (that.data.dianguo==1){
+      wx.showToast({
+        title: '每天只能点赞一次',
+        icon:'none'
+      })
+      return false;
+    }
     let arr = that.data.personList;
     for (var i = 0; i < arr.length; i++) {
       if (arr[i].select == 1) {
@@ -248,12 +262,12 @@ Page({
           console.log("查找成功：");
           console.log(res);
           // wx.hideLoading();
-          for (var i = 0; i < arr.length; i++) {
-              arr[i].select = 0;
-          }
-          that.setData({
-            personList: arr
-          })
+          // for (var i = 0; i < arr.length; i++) {
+          //     arr[i].select = 0;
+          // }
+          // that.setData({
+          //   personList: arr
+          // })
           if (res.data.data =='今日票数已经用完') {
             wx.showToast({
               title: '每天只能点赞一人',
@@ -264,6 +278,7 @@ Page({
             wx.showToast({
               title: '点赞成功',
             })
+            that.pan();
             wx.request({
               url: app.globalData.url + '/activity/listActivityUser',
               method: 'get',
@@ -321,6 +336,38 @@ Page({
     })
 
 
+  },
+  pan:function(){
+    var main=this;
+    wx.request({
+      url: app.globalData.url + '/wareHouse/findIsPraise',
+      method: 'get',
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      data: {
+      
+        userId: main.data.user
+      },
+      success: function (res) {
+      console.log(res);
+        if (res.data.data=='已经点过了'){
+            main.setData({
+              dianguo:1
+            })
+        }else{
+          main.setData({
+            dianguo: 0
+          })
+        }
+
+      },
+      fail: function (res) {
+        console.log("查找失败：");
+        console.log(res);
+        wx.hideLoading();
+      }
+    })
   },
   getPerson1:function(){
     wx.showLoading({
@@ -561,6 +608,7 @@ Page({
   
     this.getPic();
     this.list();
+   
   },
   everyday: function (e) {
     var main = this;
@@ -698,7 +746,7 @@ Page({
           user: res.data.userId,
 
         })
-
+        that.pan();
         console.log(19009)
       },
       fail:function(){

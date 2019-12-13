@@ -22,14 +22,10 @@
     <view style="margin-bottom:18px; border:2px solid #F5E2AB;border-top:1.5px solid #F5E2AB;border-radius:8px;padding-bottom:25rpx;" wx:for="{{personList}}" wx:for-index="idx"  wx:for-item="item" bindtap="goinfer" data-userId="{{item.userId}}">
       <!-- <view style="position:relative;width:100%;display:flex;"> -->
        <!-- </view> -->
-        
          <image src="{{item.img}}" style="width:324rpx;height:286rpx;border-radius:6px;"></image>
-     
-      
-
       <view style="display:flex;align-items:center;justify-content:space-between;width:100%;">
         <view style="">
-          <view style="font-size:34rpx;margin-left:20rpx;margin-top:4px;word-break: break-all;overflow: hidden;text-overflow:ellipsis;white-space: nowrap;color:#FFE18E;">{{item.username}}</view>
+          <view style="font-size:34rpx;margin-left:20rpx;margin-top:4px;word-break: break-all;overflow: hidden;text-overflow:ellipsis;white-space: nowrap;color:#FFE18E;">{{item.username?item.username:'用户名'}}</view>
           <view style="font-size:30rpx;color:#999899;margin-left:20rpx;margin-top:4px;color:#FFE18E;">{{item.departmentName?item.departmentName:'部门名称'}}</view>
         </view>
         <image   src="../img/dianzan.png" wx:if="{{type=='praise'&&item.record==true}}" style="width:20px;height:20px;margin-right:17px;" catchtap="canclezan" data-index="{{idx}}"></image> 

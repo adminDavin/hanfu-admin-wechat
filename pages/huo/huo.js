@@ -53,9 +53,6 @@ Page({
 
 
 
-    console.log(e);
-    console.log(e.currentTarget.dataset.id);
-
   },
   // 活动列表
   list: function (even) {
@@ -63,12 +60,16 @@ Page({
     wx.showLoading({
       title: '请稍后',
     })
-    console.log(1111)
+    console.log()
+    console.log(main.data.user)
     wx.request({
-      url: app.globalData.url + '/activity/listActivity',
+      url: app.globalData.url + '/activity/findUserAddActivity',
       method: 'get',
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
+      },
+      data: {
+        userId: main.data.user
       },
       success: function (res) {
         console.log("查找成功");
@@ -98,7 +99,7 @@ Page({
 
         })
         console.log(that.data.user)
-
+        that.list();
       },
       fail: function () {
 
@@ -127,7 +128,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.list()
+    
   },
 
   /**

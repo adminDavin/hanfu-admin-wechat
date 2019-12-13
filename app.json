@@ -41,24 +41,24 @@
     "list": [
       {
         "selectedIconPath": "pages/img/xin.png",
-        "iconPath": "pages/img/xin.png",
+        "iconPath": "pages/img/xin2.png",
         "pagePath": "pages/index/index",
         "text": "首页"
       },
       {
-        "selectedIconPath": "pages/img/zhengshu.png",
+        "selectedIconPath": "pages/img/zhengshu1.png",
         "iconPath": "pages/img/zhengshu.png",
         "pagePath": "pages/sort/sort",
         "text": "排名"
       },
       {
-        "selectedIconPath": "pages/img/list.png",
+        "selectedIconPath": "pages/img/list1.png",
         "iconPath": "pages/img/list.png",
         "pagePath": "pages/activeList/activeList",
         "text": "活动列表"
       },
       {
-        "selectedIconPath": "pages/img/wode.png",
+        "selectedIconPath": "pages/img/user.png",
         "iconPath": "pages/img/wode.png",
         "pagePath": "pages/person/person",
         "text": "我的"

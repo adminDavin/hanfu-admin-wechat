@@ -44,6 +44,11 @@ Page({
            title:'提交成功'
          })
         }
+        setTimeout(function(){
+          wx.navigateTo({
+            url: '../huo/huo',
+          })
+        },1000)
       },
       fail: function (res) {
         console.log("查找失败：");

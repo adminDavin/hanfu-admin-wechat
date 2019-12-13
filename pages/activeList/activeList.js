@@ -34,6 +34,7 @@ Page({
           })
           return
         }
+        console.log(e.currentTarget.dataset.type)
         if (res.data.data == false) {
           wx.navigateTo({
             url: '../power/power?id=' + e.currentTarget.dataset.id + '&type=' + e.currentTarget.dataset.type,
@@ -65,10 +66,13 @@ Page({
     })
     console.log(1111)
     wx.request({
-      url: app.globalData.url + '/activity/listActivity',
+      url: app.globalData.url + '/activity/findUserActivityVote',
       method: 'get',
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
+      },
+      data:{
+        userId: main.data.user 
       },
       success: function(res) {
         console.log("查找成功");
@@ -99,6 +103,7 @@ Page({
           user: res.data.userId,
 
         })
+        that.list();
         console.log(that.data.user)
 
       },
@@ -125,7 +130,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-    this.list()
+    
   },
 
   /**

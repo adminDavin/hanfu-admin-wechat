@@ -60,7 +60,7 @@ Page({
       method: 'post',
       data: {
         evaluate: main.data.code,
-        userId: 12
+        userId: main.data.user
        
       },
       header: {

@@ -222,12 +222,12 @@ Page({
   select(e) {
     console.log(111)
     console.log(e);
-    
-    this.data.starId = e.currentTarget.dataset.index;
-    let arr = this.data.userdata;
+    var main=this;
+    main.data.starId = e.currentTarget.dataset.index;
+    let arr = main.data.userdata;
     console.log(arr[e.currentTarget.dataset.parent].imgs[e.currentTarget.dataset.index])
     arr[e.currentTarget.dataset.parent].starId = arr[e.currentTarget.dataset.parent].imgs[e.currentTarget.dataset.index].id;
-    this.setData({
+    main.setData({
       userdata: arr
     })
     console.log(arr[e.currentTarget.dataset.parent].id, arr[e.currentTarget.dataset.parent].imgs[e.currentTarget.dataset.index].id);
@@ -246,7 +246,7 @@ Page({
         ruleInstanceId:2,
         electedUserId: arr[e.currentTarget.dataset.parent].userId,
         userId:main.data.userid,
-        activityId: this.data.activeId
+        activityId: main.data.activeId
         // electedUserId: arr[e.currentTarget.dataset.parent].
       },
       success: function (res) {
