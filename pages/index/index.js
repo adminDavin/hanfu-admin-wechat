@@ -5,7 +5,7 @@ const app = getApp()
 Page({
   data: {
     global:{},
-    user:false,
+    user:'',
     activeId:'',
     activeList:[],
     picdata:[],
@@ -127,7 +127,9 @@ Page({
         main.setData({
           activeList: res.data.data
 
+
         })
+        
         if (main.data.activeList.length>0){
           main.setData({
             type: main.data.activeList[0].type,
@@ -139,6 +141,80 @@ Page({
       fail: function (res) {
         console.log("查找失败：");
 
+      }
+    })
+  },
+  canclezan:function(e){
+    var that=this;
+    wx.request({
+      url: app.globalData.url + '/wareHouse/deleteclickPraise',
+      method: 'post',
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      data: {
+        activityId: that.data.activeId,
+        electedUserId: that.data.personList[e.currentTarget.dataset.index].userId,
+        userId: that.data.user
+      },
+      success: function (res) {
+        console.log("查找成功：");
+        console.log(res);
+        if(res.data.status==200){
+          wx.showToast({
+            title: '取消成功 ',
+          })
+          let arr = that.data.personList;
+          for (var i = 0; i < arr.length; i++) {
+            if (arr[i].select == 1) {
+              arr[i].select = 0;
+            }
+          }
+          wx.request({
+            url: app.globalData.url + '/activity/listActivityUser',
+            method: 'get',
+            header: {
+              "Content-Type": "application/x-www-form-urlencoded"
+            },
+            data: {
+              activityId: that.data.activeId,
+              userId: that.data.user
+            },
+            success: function (res) {
+              console.log("查找成功：");
+              console.log(res);
+              if (res.data.data) {
+                for (var i = 0; i < res.data.data.length; i++) {
+
+                  res.data.data[i].select = 0;
+
+                  if (res.data.data[i].fileId) {
+                    res.data.data[i].img = app.globalData.url + '/wareHouse/getFile?fileId=' + res.data.data[i].fileId;
+                  } else {
+                    res.data.data[i].img = '../img/pic.png';
+                  }
+
+                }
+              }
+
+             
+              that.setData({
+                personList: res.data.data
+              })
+              wx.hideLoading();
+            },
+            fail: function (res) {
+              console.log("查找失败：");
+              console.log(res);
+              wx.hideLoading();
+            }
+          })
+        }
+      },
+      fail: function (res) {
+        console.log("查找失败：");
+        console.log(res);
+        // wx.hideLoading();
       }
     })
   },
@@ -180,13 +256,52 @@ Page({
           })
           if (res.data.data =='今日票数已经用完') {
             wx.showToast({
-              title: '每天只能投一票',
+              title: '每天只能点赞一人',
               icon:'none'
             })
             return false;
           }else{
             wx.showToast({
-              title: '投票成功',
+              title: '点赞成功',
+            })
+            wx.request({
+              url: app.globalData.url + '/activity/listActivityUser',
+              method: 'get',
+              header: {
+                "Content-Type": "application/x-www-form-urlencoded"
+              },
+              data: {
+                activityId: that.data.activeId,
+                userId: that.data.user
+              },
+              success: function (res) {
+                console.log("查找成功：");
+                console.log(res);
+                if (res.data.data) {
+                  for (var i = 0; i < res.data.data.length; i++) {
+
+                    res.data.data[i].select = 0;
+
+                    if (res.data.data[i].fileId) {
+                      res.data.data[i].img = app.globalData.url + '/wareHouse/getFile?fileId=' + res.data.data[i].fileId;
+                    } else {
+                      res.data.data[i].img = '../img/pic.png';
+                    }
+
+                  }
+                }
+
+                
+                that.setData({
+                  personList: res.data.data
+                })
+                wx.hideLoading();
+              },
+              fail: function (res) {
+                console.log("查找失败：");
+                console.log(res);
+                wx.hideLoading();
+              }
             })
           }
         },
@@ -212,7 +327,7 @@ Page({
       title: '请稍后',
     })
     var main = this;
-    if (main.data.activeList[0]){
+    if (main.data.activeList[0] && main.data.activeList[0].type =='praise'){
       wx.request({
         url: app.globalData.url + '/activity/listActivityUser',
         method: 'get',
@@ -220,7 +335,8 @@ Page({
           "Content-Type": "application/x-www-form-urlencoded"
         },
         data: {
-          activityId: main.data.activeList[0].id
+          activityId: main.data.activeList[0].id,
+          userId: main.data.user
         },
         success: function (res) {
           console.log("查找成功：");
@@ -251,7 +367,46 @@ Page({
           wx.hideLoading();
         }
       })
-    }else{
+    } else if(main.data.activeList[0] && main.data.activeList[0].type != 'praise'){
+      wx.request({
+        url: app.globalData.url + '/activity/listActivityUser',
+        method: 'get',
+        header: {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        data: {
+          activityId: main.data.activeList[0].id,
+         
+        },
+        success: function (res) {
+          console.log("查找成功：");
+          console.log(res);
+          if (res.data.data) {
+            for (var i = 0; i < res.data.data.length; i++) {
+
+              res.data.data[i].select = 0;
+
+              if (res.data.data[i].fileId) {
+                res.data.data[i].img = app.globalData.url + '/wareHouse/getFile?fileId=' + res.data.data[i].fileId;
+              } else {
+                res.data.data[i].img = '../img/pic.png';
+              }
+
+            }
+          }
+
+          wx.hideLoading();
+          main.setData({
+            personList: res.data.data
+          })
+
+        },
+        fail: function (res) {
+          console.log("查找失败：");
+          console.log(res);
+          wx.hideLoading();
+        }
+      })
       wx.hideLoading();
     }
    
@@ -262,48 +417,97 @@ Page({
       title: '请稍后',
     })
     var main = this;
-    wx.request({
-      url: app.globalData.url + '/activity/listActivityUser',
-      method: 'get',
-      header: {
-        "Content-Type": "application/x-www-form-urlencoded"
-      },
-      data: {
-        activityId: main.data.activeId
-      },
-      success: function (res) {
-        console.log("查找成功：");
-        console.log(res);
-        if (res.data.data){
-          for (var i = 0; i < res.data.data.length; i++) {
-            res.data.data[i].select = 0;
-            if (res.data.data[i].fileId) {
-              res.data.data[i].img = app.globalData.url + '/wareHouse/getFile?fileId=' + res.data.data[i].fileId;
-            } else {
-              res.data.data[i].img = '../img/pic.png';
-            }
+    console.log(main.data.user, main.data.type)
+    if (main.data.type =='praise'){
+      console.log(main.data.user)
+      wx.request({
+        url: app.globalData.url + '/activity/listActivityUser',
+        method: 'get',
+        header: {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        data: {
+          userId: main.data.user,
+          activityId: main.data.activeId
+        },
+        success: function (res) {
+          console.log("查找成功：");
+          console.log(res);
+          if (res.data.data) {
+            for (var i = 0; i < res.data.data.length; i++) {
+              res.data.data[i].select = 0;
+              if (res.data.data[i].fileId) {
+                res.data.data[i].img = app.globalData.url + '/wareHouse/getFile?fileId=' + res.data.data[i].fileId;
+              } else {
+                res.data.data[i].img = '../img/pic.png';
+              }
 
+            }
+            main.setData({
+              personList: res.data.data
+            })
+          } else {
+            main.setData({
+              personList: []
+            })
           }
-          main.setData({
-            personList: res.data.data
-          })
-        }else{
-          main.setData({
-            personList: []
-          })
+
+
+
+          console.log(main.data.personList)
+          wx.hideLoading();
+        },
+        fail: function (res) {
+          console.log("查找失败：");
+          console.log(res);
+          wx.hideLoading();
         }
-        
-        
-        
-        console.log(main.data.personList)
-        wx.hideLoading();
-      },
-      fail: function (res) {
-        console.log("查找失败：");
-        console.log(res);
-        wx.hideLoading();
-      }
-    })
+      })
+    }else{
+      wx.request({
+        url: app.globalData.url + '/activity/listActivityUser',
+        method: 'get',
+        header: {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        data: {
+          activityId: main.data.activeId
+        },
+        success: function (res) {
+          console.log("查找成功：");
+          console.log(res);
+          if (res.data.data) {
+            for (var i = 0; i < res.data.data.length; i++) {
+              res.data.data[i].select = 0;
+              if (res.data.data[i].fileId) {
+                res.data.data[i].img = app.globalData.url + '/wareHouse/getFile?fileId=' + res.data.data[i].fileId;
+              } else {
+                res.data.data[i].img = '../img/pic.png';
+              }
+
+            }
+            main.setData({
+              personList: res.data.data
+            })
+          } else {
+            main.setData({
+              personList: []
+            })
+          }
+
+
+
+          console.log(main.data.personList)
+          wx.hideLoading();
+        },
+        fail: function (res) {
+          console.log("查找失败：");
+          console.log(res);
+          wx.hideLoading();
+        }
+      })
+    }
+    
   },
   // 获取轮播图
   getPic: function () {

@@ -11,7 +11,7 @@
         <image src="../img/di.png" style="width:200rpx;height:15rpx;"  ></image>
       </view>
       
-      <view class="first">第一事业部</view>
+      <view class="first">{{wo.departmentName}}</view>
       <view class="phone" style="margin-top:20rpx;">入职时间:{{wo.hiredate}}</view>
       <view class="phone">联系电话:{{wo.phone}}</view>
     </view>

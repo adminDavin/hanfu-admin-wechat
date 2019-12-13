@@ -10,7 +10,7 @@
         <image src="../img/weixin.png" style="width:179rpx;height:179rpx;"></image>
       </view>
       <view style="width:100%; display:flex;align-items:center;margin-top:55rpx;justify-content:space-between;padding:0 30px;">
-        <view style="justify-content:center;background:#fff;color:#999999;border-radius:15px; width:208rpx;height:70rpx;font-size:32rpx;display:flex;align-items:center;height:90rpx;">暂不登录</view>
+        <view style="justify-content:center;background:#fff;color:#999999;border-radius:15px; width:208rpx;height:70rpx;font-size:32rpx;display:flex;align-items:center;height:90rpx;" bindtap="nologin">暂不登录</view>
         <button open-type="getUserInfo" bindgetuserinfo="getUserInfo" style="background:linear-gradient(90deg,rgba(234,222,140,1),rgba(203,177,93,1));border:1px solid rgba(253,255,167,1);border-radius:15px;justify-content:center;width:208rpx;height:90rpx;font-size:32rpx;display:flex;align-items:center;color:#fff;">立即登录 </button>
 
       </view>

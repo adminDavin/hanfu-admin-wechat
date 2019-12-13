@@ -24,7 +24,8 @@
     "pages/xianChang/xianChang",
     "pages/checkperson/checkperson",
     "pages/company/company",
-    "pages/scorecommon/scorecommon"
+    "pages/scorecommon/scorecommon",
+    "pages/choose/choose"
   ],
   "window": {
     "backgroundTextStyle": "light",

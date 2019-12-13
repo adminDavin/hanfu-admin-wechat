@@ -18,6 +18,16 @@ Page({
       url: '../huo/huo',
     })
   },
+  record: function () {
+    wx.navigateTo({
+      url: '../record/record',
+    })
+  },
+  canxun: function () {
+    wx.navigateTo({
+      url: '../choose/choose',
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */

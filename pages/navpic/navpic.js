@@ -85,6 +85,11 @@ Page({
     })
   
   },
+  nologin:function(){
+   this.setData({
+     show:false
+   })
+  },
   getUserInfo: function (e) {
     let main = this;
     // console.log(e)

@@ -7,7 +7,7 @@
     </view>
   </view>
 
-  <view  style="width:96%; color:#fff;display:flex;flex-wrap:wrap;margin-left:4%;">
+  <!-- <view  style="width:96%; color:#fff;display:flex;flex-wrap:wrap;margin-left:4%;">
     <view  wx:for="{{list}}" wx:for-index="index" style="margin-bottom:20rpx; margin-right:3%; display:flex;align-items:center;flex-direction:column;width:21%;">
       <view>
         {{item.evaluateType}}
@@ -16,7 +16,7 @@
         <input type="number" value="{{isscore==true?item.score:''}}" disabled="{{isscore==true?true:false}}"  style="color:#fff;text-align:center;" bindblur="getVal" data-index="{{index}}" placeholder="请评分"></input>
       </view>
     </view>
-  </view>
-  <view bindtap="tijiao" wx:if="{{isscore==false}}" style="left:3.5%; display:flex;align-items:center;justify-content:center; margin:0 auto; width:690rpx;height:82rpx;background:linear-gradient(90deg,rgba(245,226,171,1),rgba(184,146,69,1));border:2px solid rgba(253, 255, 167, 1);border-radius:41px;position:fixed;bottom:40px;z-index:100;" >提交</view>
+  </view> -->
+  <!-- <view bindtap="tijiao" wx:if="{{isscore==false}}" style="left:3.5%; display:flex;align-items:center;justify-content:center; margin:0 auto; width:690rpx;height:82rpx;background:linear-gradient(90deg,rgba(245,226,171,1),rgba(184,146,69,1));border:2px solid rgba(253, 255, 167, 1);border-radius:41px;position:fixed;bottom:40px;z-index:100;" >提交</view> -->
 
 </view>

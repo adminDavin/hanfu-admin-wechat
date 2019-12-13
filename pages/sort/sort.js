@@ -55,7 +55,7 @@ Page({
     })
     console.log(1111)
     wx.request({
-      url: app.globalData.url + '/activity/findActivityResult?',
+      url: app.globalData.url + '/activity/findActivityResult',
       method: 'get',
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
@@ -132,7 +132,7 @@ Page({
     })
     console.log(1111)
     wx.request({
-      url: app.globalData.url + '/activity/findActivityResult?',
+      url: app.globalData.url + '/activity/findActivityResult',
       method: 'get',
       header: {
         "Content-Type": "application/x-www-form-urlencoded"

@@ -4,6 +4,7 @@ const app = getApp()
 
 Page({
   data: {
+    showbtn:true,
     type:'',//活动类型
     listId:'',
     userdata:[],
@@ -47,7 +48,87 @@ Page({
     userid:''
 
   },
+  
+   commit:function(){
+    wx.showLoading({
+      title: '请稍后',
+    })
+    var main = this;
+    wx.request({
+      url: app.globalData.url + '/wareHouse/findElection',
+      method: 'get',
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      data: {
+        activityId: main.data.activeId,
+        userId: main.data.userid
+      },
+      success: function (res) {
+        console.log("查找成功：");
+        console.log(res);
+        if (res.data.data==true){
+          
+          main.setData({
+            showbtn:false
+          })
+        }
+       
+        wx.hideLoading();
+      },
+      fail: function (res) {
+        console.log("查找失败：");
+        console.log(res);
+        wx.hideLoading();
+      }
+    })
+  },
+  neitui:function(){
+    wx.showLoading({
+      title: '请稍后',
+    })
+    var main = this;
+    wx.request({
+      url: app.globalData.url + '/wareHouse/addElection',
+      method: 'post',
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      data: {
+        activityId: main.data.activeId,
+        userId: main.data.userid
+      },
+      success: function (res) {
+        console.log("查找成功：");
+        console.log(res);
+        if (res.data.status==200){
+          wx.showToast({
+            title: '提交成功',
+          })
+          main.setData({
+            showbtn:false
+          })
+          setTimeout(
+            function() 
+             {
+            wx.switchTab({
+              url: '../activeList/activeList'
+            })
+           
+         
+          },1000)
+          
+        }
 
+        wx.hideLoading();
+      },
+      fail: function (res) {
+        console.log("查找失败：");
+        console.log(res);
+        wx.hideLoading();
+      }
+    })
+  },
   // 获取轮播图
   getPic: function () {
     wx.showLoading({
@@ -95,7 +176,8 @@ Page({
         "Content-Type": "application/x-www-form-urlencoded"
       },
       data: {
-        activityId: main.data.activeId
+        activityId: main.data.activeId,
+        userId: main.data.userid
       },
       success: function (res) {
         console.log("查找成功：");
@@ -239,6 +321,7 @@ Page({
  
   onLoad: function (options) {
     console.log(options);
+
   
     this.setData({
       activeId: options.id,
@@ -271,29 +354,7 @@ Page({
         }
       })
     }
-    var that = this;
-    wx.getStorage({
-      key: 'user',
-      success: function (res) {
-        console.log('缓存', res)
-        that.setData({
-          userid: res.data.userId,
-
-        })
-        that.user();
-  
-        console.log(19009)
-      },
-      fail: function () {
-
-        console.log(1111111111)
-        that.setData({
-          show: true
-        })
-
-      }
-
-    })
+   
   },
   ping: function (e) {
     console.log(e)
@@ -306,7 +367,33 @@ Page({
 
   },
   onShow:function(){
-    this.getPic()
+    this.getPic();
+    var that = this;
+    wx.getStorage({
+      key: 'user',
+      success: function (res) {
+        console.log('缓存', res)
+        that.setData({
+          userid: res.data.userId,
+
+        })
+        if (that.data.type == 'election') {
+          that.commit()
+        }
+        that.user();
+
+        console.log(19009)
+      },
+      fail: function () {
+
+        console.log(1111111111)
+        that.setData({
+          show: true
+        })
+
+      }
+
+    })
   },
   getUserInfo: function (e) {
     console.log(e)
