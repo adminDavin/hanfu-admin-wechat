@@ -135,29 +135,7 @@ Page({
       id: options.id,
     })
     console.log(this.data.id);
-    var that = this;
-    wx.getStorage({
-      key: 'user',
-      success: function (res) {
-        console.log('缓存', res)
-        that.setData({
-          userid: res.data.userId,
-
-        })
-        that.check();
-      
-        console.log(19009)
-      },
-      fail: function () {
-
-        console.log(1111111111)
-        that.setData({
-          show: true
-        })
-
-      }
-
-    })
+   
    
   },
 
@@ -172,7 +150,29 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    var that = this;
+    wx.getStorage({
+      key: 'user',
+      success: function (res) {
+        console.log('缓存', res)
+        that.setData({
+          userid: res.data.userId,
 
+        })
+        that.check();
+
+        console.log(19009)
+      },
+      fail: function () {
+
+        console.log(1111111111)
+        that.setData({
+          show: true
+        })
+
+      }
+
+    })
   },
 
   /**

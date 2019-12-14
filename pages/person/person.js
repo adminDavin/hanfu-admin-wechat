@@ -13,9 +13,15 @@ Page({
     //   url: '../personalEvaluation/personalEvaluation?id='',
     // })
   },
+
   jiang:function(){
     wx.navigateTo({
       url: '../huo/huo',
+    })
+  },
+  contact: function () {
+    wx.navigateTo({
+      url: '../contact/contact',
     })
   },
   record: function () {

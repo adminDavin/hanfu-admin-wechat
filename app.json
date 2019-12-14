@@ -25,7 +25,9 @@
     "pages/checkperson/checkperson",
     "pages/company/company",
     "pages/scorecommon/scorecommon",
-    "pages/choose/choose"
+    "pages/choose/choose",
+    "pages/contact/contact",
+    "pages/experience/experience"
   ],
   "window": {
     "backgroundTextStyle": "light",

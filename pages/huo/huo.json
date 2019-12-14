@@ -1,3 +1,6 @@
 {
-  "usingComponents": {}
+  "usingComponents": {},
+  "navigationBarTitleText": "奖项信息",
+  "navigationBarTextStyle": "white",
+  "navigationBarBackgroundColor": "#C6A55D"
 }

@@ -36,7 +36,8 @@ Page({
    
     picdata:[],
     personList:[],
-    type:''
+    type:'',
+    isTimingStart:''
 
   },
   praise: function () {
@@ -103,6 +104,7 @@ Page({
     console.log(e.currentTarget.dataset.current);
 
     this.setData({
+      isTimingStart: this.data.activeList[e.currentTarget.dataset.current].isTimingStart,
       type: e.currentTarget.dataset.type,
       currentTab: e.currentTarget.dataset.current,
       activeId: this.data.activeList[e.currentTarget.dataset.current].id
@@ -135,7 +137,8 @@ Page({
         if (main.data.activeList.length>0){
           main.setData({
             type: main.data.activeList[0].type,
-            activeId: main.data.activeList[0].id
+            activeId: main.data.activeList[0].id,
+            isTimingStart: main.data.activeList[0].isTimingStart
           })
         }
         main.getPerson1()
@@ -168,12 +171,18 @@ Page({
           })
           that.pan()
           let arr = that.data.personList;
-          for (var i = 0; i < arr.length; i++) {
-            if (arr[i].select == 1) {
-              arr[i].select = 0;
+          if (arr.length>0){
+            for (var i = 0; i < arr.length; i++) {
+              if (arr[i].select == 1) {
+                arr[i].select = 0;
+              }
             }
           }
+         
 
+          // that.setData({
+          //   personList: arr
+          // })
           wx.request({
             url: app.globalData.url + '/activity/listActivityUser',
             method: 'get',
@@ -235,6 +244,13 @@ Page({
       })
       return false;
     }
+    if (that.data.isTimingStart==0){
+      wx.showToast({
+        title: '活动尚未开始',
+        icon: 'none'
+      })
+      return false;
+    }
     let arr = that.data.personList;
     for (var i = 0; i < arr.length; i++) {
       if (arr[i].select == 1) {
@@ -261,6 +277,13 @@ Page({
         success: function (res) {
           console.log("查找成功：");
           console.log(res);
+          if (res.data.data == "活动未开始"){
+            wx.showToast({
+              title: '活动未开始',
+              icon: 'none'
+            })
+            return false;
+          }
           // wx.hideLoading();
           // for (var i = 0; i < arr.length; i++) {
           //     arr[i].select = 0;
@@ -273,6 +296,7 @@ Page({
               title: '每天只能点赞一人',
               icon:'none'
             })
+            
             return false;
           }else{
             wx.showToast({

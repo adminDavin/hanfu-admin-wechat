@@ -116,10 +116,13 @@ Page({
     })
     console.log(1111)
     wx.request({
-      url: app.globalData.url + '/activity/listActivity',
+      url: app.globalData.url + '/activity/findUserActivityVote',
       method: 'get',
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
+      },
+      data:{
+        userId: main.data.user
       },
       success: function (res) {
         console.log("查找成功");
@@ -490,7 +493,7 @@ Page({
 
 
     this.getPic();
-    this.list();
+   
   },
   everyday: function (e) {
     var main = this;
@@ -628,7 +631,7 @@ Page({
           user: res.data.userId,
 
         })
-
+        that.list()
         console.log(19009)
       },
       fail: function () {

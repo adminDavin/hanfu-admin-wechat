@@ -1,8 +1,10 @@
 <view style="padding-top:19px;">
   <view wx:for="{{list}}" >
     <view style="color:#fff; margin-left:4%;margin-bottom:30rpx;">{{item.zimu}}、{{item.evaluateType}}</view>
-    <view style="margin:0 auto; min-height:90px; margin-bottom:60rpx; width:90%;border-bottom:1rpx solid #EADE8C;padding-top:5px;padding-left:3px;">
-      {{item.evaluateContent}}
+    <view style="margin:0 auto; min-height:90px; margin-bottom:60rpx; width:90%;border-radius:4px; border:1rpx solid #EADE8C;padding-top:5px;padding-left:3px;">
+    
+  <view style="color:#fff;padding:10px;">{{item.evaluateContent}}</view>  
+      <!--  -->
       <!-- <textarea placeholder="请输入对自己的评价"  style="width:94%;height:100%;color:#fff;margin:0 auto;" data-index="{{index}}" data-id="{{item.id}}" value=""></textarea> -->
     </view>
   </view>

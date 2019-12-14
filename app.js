@@ -83,6 +83,8 @@ App({
     iv:'',
     encryptedData:'',
     userInfo: null,
+    // url: 'http://39.100.86.77:9200',
+    // urlLogin: 'http://39.100.86.77:8082'
     url: 'http://192.168.1.106:9200',
     urlLogin: 'http://192.168.1.106:8082'
   }

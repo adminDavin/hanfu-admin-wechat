@@ -6,17 +6,18 @@ Page({
    * 页面的初始数据
    */
   data: {
-    user:{},
-    code:''
+    user: {},
+    code: ''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
+
     var that = this;
     that.setData({
-      code: options.content
+      code:options.content
     })
     wx.getStorage({
       key: 'user',
@@ -27,7 +28,7 @@ Page({
 
         })
         console.log(that.data.user)
-       
+
       },
       fail: function () {
 
@@ -52,19 +53,19 @@ Page({
     this.setData({
       code: e.detail.value
     })
-   
+
   },
   ping: function () {
-    
-    var main=this;
+
+    var main = this;
     console.log(main.data.code, main.data.user)
     wx.request({
-      url: app.globalData.url + '/wareHouse/updateUserEvaluate',
+      url: app.globalData.url + '/wareHouse/updateUserExperience',
       method: 'post',
       data: {
-        evaluate: main.data.code,
+        jobContent: main.data.code,
         userId: main.data.user
-       
+
       },
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
@@ -77,12 +78,12 @@ Page({
             icon: 'none',
             duration: 2000
           })
-          setTimeout(function(){
+          setTimeout(function () {
             wx.navigateTo({
               url: '../information/information'
             })
-          },1000)
-         
+          }, 1000)
+
         }
       }
     })

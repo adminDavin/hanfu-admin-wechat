@@ -1,0 +1,31 @@
+<view style="width:100%;">
+  <image src="../img/lianxi.png" style="width:100%;height:180px;"></image>
+  <view style="margin-top:40px;">
+    <view style="padding-left:30px;padding-bottom:30px; display:flex;align-items:center;margin-bottom:30px;border-bottom:1rpx solid #E5E5E5;">
+      <view>
+        联系方式
+      </view>
+      <view style="margin-left:30px;color:#333333;" bindtap="tel">
+       15822209253
+      </view>
+    </view>
+    <view style="padding-left:30px;padding-bottom:30px;display:flex;align-items:center;margin-bottom:30px;border-bottom:1rpx solid #E5E5E5;">
+      <view>
+        客服微信
+      </view>
+      <view style="margin-left:30px;color:#333333;">
+        12354658745
+      </view>
+
+    </view>
+    <view style="padding-left:30px;padding-bottom:30px;display:flex;align-items:center;border-bottom:1rpx solid #E5E5E5;">
+      <view>
+        地址
+      </view>
+      <view style="margin-left:30px;color:#333333;">
+        天津市南开区黄河道A301
+      </view>
+    </view>
+  </view>
+
+</view>

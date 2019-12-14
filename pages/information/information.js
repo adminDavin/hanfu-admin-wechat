@@ -40,6 +40,11 @@ Page({
     })
     
   },
+  gongzuo:function(){
+    wx.navigateTo({
+      url: '../experience/experience?content=' + this.data.wo.jobContent,
+    })
+  },
   clocetoast:function(){
     this.setData({
       show: false
@@ -84,7 +89,7 @@ Page({
     //   show: true
     // })
     wx.navigateTo({
-      url: '../pingjia/pingjia',
+      url: '../pingjia/pingjia?content=' + this.data.wo.evaluation,
     })
 
   },
