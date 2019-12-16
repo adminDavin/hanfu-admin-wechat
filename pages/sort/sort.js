@@ -43,7 +43,9 @@ Page({
   },
   
   topNavChange:function(e){
-    console.log(e, e.currentTarget.dataset.current, e.currentTarget.dataset.id, e.currentTarget.dataset.type);
+    console.log(e, e.currentTarget.dataset.id);
+    console.log(e.currentTarget.dataset.current)
+    console.log(e.currentTarget.dataset.type)
     
     this.setData({
       currentTab: e.currentTarget.dataset.current,
@@ -81,6 +83,7 @@ Page({
           listdata: res.data.data
 
         })
+        console.log(main.data.listdata)
       },
       fail: function (res) {
         console.log("查找失败：");
@@ -111,7 +114,9 @@ Page({
             firstid: res.data.data[0].id,
             type: res.data.data[0].type
           }) 
+          console.log(main.data.type);
         }
+        
        main.list1();
         console.log(main.data.firstid)
         main.setData({

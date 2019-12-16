@@ -3,18 +3,18 @@
   <view style="margin-top:40px;">
     <view style="padding-left:30px;padding-bottom:30px; display:flex;align-items:center;margin-bottom:30px;border-bottom:1rpx solid #E5E5E5;">
       <view>
-        联系方式
+        公司名称
       </view>
       <view style="margin-left:30px;color:#333333;" bindtap="tel">
-       15822209253
+       天津市天友建筑设计股份有限公司
       </view>
     </view>
     <view style="padding-left:30px;padding-bottom:30px;display:flex;align-items:center;margin-bottom:30px;border-bottom:1rpx solid #E5E5E5;">
       <view>
-        客服微信
+        联系方式
       </view>
       <view style="margin-left:30px;color:#333333;">
-        12354658745
+        022-58109600
       </view>
 
     </view>
@@ -23,7 +23,7 @@
         地址
       </view>
       <view style="margin-left:30px;color:#333333;">
-        天津市南开区黄河道A301
+        天津市华苑产业区开华道17号
       </view>
     </view>
   </view>

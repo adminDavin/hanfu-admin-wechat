@@ -6,7 +6,10 @@ Page({
    * 页面的初始数据
    */
   data: {
-    userInfo:{}
+    userInfo:{},
+    userId:'',
+    user:'',
+    avator:''
   },
   personalEvaluation: function () {
     // wx.navigateTo({
@@ -29,6 +32,11 @@ Page({
       url: '../record/record',
     })
   },
+  inforava:function(){
+    wx.navigateTo({
+      url: '../updatePerson/updatePerson',
+    })
+  },
   canxun: function () {
     wx.navigateTo({
       url: '../choose/choose',
@@ -42,10 +50,46 @@ Page({
     wx.getStorage({
       key: 'userInfo',
       success: function (res) {
-        console.log(res)
         that.setData({
-          userInfo: res.data,
+          avator: res.data.avatarUrl,
         })
+        console.log(that.data.userInfo)
+        that.getinfor()
+      }
+    })
+    wx.getStorage({
+      key: 'user',
+      success: function (res) {
+        console.log('缓存', res)
+        that.setData({
+          user: res.data.userId,
+        })
+        console.log(that.data.userInfo)
+        that.getinfor()
+      }
+    })
+  },
+  getinfor: function () {
+    var main = this;
+    // main.todaypraise();
+
+    wx.request({
+      url: app.globalData.url + '/wareHouse/findUserFormInfo',
+      method: 'get',
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      data: {
+
+        userId: main.data.user
+      },
+      success: function (res) {
+
+        console.log(res);
+        main.setData({
+          userInfo: res.data.data
+        })
+        console.log(main.data.userInfo)
       }
     })
   },

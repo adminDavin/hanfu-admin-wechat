@@ -10,11 +10,20 @@ Page({
     code:''
   },
 
+  // pjval:function(e){
+  //   var that=this;
+  //   that.setData({
+  //     code:e.detail.value
+  //   })
+  //   console.log(e.detail)
+  // },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
     var that = this;
+    console.log(options);
     that.setData({
       code: options.content
     })
@@ -55,7 +64,7 @@ Page({
    
   },
   ping: function () {
-    
+    console.log()
     var main=this;
     console.log(main.data.code, main.data.user)
     wx.request({

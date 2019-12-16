@@ -13,13 +13,13 @@
       
       <view class="first">{{wo.departmentName}}</view>
       <view class="phone" style="margin-top:20rpx;">入职时间:{{wo.date}}</view>
-      <view class="phone">联系电话:{{wo.phone}}</view>
+      <view class="phone">岗位名称:{{wo.phone}}</view>
     </view>
-    <image src="../img/person.png" bindtap="gophone" style="width:127rpx;height:127rpx;margin-right:63rpx;margin-top:28rpx;"></image>
+    <image src="{{avator}}" bindtap="gophone" style="width:127rpx;height:127rpx;margin-right:63rpx;margin-top:28rpx;border-radius:50%"></image>
 
   </view>
 
-  <view style="background:#141414;min-height:140px; padding-bottom:23rpx;margin-top:54rpx;padding-left:40rpx;padding-top:23rpx;padding-right:23rpx;">
+  <!-- <view style="background:#141414;min-height:140px; padding-bottom:23rpx;margin-top:54rpx;padding-left:40rpx;padding-top:23rpx;padding-right:23rpx;">
     <view style="display:flex;align-items:center;justify-content:space-between;">
       <view class="person">个人评价</view>
       <image src="../img/bian.png" style="width:30rpx;height:30rpx;margin-right:35rpx;" bindtap="showping"></image>
@@ -33,7 +33,7 @@
       <image src="../img/bian.png" style="width:30rpx;height:30rpx;margin-right:35rpx;" bindtap="gongzuo"></image>
     </view>
     <view style="color:#fff;">{{wo.jobContent}}</view>
-  </view>
+  </view> -->
 
 <!-- 自我评价弹框 -->
   <view wx:if="{{show}}" style="border-left:50rpx solid #000; border-top:57rpx solid #000; border-bottom:157rpx solid #000; border-right:50rpx solid #000; display:flex; background:rgba(0,0,0,0.6);z-index:100;position:fixed;top:0;left:0;overflow-y:scroll;height:87%;z-index:100;display:flex;width:87%;padding-top:50px">

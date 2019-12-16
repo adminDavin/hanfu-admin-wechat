@@ -7,9 +7,9 @@
       <view style="margin-top:8rpx;color:rgba(245,226,171,1);font-size:24rpx;">入职时间：{{wo.date?wo.date:'未完善信息'}}</view>
     </view>
   </view>
-  <view bindtap="check" style="font-size:32rpx;font-family:PingFang SC;color:rgba(238,223,119,1);width:91%;height:90rpx;background:rgba(255,255,255,0);border:1px solid rgba(253,255,167,1);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-top:100rpx;">
+  <!-- <view bindtap="check" style="font-size:32rpx;font-family:PingFang SC;color:rgba(238,223,119,1);width:91%;height:90rpx;background:rgba(255,255,255,0);border:1px solid rgba(253,255,167,1);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-top:100rpx;">
     查看个人履历
-  </view>
+  </view> -->
   <view  bindtap="pingyou" style="font-size:32rpx;font-family:PingFang SC;color:rgba(238,223,119,1);width:91%;height:90rpx;background:rgba(255,255,255,0);border:1px solid rgba(253,255,167,1);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-top:25rpx;">
     评优事迹
   </view>

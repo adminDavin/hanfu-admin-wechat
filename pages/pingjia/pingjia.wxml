@@ -1,6 +1,6 @@
 <view style="height:100%;width:100%;">
   <view style="border:1px solid #F5E2AB;width:85%;height:40%;margin:0 auto;margin-top:30px;border-radius:5px;padding:10px;">
-   <textarea placeholder="介绍一下自己吧" style="margin:0 auto; width:90%;height:90%;color:#fff;" value="{{code}}" bindblur="bindKeyInput"></textarea>
+   <textarea placeholder="介绍一下自己吧" style="margin:0 auto; width:90%;height:90%;color:#fff;" value="{{code}}" bindblur="bindKeyInput" ></textarea>
   
   </view>
     <!-- <view style="padding:0 90rpx;margin-top:100rpx;">

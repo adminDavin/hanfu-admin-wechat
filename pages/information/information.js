@@ -9,7 +9,8 @@ Page({
     show: false,
     statusBarHeight:'',
     user:'',
-    wo:{}
+    wo:{},
+    avator:''
   },
  
   /**
@@ -17,6 +18,16 @@ Page({
    */
   onLoad() {
     var that = this;
+    wx.getStorage({
+      key: 'userInfo',
+      success: function (res) {
+        that.setData({
+          avator: res.data.avatarUrl,
+        })
+        console.log(that.data.userInfo)
+        that.getinfor()
+      }
+    })
     wx.getStorage({
       key: 'user',
       success: function (res) {

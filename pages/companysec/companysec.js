@@ -1,4 +1,4 @@
-// pages/company/company.js
+// pages/companysec/companysec.js
 const app = getApp()
 Page({
 
@@ -6,38 +6,26 @@ Page({
    * 页面的初始数据
    */
   data: {
-    
-    user:'',
+    show: false,
+    user: '',
     num: '',
-    index:'',
+    index: '',
     array: []
   },
+
+
   bindPickerChange: function (e) {
-    var that=this;
-    
+    var that = this;
     that.setData({
       index: that.data.array[e.detail.value]
     })
-    console.log(that.data.flag)
+  },
 
-  },
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
-  },
-  num:function(e){
-    var that = this;
-    that.setData({
-      num: e.detail.value
-    })
-  },
-  submit:function(){
+  submit: function () {
     var that = this;
 
     console.log(that.data.index, that.data.user)
-    if (that.data.num != "") {
+    if (that.data.index != "") {
       wx.request({
         url: app.globalData.url + '/strategy/intoActivity',
         method: 'post',
@@ -52,63 +40,16 @@ Page({
         success: function (res) {
           console.log("查找成功");
           console.log(res);
-          if (res.data.data ==true){
-            console.log(123456789)
-              wx.navigateTo({
-                url: '../companysec/companysec?num='+that.data.num+'&userid='+that.data.user,
-              })
+          if (that.data.index!= '') {
+            wx.switchTab({
+              url: '../index/index',
+            })
           } else {
-              wx.showToast({
-                title: '输入有误',
-                icon:'none'
-              })
-          }
-        },
-        fail: function (res) {
-          console.log("查找失败：");
-
-        }
-      })
-    } 
-  },
-  getnumber:function(){
-    console.log();
-    var that =this;
-   
-    console.log(that.data.num)
-    if (that.data.num!=""){
-      console.log(159)
-      wx.request({
-        url: app.globalData.url + '/strategy/findDepartmentByCompany',
-        method: 'get',
-        header: {
-          "Content-Type": "application/x-www-form-urlencoded"
-        },
-        data: {
-          // userId: that.data.user,
-          companyCode:that.data.num,
-          
-        },
-        success: function (res) {
-          console.log("查找成功");
-          console.log(res);
-          if (res.data.data =="您输入的公司编码不存在"){
-            that.setData({
-              num:''
-            })
             wx.showToast({
-              title: '您输入的公司编码不存在',
-              icon:'none'
-            })
-            that.setData({
-              array: []
-            })
-          }else{
-            that.setData({
-              array: res.data.data
+              title: '输入有误',
+              icon: 'none'
             })
           }
-
         },
         fail: function (res) {
           console.log("查找失败：");
@@ -116,33 +57,47 @@ Page({
         }
       })
     }
-
   },
-  onLoad() {
+  getnumber: function () {
+    console.log();
     var that = this;
-    wx.getStorage({
-      key: 'user',
-      success: function (res) {
-        console.log('缓存', res)
-        that.setData({
-          user: res.data.userId,
-
-        })
-
-      },
-      fail: function () {
-
-        console.log(1111111111)
-        that.setData({
-          show: true
-        })
-
-      }
-
+    that.setData({
+      show:true
     })
-
+      wx.request({
+        url: app.globalData.url + '/strategy/findDepartmentByCompany',
+        method: 'get',
+        header: {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        data: {
+          userId: that.data.user,
+          companyCode: that.data.num,
+        },
+        success: function (res) {
+          console.log("查找成功");
+          console.log(res);
+            that.setData({
+              array: res.data.data
+            })
+          console.log(that.data.array)
+        },
+        fail: function (res) {
+          console.log("查找失败：");
+        }
+      })
 
   },
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    this.setData({
+      num:options.num,
+      user:options.userid
+    })
+  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

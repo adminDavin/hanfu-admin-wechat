@@ -27,7 +27,8 @@
     "pages/scorecommon/scorecommon",
     "pages/choose/choose",
     "pages/contact/contact",
-    "pages/experience/experience"
+    "pages/experience/experience",
+    "pages/companysec/companysec"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -57,7 +58,7 @@
         "selectedIconPath": "pages/img/list1.png",
         "iconPath": "pages/img/list.png",
         "pagePath": "pages/activeList/activeList",
-        "text": "活动列表"
+        "text": "评委专区"
       },
       {
         "selectedIconPath": "pages/img/user.png",

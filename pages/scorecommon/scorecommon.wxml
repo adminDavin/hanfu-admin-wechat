@@ -2,7 +2,7 @@
   <view wx:for="{{list}}" >
     <view style="color:#fff; margin-left:4%;margin-bottom:30rpx;">{{item.evaluateType}}</view>
     <view style="color:#fff; margin:0 auto; min-height:90px; margin-bottom:60rpx; width:90%;border:1rpx solid #EADE8C;padding-top:5px;padding-left:3px;border-radius:4px;">
-    <view style="padding:10px;">
+    <view style="padding:10px;word-break:break-all;min-height:90px">
        {{item.evaluateContent}}
     </view>
      
