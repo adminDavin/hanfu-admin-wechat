@@ -10,7 +10,8 @@ Page({
     statusBarHeight:'',
     user:'',
     wo:{},
-    avator:''
+    avator:'',
+    nickname:''
   },
  
   /**
@@ -23,8 +24,9 @@ Page({
       success: function (res) {
         that.setData({
           avator: res.data.avatarUrl,
+          nickname: res.data.nickName
         })
-        console.log(that.data.userInfo)
+        console.log(that.data.nickname)
         that.getinfor()
       }
     })
@@ -34,7 +36,6 @@ Page({
         console.log('缓存', res)
         that.setData({
           user: res.data.userId,
-
         })
         console.log(that.data.user)
         that.getinfor()
@@ -64,7 +65,7 @@ Page({
   getinfor:function(){
     var main = this;
     // main.todaypraise();
-
+    console.log(main.data.user)
     wx.request({
       url: app.globalData.url + '/wareHouse/findUserFormInfo',
       method: 'get',
@@ -72,8 +73,7 @@ Page({
         "Content-Type": "application/x-www-form-urlencoded"
       },
       data: {
-       
-        userId: main.data.user
+        userId:main.data.user
       },
       success: function (res) {
        

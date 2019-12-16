@@ -13,6 +13,8 @@ Page({
     name:'',
     pic:{},
     date: '2016-09-01',
+    imageList:'',
+    dizhi:''
   },
 
   /**
@@ -46,8 +48,70 @@ Page({
       date: e.detail.value
     })
   },
+  chooseImage: function () {
+    var that = this;
+    console.log('aaaaaaaaaaaaaaaaaaaa')
+    wx.chooseImage({
+      count: 1,
+      sizeType: ['original', 'compressed'],  //可选择原图或压缩后的图片
+      sourceType: ['album', 'camera'], //可选择性开放访问相册、相机
+      success: function (res) {
+        console.log('ssssssssssssssssssssssssss')
+        //缓存下 
+        wx.showToast({
+          title: '正在上传...',
+          icon: 'loading',
+          mask: true,
+          duration: 2000,
+          success: function (ress) {
+            console.log('成功加载动画');
+          }
+        })
+
+        console.log(res)
+        that.setData({
+          imageList: res.tempFilePaths
+        })
+        //获取第一张图片地址 
+        var filep = res.tempFilePaths[0]
+        console.log(filep)
+        //向服务器端上传图片 
+        // getApp().data.servsers,这是在app.js文件里定义的后端服务器地址 
+        wx.uploadFile({
+          url: app.globalData.urlLogin + '/upload_avatar',
+          filePath: filep,
+          name: 'image',
+          success: function (res) {
+            console.log(res)
+            console.log(res.data)
+            // var sss = JSON.parse(res.data)
+            // var dizhi = sss.dizhi;
+            // //输出图片地址 
+            // console.log(dizhi);
+            // that.setData({
+            //   "dizhi": dizhi
+            // })
+
+            //do something  
+          }, fail: function (err) {
+            console.log(err)
+          }
+        });
+      }
+    })
+  },
+  previewImage: function (e) {
+    var current = e.target.dataset.src
+
+    wx.previewImage({
+
+      current: current,
+      urls: this.data.imageList
+    })
+  },
   pic:function(){
     var main=this;
+    
     wx.chooseImage({
       success(res) {
         console.log(res)

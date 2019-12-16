@@ -7,8 +7,8 @@
   <view style="display:flex;align-items:center;justify-content:space-between;width:100%;">
     <view>
       <view class="name" style="display:flex;align-items:center;flex-direction:column;">
-        <text>{{wo.username}}</text>
-        <image src="../img/di.png" style="width:200rpx;height:15rpx;"  ></image>
+        <text wx:if="{{wo.username!=''}}">{{wo.username}}</text><text wx:if="{{wo.username==''}}">{{nickname}}</text>
+        <image src="../img/di.png" style="width:200rpx;height:15rpx;"></image>
       </view>
       
       <view class="first">{{wo.departmentName}}</view>

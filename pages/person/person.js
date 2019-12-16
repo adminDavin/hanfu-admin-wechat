@@ -9,7 +9,8 @@ Page({
     userInfo:{},
     userId:'',
     user:'',
-    avator:''
+    avator:'',
+    nickName:''
   },
   personalEvaluation: function () {
     // wx.navigateTo({
@@ -52,6 +53,7 @@ Page({
       success: function (res) {
         that.setData({
           avator: res.data.avatarUrl,
+          nickName:res.data.nickName
         })
         console.log(that.data.userInfo)
         that.getinfor()
@@ -61,18 +63,18 @@ Page({
       key: 'user',
       success: function (res) {
         console.log('缓存', res)
+        let uid = res.data.userId
         that.setData({
           user: res.data.userId,
         })
-        console.log(that.data.userInfo)
-        that.getinfor()
+        that.getinfor(uid)
       }
     })
   },
-  getinfor: function () {
+  getinfor: function (uid) {
     var main = this;
     // main.todaypraise();
-
+    console.log(uid)
     wx.request({
       url: app.globalData.url + '/wareHouse/findUserFormInfo',
       method: 'get',
@@ -80,14 +82,13 @@ Page({
         "Content-Type": "application/x-www-form-urlencoded"
       },
       data: {
-
-        userId: main.data.user
+        userId: uid
       },
       success: function (res) {
 
         console.log(res);
         main.setData({
-          userInfo: res.data.data
+          userInfo: uid
         })
         console.log(main.data.userInfo)
       }
