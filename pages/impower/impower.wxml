@@ -1,0 +1,13 @@
+<view class="mask">
+  <view class="mask-dl">
+    <text class="mask-tible">您还未登录</text>
+    <text class="mask-tibles">请先登录再进行操作</text>
+    <view class="mask-head">
+      <view class="header">头像</view>
+    </view>
+    <view class="mask-buttom">
+      <view class="buttom">暂不登录</view>
+      <view class="buttom-two" bind:tap="onTop">立即登录</view>
+    </view>
+  </view>
+</view>

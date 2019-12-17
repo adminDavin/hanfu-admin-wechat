@@ -1,0 +1,15 @@
+<view class="register">
+  <text class="register-title">登录以使用更多服务</text>
+  <view class="register-input">
+    <view class="input-box input-bottom">
+      <view class="input-tu">图</view>
+      <input type="username" class="input-text" placeholder="请输入手机号" />
+    </view>
+    <view class="input-box">
+      <view class="input-tu">图</view>
+      <input type="username" class="input-text" placeholder="请输入验证码" />
+      <view class="button-y">获取验证码</view>
+    </view>
+  </view>
+  <view class="register-deng">登录</view>
+</view>
