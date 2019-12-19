@@ -18,8 +18,11 @@
       </picker>
     </view>
   </view> -->
+  <view style="margin:0 auto;margin-top:13%; display:flex;align-items:center; width:609rpx;background:rgba(27,27,27,1);border-radius:10px;color:white;font-size:24rpx;">温馨提示：</view>
+<view style="margin:0 auto; display:flex;align-items:center; width:609rpx;min-height:200rpx;background:rgba(27,27,27,1);border-radius:10px;color:white;font-size:24rpx;">由于该小程序仅供公司内部使用，请先输入您所在公司编号来进入公司首页。</view>
+
 
   <view bindtap="submit" style="position:fixed;bottom:40px;left:3.5%; width:690rpx;height:90rpx;background:linear-gradient(90deg,rgba(245,226,171,1),rgba(184,146,69,1));border:1px solid rgba(253,255,167,1);border-radius:45px;display:flex;align-items:center;justify-content:center;">
-    下一步
+    进入
   </view>
 </view>

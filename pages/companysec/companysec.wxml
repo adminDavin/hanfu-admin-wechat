@@ -1,11 +1,8 @@
 <view style="background:#1b1b1b">
   <view>
-  <view style="margin:0 auto;margin-top:30%;line-height:90px;width:609rpx;height:90rpx;background:rgba(27,27,27,1);color:rgba(255,255,255,0.8);font-size:18px；padding-left:5px;">部门信息</view>
-    <view bindtap="getnumber" style="margin:0 auto;margin-top:8%; display:flex;align-items:center; width:609rpx;height:90rpx;background:rgba(27,27,27,1);border:2px solid #F5E2AB;border-radius:45px;">
-      <view wx:if="{{show==false}}" style="width:100%;height:100%;padding:13px 22px;display:flex;justify-content:space-between;box-sizing:border-box">
-        <view style="color:rgba(206,206,206,0.5);font-size:16px;font-weight:500">请选择部门</view>
-        <image src="../img/xiala.png" style="width:20px;height:12px;margin-top:5px;margin-right:10px"></image>
-      </view>
+    <view style="margin:0 auto;margin-top:30%;line-height:90px;width:609rpx;height:90rpx;background:rgba(27,27,27,1);color:rgba(255,255,255,0.8);font-size:18px；padding-left:5px;">部门信息</view>
+    <view bindtap="getdetail" style="margin:0 auto;margin-top:8%; display:flex;align-items:center; width:609rpx;height:90rpx;background:rgba(27,27,27,1);border:2px solid #F5E2AB;border-radius:45px;">
+
       <picker wx:if="{{show}}" bindchange="bindPickerChange" value="{{index}}" range="{{array}}" style="width:100%;height:90%;margin-left:30px;">
         <view style="color:#fff;width:100%;height:38px;display:flex;align-items:center;justify-content:space-between;">
           <input value="{{index}}" placeholder="请选择部门" style="display:block; width:90%;height:46px;margin-top:5px" disabled="true"></input>

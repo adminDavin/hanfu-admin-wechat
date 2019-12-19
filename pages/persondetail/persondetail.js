@@ -24,6 +24,7 @@ Page({
       activeId: options.activeId,
       common: options.common
     })
+    console.log(this.data.id)
     this.getinfor()
   },
   getinfor: function () {

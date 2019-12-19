@@ -39,9 +39,9 @@ Page({
       }
        
     }
-    if (num>100){
+    if (num>400){
       wx.showToast({
-        title: '总分不能超过100分',
+        title: '总分不能超过400分',
         icon:'none'
       })
       return;
@@ -232,7 +232,29 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    var that = this;
+    wx.getStorage({
+      key: 'user',
+      success: function (res) {
+        console.log('缓存', res)
+        that.setData({
+          userid: res.data.userId,
 
+        })
+        that.check();
+        that.isvote();
+
+      },
+      fail: function () {
+
+        console.log(1111111111)
+        that.setData({
+          show: true
+        })
+
+      }
+
+    })
   },
 
   /**

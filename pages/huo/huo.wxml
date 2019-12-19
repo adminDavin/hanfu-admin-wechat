@@ -4,6 +4,6 @@
     <view style="margin-left:40rpx;color:#fff;">
       {{item.activityName }}
     </view>
-    
   </view>
+  
 </view>

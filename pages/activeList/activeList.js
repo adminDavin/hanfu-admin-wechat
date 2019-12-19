@@ -7,7 +7,8 @@ Page({
    */
   data: {
     activeList: [],
-    user:''
+    user:'',
+    show:false
   },
   
   goVote: function(e) {
@@ -44,11 +45,9 @@ Page({
             url: '../vote/vote?id=' + e.currentTarget.dataset.id + '&type=' + e.currentTarget.dataset.type,
           })
         }
-       
       },
       fail: function(res) {
         console.log("查找失败：");
-
       }
     })
 
@@ -78,13 +77,17 @@ Page({
         console.log("查找成功");
         console.log(res);
         wx.hideLoading();
+        if(res.data.data==''){
+          main.setData({
+            show: false
+          })
+        }
         main.setData({
           activeList: res.data.data
         })
       },
       fail: function(res) {
         console.log("查找失败：");
-
       }
     })
   },
@@ -93,6 +96,41 @@ Page({
    */
   onLoad: function(options) {
    
+    var that = this;
+    
+    console.log(that.data.user)
+    wx.getStorage({
+      key: 'user',
+      success: function (res) {
+        console.log('缓存', res)
+        that.setData({
+          user: res.data.userId,
+          show:false
+        })
+        that.list();
+
+      },
+      fail: function () {
+        console.log(1111111111)
+        that.setData({
+          show: true
+        })
+      }
+
+    })
+  },
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function() {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function() {
     var that = this;
     console.log(that.data.user)
     wx.getStorage({
@@ -117,20 +155,6 @@ Page({
       }
 
     })
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function() {
-    
   },
 
   /**

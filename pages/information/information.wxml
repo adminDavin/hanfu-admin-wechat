@@ -7,15 +7,16 @@
   <view style="display:flex;align-items:center;justify-content:space-between;width:100%;">
     <view>
       <view class="name" style="display:flex;align-items:center;flex-direction:column;">
-        <text wx:if="{{wo.username!=''}}">{{wo.username}}</text><text wx:if="{{wo.username==''}}">{{nickname}}</text>
+        <text wx:if="{{wo.username!=''}}">{{wo.username}}</text>
+        <text wx:if="{{wo.username==''}}">{{nickname}}</text>
         <image src="../img/di.png" style="width:200rpx;height:15rpx;"></image>
       </view>
-      
+
       <view class="first">{{wo.departmentName}}</view>
-      <view class="phone" style="margin-top:20rpx;">入职时间:{{wo.date}}</view>
-      <view class="phone">岗位名称:{{wo.phone}}</view>
+      <view class="phone" style="margin-top:20rpx;">入职时间: {{wo.date}}</view>
+      <view class="phone">岗位名称: {{wo.phone}}</view>
     </view>
-    <image src="{{avator}}" bindtap="gophone" style="width:127rpx;height:127rpx;margin-right:63rpx;margin-top:28rpx;border-radius:50%"></image>
+    <image src="{{avatarafter==''?avator:avatarafter}}" bindtap="gophone" style="width:127rpx;height:127rpx;margin-right:63rpx;margin-top:28rpx;border-radius:50%"></image>
 
   </view>
 
@@ -35,19 +36,19 @@
     <view style="color:#fff;">{{wo.jobContent}}</view>
   </view> -->
 
-<!-- 自我评价弹框 -->
-  <view wx:if="{{show}}" style="border-left:50rpx solid #000; border-top:57rpx solid #000; border-bottom:157rpx solid #000; border-right:50rpx solid #000; display:flex; background:rgba(0,0,0,0.6);z-index:100;position:fixed;top:0;left:0;overflow-y:scroll;height:87%;z-index:100;display:flex;width:87%;padding-top:50px">
+  <!-- 自我评价弹框 -->
+  <!-- <view wx:if="{{show}}" style="border-left:50rpx solid #000; border-top:57rpx solid #000; border-bottom:157rpx solid #000; border-right:50rpx solid #000; display:flex; background:rgba(0,0,0,0.6);z-index:100;position:fixed;top:0;left:0;overflow-y:scroll;height:87%;z-index:100;display:flex;width:87%;padding-top:50px">
 
     <view style="flex:1; border:1rpx solid #CBB15D;padding-bottom:40rpx;margin:0 auto;border-radius:10rpx;">
-      <view >
-      <view style="display:flex;justify-content:flex-end;margin-top:10px;margin-right:10px;" bindtap="clocetoast">
-         <image src="../img/close.png" style="width:30px;height:30px;"></image>
+      <view>
+        <view style="display:flex;justify-content:flex-end;margin-top:10px;margin-right:10px;" bindtap="clocetoast">
+          <image src="../img/close.png" style="width:30px;height:30px;"></image>
+        </view>
+
+        <view class="zi">自我评价</view>
+
       </view>
-      
-         <view class="zi">自我评价</view>
-        
-      </view>
-     
+
 
       <view style="padding-left:7.5%">
         <view style="margin-bottom:30rpx;">
@@ -87,5 +88,5 @@
         提交
       </view>
     </view>
-  </view>
+  </view> -->
 </view>

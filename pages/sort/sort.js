@@ -32,24 +32,26 @@ Page({
      * scroll-view 横向滚动条位置
      */
     scrollLeft: 0,
-    listdata: []
+    listdata: [],
+    activityStatus:0
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.list();
   },
   
   topNavChange:function(e){
     console.log(e, e.currentTarget.dataset.id);
     console.log(e.currentTarget.dataset.current)
     console.log(e.currentTarget.dataset.type)
-    
+    console.log(e.currentTarget.dataset.activitystatus)
     this.setData({
       currentTab: e.currentTarget.dataset.current,
-      type:e.currentTarget.dataset.type
+      type:e.currentTarget.dataset.type,
+      activityStatus: e.currentTarget.dataset.activitystatus
     })
     var main = this;
     wx.showLoading({
@@ -112,7 +114,8 @@ Page({
         if (res.data.data.length>0){
           main.setData({
             firstid: res.data.data[0].id,
-            type: res.data.data[0].type
+            type: res.data.data[0].type,
+            activityStatus: res.data.data[0].activityStatus
           }) 
           console.log(main.data.type);
         }
@@ -122,6 +125,7 @@ Page({
         main.setData({
           activeList: res.data.data
         })
+        console.log(main.data.activeList)
       },
       fail: function (res) {
         console.log("查找失败：");

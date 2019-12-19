@@ -49,7 +49,6 @@ page{
   color: #F2C81E;
   text-align: center;
   height: 75rpx;
-  max-width:200rpx;
   display: inline-block;
   font-size: 34rpx;
   line-height: 75rpx;

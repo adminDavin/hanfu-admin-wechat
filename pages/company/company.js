@@ -54,8 +54,13 @@ Page({
           console.log(res);
           if (res.data.data ==true){
             console.log(123456789)
-              wx.navigateTo({
-                url: '../companysec/companysec?num='+that.data.num+'&userid='+that.data.user,
+            wx.setStorage({
+              key: 'companyid',
+              data: that.data.num
+            })
+              wx.switchTab({
+                url:'../index/index'
+                // url: '../companysec/companysec?num='+that.data.num+'&userid='+that.data.user,
               })
           } else {
               wx.showToast({

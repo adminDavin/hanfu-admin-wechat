@@ -89,6 +89,9 @@ Page({
    this.setData({
      show:false
    })
+  wx.navigateBack({
+    delta: 1,
+  })
   },
   getUserInfo: function (e) {
     let main = this;

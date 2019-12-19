@@ -18,6 +18,8 @@
   background: #f8f8f8;
   min-height: 100%;
 }
+
+
 page{
    background-size:100%; 
   font-size: 20rpx;
@@ -43,20 +45,18 @@ page{
   white-space: nowrap;
 }
 .header .item{
-  color: #F2C81E;
+  /* color: #F2C81E; */
   text-align: center;
   height: 75rpx;
-  max-width:200rpx;
+  /* max-width:200rpx; */
   display: inline-block;
-  font-size: 34rpx;
   line-height: 75rpx;
   /* background: #fb5858; */
   border-radius: 80rpx;
   margin: 10rpx;
   margin-right: 50rpx;
-  font-size: 40rpx;
   color:rgba(184,146,69,1);
-  font-size: 35rpx;
+  font-size: 32rpx;
 }
 ::-webkit-scrollbar {
     width: 0;

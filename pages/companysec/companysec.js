@@ -35,7 +35,7 @@ Page({
         data: {
           departmentName: that.data.index,
           userId: that.data.user,
-          code: that.data.num
+          // code: that.data.num
         },
         success: function (res) {
           console.log("查找成功");
@@ -57,6 +57,9 @@ Page({
         }
       })
     }
+  },
+  getdetail:function(){
+
   },
   getnumber: function () {
     console.log();
@@ -96,6 +99,7 @@ Page({
       num:options.num,
       user:options.userid
     })
+    this.getnumber();
   },
 
   /**

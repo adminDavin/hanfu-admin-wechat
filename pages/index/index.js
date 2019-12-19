@@ -4,26 +4,27 @@ const app = getApp()
 
 Page({
   data: {
-    dianguo:0,
-    global:{},
-    user:'',
-    activeId:'',
-    activeList:[],
-    picdata:[],
-    show:false,
+    loginflag:true,
+    dianguo: 0,
+    global: {},
+    user: '',
+    activeId: '',
+    activeList: [],
+    picdata: [],
+    show: false,
     "bnrUrl": [{
       "url": "../img/img.png"
     }, {
-        "url": "../img/img.png"
+      "url": "../img/img.png"
     }, {
-        "url": "../img/img.png"
+      "url": "../img/img.png"
     }, {
-        "url": "../img/img.png"
+      "url": "../img/img.png"
     }],
     topNavs: ['全部', '红包', '折扣券', '实物奖励', '0000', '1234', '0123', '2345', '11111', '22222', '3333', '4444', '5555', '6666'],
     /**
-    * 当前激活的当航索引
-    */
+     * 当前激活的当航索引
+     */
     currentTab: 0,
     /**
      * 上一个激活的当航索引
@@ -33,14 +34,22 @@ Page({
      * scroll-view 横向滚动条位置
      */
     scrollLeft: 0,
-   
-    picdata:[],
-    personList:[],
-    type:'',
-    isTimingStart:''
+
+    personList: [],
+    type: '',
+    isTimingStart: ''
 
   },
-  praise: function () {
+
+  nologin: function() {
+    var that = this;
+    that.setData({
+      loginflag:true,
+      show: false
+    })
+  },
+
+  praise: function() {
     // wx.showLoading({
     //   title: '请稍后',
     // })
@@ -59,7 +68,7 @@ Page({
         electedUserId: main.data.elected,
         userId: main.data.elected
       },
-      success: function (res) {
+      success: function(res) {
         console.log("查找成功：");
         console.log(res);
         // wx.hideLoading();
@@ -75,31 +84,53 @@ Page({
             show: true
           })
         }
-        setTimeout(function () {
+        setTimeout(function() {
           main.setData({
             show: false
           })
         }, 2000)
-        setTimeout(function () {
+        setTimeout(function() {
           wx.switchTab({
             url: '../index/index',
           })
         }, 1000)
       },
-      fail: function (res) {
+      fail: function(res) {
         console.log("查找失败：");
         console.log(res);
         // wx.hideLoading();
       }
     })
   },
-  goinfer:function(e){
-    console.log(e, this.data.type, this.data.activeId);
-    wx.navigateTo({
-      url: '../persondetail/persondetail?id=' + e.currentTarget.dataset.userid + '&type=' + this.data.type + '&activeId=' + this.data.activeId + '&common=0' 
+  goinfer: function(e) {
+    var that=this
+    console.log(that.data.loginflag)
+    console.log(e, that.data.type, that.data.activeId);
+    console.log(that.data.personList)
+    wx.getStorage({
+      key: 'user',
+      success: function(res) {
+        console.log('缓存', res)
+        that.setData({
+          user: res.data.userId,
+        })
+        wx.navigateTo({
+          url: '../persondetail/persondetail?id=' + e.currentTarget.dataset.userid + '&type=' + that.data.type + '&activeId=' + that.data.activeId + '&common=0'
+        })
+      },
+      fail: function() {
+
+        console.log(1111111111)
+        that.setData({
+          loginflag:true,
+          show: true
+        })
+
+      }
+
     })
   },
-  topNavChange: function (e) {
+  topNavChange: function(e) {
     console.log(e)
     console.log(e.currentTarget.dataset.current);
 
@@ -111,10 +142,11 @@ Page({
     })
     this.getPerson()
   },
-  list: function (even) {
+  list: function(even) {
     var main = this;
     wx.showLoading({
       title: '请稍后',
+      mask: true
     })
     console.log(1111)
     wx.request({
@@ -123,18 +155,18 @@ Page({
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
       },
-      success: function (res) {
+      success: function(res) {
         console.log("查找成功");
         console.log(res);
         wx.hideLoading();
-        
+
         main.setData({
           activeList: res.data.data
 
 
         })
-        
-        if (main.data.activeList.length>0){
+
+        if (main.data.activeList.length > 0) {
           main.setData({
             type: main.data.activeList[0].type,
             activeId: main.data.activeList[0].id,
@@ -143,16 +175,159 @@ Page({
         }
         main.getPerson1()
       },
-      fail: function (res) {
+      fail: function(res) {
         console.log("查找失败：");
 
       }
     })
   },
-  canclezan:function(e){
-    var that=this;
+  canclezan: function(e) {
+    wx.showLoading({
+      title: '请稍等',
+      mask: true
+    })
+    var that = this;
     wx.request({
       url: app.globalData.url + '/wareHouse/deleteclickPraise',
+      method: 'post',
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      data: {
+        activityId: that.data.activeId,
+        electedUserId: that.data.personList[e.currentTarget.dataset.index].userId,
+        userId: that.data.user
+      },
+      success: function(res) {
+        console.log("查找成功：");
+        console.log(res);
+        if (res.data.status == 200) {
+          wx.showToast({
+            title: '取消成功 ',
+            mask: true
+          })
+          that.pan()
+          let arr = that.data.personList;
+          if (arr.length > 0) {
+            for (var i = 0; i < arr.length; i++) {
+              if (arr[i].select == 1) {
+                arr[i].select = 0;
+              }
+            }
+          }
+
+
+          // that.setData({
+          //   personList: arr
+          // })
+          wx.request({
+            url: app.globalData.url + '/activity/listActivityUser',
+            method: 'get',
+            header: {
+              "Content-Type": "application/x-www-form-urlencoded"
+            },
+            data: {
+              activityId: that.data.activeId,
+              userId: that.data.user
+            },
+            success: function(res) {
+              console.log("查找成功：");
+              console.log(res);
+              if (res.data.data) {
+                for (var i = 0; i < res.data.data.length; i++) {
+
+                  res.data.data[i].select = 0;
+
+                  if (res.data.data[i].fileId) {
+                    res.data.data[i].img = app.globalData.url + '/wareHouse/getFile?fileId=' + res.data.data[i].fileId;
+                  } else {
+                    res.data.data[i].img = '../img/pic.png';
+                  }
+
+                }
+              }
+
+
+              that.setData({
+                personList: res.data.data
+              })
+              wx.hideLoading();
+            },
+            fail: function(res) {
+              console.log("查找失败：");
+              console.log(res);
+              wx.hideLoading();
+            }
+          })
+        }
+      },
+      fail: function(res) {
+        console.log("查找失败：");
+        console.log(res);
+        // wx.hideLoading();
+      }
+    })
+  },
+  dianzan: function(e) {
+    var that = this;
+    wx.getStorage({
+      key: 'user',
+      success: function (res) {
+        console.log('缓存', res)
+        that.setData({
+          user: res.data.userId,
+        })
+          that.goinforyz(e);
+      },
+      fail: function () {
+          that.setData({
+            loginflag: true,
+            show: true
+          })
+      }
+
+    })
+  },
+goinforyz:function(e){
+  var that=this;
+  wx.showLoading({
+    title: '请稍等',
+    mask: true
+  })
+
+
+  that.pan()
+  console.log(that.data.dianguo);
+  if (that.data.dianguo == 1) {
+    wx.showToast({
+      title: '每天只能点赞一次',
+      icon: 'none',
+      mask: true
+    })
+    return false;
+  }
+  if (that.data.isTimingStart == 0) {
+    wx.showToast({
+      title: '活动尚未开始',
+      icon: 'none',
+      mask: true
+    })
+    return false;
+  }
+  let arr = that.data.personList;
+  for (var i = 0; i < arr.length; i++) {
+    if (arr[i].select == 1) {
+      arr[i].select = 0;
+    }
+  }
+  that.setData({
+    personList: arr
+  })
+  if (arr[e.currentTarget.dataset.index].select == 0) {
+    arr[e.currentTarget.dataset.index].select = 1;
+    console.log(that.data.activeId, that.data.personList[e.currentTarget.dataset.index].userId, that.data.user)
+    wx.request({
+      url: app.globalData.url + '/wareHouse/clickPraise',
       method: 'post',
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
@@ -165,24 +340,35 @@ Page({
       success: function (res) {
         console.log("查找成功：");
         console.log(res);
-        if(res.data.status==200){
+        if (res.data.data == "活动未开始") {
           wx.showToast({
-            title: '取消成功 ',
+            title: '活动未开始',
+            icon: 'none',
+            mask: true
           })
-          that.pan()
-          let arr = that.data.personList;
-          if (arr.length>0){
-            for (var i = 0; i < arr.length; i++) {
-              if (arr[i].select == 1) {
-                arr[i].select = 0;
-              }
-            }
-          }
-         
+          return false;
+        }
+        // wx.hideLoading();
+        // for (var i = 0; i < arr.length; i++) {
+        //     arr[i].select = 0;
+        // }
+        // that.setData({
+        //   personList: arr
+        // })
+        if (res.data.data == '今日票数已经用完') {
+          wx.showToast({
+            title: '每天只能点赞一人',
+            icon: 'none',
+            mask: true
+          })
 
-          // that.setData({
-          //   personList: arr
-          // })
+          return false;
+        } else {
+          wx.showToast({
+            title: '点赞成功',
+            mask: true
+          })
+          that.pan();
           wx.request({
             url: app.globalData.url + '/activity/listActivityUser',
             method: 'get',
@@ -210,7 +396,7 @@ Page({
                 }
               }
 
-             
+
               that.setData({
                 personList: res.data.data
               })
@@ -230,139 +416,22 @@ Page({
         // wx.hideLoading();
       }
     })
-  },
-  dianzan:function(e){
-    console.log(e);
-    
-    var that=this;
-    that.pan()
-    console.log(that.data.dianguo);
-    if (that.data.dianguo==1){
-      wx.showToast({
-        title: '每天只能点赞一次',
-        icon:'none'
-      })
-      return false;
-    }
-    if (that.data.isTimingStart==0){
-      wx.showToast({
-        title: '活动尚未开始',
-        icon: 'none'
-      })
-      return false;
-    }
-    let arr = that.data.personList;
-    for (var i = 0; i < arr.length; i++) {
-      if (arr[i].select == 1) {
-        arr[i].select = 0;
-      }
-    }
-    that.setData({
-      personList: arr
-    })
-    if (arr[e.currentTarget.dataset.index].select==0){
-      arr[e.currentTarget.dataset.index].select = 1;
-      console.log(that.data.activeId, that.data.personList[e.currentTarget.dataset.index].userId, that.data.user)
-      wx.request({
-        url: app.globalData.url + '/wareHouse/clickPraise',
-        method: 'post',
-        header: {
-          "Content-Type": "application/x-www-form-urlencoded"
-        },
-        data: {
-          activityId: that.data.activeId,
-          electedUserId: that.data.personList[e.currentTarget.dataset.index].userId,
-          userId: that.data.user
-        },
-        success: function (res) {
-          console.log("查找成功：");
-          console.log(res);
-          if (res.data.data == "活动未开始"){
-            wx.showToast({
-              title: '活动未开始',
-              icon: 'none'
-            })
-            return false;
-          }
-          // wx.hideLoading();
-          // for (var i = 0; i < arr.length; i++) {
-          //     arr[i].select = 0;
-          // }
-          // that.setData({
-          //   personList: arr
-          // })
-          if (res.data.data =='今日票数已经用完') {
-            wx.showToast({
-              title: '每天只能点赞一人',
-              icon:'none'
-            })
-            
-            return false;
-          }else{
-            wx.showToast({
-              title: '点赞成功',
-            })
-            that.pan();
-            wx.request({
-              url: app.globalData.url + '/activity/listActivityUser',
-              method: 'get',
-              header: {
-                "Content-Type": "application/x-www-form-urlencoded"
-              },
-              data: {
-                activityId: that.data.activeId,
-                userId: that.data.user
-              },
-              success: function (res) {
-                console.log("查找成功：");
-                console.log(res);
-                if (res.data.data) {
-                  for (var i = 0; i < res.data.data.length; i++) {
 
-                    res.data.data[i].select = 0;
-
-                    if (res.data.data[i].fileId) {
-                      res.data.data[i].img = app.globalData.url + '/wareHouse/getFile?fileId=' + res.data.data[i].fileId;
-                    } else {
-                      res.data.data[i].img = '../img/pic.png';
-                    }
-
-                  }
-                }
-
-                
-                that.setData({
-                  personList: res.data.data
-                })
-                wx.hideLoading();
-              },
-              fail: function (res) {
-                console.log("查找失败：");
-                console.log(res);
-                wx.hideLoading();
-              }
-            })
-          }
-        },
-        fail: function (res) {
-          console.log("查找失败：");
-          console.log(res);
-          // wx.hideLoading();
-        }
-      })
-
-    }else{
-      
-
-    }
-    that.setData({
-      personList :arr
-    })
+  } else {
 
 
-  },
-  pan:function(){
-    var main=this;
+  }
+  that.setData({
+    personList: arr
+  })
+
+},
+
+ 
+
+
+  pan: function() {
+    var main = this;
     wx.request({
       url: app.globalData.url + '/wareHouse/findIsPraise',
       method: 'get',
@@ -370,35 +439,35 @@ Page({
         "Content-Type": "application/x-www-form-urlencoded"
       },
       data: {
-      
         userId: main.data.user
       },
-      success: function (res) {
-      console.log(res);
-        if (res.data.data=='已经点过了'){
-            main.setData({
-              dianguo:1
-            })
-        }else{
+      success: function(res) {
+        console.log(res);
+        if (res.data.data == '已经点过了') {
+          main.setData({
+            dianguo: 1
+          })
+        } else {
           main.setData({
             dianguo: 0
           })
         }
 
       },
-      fail: function (res) {
+      fail: function(res) {
         console.log("查找失败：");
         console.log(res);
         wx.hideLoading();
       }
     })
   },
-  getPerson1:function(){
+  getPerson1: function() {
     wx.showLoading({
       title: '请稍后',
+      mask: true
     })
     var main = this;
-    if (main.data.activeList[0] && main.data.activeList[0].type =='praise'){
+    if (main.data.activeList[0] && main.data.activeList[0].type == 'praise') {
       wx.request({
         url: app.globalData.url + '/activity/listActivityUser',
         method: 'get',
@@ -409,47 +478,7 @@ Page({
           activityId: main.data.activeList[0].id,
           userId: main.data.user
         },
-        success: function (res) {
-          console.log("查找成功：");
-          console.log(res);
-          if (res.data.data){
-            for (var i = 0; i < res.data.data.length; i++) {
-              
-                res.data.data[i].select = 0;
-              
-              if (res.data.data[i].fileId) {
-                res.data.data[i].img = app.globalData.url + '/wareHouse/getFile?fileId=' + res.data.data[i].fileId;
-              } else {
-                res.data.data[i].img = '../img/pic.png';
-              }
-              
-            }
-          }
-         
-          wx.hideLoading();
-          main.setData({
-            personList: res.data.data
-          })
-
-        },
-        fail: function (res) {
-          console.log("查找失败：");
-          console.log(res);
-          wx.hideLoading();
-        }
-      })
-    } else if(main.data.activeList[0] && main.data.activeList[0].type != 'praise'){
-      wx.request({
-        url: app.globalData.url + '/activity/listActivityUser',
-        method: 'get',
-        header: {
-          "Content-Type": "application/x-www-form-urlencoded"
-        },
-        data: {
-          activityId: main.data.activeList[0].id,
-         
-        },
-        success: function (res) {
+        success: function(res) {
           console.log("查找成功：");
           console.log(res);
           if (res.data.data) {
@@ -472,7 +501,47 @@ Page({
           })
 
         },
-        fail: function (res) {
+        fail: function(res) {
+          console.log("查找失败：");
+          console.log(res);
+          wx.hideLoading();
+        }
+      })
+    } else if (main.data.activeList[0] && main.data.activeList[0].type != 'praise') {
+      wx.request({
+        url: app.globalData.url + '/activity/listActivityUser',
+        method: 'get',
+        header: {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        data: {
+          activityId: main.data.activeList[0].id,
+
+        },
+        success: function(res) {
+          console.log("查找成功：");
+          console.log(res);
+          if (res.data.data) {
+            for (var i = 0; i < res.data.data.length; i++) {
+
+              res.data.data[i].select = 0;
+
+              if (res.data.data[i].fileId) {
+                res.data.data[i].img = app.globalData.url + '/wareHouse/getFile?fileId=' + res.data.data[i].fileId;
+              } else {
+                res.data.data[i].img = '../img/pic.png';
+              }
+
+            }
+          }
+
+          wx.hideLoading();
+          main.setData({
+            personList: res.data.data
+          })
+
+        },
+        fail: function(res) {
           console.log("查找失败：");
           console.log(res);
           wx.hideLoading();
@@ -480,16 +549,17 @@ Page({
       })
       wx.hideLoading();
     }
-   
-   
+
+
   },
-  getPerson: function () {
+  getPerson: function() {
     wx.showLoading({
       title: '请稍后',
+      mask: true
     })
     var main = this;
     console.log(main.data.user, main.data.type)
-    if (main.data.type =='praise'){
+    if (main.data.type == 'praise') {
       console.log(main.data.user)
       wx.request({
         url: app.globalData.url + '/activity/listActivityUser',
@@ -501,7 +571,7 @@ Page({
           userId: main.data.user,
           activityId: main.data.activeId
         },
-        success: function (res) {
+        success: function(res) {
           console.log("查找成功：");
           console.log(res);
           if (res.data.data) {
@@ -528,13 +598,13 @@ Page({
           console.log(main.data.personList)
           wx.hideLoading();
         },
-        fail: function (res) {
+        fail: function(res) {
           console.log("查找失败：");
           console.log(res);
           wx.hideLoading();
         }
       })
-    }else{
+    } else {
       wx.request({
         url: app.globalData.url + '/activity/listActivityUser',
         method: 'get',
@@ -544,7 +614,7 @@ Page({
         data: {
           activityId: main.data.activeId
         },
-        success: function (res) {
+        success: function(res) {
           console.log("查找成功：");
           console.log(res);
           if (res.data.data) {
@@ -571,19 +641,20 @@ Page({
           console.log(main.data.personList)
           wx.hideLoading();
         },
-        fail: function (res) {
+        fail: function(res) {
           console.log("查找失败：");
           console.log(res);
           wx.hideLoading();
         }
       })
     }
-    
+
   },
   // 获取轮播图
-  getPic: function () {
+  getPic: function() {
     wx.showLoading({
       title: '请稍后',
+      mask: true
     })
     var main = this;
     wx.request({
@@ -595,25 +666,25 @@ Page({
       data: {
         activityId: main.data.activeId
       },
-      success: function (res) {
+      success: function(res) {
         console.log("查找成功：");
         console.log(res);
-        if (res.data.data.length>0){
+        if (res.data.data.length > 0) {
           for (var i = 0; i < res.data.data.length; i++) {
             res.data.data[i].img = app.globalData.url + '/wareHouse/getFile?fileId=' + res.data.data[i].id;
           }
-         
+
           main.setData({
             picdata: res.data.data
           })
-        }else{
-         
+        } else {
+
         }
         wx.hideLoading();
-       
+
 
       },
-      fail: function (res) {
+      fail: function(res) {
         console.log("查找失败：");
         console.log(res);
         wx.hideLoading();
@@ -627,56 +698,56 @@ Page({
     })
   },
 
-  onShow:function(){
-  
-  
+  onShow: function() {
+
+
     this.getPic();
     this.list();
-   
-  },
-  everyday: function (e) {
-    var main = this;
- if (e.currentTarget.dataset.id == 34) {
-    wx.request({
-      url: app.globalData.url + '/wareHouse/findIsPraise',
-      method: 'get',
-      header: {
-        "Content-Type": "application/x-www-form-urlencoded"
-      },
-      data: {
-        userId: main.data.user.userId
-      },
-      success: function (res) {
-        console.log(res);
-        if(res.data.data){
 
-        }else{
-          wx.navigateTo({
-            url: '../dailyPraise/dailyPraise',
-          })
+  },
+  everyday: function(e) {
+    var main = this;
+    if (e.currentTarget.dataset.id == 34) {
+      wx.request({
+        url: app.globalData.url + '/wareHouse/findIsPraise',
+        method: 'get',
+        header: {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        data: {
+          userId: main.data.user.userId
+        },
+        success: function(res) {
+          console.log(res);
+          if (res.data.data) {
+
+          } else {
+            wx.navigateTo({
+              url: '../dailyPraise/dailyPraise',
+            })
+          }
+
+        },
+        fail: function(res) {
+          console.log("查找失败：");
+          console.log(res);
+          // wx.hideLoading();
         }
-        
-      },
-      fail: function (res) {
-        console.log("查找失败：");
-        console.log(res);
-        // wx.hideLoading();
-      }
-    })
-   
+      })
+
       console.log(1);
-     
+
     }
   },
 
-  getUserInfo: function (e) {
+  getUserInfo: function(e) {
 
-    
+
     let main = this;
     // console.log(e)
     // 获取用户信息
     main.setData({
-      show:false
+      show: false
     })
     console.log(main.data.show)
     wx.getSetting({
@@ -704,7 +775,11 @@ Page({
                     data: res.userInfo
                   })
                   wx.login({
-                    success: function (res) {
+                    success: function(res) {
+                      wx.showLoading({
+                        title: '正在登录',
+                        mask: true
+                      })
                       // console.log(main.globalData.urlLogin + '/user/wxLogin');
                       // console.log(main.globalData.encryptedData, main.globalData.iv, main.globalData.rawData, main.globalData.signature)
                       wx.request({
@@ -721,19 +796,38 @@ Page({
                           signature: main.data.global.signature
                         },
 
-                        success: function (res) {
+                        success: function(res) {
                           console.log("登录", res);
                           if (res.data.status == 200) {
                             wx.setStorage({
                               key: 'user',
                               data: res.data.data
                             })
+                            wx.hideLoading();
+                            wx.showToast({
+                              title: '登录成功',
+                              icon: '',
+                              mask: true,
+                            })
+                            main.setData({
+                              loginflag:true,
+                              show:false
+                            })
 
+                          }else{
+                            wx.hideLoading();
+                            main.setData({
+                              loginflag: false,
+                              show: true
+                            })
                           }
-
                         },
-                        fail: function (res) {
-                          console.log("查找失败：");
+                        fail: function(res) {
+                          wx.hideLoading();
+                          main.setData({
+                            loginflag: false,
+                            show:true
+                          })
 
                         }
                       })
@@ -745,8 +839,8 @@ Page({
                 }
               })
 
-              
-             
+
+
 
             },
             fail(res) {
@@ -760,38 +854,34 @@ Page({
       }
     })
   },
-  onLoad(){
+  onLoad() {
     var that = this;
-    wx.getStorage({
-      key: 'user',
-      success: function (res) {
-        console.log('缓存', res)
-        that.setData({
-          user: res.data.userId,
+    that.getPic();
+    that.list();
+    // wx.getStorage({
+    //   key: 'user',
+    //   success: function(res) {
+    //     console.log('缓存', res)
+    //     that.setData({
+    //       user: res.data.userId,
 
-        })
-        that.pan();
-        console.log(19009)
-      },
-      fail:function(){
-     
-          console.log(1111111111)
-          that.setData({
-            show: true
-          })
+    //     })
         
-      }
+        
+    //     that.pan();
+    //     console.log(19009)
+    //   },
+    //   fail: function() {
 
-    })
-    
-  
+    //     console.log(1111111111)
+    //     that.setData({
+    //       show: true
+    //     })
+
+    //   }
+
+    // })
+
+
   }
-  // getUserInfo: function(e) {
-  //   console.log(e)
-  //   app.globalData.userInfo = e.detail.userInfo
-  //   // this.setData({
-  //   //   userInfo: e.detail.userInfo,
-  //   //   hasUserInfo: true
-  //   // })
-  // }
 })
