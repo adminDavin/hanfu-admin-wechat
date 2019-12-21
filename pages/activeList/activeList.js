@@ -8,7 +8,8 @@ Page({
   data: {
     activeList: [],
     user:'',
-    show:false
+    show:false,
+    pingweishow:false
   },
   
   goVote: function(e) {
@@ -79,7 +80,11 @@ Page({
         wx.hideLoading();
         if(res.data.data==''){
           main.setData({
-            show: false
+            pingweishow: false
+          })
+        }else{
+          main.setData({
+            pingweishow: true
           })
         }
         main.setData({

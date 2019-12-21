@@ -33,7 +33,8 @@ Page({
      */
     scrollLeft: 0,
     listdata: [],
-    activityStatus:0
+    activityStatus:0,
+    isDeleted:''
   },
 
   /**
@@ -48,12 +49,16 @@ Page({
     console.log(e.currentTarget.dataset.current)
     console.log(e.currentTarget.dataset.type)
     console.log(e.currentTarget.dataset.activitystatus)
+    console.log(e.currentTarget.dataset.isdeleted)
     this.setData({
       currentTab: e.currentTarget.dataset.current,
       type:e.currentTarget.dataset.type,
-      activityStatus: e.currentTarget.dataset.activitystatus
+      activityStatus: e.currentTarget.dataset.activitystatus,
+      isDeleted: e.currentTarget.dataset.isdeleted
     })
+    console.log(this.data.isDeleted)
     var main = this;
+    
     wx.showLoading({
       title: '请稍后',
     })
@@ -73,7 +78,11 @@ Page({
         console.log("查找成功");
         console.log(res);
         for (var i = 0; i < res.data.data.length; i++) {
-      
+          // if(res.data.data[i].isDeleted==0){
+          //   isDeleted:0
+          // }else{
+          //   isDeleted: 1
+          // }
           if (res.data.data[i].fileId) {
             res.data.data[i].img = app.globalData.url + '/wareHouse/getFile?fileId=' + res.data.data[i].fileId;
           } else {
@@ -112,12 +121,20 @@ Page({
         console.log(res);
         wx.hideLoading();
         if (res.data.data.length>0){
+          if (res.data.data[0].isDeleted == 0) {
+            main.setData({
+              isDeleted: 0
+            })
+          } else {
+            main.setData({
+              isDeleted: 1
+            })
+          }
           main.setData({
             firstid: res.data.data[0].id,
             type: res.data.data[0].type,
             activityStatus: res.data.data[0].activityStatus
           }) 
-          console.log(main.data.type);
         }
         
        main.list1();
@@ -148,9 +165,7 @@ Page({
       },
       data: {
         activityId: main.data.firstid
-
       },
-
       success: function (res) {
         console.log("查找成功");
         console.log(res);

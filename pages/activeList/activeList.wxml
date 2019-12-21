@@ -13,7 +13,7 @@
       <view style="color:#DC0000;margin-right:15rpx;color:#7A7A7A;margin-left:10rpx">活动尚未开启</view>
     </view>
   </view>
-    <view style="display:flex;justify-content:center;color:#fff;margin-top:50%;" wx:if="{{show}}">
+    <view style="display:flex;justify-content:center;color:#fff;margin-top:50%;" wx:if="{{show||pingweishow}}">
     您还不是活动评委呦~
   </view>
 </view>

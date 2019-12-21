@@ -1,6 +1,6 @@
 <view>
-  <view style="display:flex;align-items:center;margin-top:55rpx;" bindtap="chooseImage">
-    <image src="{{imageList?imageList:avatar}}" style="width:150rpx;height:150rpx;margin:0 auto;border-radius:50%;" ></image>
+  <view style="display:flex;align-items:center;margin-top:55rpx;" >
+    <image src="{{imageList?imageList:avatar}}" style="width:150rpx;height:150rpx;margin:0 auto;border-radius:50%;" bindtap="chooseImage"></image>
   </view>
   <view style="color:#fff;font-size:30rpx;text-align:center;margin-top:27rpx;" wx:if="{{show}}">点击修改头像</view>
   <view style="color:#F5E2AB;text-align:center;font-size:35rpx;margin-top:60rpx;font-family:PingFang SC;font-family:PingFang SC;">真实姓名</view>
