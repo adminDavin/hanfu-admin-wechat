@@ -2,7 +2,7 @@
   <view class='header' style="position:fixed;top:0;">
     <scroll-view class='scroll_w' scroll-x scroll-left="{{scrollLeft}}">
       <block wx:for="{{activeList}}" wx:key="{{this}}">
-        <view class="item {{currentTab==index ? 'on' : ''}}" bindtap='topNavChange' data-id="{{item.id}}" data-current="{{index}}" data-type="{{item.type}}" data-activityStatus="{{item.activityStatus}}">{{item.activityName}}</view>
+        <view class="item {{currentTab==index ? 'on' : ''}}" bindtap='topNavChange' data-id="{{item.id}}" data-current="{{index}}" data-type="{{item.type}}" data-activityStatus="{{item.activityStatus}}" data-isDeleted="{{item.isDeleted}}">{{item.activityName}}</view>
       </block>
     </scroll-view>
   </view>
@@ -11,7 +11,7 @@
     <view class="tou" style="margin-left:15rpx;margin-top:4rpx;font-size:34rpx;">排行榜</view>
   </view>
   <view style="padding:0 25rpx;">
-    <view wx:for="{{listdata}}" wx:for-index="idx" wx:for-item="item" style="margin-bottom:30rpx;" wx:key="idx">
+    <view wx:for="{{listdata}}" wx:for-index="idx" wx:for-item="item" style="margin-bottom:30rpx;" wx:key="idx" wx:if="{{isDeleted==1}}">
 
 
       <view wx:if="{{idx==0}}" style="border-radius:80px;display:flex;align-items:center;background:#222;padding:5px 0;padding-left:30rpx;">
@@ -108,7 +108,9 @@
         </view>
         <image src="../img/jiang.png" wx:if="{{idx<activityStatus}}" style="width:45rpx;height:55rpx;margin-left:30rpx;"></image>
       </view>
-
+    </view>
+    <view style="display:flex;justify-content:center;color:#fff;margin-top:50%;font-size:30rpx" wx:if="{{isDeleted==0}}">
+      该活动排行榜还未开启呦~
     </view>
   </view>
 

@@ -22,7 +22,6 @@ Page({
     num: ''
   },
 
-
   bindPickerChange: function (e) {
     var that = this;
     that.setData({
@@ -123,11 +122,13 @@ Page({
       success: function (res) {
 
         console.log(res);
+        let imgUrl = app.globalData.url + '/wareHouse/getFile?fileId=' + res.data.data.fileId;
         main.setData({
           name: res.data.data.username,
           date: res.data.data.date,
           phone: res.data.data.phone,
-          index:res.data.data.departmentName
+          index:res.data.data.departmentName,
+          imageList:imgUrl
         })
 
       }
@@ -147,7 +148,6 @@ Page({
       sizeType: ['original', 'compressed'],  //可选择原图或压缩后的图片
       sourceType: ['album', 'camera'], //可选择性开放访问相册、相机
       success: function (res) {
-        console.log(res)
         console.log('ssssssssssssssssssssssssss')
         //缓存下 
         wx.showToast({
@@ -159,17 +159,21 @@ Page({
             console.log('成功加载动画');
           }
         })
+
+        console.log(res)
         that.setData({
           imageList: res.tempFilePaths
         })
         //获取第一张图片地址 
-        const filep = res.tempFilePaths[0]
+        var filep = res.tempFilePaths[0]
         //向服务器端上传图片 
+        console.log(filep)
         // getApp().data.servsers,这是在app.js文件里定义的后端服务器地址 
         wx.uploadFile({
-          url: app.globalData.urlLogin + '/upload_avatar',
+          url: app.globalData.url + '/wareHouse/updateUserAvatar',
           filePath: filep,
-          name: 'file',
+          name: 'fileInfo',
+          formData:{userId:that.data.userid},
           success: function (res) {
             console.log(res)
             console.log(res.data)
@@ -277,8 +281,8 @@ Page({
             duration: 2000
           })
           setTimeout(function () {
-            wx.navigateTo({
-              url: '../information/information?avatatafter='+res.data.data
+            wx.switchTab({
+              url: '../person/person'
             })
           }, 1000)
 

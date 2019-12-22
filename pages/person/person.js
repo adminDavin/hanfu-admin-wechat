@@ -6,6 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    dlflag:true,
     global: {},
     userInfo:{},
     userId:'',
@@ -114,8 +115,14 @@ loginPerson:function(){
         let uid = res.data.userId
         that.setData({
           user: res.data.userId,
+          dlflag:false
         })
         that.getinfor()
+      },
+      fail:function(res){
+        that.setData({
+          dlflag: true
+        })
       }
     })
   },
@@ -175,12 +182,14 @@ loginPerson:function(){
         let uid = res.data.userId
         that.setData({
           user: res.data.userId,
+          dlflag:false
         })
         that.getinfor()
       },
       fail: function () {
         that.setData({
-          userInfo: {}
+          userInfo: {},
+          dlflag:true
         })
       }
     })
@@ -286,7 +295,8 @@ loginPerson:function(){
                             })
                             main.setData({
                               loginflag: true,
-                              show: false
+                              show: false,
+                              dlflag:false
                             })
                           } else {
                             wx.hideLoading();
