@@ -1,12 +1,23 @@
 {
   "pages": [
-    "pages/seckill/seckill",
     "pages/mine/mine",
-    "pages/shopping/shopping",
-    "pages/find/find",
-    "pages/classify/classify",
-    "pages/register/register",
+    "pages/hexiao/hexiaouser/hexiaouser",
     "pages/impower/impower",
+    "pages/orderprocessing/orderprocessing",
+    "pages/hexiao/hexiaosucc/hexiaosucc",
+    "pages/hexiao/hexiao",
+    "pages/mydingdan/mydingdan",
+    "pages/address/editaddress/editaddress",
+    "pages/address/address",
+    "pages/order/order",
+    "pages/shopping/shopping",
+    "pages/classify/particulars/particulars",
+    "pages/classify/product/product",
+    "pages/classify/classify",
+    "pages/seckill/seckill",
+    "pages/seckill/seek/seek",
+    "pages/find/find",
+    "pages/register/register",
     "pages/logs/logs"
   ],
   "window": {

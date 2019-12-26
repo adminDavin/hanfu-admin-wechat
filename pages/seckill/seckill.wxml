@@ -7,17 +7,17 @@
             </view>
             <view class="header-fl">
                 <view class="header-sao header-margin">
-                    <view class="sao-tu"></view>
+                    <image src="../images/tabs/扫一扫.png"  class="sao-tu" />
                     <view class="sao">扫一扫</view>
                 </view>
                 <view class="header-sao">
-                    <view class="sao-tu"></view>
+                    <image src="../images/tabs/xiaoxis.png"  class="sao-tu" />
                     <view class="sao">客服</view>
                 </view>
             </view>
         </view>
         <view class="sou">
-            <view class="sou-tu"></view>
+            <image src="../images/tabs/sousuo.png"  class="sao-sou" />
             <input type="text" class="input-sou" />
         </view>
     </view>

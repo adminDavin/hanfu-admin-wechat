@@ -1,4 +1,4 @@
-<view class="mask">
+<view class="mask" wx:if="{show}}">
   <view class="mask-dl">
     <text class="mask-tible">您还未登录</text>
     <text class="mask-tibles">请先登录再进行操作</text>
@@ -6,8 +6,8 @@
       <view class="header">头像</view>
     </view>
     <view class="mask-buttom">
-      <view class="buttom">暂不登录</view>
-      <view class="buttom-two" bind:tap="onTop">立即登录</view>
+      <view class="buttom" bindtap="nologin">暂不登录</view>
+      <button class="buttom-two" open-type="getUserInfo" bindgetuserinfo="getUserInfo" style="height:62rpx;width:183rpx;">立即登录</button>
     </view>
   </view>
 </view>

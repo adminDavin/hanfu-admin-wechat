@@ -1,0 +1,14 @@
+<view class="address">
+  <view class="address-card">
+    <view class="address-card-top">
+      <view style="min-width:146rpx;" class="top-ziti">木木</view>
+      <text class="top-ziti" style="margin-right:20rpx">123456789</text>
+      <view class="moren">默认</view>
+    </view>
+    <view class="address-card-bottom">
+      <view class="bot-ziti">天津西青区全境 华苑产业园区工华道1号 智慧山南塔308</view>
+      <image src="../images/cart/xiugai.png" style="width:24rpx;height:24rpx" bindtap="editadd"></image>
+    </view>
+  </view>
+  <view class="footer">+新建收货地址</view>
+</view>

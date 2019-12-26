@@ -34,6 +34,9 @@ App({
     })
   },
   globalData: {
-    userInfo: null
+    userInfo: null,
+    urlLogin: 'http://192.168.1.104:8082',
+    url: 'http://192.168.1.104:9097',
+    urlCart: 'http://192.168.1.104:9098',
   }
 })

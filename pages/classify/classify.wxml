@@ -1,2 +1,110 @@
-<!--pages/classify/classify.wxml-->
-<text>pages/classify/classify.wxml</text>
+<view class="classify">
+    <view class="classify-header-box">
+        <image src="../images/tabs/saoma.png" class="classify-tus" />
+        <view class="classify-header">
+            <image class="classify-tu" src="../images/tabs/sousuo.png" />
+            <input type="text" class="classify-input" placeholder="显示器2K" />
+        </view>
+        <image src="../images/tabs/xiaoxi.png" class="classify-tus" />
+    </view>
+    <!-- banner区 -->
+    <view class="classify-banner">
+        <!-- 左 -->
+        <view class="banner-table">
+            <view class="banner-box">
+                <view class="banner-left"></view>
+                <text class="table-text">精选推荐</text>
+            </view>
+            <view class="banner-box">
+                <view></view>
+                <text class="table-text">女装</text>
+            </view>
+            <view class="banner-box">
+                <view></view>
+                <text class="table-text">美妆护肤</text>
+            </view>
+            <view class="banner-box">
+                <view></view>
+                <text class="table-text">男鞋</text>
+            </view>
+            <view class="banner-box">
+                <view></view>
+                <text class="table-text">女鞋</text>
+            </view>
+            <view class="banner-box">
+                <view></view>
+                <text class="table-text">女装</text>
+            </view>
+            <view class="banner-box">
+                <view></view>
+                <text class="table-text">个护清洁</text>
+            </view>
+            <view class="banner-box">
+                <view></view>
+                <text class="table-text">女装</text>
+            </view>
+            <view class="banner-box">
+                <view></view>
+                <text class="table-text">女装</text>
+            </view>
+        </view>
+        <!-- 右 -->
+        <view class="banner-text">
+            <image src="../images/handpick/1.png" class="text-image" />
+            <view class="text-table">
+                <view class="text-classify">常用分类</view>
+                <view class="shpping-big">
+                    <view class="text-shpping">
+                        <image src="../images/handpick/笔记本.png" class="shpping-box" />
+                        <text class="shpping-title">笔记本</text>
+                    </view>
+                    <view class="text-shpping">
+                        <image src="../images/handpick/图层 1 (1).png" class="shpping-box" />
+                        <text class="shpping-title">手机</text>
+                    </view>
+                    <view class="text-shpping">
+                        <image src="../images/handpick/平板.png" class="shpping-box" />
+                        <text class="shpping-title">平板电脑</text>
+                    </view>
+                    <view class="text-shpping">
+                        <image src="../images/handpick/笔记本.png" class="shpping-box" />
+                        <text class="shpping-title">笔记本</text>
+                    </view>
+                    <view class="text-shpping">
+                        <image src="../images/handpick/图层 1 (1).png" class="shpping-box" />
+                        <text class="shpping-title">手机</text>
+                    </view>
+                    <view class="text-shpping">
+                        <image src="../images/handpick/平板.png" class="shpping-box" />
+                        <text class="shpping-title">平板电脑</text>
+                    </view>
+                </view>
+            </view>
+            <view class="text-table">
+                <view class="text-classify">热门分类</view>
+                <view class="shpping-big">
+                    <view class="text-shpping">
+                        <image src="../images/handpick/笔记本.png" class="shpping-box" />
+                        <text class="shpping-title">笔记本</text>
+                    </view>
+                    <view class="text-shpping">
+                        <image src="../images/handpick/图层 1 (1).png" class="shpping-box" />
+                        <text class="shpping-title">手机</text>
+                    </view>
+                    <view class="text-shpping">
+                        <image src="../images/handpick/平板.png" class="shpping-box" />
+                        <text class="shpping-title">平板电脑</text>
+                    </view>
+                    <view class="text-shpping">
+                        <image src="../images/handpick/笔记本.png" class="shpping-box" />
+                        <text class="shpping-title">笔记本</text>
+                    </view>
+                    <view class="text-shpping">
+                        <image src="../images/handpick/图层 1 (1).png" class="shpping-box" />
+                        <text class="shpping-title">手机</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
