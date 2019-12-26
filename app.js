@@ -34,6 +34,7 @@ App({
     })
   },
   globalData: {
-    userInfo: null
+    userInfo: null,
+    urlseckill: 'http://192.168.1.175:9911',
   }
 })
