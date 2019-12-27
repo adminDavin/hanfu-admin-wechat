@@ -116,6 +116,7 @@ swiper {
 }
 
 .collect-one {
+    height: 75rpx;
     display: flex;
     flex-direction: column;
     align-items: center;

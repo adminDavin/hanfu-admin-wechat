@@ -303,11 +303,11 @@
         <image src="../../images/tabs/guanbi.png" class="modalDlg-over" bindtap="close_mask" />
         <text class="modalDlg-text">正在开团</text>
         <view class="modalDlg-box">
-            <view class="open-client">
+            <view class="open-client" wx:for="{{number}}" wx:key="index">
                 <view class="open-client-box">
                     <image src="../../images/tabs/t (1).png" class="client-head" />
                     <view class="client-flex">
-                        <text class="client-title title-margin">清晨的风</text>
+                        <text class="client-title title-margin">{{item.name}}</text>
                         <text class="client-second">2019.12.09 19:00</text>
                     </view>
                 </view>
@@ -315,45 +315,7 @@
                     <view class="client-time time-heights">
                         <view class="photos">
                             <text class="client-photo">还差</text>
-                            <text class="client-photo photo-color">1人</text>
-                            <text class="client-photo">拼成</text>
-                        </view>
-                    </view>
-                    <view class="client-button">去拼单</view>
-                </view>
-            </view>
-            <view class="open-client">
-                <view class="open-client-box">
-                    <image src="../../images/tabs/t (1).png" class="client-head" />
-                    <view class="client-flex">
-                        <text class="client-title title-margin">清晨的风</text>
-                        <text class="client-second">2019.12.09 19:00</text>
-                    </view>
-                </view>
-                <view class="client-roll">
-                    <view class="client-time time-heights">
-                        <view class="photos">
-                            <text class="client-photo">还差</text>
-                            <text class="client-photo photo-color">1人</text>
-                            <text class="client-photo">拼成</text>
-                        </view>
-                    </view>
-                    <view class="client-button">去拼单</view>
-                </view>
-            </view>
-            <view class="open-client">
-                <view class="open-client-box">
-                    <image src="../../images/tabs/t (1).png" class="client-head" />
-                    <view class="client-flex">
-                        <text class="client-title title-margin">清晨的风</text>
-                        <text class="client-second">2019.12.09 19:00</text>
-                    </view>
-                </view>
-                <view class="client-roll">
-                    <view class="client-time time-heights">
-                        <view class="photos">
-                            <text class="client-photo">还差</text>
-                            <text class="client-photo photo-color">1人</text>
+                            <text class="client-photo photo-color">{{item.number}}人</text>
                             <text class="client-photo">拼成</text>
                         </view>
                     </view>

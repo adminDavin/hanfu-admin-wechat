@@ -7,7 +7,8 @@ Page({
     hideModal: true, //模态框的状态  true-隐藏  false-显示
     animationData: {}, //
     // hideModals:false,
-    dataid:''
+    dataid:'',
+    number:[]
   },
   showModal: function () {
     var that = this;
@@ -52,6 +53,7 @@ Page({
       animationData: this.animation.export(),
     })
   },
+  // 更多拼团
   more: function (e) {
     console.log(e)
     var that = this;
@@ -62,10 +64,11 @@ Page({
         console.log(res)
         that.setData({
           showModal: true,
+          number:res.data
         })
       },
       data: {
-        
+        id: that.data.dataid
       }
     })
   },
@@ -79,8 +82,9 @@ Page({
    */
   onLoad: function (options) {
     let id = options.id;
+    var that =this;
     console.log (id);
-    this.setData({
+    that.setData({
       dataid:id
     })
   },

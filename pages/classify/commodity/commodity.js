@@ -1,7 +1,7 @@
-// pages/classify/commodity/commodity.js
+const app = getApp()
 Page({
-   // 获取滚动条当前位置
-   onPageScroll: function (e) {
+  // 获取滚动条当前位置
+  onPageScroll: function(e) {
     console.log(e)
     if (e.scrollTop > 100) {
       this.setData({
@@ -13,8 +13,8 @@ Page({
       });
     }
   },
-    // 回到顶部
-  goTop: function (e) {  // 一键回到顶部
+  // 回到顶部
+  goTop: function(e) { // 一键回到顶部
     if (wx.pageScrollTo) {
       wx.pageScrollTo({
         scrollTop: 0
@@ -25,12 +25,12 @@ Page({
         content: '当前微信版本过低，无法使用该功能，请升级到最新微信版本后重试。'
       })
     }
-  },  
+  },
   // 筛选
-  onReady: function () {
+  onReady: function() {
     this.animation = wx.createAnimation()
   },
-  translate: function (event) {
+  translate: function(event) {
     console.log(event);
     this.setData({
       isRuleTrue: true
@@ -41,7 +41,7 @@ Page({
     // })
   },
 
-  success: function () {
+  success: function() {
     this.setData({
       isRuleTrue: false
     })
@@ -49,64 +49,98 @@ Page({
     // this.setData({
     //   animation: this.animation.export()
     // })
-  },  
-  data: {
-
   },
-
+  data: {
+    arr:'',
+    dataId:{},
+    images:'',
+  },
+  // 获取商品列表
+  categoryId: function(e) {
+    var that = this;
+    wx.request({
+      url: app.globalData.urlparticulars + '/goods/categoryId',
+      method: 'Get',
+      success: function(res) {
+         console.log(res);
+        that.setData({
+          arr: res.data.data,
+        })
+        // for(var i=0;i<arr.length;i++) {
+        //     console.log(arr[i])
+        // }  
+      },
+    })
+  },
+  // 获取物品图片
+  picturesTu: function (e) {
+    var that = this;
+    wx.request({
+      url: app.globalData.urlparticulars + '/goods/pictures',
+      method: 'Get',
+      success: function (res) {
+        // console.log(res);
+        that.setData({
+        })
+        data: {
+        }
+      },
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-
+  onLoad: function(options) {
+    this.categoryId();
+    this.picturesTu();
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   }
 })

@@ -115,6 +115,7 @@ swiper {
 }
 
 .collect-one {
+    height: 75rpx;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -807,7 +808,7 @@ swiper {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-right: 25rpx;
+    margin-right: 55rpx;
 }
 
 .photos {
@@ -866,6 +867,7 @@ swiper {
     top: 150rpx;
     left: 20rpx;
     z-index: 9999;
+    overflow: auto;
 }
 
 .modalDlg-over {
@@ -888,6 +890,7 @@ swiper {
 }
 
 .modalDlg-box {
+    height: 285rpx;
     position: relative;
     top: 31rpx;
 }
@@ -914,13 +917,21 @@ swiper {
 }
 
 .open-text {
+    width: 710rpx;
+    height: 84rpx;
+    display: block;
+    text-align: center;
     font-size: 26rpx;
     font-family: PingFang SC;
     font-weight: 500;
     color: rgba(153, 153, 153, 1);
-    position: relative;
-    top: 55rpx;
-    left: 208rpx;
+    position: fixed;
+    top:46%;
+    line-height: 84rpx;
+    background-color: #fff;
+    border-bottom-left-radius: 10rpx;
+    border-bottom-right-radius: 10rpx;
+    
 }
 /* 参团小伙伴 */
 .partner {
@@ -960,29 +971,29 @@ swiper {
 .partner-p {
     position: absolute;
     top: 0;
-    left: 39rpx;
+    left: 42rpx;
 }
 
 .partner-p1 {
     position: absolute;
     top: 0;
-    left: 78rpx;
+    left: 81rpx;
 }
 
 .partner-p2 {
     position: absolute;
     top: 0;
-    left: 117rpx;
+    left: 120rpx;
 }
 
 .partner-p3 {
     position: absolute;
     top: 0;
-    left: 156rpx;
+    left: 159rpx;
 }
 
 .partner-p4 {
     position: absolute;
     top: 0;
-    left: 195rpx;
+    left: 198rpx;
 }

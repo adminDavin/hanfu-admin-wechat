@@ -35,6 +35,7 @@
             </view>
             <view class="banner-box-two">
                 <image src="../../images/tabs/liebiao2.png" class="image-saoma" />
+                <image src="../../images/tabs/liebiaomoshi.png" class="image-saoma" style="display:none"/>
                 <view class="table">
                     <view class="table-sum">
                         <text class="sum-text sales" bindtap="translate">筛选</text>
@@ -45,18 +46,18 @@
             </view>
         </view>
     </view>
-    <!-- 商品区域 -->
-    <view class="shpping-content">
+    <!-- 商品区域一个 -->
+    <view class="shpping-content" wx:for="{{arr}}" wx:key="index" id='{{item.id}}'>
         <view class="content">
             <!-- 图片 -->
             <image src="../../images/handpick/shangping.png" class="content-images" />
             <!-- 详情 -->
-            <text class="content-text">纯色床上用品316TC家纺床品...</text>
+            <text class="content-text">{{item.goodName}}</text>
             <!-- 价格 -->
             <view class="content-discounts">
                 <view class="discounts-money">
                     <text class="money-title">¥</text>
-                    <text class="money-number">800.00</text>
+                    <text class="money-number">{{item.sellPrice}}</text>
                     <image src="../../images/tabs/vip.png" class="money-vip" />
                 </view>
                 <view class="news">
@@ -70,95 +71,31 @@
                 </view>
             </view>
         </view>
-        <view class="content">
+    </view>
+<!-- 商品区域两个 -->
+    <view class="banner-centent" wx:for="{{arr}}" wx:key="index">
+        <!-- 商品 -->
+        <view class="centent">
             <!-- 图片 -->
-            <image src="../../images/handpick/shangping.png" class="content-images" />
+            <image src="../../images/handpick/shangping.png" class="centent-image" />
             <!-- 详情 -->
-            <text class="content-text">纯色床上用品316TC家纺床品...</text>
-            <!-- 价格 -->
-            <view class="content-discounts">
-                <view class="discounts-money">
-                    <text class="money-title">¥</text>
-                    <text class="money-number">800.00</text>
-                    <image src="../../images/tabs/vip.png" class="money-vip" />
-                </view>
-                <view class="news">
-                    <text class="news-shpping news-green">新品</text>
-                    <text class="news-shpping">包邮</text>
-                    <text class="news-shpping">领券满1000减300</text>
-                </view>
-                <view class="observer">
-                    <text class="observe-one">9000+条评论</text>
-                    <text class="observe-two">99%好评</text>
-                </view>
-            </view>
-        </view>
-        <view class="content">
-            <!-- 图片 -->
-            <image src="../../images/handpick/shangping.png" class="content-images" />
-            <!-- 详情 -->
-            <text class="content-text">纯色床上用品316TC家纺床品...</text>
-            <!-- 价格 -->
-            <view class="content-discounts">
-                <view class="discounts-money">
-                    <text class="money-title">¥</text>
-                    <text class="money-number">800.00</text>
-                    <image src="../../images/tabs/vip.png" class="money-vip" />
-                </view>
-                <view class="news">
-                    <text class="news-shpping news-green">新品</text>
-                    <text class="news-shpping">包邮</text>
-                    <text class="news-shpping">领券满1000减300</text>
-                </view>
-                <view class="observer">
-                    <text class="observe-one">9000+条评论</text>
-                    <text class="observe-two">99%好评</text>
-                </view>
-            </view>
-        </view>
-        <view class="content">
-            <!-- 图片 -->
-            <image src="../../images/handpick/shangping.png" class="content-images" />
-            <!-- 详情 -->
-            <text class="content-text">纯色床上用品316TC家纺床品...</text>
-            <!-- 价格 -->
-            <view class="content-discounts">
-                <view class="discounts-money">
-                    <text class="money-title">¥</text>
-                    <text class="money-number">800.00</text>
-                    <image src="../../images/tabs/vip.png" class="money-vip" />
-                </view>
-                <view class="news">
-                    <text class="news-shpping news-green">新品</text>
-                    <text class="news-shpping">包邮</text>
-                    <text class="news-shpping">领券满1000减300</text>
-                </view>
-                <view class="observer">
-                    <text class="observe-one">9000+条评论</text>
-                    <text class="observe-two">99%好评</text>
-                </view>
-            </view>
-        </view>
-        <view class="content">
-            <!-- 图片 -->
-            <image src="../../images/handpick/shangping.png" class="content-images" />
-            <!-- 详情 -->
-            <text class="content-text">纯色床上用品316TC家纺床品...</text>
-            <!-- 价格 -->
-            <view class="content-discounts">
-                <view class="discounts-money">
-                    <text class="money-title">¥</text>
-                    <text class="money-number">800.00</text>
-                    <image src="../../images/tabs/vip.png" class="money-vip" />
-                </view>
-                <view class="news">
-                    <text class="news-shpping news-green">新品</text>
-                    <text class="news-shpping">包邮</text>
-                    <text class="news-shpping">领券满1000减300</text>
-                </view>
-                <view class="observer">
-                    <text class="observe-one">9000+条评论</text>
-                    <text class="observe-two">99%好评</text>
+            <view class="centent-particulars">
+                <text class="particulars-text">{{item.goodName}}</text>
+                <view class="particulars-money">
+                    <view class="money-box">
+                        <text class="money-title">¥</text>
+                        <text class="money-number">{{item.sellPrice}}</text>
+                        <image src="../../images/tabs/vip.png" class="money-vip" />
+                    </view>
+                    <view class="money-table">
+                        <text class="money-discounts">新品</text>
+                        <text class="money-discounts">包邮</text>
+                        <text class="money-discounts">每满200减30</text>
+                    </view>
+                    <view class="comment">
+                        <text class="comment-number">23万+条评论</text>
+                        <text>99%好评</text>
+                    </view>
                 </view>
             </view>
         </view>
