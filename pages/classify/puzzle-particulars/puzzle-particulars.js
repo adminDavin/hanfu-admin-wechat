@@ -7,7 +7,7 @@ Page({
     hideModal: true, //模态框的状态  true-隐藏  false-显示
     animationData: {}, //
     // hideModals:false,
-    dataid:[]
+    dataid:''
   },
   showModal: function () {
     var that = this;
@@ -65,7 +65,7 @@ Page({
         })
       },
       data: {
-        dataid: e
+        
       }
     })
   },
