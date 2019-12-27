@@ -1,7 +1,0 @@
-<view class="wuquan">
-  <view class="hexiaoma">
-    <image src="../../images/cart/erweimapic.png" style="width:360rpx;height:360rpx;margin:66rpx 100rpx 34rpx"></image>
-    <view class="tip">请用此核销码到指定地点指定店铺核销提货</view>
-  </view>
-  <image src="../../images/cart/guanbi.png" style="width:61rpx;height:61rpx;margin:15rpx 345rpx"></image>
-</view>

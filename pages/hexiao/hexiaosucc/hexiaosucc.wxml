@@ -1,9 +1,9 @@
-<view class="wuquan" hidden="true">
-  <image src="../../images/cart/hexiaosucc.png" style="width:282rpx;height:440rpx;margin:280rpx 234rpx 20rpx"></image>
+<view class="wuquan" >
+  <image src="../../images/cart/hexiaosucc.png" style="width:450rpx;height:400rpx;margin:280rpx 152rpx 20rpx"></image>
   <view style="font-size:50rpx;font-weight:500;color:rgba(255,255,255,1);text-align:center">恭喜您核销成功</view>
 </view>
 
-<view class="wuquan" hidden="true">
+<view class="wuquan" wx:if="{{hexiaostatus==1||hexiaostatus==2||hexiaostatus==3||hexiaostatus==4}}">
   <image src="../../images/cart/hexiaoren.png" style="width:282rpx;height:440rpx;margin:280rpx 234rpx 0"></image>
-  <view style="font-size:50rpx;font-weight:500;color:rgba(255,255,255,1);text-align:center">您没有核销权限</view>
+  <view style="font-size:50rpx;font-weight:500;color:rgba(255,255,255,1);text-align:center">{{hexiaostatus==1||hexiaostatus==3?'您没有核销权限':'该商品已被核销'}}</view>
 </view>

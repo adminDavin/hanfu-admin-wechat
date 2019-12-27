@@ -18,10 +18,6 @@ phone:function(e){
   that.setData({
     phone:e.detail.value
   })
-  wx.setStorage({
-    key: 'phone',
-    data: that.data.phone
-  })
 },
 
 huoQu:function(){
@@ -54,6 +50,10 @@ huoQu:function(){
         })
         console.log("验证码发送成功", res);
         if (res.data.status == 200) {
+          wx.setStorage({
+            key: 'phone',
+            data: that.data.phone
+          })
           that.setData({
             yanzhengma: res.data.data
           })

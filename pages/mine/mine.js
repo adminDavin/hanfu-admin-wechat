@@ -1,83 +1,218 @@
 // pages/mine/mine.js
-const app=getApp();
+const app = getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    username:'',
-    avatar:'',
-    phone:'',
+    username: '',
+    avatar: '',
+    phone: '',
     show: false,
-    xinxishow:true,
-    shibaishow:false,
+    xinxishow: true,
+    shibaishow: false,
+    hexiaostatus: '',
     global: {},
   },
-  gologin:function(){
-    var that=this;
+  gologin: function() {
+    var that = this;
     that.setData({
-      show:true
+      show: true
     })
   },
 
-  getScancode:function(){
-    var _this = this;
+  getScancode: function() {
+    var that = this;
+    wx.getStorage({
+      key: 'phone',
+      success: function (res) {
+        wx.scanCode({
+          success: (res) => {
+            console.log(res)
+            let qrl = JSON.parse(res.result)
+            console.log(qrl)
+            wx.request({
+              url: app.globalData.urlHexiao+'/test/jiema',
+              method: 'get',
+              header: {
+                "Content-Type": "application/x-www-form-urlencoded"
+              },
+              data: {
+                goodsId: qrl[0].goodsId,
+                orderId: qrl[0].orderId
+              },
+              success:function(res){
+                let qrl2 = JSON.parse(res.result);
+                console.log(qrl2);
+                that.setData({
+                  goodsId: qrl2[0].goodsId,
+                  orderId: qrl2[0].orderId
+                })
+                that.sendMsg();
+              }
+            })
+          }
+        })
+      },
+      fail: function (res) {
+        that.setData({
+          show:true
+        })
+        console.log(that.data.show)
+      }
+    })
     // 允许从相机和相册扫码
-    wx.scanCode({
-      success: (res) => {
-        console.log(res)
+  },
+
+  // 扫码之后发送请求携带userid
+  sendMsg: function() {
+    var that = this;
+    wx.getStorage({
+      key: 'user',
+      success: function(res) {
+        that.setData({
+          userId: res.data.userId,
+        })
+        that.sendUserId();
+      },
+      fail: function(res) {
+        main.setData({
+          show: true,
+          shibaishow: true
+        })
       }
     })
   },
 
-  goMyDingdan:function(){
-    var that=this;
+  sendUserId: function() {
+    var that = this;
+    wx.showLoading({
+      title: '请稍后',
+      mask: true
+    })
+    wx.request({
+      url: app.globalData.urlHexiao + '/cancel/testCancel',
+      method: 'get',
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      data: {
+        userId: that.data.userId,
+        goodsId: that.data.goodsId,
+        orderId: that.data.orderId
+      },
+
+      success: function(res) {
+        console.log("发送userId和商品信息成功", res);
+        wx.hideLoading();
+        if (res.data.data == '对不起你不是核销员无法核销商品') {
+          that.setData({
+            hexiaostatus: 1
+          })
+          wx.navigateTo({
+            url: '../hexiao/hexiaosucc/hexiaosucc?hexiaostatus=' + that.data.hexiaostatus,
+          })
+        } else if (res.data.data == '该商品不是自提商品') {
+          that.setData({
+            hexiaostatus: 2
+          })
+          wx.navigateTo({
+            url: '../hexiao/hexiaosucc/hexiaosucc?hexiaostatus=' + that.data.hexiaostatus,
+          })
+        } else if (res.data.data == '你不是该商品的核销员') {
+          that.setData({
+            hexiaostatus: 3
+          })
+          wx.navigateTo({
+            url: '../hexiao/hexiaosucc/hexiaosucc?hexiaostatus=' + that.data.hexiaostatus,
+          })
+        } else if (res.data.data == '该订单已被核销') {
+          that.setData({
+            hexiaostatus: 4
+          })
+          wx.navigateTo({
+            url: '../hexiao/hexiaosucc/hexiaosucc?hexiaostatus=' + that.data.hexiaostatus,
+          })
+        } else if (res.data.data == 0) {
+          that.setData({
+            hexiaostatus: 5
+          })
+          wx.navigateTo({
+            url: '../hexiao/hexiaosucc/hexiaosucc?hexiaostatus=' + that.data.hexiaostatus,
+          })
+        }
+      },
+      fail: function(res) {
+        wx.hideLoading();
+        main.setData({
+          show: true,
+          shibaishow: true
+        })
+      }
+    })
+  },
+
+  goMyDingdan: function() {
+    var that = this;
     wx.navigateTo({
-      url: '../mydingdan/mydingdan?userId'+that.data.userId,
+      url: '../mydingdan/mydingdan?userId' + that.data.userId,
     })
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-    var that=this;
+  onLoad: function(options) {
+    var that = this;
     wx.getStorage({
       key: 'phone',
       success: function(res) {
         that.setData({
-          phone:res.data,
-          xinxishow:false
+          phone: res.data,
+          xinxishow: false
+        })
+        wx.getStorage({
+          key: 'user',
+          success: function(res) {
+            that.setData({
+              userId: res.data.userId,
+            })
+          },
         })
         wx.getStorage({
           key: 'userInfo',
-          success: function (res) {
+          success: function(res) {
             that.setData({
               username: res.data.nickName,
               avatar: res.data.avatarUrl
             })
           },
         })
+        console.log(that.data.show)
       },
-      fail:function(res){
+      fail: function(res) {
         that.setData({
           xinxishow: true,
         })
+        console.log(that.data.show)
       }
     })
   },
 
-  nologin: function () {
+
+
+
+  nologin: function() {
     this.setData({
       show: false
     })
   },
-  getUserInfo: function (e) {
+  getUserInfo: function(e) {
     let main = this;
     wx.showLoading({
       title: '正在登录',
-      mask:true
+      mask: true
     })
     console.log(e)
     // 获取用户信息
@@ -90,74 +225,70 @@ Page({
         if (res.authSetting['scope.userInfo']) {
           console.log("已授权=====")
           // 已经授权，可以直接调用 getUserInfo 获取头像昵称
+
           wx.getUserInfo({
             success(res) {
-              wx.getUserInfo({
-                success(res) {
-                  console.log("获取用户信息成功", res)
-                  main.data.global.userInfo = res.userInfo;
-                  main.data.global.encryptedData = res.encryptedData;
-                  main.data.global.iv = res.iv;
-                  main.data.global.rawData = res.rawData;
-                  main.data.global.signature = res.signature;
-                  wx.setStorage({
-                    key: 'userInfo',
-                    data: res.userInfo
-                  })
-                  wx.login({
-                    success: function (res) {
-                      console.log(res);
-                      wx.request({
-                        url: app.globalData.urlLogin + '/user/wxLogin',
-                        method: 'get',
-                        header: {
-                          "Content-Type": "application/x-www-form-urlencoded"
-                        },
-                        data: {
-                          code: res.code,
-                          encryptedData: main.data.global.encryptedData,
-                          iv: main.data.global.iv,
-                          rawData: main.data.global.rawData,
-                          signature: main.data.global.signature
-                        },
+              console.log("获取用户信息成功", res)
+              main.data.global.userInfo = res.userInfo;
+              main.data.global.encryptedData = res.encryptedData;
+              main.data.global.iv = res.iv;
+              main.data.global.rawData = res.rawData;
+              main.data.global.signature = res.signature;
+              wx.setStorage({
+                key: 'userInfo',
+                data: res.userInfo
+              })
+              wx.login({
+                success: function(res) {
+                  console.log(res);
+                  wx.request({
+                    url: app.globalData.urlLogin + '/user/wxLogin',
+                    method: 'get',
+                    header: {
+                      "Content-Type": "application/x-www-form-urlencoded"
+                    },
+                    data: {
+                      code: res.code,
+                      encryptedData: main.data.global.encryptedData,
+                      iv: main.data.global.iv,
+                      rawData: main.data.global.rawData,
+                      signature: main.data.global.signature
+                    },
 
-                        success: function (res) {
-                          console.log("登录", res);
-                          if (res.data.status == 200) {
-                            wx.hideLoading();
-                            wx.setStorage({
-                              key: 'user',
-                              data: res.data.data,
-                              success:function(res){
-                                wx.navigateTo({
-                                  url: '../register/register?userId=' + main.data.userId,
-                                })
-                              }
+                    success: function(res) {
+                      console.log("登录", res);
+                      if (res.data.status == 200) {
+                        wx.hideLoading();
+                        wx.setStorage({
+                          key: 'user',
+                          data: res.data.data,
+                          success: function(res) {
+                            wx.navigateTo({
+                              url: '../register/register?userId=' + main.data.userId,
                             })
                           }
-                        },
-                        fail: function (res) {
-                          wx.hideLoading();
-                          main.setData({
-                            show:true,
-                            shibaishow:true
-                          })
-                        }
+                        })
+                      } else {
+                        wx.hideLoading();
+                        main.setData({
+                          show: true,
+                          shibaishow: true
+                        })
+                      }
+                    },
+                    fail: function(res) {
+                      wx.hideLoading();
+                      main.setData({
+                        show: true,
+                        shibaishow: true
                       })
                     }
                   })
-                },
-                fail(res) {
-
                 }
               })
-
-
-
-
             },
             fail(res) {
-              console.log("获取用户信息失败", res)
+
             }
           })
         } else {
@@ -171,25 +302,25 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
     var that = this;
     wx.getStorage({
       key: 'phone',
-      success: function (res) {
+      success: function(res) {
         that.setData({
           phone: res.data,
           xinxishow: false
         })
         wx.getStorage({
           key: 'userInfo',
-          success: function (res) {
+          success: function(res) {
             that.setData({
               username: res.data.nickName,
               avatar: res.data.avatarUrl
@@ -197,9 +328,9 @@ Page({
           },
         })
       },
-      fail: function (res) {
+      fail: function(res) {
         that.setData({
-          xinxishow: true,
+          xinxishow: true
         })
       }
     })
@@ -208,35 +339,35 @@ Page({
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   }
 })
