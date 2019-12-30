@@ -7,26 +7,25 @@ Page({
    */
   data: {
     setshow:true,
-    contact: '',
-    phoneNumber: '',
-    hfProvince: '',
-    hfCity: '',
-    hfAddressDetail: '',
-    isFaultAddress: '',
+    contact:'',
+    phoneNumber:'',
+    hfProvince:'',
+    hfCity:'',
+    hfAddressDetail:'',
+    isFaultAddress:'',
   },
+
 
   setshowbtn:function(){
     var that=this;
     that.setData({
       setshow:!that.data.setshow
     })
-    console.log('23'+that.data.setshow)
   },
-
   contact(e) {
     var that = this;
     that.setData({
-      contact: e.detail.value
+      contact:e.detail.value
     })
   },
   phoneNumber(e) {
@@ -42,7 +41,7 @@ Page({
     })
   },
   hfCity(e) {
-    var that = this;
+    var that=this;
     that.setData({
       hfCity: e.detail.value
     })
@@ -53,82 +52,25 @@ Page({
       hfAddressDetail: e.detail.value
     })
   },
-
-  del() {
-    var that = this;
+  submit(){
+    var that=this;
+    if (that.data.setshow==true){
+      that.setData({
+        isFaultAddress:0
+      })
+    }else{
+      that.setData({
+        isFaultAddress: 1
+      })
+    }
     wx.request({
-      url: app.globalData.urlLogin + '/user/address/deleteAddress',
+      url: app.globalData.urlLogin + '/user/address/addAddress',
       method: 'get',
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
       },
       data: {
-        id: that.data.id
-      },
-      success:function(res){
-        console.log('删除地址成功',res)
-        wx.navigateBack({
-          delta:1
-        })
-      }
-    })
-  },
-
-  getAdressDetail(){
-    var that=this;
-    wx.request({
-      url: app.globalData.urlLogin +'/user/address/addressDetail',
-      method:'get',
-      data:{
-        id:that.data.id
-      },
-      header:{
-        "Content-Type": "application/x-www-form-urlencoded"
-      },
-      success:function(res){
-        console.log('获取地址详情',res)
-        that.setData({
-          contact: res.data.data.contact,
-          phoneNumber: res.data.data.phoneNumber,
-          hfProvince: res.data.data.hfProvince,
-          hfCity: res.data.data.hfCity,
-          hfAddressDetail: res.data.data.hfAddressDetail,
-          isFaultAddress: res.data.data.isFaultAddress,
-        })
-        if(that.data.isFaultAddress==0){
-          that.setData({
-            setshow:true
-          })
-        }else{
-          that.setData({
-            setshow:false
-          })
-        }
-      },
-    })
-  },
-
-  submit() {
-    var that = this;
-    console.log('93'+that.data.setshow)
-    if (that.data.setshow == true) {
-      that.setData({
-        isFaultAddress: 0
-      })
-    } else {
-      that.setData({
-        isFaultAddress: 1
-      })
-    }
-    console.log(that.data.isFaultAddress)
-    wx.request({
-      url: app.globalData.urlLogin + '/user/address/updateAddress',
-      method: 'post',
-      header: {
-        "Content-Type": "application/x-www-form-urlencoded"
-      },
-      data: {
-        hfConty: '中国',
+        hfConty:'中国',
         contact: that.data.contact,
         phoneNumber: that.data.phoneNumber,
         hfProvince: that.data.hfProvince,
@@ -136,20 +78,19 @@ Page({
         hfAddressDetail: that.data.hfAddressDetail,
         userId: that.data.userId,
         isFaultAddress: that.data.isFaultAddress,
-        hfDesc: '备注',
-        id:that.data.id
+        hfDesc:'备注'
       },
-      success: function (res) {
+      success:function(res){
         wx.showToast({
-          title: '地址修改成功',
+          title: '地址添加成功',
         })
-        // wx.navigateBack({
-        //   delta: 1
-        // })
+        wx.navigateBack({
+          delta:1
+        })
       },
-      fail: function (res) {
+      fail:function(res){
         wx.showToast({
-          title: '地址修改失败',
+          title: '地址添加失败',
         })
       }
     })
@@ -168,10 +109,6 @@ Page({
         })
       },
     })
-    that.setData({
-      id:options.id
-    })
-    that.getAdressDetail();
   },
 
   /**

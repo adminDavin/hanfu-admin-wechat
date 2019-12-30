@@ -40,10 +40,11 @@ Page({
               },
               data: {
                 goodsId: qrl[0].goodsId,
-                orderId: qrl[0].orderId
+                ordersId: qrl[0].orderId
               },
               success:function(res){
-                let qrl2 = JSON.parse(res.result);
+                console.log(res)
+                let qrl2 = res.data.data;
                 console.log(qrl2);
                 that.setData({
                   goodsId: qrl2[0].goodsId,

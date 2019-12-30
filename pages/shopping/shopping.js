@@ -27,7 +27,7 @@ Page({
         "Content-Type": "application/x-www-form-urlencoded"
       },
       data: {
-        userId:that.data.userId
+        userId:2
       },
       success:function(res){
         console.log('购物车',res)

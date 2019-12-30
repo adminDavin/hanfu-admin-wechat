@@ -1,24 +1,64 @@
 // pages/address/address.js
+const app=getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    userId:'',
+    addressList:[],
   },
 
-  editadd:function(){
+  editadd:function(e){
     wx.navigateTo({
-      url: './editaddress/editaddress',
+      url: './editaddress/editaddress?id='+e.currentTarget.dataset.addid,
     })
   },
+
+  addaddress(){
+    wx.navigateTo({
+      url: './addaddress/addaddress',
+    })
+  },
+
+getAddress(){
+  var that=this;
+  wx.request({
+    url: app.globalData.urlLogin+'/user/address/queryAddress',
+    method:'get',
+    header: {
+      "Content-Type": "application/x-www-form-urlencoded"
+    },
+    data:{
+      userId:that.data.userId,
+      token:2
+    },
+    success:function(res){
+      console.log('获取地址',res);
+      that.setData({
+        addressList:res.data.data
+      })
+      
+    }
+  })
+},
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var that=this;
+    wx.getStorage({
+      key: 'user',
+      success: function(res) {
+        that.setData({
+          userId:res.data.userId
+        })
+        that.getAddress()
+      },
+    })
+    
   },
 
   /**
@@ -32,7 +72,16 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    var that=this;
+    wx.getStorage({
+      key: 'user',
+      success: function (res) {
+        that.setData({
+          userId: res.data.userId
+        })
+        that.getAddress()
+      },
+    })
   },
 
   /**

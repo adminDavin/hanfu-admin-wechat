@@ -1,4 +1,4 @@
-<view class="wuquan" >
+<view class="wuquan" wx:if="{{hexiaostatus==5}}">
   <image src="../../images/cart/hexiaosucc.png" style="width:450rpx;height:400rpx;margin:280rpx 152rpx 20rpx"></image>
   <view style="font-size:50rpx;font-weight:500;color:rgba(255,255,255,1);text-align:center">恭喜您核销成功</view>
 </view>
