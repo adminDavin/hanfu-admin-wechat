@@ -56,6 +56,7 @@
                 <text class="over">分</text>
                 <text class="over-number">59</text>
                 <text class="over">秒</text>
+                <view></view>
             </view>
             <view class="puzzle-mark">已拼成0件</view>
         </view>

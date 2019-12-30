@@ -31,7 +31,7 @@ Page({
     this.animation = wx.createAnimation()
   },
   translate: function(event) {
-    console.log(event);
+    // console.log(event);
     this.setData({
       isRuleTrue: true
     })
@@ -51,9 +51,7 @@ Page({
     // })
   },
   data: {
-    arr:'',
-    dataId:{},
-    images:'',
+    arr: '',
   },
   // 获取商品列表
   categoryId: function(e) {
@@ -62,37 +60,33 @@ Page({
       url: app.globalData.urlparticulars + '/goods/categoryId',
       method: 'Get',
       success: function(res) {
-         console.log(res);
+        // console.log(res);
+        for (var i = 0; i < res.data.data.length; i++) {
+          // console.log(res.data.data[i])
+          res.data.data[i].img = 'http://192.168.1.104:9095/goods/pictures?goodsId=' + res.data.data[i].id
+        }
+        // console.log(res.data.data)
         that.setData({
           arr: res.data.data,
         })
-        // for(var i=0;i<arr.length;i++) {
-        //     console.log(arr[i])
-        // }  
       },
     })
   },
-  // 获取物品图片
-  picturesTu: function (e) {
-    var that = this;
-    wx.request({
-      url: app.globalData.urlparticulars + '/goods/pictures',
-      method: 'Get',
-      success: function (res) {
-        // console.log(res);
-        that.setData({
-        })
-        data: {
-        }
-      },
+  // 跳转携带id
+  commodity: function(e) {
+    // console.log(e)
+    var id = e.currentTarget.dataset.id
+    // console.log(id),
+    wx.navigateTo({
+      url:`../particulars/particulars?id= ${2}`,
     })
+
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
     this.categoryId();
-    this.picturesTu();
   },
 
   /**

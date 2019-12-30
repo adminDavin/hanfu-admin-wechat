@@ -1,4 +1,5 @@
-const app = getApp()
+const app = getApp();
+var util = require('../../../utils/util.js');
 Page({
   /**
    * 页面的初始数据
@@ -8,7 +9,8 @@ Page({
     animationData: {}, //
     // hideModals:false,
     dataid:'',
-    number:[]
+    number:[],
+    day: ''
   },
   showModal: function () {
     var that = this;
@@ -86,6 +88,11 @@ Page({
     console.log (id);
     that.setData({
       dataid:id
+    });
+    // 获取当前时间
+    var Day = util.formatTime(new Date());
+    this.setData({
+      day: Day
     })
   },
 

@@ -36,6 +36,9 @@ App({
   globalData: {
     userInfo: null,
     urlseckill: 'http://192.168.1.175:9911',
-    urlparticulars:'http://192.168.1.104:9095'
+    urlparticulars:'http://192.168.1.104:9095',
+    urlevaluate:'http://192.168.1.104:9097',
+    urlsite:'http://192.168.1.104:8082',
+    urlshppingcar:'http://192.168.1.104:9098'
   }
 })

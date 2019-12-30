@@ -6,8 +6,9 @@ Page({
    */
   data: {
     hideModal: true, //模态框的状态  true-隐藏  false-显示
-    animationData: {}, //
+    animationData: {}, 
     // hideModals:false,
+    
   },
   showModal: function () {
     var that = this;
@@ -56,7 +57,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    
   },
 
   /**

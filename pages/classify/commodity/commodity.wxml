@@ -48,9 +48,9 @@
     </view>
     <!-- 商品区域一个 -->
     <view class="shpping-content" wx:for="{{arr}}" wx:key="index" id='{{item.id}}'>
-        <view class="content">
+        <view class="content" bindtap="commodity">
             <!-- 图片 -->
-            <image src="../../images/handpick/shangping.png" class="content-images" />
+            <image src="{{item.img}}" class="content-images" />
             <!-- 详情 -->
             <text class="content-text">{{item.goodName}}</text>
             <!-- 价格 -->
@@ -73,11 +73,11 @@
         </view>
     </view>
 <!-- 商品区域两个 -->
-    <view class="banner-centent" wx:for="{{arr}}" wx:key="index">
+    <view class="banner-centent" wx:for="{{arr}}" wx:key="index" style="display: none;">
         <!-- 商品 -->
-        <view class="centent">
+        <view class="centent" bindtap="commodity">
             <!-- 图片 -->
-            <image src="../../images/handpick/shangping.png" class="centent-image" />
+            <image src="{{item.img}}" class="centent-image" />
             <!-- 详情 -->
             <view class="centent-particulars">
                 <text class="particulars-text">{{item.goodName}}</text>

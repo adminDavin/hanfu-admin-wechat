@@ -50,7 +50,7 @@
             <view class="puzzle-times">
                 <image src="../../images/tabs/naozhong.png" class="times-begin" />
                 <text class="over">距开始</text>
-                <text class="over-number">00</text>
+                <text class="over-number">{{day}}</text>
                 <text class="over">时</text>
                 <text class="over-number">01</text>
                 <text class="over">分</text>
