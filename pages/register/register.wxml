@@ -1,5 +1,5 @@
 <view class="register">
-  <text class="register-title">登录以使用更多服务</text>
+  <text class="register-title">请进行手机号码验证</text>
   <view class="register-input">
     <view class="input-box input-bottom">
       <view class="input-tu">图</view>

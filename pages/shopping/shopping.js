@@ -8,13 +8,55 @@ Page({
   data: {
       tiphidden:false,
       servehidden:true,
-      editshow:true
+      editshow:true,
+      cratList:[],
+      cartPrice:0,
+      checkgoods:'',
+  },
+  // 去结算
+  submit(){
+    var that=this;
+    for(let i=0;i<that.data.cratList.length;i++){
+      if (that.data.cratList[i].check == 1) {
+        let productId=that.data.cratList[i].productId
+        that.setData({
+          checkgoods:that.data.checkgoods+'+'+productId
+        })
+      } 
+      console.log(that.data.checkgoods)
+    }
+    wx.navigateTo({
+      url: '../order/order?str='+this.data.checkgoods,
+    })
+  },
+
+
+  // 切换选中状态
+  checkstatus(e){
+    console.log(e)
+    var that=this;
+    for(let i=0;i<that.data.cratList.length;i++){
+      if(that.data.cratList[i].productId==e.currentTarget.dataset.goodsid){
+        if(that.data.cratList[i].check==1){
+          that.data.cratList[i].check=0
+        }else{
+          that.data.cratList[i].check = 1;
+        }
+        console.log(that.data.cratList[0].check);
+      }
+    }
   },
 
   edit:function(){
     var that=this;
     that.setData({
       editshow:!that.data.editshow
+    })
+  },
+
+  gobuy(){
+    wx.switchTab({
+      url: '../seckill/seckill',
     })
   },
 
@@ -40,11 +82,45 @@ Page({
             tiphidden: true
           })
         }
+        that.setData({
+          cratList: res.data.data
+        })
+        for(let i=0;i<res.data.data.length;i++){
+          wx.request({
+            url: app.globalData.urlGoods+'/goods/byGoodsId',
+            method:'get',
+            data:{
+              goodsId: res.data.data[i].productId
+            },
+            success:function(res){
+              that.data.cratList[i].goods=res.data.data
+            }
+          })
+        }
+        let num=JSON.stringify(res.data.data.length)
+        app.globalData.cartNum=num;
+        wx.setTabBarBadge({
+          index: 3,
+          text: app.globalData.cartNum
+        })
+        that.cartPrice();
       }
     })
   },
 
-
+// cartPrice
+cartPrice(){
+  var that=this
+  for(let i=0;i<that.data.cratList.length;i++){
+    if(that.data.cratList[i].check==1){
+      let cartnum=that.data.cratList[i].productNum;
+      let cartprice=that.data.cratList[i].productPrice
+      that.setData({
+        cartPrice:that.data.cartPrice+cartnum*cartprice
+      })
+    }
+  }
+},
 
 
   /**
@@ -55,9 +131,6 @@ Page({
     wx.getStorage({
       key: 'phone',
       success: function (res) {
-        that.setData({
-          phone: res.data
-        })
         wx.getStorage({
           key: 'user',
           success: function (res) {
@@ -87,7 +160,29 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    var that = this;
+    that.setData({
+      cartPrice:0
+    })
+    wx.getStorage({
+      key: 'phone',
+      success: function (res) {
+        wx.getStorage({
+          key: 'user',
+          success: function (res) {
+            that.setData({
+              userId: res.data.userId
+            })
+            that.getCart();
+          },
+        })
+      },
+      fail: function (res) {
+        that.setData({
+          tiphidden: false,
+        })
+      }
+    })
   },
 
   /**

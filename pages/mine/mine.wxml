@@ -9,7 +9,7 @@
       </view>
       <view class="header-fl">
         <view class="header-sao" bindtap="getScancode">
-          <image src="../images/tabs/扫一扫.png" class="sao-tu" />
+          <image src="../images/tabs/sao.png" class="sao-tu" />
           <view class="sao">扫一扫</view>
         </view>
         <view class="header-sao">
@@ -31,23 +31,23 @@
   </view>
   <view class="dai">
     <view class="dai-item">
-      <image src="../images/cart/daifukuan.png" style="width:55rpx;height:51rpx"></image>
+      <image src="../images/cart/daifukuan.png" style="width:55rpx;height:54rpx"></image>
       <view class="dai-ziti">待付款</view>
     </view>
     <view class="dai-item">
-      <image src="../images/cart/shouhuo.png" style="width:55rpx;height:51rpx"></image>
+      <image src="../images/cart/shouhuo.png" style="width:55rpx;height:54rpx"></image>
       <view class="dai-ziti">待收货</view>
     </view>
     <view class="dai-item">
-      <image src="../images/cart/ziyuan.png" style="width:55rpx;height:51rpx"></image>
+      <image src="../images/cart/ziyuan.png" style="width:55rpx;height:54rpx"></image>
       <view class="dai-ziti">待评价</view>
     </view>
     <view class="dai-item">
-      <image src="../images/cart/shouhuo_icon_n.png" style="width:55rpx;height:51rpx"></image>
+      <image src="../images/cart/shouhuo_icon_n.png" style="width:55rpx;height:54rpx"></image>
       <view class="dai-ziti">退款/售后</view>
     </view>
     <view class="dai-item" bindtap="goMyDingdan">
-      <image src="../images/cart/wodedingdan.png" style="width:55rpx;height:51rpx"></image>
+      <image src="../images/cart/wodedingdan.png" style="width:55rpx;height:54rpx"></image>
       <view class="dai-ziti">我的订单</view>
     </view>
   </view>
@@ -73,7 +73,7 @@
         <image src="../images/cart/pinglun.png" style="width:96rpx;height:96rpx"></image>
         <view class="serve-ziti">我的评论</view>
       </view>
-      <view class="serve-item">
+      <view class="serve-item" bindtap="myaddress">
         <image src="../images/cart/dizhi.png" style="width:96rpx;height:96rpx"></image>
         <view class="serve-ziti">我的地址</view>
       </view>

@@ -3,13 +3,13 @@
   <view class="address">
     <view class="address-top">
       <view class="moren">默认</view>
-      <view style="font-size:24rpx;line-height:35rpx;font-weight:400;color:rgba(21,21,21,1);">天津西青区全境</view>
+      <view style="font-size:24rpx;line-height:35rpx;font-weight:400;color:rgba(21,21,21,1);">{{addressList.hfProvince}}{{addressList.hhfCity}}</view>
     </view>
     <view class="address-center">
-      <view style="font-size:30rpx;font-weight:bold;color:rgba(21,21,21,1);width:547rpx">华苑产业园区 迎水道 148号 天业大厦D座 1112(自提地点)</view>
+      <view style="font-size:30rpx;font-weight:bold;color:rgba(21,21,21,1);width:547rpx">{{addressList.hfAddressDetail}}</view>
       <image src="../images/cart/rightjiantou.png" style="width:16rpx;height:29rpx"></image>
     </view>
-    <view class="address-bottom">木木 123456789</view>
+    <view class="address-bottom">{{addressList.contact}} {{addressList.phoneNumber}}</view>
   </view>
   <view style="width:100%;height:5rpx;margin-top:-30rpx">
     <image src="../images/cart/line.png" style="width:100%;height:100%;"></image>
@@ -69,6 +69,6 @@
   </view>
   <view class="footer">
     <view style="font-size:40rpx;font-weight:bold;color:rgba(255,0,0,1);line-height:98rpx">￥800.00</view>
-    <view class="submit">提交订单</view>
+    <view class="submit" bindtap="submit">提交订单</view>
   </view>
 </view>

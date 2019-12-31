@@ -1,13 +1,13 @@
 <!--pages/shopping/shopping.wxml-->
 <view class="commodity">
-  <view class="editbtn" hidden="{{!tiphidden}}">
-    <text></text>
-    <view class="edit" bindtap="edit">{{editshow==true?'编辑':'完成'}}</view>
+  <view class="editbtn">
+    <view bindtap="edit">{{editshow==true?'编辑':'完成'}}</view>
+    <view class="edit" style="color:white;padding-left:252rpx">购物车</view>
   </view>
   <!-- banner区域 -->
   <view class="commodity-banner" hidden="{{!tiphidden}}">
     <view class="table">
-      <text class="">全部(99)</text>
+      <text class="" bindtap="toggle">全部(99)</text>
       <view class="sum-color colors"></view>
     </view>
     <view class="table jiangjia">
@@ -27,15 +27,17 @@
   </view>
   <!-- content -->
   <view class="content" hidden="{{!tiphidden}}">
-    <scroll-view scroll-x direction="horizonta">
+    <scroll-view scroll-x direction="horizonta" wx:for="{{cratList}}" wx:key="index">
       <view class="content-card">
         <view class="editpic">
-          <image src="../images/cart/selected.png"></image>
+        <view style="width:37rpx;height:37rpx" bindtap="checkstatus" data-check="{{item.check}}" data-goodsId="{{item.productId}}">
+          <image src="../images/cart/selected.png" wx:if="{{item.check==1}}"></image>
+          </view>
         </view>
         <view class="content-item">
           <image src="../images/cart/cartitem.png" style="width:230rpx;height:100%"></image>
           <view class="contentitem-right">
-            <text class="item-name">夹克外套男秋冬季新款修身工装衣服男装加绒加厚学</text>
+            <text class="item-name">{{item.productName}}</text>
             <view class="serve">
               <text>白色40x40cm</text>
               <view class="selectserve">选服务</view>
@@ -48,12 +50,12 @@
             <view class="card-money">
               <view class="discounts-money">
                 <text class="money-title">¥</text>
-                <text class="money-number">800.00</text>
+                <text class="money-number">{{item.productPrice}}</text>
                 <image src="../images/tabs/vip.png" class="money-vip" />
               </view>
               <view class="subadd">
                 <view style="width:20rpx;height:2rpx;background:black"></view>
-                <view class="subadd-money">1</view>
+                <view class="subadd-money">{{item.productNum}}</view>
                 <image src="../images/cart/add.png" class="sub" />
               </view>
             </view>
@@ -100,8 +102,8 @@
     <view class="editpic"></view>
     <view style="color:rgba(51,51,51,1);font-size:28rpx">全选</view>
     <view style="color:rgba(51,51,51,1);font-size:28rpx;padding-left:180rpx">合计：</view>
-    <view style="color:rgba(255,0,0,1);font-size:32rpx;font-weight:500">￥800</view>
-    <view class="gojiesuan" wx:if="{{editshow}}">去结算(1)</view>
+    <view style="color:rgba(255,0,0,1);font-size:32rpx;font-weight:500">￥{{cartPrice}}</view>
+    <view class="gojiesuan" wx:if="{{editshow}}" bindtap="submit">去结算(1)</view>
     <view class="gojiesuan" wx:if="{{!editshow}}">删除</view>
 
   </view>
@@ -110,7 +112,7 @@
     <image src="../images/cart/cart.png" class="cart-image" />
     <view class="abstip">
       <view class="bindtip">尚未添加商品</view>
-      <view class="bindtip bindtip-right">前往购买</view>
+      <view class="bindtip bindtip-right" bindtap="gobuy">前往购买</view>
     </view>
   </view>
 </view>

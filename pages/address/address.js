@@ -8,6 +8,7 @@ Page({
   data: {
     userId:'',
     addressList:[],
+    tipshow:false
   },
 
   editadd:function(e){
@@ -50,15 +51,24 @@ getAddress(){
   onLoad: function (options) {
     var that=this;
     wx.getStorage({
-      key: 'user',
+      key: 'phone',
       success: function(res) {
-        that.setData({
-          userId:res.data.userId
+        wx.getStorage({
+          key: 'user',
+          success: function (res) {
+            that.setData({
+              userId: res.data.userId
+            })
+            that.getAddress()
+          },
         })
-        that.getAddress()
       },
+      fail:function(res){
+        that.setData({
+          tipshow:true
+        })
+      }
     })
-    
   },
 
   /**

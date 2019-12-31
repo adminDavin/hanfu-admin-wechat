@@ -15,6 +15,50 @@ Page({
     isFaultAddress:'',
   },
 
+  // 定位
+  getCityNameOFLocation: function () {
+    var that = this;
+    wx.getLocation({
+      type: 'wgs84', // 默认为 wgs84 返回 gps 坐标，gcj02 返回可用于 wx.openLocation 的坐标
+      success: function (res) {
+        console.log("定位成功");
+        var locationString = res.latitude + "," + res.longitude;
+        wx.request({
+          url: 'http://apis.map.qq.com/ws/geocoder/v1/?l&get_poi=1',
+          data: {
+            "key": "YLFBZ-WHAWI-ZXUGH-53Q65-TOJ7E-ADBNQ",
+            "location": locationString
+          },
+          method: 'GET',
+          // header: {}, 
+          success: function (res) {
+            let province=res.data.result.address_component.province;
+            let city = res.data.result.address_component.city;
+            let address = res.data.result.address
+            that.setData({
+              hfProvince: province,
+              hfCity:city,
+              hfAddressDetail:address
+            })
+          },
+          fail: function () {
+            wx.showToast({
+              title: '定位失败，请重新尝试',
+            })
+          },
+        })
+      },
+      fail: function () {
+        // fail
+        console.log("定位失败");
+      },
+      complete: function () {
+        // complete
+        console.log("定位完成");
+      }
+    })
+  },
+
 
   setshowbtn:function(){
     var that=this;

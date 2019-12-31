@@ -3,12 +3,13 @@
     <view class="address-card-top">
       <view style="min-width:146rpx;" class="top-ziti">{{item.contact}}</view>
       <text class="top-ziti" style="margin-right:20rpx">{{item.phoneNumber}}</text>
-      <view class="moren" wx:if="{{item.lastModifier==0}}">默认</view>
+      <view class="moren" wx:if="{{item.isFaultAddress==0}}">默认</view>
     </view>
     <view class="address-card-bottom">
       <view class="bot-ziti">{{item.hfProvince}}{{item.hfCity}}{{item.hfAddressDetail}}</view>
       <image src="../images/cart/xiugai.png" style="width:24rpx;height:24rpx" bindtap="editadd" data-addid="{{item.id}}"></image>
     </view>
   </view>
+  <view hidden="{{!tipshow}}" class="bot-ziti" style="width:100%;text-align:center;margin-top:400rpx;">您还未登陆，请先登录</view>
   <view class="footer" bindtap="addaddress">+新建收货地址</view>
 </view>
