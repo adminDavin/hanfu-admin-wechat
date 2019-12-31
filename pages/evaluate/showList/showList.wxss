@@ -1,0 +1,68 @@
+page {
+  background-color: #f8f8f8;
+}
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-self: center;
+  background-color: #fff;
+  height: 150rpx;
+  padding: 75rpx 20rpx 25rpx;
+  box-sizing: border-box;
+}
+.nav image {
+  display: block;
+  margin-top: 10rpx;
+  height: 40rpx;
+  width: 40rpx;
+}
+.submit {
+    position: fixed;
+    bottom: 20rpx;
+    width: 709rpx;
+    height: 80rpx;
+    background: rgba(255, 0, 0, 1);
+    margin: 0 23rpx;
+    border-radius: 40rpx;
+    line-height: 80rpx;
+    font-size: 32rpx;
+    font-family: PingFang SC;
+    color: rgba(255, 255, 255, 1);
+    text-align: center;
+  
+}
+.evaluate-list {
+  padding: 20rpx;
+}
+.evaluate-item {
+  display: flex;
+  width: 100%;
+  height: 210rpx;
+  box-sizing: border-box;
+  padding: 20rpx;
+  background-color: #fff;
+  border-radius: 10rpx;
+  margin-bottom: 20rpx;
+}
+.evaluate-item .left {
+  flex: none;
+  width: 170rpx;
+  height: 170rpx;
+  margin-right: 20rpx;
+}
+.evaluate-item .right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-top: 10rpx;
+  font-size: 28rpx;
+}
+
+.inputText {
+  width: 100%;
+  height: 404rpx;
+  background-color: #fff;
+  border-radius: 10rpx;
+  margin-bottom: 20rpx;
+}

@@ -1,0 +1,44 @@
+{
+  "id": "1561671",
+  "name": "houtai",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "617438",
+      "name": "分类",
+      "font_class": "fenlei",
+      "unicode": "e67b",
+      "unicode_decimal": 59003
+    },
+    {
+      "icon_id": "1374103",
+      "name": "发现",
+      "font_class": "faxian",
+      "unicode": "e68c",
+      "unicode_decimal": 59020
+    },
+    {
+      "icon_id": "3050474",
+      "name": "加载",
+      "font_class": "load",
+      "unicode": "e606",
+      "unicode_decimal": 58886
+    },
+    {
+      "icon_id": "3764364",
+      "name": "我的",
+      "font_class": "weibiaoti-",
+      "unicode": "e614",
+      "unicode_decimal": 58900
+    },
+    {
+      "icon_id": "8121733",
+      "name": "购物车 - 副本",
+      "font_class": "gouwuche-fuben",
+      "unicode": "e640",
+      "unicode_decimal": 58944
+    }
+  ]
+}

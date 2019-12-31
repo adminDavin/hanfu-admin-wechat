@@ -1,0 +1,234 @@
+<view class="seckill">
+    <view class="seckill-header">
+        <view class="header-title">
+            <view class="header-t">
+                <view class="header-tu"></view>
+                <text class="header-text">思创科技</text>
+            </view>
+            <view class="header-fl">
+                <view class="header-sao header-margin">
+                    <image src="../images/tabs/扫一扫.png"  class="sao-tu" />
+                    <view class="sao">扫一扫</view>
+                </view>
+                <view class="header-sao">
+                    <image src="../images/tabs/xiaoxis.png"  class="sao-tu" />
+                    <view class="sao">客服</view>
+                </view>
+            </view>
+        </view>
+        <view class="sou">
+            <image src="../images/tabs/sousuo.png"  class="sao-sou" />
+            <input type="text" class="input-sou" />
+        </view>
+    </view>
+    <view class="seckill-img">
+        <swiper vertical="{{false}}" indicator-dots="{{true}}" autoplay="{{true}}">
+            <swiper-item>
+                <image src="../images/tabs/shoutu.png" class="img-size"></image>
+            </swiper-item>
+            <swiper-item>
+                <image src="../images/tabs/shoutu.png" class="img-size"></image>
+            </swiper-item>
+            <swiper-item>
+                <image src="../images/tabs/shoutu.png" class="img-size"></image>
+            </swiper-item>
+            <swiper-item>
+                <image src="../images/tabs/shoutu.png" class="img-size"></image>
+            </swiper-item>
+            <swiper-item>
+                <image src="../images/tabs/shoutu.png" class="img-size"></image>
+            </swiper-item>
+        </swiper>
+    </view>
+    <view class="seckill-box"></view>
+    <view class="title">
+        <view class="seckill-color">
+            <text>精选</text>
+            <text class="seckill-bai"></text>
+        </view>
+        <view class="seckill-color">
+            <text>拼团</text>
+            <text class="seckill-bai"></text>
+        </view>
+        <view class="seckill-color">
+            <text class="seckill-to">秒杀</text>
+            <text class="seckill-red seckill-bai"></text>
+        </view>
+    </view>
+    <!-- 秒杀盒子 -->
+    <view class="banner-box">
+        <view class="seckill-star">
+            <text class="star-table">今日爆款</text>
+            <view class="seckill-stars">
+                <view class="stars-one">
+                    <text>10:00</text>
+                    <text>已开抢</text>
+                </view>
+                <view class="stars-one">
+                    <text>15:00</text>
+                    <text>即将开始</text>
+                </view>
+                <view class="stars-one">
+                    <text>20:00</text>
+                    <text>即将开始</text>
+                </view>
+                <view class="stars-one">
+                    <text>24:00</text>
+                    <text>即将开始</text>
+                </view>
+            </view>
+        </view>
+        <view class="seckill-banner">
+            <view class="seckill-commodity">
+                <view class="commodity-tu">
+                    <image src="../images/tabs/100898d5b1f35a6c.png"></image>
+                </view>
+                <view class="commodity-text">
+                    <view class="commodity-title">商品名称商品名称商品名称商品名称商品名称商品名称商品名称</view>
+                    <view class="commodity-money">
+                        <view class="commodity-number">
+                            <view class="commodity-j">已抢3600件</view>
+                            <view class="commodity-shu">
+                                <view class="commodity-dollar">￥800.00</view>
+                                <view class="commodity-del">￥800.00</view>
+                            </view>
+                        </view>
+                        <view class="commodity-qg">立即抢购</view>
+                    </view>
+                </view>
+            </view>
+            <view class="seckill-commodity">
+                <view class="commodity-tu">
+                    <image src="../images/tabs/100898d5b1f35a6c.png"></image>
+                </view>
+                <view class="commodity-text">
+                    <view class="commodity-title">商品名称商品名称商品名称商品名称商品名称商品名称商品名称</view>
+                    <view class="commodity-money">
+                        <view class="commodity-number">
+                            <view class="commodity-j">已抢3600件</view>
+                            <view class="commodity-shu">
+                                <view class="commodity-dollar">￥800.00</view>
+                                <view class="commodity-del">￥800.00</view>
+                            </view>
+                        </view>
+                        <view class="commodity-qg">已抢光</view>
+                    </view>
+                </view>
+            </view>
+            <view class="seckill-commodity">
+                <view class="commodity-tu">
+                    <image src="../images/tabs/100898d5b1f35a6c.png"></image>
+                </view>
+                <view class="commodity-text">
+                    <view class="commodity-title">商品名称商品名称商品名称商品名称商品名称商品名称商品名称</view>
+                    <view class="commodity-money">
+                        <view class="commodity-number">
+                            <view class="commodity-j">已抢3600件</view>
+                            <view class="commodity-shu">
+                                <view class="commodity-dollar">￥800.00</view>
+                                <view class="commodity-del">￥800.00</view>
+                            </view>
+                        </view>
+                        <view class="commodity-qg">即将开始</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <!-- 拼团盒子 -->
+    <view class="banner-box-two">
+        <view class="banner-table">
+            <view class="table-one">
+                <text class="table-name">分类名称</text>
+                <view class="table-box table-color"></view>
+            </view>
+            <view class="table-one">
+                <text class="table-name">分类名称</text>
+                <view class="table-box"></view>
+            </view>
+            <view class="table-one">
+                <text class="table-name">分类名称</text>
+                <view class="table-box"></view>
+            </view>
+            <view class="table-one">
+                <text class="table-name">分类名称</text>
+                <view class="table-box"></view>
+            </view>
+            <view class="table-one">
+                <text class="table-name">分类名称</text>
+                <view class="table-box"></view>
+            </view>
+        </view>
+        <view class="seckill-banner">
+            <view class="seckill-commodity">
+                <view class="commodity-tu">
+                    <image src="../images/tabs/100898d5b1f35a6c.png"></image>
+                </view>
+                <view class="commodity-text">
+                    <view class="commodity-title">商品名称商品名称商品名称商品名称商品名称商品名称商品名称</view>
+                    <view class="commodity-money">
+                        <view class="commodity-number">
+                            <view class="commodity-j">已抢3600件</view>
+                            <view class="commodity-shu">
+                                <view class="commodity-dollar">￥800.00</view>
+                                <view class="commodity-del">￥800.00</view>
+                            </view>
+                        </view>
+                        <view class="commodity-qg">立即抢购</view>
+                    </view>
+                </view>
+            </view>
+            <view class="seckill-commodity">
+                <view class="commodity-tu">
+                    <image src="../images/tabs/100898d5b1f35a6c.png"></image>
+                </view>
+                <view class="commodity-text">
+                    <view class="commodity-title">商品名称商品名称商品名称商品名称商品名称商品名称商品名称</view>
+                    <view class="commodity-money">
+                        <view class="commodity-number">
+                            <view class="commodity-j">已抢3600件</view>
+                            <view class="commodity-shu">
+                                <view class="commodity-dollar">￥800.00</view>
+                                <view class="commodity-del">￥800.00</view>
+                            </view>
+                        </view>
+                        <view class="commodity-qg">已抢光</view>
+                    </view>
+                </view>
+            </view>
+            <view class="seckill-commodity">
+                <view class="commodity-tu">
+                    <image src="../images/tabs/100898d5b1f35a6c.png"></image>
+                </view>
+                <view class="commodity-text">
+                    <view class="commodity-title">商品名称商品名称商品名称商品名称商品名称商品名称商品名称</view>
+                    <view class="commodity-money">
+                        <view class="commodity-number">
+                            <view class="commodity-j">已抢3600件</view>
+                            <view class="commodity-shu">
+                                <view class="commodity-dollar">￥800.00</view>
+                                <view class="commodity-del">￥800.00</view>
+                            </view>
+                        </view>
+                        <view class="commodity-qg">即将开始</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <!-- 精选盒子 -->
+    <view class="banner-box-three">
+        <view class="handpick-text">
+            <text class="handpick-title">推荐榜单</text>
+            <image class="handpick-image" src="../images/handpick/图层 1.png"></image>
+        </view>
+        <view class="handpick-text handpick-margin">
+            <text class="handpick-title handpick-title-two">每日特卖</text>
+            <image class="handpick-image" src="../images/handpick/图层 2.png"></image>
+        </view>
+        <view class="handpick-text">
+            <text class="handpick-title handpick-title-three">榜单名称</text>
+            <image class="handpick-image" src="../images/handpick/图层 3.png"></image>
+        </view>
+    </view>
+</view>

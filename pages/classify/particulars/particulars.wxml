@@ -1,0 +1,82 @@
+<view class="particulars">
+    <!-- 图片 -->
+    <view class="header-images">
+        <block>
+            <swiper vertical="{{false}}" indicator-dots="{{flase}}" autoplay="{{flase}}">
+                <swiper-item>
+                    <image src="../../images/handpick/组 1.png" class="images-head" />
+                </swiper-item>
+                <swiper-item>
+                    <image src="../../images/handpick/组 1.png" class="images-head" />
+                </swiper-item>
+                <swiper-item>
+                    <image src="../../images/handpick/组 1.png" class="images-head" />
+                </swiper-item>
+                <swiper-item>
+                    <image src="../../images/handpick/组 1.png" class="images-head" />
+                </swiper-item>
+                <swiper-item>
+                    <image src="../../images/handpick/组 1.png" class="images-head" />
+                </swiper-item>
+            </swiper>
+        </block>
+        <view class="images-return">
+            <image src="../../images/tabs/jinru (4).png" class="return" />
+        </view>
+        <view class="images-index">1/5</view>
+    </view>
+    <!-- 商品价格及名称 -->
+    <view class="productName">
+        <view class="productName-box">
+            <view class="productName-dollor">
+                <text class="dollor">¥</text>
+                <text class="money">399.00</text>
+                <text class="money-del">¥799.00</text>
+                <text class="news">新品</text>
+            </view>
+            <view class="productName-collect">
+                <view class="collect-one">
+                    <image src="../../images/tabs/降价.png" class="depreciate-image" />
+                    <text class="depreciate-text">降价通知</text>
+                </view>
+                <view class="collect-one collect-margin">
+                    <image src="../../images/tabs/chakantieziguanzhu.png" class="depreciate-image" />
+                    <text class="depreciate-text">12.5万</text>
+                </view>
+            </view>
+        </view>
+        <view class="productName-box-two">
+            <text class="productName-table">商品名称标题商品名称标题商品名称标题商品名称标题商品名称标题商品名称标题商品名称标题商品名称标题商品名称</text>
+            <view class="table-box">
+                <image src="../../images/tabs/fenxiang.png" class="table-images" />
+                <text class="share">分享</text>
+            </view>
+        </view>
+    </view>
+    <!-- 优惠项 -->
+    <view class="discounts">
+        <text class="discounts-title">优惠</text>
+        <text class="discounts-table table-left">每满200减30</text>
+        <text class="discounts-table table-margin">包邮</text>
+    </view>
+    <!-- 地址及已选 -->
+    <view class="site">
+        <view class="site-selected">
+            <view class="selected-box">
+                <text class="selected">已选</text>
+                <text class="selected-text">卡其色薄款，XL，1件，可选服务</text>
+            </view>
+            <image src="../../images/tabs/diandian.png" class="selected-images" />
+        </view>
+        <view ></view>
+        <view ></view>
+        <view ></view>
+        <view ></view>
+    </view>
+    <!-- 评价 -->
+    <view class="appraise"></view>
+    <!-- 商品详情 -->
+    <view class="description"></view>
+    <!-- 底部 -->
+    <view class="footer"></view>
+</view>
