@@ -1,18 +1,20 @@
 {
   "pages": [
-    "pages/classify/particulars/particulars",
-    "pages/classify/puzzle-particulars/puzzle-particulars",
-    "pages/classify/commodity/commodity",
     "pages/seckill/seckill",
+    "pages/classify/puzzle-particulars/puzzle-particulars",
+    "pages/classify/particulars/particulars",
+    "pages/classify/Limited-time/Limited-time",
+    "pages/classify/classify",
+    
+    "pages/classify/commodity/commodity",
     "pages/shopping/Getdiscount/Getdiscount",
     "pages/impower/impower",
-    "pages/classify/classify",
     "pages/shopping/MEdiscount/MEdiscount",
     "pages/classify/over-roll/over-roll",
     "pages/shopping/discount/discount",
     "pages/seckill/seek/seek",
     "pages/classify/ping-pay/ping-pay",
-    "pages/classify/Limited-time/Limited-time",
+    
     "pages/classify/Onpuzzle-particulars/Onpuzzle-particulars",
     "pages/find/find",
     "pages/mine/mine",
@@ -22,7 +24,9 @@
   ],
   "usingComponents": {
     "van-tab": "./pages/vant/weapp/dist/tab/index",
-    "van-tabs": "./pages/vant/weapp/dist/tabs/index"
+    "van-tabs": "./pages/vant/weapp/dist/tabs/index",
+    "van-sidebar": "./pages/vant/weapp/dist/sidebar/index",
+    "van-sidebar-item":"./pages/vant/weapp/dist/sidebar-item/index"
   },
   "window": {
     "backgroundTextStyle": "light",
@@ -40,8 +44,8 @@
       {
         "text": "首页",
         "pagePath": "pages/seckill/seckill",
-        "iconPath": "pages/images/tabs/加载.png",
-        "selectedIconPath": "pages/images/tabs/加载 (1).png"
+        "iconPath": "pages/images/tabs/jiazais.png",
+        "selectedIconPath": "pages/images/tabs/jiazai.png"
       },
       {
         "text": "分类",

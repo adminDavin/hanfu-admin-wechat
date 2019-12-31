@@ -4,19 +4,19 @@
         <block>
             <swiper vertical="{{false}}" indicator-dots="{{flase}}" autoplay="{{flase}}">
                 <swiper-item>
-                    <image src="../../images/handpick/组 1.png" class="images-head" />
+                    <image src="" class="images-head" />
                 </swiper-item>
                 <swiper-item>
-                    <image src="../../images/handpick/组 1.png" class="images-head" />
+                    <image src="" class="images-head" />
                 </swiper-item>
                 <swiper-item>
-                    <image src="../../images/handpick/组 1.png" class="images-head" />
+                    <image src="" class="images-head" />
                 </swiper-item>
                 <swiper-item>
-                    <image src="../../images/handpick/组 1.png" class="images-head" />
+                    <image src="" class="images-head" />
                 </swiper-item>
                 <swiper-item>
-                    <image src="../../images/handpick/组 1.png" class="images-head" />
+                    <image src="" class="images-head" />
                 </swiper-item>
             </swiper>
         </block>
@@ -36,7 +36,7 @@
             </view>
             <view class="productName-collect">
                 <view class="collect-one">
-                    <image src="../../images/tabs/降价.png" class="depreciate-image" />
+                    <image src="../../images/tabs/jiangjia.png" class="depreciate-image" />
                     <text class="depreciate-text">降价通知</text>
                 </view>
                 <view class="collect-one collect-margin">
@@ -70,11 +70,11 @@
         </view>
         <view class="site-selected">
             <view class="selected-box delivery-box">
-                <text class="selected">送至</text>
+                <view class="selected">送至</view>
                 <image src="../../images/tabs/位置.png" class="delivery-image" />
-                <text class="selected-text" wx:for="{{site}}" wx:key="index">
-                    {{item.hfProvince}}{{item.hfCity}}{{item.hfAddressDetail}}
-                </text>
+                <view class="selected-text text-left">
+                    {{sites}}
+                </view>
             </view>
             <image src="../../images/tabs/diandian.png" class="selected-images" />
         </view>
@@ -84,7 +84,7 @@
         </view>
         <view class="site-refund">
             <view class="refund-flex">
-                <image src="../../images/tabs/放心购.png" class="refund-image" />
+                <image src="../../images/tabs/fangxingou.png" class="refund-image" />
                 <view class="refund-box" bindtap="showModal">
                     <text class="refund-text">闪电退款</text>
                     <view class="refund-d"></view>
@@ -108,7 +108,7 @@
     <view class="appraise">
         <view class="appraise-title">
             <view class="appraise-number">
-                <image src="../../images/tabs/圆角矩形 3.png" class="number-image" />
+                <image src="../../images/tabs/yuanjiaoju.png" class="number-image" />
                 <text class="number-table">评价</text>
                 <text class="number-text">600+</text>
             </view>
@@ -122,11 +122,11 @@
             <view class="user-text">
                 <text class="head-name">欢乐小可</text>
                 <view class="stars-image">
-                    <image src="../../images/tabs/五角星.png" class="stars" />
-                    <image src="../../images/tabs/五角星.png" class="stars" />
-                    <image src="../../images/tabs/五角星.png" class="stars" />
-                    <image src="../../images/tabs/五角星.png" class="stars" />
-                    <image src="../../images/tabs/五角星1.png" class="stars" />
+                    <image src="../../images/tabs/wujiaoxing.png" class="stars" />
+                    <image src="../../images/tabs/wujiaoxing.png" class="stars" />
+                    <image src="../../images/tabs/wujiaoxing.png" class="stars" />
+                    <image src="../../images/tabs/wujiaoxing.png" class="stars" />
+                    <image src="../../images/tabs/wujiaoxings.png" class="stars" />
                 </view>
             </view>
         </view>
@@ -171,32 +171,32 @@
                         <image src="../../images/tabs/对勾.png" class="kind-image" />
                         <view class="services-kind">
                             <text class="kind-table">7天无理由</text>
-                            <text class="kind-text">
+                            <view class="kind-text">
                                 满足7天无理由退换货的前提下，包邮商品需要买家承担退货邮费，非包邮需要买家承担发货和退货邮费
-                            </text>
+                            </view>
                         </view>
                     </view>
                     <view class="services-content services-margin">
                         <image src="../../images/tabs/对勾.png" class="kind-image" />
                         <view class="services-kind">
                             <text class="kind-table">7天无理由</text>
-                            <text class="kind-text">15天退货，退货邮费卖家承担</text>
+                            <view class="kind-text">15天退货，退货邮费卖家承担</view>
                         </view>
                     </view>
                     <view class="services-content services-margin">
                         <image src="../../images/tabs/对勾.png" class="kind-image" />
                         <view class="services-kind">
                             <text class="kind-table">7天无理由</text>
-                            <text class="kind-text">
+                            <view class="kind-text">
                                 满足7天无理由退换货的前提下，包邮商品需要买家承担退货邮费，非包邮需要买家承担发货和退货邮费
-                            </text>
+                            </view>
                         </view>
                     </view>
                     <view class="services-content services-margin">
                         <image src="../../images/tabs/对勾.png" class="kind-image" />
                         <view class="services-kind">
                             <text class="kind-table">15天退货</text>
-                            <text class="kind-text">15天退货，退货邮费卖家承担</text>
+                            <view class="kind-text">15天退货，退货邮费卖家承担</view>
                         </view>
                     </view>
                 </scroll-view>

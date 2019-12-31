@@ -7,7 +7,7 @@
             </view>
             <view class="header-fl">
                 <view class="header-sao header-margin">
-                    <image src="../images/tabs/扫一扫.png"  class="sao-tu" />
+                    <image src="../images/tabs/saoyisao.png"  class="sao-tu" />
                     <view class="sao">扫一扫</view>
                 </view>
                 <view class="header-sao">
@@ -22,15 +22,15 @@
         <view class="find-time">2019-09-25  15:56</view>
         <text class="find-text">防串味去异味，美的让食物的处理更便捷 </text>
         <view class="find-video">
-            <image src="../images/handpick/组 1.png" class="video-image" />
+            <image src="" class="video-image" />
             <view class="video-box">
-                <image src="../images/tabs/椭圆 1 (1).png" class="video-circle" />
+                <image src="../images/tabs/tuoyuans.png" class="video-circle" />
                 <image src="../images/tabs/pause.png" class="video-play" />
             </view>
         </view>
         <view class="find-share">
             <view class="shares">
-                <image src="../images/tabs/fenxiang (1).png" class="shares-image" />
+                <image src="../images/tabs/fenxiangs.png" class="shares-image" />
                 <text class="shares-number">88</text>
             </view>
             <view class="shares">
@@ -58,7 +58,7 @@
         </view>
         <view class="find-share margin-t">
             <view class="shares">
-                <image src="../images/tabs/fenxiang (1).png" class="shares-image" />
+                <image src="../images/tabs/fenxiangs.png" class="shares-image" />
                 <text class="shares-number">88</text>
             </view>
             <view class="shares">

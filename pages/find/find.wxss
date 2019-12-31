@@ -66,7 +66,6 @@
     width: 710rpx;
     margin: 0 auto;
     margin-top: 17rpx;
-    padding: 0 21rpx;
     overflow: hidden;
 }
 
@@ -118,7 +117,7 @@
 .video-play {
     position: absolute;
     top: 21rpx;
-    left: 22rpx;
+    left: 24rpx;
     width: 28rpx;
     height: 28rpx;
 }
@@ -150,9 +149,10 @@
     margin-left: 10rpx;
 }
 .find-imgs {
-    width: 710rpx;
+    width: 680rpx;
     margin-top: 25rpx;
     overflow: hidden;
+    margin-left: 15rpx;
 }
 .imgs {
     width: 160rpx;

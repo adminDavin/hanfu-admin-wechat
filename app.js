@@ -35,10 +35,11 @@ App({
   },
   globalData: {
     userInfo: null,
-    urlseckill: 'http://192.168.1.175:9911',
-    urlparticulars:'http://192.168.1.104:9095',
-    urlevaluate:'http://192.168.1.104:9097',
-    urlsite:'http://192.168.1.104:8082',
-    urlshppingcar:'http://192.168.1.104:9098'
+    urlpuzzle: 'http://192.168.1.175:9911',//拼团
+    urlparticulars:'http://192.168.1.104:9095',//详情
+    urlevaluate:'http://192.168.1.104:9097',//评价
+    urlsite:'http://192.168.1.104:8082',//地点
+    urlshppingcar:'http://192.168.1.104:9098',//购物车
+    urlseckill:'http://192.168.1.175:9910'//秒杀
   }
 })
