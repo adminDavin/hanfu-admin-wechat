@@ -65,14 +65,12 @@
     font-size: 24rpx;
     text-align: center;
 }
-
 .sao-sou {
     width: 33rpx;
     height: 33rpx;
     margin: 21rpx 0 19rpx 20rpx;
     /* background: #000; */
 }
-
 .sou {
     display: flex;
     width: 710rpx;

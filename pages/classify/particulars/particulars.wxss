@@ -657,7 +657,10 @@ swiper {
 }
 
 .kind-text {
+<<<<<<< HEAD
     margin-top: 11rpx;
+=======
+>>>>>>> feature/single_merchant
     width: 598rpx;
     font-size: 24rpx;
     font-family: PingFang SC;
