@@ -252,7 +252,9 @@ swiper {
     font-weight: 400;
     color: rgba(21, 21, 21, 1);
 }
-
+.text-left {
+    margin-left: 11rpx;
+}
 .selected-images {
     width: 32rpx;
     height: 7rpx;
@@ -266,6 +268,7 @@ swiper {
 }
 
 .delivery-box {
+    margin-top: 32rpx;
     display: flex;
 }
 
@@ -654,11 +657,14 @@ swiper {
 }
 
 .kind-text {
+<<<<<<< HEAD
+    margin-top: 11rpx;
+=======
+>>>>>>> feature/single_merchant
     width: 598rpx;
     font-size: 24rpx;
     font-family: PingFang SC;
     font-weight: 400;
-    /* margin-top: -30rpx; */
     color: rgba(153, 153, 153, 1);
 }
 

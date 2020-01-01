@@ -10,12 +10,11 @@ App({
   },
   globalData: {
     userInfo: null,
-    cartNum:'0',
-    cartPrice:0,
-    urlLogin: 'http://192.168.1.104:8082',
-    url: 'http://192.168.1.104:9097',
-    urlGoods: 'http://192.168.1.104:9095',
-    urlCart: 'http://192.168.1.104:9098',
-    urlHexiao: 'http://192.168.1.125:9901',
+    urlpuzzle: 'http://192.168.1.175:9911',//拼团
+    urlparticulars:'http://192.168.1.104:9095',//详情
+    urlevaluate:'http://192.168.1.104:9097',//评价
+    urlsite:'http://192.168.1.104:8082',//地点
+    urlshppingcar:'http://192.168.1.104:9098',//购物车
+    urlseckill:'http://192.168.1.175:9910'//秒杀
   }
 })
