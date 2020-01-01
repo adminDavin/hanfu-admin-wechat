@@ -430,3 +430,103 @@
     width: 600rpx;
     overflow: hidden;
 }
+/* 商品区域 */
+.banner-centent {
+    width: 710rpx;
+    height: 100%;
+    margin: 0 auto;
+    margin-top: 50rpx;
+    position: relative;
+}
+.centent {
+    width: 100%;
+    height: 250rpx;
+    border-bottom: 1rpx solid #E5E5E5;
+    margin-bottom: 20rpx;
+    display: flex;
+    justify-content: space-between;
+}
+.centent-image {
+    width: 230rpx;
+    height: 230rpx;
+    border-radius: 10rpx;
+}
+
+.centent-particulars {
+    width: 452rpx;
+    height: 230rpx;
+    display: flex;
+    flex-direction: column;
+}
+.particulars-text {
+    width: 442rpx;
+    height: 66rpx;
+    font-size: 26rpx;
+    color: #151515;
+    font-weight: 500;
+    margin-right: 34rpx;
+    font-family: PingFang SC;
+}
+
+.particulars-money {
+    width: 442rpx;
+    height: 138rpx;
+    margin-top: 36rpx;
+}
+.money-box {
+    width: 100%;
+    height: 26rpx;
+    display: flex;
+    align-items: center;
+    color: #FF0000;
+}
+
+.money-title {
+    font-weight: bold;
+    font-size: 36rpx;
+}
+
+.money-number {
+    margin-left: 3rpx;
+    font-weight: 500;
+    font-size: 34rpx;
+}
+.money-vip {
+    width: 46rpx;
+    height: 24rpx;
+    margin-left: 19rpx;
+}
+
+.money-table {
+    width: 100%;
+    height: 35rpx;
+    display: flex;
+    margin-top: 25rpx;
+    text-align: center;
+}
+.money-discounts {
+    line-height: 35rpx;
+    margin-right: 20rpx;
+    padding: 0 10rpx;
+    border: 1rpx solid #FF0000;
+    border-radius: 10rpx;
+    font-size: 24rpx;
+    font-family: PingFang SC;
+    font-weight: 400;
+    color: rgba(255, 0, 0, 1);
+}
+
+.comment {
+    width: 100%;
+    height: 22rpx;
+    display: flex;
+    color: rgba(153, 153, 153, 1);
+    font-size: 22rpx;
+    font-weight: 400;
+    margin-top: 10rpx;
+    font-family: PingFang SC;
+}
+
+.comment-number {
+    margin-right: 20rpx;
+}

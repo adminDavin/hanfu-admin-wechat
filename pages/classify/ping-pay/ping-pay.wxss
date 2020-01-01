@@ -1,0 +1,249 @@
+.ping-pay {
+    width: 750rpx;
+    height: 100%;
+}
+
+/* 头部 */
+.pay-header {
+    width: 100%;
+    height: 94rpx;
+    background-color: #FFC703;
+}
+
+.table-number {
+    width: 44rpx;
+    height: 44rpx;
+    background: rgba(255, 255, 255, 1);
+    border-radius: 5rpx;
+    padding: 7rpx;
+}
+
+.header-table {
+    float: right;
+    margin-top: 27rpx;
+    margin-right: 36rpx;
+}
+
+.table-time {
+    font-size: 32rpx;
+    font-family: PingFang SC;
+    font-weight: 500;
+    color: rgba(21, 21, 21, 1);
+    margin: 0 8rpx 0 6rpx;
+}
+
+.notice {
+    width: 141rpx;
+    height: 37rpx;
+    background: rgba(255, 255, 255, 1);
+    opacity: 0.67;
+    font-size: 24rpx;
+    line-height: 37rpx;
+    text-align: center;
+    font-family: PingFang SC;
+    font-weight: 500;
+    color: rgba(255, 126, 0, 1);
+    border-radius: 19rpx 0 0 19rpx;
+    float: right;
+    margin-top: 29rpx;
+}
+
+/* banner */
+.pay-shpping {
+    width: 100%;
+    height: 240rpx;
+    background: pink;
+    display: flex;
+}
+
+.pay-image {
+    width: 200rpx;
+    height: 200rpx;
+    background: #000;
+    margin: 20rpx 21rpx 20rpx 19rpx;
+}
+
+.pay-content {
+    width: 487rpx;
+    margin-top: 27rpx;
+}
+
+.content-title {
+    font-size: 26rpx;
+    font-family: PingFang SC;
+    font-weight: 500;
+    color: rgba(21, 21, 21, 1);
+}
+
+.title-box {
+    margin-top: 42rpx;
+}
+
+.title-number {
+    font-size: 24rpx;
+    font-family: PingFang SC;
+    font-weight: 400;
+    color: rgba(153, 153, 153, 1);
+}
+
+.title-money {
+    display: flex;
+    align-items: center;
+}
+
+.money-number {
+    font-size: 32rpx;
+    font-family: PingFang SC;
+    font-weight: bold;
+    color: rgba(255, 0, 0, 1);
+}
+
+.money-del {
+    font-size: 24rpx;
+    font-family: PingFang SC;
+    font-weight: 400;
+    text-decoration: line-through;
+    color: rgba(153, 153, 153, 1);
+    margin-left: 9rpx;
+}
+
+/* 拼团成功 */
+.par-succeed {
+    width: 750rpx;
+    margin-top: 20rpx;
+    overflow: hidden;
+}
+
+.succeed {
+    height: 29rpx;
+    margin-top: 20rpx;
+    text-align: center;
+}
+
+.succeed-text {
+    font-size: 30rpx;
+    font-family: PingFang SC;
+    font-weight: 500;
+    color: rgba(21, 21, 21, 1);
+}
+
+.succeed-color {
+    color: #FF4141;
+}
+
+.succeed-photos {
+    margin-left: 49rpx;
+    margin-right: 52rpx;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20rpx;
+}
+
+.photos-head {
+    width: 90rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    margin-top: 29rpx;
+}
+
+.photo-tubbish {
+    width: 60rpx;
+    height: 25rpx;
+    line-height: 25rpx;
+    text-align: center;
+    font-size: 20rpx;
+    font-family: PingFang SC;
+    font-weight: 500;
+    background-color: #FF3333;
+    color: rgba(255, 255, 255, 1);
+    position: absolute;
+    top: -5rpx;
+    left: 15rpx;
+
+}
+
+.photo-heads {
+    width: 90rpx;
+    height: 90rpx;
+    border-radius: 50%;
+    background-size: 90rpx 90rpx;
+    background-image: url('data:image/png;base64,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');
+}
+
+.heads-wen {
+    line-height: 90rpx;
+    font-size: 50rpx;
+    color: #FF3333;
+    font-weight: 500;
+    text-align: center;
+
+}
+
+.photo-title {
+    width: 90rpx;
+    font-size: 24rpx;
+    font-family: PingFang SC;
+    font-weight: 400;
+    color: rgba(21, 21, 21, 1);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-top: 10rpx;
+}
+
+.more-all {
+    display: flex;
+    align-items: center;
+    width: 124rpx;
+    height: 23rpx;
+    line-height: 23rpx;
+    margin: 0 auto;
+    margin-top: 39rpx;
+}
+
+.all-text {
+    font-size: 24rpx;
+    font-family: PingFang SC;
+    font-weight: 400;
+    color: rgba(153, 153, 153, 1);
+}
+
+.all-image {
+    width: 18rpx;
+    height: 10rpx;
+    margin-left: 10rpx;
+}
+
+/* 邀请好友 */
+.invite {
+    width: 560rpx;
+    height: 80rpx;
+    background: rgba(255, 51, 51, 1);
+    border-radius: 40rpx;
+    line-height: 80rpx;
+    text-align: center;
+    font-size: 34rpx;
+    font-family: PingFang SC;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 1);
+    margin: 0 auto;
+    margin-top: 52rpx;
+}
+
+/* 拼团失败 */
+.table-failure {
+    display: block;
+    width: 137rpx;
+    font-size: 34rpx;
+    font-family: PingFang SC;
+    font-weight: bold;
+    color: rgba(21, 21, 21, 1);
+    line-height: 94rpx;
+    margin: 0 auto;
+}
+/* 拼团成功 */
+.table-color {
+    color: #FF3333;
+}
