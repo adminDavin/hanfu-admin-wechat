@@ -63,6 +63,8 @@
 .banner-box {
     width: 178rpx;
     height: 86rpx;
+    display: flex;
+    text-align: center;
 }
 .banner-box:hover {
     background-color: #fff;
@@ -132,4 +134,9 @@
     color: #151515;
     font-weight: 'Regular';
     font-family:'PingFang-SC-Regular';
+}
+.box {
+    width: 710rpx;
+    height: 50rpx;
+    border: 3rpx solid #000;
 }

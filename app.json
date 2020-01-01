@@ -1,8 +1,26 @@
 {
   "pages": [
-        "pages/shopping/shopping",
-        "pages/mine/mine",
-        "pages/address/address",
+    "pages/opp/vip/vip",
+    "pages/evaluate/evaluateList/evaluateList",
+    "pages/evaluate/myevaluate/myevaluate",
+    
+    "pages/pay/payto/payto",
+    "pages/pay/paySuccess/paySuccess",
+    
+    "pages/evaluate/remark/remark",
+    "pages/evaluate/showList/showList",
+    "pages/evaluate/review/review",
+    "pages/opp/opp",
+    
+    "pages/evaluate/all",
+    "pages/goodsList/goodsList",
+    
+
+    "pages/orderform/logistics",
+    
+    "pages/shopping/shopping",
+    "pages/mine/mine",
+    "pages/address/address",
     "pages/address/addaddress/addaddress",
     "pages/mydingdan/mydingdan",
     "pages/classify/particulars/particulars",
@@ -16,13 +34,10 @@
     "pages/classify/classify",
     "pages/seckill/seckill",
     "pages/classify/puzzle-particulars/puzzle-particulars",
-    "pages/classify/particulars/particulars",
     "pages/classify/Limited-time/Limited-time",
-    "pages/classify/classify",
     
     "pages/classify/commodity/commodity",
     "pages/shopping/Getdiscount/Getdiscount",
-    "pages/impower/impower",
     "pages/shopping/MEdiscount/MEdiscount",
     "pages/classify/over-roll/over-roll",
     "pages/shopping/discount/discount",

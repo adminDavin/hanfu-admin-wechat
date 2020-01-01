@@ -10,7 +10,11 @@
     <!-- banner区 -->
     <view class="classify-banner">
         <!-- 左 -->
+<<<<<<< HEAD
+        <view class="banner-table">
+=======
         <!-- <view class="banner-table">
+>>>>>>> feature/single_merchant
             <view class="banner-box">
                 <view class="banner-left"></view>
                 <text class="table-text">精选推荐</text>

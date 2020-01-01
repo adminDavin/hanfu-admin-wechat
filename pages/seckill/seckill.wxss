@@ -4,7 +4,6 @@
     margin-bottom: 28rpx;
     position: relative;
 }
-
 .seckill-header {
     width: 100%;
     height: 326rpx;
@@ -21,14 +20,12 @@
     display: flex;
     overflow: hidden;
 }
-
 .header-tu {
     width: 60rpx;
     height: 60rpx;
     background-color: #fff;
     margin-top: 14rpx;
 }
-
 .header-text {
     line-height: 88rpx;
     font-size: 32rpx;
@@ -80,7 +77,6 @@
     background: #fff;
     border-radius: 36rpx;
 }
-
 .sou-tu {
     width: 33rpx;
     height: 32rpx;
@@ -96,7 +92,6 @@
     height: 72rpx;
     line-height: 72rpx;
 }
-
 .seckill-img {
     width: 710rpx;
     height: 350rpx;
@@ -116,12 +111,10 @@ swiper {
     width: 100%;
     height: 350rpx;
 }
-
 .seckill-box {
     width: 750rpx;
     height: 225rpx;
 }
-
 .title {
     width: 710rpx;
     height: 34rpx;
@@ -184,7 +177,6 @@ swiper {
     margin-left: 20rpx;
     font-family: 'PingFang-SC-Bold';
 }
-
 .seckill-stars {
     display: flex;
     width: 710rpx;
@@ -206,13 +198,11 @@ swiper {
     background: #fff;
     color: #FF3333;
 }
-
 .seckill-banner {
     width: 710rpx;
     height: 100%;
     background: #fff;
 }
-
 .seckill-commodity {
     margin-top: 20rpx;
     display: flex;
@@ -230,7 +220,6 @@ swiper {
     width: 507rpx;
     margin-left: 21rpx;
 }
-
 .commodity-title {
     width: 507rpx;
     height: 60rpx;
@@ -242,7 +231,6 @@ swiper {
     text-overflow: ellipsis;
     white-space: nowrap;
 }
-
 .commodity-money {
     width: 507rpx;
     height: 75rpx;
@@ -262,21 +250,18 @@ swiper {
     color: #999999;
     font-weight: Medium;
 }
-
 .commodity-shu {
     display: flex;
     width: 243rpx;
     height: 25rpx;
     margin-top: 8rpx;
 }
-
 .commodity-dollar {
     font-size: 32rpx;
     font-family: 'PingFang-SC-Bold';
     font-weight: bold;
     line-height: 25rpx;
 }
-
 .commodity-del {
     margin-left: 9rpx;
     font-family: 'PingFang-SC-Regular';
@@ -285,7 +270,6 @@ swiper {
     font-size: 24rpx;
     line-height: 25rpx;
 }
-
 .commodity-qg {
     width: 133rpx;
     height: 50rpx;
@@ -319,7 +303,6 @@ swiper {
     /* background: #000; */
     line-height: 25rpx;
 }
-
 .table-name {
     font-weight: Medium;
     line-height: 25rpx;
@@ -327,7 +310,6 @@ swiper {
     color: #151515;
     font-family: 'PingFang-SC-Medium';
 }
-
 .table-box {
     width: 48rpx;
     height: 5rpx;
@@ -335,7 +317,6 @@ swiper {
     margin-top: 10rpx;
     border-radius: 3rpx;
 }
-
 .table-color {
     background-color: #FF3333;
 }
@@ -347,7 +328,6 @@ swiper {
     /* display: none; */
     margin: 0 auto;
 }
-
 .handpick-text {
     width: 710rpx;
     height: 230rpx;

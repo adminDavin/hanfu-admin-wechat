@@ -36,11 +36,7 @@
             </view>
             <view class="productName-collect">
                 <view class="collect-one">
-                    <image src="../../images/tabs/jiangjia.png" class="depreciate-image" />
                     <text class="depreciate-text">降价通知</text>
-                </view>
-                <view class="collect-one collect-margin">
-                    <image src="../../images/tabs/chakantieziguanzhu.png" class="depreciate-image" />
                     <text class="depreciate-text">12.5万</text>
                 </view>
             </view>

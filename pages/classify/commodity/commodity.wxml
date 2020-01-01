@@ -34,7 +34,6 @@
                 </view>
             </view>
             <view class="banner-box-two">
-                <image src="../../images/tabs/liebiao2.png" class="image-saoma" />
                 <image src="../../images/tabs/liebiaomoshi.png" class="image-saoma" style="display:none"/>
                 <view class="table">
                     <view class="table-sum">
