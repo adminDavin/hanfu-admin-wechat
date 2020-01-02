@@ -1,5 +1,63 @@
 {
   "pages": [
+
+    "pages/evaluate/all",
+    "pages/classify/ping-pay/ping-pay",
+    "pages/classify/Onpuzzle-particulars/Onpuzzle-particulars",
+    "pages/classify/particulars/particulars",
+    "pages/classify/over-roll/over-roll",
+
+
+
+
+
+    "pages/opp/opp",
+    "pages/opp/vip/vip",
+
+
+
+    "pages/evaluate/myevaluate/myevaluate",
+    "pages/evaluate/remark/remark",
+    "pages/evaluate/evaluateList/evaluateList",
+    "pages/evaluate/review/review",
+    "pages/evaluate/showList/showList",
+    
+    
+    
+    
+    
+    
+
+
+
+   
+    
+        
+    "pages/hexiao/hexiaosucc/hexiaosucc",
+   
+    
+    
+    "pages/pay/payto/payto",
+    "pages/pay/paySuccess/paySuccess",
+    
+    
+    
+    
+    
+    
+    "pages/goodsList/goodsList",
+    
+
+    "pages/orderform/logistics",
+    
+    "pages/shopping/shopping",
+    "pages/mine/mine",
+    "pages/address/address",
+    "pages/address/addaddress/addaddress",
+    "pages/mydingdan/mydingdan",
+    
+    "pages/hexiao/hexiao",
+    
         "pages/mine/mine",
     "pages/opp/vip/vip",
     "pages/evaluate/evaluateList/evaluateList",
@@ -39,13 +97,20 @@
     "pages/classify/commodity/commodity",
     "pages/Getdiscount/Getdiscount",
     "pages/MEdiscount/MEdiscount",
+
+    "pages/discount/discount",
+    "pages/seckill/seek/seek",
+
+    "pages/find/find",
+ 
+   
+
     "pages/classify/over-roll/over-roll",
     "pages/discount/discount",
     "pages/seckill/seek/seek",
     "pages/classify/ping-pay/ping-pay",
     
     "pages/classify/Onpuzzle-particulars/Onpuzzle-particulars",
-    "pages/find/find",
     "pages/mine/mine",
     "pages/shopping/shopping",
     "pages/register/register",

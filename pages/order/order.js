@@ -49,7 +49,6 @@ Page({
   // 拿商品信息
   getGoods(){
     var that=this;
-    console.log(that.data.arr)
     wx.request({
       url: app.globalData.urlGoods+ '/goods/byGoodsId',
       method:'get',
@@ -82,14 +81,13 @@ Page({
           userId:res.data.userId
         })
         that.getAddress()
-        that.getGoods()
       },
     })
-    // let arr=options.str.split('+');
-    // console.log(arr)
-    // that.setData({
-    //   arr:arr
-    // })
+    let arr=options.str.split('+');
+    console.log(arr)
+    that.setData({
+      arr:arr
+    })
   },
 
   /**

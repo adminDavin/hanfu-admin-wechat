@@ -483,7 +483,6 @@ swiper {
     color: rgba(21, 21, 21, 1);
     margin-left: 20rpx;
 }
-
 .description-contents {
     width: 701rpx;
     margin: 0 auto;
@@ -498,12 +497,17 @@ swiper {
 .footer {
     width: 750rpx;
     height: 98rpx;
+
     background: red;
 
     position: fixed;
     bottom: 0;
     left: 0;
+
     background-color: #FFFFFF;
+    position: fixed;
+    bottom: 0;
+    left: 0;
     overflow: hidden;
     display: flex;
     border-radius: 10px 10px 0px 0px;
@@ -641,7 +645,10 @@ swiper {
 }
 
 .kind-text {
+
     margin-top: 11rpx;
+
+
     width: 598rpx;
     font-size: 24rpx;
     font-family: PingFang SC;

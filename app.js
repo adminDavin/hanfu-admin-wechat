@@ -15,6 +15,7 @@ App({
     cartList:[],
     purchase:'http://192.168.1.104:8082',
     information:'http://192.168.1.104:9097',
+
     urlLogin: 'http://192.168.1.104:8082',//登录
     url: 'http://192.168.1.104:9097',//
     urlGoods: 'http://192.168.1.104:9095',//商品
