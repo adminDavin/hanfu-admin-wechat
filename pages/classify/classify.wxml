@@ -11,8 +11,6 @@
   <view class="classify-banner">
     <!-- 左 -->
     <view class="banner-table">
-
-      <!-- <view class="banner-table">
             <view class="banner-box">
                 <view class="banner-left"></view>
                 <text class="table-text">精选推荐</text>
@@ -115,6 +113,7 @@
             <view class="text-shpping">
               <image src="../images/handpick/图层 1 (1).png" class="shpping-box" />
               <text class="shpping-title">手机</text>
+
             </view>
           </view>
         </view>

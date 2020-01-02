@@ -46,6 +46,8 @@
     
     "pages/classify/Onpuzzle-particulars/Onpuzzle-particulars",
     "pages/find/find",
+    "pages/mine/mine",
+    "pages/shopping/shopping",
     "pages/register/register",
     "pages/logs/logs"
   ],

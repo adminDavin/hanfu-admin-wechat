@@ -1,4 +1,5 @@
 <!--pages/shopping/shopping.wxml-->
+
 <view class="commodity">
   <view class="editbtn">
     <view bindtap="edit">{{editshow==true?'编辑':'完成'}}</view>
