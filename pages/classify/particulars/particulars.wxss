@@ -12,7 +12,6 @@
     position: relative;
     background-color: #fff;
 }
-
 .images-head {
     width: 750rpx;
     height: 640rpx;
@@ -28,18 +27,15 @@
     top: 57rpx;
     left: 21rpx;
 }
-
 .return {
     width: 14rpx;
     height: 27rpx;
     margin: 16rpx 24rpx 14rpx 19rpx;
 }
-
 swiper {
     width: 100%;
     height: 640rpx;
 }
-
 .images-index {
     width: 105rpx;
     height: 39rpx;
@@ -63,14 +59,12 @@ swiper {
     height: 253rpx;
     overflow: hidden;
 }
-
 .productName-box {
     height: 63rpx;
     display: flex;
     justify-content: space-between;
     margin-top: 21rpx;
 }
-
 .productName-dollor {
     line-height: 63rpx;
     font-family: 'PingFang-SC-Regular';
@@ -121,7 +115,6 @@ swiper {
     flex-direction: column;
     align-items: center;
 }
-
 .depreciate-image {
     width: 38rpx;
     height: 38rpx;
@@ -165,21 +158,10 @@ swiper {
     /* width: 86rpx; */
     height: 31rpx;
 }
-
 .table-images {
     width: 31rpx;
     height: 31rpx;
 }
-
-.share {
-    margin-left: 9px;
-    margin-right: 20rpx;
-    font-size: 24rpx;
-    font-family: 'PingFang SC';
-    font-weight: 400;
-    color: rgba(102, 102, 102, 1);
-}
-
 /* 优惠项 */
 .discounts {
     width: 100%;
@@ -252,7 +234,9 @@ swiper {
     font-weight: 400;
     color: rgba(21, 21, 21, 1);
 }
-
+.text-left {
+    margin-left: 11rpx;
+}
 .selected-images {
     width: 32rpx;
     height: 7rpx;
@@ -266,6 +250,7 @@ swiper {
 }
 
 .delivery-box {
+    margin-top: 32rpx;
     display: flex;
 }
 
@@ -513,10 +498,11 @@ swiper {
 .footer {
     width: 750rpx;
     height: 98rpx;
-    background-color: #FFFFFF;
+    background: red;
     position: fixed;
     bottom: 0;
     left: 0;
+    background-color: #FFFFFF;
     overflow: hidden;
     display: flex;
     border-radius: 10px 10px 0px 0px;
@@ -654,11 +640,11 @@ swiper {
 }
 
 .kind-text {
+    margin-top: 11rpx;
     width: 598rpx;
     font-size: 24rpx;
     font-family: PingFang SC;
     font-weight: 400;
-    /* margin-top: -30rpx; */
     color: rgba(153, 153, 153, 1);
 }
 

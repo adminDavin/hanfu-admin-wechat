@@ -1,0 +1,119 @@
+<!-- 顶部分隔栏 -->
+<view class="tab-top">
+  <text class="pitch" bindtap='see'>全部(999)</text>
+  <text bindtap='see'>最新</text>
+  <text bindtap='see'>有图(999)</text>
+  <text class="call" bindtap='see'>好评(999)</text>
+  <text bindtap='see'>中评(99)</text>
+  <text bindtap='see'>差评(9)</text>
+</view> 
+
+<view class="Gray"></view>
+
+
+<!-- 评论区域 -->
+<view class="comment">
+  <view class="comment-top">
+    <view class="comment-top-left">
+      <image src="../../assets/img/头像@2x.png"></image>
+      <view>
+        <text>欢乐小可</text>
+        <view class="comment-top-left-image">
+          <image src="../../../assets/img/五角星@2x.png"></image>
+          <image src="../../../assets/img/五角星@2x.png"></image>
+          <image src="../../../assets/img/五角星@2x.png"></image>
+          <image src="../../../assets/img/五角星@2x.png"></image>
+          <image src="../../../assets/img/五角星1@2x.png"></image>
+        </view>
+      </view>
+    </view>
+    <view class="date">2018-02-03</view>
+  </view>
+  
+ <view class="comment-ce"> 
+     <view class="comment-le">
+    很好很好很好很好很好很好很好很好很好很好很好很好很好很好
+  </view>
+
+  <view class="broadcast">
+   <view ><image src="../../../assets/img/4d526ef88f2b060d.jpg!cc_350x449@2x.png" ></image></view>
+    <view><image src="../../../assets/img/4d526ef88f2b060d.jpg!cc_350x449@2x.png" ></image></view>
+    <view><image src="../../../assets/img/4d526ef88f2b060d.jpg!cc_350x449@2x.png" ></image></view>
+    <view class="eliminate"><image src="../../../assets/img/4d526ef88f2b060d.jpg!cc_350x449@2x.png" ></image></view>
+  </view>
+
+  <view class="comment-top-bottm">
+      <text class="be">HD7434/jisnhu</text>
+      <view class="he">
+        <view class="he-left">
+          <text>99</text>
+          <image src="../../../assets/img/zan@2x.png"></image>
+        </view>
+        <view>
+          <text>99</text>
+          <image src="../../../assets/img/liuyan@2x.png"></image>
+        </view>
+      </view>
+  </view>
+ </view>  
+
+</view>
+
+<view class="Gray"></view>
+
+
+<!-- 评论区域 -->
+<view class="comment">
+  <view class="comment-top">
+    <view class="comment-top-left">
+      <image src="../../assets/img/头像@2x.png"></image>
+      <view>
+        <text>欢乐小可</text>
+        <view class="comment-top-left-image">
+          <image src="../../../assets/img/五角星@2x.png"></image>
+          <image src="../../../assets/img/五角星@2x.png"></image>
+          <image src="../../../assets/img/五角星@2x.png"></image>
+          <image src="../../../assets/img/五角星@2x.png"></image>
+          <image src="../../../assets/img/五角星1@2x.png"></image>
+        </view>
+      </view>
+    </view>
+    <view class="date">2018-02-03</view>
+  </view>
+  
+ <view class="comment-ce"> 
+     <view class="comment-le">
+    很好很好很好很好很好很好很好很好很好很好很好很好很好很好
+  </view>
+
+  <view class="broadcast">
+   <view ><image src="../../../assets/img/4d526ef88f2b060d.jpg!cc_350x449@2x.png" ></image></view>
+    <view><image src="../../../assets/img/4d526ef88f2b060d.jpg!cc_350x449@2x.png" ></image></view>
+    <view><image src="../../../assets/img/4d526ef88f2b060d.jpg!cc_350x449@2x.png" ></image></view>
+    <view class="eliminate"><image src="../../../assets/img/4d526ef88f2b060d.jpg!cc_350x449@2x.png" ></image></view>
+  </view>
+
+  <view class="comment-top-bottm">
+      <text class="be">HD7434/jisnhu</text>
+      <view class="he">
+        <view class="he-left">
+          <text>999</text>
+          <image src="../../../assets/img/zan@2x(1).png"></image>
+        </view>
+        <view>
+          <text>99</text>
+          <image src="../../../assets/img/liuyan@2x.png"></image>
+        </view>
+      </view>
+  </view>
+ </view>  
+
+</view>
+
+<view class="line"></view>
+
+<view class="evaluate">
+  <view>思维创造科技官方</view>
+  <view style="color:#A2A2A2; font-size:26rpx;">可爱煮可爱煮可爱煮可爱煮可爱煮可爱煮可爱煮可爱煮可爱煮可爱煮可爱煮可爱煮可爱煮可爱煮可爱煮可爱煮</view>
+  <view>展开⏷</view>
+</view>
