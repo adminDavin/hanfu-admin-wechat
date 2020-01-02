@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "van-tab": "/vant/tab/index",
+    "van-tabs": "/vant/tabs/index",
+    "van-rate": "/vant/rate/index"
+  },
+  "navigationBarTitleText": "我的评价"
+}
