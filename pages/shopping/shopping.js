@@ -1,5 +1,5 @@
 // pages/shopping/shopping.js
-const app=getApp();
+const app = getApp();
 Page({
 
   /**
@@ -141,7 +141,7 @@ cartPrice(){
           },
         })
       },
-      fail: function (res) {
+      fail: function(res) {
         that.setData({
           tiphidden: false,
         })
@@ -152,7 +152,7 @@ cartPrice(){
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
@@ -185,38 +185,116 @@ cartPrice(){
     })
   },
 
+  //修改商品数量
+  subCart: function(event) { //减少商品数量
+    var that = this;
+    var status = false;
+    var index = event.currentTarget.dataset.index;
+    var item = that.data.cratList[index];
+    console.log(item);
+    item.productNum = item.productNum - 1;
+    if (item.productNum < 1) status = true;
+    if (item.productNum <= 1) {
+      item.productNum = 1;
+      // item.numSub = true;
+    }
+    // else { item.numSub = false; item.numAdd = false; }
+    if (false == status) {
+      that.setCartNum(item.productNum, item.productNum, function(data) {
+        console.log(123)
+        var itemData = "cratList[" + index + "]";
+        that.setData({
+          [itemData]: item
+        });
+        that.switchSelect();
+      });
+    }
+  },
+  addCart: function(event) { //添加商品数量
+    var that = this;
+    var index = event.currentTarget.dataset.index;
+    var item = that.data.cratList[index];
+    item.productNum = item.productNum + 1;
+    that.setCartNum(item.productNum, item.productNum, function(data) {
+      var itemData = "cratList[" + index + "]";
+      that.setData({
+        [itemData]: item
+      });
+      that.switchSelect();
+    });
+    // var productInfo = item.productInfo;
+    // if (productInfo.hasOwnProperty('attrInfo') && item.cart_num >= item.productInfo.attrInfo.stock) {
+    //   item.cart_num = item.productInfo.attrInfo.stock;
+    //   item.numAdd = true;
+    //   item.numSub = false;
+    // } else if (item.cart_num >= item.productInfo.stock) {
+    //   item.cart_num = item.productInfo.stock;
+    //   item.numAdd = true;
+    //   item.numSub = false;
+    // } else { item.numAdd = false; item.numSub = false; }
+    // that.setCartNum(item.id, item.cart_num, function (data) {
+    //   var itemData = "cartList.valid[" + index + "]";
+    //   that.setData({ [itemData]: item });
+    //   that.switchSelect();
+    // });
+  },
+
+  //商品数量
+  setCartNum(goodsId, num, callback) {
+    var that = this;
+    wx.request({
+      url: app.globalData.urlCart + '/cart/updateCartNum',
+      method: 'get',
+      data: {
+        goodsId: goodsId,
+        num: num,
+        userId: that.data.userId
+      },
+      success(res) {
+        if (res.data.data == '修改数量失败') {
+          wx.showToast({
+            title: '修改数量失败',
+            icon: 'none'
+          })
+        } else {
+          callback && callback(res.data)
+        }
+      }
+    })
+  },
+
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   }
 })

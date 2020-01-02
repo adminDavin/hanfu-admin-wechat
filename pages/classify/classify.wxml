@@ -1,11 +1,9 @@
 <view class="classify">
-    <view class="classify-header-box">
-        <image src="../images/tabs/saoma.png" class="classify-tus" />
-        <view class="classify-header">
-            <image class="classify-tu" src="../images/tabs/sousuo.png" />
-            <input type="text" class="classify-input" placeholder="显示器2K" />
-        </view>
-        <image src="../images/tabs/xiaoxi.png" class="classify-tus" />
+  <view class="classify-header-box">
+    <image src="../images/tabs/saoma.png" class="classify-tus" />
+    <view class="classify-header">
+      <image class="classify-tu" src="../images/tabs/sousuo.png" />
+      <input type="text" class="classify-input" placeholder="显示器2K" />
     </view>
     <!-- banner区 -->
     <view class="classify-banner">
@@ -81,8 +79,11 @@
                         <text class="shpping-title">手机</text>
                     </view>
                 </view>
+
             </view>
+          </view>
         </view>
+      </view>
     </view>
-</view>
-    </view>
+  </view>
+  </view>
