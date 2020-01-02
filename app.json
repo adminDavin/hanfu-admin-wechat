@@ -1,5 +1,6 @@
 {
   "pages": [
+        "pages/mine/mine",
     "pages/opp/vip/vip",
     "pages/evaluate/evaluateList/evaluateList",
     "pages/evaluate/myevaluate/myevaluate",
@@ -19,7 +20,6 @@
     "pages/orderform/logistics",
     
     "pages/shopping/shopping",
-    "pages/mine/mine",
     "pages/address/address",
     "pages/address/addaddress/addaddress",
     "pages/mydingdan/mydingdan",
@@ -37,10 +37,10 @@
     "pages/classify/Limited-time/Limited-time",
     
     "pages/classify/commodity/commodity",
-    "pages/shopping/Getdiscount/Getdiscount",
-    "pages/shopping/MEdiscount/MEdiscount",
+    "pages/Getdiscount/Getdiscount",
+    "pages/MEdiscount/MEdiscount",
     "pages/classify/over-roll/over-roll",
-    "pages/shopping/discount/discount",
+    "pages/discount/discount",
     "pages/seckill/seek/seek",
     "pages/classify/ping-pay/ping-pay",
     

@@ -498,16 +498,12 @@ swiper {
 .footer {
     width: 750rpx;
     height: 98rpx;
-<<<<<<< HEAD
     background: red;
+
     position: fixed;
     bottom: 0;
     left: 0;
-=======
     background-color: #FFFFFF;
-    position: fixed;
-    bottom: 0;
-    left: 0;
     overflow: hidden;
     display: flex;
     border-radius: 10px 10px 0px 0px;
@@ -645,10 +641,7 @@ swiper {
 }
 
 .kind-text {
-<<<<<<< HEAD
     margin-top: 11rpx;
-=======
->>>>>>> feature/single_merchant
     width: 598rpx;
     font-size: 24rpx;
     font-family: PingFang SC;
@@ -671,5 +664,4 @@ swiper {
 }
 .services-bottom {
     margin-bottom: 98rpx;
->>>>>>> feature/single_merchant
 }
