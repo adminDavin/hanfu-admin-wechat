@@ -5,9 +5,9 @@
     flex-direction:column;
 }
 .register-title {
-    font-size: 34rpx;
+    font-size: 32rpx;
     color: #000000;
-    margin-left: 19rpx;
+    margin-left: 20rpx;
 }
 .register-input {
     display: flex;

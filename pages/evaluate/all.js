@@ -7,7 +7,8 @@ Page({
    */
   data: {
     hiddenName:true,
-    show: false
+    show: false,
+    
   },
 
   /**
@@ -72,13 +73,15 @@ Page({
     })
 },
 click:function(e){
+  let n=!this.data.hiddenName
   this.setData({
-      hiddenName:!this.data.hiddenName
+      hiddenName:n
   })
+  console.log(this.data.hiddenName)
 },
-onClose() {
-  this.setData({ show: true });
-},
+// onClose() {
+//   this.setData({ show: true });
+// },
 // 点击下拉显示框
 // selectTap() {
 //   this.setData({

@@ -1,119 +1,96 @@
 {
-
   "pages": [
+
+    "pages/evaluate/all",
+    "pages/classify/ping-pay/ping-pay",
+    "pages/classify/Onpuzzle-particulars/Onpuzzle-particulars",
+    "pages/classify/particulars/particulars",
+    "pages/classify/over-roll/over-roll",
+
+
+
+
+
+    "pages/opp/opp",
     "pages/opp/vip/vip",
-    "pages/evaluate/evaluateList/evaluateList",
+
+
+
     "pages/evaluate/myevaluate/myevaluate",
+    "pages/evaluate/remark/remark",
+    "pages/evaluate/evaluateList/evaluateList",
+    "pages/evaluate/review/review",
+    "pages/evaluate/showList/showList",
+    
+    
+    
+    
+    
+    
+
+
+
+   
+    
+        
+    "pages/hexiao/hexiaosucc/hexiaosucc",
+   
+    
     
     "pages/pay/payto/payto",
     "pages/pay/paySuccess/paySuccess",
     
-    "pages/evaluate/remark/remark",
-    "pages/evaluate/showList/showList",
-    "pages/evaluate/review/review",
-   
     
     
-        
-        
-        
-        
-        
-
-
-
-
     
-    "pages/opp/opp",
     
-    "pages/evaluate/all",
+    
     "pages/goodsList/goodsList",
     
-    "pages/impower/impower",
 
-    "pages/classify/particulars/particulars",
+    "pages/orderform/logistics",
+    
+    "pages/shopping/shopping",
+    "pages/mine/mine",
+    "pages/address/address",
+    "pages/address/addaddress/addaddress",
+    "pages/mydingdan/mydingdan",
+    
+    "pages/hexiao/hexiao",
+    
+    "pages/impower/impower",
+    "pages/orderprocessing/orderprocessing",
+    "pages/address/editaddress/editaddress",
+    "pages/order/order",
     "pages/classify/product/product",
     "pages/classify/classify",
     "pages/seckill/seckill",
+    "pages/classify/puzzle-particulars/puzzle-particulars",
+    "pages/classify/Limited-time/Limited-time",
+    
+    "pages/classify/commodity/commodity",
+    "pages/Getdiscount/Getdiscount",
+    "pages/MEdiscount/MEdiscount",
+
+    "pages/discount/discount",
     "pages/seckill/seek/seek",
-    "pages/mine/mine",
-    "pages/shopping/shopping",
+
     "pages/find/find",
+ 
+   
     "pages/register/register",
-    "pages/orderform/logistics",
-    
-    
     "pages/logs/logs"
-
-        
-
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-
-        
-                
-               
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-    
-    
-    
-    
-    
-    
-    
-    
-    
-   
-    
-
-  
-   
-   
-   
-
-    
-    
   ],
+  "usingComponents": {
+    "van-tab": "./pages/vant/weapp/dist/tab/index",
+    "van-tabs": "./pages/vant/weapp/dist/tabs/index",
+    "van-sidebar": "./pages/vant/weapp/dist/sidebar/index",
+    "van-sidebar-item":"./pages/vant/weapp/dist/sidebar-item/index"
+  },
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTextStyle": "black"
-  },
-  "usingComponents": {
-    "van-tab": "./pages/vant/weapp/dist/tab/index",
-    "van-tabs": "./pages/vant/weapp/dist/tabs/index"
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json",
@@ -126,8 +103,8 @@
       {
         "text": "首页",
         "pagePath": "pages/seckill/seckill",
-        "iconPath": "pages/images/tabs/加载.png",
-        "selectedIconPath": "pages/images/tabs/加载 (1).png"
+        "iconPath": "pages/images/tabs/jiazais.png",
+        "selectedIconPath": "pages/images/tabs/jiazai.png"
       },
       {
         "text": "分类",

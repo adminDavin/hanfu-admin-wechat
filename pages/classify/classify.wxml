@@ -10,44 +10,21 @@
     <!-- banner区 -->
     <view class="classify-banner">
         <!-- 左 -->
+
         <view class="banner-table">
-            <view class="banner-box">
-                <view class="banner-left"></view>
-                <text class="table-text">精选推荐</text>
-            </view>
-            <view class="banner-box">
-                <view></view>
-                <text class="table-text">女装</text>
-            </view>
-            <view class="banner-box">
-                <view></view>
-                <text class="table-text">美妆护肤</text>
-            </view>
-            <view class="banner-box">
-                <view></view>
-                <text class="table-text">男鞋</text>
-            </view>
-            <view class="banner-box">
-                <view></view>
-                <text class="table-text">女鞋</text>
-            </view>
-            <view class="banner-box">
-                <view></view>
-                <text class="table-text">女装</text>
-            </view>
-            <view class="banner-box">
-                <view></view>
-                <text class="table-text">个护清洁</text>
-            </view>
-            <view class="banner-box">
-                <view></view>
-                <text class="table-text">女装</text>
-            </view>
-            <view class="banner-box">
-                <view></view>
-                <text class="table-text">女装</text>
-            </view>
-        </view>
+
+       
+        <van-sidebar active-key="{{ activeKey }}">
+            <van-sidebar-item title="精选推荐" custom-class="banner-box" />
+            <van-sidebar-item title="女装" custom-class="banner-box" />
+            <van-sidebar-item title="美妆护肤" custom-class="banner-box" />
+            <van-sidebar-item title="男鞋" custom-class="banner-box" />
+            <van-sidebar-item title="女鞋" custom-class="banner-box" />
+            <van-sidebar-item title="个护清洁" custom-class="banner-box" />
+            <van-sidebar-item title="女装" custom-class="banner-box" />
+            <van-sidebar-item title="个护清洁" custom-class="banner-box" />
+            <van-sidebar-item title="女装" custom-class="banner-box" />
+        </van-sidebar>
         <!-- 右 -->
         <view class="banner-text">
             <image src="../images/handpick/1.png" class="text-image" />
@@ -108,3 +85,4 @@
         </view>
     </view>
 </view>
+    </view>

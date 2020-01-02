@@ -62,11 +62,10 @@
 }
 .buttom-two {
   float: right;
-  width: 183rpx;
-  height: 62rpx;
   line-height: 62rpx;
   text-align: center;
   color: #fff;
   background-color: #FF0000;
   border-radius: 10rpx;
+  padding:0;
 }
