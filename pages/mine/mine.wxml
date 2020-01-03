@@ -22,7 +22,7 @@
       <image src="../images/cart/jianbian.png" style="position:absolute;width: 670rpx;height: 71rpx;left:0;top:0"></image>
       <image src="../images/cart/huangguan.png" style="position:absolute;width:95rpx;height:62rpx;bottom:0;left:0;z-index:1"></image>
       <view style="font-size:26rpx;font-weight:bold;color:rgba(21,21,21,1);z-index:2">PLUS 会员</view>
-      <view class="chakan">
+      <view class="chakan" bindtap="ontab">
         <image src="../images/cart/chakan.png" style="position:absolute;width:170rpx;height:64rpx;left:0;top:0;z-index:1"></image>
         <view style="font-size:24rpx;font-weight:500;color:rgba(234,182,57,1);line-height:42rpx;z-index:2">立即查看</view>
         <image src="../images/cart/chakanrj.png" style="width:8rpx;height:13rpx;z-index:2"></image>
