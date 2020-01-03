@@ -176,7 +176,7 @@
 .input{
   width: 65%;
   height: 60rpx; 
-  
+  display:block; 
   margin: 30rpx auto;
   background: #fff;
 }

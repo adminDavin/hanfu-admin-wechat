@@ -10,7 +10,9 @@ Page({
     // hideModals:false,
     dataid:'',
     number:[],
-    day: ''
+    day: '',
+    contentid: '',//id 查秒杀商品详情
+    dongtai: []//id 查秒杀商品详情
   },
   showModal: function () {
     var that = this;
@@ -79,6 +81,23 @@ Page({
       showModal: false
     })
   },
+  //根据id 查秒杀商品详情
+  contentsckill: function () {
+    var that = this;
+    wx.request({
+      url: app.globalData.urlseckill + '/kill/seletById',
+      method: 'Get',
+      success: function (res) {
+        console.log(res)
+        that.setData({
+          dongtai:res.data
+        })
+      },
+      data: {
+        id: that.data.contentid
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -87,8 +106,10 @@ Page({
     var that =this;
     console.log (id);
     that.setData({
-      dataid:id
+      dataid:id,
+      contentid:id
     });
+    this.contentsckill();
     // 获取当前时间
     var Day = util.formatTime(new Date());
     this.setData({

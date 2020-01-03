@@ -1,4 +1,4 @@
-// pages/classify/commodity/commodity.js
+const app = getApp()
 Page({
    // 获取滚动条当前位置
    onPageScroll: function (e) {
@@ -78,9 +78,8 @@ Page({
     var id = e.currentTarget.dataset.id
     // console.log(id),
     wx.navigateTo({
-      url:`../particulars/particulars?id= ${2}`,
+      url:`../particulars/particulars?id= ${id}`,
     })
-
   },
   /**
    * 生命周期函数--监听页面加载

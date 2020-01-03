@@ -19,6 +19,7 @@
     display: flex;
     width: 575rpx;
     height: 72rpx;
+    display: flex;
     align-items: center;
     border-radius: 30rpx;
     background-color:#EBEBEB;
@@ -44,20 +45,6 @@
     height: 100%;
     margin-right: 20rpx;
     margin-top: 20rpx;
-}
-.banner-table {
-    width: 178rpx;
-    height: 100%;
-    background-color: #EEEEEE;
-}
-.banner-table {
-    width: 178rpx;
-    height:100%;
-}
-.banner-left {
-    width: 5rpx;
-    height: 86rpx;
-    border-left:2px solid #FF3333;
 }
 .banner-box {
     width: 178rpx;

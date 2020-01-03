@@ -10,23 +10,23 @@ Page({
     id: [],
     day: '', //当前时间
     time: [], //时间
-    times:'',
+    times:[],
     times1: '',
     times2: '',
     times3: '',
-    schedule:''
+    schedule: ''
   },
   /**
    * 生命周期函数--监听页面加载
    */
   // 拼团标题
   onLoad: function (options) {
-    this.requestData();
     // 获取当前时间
     var Day = util.formatTime(new Date());
     this.setData({
       day: Day
     })
+    this.requestData();
   },
   requestData: function () {
     var that = this;
@@ -73,12 +73,13 @@ Page({
         that.setData({
           time: res.data
         })
-        for (let i=0; i < that.data.time.length; i++) {
+        for (let i = 0; i < that.data.time.length; i++) {
           // console.log(that.data.time[i])
           let str = that.data.time[0].substring(11, 16)
-          let str1= that.data.time[1].substring(11, 16)
-          let str2= that.data.time[2].substring(11, 16)
-          let str3= that.data.time[3].substring(11, 16)
+          let str1 = that.data.time[1].substring(11, 16)
+          let str2 = that.data.time[2].substring(11, 16)
+          let str3 = that.data.time[3].substring(11, 16)
+
           that.setData({
             times: str,
             times1: str1,
@@ -90,20 +91,24 @@ Page({
           url: app.globalData.urlseckill + '/kill/seleteDate',
           method: 'Get',
           success: function (res) {
+            console.log(res)
             that.setData({
-              schedule: res.data
+              schedule: res.data,
+              index:res.data.id
             })
 
           },
           data: {
-            startTime: that.data.day+' '+that.data.times
+            startTime: that.data.day + '  ' + that.data.times
           }
         })
       },
     })
   },
+
   // 跳转携带id
   particulars: function (e) {
+    console.log(e)
     var id = e.currentTarget.dataset.id
     console.log(id)
     wx.navigateTo({

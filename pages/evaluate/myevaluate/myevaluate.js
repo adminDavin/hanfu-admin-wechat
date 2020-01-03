@@ -63,23 +63,5 @@ Page({
    */
   onShareAppMessage: function () {
 
-  },
-  ontab:function(event){
- 
-    wx.navigateTo({
- 
-          url: '../showList/showList',//跳转的路径
- 
-    })
- 
-   },
-   on:function(event){
- 
-    wx.navigateTo({
- 
-          url: '../remark/remark',
- 
-    })
- 
-   }
+  }
 })

@@ -80,9 +80,9 @@
 </view>
 <!-- 上面整个大盒子 end -->
 <!-- 最下层 -->
-<view class="lowermost" >
+<view class="lowermost" bindtap='click'>
   
-  <view class="lowermost-left" style="bottom:{{bottom}}px"  bindtap='click'>
+  <view class="lowermost-left" style="bottom:{{bottom}}px" >
     <image src="../../assets/img/liuyan@2x.png"></image>
     <text>评价</text>
   </view>
@@ -94,7 +94,7 @@
     <text>点赞</text>
   </view>
 </view>
-<van-popup custom-style='style' overlay="{{ false }}" position="bottom" show="{{ show }}" hidden="true">
+<van-popup custom-style='style' overlay="{{ false }}" position="bottom" show="{{ show }}" hidden="{{hiddenName}}">
        <view class='popup' >
         <input class='input' placeholder-class="placeholderStyle" placeholder='想说的话.....'></input>
         <button class='button'>发送</button>

@@ -30,8 +30,8 @@
         <view class="productName-box">
             <view class="productName-dollor">
                 <text class="dollor">¥</text>
-                <text class="money">399.00</text>
-                <text class="money-del">¥799.00</text>
+                <text class="money">{{dongtai.price}}</text>
+                <text class="money-del">¥{{dongtai.isDeleted}}</text>
                 <text class="news">新品</text>
             </view>
             <view class="productName-collect">
@@ -73,9 +73,22 @@
             </view>
             <view class="puzzle-mark">已拼成0件</view>
         </view>
+        <view class="puzzle">
+            <view class="puzzle-times">
+                <image src="../../images/tabs/naozhong.png" class="times-begin" />
+                <text class="over">限时秒杀</text>
+                <text class="over-number">00</text>
+                <text class="over">时</text>
+                <text class="over-number">00</text>
+                <text class="over">分</text>
+                <text class="over-number">00</text>
+                <text class="over">秒</text>
+            </view>
+            <view class="puzzle-mark">已拼成0件</view>
+        </view>
         <view class="productName-box-two">
             <view class="productName-table">
-                商品名称标题商品名称标题商品名称标题商品名称标题商品名称标题商品名称标题商品名称标题商品名称标题商品名称
+                {{dongtai.hfGoods.hfName}}
             </view>
             <view class="table-box">
                 <image src="../../images/tabs/fenxiang.png" class="table-images" />
@@ -108,7 +121,7 @@
         <view class="site-selected">
             <view class="selected-box">
                 <text class="selected">已选</text>
-                <text class="selected-text">卡其色薄款，XL，1件，可选服务</text>
+                <text class="selected-text" wx:for="{{dongtai.hfGoodsSpec}}" wx:key="index">卡其色薄款，{{item.hfValue}}，1件，可选服务</text>
             </view>
             <image src="../../images/tabs/diandian.png" class="selected-images" />
         </view>
@@ -208,11 +221,11 @@
             <view class="user-text">
                 <text class="head-name">欢乐小可</text>
                 <view class="stars-image">
-                    <image src="../../images/tabs/五角星.png" class="stars" />
-                    <image src="../../images/tabs/五角星.png" class="stars" />
-                    <image src="../../images/tabs/五角星.png" class="stars" />
-                    <image src="../../images/tabs/五角星.png" class="stars" />
-                    <image src="../../images/tabs/五角星1.png" class="stars" />
+                    <image src="../../images/tabs/wujiaoxing.png" class="stars" />
+                    <image src="../../images/tabs/wujiaoxing.png" class="stars" />
+                    <image src="../../images/tabs/wujiaoxing.png" class="stars" />
+                    <image src="../../images/tabs/wujiaoxing.png" class="stars" />
+                    <image src="../../images/tabs/wujiaoxings.png" class="stars" />
                 </view>
             </view>
         </view>
@@ -232,14 +245,7 @@
     <view class="description">
         <view class="description-title">商品详情</view>
         <view class="description-contents">
-            Curabitur auctor tristique lobortis. Quisque bibendum, ipsum in feugiat pharetra, 
-            odio libero malesuada turpis, tempus fermentum augue est sit amet magna. 
-            Vestibulum bibendum lectus non mauris porta, sed blandit purus scelerisque. 
-            Sed consequat mollis ornare. Sed laoreet id dolor vitae facilisis. Mauris varius orci sed turpis commodo mattis. 
-            Cras vel nibh scelerisque urna tincidunt vestibulum accumsan pharetra ex. 
-            Proin ullamcorper eros non justo tincidunt lobortis. Ut sapien nisi, bibendum tempor efficitur ultricies, 
-            pellentesque interdum diam. Aliquam commodo felis eu urna consectetur, ut semper diam tempor. Etiam eu maximus sapien, 
-            a tristique tortor.
+            {{dongtai.hfGoods.goodsDesc}}
         </view>
     </view>
     <!-- 底部 -->

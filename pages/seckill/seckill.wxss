@@ -115,48 +115,11 @@ swiper {
     width: 750rpx;
     height: 225rpx;
 }
-.title {
-    width: 710rpx;
-    height: 34rpx;
-    margin-top: 40rpx;
-    margin-bottom: 45rpx;
-    display: flex;
-    line-height: 34rpx;
-    justify-content: space-around;
-    align-items: center;
-    font-size: 36rpx;
-    font-weight: 500;
-}
-
-.seckill-color {
-    display: flex;
-    flex-direction: column;
-    color: #333333;
-}
-
-.seckill-to {
-    color: #FF3333;
-}
-
-.seckill-red {
-    background-color: #FF3333;
-}
-
-.seckill-bai {
-    width: 50rpx;
-    height: 6rpx;
-    border-radius: 3rpx;
-    margin: 0 auto;
-    margin-top: 10rpx;
-}
-
 
 /* 秒杀盒子 */
 .banner-box {
     width: 710rpx;
     height: 100%;
-    /* display: none; */
-    /* background: #000; */
     margin: 0 auto;
 }
 
@@ -366,4 +329,7 @@ swiper {
 .handpick-image {
     width: 710rpx;
     height: 230rpx;
+}
+.van-sticky {
+    margin-bottom: 40rpx;
 }

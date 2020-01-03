@@ -3,9 +3,9 @@
     "pages/mine/mine",
     "pages/evaluate/all",
     "pages/classify/ping-pay/ping-pay",
-    "pages/classify/Onpuzzle-particulars/Onpuzzle-particulars",
+
     "pages/classify/particulars/particulars",
-    "pages/classify/over-roll/over-roll",
+
 
 
 
@@ -66,7 +66,7 @@
     "pages/classify/classify",
     "pages/seckill/seckill",
     "pages/classify/puzzle-particulars/puzzle-particulars",
-    "pages/classify/Limited-time/Limited-time",
+
     
     "pages/classify/commodity/commodity",
     "pages/Getdiscount/Getdiscount",

@@ -28,12 +28,13 @@
                         <view class="sum-color colors"></view>
                     </view>
                     <view class="flex-box-two">
-                        <image src="../../images/tabs/shang (1).png" class="flex-imgae" />
+                        <image src="../../images/tabs/shang.png" class="flex-imgae" />
                         <image src="../../images/tabs/xiangxia.png" class="flex-imgae imgae-top" />
                     </view>
                 </view>
             </view>
             <view class="banner-box-two">
+                <image src="../../images/tabs/liebiao2.png" class="image-saoma" />
                 <image src="../../images/tabs/liebiaomoshi.png" class="image-saoma" style="display:none"/>
                 <view class="table">
                     <view class="table-sum">
@@ -46,7 +47,7 @@
         </view>
     </view>
     <!-- 商品区域一个 -->
-    <view class="shpping-content" wx:for="{{arr}}" wx:key="index" id='{{item.id}}'>
+    <view class="shpping-content" wx:for="{{arr}}" wx:key="index" data-id='{{item.id}}'>
         <view class="content" bindtap="commodity">
             <!-- 图片 -->
             <image src="{{item.img}}" class="content-images" />

@@ -28,7 +28,7 @@
                         <view class="sum-color colors"></view>
                     </view>
                     <view class="flex-box-two">
-                        <image src="../../images/tabs/shang (1).png" class="flex-imgae" />
+                        <image src="../../images/tabs/shang.png" class="flex-imgae" />
                         <image src="../../images/tabs/xiangxia.png" class="flex-imgae imgae-top" />
                     </view>
                 </view>
@@ -47,114 +47,19 @@
         <!-- 商品区域 -->
         <view class="banner-centent">
             <!-- 商品 -->
-            <view class="centent">
+            <view class="centent" bindtap="commodity" wx:for="{{arr}}" wx:key="index" data-id="{{item.id}}">
                 <!-- 图片 -->
-                <image src="../../images/handpick/shangping.png" class="centent-image" />
+                <image src="{{item.img}}" class="centent-image" />
                 <!-- 详情 -->
                 <view class="centent-particulars">
-                    <text class="particulars-text">纯色床上用品316TC家纺床品网红60S被套全棉纯棉床单床笠四件套</text>
+                    <text class="particulars-text">{{item.goodName}}</text>
                     <view class="particulars-money">
                         <view class="money-box">
                             <text class="money-title">¥</text>
-                            <text class="money-number">800.00</text>
+                            <text class="money-number">{{item.sellPrice}}</text>
                             <image src="../../images/tabs/vip.png" class="money-vip" />
                         </view>
                         <view class="money-table">
-                            <text class="money-discounts">每满200减30</text>
-                        </view>
-                        <view class="comment">
-                            <text class="comment-number">23万+条评论</text>
-                            <text>99%好评</text>
-                        </view>
-                    </view>
-                </view>
-            </view>
-            <view class="centent">
-                <!-- 图片 -->
-                <image src="../../images/handpick/shangping.png" class="centent-image" />
-                <!-- 详情 -->
-                <view class="centent-particulars">
-                    <text class="particulars-text">纯色床上用品316TC家纺床品网红60S被套全棉纯棉床单床笠四件套</text>
-                    <view class="particulars-money">
-                        <view class="money-box">
-                            <text class="money-title">¥</text>
-                            <text class="money-number">800.00</text>
-                            <image src="../../images/tabs/vip.png" class="money-vip" />
-                        </view>
-                        <view class="money-table">
-                            <text class="money-discounts">新品</text>
-                            <text class="money-discounts">包邮</text>
-                        </view>
-                        <view class="comment">
-                            <text class="comment-number">23万+条评论</text>
-                            <text>99%好评</text>
-                        </view>
-                    </view>
-                </view>
-            </view>
-            <view class="centent">
-                <!-- 图片 -->
-                <image src="../../images/handpick/shangping.png" class="centent-image" />
-                <!-- 详情 -->
-                <view class="centent-particulars">
-                    <text class="particulars-text">纯色床上用品316TC家纺床品网红60S被套全棉纯棉床单床笠四件套</text>
-                    <view class="particulars-money">
-                        <view class="money-box">
-                            <text class="money-title">¥</text>
-                            <text class="money-number">800.00</text>
-                            <image src="../../images/tabs/vip.png" class="money-vip" />
-                        </view>
-                        <view class="money-table">
-                            <text class="money-discounts">新品</text>
-                            <text class="money-discounts">包邮</text>
-                            <text class="money-discounts">每满200减30</text>
-                        </view>
-                        <view class="comment">
-                            <text class="comment-number">23万+条评论</text>
-                            <text>99%好评</text>
-                        </view>
-                    </view>
-                </view>
-            </view>
-            <view class="centent">
-                <!-- 图片 -->
-                <image src="../../images/handpick/shangping.png" class="centent-image" />
-                <!-- 详情 -->
-                <view class="centent-particulars">
-                    <text class="particulars-text">纯色床上用品316TC家纺床品网红60S被套全棉纯棉床单床笠四件套</text>
-                    <view class="particulars-money">
-                        <view class="money-box">
-                            <text class="money-title">¥</text>
-                            <text class="money-number">800.00</text>
-                            <image src="../../images/tabs/vip.png" class="money-vip" />
-                        </view>
-                        <view class="money-table">
-                            <text class="money-discounts">新品</text>
-                            <text class="money-discounts">包邮</text>
-                            <text class="money-discounts">每满200减30</text>
-                        </view>
-                        <view class="comment">
-                            <text class="comment-number">23万+条评论</text>
-                            <text>99%好评</text>
-                        </view>
-                    </view>
-                </view>
-            </view>
-            <view class="centent">
-                <!-- 图片 -->
-                <image src="../../images/handpick/shangping.png" class="centent-image" />
-                <!-- 详情 -->
-                <view class="centent-particulars">
-                    <text class="particulars-text">纯色床上用品316TC家纺床品网红60S被套全棉纯棉床单床笠四件套</text>
-                    <view class="particulars-money">
-                        <view class="money-box">
-                            <text class="money-title">¥</text>
-                            <text class="money-number">800.00</text>
-                            <image src="../../images/tabs/vip.png" class="money-vip" />
-                        </view>
-                        <view class="money-table">
-                            <text class="money-discounts">新品</text>
-                            <text class="money-discounts">包邮</text>
                             <text class="money-discounts">每满200减30</text>
                         </view>
                         <view class="comment">

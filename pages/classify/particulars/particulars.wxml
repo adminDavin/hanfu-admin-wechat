@@ -36,7 +36,11 @@
             </view>
             <view class="productName-collect">
                 <view class="collect-one">
+                    <image src="../../images/tabs/jiangjia.png" class="depreciate-image" />
                     <text class="depreciate-text">降价通知</text>
+                </view>
+                <view class="collect-one collect-margin">
+                    <image src="../../images/tabs/chakantieziguanzhu.png" class="depreciate-image" />
                     <text class="depreciate-text">12.5万</text>
                 </view>
             </view>
@@ -154,7 +158,7 @@
             <text class="foot-text">购物车</text>
         </view>
         <view class="footer-shppingcar" bindtap="shppingcar">加入购物车</view>
-        <view class="footer-shppingcar purchase">立即购买</view>
+        <view class="footer-shppingcar purchase" bindtap="buyquick">立即购买</view>
     </view>
     <!-- 服务弹窗 -->
     <view class="modals modals-bottom-dialog" hidden="{{hideModal}}">

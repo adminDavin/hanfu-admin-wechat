@@ -67,15 +67,5 @@ Page({
    */
   onShareAppMessage: function () {
 
-  },
-  ontab:function(){
- 
-    wx.navigateTo({
- 
-          url: '../opp',
-         
-    })
-    console.log(123)
-   },
-
+  }
 })

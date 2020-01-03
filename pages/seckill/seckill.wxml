@@ -44,7 +44,7 @@
     <van-tabs active="a" bind:click="seckillshpping">
         <van-tab title="精选" name="a" color="#ff3333">
             <!-- 精选盒子 -->
-            <view class="banner-box-three">
+            <view class="banner-box-three" >
                 <view class="handpick-text">
                     <text class="handpick-title">推荐榜单</text>
                     <image class="handpick-image" src="../images/handpick/图层 1.png"></image>
@@ -99,7 +99,7 @@
             <view class="banner-box">
                 <view class="seckill-star">
                     <text class="star-table">今日爆款</text>
-                    <view class="seckill-stars">
+                    <view class="seckill-stars" >
                         <view class="stars-one">
                             <text>{{times}}</text>
                             <text>已开抢</text>
@@ -119,7 +119,7 @@
                     </view>
                 </view>
                 <view class="seckill-banner">
-                    <view class="seckill-commodity" wx:for="{{schedule}}" wx:key="index">
+                    <view class="seckill-commodity" wx:for="{{schedule}}" wx:key="index" bindtap="particulars" data-id="{{item.id}}">
                         <view class="commodity-tu">
                             <image src="../images/handpick/shangping.png"></image>
                         </view>

@@ -1,20 +1,30 @@
 <view class="zt">
     <view class="hand">
-        <view class="hang-box">
+        <view class="tx">
             <image class="tx" src="../../images/vip/头像@2x.png"></image>
-            <view class="zj">
-                <view class="zj_1">
-                    <text class="nc">会员昵称</text>
-                    <view class="nk">年卡</view>
-                </view>
-                <view class="zj_2">
-                    <text class="xx">￥50000.00</text>
-                    <text class="xx_1">账单记录</text>
-                    <image class="gd" src="../../images/vip/xiala@2x(1).png"></image>
-                </view>
+        </view>
+        <view class="zj">
+            <view class="zj_1">
+                <text class="nc">会员昵称</text>
+                <view class="nk">年卡</view>
+            </view>
+            <view class="zj_2" >
+                <text class="xx" >
+                   ￥50000.00 
+                </text>
+                <text class="xx" >
+                    账单记录
+                </text>
+                <image class="gd" src="../../images/vip/xiala@2x(1).png">
+                    
+                </image>
             </view>
         </view>
-        <view class="zz" bindtap="ontab">充值</view>
+        <view class="zz" >
+            
+                充值
+            
+        </view>
     </view>
     <!-- 专项特权 -->
     <view class="bt">
@@ -47,9 +57,12 @@
             <text class="headline">PLUS会员专项券</text>
         </view>
         <view class="q">
-            <text class="gd">
-                更多
-                <image class="" src="../../images/vip/xiala@2x(1).png"></image>
+            <text class="gd">更多
+                <image class="" src="../../images/vip/xiala@2x(1).png">
+                    <view class="" >
+                        
+                    </view>
+                </image>
             </text>
         </view>
     </view>
@@ -57,7 +70,9 @@
     <scroll-view class='scrollView' scroll-x='true'>
         <view class='cc'>
             <view class='vvv' wx:for='{{6}}'>
-                <view class="ppp">plus</view>
+                <view class="ppp">
+                    plus
+                </view>
             </view>
         </view>
     </scroll-view>
@@ -73,10 +88,13 @@
         </view>
     </view>
     <!--  -->
-    <scroll-view class='scrollView' scroll-x='true'>
+    <scroll-view class='scrollView' scroll-x='true' >
         <view class='cc'>
-            <view class='vvv' wx:for='{{6}}'>
-                <view class="qqq">12313</view>
+            <view class='vvv' wx:for='{{6}}' >
+                <view class="qqq" >
+                    12313
+                </view>
+
             </view>
         </view>
     </scroll-view>

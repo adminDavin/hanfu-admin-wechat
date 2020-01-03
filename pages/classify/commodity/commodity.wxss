@@ -205,7 +205,6 @@
 }
 .news {
     width: 316rpx;
-    height: 92rpx;
     font-size: 24rpx;
     color: #FF0000;
     overflow: hidden;

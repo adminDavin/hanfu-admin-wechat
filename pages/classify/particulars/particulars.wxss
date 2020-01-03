@@ -162,6 +162,14 @@ swiper {
     width: 31rpx;
     height: 31rpx;
 }
+.share {
+    margin-left: 9px;
+    margin-right: 20rpx;
+    font-size: 24rpx;
+    font-family: 'PingFang SC';
+    font-weight: 400;
+    color: rgba(102, 102, 102, 1);
+}
 /* 优惠项 */
 .discounts {
     width: 100%;
@@ -483,6 +491,7 @@ swiper {
     color: rgba(21, 21, 21, 1);
     margin-left: 20rpx;
 }
+
 .description-contents {
     width: 701rpx;
     margin: 0 auto;
@@ -497,13 +506,10 @@ swiper {
 .footer {
     width: 750rpx;
     height: 98rpx;
-
     background: red;
-
     position: fixed;
     bottom: 0;
     left: 0;
-
     background-color: #FFFFFF;
     position: fixed;
     bottom: 0;
@@ -645,10 +651,7 @@ swiper {
 }
 
 .kind-text {
-
     margin-top: 11rpx;
-
-
     width: 598rpx;
     font-size: 24rpx;
     font-family: PingFang SC;

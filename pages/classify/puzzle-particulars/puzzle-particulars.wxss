@@ -760,6 +760,7 @@ swiper {
 .more-title {
     display: block;
     width: 96rpx;
+    height: 30rpx;
     font-size: 24rpx;
     font-family: 'PingFang SC';
     font-weight: 400;

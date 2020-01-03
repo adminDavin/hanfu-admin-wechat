@@ -11,7 +11,7 @@ Page({
     evaluate: '', //评价
     site: '', //地址
     sites: '',
-    shppingcar: '' //购物车
+    shppingcar: '' ,//购物车
   },
   // 显示遮罩层
   showModal: function () {
@@ -71,7 +71,7 @@ Page({
         })
       },
       data: {
-        goodsId: 2
+        goodsId: that.data.dataId
       }
     })
   },
@@ -80,7 +80,7 @@ Page({
     console.log(e)
     var that = this;
     wx.request({
-      url: app.globalData.urlevaluate + '/message/SeekReply',
+      url: app.globalData.information + '/message/SeekReply',
       method: 'Get',
       success: function (res) {
         that.setData({
@@ -139,22 +139,41 @@ Page({
       }
     })
   },
+  //立即购买
+  buyquick: function (e) {
+    // console.log(e)
+    var that = this;
+    wx.request({
+      url: app.globalData.information + '/order/creat',
+      method: 'Get',
+      success: function (res) {
+        console.log(res)
+        that.setData({
+          
+        })
+      },
+      data: {
+        
+      }
+    })
+    wx.navigateTo({
+      url:'../../order/order',
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.particulars();
-    this.evaluate();
-    this.site();
-
     let id = options.id;
     var that = this;
     console.log(id);
     that.setData({
-      dataId: id
+      dataId: id,
     })
+    this.particulars();
+    this.evaluate();
+    this.site();
   },
-
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
