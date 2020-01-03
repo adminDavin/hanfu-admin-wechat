@@ -11,7 +11,7 @@ background:linear-gradient(-90deg,rgba(254,29,66,1),rgba(255,120,61,1));
 .dai-box{
   width:100%;
   height:100%;
-  padding:100rpx 0 68rpx;
+  padding:75rpx 0 40rpx;
   box-sizing: border-box;
   display: flex;
   justify-content: space-between;
@@ -51,19 +51,6 @@ font-size:30rpx;
 font-weight:500;
 color:rgba(254,29,66,1);
 }
-.chakanpingjia{
-  width:270rpx;
-height:50rpx;
-border:2rpx solid rgba(255,255,255,1);
-border-radius:25rpx;
-margin:0 240rpx;
-text-align: center;
-line-height: 50rpx;
-font-size:30rpx;
-font-weight:400;
-color:rgba(255,255,255,1);
-}
-
 /* 地址 */
 .address-card{
   padding:0 24rpx;
@@ -192,11 +179,6 @@ text-align: center;
 font-size:24rpx;
 font-weight:400;
 color:rgba(51,51,51,1);
-}
-.num {
-  font-size: 28rpx;
-  font-weight: 500;
-  color: rgba(51, 51, 51, 1);
 }
 /* plus */
 .plus-card{
