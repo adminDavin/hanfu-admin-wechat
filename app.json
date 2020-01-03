@@ -1,6 +1,6 @@
 {
   "pages": [
-
+    "pages/mine/mine",
     "pages/evaluate/all",
     "pages/classify/ping-pay/ping-pay",
     "pages/classify/Onpuzzle-particulars/Onpuzzle-particulars",
@@ -50,40 +50,14 @@
 
     "pages/orderform/logistics",
     
-    "pages/shopping/shopping",
-    "pages/mine/mine",
-    "pages/address/address",
-    "pages/address/addaddress/addaddress",
-    "pages/mydingdan/mydingdan",
-    
-    "pages/hexiao/hexiao",
-    
-        "pages/mine/mine",
-    "pages/opp/vip/vip",
-    "pages/evaluate/evaluateList/evaluateList",
-    "pages/evaluate/myevaluate/myevaluate",
-    
-    "pages/pay/payto/payto",
-    "pages/pay/paySuccess/paySuccess",
-    
-    "pages/evaluate/remark/remark",
-    "pages/evaluate/showList/showList",
-    "pages/evaluate/review/review",
-    "pages/opp/opp",
-    
-    "pages/evaluate/all",
-    "pages/goodsList/goodsList",
-    
 
-    "pages/orderform/logistics",
     
     "pages/shopping/shopping",
     "pages/address/address",
     "pages/address/addaddress/addaddress",
     "pages/mydingdan/mydingdan",
-    "pages/classify/particulars/particulars",
     "pages/hexiao/hexiao",
-    "pages/hexiao/hexiaosucc/hexiaosucc",
+
     "pages/impower/impower",
     "pages/orderprocessing/orderprocessing",
     "pages/address/editaddress/editaddress",
@@ -102,17 +76,9 @@
     "pages/seckill/seek/seek",
 
     "pages/find/find",
- 
-   
 
-    "pages/classify/over-roll/over-roll",
-    "pages/discount/discount",
-    "pages/seckill/seek/seek",
-    "pages/classify/ping-pay/ping-pay",
-    
-    "pages/classify/Onpuzzle-particulars/Onpuzzle-particulars",
-    "pages/mine/mine",
-    "pages/shopping/shopping",
+
+
     "pages/register/register",
     "pages/logs/logs"
   ],
