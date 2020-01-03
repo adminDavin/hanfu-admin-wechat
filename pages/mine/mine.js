@@ -374,5 +374,14 @@ Page({
    */
   onShareAppMessage: function() {
 
-  }
+  },
+  ontab:function(event){
+ 
+    wx.navigateTo({
+ 
+          url: '../opp/vip/vip',//跳转的路径
+ 
+    })
+ 
+   },
 })

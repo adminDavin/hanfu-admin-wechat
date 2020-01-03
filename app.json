@@ -12,9 +12,12 @@
     "pages/orderprocessing/daishouhuo/orderprocessing",
     "pages/orderprocessing/daifahuo/orderprocessing",
     "pages/evaluate/all",
+    "pages/opp/vip/vip",    
+    
     "pages/classify/ping-pay/ping-pay",
     "pages/opp/opp",
     "pages/opp/vip/vip",
+
     "pages/evaluate/myevaluate/myevaluate",
     "pages/evaluate/remark/remark",
     "pages/evaluate/evaluateList/evaluateList",
