@@ -1,4 +1,4 @@
-<view class="puzzle-particulars">
+<view class="over-roll">
     <!-- 图片 -->
     <view class="header-images">
         <block>
@@ -30,8 +30,8 @@
         <view class="productName-box">
             <view class="productName-dollor">
                 <text class="dollor">¥</text>
-                <text class="money">{{dongtai.price}}</text>
-                <text class="money-del">¥{{dongtai.isDeleted}}</text>
+                <text class="money">{{arr.price}}</text>
+                <text class="money-del">¥{{arr.isDeleted}}</text>
                 <text class="news">新品</text>
             </view>
             <view class="productName-collect">
@@ -46,55 +46,27 @@
             </view>
         </view>
         <!-- 秒杀 -->
-        <view class="puzzle">
-            <view class="puzzle-times">
-                <image src="../../images/tabs/naozhong.png" class="times-begin" />
-                <text class="over">距结束</text>
-                <text class="over-number">00</text>
-                <text class="over">时</text>
-                <text class="over-number">01</text>
-                <text class="over">分</text>
-                <text class="over-number">59</text>
-                <text class="over">秒</text>
-                <view></view>
-            </view>
-            <view class="puzzle-mark">已拼成0件</view>
-        </view>
-        <view class="puzzle">
-            <view class="puzzle-times">
-                <image src="../../images/tabs/naozhong.png" class="times-begin" />
-                <text class="over">距开始</text>
-                <text class="over-number">00</text>
-                <text class="over">时</text>
-                <text class="over-number">01</text>
-                <text class="over">分</text>
-                <text class="over-number">59</text>
-                <text class="over">秒</text>
-            </view>
-            <view class="puzzle-mark">已拼成0件</view>
-        </view>
         <view class="productName-box-two">
             <view class="productName-table">
-                {{dongtai.hfGoods.hfName}}
+               {{arr.hfGoods.hfName}} 
             </view>
             <view class="table-box">
                 <image src="../../images/tabs/fenxiang.png" class="table-images" />
                 <text class="share">分享</text>
             </view>
         </view>
-        <view class="partner">
-            <view class="partner-box">
-                <text class="partner-title">参团小伙伴</text>
-                <view class="partner-image">
-                    <image src="" class="partner-images" />
-                    <image src="" class="partner-images partner-p" />
-                    <image src="" class="partner-images partner-p1" />
-                    <image src="" class="partner-images partner-p2" />
-                    <image src="" class="partner-images partner-p3" />
-                    <image src="" class="partner-images partner-p4" />
-                </view>
+        <view class="puzzle">
+            <view class="puzzle-times">
+                <image src="../../images/tabs/naozhong.png" class="times-begin" />
+                <text class="over">限时秒杀</text>
+                <text class="over-number">00</text>
+                <text class="over">时</text>
+                <text class="over-number">00</text>
+                <text class="over">分</text>
+                <text class="over-number">00</text>
+                <text class="over">秒</text>
             </view>
-            <image src="../../images/tabs/diandian.png" class="selected-images" />
+            <view class="puzzle-mark">已拼成0件</view>
         </view>
     </view>
     <!-- 优惠项 -->
@@ -108,7 +80,7 @@
         <view class="site-selected">
             <view class="selected-box">
                 <text class="selected">已选</text>
-                <text class="selected-text" wx:for="{{dongtai.hfGoodsSpec}}" wx:key="index">{{item.hfValue}}</text>
+                <text class="selected-text" wx:for="{{arr.hfGoodsSpec}}" wx:key="index">{{item.hfValue}}</text>
             </view>
             <image src="../../images/tabs/diandian.png" class="selected-images" />
         </view>
@@ -147,49 +119,6 @@
         </view>
     </view>
     <!-- 开团 -->
-    <view class="open-roll">
-        <view class="open-more">
-            <text class="roll-text">11人在开团,可直接参与</text>
-            <view class="roll-more">
-                <text class="more-title" bindtap="more">查看更多</text>
-                <image src="../../images/tabs/jinru (1).png" class="limit-image image-m" />
-            </view>
-        </view>
-        <view class="open-client">
-            <view class="client">
-                <image src="../../images/tabs/t (1).png" class="client-head" />
-                <text class="client-title">清晨的风</text>
-            </view>
-            <view class="client-roll">
-                <view class="client-time">
-                    <view class="photos">
-                        <text class="client-photo">还差</text>
-                        <text class="client-photo photo-color">1人</text>
-                        <text class="client-photo">拼成</text>
-                    </view>
-                    <text class="client-second">2019.12.09 19:00</text>
-                </view>
-                <view class="client-button">去拼单</view>
-            </view>
-        </view>
-        <view class="open-client">
-            <view class="client">
-                <image src="../../images/tabs/t (1).png" class="client-head" />
-                <text class="client-title">清晨的风</text>
-            </view>
-            <view class="client-roll">
-                <view class="client-time">
-                    <view class="photos">
-                        <text class="client-photo">还差</text>
-                        <text class="client-photo photo-color">1人</text>
-                        <text class="client-photo">拼成</text>
-                    </view>
-                    <text class="client-second">2019.12.09 19:00</text>
-                </view>
-                <view class="client-button">去拼单</view>
-            </view>
-        </view>
-    </view>
     <!-- 评价 -->
     <view class="appraise">
         <view class="appraise-title">
@@ -232,7 +161,7 @@
     <view class="description">
         <view class="description-title">商品详情</view>
         <view class="description-contents">
-            {{dongtai.hfGoods.goodsDesc}}
+            {{arr.hfGoods.goodsDesc}}
         </view>
     </view>
     <!-- 底部 -->
@@ -245,8 +174,8 @@
             <image src="../../images/tabs/buycar.png" class="footer-image" />
             <text class="foot-text">购物车</text>
         </view>
-        <view class="footer-shppingcar">单独购买</view>
-        <view class="footer-shppingcar purchase">一键拼团</view>
+        <view class="footer-shppingcar">加入购物车</view>
+        <view class="footer-shppingcar purchase">立即购买</view>
     </view>
     <!-- 服务弹窗 -->
     <view class="modals modals-bottom-dialog" hidden="{{hideModal}}">
@@ -292,32 +221,4 @@
             </view>
         </view>
     </view>
-    <!-- 查看更多拼团 -->
-    <view class="modalDlg" wx:if="{{showModal}}">
-        <image src="../../images/tabs/guanbi.png" class="modalDlg-over" bindtap="close_mask" />
-        <text class="modalDlg-text">正在开团</text>
-        <view class="modalDlg-box">
-            <view class="open-client" wx:for="{{number}}" wx:key="index">
-                <view class="open-client-box">
-                    <image src="../../images/tabs/t (1).png" class="client-head" />
-                    <view class="client-flex">
-                        <text class="client-title title-margin">{{item.name}}</text>
-                        <text class="client-second">2019.12.09 19:00</text>
-                    </view>
-                </view>
-                <view class="client-roll">
-                    <view class="client-time time-heights">
-                        <view class="photos">
-                            <text class="client-photo">还差</text>
-                            <text class="client-photo photo-color">{{item.number}}人</text>
-                            <text class="client-photo">拼成</text>
-                        </view>
-                    </view>
-                    <view class="client-button">去拼单</view>
-                </view>
-            </view>
-        </view>
-        <text class="open-text">仅显示10个正在开团的人</text>
-    </view>
-    <view class="mask" wx:if="{{showModal}}"></view>
 </view>

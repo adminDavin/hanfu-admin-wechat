@@ -1,6 +1,6 @@
 const app = getApp();
-var util = require('../../../utils/util.js');
 Page({
+
   /**
    * 页面的初始数据
    */
@@ -8,12 +8,10 @@ Page({
     hideModal: true, //模态框的状态  true-隐藏  false-显示
     animationData: {}, //
     // hideModals:false,
-    dataid:'',
-    number:[],
-    day: '',
+    contentid: '',//id 查秒杀商品详情
+    arr:'',//秒
     site: '', //地址
-    sites: '',
-    dongtai: []//id 查秒杀商品详情
+    sites: ''
   },
   showModal: function () {
     var that = this;
@@ -84,40 +82,16 @@ Page({
       }
     })
   },
-  // 更多拼团
-  more: function (e) {
-    console.log(e)
+  //根据id 查秒杀商品详情
+  contentsckill: function () {
     var that = this;
     wx.request({
-      url: app.globalData.urlseckill + '/group/selectGroup',
+      url: app.globalData.urlseckill + '/kill/seletById',
       method: 'Get',
       success: function (res) {
         console.log(res)
         that.setData({
-          showModal: true,
-          number:res.data
-        })
-      },
-      data: {
-        id: that.data.dataid
-      }
-    })
-  },
-  close_mask: function () {
-    this.setData({
-      showModal: false
-    })
-  },
-  //根据id 查拼团商品详情
-  pinsckill: function () {
-    var that = this;
-    wx.request({
-      url: app.globalData.urlpuzzle + '/group/seleteDate',
-      method: 'Get',
-      success: function (res) {
-        console.log(res)
-        that.setData({
-          dongtai: res.data
+          arr: res.data
         })
       },
       data: {
@@ -130,19 +104,13 @@ Page({
    */
   onLoad: function (options) {
     let id = options.id;
-    var that =this;
-    console.log (id);
+    var that = this;
+    console.log(id);
     that.setData({
-      dataid:id,
-      contentid:id
+      contentid: id
     });
-    this.pinsckill();
+    this.contentsckill();
     this.site();
-    // 获取当前时间
-    var Day = util.formatTime(new Date());
-    this.setData({
-      day: Day
-    })
   },
 
   /**

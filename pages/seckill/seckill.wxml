@@ -100,19 +100,19 @@
                 <view class="seckill-star">
                     <text class="star-table">今日爆款</text>
                     <view class="seckill-stars" >
-                        <view class="stars-one">
+                        <view class="stars-one {{currentTab==0?'stars-two':''}}"  bindtap="clickTab" data-id="0">
                             <text>{{times}}</text>
                             <text>已开抢</text>
                         </view>
-                        <view class="stars-one">
+                        <view class="stars-one {{currentTab==1?'stars-two':''}}"  bindtap="clickTab" data-id="1" >
                             <text>{{times1}}</text>
                             <text>即将开始</text>
                         </view>
-                        <view class="stars-one">
+                        <view class="stars-one {{currentTab==2?'stars-two':''}}"  bindtap="clickTab" data-id="2" >
                             <text>{{times2}}</text>
                             <text>即将开始</text>
                         </view>
-                        <view class="stars-one">
+                        <view class="stars-one {{currentTab==3?'stars-two':''}}"  bindtap="clickTab" data-id="3" >
                             <text>{{times3}}</text>
                             <text>即将开始</text>
                         </view>

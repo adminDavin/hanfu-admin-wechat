@@ -1,84 +1,41 @@
 {
   "pages": [
+    "pages/classify/ping-pay/ping-pay",
+    "pages/classify/product/product",
+    "pages/classify/puzzle-particulars/puzzle-particulars",
+    "pages/classify/commodity/commodity",
+    "pages/classify/particulars/particulars",
+    "pages/seckill/seckill",
+    "pages/classify/classify",
+    "pages/classify/Limited-time/Limited-time",
     "pages/mine/mine",
     "pages/evaluate/all",
-    "pages/classify/ping-pay/ping-pay",
-
-    "pages/classify/particulars/particulars",
-
-
-
-
-
-
     "pages/opp/opp",
     "pages/opp/vip/vip",
-
-
-
     "pages/evaluate/myevaluate/myevaluate",
     "pages/evaluate/remark/remark",
     "pages/evaluate/evaluateList/evaluateList",
     "pages/evaluate/review/review",
-    "pages/evaluate/showList/showList",
-    
-    
-    
-    
-    
-    
-
-
-
-   
-    
-        
+    "pages/evaluate/showList/showList", 
     "pages/hexiao/hexiaosucc/hexiaosucc",
-   
-    
-    
     "pages/pay/payto/payto",
     "pages/pay/paySuccess/paySuccess",
-    
-    
-    
-    
-    
-    
     "pages/goodsList/goodsList",
-    
-
     "pages/orderform/logistics",
-    
-
-    
     "pages/shopping/shopping",
     "pages/address/address",
     "pages/address/addaddress/addaddress",
     "pages/mydingdan/mydingdan",
     "pages/hexiao/hexiao",
-
     "pages/impower/impower",
     "pages/orderprocessing/orderprocessing",
     "pages/address/editaddress/editaddress",
     "pages/order/order",
-    "pages/classify/product/product",
-    "pages/classify/classify",
-    "pages/seckill/seckill",
-    "pages/classify/puzzle-particulars/puzzle-particulars",
-
-    
-    "pages/classify/commodity/commodity",
     "pages/Getdiscount/Getdiscount",
     "pages/MEdiscount/MEdiscount",
-
     "pages/discount/discount",
     "pages/seckill/seek/seek",
-
     "pages/find/find",
-
-
-
     "pages/register/register",
     "pages/logs/logs"
   ],
