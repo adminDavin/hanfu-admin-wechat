@@ -6,15 +6,18 @@ Page({
     animationData: {}, //
     // hideModals:false,
     dataId: '',
+    show: false,
+    isLogin: false,
+    canGetSite: true,
     goodsId: '',
     arr: [],
     evaluate: '', //评价
     site: '', //地址
     sites: '',
-    shppingcar: '' ,//购物车
+    shppingcar: '', //购物车
   },
   // 显示遮罩层
-  showModal: function () {
+  showModal: function() {
     var that = this;
     that.setData({
       hideModal: false
@@ -24,12 +27,12 @@ Page({
       timingFunction: 'ease', //动画的效果 默认值是linear
     })
     this.animation = animation
-    setTimeout(function () {
+    setTimeout(function() {
       that.fadeIn(); //调用显示动画
     }, 200)
   },
   // 隐藏遮罩层
-  hideModal: function () {
+  hideModal: function() {
     var that = this;
     var animation = wx.createAnimation({
       duration: 800, //动画的持续时间 默认400ms   数值越大，动画越慢   数值越小，动画越快
@@ -37,7 +40,7 @@ Page({
     })
     this.animation = animation
     that.fadeDown(); //调用隐藏动画   
-    setTimeout(function () {
+    setTimeout(function() {
       that.setData({
         hideModal: true
       })
@@ -45,26 +48,26 @@ Page({
   },
 
   //动画集
-  fadeIn: function () {
+  fadeIn: function() {
     this.animation.translateY(0).step()
     this.setData({
       animationData: this.animation.export() //动画实例的export方法导出动画数据传递给组件的animation属性
     })
   },
-  fadeDown: function () {
+  fadeDown: function() {
     this.animation.translateY(300).step()
     this.setData({
       animationData: this.animation.export(),
     })
   },
   //商品详情价格及内容
-  particulars: function (e) {
+  particulars: function(e) {
     console.log(e)
     var that = this;
     wx.request({
       url: app.globalData.urlparticulars + '/goods/byGoodsId',
       method: 'Get',
-      success: function (res) {
+      success: function(res) {
         console.log(res)
         that.setData({
           arr: res.data.data
@@ -76,31 +79,31 @@ Page({
     })
   },
   //详情页评价
-  evaluate: function (e) {
+  evaluate: function(e) {
     console.log(e)
     var that = this;
     wx.request({
       url: app.globalData.information + '/message/SeekReply',
       method: 'Get',
-      success: function (res) {
+      success: function(res) {
         that.setData({
           evaluate: res.data
         })
       },
       data: {
         orderId: 2,
-        userId: 12
+        userId: that.data.userId
       }
     })
   },
   //获取顾客地址
-  site: function (e) {
+  site: function(e) {
     console.log(e)
     var that = this;
     wx.request({
       url: app.globalData.urlsite + '/user/address/queryAddress',
       method: 'Get',
-      success: function (res) {
+      success: function(res) {
         that.setData({
           site: res.data.data
         })
@@ -115,57 +118,229 @@ Page({
       },
       data: {
         token: 13,
-        userId: 13
+        userId: that.data.userId
       }
     })
   },
   //加入购物车
-  shppingcar: function (e) {
+  shppingcar: function(e) {
     // console.log(e)
     var that = this;
-    wx.request({
-      url: app.globalData.urlshppingcar + '/cart/add',
-      method: 'Get',
-      success: function (res) {
-        console.log(res)
-        that.setData({
-          shppingcar: res.data
-        })
-      },
-      data: {
-        goodsId: 2,
-        num: 2,
-        userId: 2
-      }
-    })
+    let isLogin = that.data.isLogin;
+    console.log(isLogin)
+    if (isLogin == false) {
+      that.setData({
+        show: true
+      })
+    } else {
+      wx.request({
+        url: app.globalData.urlshppingcar + '/cart/add',
+        method: 'Get',
+        success: function(res) {
+          console.log(res)
+          that.setData({
+            shppingcar: res.data
+          })
+        },
+        data: {
+          goodsId: 2,
+          num: 2,
+          userId: 2
+        }
+      })
+    }
   },
   //立即购买
-  buyquick: function (e) {
+  buyquick: function(e) {
     // console.log(e)
     var that = this;
-    wx.request({
-      url: app.globalData.information + '/order/creat',
-      method: 'Get',
-      success: function (res) {
-        console.log(res)
+    let isLogin = that.data.isLogin;
+    if (isLogin == false) {
+      that.setData({
+        show: true
+      })
+    } else {
+      wx.request({
+        url: app.globalData.information + '/order/creat',
+        method: 'Get',
+        success: function(res) {
+          console.log(res)
+          that.setData({
+
+          })
+        },
+        data: {
+
+        }
+      })
+      wx.navigateTo({
+        url: '../../order/order',
+      })
+    }
+  },
+
+  // 判断userid
+  isUserId(){
+    var that=this;
+    wx.getStorage({
+      key: 'user',
+      success: function(res) {
         that.setData({
-          
+          canGetSite:true
         })
       },
-      data: {
-        
+      fail:function(res){
+        that.setData({
+          canGetSite:false
+        })
       }
     })
-    wx.navigateTo({
-      url:'../../order/order',
+  },
+
+  // 点击判断是否登录
+  isLogin() {
+    var that = this;
+    wx.getStorage({
+      key: 'phone',
+      success: function(res) {
+        that.setData({
+          isLogin: true
+        })
+      },
+      fail: function(res) {
+        that.setData({
+          show: true,
+          isLogin: false
+        })
+      }
     })
   },
+  //初次判断是否登录
+  firstIsLogin() {
+    var that = this;
+    wx.getStorage({
+      key: 'phone',
+      success: function (res) {
+        that.setData({
+          isLogin: true
+        })
+      },
+      fail: function (res) {
+        that.setData({
+          isLogin: false
+        })
+      }
+    })
+  },
+  nologin: function () {
+    this.setData({
+      show: false
+    })
+  },
+  getUserInfo: function(e) {
+    let main = this;
+    wx.showLoading({
+      title: '正在登录',
+      mask: true
+    })
+    console.log(e)
+    // 获取用户信息
+    main.setData({
+      show: false
+    })
+    console.log(main.data.show)
+    wx.getSetting({
+      success(res) {
+        if (res.authSetting['scope.userInfo']) {
+          console.log("已授权=====")
+          // 已经授权，可以直接调用 getUserInfo 获取头像昵称
+
+          wx.getUserInfo({
+            success(res) {
+              console.log("获取用户信息成功", res)
+              main.data.global.userInfo = res.userInfo;
+              main.data.global.encryptedData = res.encryptedData;
+              main.data.global.iv = res.iv;
+              main.data.global.rawData = res.rawData;
+              main.data.global.signature = res.signature;
+              wx.setStorage({
+                key: 'userInfo',
+                data: res.userInfo
+              })
+              wx.login({
+                success: function(res) {
+                  console.log(res);
+                  wx.request({
+                    url: app.globalData.urlLogin + '/user/wxLogin',
+                    method: 'get',
+                    header: {
+                      "Content-Type": "application/x-www-form-urlencoded"
+                    },
+                    data: {
+                      code: res.code,
+                      encryptedData: main.data.global.encryptedData,
+                      iv: main.data.global.iv,
+                      rawData: main.data.global.rawData,
+                      signature: main.data.global.signature
+                    },
+
+                    success: function(res) {
+                      console.log("登录", res);
+                      if (res.data.status == 200) {
+                        wx.hideLoading();
+                        that.setData({
+                          isLogin:true
+                        })
+                        wx.setStorage({
+                          key: 'user',
+                          data: res.data.data,
+                          success: function(res) {
+                            wx.navigateTo({
+                              url: '../register/register?userId=' + main.data.userId,
+                            })
+                          }
+                        })
+                      } else {
+                        wx.hideLoading();
+                        main.setData({
+                          show: true,
+                          shibaishow: true,
+                          isLogin:false
+                        })
+                      }
+                    },
+                    fail: function(res) {
+                      wx.hideLoading();
+                      main.setData({
+                        show: true,
+                        shibaishow: true,
+                        isLogin:false
+                      })
+                    }
+                  })
+                }
+              })
+            },
+            fail(res) {
+
+            }
+          })
+        } else {
+          console.log("未授权=====")
+          // that.showSettingToast("请授权")
+        }
+      }
+    })
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
     let id = options.id;
     var that = this;
+    this.isUserId();
+    this.firstIsLogin();
     console.log(id);
     that.setData({
       dataId: id,
@@ -177,47 +352,47 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {},
+  onReady: function() {},
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   }
 })

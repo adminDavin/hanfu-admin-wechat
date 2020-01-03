@@ -4,7 +4,6 @@
     position: relative;
 }
 
-
 /* 图片 */
 .header-images {
     width: 750rpx;
@@ -674,4 +673,79 @@ swiper {
 }
 .services-bottom {
     margin-bottom: 98rpx;
+}
+/* login */
+.mask {
+  position:fixed;
+  z-index: 10;
+  left: 0;
+  top:0;
+  width: 100%;
+  height: 100%;
+  background-color:rgba(0,0,0,0.3);
+}
+.mask-dl {
+  display: flex;
+  flex-direction:column;
+  width: 558rpx;
+  height: 550rpx;
+  margin: 0 auto;
+  margin-top: 166rpx;
+  border-radius: 35rpx;
+  background-color: #FFFFFF;
+}
+.mask-tible {
+  width: 500rpx;
+  text-align: center;
+  line-height: 102rpx;
+  margin: 0 auto;
+  font-size: 34rpx;
+  font-weight: bold;
+  color: black;
+  border-bottom: 1px solid #E5E5E5;
+}
+.mask-tibles {
+  font-size: 26rpx;
+  margin: 0 auto;
+  margin-top: 30rpx;
+  margin-bottom: 42rpx;
+  color: #666666;
+}
+.mask-head {
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 50%;
+  background: #E4E4E4;
+  margin: 0 auto;
+}
+.header{
+  line-height: 200rpx;
+  text-align: center;
+}
+.mask-buttom {
+  margin: 0 auto;
+  margin-top: 42rpx;
+  height: 62rpx;
+  font-size: 28rpx;
+  width: 420rpx;
+  /* background: #000; */
+}
+.buttom {
+  float: left;
+  width: 183rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  color: #878787;
+  border-radius: 10rpx;
+  border: 1px solid #878787;
+}
+.buttom-two {
+  float: right;
+  line-height: 80rpx;
+  text-align: center;
+  color: #fff;
+  background-color: #FF0000;
+  border-radius: 10rpx;
+  padding:0;
 }

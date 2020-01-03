@@ -6,13 +6,13 @@ Page({
    * 页面的初始数据
    */
   data: {
-    bannertoggle:1,
+    bannertoggle: 1,
     tiphidden: false,
     servehidden: true,
     editshow: true,
     cratList: [],
     cartPrice: 0,
-    cartNum:0,
+    cartNum: 0,
     checkgoods: '',
     goodsarr: [],
     selectCountPrice: 0.00,
@@ -21,17 +21,17 @@ Page({
   },
 
   // banner切换
-  toggle(e){
-    var that=this;
-    var index=e.currentTarget.dataset.index;
+  toggle(e) {
+    var that = this;
+    var index = e.currentTarget.dataset.index;
     that.setData({
-      bannertoggle:index
+      bannertoggle: index
     })
-    if(index==1){
-    that.getCart();
-    }else if(index==2){
+    if (index == 1) {
+      that.getCart();
+    } else if (index == 2) {
 
-    }else if(index==2){
+    } else if (index == 3) {
 
     }
   },
@@ -39,14 +39,14 @@ Page({
   // 去结算
   submit() {
     var that = this;
-    let cart=that.data.cratList
-    var checkgoods=[];
+    let cart = that.data.shangjiagoods
+    var checkgoods = [];
     for (let i = 0; i < cart.length; i++) {
       if (cart[i].check == 1) {
-          checkgoods.push(cart[i])
+        checkgoods.push(cart[i])
       }
     }
-    
+
     // wx.navigateTo({
     //   url: '../order/order?str=' + this.data.checkgoods,
     // })
@@ -57,23 +57,16 @@ Page({
   checkboxChange: function(event) {
     var that = this;
     console.log(event)
-    var shangjiagoods = [];
     var value = event.detail.value;
     console.log(value.length)
-    var cart = that.data.cratList;
+    var cart = that.data.shangjiagoods;
     for (var index in cart) {
       if (that.inArray(cart[index].productId, value)) cart[index].check = 1;
       else cart[index].check = 0;
     }
-    for (var index in cart) {
-      if (that.data.cratList[index].productStatus == 1) {
-        shangjiagoods.push(that.data.cratList[index])
-      }
-    }
-    console.log(shangjiagoods)
     this.setData({
-      cratList: cart,
-      isAllSelect: value.length == shangjiagoods.length,
+      shangjiagoods: cart,
+      isAllSelect: value.length == that.data.shangjiagoods.length,
       selectValue: value,
     })
     this.switchSelect();
@@ -90,7 +83,7 @@ Page({
 
   switchSelect: function() {
     var that = this;
-    var validList = that.data.cratList;
+    var validList = that.data.shangjiagoods;
     var selectValue = that.data.selectValue;
     var selectCountPrice = 0.00;
     if (selectValue.length < 1) {
@@ -122,20 +115,17 @@ Page({
   setAllSelectValue: function(status) {
     var that = this;
     var selectValue = [];
-    var shangjiagoods = [];
-    var valid = that.data.cratList;
+    var valid = that.data.shangjiagoods;
     if (valid.length > 0) {
       for (var index in valid) {
         if (status == 1) {
-          if (valid[index].productStatus == 1) {
-            valid[index].check = 1;
-            selectValue.push(valid[index].productId);
-          }
+          valid[index].check = 1;
+          selectValue.push(valid[index].productId);
         } else valid[index].check = 0;
       }
       // var validData = "cartList.valid";
       that.setData({
-        cratList: valid,
+        shangjiagoods: valid,
         selectValue: selectValue,
       });
       that.switchSelect();
@@ -169,6 +159,8 @@ Page({
       },
       success: function(res) {
         console.log('购物车', res)
+        var shangjiagoods = [];
+        var xiajiagoods = [];
         if (res.data.data == '') {
           that.setData({
             tiphidden: false
@@ -179,20 +171,29 @@ Page({
           })
         }
         var cartList = res.data.data;
-        for(var index in cartList){
+        for (var index in cartList) {
           cartList[index].img = app.globalData.urlGoods + '/goods/getFile?fileId=' + cartList[index].productIcon;
         }
         var valid = cartList;
+        for (var index in valid) {
+          if (valid[index].productStatus == 1) {
+            shangjiagoods.push(valid[index])
+          } else {
+            xiajiagoods.push(valid[index])
+          }
+        }
         if (valid.length > 0) {
           that.setData({
             cratList: valid,
+            shangjiagoods: shangjiagoods,
+            xiajiagoods: xiajiagoods
           });
           that.switchSelect();
         }
         let num = JSON.stringify(res.data.data.length)
         app.globalData.cartNum = num;
         that.setData({
-          cartNum:num
+          cartNum: num
         })
         wx.setTabBarBadge({
           index: 3,
@@ -205,27 +206,27 @@ Page({
   //删除商品
   delGoods(e) {
     var that = this;
-    var goodslist=[];
-    var cart = that.data.cratList;
+    var goodslist = [];
+    var cart = that.data.shangjiagoods;
     console.log(e)
     let goodsid = e.currentTarget.dataset.goodsid
     wx.request({
       url: app.globalData.urlCart + '/cart/delGoods',
-      method:'get',
-      data:{
-        productId:e.currentTarget.dataset.goodsid,
-        userId:that.data.userId
+      method: 'get',
+      data: {
+        productId: e.currentTarget.dataset.goodsid,
+        userId: that.data.userId
       },
-      success(res){
-        for(var index in cart){
-          if(cart[index].productId!=goodsid){
+      success(res) {
+        for (var index in cart) {
+          if (cart[index].productId != goodsid) {
             goodslist.push(cart[index])
           }
         }
         that.setData({
-          cratList:goodslist
+          shangjiagoods: goodslist
         })
-        console.log(that.data.cratList)
+        console.log(that.data.shangjiagoods)
       }
     })
   },
@@ -297,7 +298,7 @@ Page({
     var that = this;
     var status = false;
     var index = event.currentTarget.dataset.index;
-    var item = that.data.cratList[index];
+    var item = that.data.shangjiagoods[index];
     console.log(item);
     item.productNum = item.productNum - 1;
     if (item.productNum < 1) status = true;
@@ -320,7 +321,7 @@ Page({
   addCart: function(event) { //添加商品数量
     var that = this;
     var index = event.currentTarget.dataset.index;
-    var item = that.data.cratList[index];
+    var item = that.data.shangjiagoods[index];
     item.productNum = item.productNum + 1;
     that.setCartNum(item.productNum, item.productNum, function(data) {
       var itemData = "cratList[" + index + "]";

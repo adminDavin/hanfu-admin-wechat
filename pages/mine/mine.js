@@ -60,7 +60,6 @@ Page({
         that.setData({
           show:true
         })
-        console.log(that.data.show)
       }
     })
     // 允许从相机和相册扫码

@@ -1,88 +1,50 @@
 {
   "pages": [
+        "pages/mine/mine",
+        "pages/classify/particulars/particulars",
+    "pages/shopping/shopping",
+    "pages/orderprocessing/orderprocessing",
+    "pages/orderprocessing/yiquxiao/orderprocessing",
+    "pages/orderprocessing/yipingjia/orderprocessing",
+    "pages/orderprocessing/pintuanzhong/orderprocessing",
+    "pages/orderprocessing/daizhifu/orderprocessing",
+    "pages/orderprocessing/daitihuo/orderprocessing",
+    "pages/orderprocessing/daishouhuo/orderprocessing",
+    "pages/orderprocessing/daifahuo/orderprocessing",
     "pages/evaluate/all",
-    "pages/opp/vip/vip",
-    "pages/mine/mine",
-    "pages/classify/particulars/particulars",
-    
+    "pages/opp/vip/vip",    
     
     "pages/classify/ping-pay/ping-pay",
-
-   
-
-
-
-
-
-
     "pages/opp/opp",
-    
-
-
+    "pages/opp/vip/vip",
 
     "pages/evaluate/myevaluate/myevaluate",
     "pages/evaluate/remark/remark",
     "pages/evaluate/evaluateList/evaluateList",
     "pages/evaluate/review/review",
     "pages/evaluate/showList/showList",
-    
-    
-    
-    
-    
-    
-
-
-
-   
-    
-        
     "pages/hexiao/hexiaosucc/hexiaosucc",
-   
-    
-    
     "pages/pay/payto/payto",
     "pages/pay/paySuccess/paySuccess",
-    
-    
-    
-    
-    
-    
     "pages/goodsList/goodsList",
-    
-
     "pages/orderform/logistics",
-    
-
-    
-    "pages/shopping/shopping",
     "pages/address/address",
     "pages/address/addaddress/addaddress",
     "pages/mydingdan/mydingdan",
     "pages/hexiao/hexiao",
-
     "pages/impower/impower",
-    "pages/orderprocessing/orderprocessing",
     "pages/address/editaddress/editaddress",
     "pages/order/order",
     "pages/classify/product/product",
     "pages/classify/classify",
     "pages/seckill/seckill",
     "pages/classify/puzzle-particulars/puzzle-particulars",
-
-    
     "pages/classify/commodity/commodity",
     "pages/Getdiscount/Getdiscount",
     "pages/MEdiscount/MEdiscount",
-
     "pages/discount/discount",
     "pages/seckill/seek/seek",
-
     "pages/find/find",
-
-
-
     "pages/register/register",
     "pages/logs/logs"
   ],
@@ -90,7 +52,7 @@
     "van-tab": "./pages/vant/weapp/dist/tab/index",
     "van-tabs": "./pages/vant/weapp/dist/tabs/index",
     "van-sidebar": "./pages/vant/weapp/dist/sidebar/index",
-    "van-sidebar-item":"./pages/vant/weapp/dist/sidebar-item/index"
+    "van-sidebar-item": "./pages/vant/weapp/dist/sidebar-item/index"
   },
   "window": {
     "backgroundTextStyle": "light",

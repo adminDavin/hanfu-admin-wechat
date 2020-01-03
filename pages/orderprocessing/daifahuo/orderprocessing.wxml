@@ -2,10 +2,13 @@
   <view class="nav">
     <view class="dai-box">
       <view class="dai-title">
-        <image src="../images/cart/wancheng.png" style="width:36rpx;height:36rpx;margin-right:19rpx;"></image>
-        <view class="dai-ziti">已完成</view>
+        <image src="../../images/cart/dengdai.png" style="width:36rpx;height:36rpx;margin-right:19rpx;"></image>
+        <view class="dai-ziti">等待发货</view>
       </view>
-      <view class="dai-btn">再次购买</view>
+      <view class="dai-content">
+        <view class="content-ziti">10日23小时33分钟后 系统自动确认收货</view>
+      </view>
+      <view class="dai-btn">提醒发货</view>
     </view>
   </view>
   <view class="address-card">
@@ -33,7 +36,7 @@
             <text class="money-title">¥</text>
             <text class="money-number">800.00</text>
           </view>
-          <view class="jiagou">加购物车</view>
+          <view class="num">X1</view>
         </view>
       </view>
     </view>
@@ -77,8 +80,7 @@
   </view>
   <view style="height:98rpx"></view>
   <view class="footer">
-  <view class="querenbtn" style="margin-right:30rpx">申请售后</view>
-    <view class="querenbtn" style="margin-right:30rpx；background:red;color:red;">评价晒单</view>
-    <view class="querenbtn" style="background-color:red;color:white;border:none">再次购买</view>
+    <view class="querenbtn" style="margin-right:30rpx">申请退款</view>
+    <view class="querenbtn" style="background-color:red;color:white;border:none">提醒发货</view>
   </view>
 </view>
