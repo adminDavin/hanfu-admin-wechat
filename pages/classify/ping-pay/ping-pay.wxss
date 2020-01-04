@@ -52,14 +52,12 @@
 .pay-shpping {
     width: 100%;
     height: 240rpx;
-    background: pink;
     display: flex;
 }
 
 .pay-image {
     width: 200rpx;
     height: 200rpx;
-    background: #000;
     margin: 20rpx 21rpx 20rpx 19rpx;
 }
 
@@ -161,7 +159,7 @@
     position: absolute;
     top: -5rpx;
     left: 15rpx;
-
+    border-radius: 10rpx;
 }
 
 .photo-heads {

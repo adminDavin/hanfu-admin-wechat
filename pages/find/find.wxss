@@ -55,7 +55,7 @@
 }
 
 .sao {
-    line-height: 50rpx;
+    line-height: 35rpx;
     color: #fff;
     font-size: 24rpx;
     text-align: center;

@@ -157,7 +157,7 @@ swiper {
     align-items: center;
 }
 
-.stars-one:hover {
+.stars-two {
     background: #fff;
     color: #FF3333;
 }
