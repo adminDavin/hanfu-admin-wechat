@@ -1,10 +1,5 @@
-// pages/opp/vip/vip.js
-
+// pages/orderprocessing/orderprocessing.js
 Page({
-
-
-
-
 
   /**
    * 页面的初始数据
@@ -67,15 +62,5 @@ Page({
    */
   onShareAppMessage: function () {
 
-  },
-  ontab:function(){
- 
-    wx.navigateTo({
- 
-          url: '../opp',
-         
-    })
-    console.log(123)
-   },
-
+  }
 })

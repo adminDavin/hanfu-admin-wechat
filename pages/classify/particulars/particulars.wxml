@@ -73,7 +73,7 @@
                 <view class="selected">送至</view>
                 <image src="../../images/tabs/位置.png" class="delivery-image" />
                 <view class="selected-text text-left">
-                    {{sites}}
+                    {{isUserId==true?sites:'请先登录'}}
                 </view>
             </view>
             <image src="../../images/tabs/diandian.png" class="selected-images" />
@@ -204,4 +204,18 @@
             </view>
         </view>
     </view>
+</view>
+
+<view class="mask" wx:if="{{show==true}}">
+  <view class="mask-dl">
+    <text class="mask-tible">{{shibaishow==true?'登录失败，请重新登录':'您还未登录'}}</text>
+    <text class="mask-tibles">请先登录再进行操作</text>
+    <view class="mask-head">
+      <view class="header">头像</view>
+    </view>
+    <view class="mask-buttom">
+      <view class="buttom" bindtap="nologin">暂不登录</view>
+      <button class="buttom-two" open-type="getUserInfo" bindgetuserinfo="getUserInfo" style="width:183rpx;font-size:28rpx;font-weight:400">立即登录</button>
+    </view>
+  </view>
 </view>

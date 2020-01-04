@@ -5,7 +5,7 @@
     <view class="edit" style="color:white;padding-left:252rpx">购物车</view>
   </view>
   <!-- banner区域 -->
-  <view class="commodity-banner" hidden="{{!tiphidden}}">
+  <view class="commodity-banner">
     <view class="table" bindtap="toggle" data-index="1">
       <text class="">全部({{cartNum}})</text>
       <view class="sum-color {{bannertoggle==1?'colors':''}}"></view>
@@ -28,7 +28,7 @@
   <!-- content -->
   <view class="content" hidden="{{!tiphidden}}">
     <checkbox-group bindchange="checkboxChange">
-      <block wx:for="{{cratList}}" wx:key >
+      <block wx:for="{{shangjiagoods}}" wx:key >
         <scroll-view scroll-x direction="horizonta" wx:if="{{item.productStatus==1}}">
           <view class="content-card">
           <checkbox value="{{item.productId}}" checked="{{item.check==1}}"></checkbox>
@@ -72,9 +72,9 @@
       </scroll-view>
       </block>
     </checkbox-group>
-    <view class="xiajia" wx:for="{{cratList}}" wx:key="index" wx:if="{{item.productStatus==0}}">
+    <view class="xiajia" wx:for="{{xiajiagoods}}" wx:key="index">
       <view class="xiajia-top">
-        <text style="font-size:28rpx;font-weight:500;color:rgba(21,21,21,1);">已下架商品</text>
+        <text style="font-size:28rpx;font-weight:500;color:rgba(21,21,21,1);">已下架商品({{xiajiagoods.length}})</text>
         <view class="xiajia-top-del">全部删除</view>
       </view>
       <view class="xiajia-content">
@@ -105,7 +105,6 @@
             <checkbox value="all" checked="{{isAllSelect}}" style="width:50rpx;" /><text class='checkAll'>全选</text>
         </checkbox-group>
      </view>
-    <!-- <view style="color:rgba(51,51,51,1);font-size:28rpx">全选</view> -->
     <view style="color:rgba(51,51,51,1);font-size:28rpx;margin-left:180rpx">合计：</view>
     <view style="color:rgba(255,0,0,1);font-size:32rpx;font-weight:500">￥{{selectCountPrice}}</view>
     <view class="gojiesuan" wx:if="{{editshow}}" bindtap="submit">去结算</view>

@@ -11,10 +11,12 @@
     <view class="addr-card" style="height:160rpx;align-items:flex-start">
       <view class="card-left-item">所在地区</view>
       <view style="display:flex;justify-content:space-around;flex-direction:column;height:100%;font-size: 30rpx;width:430rpx">
-        <view style="display:flex;justify-content:space-between">省
+        <view style="display:flex;justify-content:space-between">
+        <view style="min-width:60rpx">省</view>
           <input value="{{hfProvince}}" bindinput="hfProvince"></input>
         </view>
-        <view style="display:flex;justify-content:space-between">城市
+        <view style="display:flex;justify-content:space-between">
+        <view style="min-width:60rpx">城市</view>
           <input value="{{hfCity}}" bindinput="hfCity"></input>
         </view>
       </view>

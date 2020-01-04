@@ -60,7 +60,6 @@ Page({
         that.setData({
           show:true
         })
-        console.log(that.data.show)
       }
     })
     // 允许从相机和相册扫码
@@ -375,5 +374,14 @@ Page({
    */
   onShareAppMessage: function() {
 
-  }
+  },
+  ontab:function(event){
+ 
+    wx.navigateTo({
+ 
+          url: '../opp/vip/vip',//跳转的路径
+ 
+    })
+ 
+   },
 })

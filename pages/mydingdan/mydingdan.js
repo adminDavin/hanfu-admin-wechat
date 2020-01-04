@@ -23,6 +23,26 @@ Page({
       url: '../hexiao/hexiao',
     })
   },
+  getOrder(){
+    var that=this;
+    wx.request({
+      url: app.globalData.url + '/order/query',
+      method: 'get',
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      data: {
+        userId: that.data.userId
+      },
+      success: function (res) {
+        console.log('查询订单', res);
+        
+        that.setData({
+          productlist: res.data.data
+        })
+      }
+    })
+  },
 
   /**
    * 生命周期函数--监听页面加载
@@ -33,22 +53,7 @@ Page({
     that.setData({
       userId:options.userId
     })
-    wx.request({
-      url: app.globalData.url+'/order/query',
-      method:'get',
-      header: {
-        "Content-Type": "application/x-www-form-urlencoded"
-      },
-      data: {
-        userId: that.data.userId
-      },
-      success:function(res){
-        console.log('查询订单',res);
-        that.setData({
-          productlist: res.data.data
-        })
-      }
-    })
+    that.getOrder();
   },
 
   /**
