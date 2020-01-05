@@ -1,11 +1,12 @@
 <view class="orderprocessing">
   <view class="nav">
+    <image src="../../images/cart/fanhuibai.png" style="width:30rpx;height:35rpx;position:absolute;left:24rpx;top:65rpx" bindtap="fanhui"></image>
     <view class="dai-box">
       <view class="dai-title">
         <image src="../../images/cart/wancheng.png" style="width:36rpx;height:36rpx;margin-right:19rpx;"></image>
         <view class="dai-ziti">评价成功，感谢您</view>
       </view>
-      <view class="chakanpingjia">查看我的评价</view>
+      <view class="chakanpingjia" bindtap="ypj">查看我的评价</view>
     </view>
   </view>
   <!-- pingjia -->
@@ -14,7 +15,7 @@
       <image src="../images/cart/cartitem.png" style="width:230rpx;height:230rpx"></image>
       <view class="contentitem-right" style="justify-content: flex-start;">
         <text class="item-name">夹克外套男秋冬季新款修身工装衣服男装加绒加厚学</text>
-        <view class="pingjia">评价</view>
+        <view class="pingjia" bindtap="pj">评价</view>
       </view>
     </view>
   </view>

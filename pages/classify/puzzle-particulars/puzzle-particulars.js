@@ -7,13 +7,16 @@ Page({
   data: {
     hideModal: true, //模态框的状态  true-隐藏  false-显示
     animationData: {}, //
-    // hideModals:false,
     dataid:'',
     number:[],
     day: '',
     site: '', //地址
     sites: '',
-    dongtai: []//id 查秒杀商品详情
+    dongtai: [],//id 查秒杀商品详情
+    userId:'',
+    attention: '',//设置关注
+    goodsId:'',
+    openId:'',
   },
   showModal: function () {
     var that = this;
@@ -58,10 +61,76 @@ Page({
       animationData: this.animation.export(),
     })
   },
+  //设置关注
+  attention: function () {
+    var that = this;
+    //获取用户的openId
+    wx.getStorage({
+      key: 'user',
+      success: function (res) {
+        that.setData({
+          openId: res.data.userInfo.openId,
+        })
+      },
+    });
+    wx.request({
+      url: app.globalData.urlGoods + '/goods/Concern',
+      method: 'Get',
+      success: function (res) {
+        console.log(res)
+        that.setData({
+          attention:res.data.data  
+        })
+      },
+      data: {
+        goodsId: that.data.goodsId,//列表商品传过来
+        openId: that.data.openId
+      }
+    })
+    wx.showToast({
+      title: `关注成功`,
+    });
+  },
+  //点击分享
+  fenxiang: function () {
+    wx.navigateTo({
+      url: '../ping-pay/ping-pay'
+    })
+  },
+  //单独购买
+  dandushpping:function(){
+    wx.request({
+      url: app.globalData.urlpuzzle + '/group/shopping',
+      method: 'Post',
+      success: function (res) {
+        console.log(res)
+        that.setData({
+
+        })
+      },
+      data: {
+        groupId: 1,//列表商品传过来
+        userId:that.data.userId
+      }
+    });
+    wx.navigateTo({
+      url: '../../orderprocessing/daizhifu/orderprocessing'
+    })
+  },
   //获取顾客地址
   site: function (e) {
     console.log(e)
     var that = this;
+    //用户的id
+    wx.getStorage({
+      key: 'user',
+      success: function (res) {
+        that.setData({
+          userId: res.data.userId,
+        })
+        console.log(that.data.userId)
+      },
+    });
     wx.request({
       url: app.globalData.urlsite + '/user/address/queryAddress',
       method: 'Get',
@@ -80,7 +149,7 @@ Page({
       },
       data: {
         token: 13,
-        userId: 13
+        userId: that.data.userId
       }
     })
   },
@@ -125,24 +194,36 @@ Page({
       }
     })
   },
+  //一键拼团跳转
+  yijianpintuan:function(e){
+    var that=this;
+    var id = that.data.contentid
+    console.log(id)
+    wx.navigateTo({
+      url:`../ping-pay/ping-pay?id=${id}`
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     let id = options.id;
+    let goodsid = options.goodsid;
     var that =this;
     console.log (id);
+    console.log(goodsid);
     that.setData({
       dataid:id,
-      contentid:id
+      contentid:id,
+      goodsId:goodsid
     });
-    this.pinsckill();
-    this.site();
     // 获取当前时间
     var Day = util.formatTime(new Date());
     this.setData({
       day: Day
     })
+    this.pinsckill();
+    this.site();
   },
 
   /**

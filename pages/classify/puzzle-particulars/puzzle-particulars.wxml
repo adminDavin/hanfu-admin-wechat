@@ -39,17 +39,17 @@
                     <image src="../../images/tabs/jiangjia.png" class="depreciate-image" />
                     <text class="depreciate-text">降价通知</text>
                 </view>
-                <view class="collect-one collect-margin">
+                <view class="collect-one collect-margin" bindtap="attention">
                     <image src="../../images/tabs/chakantieziguanzhu.png" class="depreciate-image" />
                     <text class="depreciate-text">12.5万</text>
                 </view>
             </view>
         </view>
-        <!-- 秒杀 -->
+        <!-- 拼团 -->
         <view class="puzzle">
             <view class="puzzle-times">
                 <image src="../../images/tabs/naozhong.png" class="times-begin" />
-                <text class="over">距结束</text>
+                <text class="over">距开始</text>
                 <text class="over-number">00</text>
                 <text class="over">时</text>
                 <text class="over-number">01</text>
@@ -60,10 +60,10 @@
             </view>
             <view class="puzzle-mark">已拼成0件</view>
         </view>
-        <view class="puzzle">
+        <view class="puzzle" style="display:none">
             <view class="puzzle-times">
                 <image src="../../images/tabs/naozhong.png" class="times-begin" />
-                <text class="over">距开始</text>
+                <text class="over">距结束</text>
                 <text class="over-number">00</text>
                 <text class="over">时</text>
                 <text class="over-number">01</text>
@@ -77,7 +77,7 @@
             <view class="productName-table">
                 {{dongtai.hfGoods.hfName}}
             </view>
-            <view class="table-box">
+            <view class="table-box" bindtap="fenxiang">
                 <image src="../../images/tabs/fenxiang.png" class="table-images" />
                 <text class="share">分享</text>
             </view>
@@ -124,10 +124,10 @@
             <text class="selected">运费</text>
             <text class="selected-text">免运费</text>
         </view>
-        <view class="site-refund">
+        <view class="site-refund" bindtap="showModal">
             <view class="refund-flex">
                 <image src="../../images/tabs/fangxingou.png" class="refund-image" />
-                <view class="refund-box" bindtap="showModal">
+                <view class="refund-box">
                     <text class="refund-text">闪电退款</text>
                     <view class="refund-d"></view>
                     <text class="refund-text">极速审核</text>
@@ -135,9 +135,9 @@
                     <text class="refund-text">7天价保</text>
                 </view>
             </view>
-            <image src="../../images/tabs/diandian.png" class="selected-images" />
+            <image src="../../images/tabs/diandian.png" class="selected-images"/>
         </view>
-        <view class="site-safeguard">
+        <view class="site-safeguard" bindtap="showModal">
             <image src="../../images/tabs/对.png" class="safeguard-image" />
             <text class="safeguard-text">店铺发货&售后</text>
             <image src="../../images/tabs/对.png" class="safeguard-image" />
@@ -245,8 +245,8 @@
             <image src="../../images/tabs/buycar.png" class="footer-image" />
             <text class="foot-text">购物车</text>
         </view>
-        <view class="footer-shppingcar">单独购买</view>
-        <view class="footer-shppingcar purchase">一键拼团</view>
+        <view class="footer-shppingcar" bindtap="dandushpping">单独购买</view>
+        <view class="footer-shppingcar purchase" bindtap="yijianpintuan">一键拼团</view>
     </view>
     <!-- 服务弹窗 -->
     <view class="modals modals-bottom-dialog" hidden="{{hideModal}}">

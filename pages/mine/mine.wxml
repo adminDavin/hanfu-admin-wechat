@@ -30,11 +30,11 @@
     </view>
   </view>
   <view class="dai">
-    <view class="dai-item">
+    <view class="dai-item" bindtap="goMyDingdan" data-tag="2">
       <image src="../images/cart/daifukuan.png" style="width:55rpx;height:54rpx"></image>
       <view class="dai-ziti">待付款</view>
     </view>
-    <view class="dai-item">
+    <view class="dai-item" bindtap="goMyDingdan" data-tag="4">
       <image src="../images/cart/shouhuo.png" style="width:55rpx;height:54rpx"></image>
       <view class="dai-ziti">待收货</view>
     </view>
@@ -42,11 +42,11 @@
       <image src="../images/cart/ziyuan.png" style="width:55rpx;height:54rpx"></image>
       <view class="dai-ziti">待评价</view>
     </view>
-    <view class="dai-item">
+    <view class="dai-item" bindtap="goMyDingdan" data-tag="1">
       <image src="../images/cart/shouhuo_icon_n.png" style="width:55rpx;height:54rpx"></image>
       <view class="dai-ziti">退款/售后</view>
     </view>
-    <view class="dai-item" bindtap="goMyDingdan">
+    <view class="dai-item" bindtap="goMyDingdan" data-tag="1">
       <image src="../images/cart/wodedingdan.png" style="width:55rpx;height:54rpx"></image>
       <view class="dai-ziti">我的订单</view>
     </view>
@@ -57,7 +57,7 @@
       <view style="font-size:28rpx;font-weight:500;color:rgba(21,21,21,1);">工具和服务</view>
     </view>
     <view class="serve-content">
-      <view class="serve-item">
+      <view class="serve-item" bindtap="myoftenBuy">
         <image src="../images/cart/shangpin.png" style="width:96rpx;height:96rpx"></image>
         <view class="serve-ziti">常买商品</view>
       </view>
@@ -65,7 +65,7 @@
         <image src="../images/cart/youhuiquan.png" style="width:96rpx;height:96rpx"></image>
         <view class="serve-ziti">我的优惠券</view>
       </view>
-      <view class="serve-item">
+      <view class="serve-item" bindtap="myConcern">
         <image src="../images/cart/guanzhu.png" style="width:96rpx;height:96rpx"></image>
         <view class="serve-ziti">我的关注</view>
       </view>

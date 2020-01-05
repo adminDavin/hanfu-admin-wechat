@@ -82,9 +82,7 @@ Page({
        "Content-Type": "application/x-www-form-urlencoded"
       },
       data:{
-        evaluate:'完美没毛病',
-        orderId:2,
-        userId:2
+        openId:2
       },
       success: function(res) {
         console.log("成功",res)

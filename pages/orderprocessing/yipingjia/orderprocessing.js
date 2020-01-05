@@ -1,18 +1,31 @@
 // pages/orderprocessing/orderprocessing.js
+const app=getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    dingdan:'',
+    orderList:[],
   },
-
+  //返回
+  fanhui() {
+    wx.switchTab({
+      url: '../../shopping/shopping',
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var that=this;
+    console.log(options);
+    let dingdan=options.orderid
+    that.setData({
+      dingdan:dingdan
+    })
+    that.getList()
   },
 
   /**
@@ -62,5 +75,44 @@ Page({
    */
   onShareAppMessage: function () {
 
-  }
+  },
+  getList:function(){
+    var that=this;
+    wx.request({
+      url: app.globalData.url + "/order/queryOrder",
+      method:'get',
+      header: {
+       "Content-Type": "application/x-www-form-urlencoded"
+      },
+      data:{
+        id:that.data.dingdan
+      },
+      success: function(res) {
+        console.log("成功",res)
+        that.setData({
+          orderList:res.data.data
+        })
+        console.log(that.data.orderList)
+      }
+    })
+    // console.log(123);
+    
+  },   
+  pj:function(){
+    
+    wx.navigateTo({
+ 
+      url: '../../evaluate/showList/showList',
+     
+})
+  },
+  ypj:function(){
+    
+    wx.navigateTo({
+ 
+      url: '../../evaluate/remark/remark',
+     
+})
+  },
+
 })

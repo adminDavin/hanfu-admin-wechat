@@ -1,4 +1,5 @@
 // pages/evaluate/evaluateList/evaluateList.js
+
 Page({
 
   /**
@@ -62,5 +63,15 @@ Page({
    */
   onShareAppMessage: function () {
 
-  }
+  },
+  see:function(){
+    wx.navigateTo({
+ 
+      url: '../showList/showList',
+     
+})
+console.log(123)
+},
+ 
+   
 })

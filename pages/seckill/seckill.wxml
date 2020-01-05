@@ -45,17 +45,17 @@
         <van-tab title="精选" name="a" color="#ff3333">
             <!-- 精选盒子 -->
             <view class="banner-box-three" >
-                <view class="handpick-text">
+                <view class="handpick-text" bindtap="bangdan">
                     <text class="handpick-title">推荐榜单</text>
-                    <image class="handpick-image" src="../images/handpick/图层 1.png"></image>
+                    <image class="handpick-image" src=""></image>
                 </view>
                 <view class="handpick-text handpick-margin">
                     <text class="handpick-title handpick-title-two">每日特卖</text>
-                    <image class="handpick-image" src="../images/handpick/图层 2.png"></image>
+                    <image class="handpick-image" src=""></image>
                 </view>
                 <view class="handpick-text">
                     <text class="handpick-title handpick-title-three">榜单名称</text>
-                    <image class="handpick-image" src="../images/handpick/图层 3.png"></image>
+                    <image class="handpick-image" src=""></image>
                 </view>
             </view>
         </van-tab>
@@ -64,7 +64,7 @@
             <view class="banner-box-two">
                 <van-tabs active="{{ active }}" bind:click="requestcontent">
                     <van-tab wx:for="{{arr}}" wx:key='index' title="{{item}}">
-                        <view class="seckill-banner" wx:for="{{name}}" wx:key="index" bindtap="particulars" data-id='{{item.id}}'>
+                        <view class="seckill-banner" wx:for="{{name}}" wx:key="index" bindtap="particulars" data-id='{{item.id}}' data-goodsid='{{item.goodsId}}'>
                             <view class="seckill-commodity">
                                 <view class="commodity-tu">
                                     <image src="../images/handpick/shangping.png"></image>

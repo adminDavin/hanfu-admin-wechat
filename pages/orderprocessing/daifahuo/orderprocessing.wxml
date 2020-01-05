@@ -1,5 +1,6 @@
 <view class="orderprocessing">
   <view class="nav">
+    <image src="../../images/cart/fanhuibai.png" style="width:30rpx;height:35rpx;position:absolute;left:24rpx;top:65rpx" bindtap="fanhui"></image>
     <view class="dai-box">
       <view class="dai-title">
         <image src="../../images/cart/dengdai.png" style="width:36rpx;height:36rpx;margin-right:19rpx;"></image>
@@ -8,7 +9,7 @@
       <view class="dai-content">
         <view class="content-ziti">10日23小时33分钟后 系统自动确认收货</view>
       </view>
-      <view class="dai-btn">提醒发货</view>
+      <view class="dai-btn" bindtap="tixing">提醒发货</view>
     </view>
   </view>
   <view class="address-card">
@@ -17,7 +18,7 @@
       <text class="top-ziti" style="margin-right:20rpx">123456789</text>
     </view>
     <view class="address-card-bottom">
-      <view class="bot-ziti">天津西青区全境 华苑产业园区工华道1号 智慧山南塔308</view>
+      <view class="bot-ziti">{{orderList.address}}</view>
     </view>
   </view>
   <view class="content-card">
@@ -29,7 +30,7 @@
           <text>白色40x40cm,保修一年</text>
         </view>
         <view class="hiddenxiala" hidden="{{servehidden}}">
-          <view wx:for=""></view>
+          <view></view>
         </view>
         <view class="card-money" style="margin-top:50rpx">
           <view class="discounts-money">
@@ -80,7 +81,7 @@
   </view>
   <view style="height:98rpx"></view>
   <view class="footer">
-    <view class="querenbtn" style="margin-right:30rpx">申请退款</view>
-    <view class="querenbtn" style="background-color:red;color:white;border:none">提醒发货</view>
+    <view class="querenbtn" style="margin-right:30rpx" bindtap="tuikuan" data-orderid="{{dingdan}}" data-price="{{}}">申请退款</view>
+    <view class="querenbtn" style="background-color:red;color:white;border:none" bindtap="tixing">提醒发货</view>
   </view>
 </view>

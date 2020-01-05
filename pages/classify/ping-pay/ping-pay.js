@@ -1,20 +1,54 @@
-// pages/classify/ping-pay/ping-pay.js
+const app = getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+   dataid:'',//一键平团跳转传的id
+    arr: [],//一键拼团
+   userId:''
   },
-
+  //一键拼团
+  pintuans:function(){
+    var that = this;
+    wx.request({
+      url: app.globalData.urlpuzzle + '/group/joinGroup',
+      method: 'Post',
+      success: function (res) {
+        console.log(res)
+        that.setData({
+         arr: res.data
+        })
+      },
+      data: {
+        id: that.data.dataid,
+        userId:that.data.userId
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    let id = options.id;
+    var that = this;
+    console.log(id);
+    that.setData({
+      dataid: id,
+    });
+    //用户的id
+    wx.getStorage({
+      key: 'user',
+      success: function (res) {
+        that.setData({
+          userId: res.data.userId,
+        })
+        console.log(that.data.userId)
+      },
+    });
+    this.pintuans();
   },
-
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

@@ -80,23 +80,25 @@
 </view>
 <!-- 上面整个大盒子 end -->
 <!-- 最下层 -->
-<view class="lowermost" bindtap='click'>
-  
-  <view class="lowermost-left" style="bottom:{{bottom}}px" >
-    <image src="../../assets/img/liuyan@2x.png"></image>
-    <text>评价</text>
+<view>
+  <view class="lowermost" wx:if="{{ hiddenName }}">
+    <view class="lowermost-left" style="bottom:{{bottom}}px" bindtap='click' >
+      <image src="../../assets/img/liuyan@2x.png"></image>
+      <text>评价</text>
+    </view>
+    <view class="gray-parent">
+      <view class="gray"></view>
+    </view>
+    <view class="lowermost-right">
+      <image src="../../assets/img/zan@2x.png"></image>
+      <text>点赞</text>
+    </view>
   </view>
-  <view class="gray-parent">
-    <view class="gray"></view>
-  </view>
-  <view class="lowermost-right">
-    <image src="../../assets/img/zan@2x.png"></image>
-    <text>点赞</text>
+  <!--  评论 -->
+  <view class="pinglun" wx:else>
+    <input type="text" placeholder="想说的话....."></input>
+    <button bindtap='black'>发送</button>
   </view>
 </view>
-<van-popup custom-style='style' overlay="{{ false }}" position="bottom" show="{{ show }}" hidden="{{hiddenName}}">
-       <view class='popup' >
-        <input class='input' placeholder-class="placeholderStyle" placeholder='想说的话.....'></input>
-        <button class='button'>发送</button>
-        </view>
-      </van-popup>
+<!--  /评论 -->
+

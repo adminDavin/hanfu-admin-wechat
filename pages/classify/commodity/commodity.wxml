@@ -23,7 +23,7 @@
                     <view class="sum-color colors"></view>
                 </view>
                 <view class="flex-box">
-                    <view class="table table-flex">
+                    <view class="table table-flex" bindtap="prices">
                         <text class="sales">价格</text>
                         <view class="sum-color colors"></view>
                     </view>
@@ -47,7 +47,7 @@
         </view>
     </view>
     <!-- 商品区域一个 -->
-    <view class="shpping-content" wx:for="{{arr}}" wx:key="index" data-id='{{item.id}}'>
+    <view class="shpping-content" wx:for="{{arr}}" wx:key="index" data-id='{{item.id}}' data-goodsid='{{item.goodsId}}'>
         <view class="content" bindtap="commodity">
             <!-- 图片 -->
             <image src="{{item.img}}" class="content-images" />

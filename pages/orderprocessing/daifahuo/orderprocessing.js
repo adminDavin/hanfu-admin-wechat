@@ -1,18 +1,47 @@
 // pages/orderprocessing/orderprocessing.js
+const app=getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    dingdan:'',
+    orderList:[],
+  },
+  //返回
+  fanhui(){
+    wx.switchTab({
+      url: '../../shopping/shopping',
+    })
+  },
+  //提醒发货
+  tixing(){
+    wx.showToast({
+      title: '已经提醒商家啦，请耐心等待',
+      mask:true
+    })
+  },
+  //退款
+  tuikuan(e){
+    let orderid=e.currentTarget.dataset.orderid;
+    let price=e.currentTarget.dataset.price;
+    wx.navigateTo({
+      url: '../tuikuan/tuikuan?orderid='+orderid+'&price='+price,
+    })
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var that=this;
+    console.log(options);
+    let dingdan=options.orderid
+    that.setData({
+      dingdan:dingdan
+    })
+    that.getList()
   },
 
   /**
@@ -62,5 +91,28 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  getList:function(){
+    var that=this;
+    wx.request({
+      url: app.globalData.url + "/order/queryOrder",
+      method:'get',
+      header: {
+       "Content-Type": "application/x-www-form-urlencoded"
+      },
+      data:{
+        orderId:that.data.dingdan
+      },
+      success: function(res) {
+        console.log("成功",res)
+        that.setData({
+          orderList:res.data.data
+        })
+        console.log(that.data.orderList)
+      }
+    })
+    // console.log(123);
+    
   }
+
 })

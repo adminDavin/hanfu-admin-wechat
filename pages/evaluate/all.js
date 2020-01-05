@@ -6,8 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    hiddenName:true,
-    show: false
+    hiddenName: true,
   },
 
   /**
@@ -72,13 +71,22 @@ Page({
     })
 },
 click:function(e){
-  this.setData({
-      hiddenName:!this.data.hiddenName
+  var that = this;
+  that.setData({
+      hiddenName: false
   })
+  // console.log(123);
 },
-onClose() {
-  this.setData({ show: true });
-},
+black:function() {
+  // console.log(123);
+  var that = this;
+  that.setData({
+      hiddenName: true
+  })
+}
+// onClose() {
+//   this.setData({ show: true });
+// },
 // 点击下拉显示框
 // selectTap() {
 //   this.setData({

@@ -1,11 +1,12 @@
 <view class="orderprocessing">
   <view class="nav">
+  <image src="../images/cart/fanhuibai.png" style="width:30rpx;height:35rpx;position:absolute;left:24rpx;top:65rpx" bindtap="fanhui"></image>
     <view class="dai-box">
       <view class="dai-title">
         <image src="../images/cart/wancheng.png" style="width:36rpx;height:36rpx;margin-right:19rpx;"></image>
         <view class="dai-ziti">已完成</view>
       </view>
-      <view class="dai-btn">再次购买</view>
+      <view class="dai-btn" bindtap="ypx">再次购买</view>
     </view>
   </view>
   <view class="address-card">
@@ -14,7 +15,7 @@
       <text class="top-ziti" style="margin-right:20rpx">123456789</text>
     </view>
     <view class="address-card-bottom">
-      <view class="bot-ziti">天津西青区全境 华苑产业园区工华道1号 智慧山南塔308</view>
+      <view class="bot-ziti">{{hfProvince}}{{hfCity}}{{hfAddressDetail}}</view>
     </view>
   </view>
   <view class="content-card">
@@ -45,22 +46,22 @@
   <view class="dingdan-card">
     <view class="dingdan-card-item">
       <view class="dingitem-ziti">订单编号：</view>
-      <view class="dingitem-ziti" style="color:black;margin-right:37rpx">123456789</view>
+      <view class="dingitem-ziti" style="color:black;margin-right:37rpx">{{goodsList.ordersId}}</view>
       <view class="fuzhi">复制</view>
     </view>
     <view class="dingdan-card-item">
       <view class="dingitem-ziti">下单时间：</view>
-      <view class="dingitem-ziti" style="color:black;">123456789</view>
+      <view class="dingitem-ziti" style="color:black;">{{goodsList.createTime}}</view>
     </view>
     <view class="dingdan-card-item">
       <view class="dingitem-ziti">支付方式：</view>
-      <view class="dingitem-ziti" style="color:black;">微信支付</view>
+      <view class="dingitem-ziti" style="color:black;">{{goodsList.payMethodName}}</view>
     </view>
   </view>
   <view class="yunfei-card">
     <view class="dingdan-card-item" style="justify-content:space-between">
       <view class="dingitem-ziti">商品金额：</view>
-      <view class="dingitem-ziti" style="color:black;">￥800.00</view>
+      <view class="dingitem-ziti" style="color:black;">￥{{}}</view>
     </view>
     <view class="dingdan-card-item" style="justify-content:space-between">
       <view class="dingitem-ziti">运费：</view>
@@ -77,8 +78,8 @@
   </view>
   <view style="height:98rpx"></view>
   <view class="footer">
-  <view class="querenbtn" style="margin-right:30rpx">申请售后</view>
-    <view class="querenbtn" style="margin-right:30rpx；background:red;color:red;">评价晒单</view>
-    <view class="querenbtn" style="background-color:red;color:white;border:none">再次购买</view>
+  <!-- <view class="querenbtn" style="margin-right:30rpx">申请售后</view> -->
+    <view class="querenbtn" style="margin-right:30rpx；background:red;color:red;"  bindtap="see">评价晒单</view>
+    <view class="querenbtn" style="background-color:red;color:white;border:none"  bindtap="ypx">再次购买</view>
   </view>
 </view>

@@ -6,8 +6,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    goodsId: 3,
-    orderId: 3,
+    goodsId: '',
+    orderId: '',
     qrAdd: '',
     qrshow: false
   },
@@ -27,11 +27,42 @@ Page({
       qrshow: false
     })
   },
+  // 商品信息
+  getList: function () {
+    var that = this;
+    wx.request({
+      url: app.globalData.url + "/order/queryOrder",
+      method: 'get',
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      data: {
+        id: 4
+      },
+      success: function (res) {
+        console.log("成功", res)
+        let orders=res.data.data;
+        for(var index in orders){
+          
+        }
+        that.setData({
+          orderList: res.data.data
+        })
+        console.log(that.data.orderList)
+      }
+    })
+
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-
+    var that=this;
+    let orderid=options.orderid;
+    that.setData({
+      orderid:orderid
+    })
+    that.getList();
   },
 
   /**

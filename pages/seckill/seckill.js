@@ -15,11 +15,18 @@ Page({
     times2: '',
     times3: '',
     schedule: '',
-    currentTab: 0 //切换
+    currentTab: 0 ,//切换
+    userId:''
   },
   /**
    * 生命周期函数--监听页面加载
    */
+  //推荐榜单
+  bangdan:function (){
+    wx.navigateTo({
+      url: '../classify/commodity/commodity',
+    })
+  },
   // 秒杀切换
   clickTab: function (e) {
     var that = this;
@@ -129,8 +136,9 @@ Page({
   // 跳转携带id跳拼团
   particulars: function (e) {
     var id = e.currentTarget.dataset.id
+    var goodsid = e.currentTarget.dataset.goodsid
     wx.navigateTo({
-      url: `../classify/puzzle-particulars/puzzle-particulars?id=${id}`,
+      url: `../classify/puzzle-particulars/puzzle-particulars?id=${id}&goodsid=${goodsid}`,
     })
   },
   // 跳转携带id跳秒杀

@@ -1,4 +1,5 @@
 // pages/goods/goodsList/goodsList.js
+const app=getApp();
 Page({
 
   /**
@@ -7,18 +8,30 @@ Page({
   data: {
     radio: '1',
     edit: false
+    
   },
-  onChange(event) {
+  off:function(e){
+    console.log(e);
+    
+    this.setData({
+      radio: ''
+    });
+    console.log(123);
+    
+  },
+  onChange:function(event) {
+    // console.log(event);
+    
     this.setData({
       radio: event.detail
     });
   },
-  onEdit() {
+  onEdit:function() {
     this.setData({
       edit: true
     })
   },
-  onEditdone() {
+  onEditdone:function() {
     this.setData({
       edit: false
     })
@@ -77,5 +90,24 @@ Page({
    */
   onShareAppMessage: function () {
 
-  }
+  },
+  comment:function(){
+    wx.request({
+      url: app.globalData.urlparticulars + "/goods/delConcern",
+      method:'get',
+      header: {
+       "Content-Type": "application/x-www-form-urlencoded"
+      },
+      data:{
+        openId:2
+      },
+      success: function(res) {
+        console.log("成功",res)
+ 
+        
+        
+      }
+    })
+ 
+   },
 })

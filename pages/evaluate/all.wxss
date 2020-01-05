@@ -121,6 +121,7 @@
     font-size: 26rpx;
   }
   .lowermost {
+    z-index: 99;
     background-color: #fff;
     position: fixed;
     bottom: 0;
@@ -164,32 +165,18 @@
     background: #fff;
     z-index: 9999;
 } */
-.style{
-  z-index:10000;
-  width:100%; 
+
+
+.pinglun {
+  display: flex;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  background-color: #fff;
+  /* margin-bottom: 108rpx; */
 }
-.popup{
-  display: flex; 
-  align-items: center;
-  background:rgb(242, 242, 242,1);
-}
-.input{
-  width: 65%;
-  height: 60rpx; 
-  display:block; 
-  margin: 30rpx auto;
-  background: #fff;
-}
-.placeholderStyle{
-  font-size: 26rpx;
-  margin: 0 20rpx;
-}
-.button{
-  height: 60rpx;
-  width: 20%;
-  line-height:60rpx;
-  text-align: center; 
-  font-size: 30rpx;
-  box-shadow: 8rpx;
-  color:#979797;
+.pinglun input {
+padding-left: 30rpx;
+  height: 72rpx;
+  /* border-right: 2rpx solid #979797; */
 }

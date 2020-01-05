@@ -1,15 +1,16 @@
 <view class="orderprocessing">
   <view class="nav">
+    <image src="../../images/cart/fanhuibai.png" style="width:30rpx;height:35rpx;position:absolute;left:24rpx;top:65rpx" bindtap="fanhui"></image>
     <view class="dai-box">
       <view class="dai-title">
         <image src="../../images/cart/dengdai.png" style="width:36rpx;height:36rpx;margin-right:19rpx;"></image>
-        <view class="dai-ziti">等待提货</view>
+        <view class="dai-ziti" >等待提货</view>
       </view>
       <view class="dai-content">
         <view class="content-ziti" style="margin-right:40rpx">需付款：￥800.00</view>
         <view class="content-ziti">剩余：￥800.00</view>
       </view>
-      <view class="dai-btn" >提货核销</view>
+      <view class="dai-btn" bindtap='pj'>提货核销</view>
     </view>
   </view>
   <view class="address-card">
@@ -73,7 +74,7 @@
   </view>
   <view style="height:98rpx"></view>
   <view class="footer">
-    <view class="querenbtn" style="margin-right:30rpx">申请退款</view>
-    <view class="querenbtn" style="background-color:red;color:white;border:none">提货核销</view>
+    <view class="querenbtn" style="margin-right:30rpx" bindtap="tuikuan">申请退款</view>
+    <view class="querenbtn" style="background-color:red;color:white;border:none" bindtap='pj'>提货核销</view>
   </view>
 </view>

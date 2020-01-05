@@ -56,6 +56,24 @@ Page({
       animationData: this.animation.export(),
     })
   },
+  //设置关注
+  attention: function () {
+    var that = this;
+    wx.request({
+      url: app.globalData.urlGoods + '/goods/Concern',
+      method: 'Get',
+      success: function (res) {
+        console.log(res)
+        that.setData({
+
+        })
+      },
+      data: {
+        goodsId: 1,//列表商品传过来
+        openId: 1
+      }
+    })
+  },
   //获取顾客地址
   site: function (e) {
     console.log(e)

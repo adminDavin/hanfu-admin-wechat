@@ -1,5 +1,6 @@
 <view class="orderprocessing">
   <view class="nav">
+    <image src="../../images/cart/fanhuibai.png" style="width:30rpx;height:35rpx;position:absolute;left:24rpx;top:65rpx" bindtap="fanhui"></image>
     <view class="dai-box">
       <view class="dai-title">
         <image src="../../images/cart/dengdai.png" style="width:36rpx;height:36rpx;margin-right:19rpx;"></image>
@@ -9,7 +10,7 @@
         <view class="content-ziti" style="margin-right:20rpx">拼团中，还差9人成团</view>
         <view class="content-ziti">剩余：23小时</view>
       </view>
-      <view class="dai-btn">邀请参团</view>
+      <view class="dai-btn" bindtap="yaoqing">邀请参团</view>
     </view>
   </view>
   <view class="address-card">
@@ -81,7 +82,7 @@
   </view>
   <view style="height:98rpx"></view>
   <view class="footer">
-    <view class="querenbtn" style="margin-right:30rpx">拼团详情</view>
-    <view class="querenbtn" style="background-color:red;color:white;border:none">邀请参团</view>
+    <view class="querenbtn" style="margin-right:30rpx" bindtap="ontab">拼团详情</view>
+    <view class="querenbtn" style="background-color:red;color:white;border:none" bindtap="yaoqing">邀请参团</view>
   </view>
 </view>

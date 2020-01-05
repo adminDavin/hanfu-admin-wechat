@@ -21,17 +21,17 @@
   </view>
   <view class="quhuomethod">
     <view class="ziti" style="width:520rpx">支付方式</view>
-    <text class="ziti">微信支付</text>
-    <image src="../images/cart/more.png" style="width:32rpx;height:7rpx"></image>
+    <text class="ziti">{{zhifumethod==true?'微信支付':'余额支付'}}</text>
+    <image src="../images/cart/more.png" style="width:32rpx;height:7rpx" bindtap="zhifuchange"></image>
   </view>
   <view class="content-card">
-    <view class="xiajia-content">
-      <image src="../images/cart/cartitem.png" style="width:230rpx;height:230rpx"></image>
+    <view class="xiajia-content" wx:for="{{goodsList}}" wx:key>
+      <image src="{{item.img}}" style="width:230rpx;height:230rpx"></image>
       <view class="contentitem-right" style="justify-content: flex-start;">
-        <text class="item-name">夹克外套男秋冬季新款修身工装衣服男装加绒加厚学</text>
+        <text class="item-name">{{item.productName}}</text>
         <view class="serve">
           <text>白色40x40cm</text>
-          <view class="selectserve">选服务</view>
+          <!-- <view class="selectserve">选服务</view> -->
           <image style="width:20rpx;height:11rpx;margin-top:12rpx;" src="../images/cart/servexiala.png"></image>
         </view>
         <view class="hiddenxiala" hidden="{{servehidden}}">
@@ -40,9 +40,9 @@
         <view class="card-money" style="margin-top:50rpx">
           <view class="discounts-money">
             <text class="money-title">¥</text>
-            <text class="money-number">800.00</text>
+            <text class="money-number">{{item.productPrice}}</text>
           </view>
-          <view class="num">X1</view>
+          <view class="num">X{{item.productNum}}</view>
         </view>
       </view>
     </view>
@@ -55,20 +55,22 @@
   <view class="youjicard">
   <view class="youji">
     <view class="ziti" style="line-height:80rpx">商品金额</view>
-    <text class="ziti" style="line-height:80rpx">￥800.00</text>
+    <text class="ziti" style="line-height:80rpx">￥{{price}}</text>
   </view>
   <view class="youfei" hidden="{{quhuomethod}}">
       <view class="ziti" style="line-height:40rpx">邮费</view>
-    <text class="ziti" style="line-height:40rpx;color:red;">+￥0.00</text>
+    <text class="ziti" style="line-height:40rpx;color:red;">+￥{{yunfei}}</text>
   </view>
   </view>
   <view class="quhuomethod" style="height:80rpx">
     <view class="ziti" style="width:400rpx;line-height:80rpx">备注</view>
-    <view class="ziti" style="width:230rpx;line-height:80rpx;text-overflow:ellipsis;white-space:nowrap;overflow:hidden">备注内容备注内容sfavfdsvfsef</view>
-    <image src="../images/cart/rightjiantou.png" style="width:12rpx;height:22rpx"></image>
+    <view class="ziti" style="width:230rpx;line-height:80rpx;text-overflow:ellipsis;white-space:nowrap;overflow:hidden">{{elevalue}}</view>
+    <image src="../images/cart/rightjiantou.png" style="width:12rpx;height:22rpx" bindtap="showtext"></image>
   </view>
+  <textarea wx:if="{{textshow==true}}" value="{{elevalue}}" bindinput="getVal" style="padding:10rpx 24rpx;width:100%;height:90rpx" placeholder="请输入您的备注"></textarea>
+  <view style="height:98rpx"></view>
   <view class="footer">
-    <view style="font-size:40rpx;font-weight:bold;color:rgba(255,0,0,1);line-height:98rpx">￥800.00</view>
+    <view style="font-size:40rpx;font-weight:bold;color:rgba(255,0,0,1);line-height:98rpx">￥{{total}}</view>
     <view class="submit" bindtap="submit">提交订单</view>
   </view>
 </view>

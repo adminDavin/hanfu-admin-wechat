@@ -72,8 +72,9 @@ Page({
        "Content-Type": "application/x-www-form-urlencoded"
       },
       data:{
-        // orderId:2,
-        // userId:2
+        orderId:2,
+        userId:2,
+        evaluate:'完全不想恭维'
       },
       success: function(res) {
         console.log("成功",res)

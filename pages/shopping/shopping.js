@@ -6,15 +6,20 @@ Page({
    * 页面的初始数据
    */
   data: {
+    openId:'',
     bannertoggle: 1,
     tiphidden: false,
     servehidden: true,
     editshow: true,
+    isGuanzhu:true,
+    isOftenBuy:true,
     cratList: [],
     cartPrice: 0,
     cartNum: 0,
     checkgoods: '',
     goodsarr: [],
+    shangjiagoods:[],
+    xiajiagoods:[],
     selectCountPrice: 0.00,
     isAllSelect: false, //全选
     selectValue: [], //选中的数据
@@ -30,23 +35,51 @@ Page({
     if (index == 1) {
       that.getCart();
     } else if (index == 2) {
-
+      that.setData({
+        shangjiagoods:[]
+      })
     } else if (index == 3) {
-
+      that.getOftenBuy();
     }
   },
 
   // 去结算
   submit() {
     var that = this;
+    let cartPrice=that.data.selectCountPrice;
+    if(cartPrice==0){
+      wx.showToast({
+        title: '请选择商品',
+        mask:true
+      })
+      return;
+    }
     let cart = that.data.shangjiagoods
     var checkgoods = [];
+    var price={};
+    price.sum=that.data.selectCountPrice;
     for (let i = 0; i < cart.length; i++) {
       if (cart[i].check == 1) {
         checkgoods.push(cart[i])
       }
     }
-
+    checkgoods.push(price)
+    console.log(checkgoods)
+    wx.request({
+      url:app.globalData.urlCart+ '/cart/Settlemen',
+      method:'get',
+      data:{
+        productMessage:checkgoods,
+        userId:that.data.userId,
+      },
+      success(res){
+        if(res.data.status==200){
+          wx.navigateTo({
+            url: '../order/order?goodsid='+res.data.data,
+          })
+        }
+      }
+    })
     // wx.navigateTo({
     //   url: '../order/order?str=' + this.data.checkgoods,
     // })
@@ -97,7 +130,7 @@ Page({
         }
       }
       that.setData({
-        selectCountPrice: selectCountPrice.toFixed(2)
+        selectCountPrice: selectCountPrice
       });
     }
     console.log(that.data.selectCountPrice)
@@ -231,10 +264,153 @@ Page({
     })
   },
 
+  //常买
+  oftenbuy(e){
+    var that=this;
+    var cart = that.data.shangjiagoods;
+    console.log(e)
+    let goodsid = e.currentTarget.dataset.goodsid
+    wx.request({
+      url: app.globalData.urlCart + '/cart/OftenBuy',
+      method: 'get',
+      data: {
+        goodsId: e.currentTarget.dataset.goodsid,
+        userId: that.data.userId
+      },
+      success(res) {
+        console.log(res)
+        if (res.data.data =='设置成功'){
+          that.setData({
+            isOftenBuy:false
+          })
+        }
+      }
+    })
+  },
+  delOftenBuy(e){
+    var that = this;
+    var cart = that.data.shangjiagoods;
+    console.log(e)
+    let goodsid = e.currentTarget.dataset.goodsid
+    wx.request({
+      url: app.globalData.urlCart + '/cart/delOftenbuy',
+      method: 'get',
+      data: {
+        goodsId: e.currentTarget.dataset.goodsid,
+        userId: that.data.userId
+      },
+      success(res) {
+        console.log(res)
+        if (res.data.data == '取消成功') {
+          that.setData({
+            isOftenBuy: true
+          })
+        }
+      }
+    })
+  },
+  getOftenBuy(){
+    var that=this;
+    wx.request({
+      url: app.globalData.urlCart + '/cart/selectOftenBuy',
+      method:'get',
+      data:{
+        userId:that.data.userId
+      },
+      success(res){
+        var cartList = res.data.data;
+        for (var index in cartList) {
+          cartList[index].img = app.globalData.urlGoods + '/goods/getFile?fileId=' + cartList[index].productIcon;
+        }
+        that.setData({
+            shangjiagoods:cartList
+        })
+        that.switchSelect();
+      }
+    })
+    console.log(that.data.shangjiagoods)
+  },
+  //关注
+  concern(e){
+    var that = this;
+    var cart = that.data.shangjiagoods;
+    console.log(e)
+    let goodsid = e.currentTarget.dataset.goodsid
+    wx.getStorage({
+      key: 'user',
+      success: function(res) {
+        that.setData({
+          openId:res.data.userInfo.openId
+        })
+      },
+    })
+    wx.request({
+      url: app.globalData.urlCart + '/cart/Concern',
+      method: 'get',
+      data: {
+        goodsId: e.currentTarget.dataset.goodsid,
+        openId: that.data.openId
+      },
+      success(res) {
+        console.log(res)
+        if (res.data.data == '设置成功') {
+          that.setData({
+            isGuanzhu: false
+          })
+        }
+      }
+    })
+  },
+  delconcern(e) {
+    var that = this;
+    var cart = that.data.shangjiagoods;
+    console.log(e)
+    let goodsid = e.currentTarget.dataset.goodsid
+    wx.getStorage({
+      key: 'user',
+      success: function (res) {
+        that.setData({
+          openId: res.data.userInfo.openId
+        })
+      },
+    })
+    wx.request({
+      url: app.globalData.urlCart + '/cart/delConcern',
+      method: 'get',
+      data: {
+        goodsId: e.currentTarget.dataset.goodsid,
+        openId: that.data.openId
+      },
+      success(res) {
+        console.log(res)
+        if (res.data.data == '取消成功') {
+          that.setData({
+            isGuanzhu: true
+          })
+        }
+      }
+    })
+  },
+  getConcern(){
+    var that = this;
+    let goodsList = [];
+    wx.request({
+      url: app.globalData.urlCart + '/cart/selectConcern',
+      method: 'get',
+      data: {
+        userId: that.data.userId
+      },
+      success(res) {
+        that.setData({
+
+        })
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad: function() {
     var that = this;
     wx.getStorage({
       key: 'phone',
@@ -269,28 +445,33 @@ Page({
    */
   onShow: function() {
     var that = this;
-    that.setData({
-      cartPrice: 0
-    })
-    wx.getStorage({
-      key: 'phone',
-      success: function(res) {
-        wx.getStorage({
-          key: 'user',
-          success: function(res) {
-            that.setData({
-              userId: res.data.userId
-            })
-            that.getCart();
-          },
-        })
-      },
-      fail: function(res) {
-        that.setData({
-          tiphidden: false,
-        })
-      }
-    })
+    if (app.globalData.toCartTag==true){
+      that.getOftenBuy();
+      that.setData({
+        bannertoggle:3
+      })
+      app.globalData.toCartTag=false;
+    }else{
+      wx.getStorage({
+        key: 'phone',
+        success: function (res) {
+          wx.getStorage({
+            key: 'user',
+            success: function (res) {
+              that.setData({
+                userId: res.data.userId
+              })
+              that.getCart();
+            },
+          })
+        },
+        fail: function (res) {
+          that.setData({
+            tiphidden: false,
+          })
+        }
+      })
+    }
   },
 
   //修改商品数量

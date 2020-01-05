@@ -9,7 +9,7 @@
 </view>
 <view class="goods-list">
   <van-radio-group value="{{ radio }}" bind:change="onChange" wx:if="{{edit}}">
-    <van-radio name="1">
+    <van-radio name="1" >
       <view class="centent">
         <!-- 图片 -->
         <image src="/pages/images/handpick/07fbbc84987980b7.jpg!cc_350x449.png" class="centent-image" />
@@ -35,7 +35,7 @@
         </view>
       </view>
     </van-radio>
-    <van-radio name="2">
+    <van-radio name="2" >
       <view class="centent">
         <!-- 图片 -->
         <image src="/pages/images/handpick/07fbbc84987980b7.jpg!cc_350x449.png" class="centent-image" />
@@ -62,7 +62,7 @@
         </view>
       </view>
     </van-radio>
-    <van-radio name="3">
+    <van-radio name="3" >
       <!-- 已下架的商品 -->
       <view class="centent-down">
         <!-- 图片 -->
@@ -146,4 +146,4 @@
     </view>
   </view>
 </view>
-<van-button round type="info" wx:if="{{edit}}" color="#ff0000">取消关注</van-button>
+<van-button round type="info" wx:if="{{edit}}" color="#ff0000" bindtap="off" bindtap='comment'>取消关注</van-button>

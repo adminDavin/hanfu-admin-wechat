@@ -5,9 +5,23 @@ Page({
    * 页面的初始数据
    */
   data: {
-    show: true
+    show: false, // 是否显示弹框
+    affirm: false, // 不显示确认按钮
+    money:null, // 用户输入的金额
+    // money1:null // 用户输入的金额
   },
-
+  // 点击充值显示弹框
+  show:function() {
+    var that = this
+    that.setData({
+      show: true
+    })
+  },
+  onChange:function(e) {
+    this.setData({
+      [e.currentTarget.dataset.prop]: e.detail
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */

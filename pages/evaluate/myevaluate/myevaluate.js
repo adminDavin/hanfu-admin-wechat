@@ -1,4 +1,5 @@
 // pages/evaluate/myevaluate/myevaluate.js
+const app=getApp();
 Page({
 
   /**
@@ -63,5 +64,34 @@ Page({
    */
   onShareAppMessage: function () {
 
-  }
+  },
+  chakan:function(){
+    wx.request({
+      url: app.globalData.information + "/message/SeekReply",
+      method:'get',
+      header: {
+       "Content-Type": "application/x-www-form-urlencoded"
+      },
+      data:{
+        orderId:2,
+        userId:2
+      },
+      success: function(res) {
+        console.log("成功",res)
+ 
+        
+        
+      }
+    })
+ 
+   },
+   see:function(){
+    
+    wx.navigateTo({
+ 
+      url: '../showList/showList',
+     
+})
+ 
+   }, 
 })

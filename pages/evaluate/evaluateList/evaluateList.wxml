@@ -4,21 +4,21 @@
     <image class="left" src="../../../pages/images/handpick/07fbbc84987980b7.jpg!cc_350x449.png"></image>
     <view class="right">
       <text>夹克外套男秋冬季新款修身工装衣服男装加绒加厚学生春秋季上衣青...</text>
-      <view class="evaluate-btn">评价</view>
+      <view class="evaluate-btn" bindtap='see'>评价</view>
     </view>
   </view>
   <view class="evaluate-item">
     <image class="left" src="../../../pages/images/handpick/07fbbc84987980b7.jpg!cc_350x449.png"></image>
     <view class="right">
       <text>夹克外套男秋冬季新款修身工装衣服男装加绒加厚学生春秋季上衣青...</text>
-      <view class="evaluate-btn">评价</view>
+      <view class="evaluate-btn" bindtap='see'>评价</view>
     </view>
   </view>
   <view class="evaluate-item">
     <image class="left" src="../../../pages/images/handpick/07fbbc84987980b7.jpg!cc_350x449.png"></image>
     <view class="right">
       <text>夹克外套男秋冬季新款修身工装衣服男装加绒加厚学生春秋季上衣青...</text>
-      <view class="evaluate-btn">评价</view>
+      <view class="evaluate-btn" bindtap='see'>评价</view>
     </view>
   </view>
 </view>

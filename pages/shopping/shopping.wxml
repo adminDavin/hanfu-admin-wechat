@@ -60,12 +60,14 @@
               </view>
             </view>
             <view class="hid-item">
-              <view style="width:50rpx;">设为常买</view>
+              <view style="width:50rpx;" wx:if="{{isOftenBuy==true}}" bindtap="oftenbuy" data-goodsid="{{item.productId}}">设为常买</view>
+              <view style="width:50rpx;" wx:if="{{isOftenBuy==false}}" bindtap="delOftenBuy" data-goodsid="{{item.productId}}" >取消常买</view>
             </view>
             <view class="hid-item" style="background:rgba(255,204,0,1);">
-              <view style="width:50rpx;color:white">移入关注</view>
+              <view style="width:50rpx;color:white" wx:if="{{isGuanzhu==true}}" bindtap="concern" data-goodsid="{{item.productId}}">移入关注</view>
+              <view style="width:50rpx;color:white" wx:if="{{isGuanzhu==false}}" bindtap="delconcern" data-goodsid="{{item.productId}}">移出关注</view>
             </view>
-            <view class="hid-item" style="background:rgba(255,0,0,1);" bindtap="delGoods" data-goodsid="{{item.productId}}" data-index="{{index}}">
+            <view class="hid-item" style="background:rgba(255,0,0,1);" bindtap="delGoods" data-goodsid="{{item.productId}}" >
               <view style="width:50rpx;color:white;margin-top:15rpx">删除</view>
             </view>
           </view>

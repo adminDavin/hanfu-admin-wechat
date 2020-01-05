@@ -1,5 +1,6 @@
 <view class="orderprocessing">
   <view class="nav">
+    <image src="../../images/cart/fanhuibai.png" style="width:30rpx;height:35rpx;position:absolute;left:24rpx;top:65rpx" bindtap="fanhui"></image>
     <view class="dai-box">
       <view class="dai-title">
         <image src="../../images/cart/wancheng.png" style="width:36rpx;height:36rpx;margin-right:19rpx;"></image>
@@ -8,7 +9,7 @@
       <view class="dai-content">
         <view class="content-ziti">取消原因：超时未支付</view>
       </view>
-      <view class="dai-btn">再次购买</view>
+      <view class="dai-btn" bindtap="ypx">再次购买</view>
     </view>
   </view>
   <view class="address-card">
@@ -80,6 +81,6 @@
   </view>
   <view style="height:98rpx"></view>
   <view class="footer">
-    <view class="querenbtn" style="background-color:red;color:white;border:none">再次购买</view>
+    <view class="querenbtn" style="background-color:red;color:white;border:none" bindtap="ypx">再次购买</view>
   </view>
 </view>

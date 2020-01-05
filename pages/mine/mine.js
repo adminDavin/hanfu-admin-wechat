@@ -15,6 +15,15 @@ Page({
     hexiaostatus: '',
     global: {},
   },
+  //退款
+  // tuikuan(){
+  //   var that=this;
+  //   wx.navigateTo({
+  //     url: '../mydingdan/mydingdan?userid=',
+  //   })
+  // },
+
+
   gologin: function() {
     var that = this;
     that.setData({
@@ -153,10 +162,12 @@ Page({
     })
   },
 
-  goMyDingdan: function() {
+  goMyDingdan: function(e) {
     var that = this;
+    console.log(e)
+    let tag=e.currentTarget.dataset.tag
     wx.navigateTo({
-      url: '../mydingdan/mydingdan?userId' + that.data.userId,
+      url: '../mydingdan/mydingdan?tag=' + tag,
     })
   },
 
@@ -164,6 +175,18 @@ Page({
   myaddress(){
     wx.navigateTo({
       url: '../address/address',
+    })
+  },
+  myConcern() {
+    wx.navigateTo({
+      url: '../goodsList/goodList',
+    })
+  },
+  myoftenBuy() {
+    var that=this;
+    app.globalData.toCartTag=true
+    wx.switchTab({
+      url: '../shopping/shopping',
     })
   },
 
@@ -204,8 +227,6 @@ Page({
       }
     })
   },
-
-
 
 
   nologin: function() {

@@ -52,6 +52,7 @@ Page({
   },
   data: {
     arr: '',
+    prices:''
   },
   // 获取商品列表
   categoryId: function(e) {
@@ -65,20 +66,36 @@ Page({
           // console.log(res.data.data[i])
           res.data.data[i].img = 'http://192.168.1.104:9095/goods/pictures?goodsId=' + res.data.data[i].id
         }
-        // console.log(res.data.data)
         that.setData({
           arr: res.data.data,
         })
       },
     })
   },
+  //价格排序
+  prices:function(){
+    var that = this;
+    wx.request({
+      url: app.globalData.urlGoods + '/goods/Price',
+      method: 'Get',
+      success: function (res) {
+        console.log(res)
+        that.setData({
+          prices: res.data
+        })
+      },
+      data: {
+        
+      }
+    })
+  },
   // 跳转携带id
   commodity: function(e) {
     // console.log(e)
     var id = e.currentTarget.dataset.id
-    // console.log(id),
+    var goodsid = e.currentTarget.dataset.goodsid
     wx.navigateTo({
-      url:`../particulars/particulars?id= ${id}`,
+      url: `../particulars/particulars?id= ${id}&goodsid=${goodsid}`,
     })
   },
   /**
