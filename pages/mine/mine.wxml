@@ -12,10 +12,10 @@
           <image src="../images/tabs/sao.png" class="sao-tu" />
           <view class="sao">扫一扫</view>
         </view>
-        <view class="header-sao">
+        <button class="header-sao" style="padding:0;margin:0;width:75rpx;background:rgba(255,51,51,1);margin-top:15rpx" open-type="contact">
           <image src="../images/tabs/xiaoxis.png" class="sao-tu" />
           <view class="sao">客服</view>
-        </view>
+        </button>
       </view>
     </view>
     <view class="vipcard">
@@ -81,11 +81,11 @@
         <image src="../images/cart/erweima.png" style="width:96rpx;height:96rpx"></image>
         <view class="serve-ziti">我的二维码</view>
       </view>
-      <view class="serve-item">
+      <button class="serve-item" open-type="contact" style="padding:0;margin:0;width:170rpx;background:white">
         <image src="../images/cart/kefu.png" style="width:96rpx;height:96rpx"></image>
         <view class="serve-ziti">联系客服</view>
-      </view>
-      <view class="serve-item">
+      </button>
+      <view class="serve-item" bindtap="goMyDingdan" data-tag="2">
         <image src="../images/cart/yue.png" style="width:96rpx;height:96rpx"></image>
         <view class="serve-ziti">余额付款</view>
       </view>

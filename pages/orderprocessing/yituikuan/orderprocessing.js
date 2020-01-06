@@ -7,7 +7,13 @@ Page({
    */
   data: {
     dingdan:'',
-    orderList:[],
+    goodsList: [],
+    addid: '',
+    hfProvince: '',
+    hfCity: '',
+    hfAddressDetail: '',
+    phoneNumber: '',
+    goodsprice: ''
   },
   //返回
   fanhui() {
@@ -19,13 +25,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var that=this;
+    var that = this;
     console.log(options);
-    let dingdan=options.orderid
+    let dingdan = options.orderid;
     that.setData({
-      dingdan:dingdan
+      dingdan: dingdan
     })
-    that.getList()
+    that.getList();
   },
 
   /**
@@ -76,26 +82,52 @@ Page({
   onShareAppMessage: function () {
 
   },
-  getList:function(){
-    var that=this;
+  getList: function () {
+    var that = this;
     wx.request({
       url: app.globalData.url + "/order/queryOrder",
-      method:'get',
+      method: 'get',
       header: {
-       "Content-Type": "application/x-www-form-urlencoded"
+        "Content-Type": "application/x-www-form-urlencoded"
       },
-      data:{
-        id:that.data.dingdan
+      data: {
+        orderDetailId: that.data.dingdan
       },
-      success: function(res) {
-        console.log("成功",res)
+      success: function (res) {
+        console.log("成功", res)
+        let orderList = res.data.data;
+        let addid = orderList.userAddressId
+        let goodsprice = orderList.purchaseQuantity * orderList.purchasePrice
         that.setData({
-          orderList:res.data.data
+          goodsList: orderList,
+          addid: addid,
+          goodsprice: goodsprice
         })
-        console.log(that.data.orderList)
       }
     })
-    // console.log(123);
-    
-  }
+  },
+  //拿地址
+  getAddress() {
+    var that = this;
+    wx.request({
+      url: app.globalData.urlLogin + '/user/address/addressDetail',
+      method: 'get',
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      data: {
+        id: that.data.addid,
+      },
+      success: function (res) {
+        console.log('获取地址', res);
+        that.setData({
+          hfProvince: res.data.data.hfProvince,
+          hfCity: res.data.data.hfCity,
+          hfAddressDetail: res.data.data.hfAddressDetail,
+          phoneNumber: res.data.data.phoneNumber
+        })
+
+      }
+    })
+  },
 })

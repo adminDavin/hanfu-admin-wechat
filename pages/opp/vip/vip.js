@@ -1,23 +1,55 @@
 // pages/opp/vip/vip.js
-
+const app = getApp();
+var util = require('../../../utils/util.js')
+const apiCart = require('../../../utils/api/cart.js');
 Page({
-
-
-
-
-
   /**
    * 页面的初始数据
    */
   data: {
+    username: '',
+    avatar: '',
+    userId:'',
+    hfBalance:''
+  },
 
+  //获取用户余额
+  getYue() {
+    var that = this;
+    apiCart.toSettle(app.globalData.urlpay, '/user/balance/query', {
+      userId: that.data.userId
+    }, (res) => {
+      if (res.data.status == 200) {
+        let yue = res.data.data[0].hfBalance
+        that.setData({
+          hfBalance: yue
+        })
+      }
+    });
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var that=this;
+    wx.getStorage({
+      key: 'user',
+      success: function(res) {
+        that.setData({
+          userId:res.data.userId
+        })
+      },
+    })
+    wx.getStorage({
+      key: 'userInfo',
+      success: function (res) {
+        that.setData({
+          username: res.data.nickName,
+          avatar: res.data.avatarUrl
+        })
+      },
+    })
   },
 
   /**
@@ -69,13 +101,10 @@ Page({
 
   },
   ontab:function(){
- 
+    var that=this;
     wx.navigateTo({
- 
-          url: '../opp',
-         
+          url: '../opp?userid='+that.data.userId,
     })
-    console.log(123)
    },
 
 })

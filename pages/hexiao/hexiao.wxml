@@ -1,9 +1,9 @@
 <view style="width:100%;height:100%">
-<view class="card">
-  <image src="../images/cart/cartitem.png" style="width:170rpx;height:170rpx"></image>
+<view class="card" wx:for="{{orderList}}">
+  <image src="{{item.img}}" style="width:170rpx;height:170rpx"></image>
   <view class="card-right">
-    <view class="name">夹克外套男秋冬季新款修身工装衣服ddddddddddddddddddddddddddddddddddddddddddddddddddddfefgrgrghthtjyjytjytjytjyt</view>
-    <view class="tihuo" bindtap="tiHuo">提货</view>
+    <view class="name">{{item.hfName}}</view>
+    <view class="tihuo" bindtap="tiHuo" data-goodsid="{{item.googsId}}">提货</view>
   </view>
 </view>
 <view class="wuquan" wx:if="{{qrshow}}">

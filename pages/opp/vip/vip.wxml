@@ -1,14 +1,14 @@
 <view class="zt">
   <view class="hand">
     <view class="hang-box">
-      <image class="tx" src="../../images/vip/头像@2x.png"></image>
+      <image class="tx" src="{{avatar}}"></image>
       <view class="zj">
         <view class="zj_1">
-          <text class="nc">会员昵称</text>
+          <text class="nc">{{username}}</text>
           <view class="nk">年卡</view>
         </view>
         <view class="zj_2">
-          <text class="xx">￥50000.00</text>
+          <text class="xx">￥{{hfBalance}}</text>
           <text class="xx_1">账单记录</text>
           <image class="gd" src="../../images/vip/xiala@2x(1).png"></image>
         </view>
@@ -41,7 +41,7 @@
     </view>
   </view>
   <!-- 专享券 -->
-  <view class="bt_1">
+  <!-- <view class="bt_1">
     <view class="bt-box">
       <image class="biaoji" src="../../images/vip/圆角矩形 7 拷贝@2x.png"></image>
       <text class="headline">PLUS会员专项券</text>
@@ -52,15 +52,15 @@
                 <image class="" src="../../images/vip/xiala@2x(1).png"></image>
             </text>
     </view>
-  </view>
+  </view> -->
   <!-- 轮播 -->
-  <scroll-view class='scrollView' scroll-x='true'>
+  <!-- <scroll-view class='scrollView' scroll-x='true'>
     <view class='cc'>
       <view class='vvv' wx:for='{{6}}'>
         <view class="vvv-box">
-          <view class="qqq">
+          <view class="qqq"> -->
             <!-- 左侧 -->
-            <view>
+            <!-- <view>
             <view class="z_1_1">PLUS</view>
             <view class="z_1">
               <view class="z_1_2">￥200</view>
@@ -75,11 +75,11 @@
 
       </view>
     </view>
-  </scroll-view>
+  </scroll-view> -->
 
   <!-- 轮播结束 -->
   <!-- 免费券 -->
-  <view class="bt_1">
+  <!-- <view class="bt_1">
     <view class="bt-box">
       <image class="biaoji" src="../../images/vip/圆角矩形 7 拷贝@2x.png"></image>
       <text class="headline">免运费券</text>
@@ -87,14 +87,14 @@
     <view class="q">
       <text class="gd">更多></text>
     </view>
-  </view>
+  </view> -->
   <!--  -->
-  <scroll-view class='scrollView' scroll-x='true'>
+  <!-- <scroll-view class='scrollView' scroll-x='true'>
     <view class='cc'>
       <view class='vvv' wx:for='{{6}}'>
-                  <view class="ppp">
+                  <view class="ppp"> -->
             <!-- 左侧 -->
-            <view>
+            <!-- <view>
             <view class="x_1_1">PLUS</view>
             <view class="x_1">
               <view class="x_1_2">免运费券</view>
@@ -105,6 +105,6 @@
           </view>
       </view>
     </view>
-  </scroll-view>
+  </scroll-view> -->
   <!--  -->
 </view>

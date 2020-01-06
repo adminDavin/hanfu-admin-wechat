@@ -38,38 +38,37 @@ Page({
     console.log(e)
     let orderid = e.currentTarget.dataset.orderid;
     let orderstatus = e.currentTarget.dataset.orderstatus;
-    let goodsid = e.currentTarget.dataset.goodid;
     if (orderstatus == "待发货") {
       wx.navigateTo({
-        url: '../orderprocessing/daifahuo/orderprocessing?orderid='+orderid+'&goodsid='+goodsid,
+        url: '../orderprocessing/daifahuo/orderprocessing?orderid='+orderid,
       })
     } else if (orderstatus == "待收货"){
       wx.navigateTo({
-        url: '../orderprocessing/daishouhuo/orderprocessing?orderid=' + orderid + '&goodsid=' + goodsid,
+        url: '../orderprocessing/daishouhuo/orderprocessing?orderid=' + orderid,
       })
     } else if (orderstatus == "待支付") {
       wx.navigateTo({
-        url: '../orderprocessing/daizhifu/orderprocessing?orderid=' + orderid + '&goodsid=' + goodsid,
+        url: '../orderprocessing/daizhifu/orderprocessing?orderid=' + orderid,
       })
     } else if (orderstatus == "待提货") {
       wx.navigateTo({
-        url: '../orderprocessing/daitihuo/orderprocessing?orderid=' + orderid + '&goodsid=' + goodsid,
+        url: '../orderprocessing/daitihuo/orderprocessing?orderid=' + orderid,
       })
     } else if (orderstatus == "已完成") {
       wx.navigateTo({
-        url: '../orderprocessing/orderprocessing?orderid=' + orderid + '&goodsid=' + goodsid,
+        url: '../orderprocessing/orderprocessing?orderid=' + orderid,
       })
     } else if (orderstatus == "已取消") {
       wx.navigateTo({
-        url: '../orderprocessing/yiquxiao/orderprocessing?orderid=' + orderid + '&goodsid=' + goodsid,
+        url: '../orderprocessing/yiquxiao/orderprocessing?orderid=' + orderid,
       })
     } else if (orderstatus == "已退款") {
       wx.navigateTo({
-        url: '../orderprocessing/yituikuan/orderprocessing?orderid=' + orderid + '&goodsid=' + goodsid,
+        url: '../orderprocessing/yituikuan/orderprocessing?orderid=' + orderid,
       })
     } else if (orderstatus == "退款中") {
       wx.navigateTo({
-        url: '../orderprocessing/tuikuanzhong/orderprocessing?orderid=' + orderid + '&goodsid=' + goodsid,
+        url: '../orderprocessing/tuikuanzhong/orderprocessing?orderid=' + orderid,
       })
     }
     
@@ -138,8 +137,10 @@ Page({
   // 查看物流
   wuliu(e) {
     let orderid = e.currentTarget.dataset.orderid;
+    let logisticsordersid = e.currentTarget.dataset.logisticsordersid;
+    let logisticscompany = e.currentTarget.dataset.logisticscompany;
     wx.navigateTo({
-      url: '../orderform/logistics?orderid=' + orderid,
+      url: '../orderform/logistics?orderid=' + orderid + '&company=' + logisticscompany + '&wuliuid=' + logisticsordersid,
     })
   },
   // 去支付

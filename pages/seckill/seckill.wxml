@@ -16,27 +16,27 @@
                 </view>
             </view>
         </view>
-        <view class="sou">
+        <view class="sou" bindtap="sousuo">
             <image src="../images/tabs/sousuo.png" class="sao-sou" />
             <input type="text" class="input-sou" />
         </view>
     </view>
-    <view class="seckill-img">
+    <view class="seckill-img" wx:for="{{lunBoTu}}" wx:key="index" data-id="{{item.id}}">
         <swiper vertical="{{false}}" indicator-dots="{{true}}" autoplay="{{true}}">
-            <swiper-item>
-                <image src="" class="img-size"></image>
+            <swiper-item bindtap="lunbotutiao">
+                <image src="{{item.hfGoodsPictureId}}" class="img-size"></image>
             </swiper-item>
-            <swiper-item>
-                <image src="" class="img-size"></image>
+            <swiper-item bindtap="lunbotutiao">
+                <image src="{{item.hfGoodsPictureId}}" class="img-size"></image>
             </swiper-item>
-            <swiper-item>
-                <image src="" class="img-size"></image>
+            <swiper-item bindtap="lunbotutiao">
+                <image src="{{item.hfGoodsPictureId}}" class="img-size"></image>
             </swiper-item>
-            <swiper-item>
-                <image src="" class="img-size"></image>
+            <swiper-item bindtap="lunbotutiao">
+                <image src="{{item.hfGoodsPictureId}}" class="img-size"></image>
             </swiper-item>
-            <swiper-item>
-                <image src="" class="img-size"></image>
+            <swiper-item bindtap="lunbotutiao">
+                <image src="{{item.hfGoodsPictureId}}" class="img-size"></image>
             </swiper-item>
         </swiper>
     </view>
@@ -49,11 +49,11 @@
                     <text class="handpick-title">推荐榜单</text>
                     <image class="handpick-image" src=""></image>
                 </view>
-                <view class="handpick-text handpick-margin">
+                <view class="handpick-text handpick-margin" bindtap="bangdan">
                     <text class="handpick-title handpick-title-two">每日特卖</text>
                     <image class="handpick-image" src=""></image>
                 </view>
-                <view class="handpick-text">
+                <view class="handpick-text" bindtap="bangdan">
                     <text class="handpick-title handpick-title-three">榜单名称</text>
                     <image class="handpick-image" src=""></image>
                 </view>

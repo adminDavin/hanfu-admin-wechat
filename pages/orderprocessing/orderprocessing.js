@@ -6,12 +6,14 @@ Page({
    * 页面的初始数据
    */
   data: {
+    dingdan:'',
     goodsList:[],
     addid:'',
     hfProvince:'',
     hfCity:'',
     hfAddressDetail:'',
-    phoneNumber:''
+    phoneNumber:'',
+    goodsprice:''
   },
   //返回
   fanhui() {
@@ -26,10 +28,8 @@ Page({
     var that=this;
     console.log(options);
     let dingdan=options.orderid;
-    let goodsid=options.goodsid
     that.setData({
-      dingdan:dingdan,
-      goodsid:goodsid
+      dingdan:dingdan
     })
     that.getList();
   },
@@ -91,21 +91,17 @@ Page({
        "Content-Type": "application/x-www-form-urlencoded"
       },
       data:{
-        orderId:that.data.dingdan
+        orderDetailId:that.data.dingdan
       },
       success: function(res) {
         console.log("成功",res)
         let orderList=res.data.data;
-        let goodsList=[];
-        for(var index in orderList){
-          if (orderList[index].googsId ==that.data.goodsid){
-            goodsList=orderList[index]
-            addid = orderList[index].userAddressId
-          }
-        }  
+        let addid = orderList.userAddressId
+        let goodsprice = orderList.purchaseQuantity * orderList.purchasePrice
         that.setData({
-          goodsList:goodsList,
-          addid:addid
+          goodsList:orderList,
+          addid:addid,
+          goodsprice:goodsprice
         })
       }
     })
@@ -125,11 +121,12 @@ Page({
       success: function (res) {
         console.log('获取地址', res);
         that.setData({
-          hfProvince: res.data.hfProvince,
-          hfCity: res.data.hfCity,
-          hfAddressDetail: res.data.hfAddressDetail,
-          phoneNumber: res.data.phoneNumber
+          hfProvince: res.data.data.hfProvince,
+          hfCity: res.data.data.hfCity,
+          hfAddressDetail: res.data.data.hfAddressDetail,
+          phoneNumber: res.data.data.phoneNumber
         })
+
       }
     })
   },

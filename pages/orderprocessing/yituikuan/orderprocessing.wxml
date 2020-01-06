@@ -10,18 +10,18 @@
   </view>
   <view class="address-card">
     <view class="address-card-top">
-      <view style="min-width:146rpx;" class="top-ziti">木木</view>
-      <text class="top-ziti" style="margin-right:20rpx">123456789</text>
+      <view style="min-width:146rpx;" class="top-ziti">{{goodsList.userName}}</view>
+      <text class="top-ziti" style="margin-right:20rpx">{{phoneNumber}}</text>
     </view>
     <view class="address-card-bottom">
-      <view class="bot-ziti">天津西青区全境 华苑产业园区工华道1号 智慧山南塔308</view>
+      <view class="bot-ziti">{{hfProvince}}{{hfCity}}{{hfAddressDetail}}</view>
     </view>
   </view>
   <view class="content-card">
     <view class="xiajia-content">
       <image src="../images/cart/cartitem.png" style="width:230rpx;height:230rpx"></image>
       <view class="contentitem-right" style="justify-content: flex-start;">
-        <text class="item-name">夹克外套男秋冬季新款修身工装衣服男装加绒加厚学</text>
+        <text class="item-name">{{goodsList.hfName}}</text>
         <view class="serve">
           <text>白色40x40cm,保修一年</text>
         </view>
@@ -31,9 +31,9 @@
         <view class="card-money" style="margin-top:50rpx">
           <view class="discounts-money">
             <text class="money-title">¥</text>
-            <text class="money-number">800.00</text>
+            <text class="money-number">{{goodsList.purchasePrice}}</text>
           </view>
-          <view class="num">X1</view>
+          <view class="num">X{{goodsList.purchaseQuantity}}</view>
         </view>
       </view>
     </view>
@@ -45,34 +45,30 @@
   <view class="dingdan-card">
     <view class="dingdan-card-item">
       <view class="dingitem-ziti">订单编号：</view>
-      <view class="dingitem-ziti" style="color:black;margin-right:37rpx">123456789</view>
+      <view class="dingitem-ziti" style="color:black;margin-right:37rpx">{{goodsList.ordersId}}</view>
       <view class="fuzhi">复制</view>
     </view>
     <view class="dingdan-card-item">
       <view class="dingitem-ziti">下单时间：</view>
-      <view class="dingitem-ziti" style="color:black;">123456789</view>
+      <view class="dingitem-ziti" style="color:black;">{{goodsList.createTime}}</view>
     </view>
     <view class="dingdan-card-item">
       <view class="dingitem-ziti">支付方式：</view>
-      <view class="dingitem-ziti" style="color:black;">微信支付</view>
+      <view class="dingitem-ziti" style="color:black;">{{goodsList.payMethodName}}</view>
     </view>
   </view>
   <view class="yunfei-card">
     <view class="dingdan-card-item" style="justify-content:space-between">
       <view class="dingitem-ziti">商品金额：</view>
-      <view class="dingitem-ziti" style="color:black;">￥800.00</view>
+      <view class="dingitem-ziti" style="color:black;">￥{{goodsprice}}</view>
     </view>
     <view class="dingdan-card-item" style="justify-content:space-between">
       <view class="dingitem-ziti">运费：</view>
-      <view class="dingitem-ziti" style="color:black;">+￥6.00</view>
-    </view>
-    <view class="dingdan-card-item" style="justify-content:space-between">
-      <view class="dingitem-ziti">运费险：</view>
-      <view class="dingitem-ziti" style="color:black;">+￥6.00</view>
+      <view class="dingitem-ziti" style="color:black;">+￥{{goodsList.fare}}</view>
     </view>
     <view class="yifu">
       <view style="font-size:26rpx;font-weight:400;color:rgba(21,21,21,1);margin-right:19rpx">已退款</view>
-      <view style="font-size:32rpx;font-weight:500;color:rgba(255,0,0,1);">￥800.00</view>
+      <view style="font-size:32rpx;font-weight:500;color:rgba(255,0,0,1);">￥{{goodsList.amount}}</view>
     </view>
   </view>
   <view style="height:98rpx"></view>

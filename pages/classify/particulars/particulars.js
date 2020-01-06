@@ -17,7 +17,8 @@ Page({
     site: '', //地址
     sites: '',
     shppingcar: '', //购物车
-    attention:''
+    attention:'',
+    userId:'',
   },
   //规格弹框
   guigeshow(){
@@ -182,15 +183,29 @@ Page({
         url: app.globalData.urlshppingcar + '/cart/add',
         method: 'Get',
         success: function (res) {
-          console.log(res)
-          that.setData({
-            shppingcar: res.data
-          })
+          if (res.data.data =='成功加入购物车'){
+            wx.showToast({
+              title: '添加购物车成功',
+            })
+            
+            let  num =app.globalData.cartNum+1 ;
+            let num1 = JSON.stringify(num)
+            that.setData({
+              cartNum: num1
+            })
+            wx.setTabBarBadge({
+              index: 3,
+              text: app.globalData.cartNum
+            })
+            wx.switchTab({
+              url: '../../shopping/shopping',
+            })
+          }
         },
         data: {
-          goodsId: 2,
+          goodsId: that.data.goodsId,
           num: 2,
-          userId: 2
+          userId: that.data.userId
         }
       })
     }
@@ -209,7 +224,6 @@ Page({
         url: app.globalData.information + '/order/creat',
         method: 'Get',
         success: function (res) {
-          console.log(res)
           that.setData({
 
           })
@@ -218,9 +232,9 @@ Page({
 
         }
       })
-      wx.navigateTo({
-        url: '../../order/order',
-      })
+      // wx.navigateTo({
+      //   url: '../../order/order',
+      // })
     }
   },
 
@@ -248,8 +262,13 @@ Page({
     wx.getStorage({
       key: 'phone',
       success: function (res) {
-        that.setData({
-          isLogin: true
+        wx.getStorage({
+          key: 'user',
+          success: function (res) {
+            that.setData({
+              userId: res.data.userId,
+            })
+          },
         })
       },
       fail: function (res) {
@@ -268,6 +287,14 @@ Page({
       success: function (res) {
         that.setData({
           isLogin: true
+        })
+        wx.getStorage({
+          key: 'user',
+          success: function (res) {
+            that.setData({
+              userId: res.data.userId,
+            })
+          },
         })
       },
       fail: function (res) {

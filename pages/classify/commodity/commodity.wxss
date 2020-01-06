@@ -17,7 +17,7 @@
 }
 .commodity-header {
     display: flex;
-    width: 575rpx;
+    width: 640rpx;
     height: 72rpx;
     display: flex;
     align-items: center;

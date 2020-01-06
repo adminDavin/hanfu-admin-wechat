@@ -6,8 +6,14 @@ Page({
    * 页面的初始数据
    */
   data: {
-    dingdan:'',
-    orderList:[],
+    dingdan: '',
+    goodsList: [],
+    addid: '',
+    hfProvince: '',
+    hfCity: '',
+    hfAddressDetail: '',
+    phoneNumber: '',
+    goodsprice: ''
   },
   //返回
   fanhui(){
@@ -27,7 +33,7 @@ Page({
     let orderid=e.currentTarget.dataset.orderid;
     let price=e.currentTarget.dataset.price;
     wx.navigateTo({
-      url: '../tuikuan/tuikuan?orderid='+orderid+'&price='+price,
+      url: '../tuikuan/tuikuan?orderid='+orderid+'&price='+price+'goodsid='+that.data.goodsid,
     })
   },
 
@@ -37,9 +43,11 @@ Page({
   onLoad: function (options) {
     var that=this;
     console.log(options);
-    let dingdan=options.orderid
+    let dingdan=options.orderid;
+    let goodsid=options.goodsid
     that.setData({
-      dingdan:dingdan
+      dingdan:dingdan,
+      goodsid:goodsid
     })
     that.getList()
   },
@@ -92,27 +100,52 @@ Page({
   onShareAppMessage: function () {
 
   },
-  getList:function(){
-    var that=this;
+  getList: function () {
+    var that = this;
     wx.request({
       url: app.globalData.url + "/order/queryOrder",
-      method:'get',
+      method: 'get',
       header: {
-       "Content-Type": "application/x-www-form-urlencoded"
+        "Content-Type": "application/x-www-form-urlencoded"
       },
-      data:{
-        orderId:that.data.dingdan
+      data: {
+        orderDetailId: that.data.dingdan
       },
-      success: function(res) {
-        console.log("成功",res)
+      success: function (res) {
+        console.log("成功", res)
+        let orderList = res.data.data;
+        let addid = orderList.userAddressId
+        let goodsprice = orderList.purchaseQuantity * orderList.purchasePrice
         that.setData({
-          orderList:res.data.data
+          goodsList: orderList,
+          addid: addid,
+          goodsprice: goodsprice
         })
-        console.log(that.data.orderList)
       }
     })
-    // console.log(123);
-    
-  }
+  },
+  //拿地址
+  getAddress() {
+    var that = this;
+    wx.request({
+      url: app.globalData.urlLogin + '/user/address/addressDetail',
+      method: 'get',
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      data: {
+        id: that.data.addid,
+      },
+      success: function (res) {
+        console.log('获取地址', res);
+        that.setData({
+          hfProvince: res.data.data.hfProvince,
+          hfCity: res.data.data.hfCity,
+          hfAddressDetail: res.data.data.hfAddressDetail,
+          phoneNumber: res.data.data.phoneNumber
+        })
 
+      }
+    })
+  },
 })
