@@ -1,0 +1,146 @@
+<view class="seckill">
+    <view class="seckill-header">
+        <view class="header-title">
+            <view class="header-t">
+                <view class="header-tu"></view>
+                <text class="header-text">思创科技</text>
+            </view>
+            <view class="header-fl">
+                <view class="header-sao header-margin">
+                    <image src="../images/tabs/saoyisao.png" class="sao-tu" />
+                    <view class="sao">扫一扫</view>
+                </view>
+                <view class="header-sao">
+                    <image src="../images/tabs/xiaoxis.png" class="sao-tu" />
+                    <view class="sao">客服</view>
+                </view>
+            </view>
+        </view>
+        <view class="sou">
+            <image src="../images/tabs/sousuo.png" class="sao-sou" />
+            <input type="text" class="input-sou" />
+        </view>
+    </view>
+    <view class="seckill-img">
+        <swiper vertical="{{false}}" indicator-dots="{{true}}" autoplay="{{true}}">
+            <swiper-item>
+                <image src="" class="img-size"></image>
+            </swiper-item>
+            <swiper-item>
+                <image src="" class="img-size"></image>
+            </swiper-item>
+            <swiper-item>
+                <image src="" class="img-size"></image>
+            </swiper-item>
+            <swiper-item>
+                <image src="" class="img-size"></image>
+            </swiper-item>
+            <swiper-item>
+                <image src="" class="img-size"></image>
+            </swiper-item>
+        </swiper>
+    </view>
+    <view class="seckill-box"></view>
+    <van-tabs active="a" bind:click="seckillshpping">
+        <van-tab title="精选" name="a" color="#ff3333">
+            <!-- 精选盒子 -->
+            <view class="banner-box-three" >
+                <view class="handpick-text" bindtap="bangdan">
+                    <text class="handpick-title">推荐榜单</text>
+                    <image class="handpick-image" src=""></image>
+                </view>
+                <view class="handpick-text handpick-margin">
+                    <text class="handpick-title handpick-title-two">每日特卖</text>
+                    <image class="handpick-image" src=""></image>
+                </view>
+                <view class="handpick-text">
+                    <text class="handpick-title handpick-title-three">榜单名称</text>
+                    <image class="handpick-image" src=""></image>
+                </view>
+            </view>
+        </van-tab>
+        <van-tab title="拼团" name="b">
+            <!-- 拼团盒子 -->
+            <view class="banner-box-two">
+                <van-tabs active="{{ active }}" bind:click="requestcontent">
+                    <van-tab wx:for="{{arr}}" wx:key='index' title="{{item}}">
+                        <view class="seckill-banner" wx:for="{{name}}" wx:key="index" bindtap="particulars" data-id='{{item.id}}' data-goodsid='{{item.goodsId}}'>
+                            <view class="seckill-commodity">
+                                <view class="commodity-tu">
+                                    <image src="../images/handpick/shangping.png"></image>
+                                </view>
+                                <view class="commodity-text">
+                                    <view class="commodity-title">
+                                        {{item.hfGoods.hfName}}
+                                    </view>
+                                    <view class="commodity-money">
+                                        <view class="commodity-number">
+                                            <view class="commodity-j">已抢3600件</view>
+                                            <view class="commodity-shu">
+                                                <view class="commodity-dollar">
+                                                    ￥{{item.price}}
+                                                </view>
+                                                <view class="commodity-del">
+                                                    ￥{{item.isDeleted}}
+                                                </view>
+                                            </view>
+                                        </view>
+                                        <view class="commodity-qg">立即抢购</view>
+                                    </view>
+                                </view>
+                            </view>
+                        </view>
+                    </van-tab>
+                </van-tabs>
+            </view>
+        </van-tab>
+        <van-tab title="秒杀" name="c">
+            <!-- 秒杀盒子 -->
+            <view class="banner-box">
+                <view class="seckill-star">
+                    <text class="star-table">今日爆款</text>
+                    <view class="seckill-stars" >
+                        <view class="stars-one {{currentTab==0?'stars-two':''}}"  bindtap="clickTab" data-id="0">
+                            <text>{{times}}</text>
+                            <text>已开抢</text>
+                        </view>
+                        <view class="stars-one {{currentTab==1?'stars-two':''}}"  bindtap="clickTab" data-id="1" >
+                            <text>{{times1}}</text>
+                            <text>即将开始</text>
+                        </view>
+                        <view class="stars-one {{currentTab==2?'stars-two':''}}"  bindtap="clickTab" data-id="2" >
+                            <text>{{times2}}</text>
+                            <text>即将开始</text>
+                        </view>
+                        <view class="stars-one {{currentTab==3?'stars-two':''}}"  bindtap="clickTab" data-id="3" >
+                            <text>{{times3}}</text>
+                            <text>即将开始</text>
+                        </view>
+                    </view>
+                </view>
+                <view class="seckill-banner">
+                    <view class="seckill-commodity" wx:for="{{schedule}}" wx:key="index" bindtap="particulars" data-id="{{item.id}}">
+                        <view class="commodity-tu">
+                            <image src="../images/handpick/shangping.png"></image>
+                        </view>
+                        <view class="commodity-text">
+                            <view class="commodity-title">{{item.hfGoods.hfName}}</view>
+                            <view class="commodity-money">
+                                <view class="commodity-number">
+                                    <view class="commodity-j">已抢3600件</view>
+                                    <view class="commodity-shu">
+                                        <view class="commodity-dollar">￥{{item.price}}</view>
+                                        <view class="commodity-del">￥{{item.isDeleted}}</view>
+                                    </view>
+                                </view>
+                                <view class="commodity-qg">立即抢购</view>
+                                <view class="commodity-qg" style="display:none">已抢光</view>
+                                <view class="commodity-qg" style="display:none">即将开始</view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </van-tab>
+    </van-tabs>
+</view>
