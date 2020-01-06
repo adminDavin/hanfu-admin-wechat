@@ -1,4 +1,7 @@
 // pages/orderform/logistics/logistics.js
+const app = getApp();
+var util = require('../../utils/util.js')
+const apiCart = require('../../utils/api/cart.js');
 Page({
 
   /**
@@ -6,6 +9,7 @@ Page({
    */
   data: {
     active: 0,
+    orderid:'',
     steps: [
       {
         text: `已签收
@@ -43,12 +47,36 @@ Page({
       }
     ]
   },
-
+  //查物流
+  getlog(){
+    var that=this;
+    apiCart.toSettle(app.globalData.url, '/query/logistics', {
+      expCode:that.data.company,
+      expNo:that.data.wuliuid,
+    }, (res) => {
+      if (res.data.data.success == true) {
+        
+      }else{
+        wx.showToast({
+          title: '暂无物流信息',
+        })
+      }
+    });
+  },
+  
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    let orderid=options.orderid;
+    let company=options.company;
+    let wuliuid=options.wuliuid
+    var that=this;
+    that.setData({
+      orderid:orderid,
+      company: company,
+      wuliuid: wuliuid
+    })
   },
 
   /**

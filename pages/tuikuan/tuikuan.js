@@ -1,14 +1,87 @@
 // pages/tuikuan/tuikuan.js
+const app=getApp();
+var util = require('../../utils/util.js')
+const apiCart = require('../../utils/api/cart.js');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    orderid:'',
+    goodsid:'',
     imgbox: '',
-    price:0,
+    why:'',
+    shuoming:'',
+    total:0,
   },
 
+  //原因
+  why: function (e) {
+    this.setData({
+      why: e.detail.value
+    })
+  },
+  //说明
+  shuoming:function(e){
+    this.setData({
+      shuoming: e.detail.value
+    })
+  },
+
+
+  //确认
+  submit: function () {
+    var main = this;
+    console.log(main.data.why, main.data.shuoming, main.data.total)
+    apiCart.toSettle(app.globalData.urlRefund, '/payReturn/refund', {
+      total_fee:main.data.total,
+      
+    }, (res) => {
+      if(res.data.data){
+        wx.showToast({
+          title: '退款申请成功',
+        })
+        wx.navigateTo({
+          url: '../orderprocessing/tuikuanzhong/orderprocessing?orderid='+that.data.orderid+'&goodsid='+that.data.goodsid,
+        })
+      }
+    });
+    wx.request({
+      url: app.globalData.urlRefund + '/payReturn/refund',
+      method: 'post',
+      data: {
+        fileInfo: main.data.imageList,
+        userId: main.data.userid,
+        hiredate: main.data.date,
+        phone: main.data.phone,
+        username: main.data.name,
+        departmentName: main.data.index
+      },
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      success(res) {
+        console.log(res);
+        main.setData({
+          dizhi: res.data.data
+        })
+        if (res.data.status) {
+          wx.showToast({
+            title: '提交成功',
+            icon: 'none',
+            duration: 2000
+          })
+          setTimeout(function () {
+            wx.switchTab({
+              url: '../person/person'
+            })
+          }, 1000)
+
+        }
+      }
+    })
+  },
   // 删除照片 && 
   imgDelete1: function(e) {
     let that = this;
@@ -91,7 +164,8 @@ Page({
     let price=options.price;
     var that=this;
     that.setData({
-      price:price
+      price:price,
+      orderid:orderid
     })
   },
 

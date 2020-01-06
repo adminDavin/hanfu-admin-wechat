@@ -18,15 +18,63 @@ Page({
     times3: '',
     schedule: '',
     currentTab: 0,//切换
-    userId: ''
+    userId: '',
+    lunBoTu:[]//轮播图
   },
   /**
    * 生命周期函数--监听页面加载
    */
+  onLoad: function (options) {
+    // 获取当前时间
+    var Day = util.formatTime(new Date());
+    this.setData({
+      day: Day
+    })
+    this.requestData();
+    this.lunBoTu()
+  },
+  //搜索
+  sousuo:function (){
+    wx.navigateTo({
+      url: '../seckill/seek/seek',
+    })
+  },
+  //轮播图
+  lunBoTu:function(e){
+    var that=this;
+    wx.request({
+      url: app.globalData.urlGoods + '/goods/categoryId',
+      method: 'Get',
+      success: function (res) {
+        console.log(res)
+        that.setData({
+          lunBoTu:res.data.data
+        })
+      },
+    });
+  },
+  //轮播图跳转
+   lunbotutiao:function(e){
+     var that = this;
+     wx.request({
+       url: app.globalData.urlGoods + '/goods/categoryId',
+       method: 'Get',
+       success: function (res) {
+         console.log(res)
+         that.setData({
+           lunBoTu: res.data.data
+         })
+       },
+     })
+     var id = e.currentTarget.dataset.id;
+     wx.navigateTo({
+       url: `../classify/commodity/commodity?id=${id}`,
+     })
+   },
   //推荐榜单
   bangdan: function () {
     wx.navigateTo({
-      url: '../classify/commodity/commodity',
+      url: '../classify/commodity/commodity?',
     })
   },
   // 秒杀切换
@@ -47,20 +95,11 @@ Page({
     } else if (currentTab == 3) {
       time = that.data.times3
     }
- 
     apiSeckill.getDataWithParams(app.globalData.urlseckill, '/group/selectCategoryName', {
         startTime: that.data.day + '  ' + time
       } , (res) => {
       that.setData({ schedule: res.data });
     });
-  },
-  onLoad: function (options) {
-    // 获取当前时间
-    var Day = util.formatTime(new Date());
-    this.setData({
-      day: Day
-    })
-    this.requestData();
   },
   requestData: function () {
     var that = this;
@@ -70,7 +109,7 @@ Page({
   },
   // 拼团内容
   requestcontent: function (e) {
-    // console.log(e)
+     console.log(e)
     var that = this;
     wx.request({
       url: app.globalData.urlpuzzle + '/group/selectCategory',

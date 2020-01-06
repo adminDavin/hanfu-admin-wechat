@@ -177,9 +177,9 @@ Page({
       url: '../address/address',
     })
   },
-  myConcern() {
+  myConcern(){
     wx.navigateTo({
-      url: '../goodsList/goodList',
+      url: '../goodsList/goodsList',
     })
   },
   myoftenBuy() {

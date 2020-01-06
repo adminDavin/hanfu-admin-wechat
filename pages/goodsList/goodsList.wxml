@@ -1,7 +1,7 @@
 <view class="nav">
-  <image src="/pages/images/tabs/xiala.png" mode="aspectFit"></image>
-  <text class="title">商品</text>
-  <view class="submit">
+  <!-- <image src="/pages/images/tabs/xiala.png" mode="aspectFit"></image>
+  <text class="title">商品</text> -->
+  <view class="submit" >
     <text bindtap="onEditdone" wx:if="{{edit}}">完成</text>
     <text bindtap="onEdit" wx:else>编辑</text>
     <image class="submit-image" src="/pages/images/tabs/sousuo (1).png" />

@@ -7,7 +7,13 @@ Page({
    */
   data: {
     dingdan: '',
-    orderList: [],
+    goodsList: [],
+    addid: '',
+    hfProvince: '',
+    hfCity: '',
+    hfAddressDetail: '',
+    phoneNumber: '',
+    goodsprice: ''
   },
   //返回
   fanhui() {
@@ -51,6 +57,7 @@ Page({
     var that = this;
     console.log(options);
     let dingdan = options.orderid
+    let goodsid=options.goodsid
     that.setData({
       dingdan: dingdan
     })
@@ -105,7 +112,7 @@ Page({
   onShareAppMessage: function() {
 
   },
-  getList: function() {
+  getList: function () {
     var that = this;
     wx.request({
       url: app.globalData.url + "/order/queryOrder",
@@ -114,25 +121,50 @@ Page({
         "Content-Type": "application/x-www-form-urlencoded"
       },
       data: {
-        id: that.data.dingdan
+        orderDetailId: that.data.dingdan
       },
-      success: function(res) {
+      success: function (res) {
         console.log("成功", res)
+        let orderList = res.data.data;
+        let addid = orderList.userAddressId
+        let goodsprice = orderList.purchaseQuantity * orderList.purchasePrice
         that.setData({
-          orderList: res.data.data
+          goodsList: orderList,
+          addid: addid,
+          goodsprice: goodsprice
         })
-        console.log(that.data.orderList)
       }
     })
-    // console.log(123);
-
   },
-  ontab: function() {
+  //拿地址
+  getAddress() {
+    var that = this;
+    wx.request({
+      url: app.globalData.urlLogin + '/user/address/addressDetail',
+      method: 'get',
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      data: {
+        id: that.data.addid,
+      },
+      success: function (res) {
+        console.log('获取地址', res);
+        that.setData({
+          hfProvince: res.data.data.hfProvince,
+          hfCity: res.data.data.hfCity,
+          hfAddressDetail: res.data.data.hfAddressDetail,
+          phoneNumber: res.data.data.phoneNumber
+        })
 
+      }
+    })
+  },
+  ontab: function(e) {
+    let logisticsordersid = e.currentTarget.dataset.logisticsordersid;
+    let logisticscompany = e.currentTarget.dataset.logisticscompany;
     wx.navigateTo({
-
-      url: '../../orderform/logistics?orderid=' + that.data.dingdan,
-
+      url: '../../orderform/logistics?orderid=' + that.data.dingdan + '&company=' + logisticscompany + '&wuliuid=' + logisticsordersid,
     })
   },
 })

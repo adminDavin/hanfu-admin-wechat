@@ -1,8 +1,22 @@
 const app = getApp()
 Page({
+  //搜索
+  sousuo: function () {
+    wx.navigateTo({
+      url: '../../seckill/seek/seek',
+    })
+  },
+  //切换
+  clickTab:function(e){
+    console.log(e)
+    var that = this;
+    that.setData({
+      currentTab: e.currentTarget.dataset.id,
+    })
+  },
    // 获取滚动条当前位置
    onPageScroll: function (e) {
-    console.log(e)
+    // console.log(e)
     if (e.scrollTop > 100) {
       this.setData({
         floorstatus: true
@@ -52,7 +66,9 @@ Page({
   },
   data: {
     arr: '',
-    prices:''
+    prices:'',
+    currentTab: 0,//切换
+    dataId:''//待用
   },
   // 获取商品列表
   categoryId: function(e) {
@@ -61,11 +77,11 @@ Page({
       url: app.globalData.urlparticulars + '/goods/categoryId',
       method: 'Get',
       success: function(res) {
-        // console.log(res);
-        for (var i = 0; i < res.data.data.length; i++) {
-          // console.log(res.data.data[i])
-          res.data.data[i].img = 'http://192.168.1.104:9095/goods/pictures?goodsId=' + res.data.data[i].id
-        }
+        //  console.log(res);
+        // for (var i = 0; i < res.data.data.length; i++) {
+        //   // console.log(res.data.data[i])
+        //   res.data.data[i].img = 'http://192.168.1.104:9095/goods/pictures?goodsId=' + res.data.data[i].id
+        // }
         that.setData({
           arr: res.data.data,
         })
@@ -81,7 +97,7 @@ Page({
       success: function (res) {
         console.log(res)
         that.setData({
-          prices: res.data
+          // prices: res.data
         })
       },
       data: {
@@ -91,17 +107,22 @@ Page({
   },
   // 跳转携带id
   commodity: function(e) {
-    // console.log(e)
+    console.log(e)
     var id = e.currentTarget.dataset.id
-    var goodsid = e.currentTarget.dataset.goodsid
     wx.navigateTo({
-      url: `../particulars/particulars?id= ${id}&goodsid=${goodsid}`,
+      url: `../particulars/particulars?id=${id}`,
     })
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    let id = options.id;
+    var that = this;
+    console.log(id);
+    that.setData({
+      dataId: id,
+    });
     this.categoryId();
   },
 

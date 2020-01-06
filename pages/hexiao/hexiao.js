@@ -14,9 +14,10 @@ Page({
 
   tiHuo: function(e) {
     var that = this;
+    let goodsid=e.currentTargrt.dataset.goodsid;
     that.setData({
       qrshow: true,
-      qrAdd: app.globalData.urlHexiao + '/test/activity/create/activity-code?goodsId=' + that.data.goodsId + '&orderId=' + that.data.orderId
+      qrAdd: app.globalData.urlHexiao + '/test/activity/create/activity-code?goodsId=' + goodsid + '&orderId=' + that.data.orderId
     })
 
   },
@@ -37,16 +38,16 @@ Page({
         "Content-Type": "application/x-www-form-urlencoded"
       },
       data: {
-        id: 4
+        orderId: that.data.orderid
       },
       success: function (res) {
         console.log("成功", res)
         let orders=res.data.data;
         for(var index in orders){
-          
+          orders[index].img = app.globalData.urlGoods + '/goods/getFile?fileId=' + cartList[index].productIcon;
         }
         that.setData({
-          orderList: res.data.data
+          orderList: orders
         })
         console.log(that.data.orderList)
       }

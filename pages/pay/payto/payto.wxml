@@ -1,24 +1,24 @@
 <view class="nav">
-  <image src="/pages/images/tabs/xiala.png" mode="aspectFit"></image>
+  <image src="/pages/images/tabs/xiala.png" mode="aspectFit" bindtap="gopre"></image>
   <text class="title">付款</text>
   <view class="titleright"></view>
 </view>
 <view class="pay-to">
-  <view class="pay-to-left">
-    <text class="pay-to-left-top">付款给</text>
-    <text class="pay-to-left-bottom">我是一只毒蘑菇啊</text>
-  </view>
-  <image src="/pages/images/tabs/36542ad2bcfcab377e9fa0e2c5bf9fb1fc84950d925e-zP5HbN.png" />
+  <!-- <view class="pay-to-left"> -->
+    <!-- <text class="pay-to-left-top">付款给</text> -->
+    <!-- <text class="pay-to-left-bottom">我是一只毒蘑菇啊</text> -->
+  <!-- </view> -->
+  <!-- <image src="/pages/images/tabs/36542ad2bcfcab377e9fa0e2c5bf9fb1fc84950d925e-zP5HbN.png" /> -->
 </view>
 <view class="pay-num">
   <text class="pay-num-title">金额</text>
   <view class="numinput">
       <view class="numtop">
         <text>¥</text>
-        <input class="weui-input" value="{{ money.value }}" data-prop="money" bind:change="onChange" type="digit" placeholder="输入金额" confirm-type="done"/>
+        <input class="weui-input" value="{{total}}"  disabled="true" type="digit" placeholder="输入金额" confirm-type="done"/>
       </view>
   </view>
-      <button class="numBottom" bindtap="show">充值</button>
+      <button class="numBottom" bindtap="show" >付款</button>
 </view>
 
 <!-- 弹出遮罩层 数据控制显示隐藏 详情查看vantweapp组件用法 -->
@@ -32,8 +32,8 @@
   <view class="content">
     <view class="pop-top">
       <text>付款码</text>
-      <text>付款给 我是一只毒蘑菇啊</text>
-      <text>¥{{ money.value }}</text>
+      <!-- <text>付款给 我是一只毒蘑菇啊</text> -->
+      <text>¥{{total}}</text>
     </view>
     <view class="pay-way">
       <view class="pay-way-top">
@@ -44,7 +44,7 @@
         </view>
       </view>
       <view class="pay-way-bottom">
-        <image class="pay" src="/pages/images/tabs/1574232749.png" />
+        <image class="pay" src="{{qrAdd}}" />
       </view>
     </view>
   </view>

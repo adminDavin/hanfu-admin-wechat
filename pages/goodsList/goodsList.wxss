@@ -4,10 +4,10 @@ page {
 /* 自定义导航栏 */
 .nav {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-self: center;
   background-color: #fff;
-  padding: 0 20rpx 25rpx;
+  margin-top:10rpx;
 }
 .nav image {
   display: block;

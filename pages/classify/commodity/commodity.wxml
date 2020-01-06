@@ -1,7 +1,7 @@
 <view class="commodity">
     <view class="commodity-header-box">
-        <image src="../../images/tabs/xiala.png" class="commodity-tus" />
-        <view class="commodity-header">
+        <!-- <image src="../../images/tabs/xiala.png" class="commodity-tus" /> -->
+        <view class="commodity-header" bindtap="sousuo">
             <image class="commodity-tu" src="../../images/tabs/sousuo.png" />
             <input type="text" class="commodity-input" placeholder="显示器2K" />
         </view>
@@ -12,20 +12,20 @@
         <view class="banner-table">
             <view class="banner-box">
                 <view class="table">
-                    <view class="table-sum">
+                    <view class="table-sum" bindtap="clickTab">
                         <text class="sum-text">综合</text>
-                        <view class="sum-color colors"></view>
+                        <view class="sum-color {{currentTab==0?'colors':''}}" data-id="0"></view>
                     </view>
                     <image src="../../images/tabs/xiangxia.png" class="sum-image" />
                 </view>
-                <view class="table table-flex">
+                <view class="table table-flex" bindtap="clickTab">
                     <view class="sum-text sales">销量</view>
-                    <view class="sum-color colors"></view>
+                    <view class="sum-color {{currentTab==0?'colors':''}}" data-id="1"></view>
                 </view>
                 <view class="flex-box">
-                    <view class="table table-flex" bindtap="prices">
-                        <text class="sales">价格</text>
-                        <view class="sum-color colors"></view>
+                    <view class="table table-flex" bindtap="clickTab">
+                        <text class="sales" bindtap="prices">价格</text>
+                        <view class="sum-color {{currentTab==0?'colors':''}}" data-id="2"></view>
                     </view>
                     <view class="flex-box-two">
                         <image src="../../images/tabs/shang.png" class="flex-imgae" />
@@ -39,7 +39,7 @@
                 <view class="table">
                     <view class="table-sum">
                         <text class="sum-text sales" bindtap="translate">筛选</text>
-                        <view class="sum-color colors"></view>
+                        <view class="sum-color"></view>
                     </view>
                     <image src="../../images/tabs/shaixuan.png" class="sai-image" />
                 </view>
@@ -47,7 +47,7 @@
         </view>
     </view>
     <!-- 商品区域一个 -->
-    <view class="shpping-content" wx:for="{{arr}}" wx:key="index" data-id='{{item.id}}' data-goodsid='{{item.goodsId}}'>
+    <view class="shpping-content" wx:for="{{arr}}" wx:key="index" data-id='{{item.id}}' style="display: none;">
         <view class="content" bindtap="commodity">
             <!-- 图片 -->
             <image src="{{item.img}}" class="content-images" />
@@ -73,7 +73,7 @@
         </view>
     </view>
 <!-- 商品区域两个 -->
-    <view class="banner-centent" wx:for="{{arr}}" wx:key="index" style="display: none;">
+    <view class="banner-centent" wx:for="{{arr}}" wx:key="index" data-id='{{item.id}}'>
         <!-- 商品 -->
         <view class="centent" bindtap="commodity">
             <!-- 图片 -->

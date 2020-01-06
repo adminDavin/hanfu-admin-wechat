@@ -1,5 +1,7 @@
 // pages/shopping/shopping.js
 const app = getApp();
+var util = require('../../utils/util.js')
+const apiCart = require('../../utils/api/cart.js');
 Page({
 
   /**
@@ -65,24 +67,16 @@ Page({
     }
     checkgoods.push(price)
     console.log(checkgoods)
-    wx.request({
-      url:app.globalData.urlCart+ '/cart/Settlemen',
-      method:'get',
-      data:{
-        productMessage:checkgoods,
-        userId:that.data.userId,
-      },
-      success(res){
-        if(res.data.status==200){
-          wx.navigateTo({
-            url: '../order/order?goodsid='+res.data.data,
-          })
-        }
+    apiCart.toSettle(app.globalData.urlCart, '/cart/Settlemen', {
+      productMessage: checkgoods,
+      userId: that.data.userId,
+    }, (res) => {
+      if (res.data.status == 200) {
+        wx.navigateTo({
+          url: '../order/order?goodsid=' + res.data.data,
+        })
       }
-    })
-    // wx.navigateTo({
-    //   url: '../order/order?str=' + this.data.checkgoods,
-    // })
+    });
   },
 
 
@@ -181,59 +175,51 @@ Page({
   //获取购物车信息
   getCart: function() {
     var that = this;
-    wx.request({
-      url: app.globalData.urlCart + '/cart/getCartList',
-      method: 'get',
-      header: {
-        "Content-Type": "application/x-www-form-urlencoded"
-      },
-      data: {
-        userId: 2
-      },
-      success: function(res) {
-        console.log('购物车', res)
-        var shangjiagoods = [];
-        var xiajiagoods = [];
-        if (res.data.data == '') {
-          that.setData({
-            tiphidden: false
-          })
-        } else {
-          that.setData({
-            tiphidden: true
-          })
-        }
-        var cartList = res.data.data;
-        for (var index in cartList) {
-          cartList[index].img = app.globalData.urlGoods + '/goods/getFile?fileId=' + cartList[index].productIcon;
-        }
-        var valid = cartList;
-        for (var index in valid) {
-          if (valid[index].productStatus == 1) {
-            shangjiagoods.push(valid[index])
-          } else {
-            xiajiagoods.push(valid[index])
-          }
-        }
-        if (valid.length > 0) {
-          that.setData({
-            cratList: valid,
-            shangjiagoods: shangjiagoods,
-            xiajiagoods: xiajiagoods
-          });
-          that.switchSelect();
-        }
-        let num = JSON.stringify(res.data.data.length)
-        app.globalData.cartNum = num;
+    apiCart.getCartList(app.globalData.urlCart, '/cart/getCartList', {
+      userId: that.data.userId,
+    }, (res) => {
+      console.log('购物车', res)
+      var shangjiagoods = [];
+      var xiajiagoods = [];
+      if (res.data.data == '') {
         that.setData({
-          cartNum: num
+          tiphidden: false
         })
-        wx.setTabBarBadge({
-          index: 3,
-          text: app.globalData.cartNum
+      } else {
+        that.setData({
+          tiphidden: true
         })
       }
-    })
+      var cartList = res.data.data;
+      for (var index in cartList) {
+        cartList[index].img = app.globalData.urlGoods + '/goods/getFile?fileId=' + cartList[index].productIcon;
+      }
+      var valid = cartList;
+      for (var index in valid) {
+        if (valid[index].productStatus == 1) {
+          shangjiagoods.push(valid[index])
+        } else {
+          xiajiagoods.push(valid[index])
+        }
+      }
+      if (valid.length > 0) {
+        that.setData({
+          cratList: valid,
+          shangjiagoods: shangjiagoods,
+          xiajiagoods: xiajiagoods
+        });
+        that.switchSelect();
+      }
+      let num = JSON.stringify(res.data.data.length)
+      app.globalData.cartNum = num;
+      that.setData({
+        cartNum: num
+      })
+      wx.setTabBarBadge({
+        index: 3,
+        text: app.globalData.cartNum
+      })
+    });
   },
 
   //删除商品
@@ -243,25 +229,20 @@ Page({
     var cart = that.data.shangjiagoods;
     console.log(e)
     let goodsid = e.currentTarget.dataset.goodsid
-    wx.request({
-      url: app.globalData.urlCart + '/cart/delGoods',
-      method: 'get',
-      data: {
-        productId: e.currentTarget.dataset.goodsid,
-        userId: that.data.userId
-      },
-      success(res) {
-        for (var index in cart) {
-          if (cart[index].productId != goodsid) {
-            goodslist.push(cart[index])
-          }
+    apiCart.toSettle(app.globalData.urlCart, '/cart/delGoods', {
+      productId: e.currentTarget.dataset.goodsid,
+      userId: that.data.userId,
+    }, (res) => {
+      for (var index in cart) {
+        if (cart[index].productId != goodsid) {
+          goodslist.push(cart[index])
         }
-        that.setData({
-          shangjiagoods: goodslist
-        })
-        console.log(that.data.shangjiagoods)
       }
-    })
+      that.setData({
+        shangjiagoods: goodslist
+      })
+      console.log(that.data.shangjiagoods)
+    });
   },
 
   //常买
@@ -270,65 +251,50 @@ Page({
     var cart = that.data.shangjiagoods;
     console.log(e)
     let goodsid = e.currentTarget.dataset.goodsid
-    wx.request({
-      url: app.globalData.urlCart + '/cart/OftenBuy',
-      method: 'get',
-      data: {
-        goodsId: e.currentTarget.dataset.goodsid,
-        userId: that.data.userId
-      },
-      success(res) {
-        console.log(res)
-        if (res.data.data =='设置成功'){
-          that.setData({
-            isOftenBuy:false
-          })
-        }
+    apiCart.toSettle(app.globalData.urlCart, '/cart/OftenBuy', {
+      goodsId: e.currentTarget.dataset.goodsid,
+      userId: that.data.userId,
+    }, (res) => {
+      console.log(res)
+      if (res.data.data == '设置成功') {
+        that.setData({
+          isOftenBuy: false
+        })
       }
-    })
+    });
   },
   delOftenBuy(e){
     var that = this;
     var cart = that.data.shangjiagoods;
     console.log(e)
     let goodsid = e.currentTarget.dataset.goodsid
-    wx.request({
-      url: app.globalData.urlCart + '/cart/delOftenbuy',
-      method: 'get',
-      data: {
-        goodsId: e.currentTarget.dataset.goodsid,
-        userId: that.data.userId
-      },
-      success(res) {
-        console.log(res)
-        if (res.data.data == '取消成功') {
-          that.setData({
-            isOftenBuy: true
-          })
-        }
+    apiCart.toSettle(app.globalData.urlCart, '/cart/delOftenbuy', {
+      goodsId: e.currentTarget.dataset.goodsid,
+      userId: that.data.userId,
+    }, (res) => {
+      console.log(res)
+      if (res.data.data == '取消成功') {
+        that.setData({
+          isOftenBuy: true
+        })
       }
-    })
+    });
   },
   getOftenBuy(){
     var that=this;
-    wx.request({
-      url: app.globalData.urlCart + '/cart/selectOftenBuy',
-      method:'get',
-      data:{
-        userId:that.data.userId
-      },
-      success(res){
-        var cartList = res.data.data;
-        for (var index in cartList) {
-          cartList[index].img = app.globalData.urlGoods + '/goods/getFile?fileId=' + cartList[index].productIcon;
-        }
-        that.setData({
-            shangjiagoods:cartList
-        })
-        that.switchSelect();
+    apiCart.toSettle(app.globalData.urlCart, '/cart/selectOftenBuy', {
+      userId: that.data.userId,
+    }, (res) => {
+      console.log(res)
+      var cartList = res.data.data;
+      for (var index in cartList) {
+        cartList[index].img = app.globalData.urlGoods + '/goods/getFile?fileId=' + cartList[index].productIcon;
       }
-    })
-    console.log(that.data.shangjiagoods)
+      that.setData({
+        shangjiagoods: cartList
+      })
+      that.switchSelect();
+    });
   },
   //关注
   concern(e){
@@ -344,22 +310,17 @@ Page({
         })
       },
     })
-    wx.request({
-      url: app.globalData.urlCart + '/cart/Concern',
-      method: 'get',
-      data: {
-        goodsId: e.currentTarget.dataset.goodsid,
-        openId: that.data.openId
-      },
-      success(res) {
-        console.log(res)
-        if (res.data.data == '设置成功') {
-          that.setData({
-            isGuanzhu: false
-          })
-        }
+    apiCart.toSettle(app.globalData.urlCart, '/cart/Concern', {
+      goodsId: e.currentTarget.dataset.goodsid,
+      openId: that.data.openId
+    }, (res) => {
+      console.log(res)
+      if (res.data.data == '设置成功') {
+        that.setData({
+          isGuanzhu: false
+        })
       }
-    })
+    });
   },
   delconcern(e) {
     var that = this;
@@ -374,38 +335,27 @@ Page({
         })
       },
     })
-    wx.request({
-      url: app.globalData.urlCart + '/cart/delConcern',
-      method: 'get',
-      data: {
-        goodsId: e.currentTarget.dataset.goodsid,
-        openId: that.data.openId
-      },
-      success(res) {
-        console.log(res)
-        if (res.data.data == '取消成功') {
-          that.setData({
-            isGuanzhu: true
-          })
-        }
+    apiCart.toSettle(app.globalData.urlCart, '/cart/delConcern', {
+      goodsId: e.currentTarget.dataset.goodsid,
+      openId: that.data.openId
+    }, (res) => {
+      console.log(res)
+      if (res.data.data == '取消成功') {
+        that.setData({
+          isGuanzhu: true
+        })
       }
-    })
+    });
   },
   getConcern(){
     var that = this;
     let goodsList = [];
-    wx.request({
-      url: app.globalData.urlCart + '/cart/selectConcern',
-      method: 'get',
-      data: {
-        userId: that.data.userId
-      },
-      success(res) {
-        that.setData({
-
-        })
-      }
-    })
+    apiCart.toSettle(app.globalData.urlCart, '/cart/selectConcern', {
+      userId: that.data.userId
+    }, (res) => {
+      console.log(res)
+      
+    });
   },
   /**
    * 生命周期函数--监听页面加载

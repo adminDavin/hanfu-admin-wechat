@@ -170,10 +170,10 @@
             <image src="../../images/tabs/xiaoxi.png" class="footer-image" />
             <text class="foot-text">客服</text>
         </view>
-        <view class="footter-service footer-margin">
+        <!-- <view class="footter-service footer-margin">
             <image src="../../images/tabs/buycar.png" class="footer-image" />
             <text class="foot-text">购物车</text>
-        </view>
+        </view> -->
         <view class="footer-shppingcar">加入购物车</view>
         <view class="footer-shppingcar purchase">立即购买</view>
     </view>
@@ -184,22 +184,6 @@
             <view class="services">
                 <text class="services-title">基础服务</text>
                 <scroll-view scroll-y="true" class="services services-bottom">
-                    <view class="services-content services-margin">
-                        <image src="../../images/tabs/对勾.png" class="kind-image" />
-                        <view class="services-kind">
-                            <text class="kind-table">7天无理由</text>
-                            <text class="kind-text">
-                                满足7天无理由退换货的前提下，包邮商品需要买家承担退货邮费，非包邮需要买家承担发货和退货邮费
-                            </text>
-                        </view>
-                    </view>
-                    <view class="services-content services-margin">
-                        <image src="../../images/tabs/对勾.png" class="kind-image" />
-                        <view class="services-kind">
-                            <text class="kind-table">7天无理由</text>
-                            <text class="kind-text">15天退货，退货邮费卖家承担</text>
-                        </view>
-                    </view>
                     <view class="services-content services-margin">
                         <image src="../../images/tabs/对勾.png" class="kind-image" />
                         <view class="services-kind">
