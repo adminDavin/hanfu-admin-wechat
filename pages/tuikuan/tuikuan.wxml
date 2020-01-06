@@ -1,0 +1,36 @@
+<view class="tuikuan">
+  <view class="tuikuan-item">
+    <view class="tuikuan-title">退款原因</view>
+    <input class="tuikuan-input" placeholder="请输入退款原因(必填)" bindinput="yuanyin"></input>
+  </view>
+  <view class="tuikuan-item">
+    <view class="tuikuan-title">退款金额</view>
+    <input class="tuikuan-input" value="{{price}}" disabled="true"></input>
+  </view>
+  <view class="tuikuan-item">
+    <view class="tuikuan-title">退款说明</view>
+    <input class="tuikuan-input" placeholder="请输入退款说明(可不填)" bindinput="shuoming"></input>
+  </view>
+  <view class="tuikuan-item" style="height:auto">
+    <view class="tuikuan-title">上传凭证截图</view>
+    <view class='up-pic'>
+      <view class='flex pic-box'>
+        <block wx:key="imgbox" wx:for="{{imgbox}}">
+          <view class='ap-box'>
+            <view class='add-pic'>
+              <image class='add-pic' src='{{item}}'></image>
+              <view class='img-de' data-deindex='{{index}}' bindtap='imgDelete1'>
+                <image class='img' src='/img/img/icon_close2@2x.png'></image></view>
+            </view>
+          </view>
+        </block>
+        <view class='add-pic' bindtap='addPic1' wx:if="{{imgbox.length<9}}">
+        <image class='img' src='../images/cart/picjia.png' style="width:52rpx;height:52rpx;margin-top:54rpx;margin-left:54rpx"></image> </view>
+      </view>
+    </view>
+  </view>
+  <view class="footer">
+  <view class="queren" >确认</view>
+  <view class="queren" style="color:black;background:white;border:1rpx solid rgba(153,153,153,1);" >取消</view>
+  </view>
+</view>

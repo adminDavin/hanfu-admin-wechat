@@ -1,0 +1,104 @@
+<view class="dat-top"></view>
+<!-- 上面整个大盒子 start -->
+<view class="dat-box">
+  <!-- 头像栏 start -->
+  <view class="dat-box-top">
+    <!-- 左边 -->
+    <view class="box-top-left">
+      <!-- <image src="../../assets/img/头像@2x.png"></image> -->
+      <text>欢乐小可</text>
+    </view>
+    <!-- 右边 -->
+    <view class="box-top-right">
+      <text class="top-right-top">128人点赞</text>
+      <text>2018-02-03</text>
+    </view>
+  </view>
+  <!-- 头像栏 end -->
+  <!-- 评论  start -->
+  <text class="comment">
+    一般般。一般般。一般般。一般般。一般般。一般般。一般般。一般般。一般般。一般般。一般般。一般般。一般般。一般般。一般般。一般般。一般般。一般般。一般般。一般般。一般般。一般般。一般般。一般般。一般般。
+  </text>
+  <!-- 评论 end -->
+  <!-- 九张图片 start -->
+  <view class="broadcast">
+    <view>
+      <image src="../../assets/img/4d526ef88f2b060d.jpg!cc_350x449@2x.png"></image>
+    </view>
+    <view>
+      <image src="../../assets/img/4d526ef88f2b060d.jpg!cc_350x449@2x.png"></image>
+    </view>
+    <view class="eliminate">
+      <image src="../../assets/img/4d526ef88f2b060d.jpg!cc_350x449@2x.png"></image>
+    </view>
+    <view>
+      <image src="../../assets/img/4d526ef88f2b060d.jpg!cc_350x449@2x.png"></image>
+    </view>
+    <view>
+      <image src="../../assets/img/4d526ef88f2b060d.jpg!cc_350x449@2x.png"></image>
+    </view>
+    <view class="eliminate">
+      <image src="../../assets/img/4d526ef88f2b060d.jpg!cc_350x449@2x.png"></image>
+    </view>
+    <view class="Removethe">
+      <image src="../../assets/img/4d526ef88f2b060d.jpg!cc_350x449@2x.png"></image>
+    </view>
+    <view class="Removethe">
+      <image src="../../assets/img/4d526ef88f2b060d.jpg!cc_350x449@2x.png"></image>
+    </view>
+    <view class="eliminate Removethe">
+      <image src="../../assets/img/4d526ef88f2b060d.jpg!cc_350x449@2x.png"></image>
+    </view>
+  </view>
+  <!-- 九张图片 end -->
+  <view class="line"></view>
+  <!-- 介绍价钱 start -->
+  <view class="introduce">
+    <!-- 右边图片 -->
+    <view class="introduce-left">
+      <!-- <image src="../../assets/img/4d526ef88f2b060d.jpg!cc_350x449@2x.png"></image> -->
+    </view>
+    <!-- 左边文字 -->
+    <view class="introduce-right">
+      <text>夹克夹克夹克夹克夹克夹克夹克夹克夹克夹克夹克夹克夹克夹克夹克夹克夹克</text>
+      <view>￥399.00</view>
+    </view>
+  </view>
+  <!-- 介绍价钱 end -->
+  <view class="Gray"></view>
+  <!-- 评论 start -->
+  <view class="comment">
+    <view class="comment-top">
+      <image src="../../assets/img/圆角矩形 5@2x.png"></image>
+      <text>评论</text>
+    </view>
+    <view class="comment-bottom">
+      <text>沙发还空着，快来抢吧！</text>
+    </view>
+  </view>
+  <!-- 评论 end -->
+</view>
+<!-- 上面整个大盒子 end -->
+<!-- 最下层 -->
+<view>
+  <view class="lowermost" wx:if="{{ hiddenName }}">
+    <view class="lowermost-left" style="bottom:{{bottom}}px" bindtap='click' >
+      <image src="../../assets/img/liuyan@2x.png"></image>
+      <text>评价</text>
+    </view>
+    <view class="gray-parent">
+      <view class="gray"></view>
+    </view>
+    <view class="lowermost-right">
+      <image src="../../assets/img/zan@2x.png"></image>
+      <text>点赞</text>
+    </view>
+  </view>
+  <!--  评论 -->
+  <view class="pinglun" wx:else>
+    <input type="text" placeholder="想说的话....."></input>
+    <button bindtap='black'>发送</button>
+  </view>
+</view>
+<!--  /评论 -->
+

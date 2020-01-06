@@ -1,0 +1,109 @@
+<view class="mine" >
+  <view class="personcard">
+    <view class="personcard-top">
+      <image src="{{avatar?avatar:'../images/cart/avatar.png'}}" style="width:120rpx;height:120rpx;margin-right:30rpx;border-radius:50%"></image>
+      <view class="personcard-namebox">
+        <view style="font-weight:bold;"  wx:if="{{xinxishow==false}}">{{username}}</view>
+        <view style="font-size:32rpx"  wx:if="{{xinxishow==false}}">{{phone}}</view>
+        <view style="font-weight:bold;" wx:if="{{xinxishow==true}}" bindtap="gologin">登录</view>
+      </view>
+      <view class="header-fl">
+        <view class="header-sao" bindtap="getScancode">
+          <image src="../images/tabs/sao.png" class="sao-tu" />
+          <view class="sao">扫一扫</view>
+        </view>
+        <view class="header-sao">
+          <image src="../images/tabs/xiaoxis.png" class="sao-tu" />
+          <view class="sao">客服</view>
+        </view>
+      </view>
+    </view>
+    <view class="vipcard">
+      <image src="../images/cart/jianbian.png" style="position:absolute;width: 670rpx;height: 71rpx;left:0;top:0"></image>
+      <image src="../images/cart/huangguan.png" style="position:absolute;width:95rpx;height:62rpx;bottom:0;left:0;z-index:1"></image>
+      <view style="font-size:26rpx;font-weight:bold;color:rgba(21,21,21,1);z-index:2">PLUS 会员</view>
+      <view class="chakan" bindtap="ontab">
+        <image src="../images/cart/chakan.png" style="position:absolute;width:170rpx;height:64rpx;left:0;top:0;z-index:1"></image>
+        <view style="font-size:24rpx;font-weight:500;color:rgba(234,182,57,1);line-height:42rpx;z-index:2">立即查看</view>
+        <image src="../images/cart/chakanrj.png" style="width:8rpx;height:13rpx;z-index:2"></image>
+      </view>
+    </view>
+  </view>
+  <view class="dai">
+    <view class="dai-item" bindtap="goMyDingdan" data-tag="2">
+      <image src="../images/cart/daifukuan.png" style="width:55rpx;height:54rpx"></image>
+      <view class="dai-ziti">待付款</view>
+    </view>
+    <view class="dai-item" bindtap="goMyDingdan" data-tag="4">
+      <image src="../images/cart/shouhuo.png" style="width:55rpx;height:54rpx"></image>
+      <view class="dai-ziti">待收货</view>
+    </view>
+    <view class="dai-item">
+      <image src="../images/cart/ziyuan.png" style="width:55rpx;height:54rpx"></image>
+      <view class="dai-ziti">待评价</view>
+    </view>
+    <view class="dai-item" bindtap="goMyDingdan" data-tag="1">
+      <image src="../images/cart/shouhuo_icon_n.png" style="width:55rpx;height:54rpx"></image>
+      <view class="dai-ziti">退款/售后</view>
+    </view>
+    <view class="dai-item" bindtap="goMyDingdan" data-tag="1">
+      <image src="../images/cart/wodedingdan.png" style="width:55rpx;height:54rpx"></image>
+      <view class="dai-ziti">我的订单</view>
+    </view>
+  </view>
+  <view class="serve">
+    <view class="serve-title">
+      <image src="../images/cart/shuxian.png" style="width:4rpx;height:18rpx;margin-right:14rpx"></image>
+      <view style="font-size:28rpx;font-weight:500;color:rgba(21,21,21,1);">工具和服务</view>
+    </view>
+    <view class="serve-content">
+      <view class="serve-item" bindtap="myoftenBuy">
+        <image src="../images/cart/shangpin.png" style="width:96rpx;height:96rpx"></image>
+        <view class="serve-ziti">常买商品</view>
+      </view>
+      <view class="serve-item">
+        <image src="../images/cart/youhuiquan.png" style="width:96rpx;height:96rpx"></image>
+        <view class="serve-ziti">我的优惠券</view>
+      </view>
+      <view class="serve-item" bindtap="myConcern">
+        <image src="../images/cart/guanzhu.png" style="width:96rpx;height:96rpx"></image>
+        <view class="serve-ziti">我的关注</view>
+      </view>
+      <view class="serve-item">
+        <image src="../images/cart/pinglun.png" style="width:96rpx;height:96rpx"></image>
+        <view class="serve-ziti">我的评论</view>
+      </view>
+      <view class="serve-item" bindtap="myaddress">
+        <image src="../images/cart/dizhi.png" style="width:96rpx;height:96rpx"></image>
+        <view class="serve-ziti">我的地址</view>
+      </view>
+      <view class="serve-item">
+        <image src="../images/cart/erweima.png" style="width:96rpx;height:96rpx"></image>
+        <view class="serve-ziti">我的二维码</view>
+      </view>
+      <view class="serve-item">
+        <image src="../images/cart/kefu.png" style="width:96rpx;height:96rpx"></image>
+        <view class="serve-ziti">联系客服</view>
+      </view>
+      <view class="serve-item">
+        <image src="../images/cart/yue.png" style="width:96rpx;height:96rpx"></image>
+        <view class="serve-ziti">余额付款</view>
+      </view>
+    </view>
+  </view>
+  <view style="position:absolute;bottom:22rpx;font-size:26rpx;font-weight:400;color:rgba(221,221,221,1);margin:0 114rpx">思维创造（天津）信息科技有限公司版权所有</view>
+</view>
+
+<view class="mask" wx:if="{{show==true}}">
+  <view class="mask-dl">
+    <text class="mask-tible">{{shibaishow==true?'登录失败，请重新登录':'您还未登录'}}</text>
+    <text class="mask-tibles">请先登录再进行操作</text>
+    <view class="mask-head">
+      <view class="header">头像</view>
+    </view>
+    <view class="mask-buttom">
+      <view class="buttom" bindtap="nologin">暂不登录</view>
+      <button class="buttom-two" open-type="getUserInfo" bindgetuserinfo="getUserInfo" style="width:183rpx;font-size:28rpx;font-weight:400">立即登录</button>
+    </view>
+  </view>
+</view>
