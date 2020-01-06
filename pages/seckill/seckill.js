@@ -1,5 +1,7 @@
 const app = getApp()
 var util = require('../../utils/util.js')
+const apiSeckill = require('../../utils/api/seckill.js');
+
 Page({
   /**
    * 页面的初始数据
@@ -15,14 +17,14 @@ Page({
     times2: '',
     times3: '',
     schedule: '',
-    currentTab: 0 ,//切换
-    userId:''
+    currentTab: 0,//切换
+    userId: ''
   },
   /**
    * 生命周期函数--监听页面加载
    */
   //推荐榜单
-  bangdan:function (){
+  bangdan: function () {
     wx.navigateTo({
       url: '../classify/commodity/commodity',
     })
@@ -45,18 +47,12 @@ Page({
     } else if (currentTab == 3) {
       time = that.data.times3
     }
-    wx.request({
-      url: app.globalData.urlseckill + '/kill/seleteDate',
-      method: 'Get',
-      success: function (res) {
-        that.setData({
-          schedule: res.data,
-        })
-      },
-      data: {
+ 
+    apiSeckill.getDataWithParams(app.globalData.urlseckill, '/group/selectCategoryName', {
         startTime: that.data.day + '  ' + time
-      }
-    })
+      } , (res) => {
+      that.setData({ schedule: res.data });
+    });
   },
   onLoad: function (options) {
     // 获取当前时间
@@ -68,15 +64,9 @@ Page({
   },
   requestData: function () {
     var that = this;
-    wx.request({
-      url: app.globalData.urlpuzzle + '/group/selectCategoryName',
-      method: 'Get',
-      success: function (res) {
-        that.setData({
-          arr: res.data
-        })
-      },
-    })
+    apiSeckill.getData(app.globalData.urlseckill, '/group/selectCategoryName', (res) => {
+      that.setData({ arr: res.data });
+    });
   },
   // 拼团内容
   requestcontent: function (e) {
@@ -100,6 +90,7 @@ Page({
   seckillshpping: function (e) {
     // console.log(e)
     var that = this;
+
     wx.request({
       url: app.globalData.urlseckill + '/kill/selectByDate',
       method: 'Get',
