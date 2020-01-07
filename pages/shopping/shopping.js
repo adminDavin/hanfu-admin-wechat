@@ -8,22 +8,22 @@ Page({
    * 页面的初始数据
    */
   data: {
-    openId:'',
+    openId: '',
     bannertoggle: 1,
     tiphidden: false,
     servehidden: true,
     editshow: true,
-    isGuanzhu:true,
-    isOftenBuy:true,
+    isGuanzhu: true,
+    isOftenBuy: true,
     cratList: [],
     cartPrice: 0,
     cartNum: 0,
     checkgoods: '',
     goodsarr: [],
-    shangjiagoods:[],
-    xiajiagoods:[],
+    shangjiagoods: [],
+    xiajiagoods: [],
     selectCountPrice: 0.00,
-    isAllSelect: false, //全选
+    isAllSelect: true, //全选
     selectValue: [], //选中的数据
   },
 
@@ -38,7 +38,7 @@ Page({
       that.getCart();
     } else if (index == 2) {
       that.setData({
-        shangjiagoods:[]
+        shangjiagoods: []
       })
     } else if (index == 3) {
       that.getOftenBuy();
@@ -48,18 +48,19 @@ Page({
   // 去结算
   submit() {
     var that = this;
-    let cartPrice=that.data.selectCountPrice;
-    if(cartPrice==0){
+    let cartPrice = that.data.selectCountPrice;
+    if (cartPrice == 0) {
       wx.showToast({
         title: '请选择商品',
-        mask:true
+        mask: true,
+        icon: 'none'
       })
       return;
     }
     let cart = that.data.shangjiagoods
     var checkgoods = [];
-    var price={};
-    price.sum=that.data.selectCountPrice;
+    var price = {};
+    price.sum = that.data.selectCountPrice;
     for (let i = 0; i < cart.length; i++) {
       if (cart[i].check == 1) {
         checkgoods.push(cart[i])
@@ -208,7 +209,14 @@ Page({
           shangjiagoods: shangjiagoods,
           xiajiagoods: xiajiagoods
         });
-        that.switchSelect();
+        var selectCountPrice = 0.00;
+        let shangjia = that.data.shangjiagoods
+        for (var index in shangjia) {
+          selectCountPrice = Number(selectCountPrice) + Number(shangjia[index].productNum) * Number(shangjia[index].productPrice)
+        }
+        that.setData({
+          selectCountPrice:selectCountPrice
+        });
       }
       let num = JSON.stringify(res.data.data.length)
       app.globalData.cartNum = num;
@@ -221,7 +229,24 @@ Page({
       })
     });
   },
-
+//批量删除
+  submitdel(){
+    var that=this;
+    let cart = that.data.shangjiagoods
+    var checkgoods = [];
+    for (let i = 0; i < cart.length; i++) {
+      if (cart[i].check == 1) {
+        let productId = Number(cart[i].productId)
+        checkgoods.push(productId)
+      }
+    }
+    apiCart.toSettle(app.globalData.urlCart, '/cart/delGoods', {
+      productId: checkgoods,
+      userId: that.data.userId,
+    }, (res) => {
+     that.getCart();
+    });
+  },
   //删除商品
   delGoods(e) {
     var that = this;
@@ -233,21 +258,13 @@ Page({
       productId: e.currentTarget.dataset.goodsid,
       userId: that.data.userId,
     }, (res) => {
-      for (var index in cart) {
-        if (cart[index].productId != goodsid) {
-          goodslist.push(cart[index])
-        }
-      }
-      that.setData({
-        shangjiagoods: goodslist
-      })
-      console.log(that.data.shangjiagoods)
+      that.getCart();
     });
   },
 
   //常买
-  oftenbuy(e){
-    var that=this;
+  oftenbuy(e) {
+    var that = this;
     var cart = that.data.shangjiagoods;
     console.log(e)
     let goodsid = e.currentTarget.dataset.goodsid
@@ -263,7 +280,7 @@ Page({
       }
     });
   },
-  delOftenBuy(e){
+  delOftenBuy(e) {
     var that = this;
     var cart = that.data.shangjiagoods;
     console.log(e)
@@ -280,8 +297,8 @@ Page({
       }
     });
   },
-  getOftenBuy(){
-    var that=this;
+  getOftenBuy() {
+    var that = this;
     apiCart.toSettle(app.globalData.urlCart, '/cart/selectOftenBuy', {
       userId: that.data.userId,
     }, (res) => {
@@ -297,7 +314,7 @@ Page({
     });
   },
   //关注
-  concern(e){
+  concern(e) {
     var that = this;
     var cart = that.data.shangjiagoods;
     console.log(e)
@@ -306,7 +323,7 @@ Page({
       key: 'user',
       success: function(res) {
         that.setData({
-          openId:res.data.userInfo.openId
+          openId: res.data.userInfo.openId
         })
       },
     })
@@ -329,7 +346,7 @@ Page({
     let goodsid = e.currentTarget.dataset.goodsid
     wx.getStorage({
       key: 'user',
-      success: function (res) {
+      success: function(res) {
         that.setData({
           openId: res.data.userInfo.openId
         })
@@ -347,14 +364,14 @@ Page({
       }
     });
   },
-  getConcern(){
+  getConcern() {
     var that = this;
     let goodsList = [];
     apiCart.toSettle(app.globalData.urlCart, '/cart/selectConcern', {
       userId: that.data.userId
     }, (res) => {
       console.log(res)
-      
+
     });
   },
   /**
@@ -395,19 +412,19 @@ Page({
    */
   onShow: function() {
     var that = this;
-    if (app.globalData.toCartTag==true){
+    if (app.globalData.toCartTag == true) {
       that.getOftenBuy();
       that.setData({
-        bannertoggle:3
+        bannertoggle: 3
       })
-      app.globalData.toCartTag=false;
-    }else{
+      app.globalData.toCartTag = false;
+    } else {
       wx.getStorage({
         key: 'phone',
-        success: function (res) {
+        success: function(res) {
           wx.getStorage({
             key: 'user',
-            success: function (res) {
+            success: function(res) {
               that.setData({
                 userId: res.data.userId
               })
@@ -415,7 +432,7 @@ Page({
             },
           })
         },
-        fail: function (res) {
+        fail: function(res) {
           that.setData({
             tiphidden: false,
           })

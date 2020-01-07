@@ -103,7 +103,7 @@ Page({
       },
       success: function (res) {
         console.log("成功", res)
-        let orderList = res.data.data;
+        let orderList = res.data.data[0];
         let addid = orderList.userAddressId
         let goodsprice = orderList.purchaseQuantity * orderList.purchasePrice
         that.setData({
@@ -111,6 +111,7 @@ Page({
           addid: addid,
           goodsprice: goodsprice
         })
+        that.getAddress()
       }
     })
   },

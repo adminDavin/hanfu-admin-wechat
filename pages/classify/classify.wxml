@@ -1,7 +1,7 @@
 <view class="classify">
     <view class="classify-header-box">
         <image src="../images/tabs/saoma.png" class="classify-tus" />
-        <view class="classify-header">
+        <view class="classify-header" bindtap="sousuo">
             <image class="classify-tu" src="../images/tabs/sousuo.png" />
             <input type="text" class="classify-input" placeholder="显示器2K" />
         </view>

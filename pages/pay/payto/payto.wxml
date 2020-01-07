@@ -15,7 +15,7 @@
   <view class="numinput">
       <view class="numtop">
         <text>¥</text>
-        <input class="weui-input" value="{{total}}"  disabled="true" type="digit" placeholder="输入金额" confirm-type="done"/>
+        <input class="weui-input" value="{{total}}" type="digit" placeholder="输入金额" confirm-type="done"/>
       </view>
   </view>
       <button class="numBottom" bindtap="show" >付款</button>

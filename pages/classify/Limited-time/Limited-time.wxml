@@ -2,28 +2,16 @@
     <!-- 图片 -->
     <view class="header-images">
         <block>
-            <swiper vertical="{{false}}" indicator-dots="{{flase}}" autoplay="{{flase}}">
-                <swiper-item>
-                    <image src="" class="images-head" />
-                </swiper-item>
-                <swiper-item>
-                    <image src="" class="images-head" />
-                </swiper-item>
-                <swiper-item>
-                    <image src="" class="images-head" />
-                </swiper-item>
-                <swiper-item>
-                    <image src="" class="images-head" />
-                </swiper-item>
-                <swiper-item>
-                    <image src="" class="images-head" />
+            <swiper vertical="{{false}}" indicator-dots="{{flase}}" autoplay="{{flase}}" bindchange="current">
+                <swiper-item wx:for="{{arr.fileDesc}}" wx:key="index">
+                    <image src="{{item}}" class="images-head" />
                 </swiper-item>
             </swiper>
         </block>
         <view class="images-return">
             <image src="../../images/tabs/jinru (4).png" class="return" />
         </view>
-        <view class="images-index">1/5</view>
+        <view class="images-index">{{slideNumber}}/5</view>
     </view>
     <!-- 商品价格及名称 -->
     <view class="productName">
@@ -35,13 +23,14 @@
                 <text class="news">新品</text>
             </view>
             <view class="productName-collect">
-                <view class="collect-one">
+                <!-- <view class="collect-one">
                     <image src="../../images/tabs/jiangjia.png" class="depreciate-image" />
                     <text class="depreciate-text">降价通知</text>
-                </view>
+                </view> -->
                 <view class="collect-one collect-margin" bindtap="attention">
-                    <image src="../../images/tabs/chakantieziguanzhu.png" class="depreciate-image" />
-                    <text class="depreciate-text">12.5万</text>
+                     <image src="../../images/tabs/chakantieziguanzhu.png" class="depreciate-image" bindtap="collect" wx:if="{{collects==false}}"/>
+          <image src="../../images/tabs/aixin.png" class="depreciate-image" bindtap="collect" wx:if="{{collects==true}}"/>
+                    <text class="depreciate-text"></text>
                 </view>
             </view>
         </view>
@@ -50,13 +39,13 @@
             <view class="productName-table">
                {{arr.hfGoods.hfName}} 
             </view>
-            <view class="table-box">
-                <image src="../../images/tabs/fenxiang.png" class="table-images" />
+            <button class="table-box" open-type="share" style="width:120rpx">
+                <image src="../../images/tabs/fenxiang.png" class="table-images"/>
                 <text class="share">分享</text>
-            </view>
+            </button>
         </view>
         <view class="puzzle">
-            <view class="puzzle-times">
+            <view class="puzzle-times" data-startime="{{arr.startTime}}" data-stoptime="{{arr.stopTime}}">
                 <image src="../../images/tabs/naozhong.png" class="times-begin" />
                 <text class="over">限时秒杀</text>
                 <text class="over-number">00</text>
@@ -72,7 +61,7 @@
     <!-- 优惠项 -->
     <view class="discounts">
         <text class="discounts-title">优惠</text>
-        <text class="discounts-table table-left">每满200减30</text>
+        <!-- <text class="discounts-table table-left">每满200减30</text> -->
         <text class="discounts-table table-margin">包邮</text>
     </view>
     <!-- 地址及已选 -->
@@ -90,7 +79,7 @@
                 <image src="../../images/tabs/weizhi.png" class="delivery-image" />
                 <text class="selected-text">{{sites}}</text>
             </view>
-            <image src="../../images/tabs/diandian.png" class="selected-images" />
+            <image src="../../images/tabs/diandian.png" class="selected-images" bindtap="site"/>
         </view>
         <view class="site-freight">
             <text class="selected">运费</text>
@@ -123,16 +112,16 @@
     <view class="appraise">
         <view class="appraise-title">
             <view class="appraise-number">
-                <image src="../../images/tabs/圆角矩形 3.png" class="number-image" />
+                <image src="../../images/tabs/yuanjiaoju.png" class="number-image" />
                 <text class="number-table">评价</text>
-                <text class="number-text">600+</text>
+                <text class="number-text"></text>
             </view>
             <view class="appraise-limit">
-                <text class="limit">好评度99%</text>
+                <text class="limit"></text>
                 <image src="../../images/tabs/jinru (1).png" class="limit-image" />
             </view>
         </view>
-        <view class="appraise-user">
+        <!-- <view class="appraise-user">
             <image src="../../images/tabs/t (1).png" class="user-head" />
             <view class="user-text">
                 <text class="head-name">欢乐小可</text>
@@ -144,17 +133,17 @@
                     <image src="../../images/tabs/wujiaoxings.png" class="stars" />
                 </view>
             </view>
-        </view>
-        <view class="appraise-content">穿戴舒服穿戴舒服穿戴舒服穿戴舒服穿戴舒服，默认好评!</view>
+        </view> -->
+        <!-- <view class="appraise-content">穿戴舒服穿戴舒服穿戴舒服穿戴舒服穿戴舒服，默认好评!</view>
         <view class="appraise-pictures">
             <image src="../../images/handpick/shangping.png" class="appraise-photo" />
             <image src="../../images/handpick/shangping.png" class="appraise-photo" />
             <image src="../../images/handpick/shangping.png" class="appraise-photo" />
             <image src="../../images/handpick/shangping.png" class="appraise-photo" />
         </view>
-        <view class="appraise-times">2018.02.03 12:00  规格:红色,s</view>
+        <view class="appraise-times">2018.02.03 12:00  规格:红色,s</view> -->
         <view class="appraise-more">
-            <text class="more-title">查看全部评论</text>
+            <text class="more-title" bindtap="discuss">查看全部评论</text>
         </view>
     </view>
     <!-- 商品详情 -->
@@ -185,19 +174,19 @@
                 <text class="services-title">基础服务</text>
                 <scroll-view scroll-y="true" class="services services-bottom">
                     <view class="services-content services-margin">
-                        <image src="../../images/tabs/对勾.png" class="kind-image" />
+                        <image src="../../images/tabs/duigou.png" class="kind-image" />
                         <view class="services-kind">
                             <text class="kind-table">7天无理由</text>
-                            <text class="kind-text">
+                            <view class="kind-text">
                                 满足7天无理由退换货的前提下，包邮商品需要买家承担退货邮费，非包邮需要买家承担发货和退货邮费
-                            </text>
+                            </view>
                         </view>
                     </view>
                     <view class="services-content services-margin">
-                        <image src="../../images/tabs/对勾.png" class="kind-image" />
+                        <image src="../../images/tabs/duigou.png" class="kind-image" />
                         <view class="services-kind">
                             <text class="kind-table">15天退货</text>
-                            <text class="kind-text">15天退货，退货邮费卖家承担</text>
+                            <view class="kind-text">15天退货，退货邮费卖家承担</view>
                         </view>
                     </view>
                 </scroll-view>

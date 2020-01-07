@@ -7,13 +7,33 @@ Page({
    */
   data: {
     hiddenName: true,
+    listArr:[],
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var that=this;
+    wx.request({
+      url: app.globalData.information + "/order/queryOrder",
+      method:'get',
+      header: {
+       "Content-Type": "application/x-www-form-urlencoded"
+      },
+      success: function(res) {
+        console.log(res)
+        that.setData({
+          listArr:res.data.data
+        })
+        
+        
+        
+ 
+        
+        
+      }
+    })
   },
 
   /**

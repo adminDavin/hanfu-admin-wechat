@@ -4,6 +4,10 @@ page {
 .evaluate-list {
   padding: 20rpx;
 }
+.bb {
+  width: 50rpx;
+  height: 50rpx;
+}
 .evaluate-item {
   display: flex;
   width: 100%;

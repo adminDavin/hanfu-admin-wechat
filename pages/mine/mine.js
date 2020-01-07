@@ -161,7 +161,6 @@ Page({
       }
     })
   },
-
   goMyDingdan: function(e) {
     var that = this;
     console.log(e)
@@ -171,7 +170,17 @@ Page({
     })
   },
 
+  daiPingjia(){
+    wx.navigateTo({
+      url: "../evaluate/myevaluate/myevaluate?tag=1",
+    })
+  },
   // 工具和服务
+  yue(){
+    wx.navigateTo({
+      url: '../pay/payto/payto',
+    })
+  },
   myaddress(){
     wx.navigateTo({
       url: '../address/address',
@@ -189,7 +198,11 @@ Page({
       url: '../shopping/shopping',
     })
   },
-
+  myPinglun(){
+    wx.navigateTo({
+      url: '../evaluate/myevaluate/myevaluate?tag=2',
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */

@@ -13,7 +13,8 @@ Page({
     hfCity: '',
     hfAddressDetail: '',
     phoneNumber: '',
-    goodsprice: ''
+    goodsprice: '',
+    goodsid:''
   },
   //返回
   fanhui() {
@@ -95,14 +96,16 @@ Page({
       },
       success: function (res) {
         console.log("成功", res)
-        let orderList = res.data.data;
+        let orderList = res.data.data[0];
         let addid = orderList.userAddressId
         let goodsprice = orderList.purchaseQuantity * orderList.purchasePrice
         that.setData({
           goodsList: orderList,
           addid: addid,
-          goodsprice: goodsprice
+          goodsprice: goodsprice,
+          goodsid: orderList.googsId
         })
+        that.getAddress();
       }
     })
   },
@@ -132,9 +135,10 @@ Page({
   },
   ypx:function(){
     var that=this;
+
     wx.navigateTo({
  
-      url: '../../order/order?orderid='+that.data.dingdan,
+      url: '../../order/order?goodsid='+that.data.goodsid,
      
 })
  

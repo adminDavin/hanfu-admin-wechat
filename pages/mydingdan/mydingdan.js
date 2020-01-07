@@ -55,6 +55,7 @@ Page({
         url: '../orderprocessing/daitihuo/orderprocessing?orderid=' + orderid,
       })
     } else if (orderstatus == "已完成") {
+      console.log(orderid)
       wx.navigateTo({
         url: '../orderprocessing/orderprocessing?orderid=' + orderid,
       })
@@ -115,9 +116,9 @@ Page({
   },
   //再次购买
   againbuy(e) {
-    let orderid = e.currentTarget.dataset.orderid;
+    let goodsid = e.currentTarget.dataset.goodsid;
     wx.navigateTo({
-      url: '../orderprocessing/daizhifu/orderprocessing?orderid=' + orderid,
+      url: '../order/order?goodsid=' + goodsid,
     })
   },
   //评价晒单

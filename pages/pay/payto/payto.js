@@ -8,7 +8,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    total: 1,
+    total: '',
     show: false, // 是否显示弹框
     affirm: false, // 不显示确认按钮
     hfBalance: '',

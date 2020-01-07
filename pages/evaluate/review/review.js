@@ -6,14 +6,29 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    listArr:[],
+    hiddenName: true,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var that=this;
+    wx.request({
+      url: app.globalData.information + "/order/queryOrder",
+      method:'get',
+      header: {
+       "Content-Type": "application/x-www-form-urlencoded"
+      },
+      success: function(res) {
+        console.log(res)
+        that.setData({
+          listArr:res.data.data
+        })
+ 
+      }
+    })
   },
 
   /**
@@ -64,6 +79,20 @@ Page({
   onShareAppMessage: function () {
 
   },
+  click:function(e){
+    var that = this;
+    that.setData({
+        hiddenName: false
+    })
+    // console.log(123);
+  },
+  black:function() {
+    // console.log(123);
+    var that = this;
+    that.setData({
+        hiddenName: true
+    })
+  },
   huifu:function(){
     wx.request({
       url: app.globalData.information + "/message/queryReply",
@@ -71,11 +100,7 @@ Page({
       header: {
        "Content-Type": "application/x-www-form-urlencoded"
       },
-      data:{
-        orderId:2,
-        userId:2,
-        evaluate:'完全不想恭维'
-      },
+      
       success: function(res) {
         console.log("成功",res)
  

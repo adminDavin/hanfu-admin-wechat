@@ -9,111 +9,55 @@ Page({
     show: false,
     isLogin: false,
     canGetSite: true,
-    guigeshow:false,
+    guigeshow: false,
     goodsId: '',
-    openId:'',
+    goodsNum: 1,
+    openId: '',
     arr: [],
     evaluate: '', //评价
     site: '', //地址
     sites: '',
     shppingcar: '', //购物车
-    attention:'',
-    userId:'',
-    slideNumber: '1',//详情滑动跳动数字
-    collects: false,
+    attention: '',
+    userId: '',
   },
-  //关注
-  collect:function () {
+  //商品数量减
+  subNum() {
     var that = this;
-    if (that.data.collects) {
+    let goodsNum = that.data.goodsNum;
+    if (goodsNum > 1) {
+      goodsNum = goodsNum - 1;
       that.setData({
-        collects: !that.data.collects,
+        goodsNum: goodsNum
       })
-      wx.showToast({
-        title: '取消关注',
-      });
     } else {
-      that.setData({
-        collects: !that.data.collects,
-      })
-      wx.showToast({
-        title: '关注成功',
-      });
+      return;
     }
   },
-  //设置关注
-  attention: function () {
+  //商品数量加
+  addNum() {
     var that = this;
-    //获取用户的openId
-    wx.getStorage({
-      key: 'user',
-      success: function (res) {
-        that.setData({
-          openId: res.data.userInfo.openId,
-        })
-      },
-    });
-    wx.request({
-      url: app.globalData.urlGoods + '/goods/Concern',
-      method: 'Get',
-      success: function (res) {
-        console.log(res)
-        that.setData({
-          attention: that.data.data
-        })
-      },
-      data: {
-        goodsId: that.data.goodsId,//列表商品传过来
-        openId: that.data.openId
-      }
+    let goodsNum = that.data.goodsNum;
+    goodsNum = goodsNum + 1;
+    that.setData({
+      goodsNum: goodsNum
     })
-    wx.showToast({
-      title: that.data.attention,
-    });
   },
   //规格弹框
-  guigeshow(){
-    var that=this;
+  guigeshow() {
+    var that = this;
     that.setData({
-      guigeshow:true
+      guigeshow: true
     })
   },
-  guigeguanbi(){
+  guigeguanbi() {
     var that = this;
     that.setData({
       guigeshow: false
     })
   },
-  //分享
-  onShareAppMessage: function (ops) {
-    if (ops.from === 'button') {
-      // 来自页面内转发按钮
-      console.log(ops.target)
-    }
-    return {
-      title: '同城优品小程序',
-      path: 'pages/classify/particulars/particulars',
-      success: function (res) {
-        // 转发成功
-        console.log("转发成功:" + JSON.stringify(res));
-      },
-      fail: function (res) {
-        // 转发失败
-        console.log("转发失败:" + JSON.stringify(res));
-      }
-    }
-
-  },
-  //详情滑动跳动数字
-  current:function (e) {
-    console.log(e)
-    var that=this
-    that.setData({
-      slideNumber: e.detail.current+1
-    })
-  },
   // 显示遮罩层
-  showModal: function () {
+  showModal: function() {
     var that = this;
     that.setData({
       hideModal: false
@@ -123,12 +67,12 @@ Page({
       timingFunction: 'ease', //动画的效果 默认值是linear
     })
     this.animation = animation
-    setTimeout(function () {
+    setTimeout(function() {
       that.fadeIn(); //调用显示动画
     }, 200)
   },
   // 隐藏遮罩层
-  hideModal: function () {
+  hideModal: function() {
     var that = this;
     var animation = wx.createAnimation({
       duration: 800, //动画的持续时间 默认400ms   数值越大，动画越慢   数值越小，动画越快
@@ -136,7 +80,7 @@ Page({
     })
     this.animation = animation
     that.fadeDown(); //调用隐藏动画   
-    setTimeout(function () {
+    setTimeout(function() {
       that.setData({
         hideModal: true
       })
@@ -144,26 +88,42 @@ Page({
   },
 
   //动画集
-  fadeIn: function () {
+  fadeIn: function() {
     this.animation.translateY(0).step()
     this.setData({
       animationData: this.animation.export() //动画实例的export方法导出动画数据传递给组件的animation属性
     })
   },
-  fadeDown: function () {
+  fadeDown: function() {
     this.animation.translateY(300).step()
     this.setData({
       animationData: this.animation.export(),
     })
   },
+  //规格获取
+  getGuige() {
+    var that = this;
+    wx.request({
+      url: app.globalData.urlGoods + '/goods/specifies',
+      method: 'get',
+      data: {
+        goodsId: 2
+      },
+      success(res) {
+        let spec = res.data.data;
+        let specList = [];
+        console.log(specList)
+      },
+    })
+  },
   //商品详情价格及内容
-  particulars: function (e) {
+  particulars: function(e) {
     console.log(e)
     var that = this;
     wx.request({
       url: app.globalData.urlparticulars + '/goods/byGoodsId',
       method: 'Get',
-      success: function (res) {
+      success: function(res) {
         console.log(res)
         that.setData({
           arr: res.data.data
@@ -175,32 +135,31 @@ Page({
     })
   },
   //详情页评价
-  // evaluate: function (e) {
-  //   console.log(e)
-  //   var that = this;
-  //   wx.request({
-  //     url: app.globalData.information + '/message/SeekReply',
-  //     method: 'Get',
-  //     success: function (res) {
-  //       that.setData({
-  //         evaluate: res.data
-  //       })
-  //     },
-  //     data: {
-  //       orderId: 2,
-  //       userId: that.data.userId
-  //     }
-  //   })
-  // },
+  evaluate: function(e) {
+    console.log(e)
+    var that = this;
+    wx.request({
+      url: app.globalData.information + '/message/SeekReply',
+      method: 'Get',
+      success: function(res) {
+        that.setData({
+          evaluate: res.data
+        })
+      },
+      data: {
+        orderId: 2,
+        userId: that.data.userId
+      }
+    })
+  },
   //获取顾客地址
-  site: function (e) {
+  site: function(e) {
     console.log(e)
     var that = this;
     wx.request({
       url: app.globalData.urlsite + '/user/address/queryAddress',
       method: 'Get',
-      success: function (res) {
-        // console.log(res)
+      success: function(res) {
         that.setData({
           site: res.data.data
         })
@@ -215,12 +174,42 @@ Page({
       },
       data: {
         token: 13,
-        userId: 13 //that.data.userIds
+        userId: that.data.userId
       }
     })
   },
+  //设置关注
+  attention: function() {
+    var that = this;
+    //获取用户的openId
+    wx.getStorage({
+      key: 'user',
+      success: function(res) {
+        that.setData({
+          openId: res.data.userInfo.openId,
+        })
+      },
+    });
+    wx.request({
+      url: app.globalData.urlGoods + '/goods/Concern',
+      method: 'Get',
+      success: function(res) {
+        console.log(res)
+        that.setData({
+          attention: that.data.data
+        })
+      },
+      data: {
+        goodsId: that.data.goodsId, //列表商品传过来
+        openId: that.data.openId
+      }
+    })
+    wx.showToast({
+      title: `关注成功`,
+    });
+  },
   //加入购物车
-  shppingcar: function (e) {
+  shppingcar: function(e) {
     var that = this;
     let isLogin = that.data.isLogin;
     console.log(isLogin)
@@ -232,13 +221,13 @@ Page({
       wx.request({
         url: app.globalData.urlshppingcar + '/cart/add',
         method: 'Get',
-        success: function (res) {
-          if (res.data.data =='成功加入购物车'){
+        success: function(res) {
+          if (res.data.data == '成功加入购物车') {
             wx.showToast({
               title: '添加购物车成功',
             })
-            
-            let  num =app.globalData.cartNum+1 ;
+
+            let num = app.globalData.cartNum + 1;
             let num1 = JSON.stringify(num)
             that.setData({
               cartNum: num1
@@ -253,39 +242,24 @@ Page({
           }
         },
         data: {
-          goodsId: that.data.goodsId,
-          num: 2,
+          goodsId: that.data.dataId,
+          num: that.data.goodsNum,
           userId: that.data.userId
         }
       })
     }
   },
   //立即购买
-  buyquick: function (e) {
-    // console.log(e)
+  buyquick() {
     var that = this;
-    let isLogin = that.data.isLogin;
-    if (isLogin == false) {
-      that.setData({
-        show: true
-      })
-    } else {
-      wx.request({
-        url: app.globalData.information + '/order/creat',
-        method: 'Get',
-        success: function (res) {
-          that.setData({
-
-          })
-        },
-        data: {
-
-        }
-      })
-      // wx.navigateTo({
-      //   url: '../../order/order',
-      // })
-    }
+    let purchasePrice = that.data.arr.sellPrice;
+    let purchaseQuantity=that.data.goodsNum;
+    let amount=that.price*num;
+    let goodsid=that.data.dataId;
+    let userAddressId=that.data.userAddressId;
+    wx.switchTab({
+      url: '../../ljbuy/ljbuy?purchasePrice=' + purchasePrice + '&purchaseQuantity=' + purchaseQuantity + '&amount=' + amount + '&goodsid=' + goodsid + '&userAddressId=' + userAddressId,
+    })
   },
 
   // 判断userid
@@ -293,12 +267,12 @@ Page({
     var that = this;
     wx.getStorage({
       key: 'user',
-      success: function (res) {
+      success: function(res) {
         that.setData({
           canGetSite: true
         })
       },
-      fail: function (res) {
+      fail: function(res) {
         that.setData({
           canGetSite: false
         })
@@ -310,18 +284,15 @@ Page({
   isLogin() {
     var that = this;
     wx.getStorage({
-      key: 'phone',
-      success: function (res) {
-        wx.getStorage({
-          key: 'user',
-          success: function (res) {
-            that.setData({
-              userId: res.data.userId,
-            })
-          },
+      key: 'user',
+      success: function(res) {
+
+        that.setData({
+          userId: res.data.userId,
         })
+
       },
-      fail: function (res) {
+      fail: function(res) {
         that.setData({
           show: true,
           isLogin: false
@@ -333,33 +304,27 @@ Page({
   firstIsLogin() {
     var that = this;
     wx.getStorage({
-      key: 'phone',
-      success: function (res) {
+      key: 'user',
+      success: function(res) {
         that.setData({
+          userId: res.data.userId,
           isLogin: true
         })
-        wx.getStorage({
-          key: 'user',
-          success: function (res) {
-            that.setData({
-              userId: res.data.userId,
-            })
-          },
-        })
+        console.log(that.data.userId)
       },
-      fail: function (res) {
+      fail: function(res) {
         that.setData({
           isLogin: false
         })
       }
     })
   },
-  nologin: function () {
+  nologin: function() {
     this.setData({
       show: false
     })
   },
-  getUserInfo: function (e) {
+  getUserInfo: function(e) {
     let main = this;
     wx.showLoading({
       title: '正在登录',
@@ -390,7 +355,7 @@ Page({
                 data: res.userInfo
               })
               wx.login({
-                success: function (res) {
+                success: function(res) {
                   console.log(res);
                   wx.request({
                     url: app.globalData.urlLogin + '/user/wxLogin',
@@ -406,7 +371,7 @@ Page({
                       signature: main.data.global.signature
                     },
 
-                    success: function (res) {
+                    success: function(res) {
                       console.log("登录", res);
                       if (res.data.status == 200) {
                         wx.hideLoading();
@@ -416,7 +381,7 @@ Page({
                         wx.setStorage({
                           key: 'user',
                           data: res.data.data,
-                          success: function (res) {
+                          success: function(res) {
                             wx.navigateTo({
                               url: '../register/register?userId=' + main.data.userId,
                             })
@@ -431,7 +396,7 @@ Page({
                         })
                       }
                     },
-                    fail: function (res) {
+                    fail: function(res) {
                       wx.hideLoading();
                       main.setData({
                         show: true,
@@ -454,85 +419,68 @@ Page({
       }
     })
   },
- //查看更多评论跳转
-  discuss:function (){
-    wx.navigateTo({
-      url: '../../evaluate/all',
-    })
-  },
+
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
     let id = options.id;
-    let goodsid = options.goodsid;
     var that = this;
     this.isUserId();
     this.firstIsLogin();
     console.log(id);
-    console.log(goodsid)
     that.setData({
-      dataId: id,
-      goodsId: goodsid
-    });
-    //用户的id
-    wx.getStorage({
-      key: 'user',
-      success: function (res) {
-        that.setData({
-          userId: res.data.userId,
-        })
-        console.log(that.data.userId)
-      },
-    });
+      dataId: id
+    })
     this.particulars();
-    // this.evaluate();
+    this.evaluate();
     this.site();
+    this.getGuige();
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () { },
+  onReady: function() {},
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   }
 })

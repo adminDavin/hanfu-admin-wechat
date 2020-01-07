@@ -160,8 +160,12 @@ swiper {
 
 .table-box {
     display: flex;
+    align-items: center;
     /* width: 86rpx; */
     height: 31rpx;
+    padding: 0;
+    line-height: 31rpx;
+    background-color: #fff;
 }
 
 .table-images {
@@ -657,7 +661,7 @@ swiper {
     font-size: 24rpx;
     font-family: PingFang SC;
     font-weight: 400;
-    /* margin-top: -30rpx; */
+    margin-top: 10rpx;
     color: rgba(153, 153, 153, 1);
 }
 

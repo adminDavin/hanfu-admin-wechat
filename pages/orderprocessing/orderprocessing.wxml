@@ -6,7 +6,7 @@
         <image src="../images/cart/wancheng.png" style="width:36rpx;height:36rpx;margin-right:19rpx;"></image>
         <view class="dai-ziti">已完成</view>
       </view>
-      <view class="dai-btn" bindtap="ypx">再次购买</view>
+      <!-- <view class="dai-btn" bindtap="ypx">再次购买</view> -->
     </view>
   </view>
   <view class="address-card">
@@ -76,6 +76,6 @@
   <view class="footer">
   <!-- <view class="querenbtn" style="margin-right:30rpx">申请售后</view> -->
     <view class="querenbtn" style="margin-right:30rpx；background:red;color:red;"  bindtap="see">评价晒单</view>
-    <view class="querenbtn" style="background-color:red;color:white;border:none"  bindtap="ypx">再次购买</view>
+    <!-- <view class="querenbtn" style="background-color:red;color:white;border:none"  bindtap="ypx">再次购买</view> -->
   </view>
 </view>

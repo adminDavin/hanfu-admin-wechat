@@ -1,23 +1,23 @@
 <view class="dat-top"></view>
 <!-- 上面整个大盒子 start -->
-<view class="dat-box">
+<view class="dat-box" wx:for="{{listArr}}" wx:key="index" data-orderid="{{item.ordersId}}">
   <!-- 头像栏 start -->
-  <view class="dat-box-top">
+  <view class="dat-box-top" >
     <!-- 左边 -->
     <view class="box-top-left">
       <!-- <image src="../../assets/img/头像@2x.png"></image> -->
-      <text>欢乐小可</text>
+      <text>{{item.userName}}</text>
     </view>
     <!-- 右边 -->
     <view class="box-top-right">
       <text class="top-right-top">128人点赞</text>
-      <text>2018-02-03</text>
+      <text>{{item.modifyTime}}</text>
     </view>
   </view>
   <!-- 头像栏 end -->
   <!-- 评论  start -->
   <text class="comment">
-    一般般。一般般。一般般。一般般。一般般。一般般。一般般。一般般。一般般。一般般。一般般。一般般。一般般。一般般。一般般。一般般。一般般。一般般。一般般。一般般。一般般。一般般。一般般。一般般。一般般。
+    {{item.evaluate}}
   </text>
   <!-- 评论 end -->
   <!-- 九张图片 start -->
@@ -60,8 +60,8 @@
     </view>
     <!-- 左边文字 -->
     <view class="introduce-right">
-      <text>夹克夹克夹克夹克夹克夹克夹克夹克夹克夹克夹克夹克夹克夹克夹克夹克夹克</text>
-      <view>￥399.00</view>
+      <text>{{item.goodsDesc}}</text>
+      <view>{{item.purchasePrice}}</view>
     </view>
   </view>
   <!-- 介绍价钱 end -->
@@ -82,7 +82,7 @@
 <!-- 最下层 -->
 <view>
   <view class="lowermost" wx:if="{{ hiddenName }}">
-    <view class="lowermost-left" style="bottom:{{bottom}}px" bindtap='click' >
+    <view class="lowermost-left" style="bottom:{{bottom}}px" bindtap='click'>
       <image src="../../assets/img/liuyan@2x.png"></image>
       <text>评价</text>
     </view>
@@ -94,11 +94,10 @@
       <text>点赞</text>
     </view>
   </view>
-  <!--  评论 -->
+  <!-- 评论 -->
   <view class="pinglun" wx:else>
     <input type="text" placeholder="想说的话....."></input>
     <button bindtap='black'>发送</button>
   </view>
 </view>
-<!--  /评论 -->
-
+<!-- /评论 -->

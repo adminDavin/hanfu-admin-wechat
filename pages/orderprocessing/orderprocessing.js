@@ -95,7 +95,7 @@ Page({
       },
       success: function(res) {
         console.log("成功",res)
-        let orderList=res.data.data;
+        let orderList=res.data.data[0];
         let addid = orderList.userAddressId
         let goodsprice = orderList.purchaseQuantity * orderList.purchasePrice
         that.setData({
@@ -103,12 +103,15 @@ Page({
           addid:addid,
           goodsprice:goodsprice
         })
+        that.getAddress();
       }
     })
   },
   //拿地址
   getAddress() {
     var that = this;
+    let addid = that.data.addid
+    console.log(addid)
     wx.request({
       url: app.globalData.urlLogin + '/user/address/addressDetail',
       method: 'get',
@@ -116,7 +119,7 @@ Page({
         "Content-Type": "application/x-www-form-urlencoded"
       },
       data: {
-        id: that.data.addid,
+        id: addid,
       },
       success: function (res) {
         console.log('获取地址', res);

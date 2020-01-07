@@ -11,7 +11,29 @@ Page({
     contentid: '',//id 查秒杀商品详情
     arr:'',//秒
     site: '', //地址
-    sites: ''
+    sites: '',
+    slideNumber:'1',
+    userId:'',
+    collects: false,
+  },
+  //关注
+  collect: function () {
+    var that = this;
+    if (that.data.collects) {
+      that.setData({
+        collects: !that.data.collects,
+      })
+      wx.showToast({
+        title: '取消关注',
+      });
+    } else {
+      that.setData({
+        collects: !that.data.collects,
+      })
+      wx.showToast({
+        title: '关注成功',
+      });
+    }
   },
   showModal: function () {
     var that = this;
@@ -56,6 +78,14 @@ Page({
       animationData: this.animation.export(),
     })
   },
+  //详情滑动跳动数字
+  current: function (e) {
+    console.log(e)
+    var that = this
+    that.setData({
+      slideNumber: e.detail.current + 1
+    })
+  },
   //设置关注
   attention: function () {
     var that = this;
@@ -73,6 +103,26 @@ Page({
         openId: 1
       }
     })
+  },
+  //分享
+  onShareAppMessage: function (ops) {
+    if (ops.from === 'button') {
+      // 来自页面内转发按钮
+      console.log(ops.target)
+    }
+    return {
+      title: '同城优品小程序',
+      path: 'pages/classify/Limited-time/Limited-time',
+      success: function (res) {
+        // 转发成功
+        console.log("转发成功:" + JSON.stringify(res));
+      },
+      fail: function (res) {
+        // 转发失败
+        console.log("转发失败:" + JSON.stringify(res));
+      }
+    }
+
   },
   //获取顾客地址
   site: function (e) {
@@ -96,7 +146,7 @@ Page({
       },
       data: {
         token: 13,
-        userId: 13
+        userId: 13 //that.data.userId
       }
     })
   },
@@ -117,6 +167,12 @@ Page({
       }
     })
   },
+  //查看更多评论跳转
+  discuss: function () {
+    wx.navigateTo({
+      url: '../../evaluate/all',
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -126,6 +182,16 @@ Page({
     console.log(id);
     that.setData({
       contentid: id
+    });
+    //用户的id
+    wx.getStorage({
+      key: 'user',
+      success: function (res) {
+        that.setData({
+          userId: res.data.userId,
+        })
+        console.log(that.data.userId)
+      },
     });
     this.contentsckill();
     this.site();

@@ -8,12 +8,10 @@ Page({
   data: {
     dingdan: '',
     goodsList: [],
-    addid: '',
     hfProvince: '',
     hfCity: '',
     hfAddressDetail: '',
     phoneNumber: '',
-    goodsprice: ''
   },
   //返回
   fanhui() {
@@ -95,41 +93,14 @@ Page({
       },
       success: function (res) {
         console.log("成功", res)
-        let orderList = res.data.data;
-        let addid = orderList.userAddressId
-        let goodsprice = orderList.purchaseQuantity * orderList.purchasePrice
+        let orderList = res.data.data[0];
+        orderList.img = app.globalData.urlGoods + '/goods/getFile?fileId=' + cartList[index].productIcon;
         that.setData({
           goodsList: orderList,
-          addid: addid,
-          goodsprice: goodsprice
         })
       }
     })
   },
-  //拿地址
-  getAddress() {
-    var that = this;
-    wx.request({
-      url: app.globalData.urlLogin + '/user/address/addressDetail',
-      method: 'get',
-      header: {
-        "Content-Type": "application/x-www-form-urlencoded"
-      },
-      data: {
-        id: that.data.addid,
-      },
-      success: function (res) {
-        console.log('获取地址', res);
-        that.setData({
-          hfProvince: res.data.data.hfProvince,
-          hfCity: res.data.data.hfCity,
-          hfAddressDetail: res.data.data.hfAddressDetail,
-          phoneNumber: res.data.data.phoneNumber
-        })
-
-      }
-    })
-  }, 
   pj:function(){
     
     wx.navigateTo({

@@ -77,7 +77,7 @@ Page({
       url: '../classify/commodity/commodity?',
     })
   },
-  // 秒杀切换
+  //秒杀切换
   clickTab: function (e) {
     var that = this;
     let currentTab = e.currentTarget.dataset.id;
@@ -95,17 +95,30 @@ Page({
     } else if (currentTab == 3) {
       time = that.data.times3
     }
-    apiSeckill.getDataWithParams(app.globalData.urlseckill, '/group/selectCategoryName', {
+    wx.request({
+      url: app.globalData.urlseckill + '/kill/seleteDate',
+      method: 'Get',
+      success: function (res) {
+        that.setData({
+          schedule: res.data,
+        })
+      },
+      data: {
         startTime: that.data.day + '  ' + time
-      } , (res) => {
-      that.setData({ schedule: res.data });
-    });
+      }
+    })
   },
   requestData: function () {
     var that = this;
-    apiSeckill.getData(app.globalData.urlseckill, '/group/selectCategoryName', (res) => {
-      that.setData({ arr: res.data });
-    });
+    wx.request({
+      url: app.globalData.urlpuzzle + '/group/selectCategoryName',
+      method: 'Get',
+      success: function (res) {
+        that.setData({
+          arr: res.data
+        })
+      },
+    })
   },
   // 拼团内容
   requestcontent: function (e) {
@@ -129,11 +142,11 @@ Page({
   seckillshpping: function (e) {
     // console.log(e)
     var that = this;
-
     wx.request({
       url: app.globalData.urlseckill + '/kill/selectByDate',
       method: 'Get',
       success: function (res) {
+        // console.log(res)
         that.setData({
           time: res.data
         })
@@ -151,6 +164,7 @@ Page({
           url: app.globalData.urlseckill + '/kill/seleteDate',
           method: 'Get',
           success: function (res) {
+            // console.log(res)
             that.setData({
               schedule: res.data,
             })
@@ -167,6 +181,8 @@ Page({
   particulars: function (e) {
     var id = e.currentTarget.dataset.id
     var goodsid = e.currentTarget.dataset.goodsid
+    console.log(id)
+    console.log(goodsid)
     wx.navigateTo({
       url: `../classify/puzzle-particulars/puzzle-particulars?id=${id}&goodsid=${goodsid}`,
     })
