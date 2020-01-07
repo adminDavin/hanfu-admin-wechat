@@ -8,9 +8,9 @@
           <image class="img" src="../images/vip/皇冠@2x.png"></image>
           <text class="texts">PLUS会员月卡</text>
         </view>
-        <view class="money-box" bindtap='grant'>
+        <view class="money-box"  bindtap="lijicz" data-money="{{chongzhiList[0].money}}">
           <text class="money-number">￥{{chongzhiList[0].money}}</text>
-          <text class="money-text" bindtap="lijicz" data-money="{{chongzhiList[0].money}}">充值即送</text>
+          <text class="money-text">充值即送</text>
         </view>
       </view>
     </view>
@@ -20,7 +20,7 @@
         <image class="img" src="../images/vip/皇冠@2x.png"></image>
         <text class="texts">PLUS会员季卡</text>
       </view>
-      <view class="money-box" bindtap='grant'>
+      <view class="money-box"  bindtap="lijicz" data-money="{{chongzhiList[0].money}}">
         <text class="money-number">￥{{chongzhiList[1].money}}</text>
         <text class="money-text">充值即送</text>
       </view>
@@ -31,7 +31,7 @@
         <image class="img" src="../images/vip/皇冠@2x.png"></image>
         <text class="texts">PLUS会员年卡</text>
       </view>
-      <view class="money-box" bindtap='grant'>
+      <view class="money-box"  bindtap="lijicz" data-money="{{chongzhiList[0].money}}">
         <text class="money-number">￥{{chongzhiList[2].money}}</text>
         <text class="money-text">充值即送</text>
       </view>
@@ -81,5 +81,5 @@
     </text>
     <a href="#">18596346589</a>
   </view>
-
+  <view class="ceshi"style="width:100rpx;height:100rpx;background:black" bindtap="lijicz"></view>
 </van-tabs>

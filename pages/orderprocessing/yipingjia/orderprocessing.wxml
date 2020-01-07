@@ -12,9 +12,9 @@
   <!-- pingjia -->
   <view class="content-card">
     <view class="xiajia-content">
-      <image src="../images/cart/cartitem.png" style="width:230rpx;height:230rpx"></image>
+      <image src="{{goodsList.img}}" style="width:230rpx;height:230rpx"></image>
       <view class="contentitem-right" style="justify-content: flex-start;">
-        <text class="item-name">夹克外套男秋冬季新款修身工装衣服男装加绒加厚学</text>
+        <text class="item-name">{{goodsList.hfName}}</text>
         <view class="pingjia" bindtap="pj">评价</view>
       </view>
     </view>

@@ -1,21 +1,45 @@
 const app = getApp()
 Page({
+  data: {
+    lists: false,
+    arr: [],
+    prices: '',
+    currentTab: 0,//切换
+    dataId: '',//待用
+    pictureId: '',
+    fileId: '',// 获取物品图片
+    fileIds: '',
+    morepicture: ''//图片都在这里
+  },
   //搜索
   sousuo: function () {
     wx.navigateTo({
       url: '../../seckill/seek/seek',
     })
   },
-  //切换
-  clickTab:function(e){
+  //列表切换
+  list: function () {
+    var that = this;
+    if (that.data.lists) {
+      that.setData({
+        lists: !that.data.lists,
+      })
+    } else {
+      that.setData({
+        lists: !that.data.lists,
+      })
+    }
+  },
+  //切换标题栏底部颜色
+  clickTab: function (e) {
     console.log(e)
     var that = this;
     that.setData({
       currentTab: e.currentTarget.dataset.id,
     })
   },
-   // 获取滚动条当前位置
-   onPageScroll: function (e) {
+  // 获取滚动条当前位置
+  onPageScroll: function (e) {
     // console.log(e)
     if (e.scrollTop > 100) {
       this.setData({
@@ -27,7 +51,7 @@ Page({
       });
     }
   },
-    // 回到顶部
+  // 回到顶部
   goTop: function (e) {  // 一键回到顶部
     if (wx.pageScrollTo) {
       wx.pageScrollTo({
@@ -41,10 +65,10 @@ Page({
     }
   },
   // 筛选
-  onReady: function() {
+  onReady: function () {
     this.animation = wx.createAnimation()
   },
-  translate: function(event) {
+  translate: function (event) {
     // console.log(event);
     this.setData({
       isRuleTrue: true
@@ -55,7 +79,7 @@ Page({
     // })
   },
 
-  success: function() {
+  success: function () {
     this.setData({
       isRuleTrue: false
     })
@@ -64,24 +88,66 @@ Page({
     //   animation: this.animation.export()
     // })
   },
-  data: {
-    arr: '',
-    prices:'',
-    currentTab: 0,//切换
-    dataId:''//待用
-  },
   // 获取商品列表
-  categoryId: function(e) {
+  categoryId: function (e) {
+    var that = this;
+    wx.request({
+      url: app.globalData.urlparticulars + '/goods/listGoods',
+      method: 'Get',
+      success: function (res) {
+        console.log(res)
+        that.setData({
+          arr: res.data.data,
+        })
+      },
+      data:{
+        stoneId:1
+      }
+    })
+  },
+  // 获取物品图片
+  picture: function (e) {
+    console.log(e)
+    var that = this;
+    wx.request({
+      url: app.globalData.urlparticulars + '/goods/pictures',
+      method: 'Get',
+      success: function (res) {
+        console.log(res);
+        that.setData({
+          fileId: res.data.data
+        })
+      },
+      data: {
+        goodsId: that.data.pictureId
+      }
+    })
+  },
+  //获取图片
+  morepicture: function () {
+    var that = this;
+    wx.request({
+      url: app.globalData.urlparticulars + '/goods/getFile',
+      method: 'Get',
+      success: function (res) {
+        console.log(res);
+        that.setData({
+          morepicture: res.data.data
+        })
+      },
+      data: {
+        fileId: that.data.fileIds
+      }
+    })
+  },
+  //综合
+  synthesize: function () {
     var that = this;
     wx.request({
       url: app.globalData.urlparticulars + '/goods/categoryId',
       method: 'Get',
-      success: function(res) {
-        //  console.log(res);
-        // for (var i = 0; i < res.data.data.length; i++) {
-        //   // console.log(res.data.data[i])
-        //   res.data.data[i].img = 'http://192.168.1.104:9095/goods/pictures?goodsId=' + res.data.data[i].id
-        // }
+      success: function (res) {
+        console.log(res);
         that.setData({
           arr: res.data.data,
         })
@@ -89,26 +155,31 @@ Page({
     })
   },
   //价格排序
-  prices:function(){
+  prices: function () {
     var that = this;
     wx.request({
-      url: app.globalData.urlGoods + '/goods/Price',
+      url: app.globalData.urlparticulars + '/goods/Price',
       method: 'Get',
       success: function (res) {
         console.log(res)
         that.setData({
-          // prices: res.data
+          arr: res.data.data
         })
       },
-      data: {
-        
-      }
     })
   },
   // 跳转携带id
-  commodity: function(e) {
+  commodity: function (e) {
     console.log(e)
     var id = e.currentTarget.dataset.id
+    var fileid = e.currentTarget.dataset.fileid
+    console.log(id)
+    console.log(fileid)
+    var that = this;
+    that.setData({
+      pictureId: id,
+      fileIds: fileid
+    });
     wx.navigateTo({
       url: `../particulars/particulars?id=${id}`,
     })
@@ -116,7 +187,7 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad: function (options) {
     let id = options.id;
     var that = this;
     console.log(id);
@@ -124,54 +195,56 @@ Page({
       dataId: id,
     });
     this.categoryId();
+    this.picture();
+    this.morepicture();
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function() {
+  onReady: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {
+  onShow: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function() {
+  onHide: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function() {
+  onUnload: function () {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function() {
+  onPullDownRefresh: function () {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function() {
+  onReachBottom: function () {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function() {
+  onShareAppMessage: function () {
 
   }
 })

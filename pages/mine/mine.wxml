@@ -38,7 +38,7 @@
       <image src="../images/cart/shouhuo.png" style="width:55rpx;height:54rpx"></image>
       <view class="dai-ziti">待收货</view>
     </view>
-    <view class="dai-item">
+    <view class="dai-item" bindtap="daiPingjia">
       <image src="../images/cart/ziyuan.png" style="width:55rpx;height:54rpx"></image>
       <view class="dai-ziti">待评价</view>
     </view>
@@ -69,7 +69,7 @@
         <image src="../images/cart/guanzhu.png" style="width:96rpx;height:96rpx"></image>
         <view class="serve-ziti">我的关注</view>
       </view>
-      <view class="serve-item">
+      <view class="serve-item" bindtap="myPinglun">
         <image src="../images/cart/pinglun.png" style="width:96rpx;height:96rpx"></image>
         <view class="serve-ziti">我的评论</view>
       </view>
@@ -85,7 +85,7 @@
         <image src="../images/cart/kefu.png" style="width:96rpx;height:96rpx"></image>
         <view class="serve-ziti">联系客服</view>
       </button>
-      <view class="serve-item" bindtap="goMyDingdan" data-tag="2">
+      <view class="serve-item" bindtap="yue">
         <image src="../images/cart/yue.png" style="width:96rpx;height:96rpx"></image>
         <view class="serve-ziti">余额付款</view>
       </view>

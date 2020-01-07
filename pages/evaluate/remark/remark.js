@@ -6,13 +6,23 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+   userId:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    //用户的id
+    wx.getStorage({
+      key: 'user',
+      success: function (res) {
+        that.setData({
+          userId: res.data.userId,
+        })
+        console.log(that.data.userId)
+      },
+    })
 
   },
 
@@ -65,6 +75,7 @@ Page({
 
   },
   see:function(){
+    var that=this;
     wx.request({
       url: app.globalData.information + "/message/SeekReply",
       method:'get',
@@ -72,8 +83,8 @@ Page({
        "Content-Type": "application/x-www-form-urlencoded"
       },
       data:{
-        orderId:2,
-        userId:2
+        orderId:that.data.data,
+        userId:that.data.userId
       },
       success: function(res) {
         console.log("成功",res)

@@ -7,7 +7,11 @@ Page({
   data: {
     activeKey: 0
   },
-
+  sousuo: function () {
+    wx.navigateTo({
+      url: '../seckill/seek/seek',
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */

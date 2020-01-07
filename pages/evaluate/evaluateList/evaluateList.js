@@ -1,26 +1,45 @@
 // pages/evaluate/evaluateList/evaluateList.js
-
+const app=getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    listArr:[]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var that=this;
+    wx.request({
+      url: app.globalData.information + "/order/queryOrder",
+      method:'get',
+      header: {
+       "Content-Type": "application/x-www-form-urlencoded"
+      },
+      success: function(res) {
+        console.log(res)
+        that.setData({
+          listArr:res.data.data
+        })
+        
+        
+        
+ 
+        
+        
+      }
+    })
   },
-
+  
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    
   },
 
   /**
@@ -64,13 +83,16 @@ Page({
   onShareAppMessage: function () {
 
   },
-  see:function(){
+  see:function(e){
+    console.log(e)
+    var orderid =e.currentTarget.dataset.orderid
+    console.log(orderid)
+    let url= `../showList/showList?orderid=${orderid}`
     wx.navigateTo({
- 
-      url: '../showList/showList',
-     
+      url
 })
-console.log(123)
+
+
 },
  
    

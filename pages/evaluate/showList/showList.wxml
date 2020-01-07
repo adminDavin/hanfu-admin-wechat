@@ -16,9 +16,9 @@
       />
     </view>
   </view>
-  <view class="inputText">
+  <view class="inputText" wx:for="{{listArr}}" wx:key="index" data-orderid="{{item.ordersId}}">
     <van-field
-      value="{{ message }}"
+      value="{{ item.data }}"
       type="textarea"
       placeholder="点击写出您的感受，可以帮助更多小伙伴哦~"
       autosize

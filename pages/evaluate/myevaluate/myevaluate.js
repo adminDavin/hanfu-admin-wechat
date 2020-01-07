@@ -6,15 +6,71 @@ Page({
    * 页面的初始数据
    */
   data: {
+    listArr:[],
     active: 0,
     value: 4
   },
+
+  onChange(e){
+    console.log(e)
+  },
+//待评价
+daipingjia(){
+  var that=this;
+  wx.request({
+    url: app.globalData.information + "/order/queryOrder",
+    method: 'get',
+    data: {
+      orderDetailStatus: '待评价',
+      userId: that.data.userId
+    },
+    header: {
+      "Content-Type": "application/x-www-form-urlencoded"
+    },
+    success: function (res) {
+      console.log(res)
+      that.setData({
+        listArr: res.data.data
+      })
+    }
+  })
+},
+//已评价
+yipingjia(){
+  var that = this;
+  wx.request({
+    url: app.globalData.information + "/order/queryOrder",
+    method: 'get',
+    data: {
+      orderDetailStatus: '已评价',
+      userId: that.data.userId
+    },
+    header: {
+      "Content-Type": "application/x-www-form-urlencoded"
+    },
+    success: function (res) {
+      console.log(res)
+      that.setData({
+        listArr: res.data.data
+      })
+    }
+  })
+},
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    let tag = options.tag;
+    var that=this
+    if (tag == 1) {
+      that.daipingjia();
+    } else {
+      that.setData({
+        active:1
+      })
+      that.yipingjia();
+    }
   },
 
   /**
@@ -66,24 +122,12 @@ Page({
 
   },
   chakan:function(){
-    wx.request({
-      url: app.globalData.information + "/message/SeekReply",
-      method:'get',
-      header: {
-       "Content-Type": "application/x-www-form-urlencoded"
-      },
-      data:{
-        orderId:2,
-        userId:2
-      },
-      success: function(res) {
-        console.log("成功",res)
+  
+    wx.navigateTo({
  
-        
-        
-      }
-    })
- 
+      url: '../remark/remark',
+     
+})
    },
    see:function(){
     

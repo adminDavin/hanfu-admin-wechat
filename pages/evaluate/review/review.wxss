@@ -133,6 +133,7 @@
   }
   
   .lowermost {
+    z-index: 99;
     background-color: #fff;
     position: fixed;
     bottom: 0;
@@ -166,4 +167,17 @@
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+  .pinglun {
+    display: flex;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    background-color: #fff;
+    /* margin-bottom: 108rpx; */
+  }
+  .pinglun input {
+  padding-left: 30rpx;
+    height: 72rpx;
+    /* border-right: 2rpx solid #979797; */
   }

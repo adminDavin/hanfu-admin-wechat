@@ -1,28 +1,32 @@
 // pages/order/order.js
-const app=getApp()
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    quhuomethod:true,
-    zhifumethod:true,
-    textshow:false,
-    userId:'',
-    goodsList:[],
-    goodsid:[],
-    elevalue:'',
-    addressList:'',
-    price:0,
-    total:0,
-    yunfei:3,
+    quhuomethod: true,
+    zhifumethod: true,
+    textshow: false,
+    userId: '',
+    arr:[],
+    goodsid: [],
+    elevalue: '',
+    addressList: '',
+    price: 0,
+    total: 0,
+    yunfei: 3,
+    amount:'',
+    purchasePrice:'',
+    purchaseQuantity:'',
+    userAddressId:''
   },
 
-  showtext(){
-    var that=this;
+  showtext() {
+    var that = this;
     that.setData({
-      textshow:!that.data.textshow
+      textshow: !that.data.textshow
     })
     console.log(that.data.textshow)
   },
@@ -35,18 +39,18 @@ Page({
   },
 
   //方式改变
-  changeMethod:function(){
-    var that=this;
+  changeMethod: function () {
+    var that = this;
     that.setData({
-      quhuomethod:!that.data.quhuomethod
+      quhuomethod: !that.data.quhuomethod
     })
-    if(that.data.quhuomethod==false){
+    if (that.data.quhuomethod == false) {
       let total = that.data.yunfei + that.data.price
       that.setData({
         yunfei: 3,
         total: total
       })
-    }else{
+    } else {
       that.setData({
         total: that.data.price
       })
@@ -66,77 +70,54 @@ Page({
   getAddress() {
     var that = this;
     wx.request({
-      url: app.globalData.urlLogin + '/user/address/queryAddress',
+      url: app.globalData.urlLogin + '/user/address/addressDetail',
       method: 'get',
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
       },
       data: {
-        userId: that.data.userId,
-        token: 2
+        id: that.data.userAddressId
       },
       success: function (res) {
         console.log('获取地址', res);
-        for(let i=0;i<res.data.data.length;i++){
-          if (res.data.data[i].isFaultAddress==0){
             that.setData({
-              addressList: res.data.data[i]
+              addressList: res.data.data
             })
-          }
-        }
-        
       }
     })
   },
 
   // 拿商品信息
-  getGoods(){
-    var that=this;
-    var goodsList=[];
-    var goodsid=[];
-    var goodsnum = [];
-    var goodsprice = [];
-    var price=0;
+  getGoods() {
+    var that = this;
     wx.request({
-      url: app.globalData.urlCart + '/cart/selSettlemen',
-      method:'get',
-      data:{
-        userId:that.data.goodsid
-      },
-      success(res){
-        var goods=res.data.data
-        var goodslength=goods.length-1
-        for(i=0;i<goodslength-1;i++){
-          goods[i].img = app.globalData.urlGoods + '/goods/getFile?fileId=' + goods[i].productIcon;
-          goodsList.push(goods[i])
-          goodsid.push(goods[i].productId)
-          goodsnum.push(goods[i].productNum)
-          goodsprice.push(goods[i].productPrice)
-        }
-        price=goods[goodslength];
+      url: app.globalData.urlparticulars + '/goods/byGoodsId',
+      method: 'Get',
+      success: function (res) {
+        console.log(res)
+        let arr=res.data.data;
+        arr.img = app.globalData.urlGoods + '/goods/getFile?fileId=' + arr.productIcon;
         that.setData({
-          goodsList:goodsList,
-          price:price,
-          goodsid:goodsid,
-          total:price,
-          goodsnum:goodsnum,
-          goodsprice:goodsprice
+          arr: res.data.data
         })
+      },
+      data: {
+        goodsId: that.data.goodsid
       }
     })
   },
 
   // 提交订单
-  submit(){
-    var that=this;
-    let googsId=that.data.goodsid
-    let distribution='邮寄'
-    let payMethodName='微信支付'
+  submit() {
+    var that = this;
+    let googsId = that.data.goodsid
+    let distribution = '邮寄'
+    let payMethodName = '微信支付'
     var zhifumethod = that.data.zhifumethod
-    var quhuomethod=that.data.quhuomethod
-    if(quhuomethod==true){
-      distribution='自提';
-    }else{
+    var quhuomethod = that.data.quhuomethod
+    if (quhuomethod == true) {
+      distribution = '自提';
+    } else {
       distribution = '邮寄'
     }
     if (zhifumethod == true) {
@@ -145,24 +126,23 @@ Page({
       payMethodName = '余额支付'
     }
     wx.request({
-      url: app.globalData.url+'/order/creat',
-      method:'get',
-      data:{
-        amount:that.data.total,
+      url: app.globalData.url + '/order/creat',
+      method: 'get',
+      data: {
+        amount: that.data.amount,
         distribution: distribution,
-        hfRemark:that.data.elevalue,
+        hfRemark: that.data.elevalue,
         googsId: googsId,
         payMethodName: payMethodName,
-        purchaseQuantity: that.data.goodsnum,
-        userAddressId:that.data.addressList.id,
-        purchasePrice:that.data.goodsprice,
-        
+        purchaseQuantity: that.data.purchaseQuantity,
+        userAddressId: that.data.addressList.id,
+        purchasePrice: that.data.purchasePrice,
       },
-      success(res){
+      success(res) {
         console.log(res)
-        if(res.data.status==200){
+        if (res.data.status == 200) {
           wx.navigateTo({
-            url: '../pay/payto/payto?total='+that.data.total,
+            url: '../pay/payto/payto?total=' + that.data.total,
           })
         }
       }
@@ -173,17 +153,25 @@ Page({
    */
   onLoad: function (options) {
     console.log(options);
-    var goodsid=options.goodsid
-    var that=this;
+    var goodsid = options.goodsid
+    let purchasePrice = options.purchasePrice;
+    let purchaseQuantity = options.purchaseQuantity;
+    let amount = options.amount;
+    let goodid = options.goodsid;
+    let userAddressId = options.userAddressId;
+    var that = this;
     wx.getStorage({
       key: 'user',
-      success: function(res) {
+      success: function (res) {
         that.setData({
-          userId:res.data.userId,
-          goodsid:goodsid
+          userId: res.data.userId,
+          goodsid: goodid,
+          amount:amount,
+          purchasePrice: purchasePrice,
+          purchaseQuantity: purchaseQuantity,
+          userAddressId: userAddressId
         })
-        that.getAddress();
-        that.getGoods()
+        that.getAddress()
       },
     })
   },

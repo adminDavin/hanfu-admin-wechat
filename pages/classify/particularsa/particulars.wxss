@@ -84,7 +84,6 @@ font-size:34rpx
 .images-head {
     width: 750rpx;
     height: 640rpx;
-    background: pink
 }
 
 .images-return {
@@ -210,7 +209,7 @@ swiper {
     height: 100rpx;
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
     margin-top: 30rpx;
     margin-left: 20rpx;
 }
@@ -225,12 +224,8 @@ swiper {
 
 .table-box {
     display: flex;
-    align-items: center;
     /* width: 86rpx; */
     height: 31rpx;
-    padding: 0;
-    line-height: 31rpx;
-    background-color: #fff;
 }
 .table-images {
     width: 31rpx;
@@ -243,7 +238,6 @@ swiper {
     font-family: 'PingFang SC';
     font-weight: 400;
     color: rgba(102, 102, 102, 1);
-    
 }
 /* 优惠项 */
 .discounts {
@@ -631,7 +625,7 @@ swiper {
     font-weight: 500;
     color: rgba(255, 255, 255, 1);
     margin-top: 15rpx;
-    margin-left: 190rpx;
+    margin-left: 59rpx;
 }
 
 .purchase {

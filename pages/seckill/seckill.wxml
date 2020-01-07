@@ -23,19 +23,19 @@
     </view>
     <view class="seckill-img" wx:for="{{lunBoTu}}" wx:key="index" data-id="{{item.id}}">
         <swiper vertical="{{false}}" indicator-dots="{{true}}" autoplay="{{true}}">
-            <swiper-item bindtap="lunbotutiao">
+            <swiper-item bindtap="lunbotutiao" data-id="{{item.id}}">
                 <image src="{{item.hfGoodsPictureId}}" class="img-size"></image>
             </swiper-item>
-            <swiper-item bindtap="lunbotutiao">
+            <swiper-item bindtap="lunbotutiao" data-id="{{item.id}}">
                 <image src="{{item.hfGoodsPictureId}}" class="img-size"></image>
             </swiper-item>
-            <swiper-item bindtap="lunbotutiao">
+            <swiper-item bindtap="lunbotutiao" data-id="{{item.id}}">
                 <image src="{{item.hfGoodsPictureId}}" class="img-size"></image>
             </swiper-item>
-            <swiper-item bindtap="lunbotutiao">
+            <swiper-item bindtap="lunbotutiao" data-id="{{item.id}}">
                 <image src="{{item.hfGoodsPictureId}}" class="img-size"></image>
             </swiper-item>
-            <swiper-item bindtap="lunbotutiao">
+            <swiper-item bindtap="lunbotutiao" data-id="{{item.id}}">
                 <image src="{{item.hfGoodsPictureId}}" class="img-size"></image>
             </swiper-item>
         </swiper>
@@ -119,7 +119,7 @@
                     </view>
                 </view>
                 <view class="seckill-banner">
-                    <view class="seckill-commodity" wx:for="{{schedule}}" wx:key="index" bindtap="particulars" data-id="{{item.id}}">
+                    <view class="seckill-commodity" wx:for="{{schedule}}" wx:key="index" bindtap="miaoparticulars" data-id="{{item.id}}">
                         <view class="commodity-tu">
                             <image src="../images/handpick/shangping.png"></image>
                         </view>

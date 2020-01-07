@@ -17,6 +17,57 @@ Page({
     attention: '',//设置关注
     goodsId:'',
     openId:'',
+    slideNumber: '1',//详情滑动跳动数字
+    collects: false,
+  },
+  //关注
+  collect: function () {
+    var that = this;
+    if (that.data.collects) {
+      that.setData({
+        collects: !that.data.collects,
+      })
+      wx.showToast({
+        title: '取消关注',
+      });
+    } else {
+      that.setData({
+        collects: !that.data.collects,
+      })
+      wx.showToast({
+        title: '关注成功',
+      });
+    }
+  },
+  //设置关注
+  attention: function () {
+    var that = this;
+    //获取用户的openId
+    wx.getStorage({
+      key: 'user',
+      success: function (res) {
+        that.setData({
+          openId: res.data.userInfo.openId,
+        })
+      },
+    });
+    wx.request({
+      url: app.globalData.urlGoods + '/goods/Concern',
+      method: 'Get',
+      success: function (res) {
+        console.log(res)
+        that.setData({
+          attention: res.data.data
+        })
+      },
+      data: {
+        goodsId: that.data.goodsId,//列表商品传过来
+        openId: that.data.openId
+      }
+    })
+    wx.showToast({
+      title: that.data.attention,
+    });
   },
   showModal: function () {
     var that = this;
@@ -61,36 +112,15 @@ Page({
       animationData: this.animation.export(),
     })
   },
-  //设置关注
-  attention: function () {
-    var that = this;
-    //获取用户的openId
-    wx.getStorage({
-      key: 'user',
-      success: function (res) {
-        that.setData({
-          openId: res.data.userInfo.openId,
-        })
-      },
-    });
-    wx.request({
-      url: app.globalData.urlGoods + '/goods/Concern',
-      method: 'Get',
-      success: function (res) {
-        console.log(res)
-        that.setData({
-          attention:res.data.data  
-        })
-      },
-      data: {
-        goodsId: that.data.goodsId,//列表商品传过来
-        openId: that.data.openId
-      }
+  //详情滑动跳动数字
+  current: function (e) {
+    console.log(e)
+    var that = this
+    that.setData({
+      slideNumber: e.detail.current + 1
     })
-    wx.showToast({
-      title: `关注成功`,
-    });
   },
+  
   //点击分享
   fenxiang: function () {
     wx.navigateTo({
@@ -99,6 +129,7 @@ Page({
   },
   //单独购买
   dandushpping:function(){
+    var that=this;
     wx.request({
       url: app.globalData.urlpuzzle + '/group/shopping',
       method: 'Post',
@@ -149,7 +180,7 @@ Page({
       },
       data: {
         token: 13,
-        userId: that.data.userId
+        userId: 13//that.data.userId
       }
     })
   },
@@ -175,6 +206,12 @@ Page({
   close_mask: function () {
     this.setData({
       showModal: false
+    })
+  },
+ //查看更多评论跳转
+  discuss: function () {
+    wx.navigateTo({
+      url: '../../evaluate/all',
     })
   },
   //根据id 查拼团商品详情

@@ -24,19 +24,19 @@
   <!-- 功能 -->
   <view class="gongneng">
     <view class="gongneng_1">
-      <image class="zxj" src="../../images/vip/yhq@2x.png"></image>
+      <image class="zxj" src="../../images/vip/yhq.png"></image>
       <text class="headline_1">PLUS专享券</text>
     </view>
     <view class="gongneng_1">
-      <image class="zxj" src="../../images/vip/quan@2x.png"></image>
+      <image class="zxj" src="../../images/vip/quan.png"></image>
       <text class="headline_1">P运费券</text>
     </view>
     <view class="gongneng_1">
-      <image class="zxj" src="../../images/vip/zhuanshukefu@2x.png"></image>
+      <image class="zxj" src="../../images/vip/zhuanshukefu.png"></image>
       <text class="headline_1">专属客服</text>
     </view>
     <view class="gongneng_1 headline_2">
-      <image class="zxj_1" src="../../images/vip/更多@2x.png"></image>
+      <image class="zxj_1" src="../../images/vip/more.png"></image>
       <text class="headline_1">期待更多</text>
     </view>
   </view>

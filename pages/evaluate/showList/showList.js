@@ -6,6 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    listArr:[],
     value: 4,
     message: '这个东西不错，很符合本宝宝的品味',
     fileList: [
@@ -24,6 +25,21 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    wx.request({
+      url: app.globalData.information + "/message/insertReply",
+      method:'get',
+      header: {
+       "Content-Type": "application/x-www-form-urlencoded"
+      },
+      
+      success: function(res) {
+        console.log(res)
+        that.setData({
+          listArr:res.data.data
+        })
+ 
+      }
+    })
   },
 
   /**
@@ -82,7 +98,8 @@ Page({
        "Content-Type": "application/x-www-form-urlencoded"
       },
       data:{
-        openId:2
+        openId:2,
+        evaluate:1321254654
       },
       success: function(res) {
         console.log("成功",res)

@@ -469,8 +469,15 @@ swiper {
     width: 750rpx;
     margin-top: 28rpx;
 }
-
-.more-title {
+.more-titles {
+    margin: 0 auto;
+    height: 26rpx;
+    font-size: 24rpx;
+    font-family: PingFang SC;
+    font-weight: 400;
+    color: rgba(21, 21, 21, 1);
+}
+.more-title{
     display: block;
     margin: 0 auto;
     width: 145rpx;
@@ -759,7 +766,7 @@ swiper {
 
 .more-title {
     display: block;
-    width: 96rpx;
+    width: 145rpx;
     height: 30rpx;
     font-size: 24rpx;
     font-family: 'PingFang SC';
