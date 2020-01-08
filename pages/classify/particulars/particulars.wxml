@@ -31,7 +31,7 @@
       <view class="productName-dollor">
         <text class="dollor">¥</text>
         <text class="money">{{arr.sellPrice}}</text>
-        <text class="money-del">{{arr.isDeleted}}</text>
+        <!-- <text class="money-del">{{arr.isDeleted}}</text> -->
         <text class="news">新品</text>
       </view>
       <view class="productName-collect">
@@ -47,7 +47,7 @@
       </view>
     </view>
     <view class="productName-box-two">
-      <text class="productName-table">{{arr.goodName}}</text>
+      <text class="productName-table">{{arr.hfName}}</text>
       <button class="table-box" open-type="share" style="width:120rpx">
         <image src="../../images/tabs/fenxiang.png" class="table-images" />
         <text class="share">分享</text>
@@ -78,7 +78,7 @@
           {{isUserId==true?sites:'请先登录'}}
         </view>
       </view>
-      <image src="../../images/tabs/diandian.png" class="selected-images"  bindtap="site"/>
+      <image src="../../images/tabs/diandian.png" class="selected-images"  bindtap="showSiteList"/>
     </view>
     <view class="site-freight">
       <text class="selected">运费</text>
@@ -194,7 +194,7 @@
   <view class="guigebox" wx:if="{{guigeshow==true}}">
     <view class="guigebox-top">
       <image src="" style="width:160rpx;height:160rpx"></image>
-      <view class="guanbibox-price">￥300</view>
+      <view class="guanbibox-price">￥{{totalprice}}</view>
       <view class="guanbipic">
       <image src="../../images/cart/guigegb.png" bindtap="guigeguanbi" style="width:24rpx;height:24rpx"></image>
       </view>
@@ -203,9 +203,9 @@
       <view class="guigebox-num">
       <view style="font-size:26rpx;line-height:62rpx;">数量</view>
       <view class="guigenum-right">
-        <image src="../../images/cart/guigesub.png" style="width:20rpx;height:20rpx;"></image>
-        <view class="guigenum">2</view>
-        <image src="../../images/cart/guigeadd.png" style="width:20rpx;height:20rpx;"></image>
+        <image src="../../images/cart/guigesub.png" style="width:20rpx;height:20rpx;" bindtap="subNum"></image>
+        <view class="guigenum">{{goodsNum}}</view>
+        <image src="../../images/cart/guigeadd.png" style="width:20rpx;height:20rpx;" bindtap="addNum"></image>
       </view>
     </view>
      </scroll-view>

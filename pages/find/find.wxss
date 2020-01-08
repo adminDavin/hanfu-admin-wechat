@@ -4,10 +4,9 @@
     background: #FF3333;
 }
 
-.header-title {
+/* .header-title {
     display: flex;
     height: 88rpx;
-    /* background: pink; */
     margin-left: 20rpx;
 }
 
@@ -40,7 +39,6 @@
     height: 88rpx;
     width: 100rpx;
     padding-top: 14rpx;
-    /* background: blue; */
 }
 
 .header-margin {
@@ -62,7 +60,7 @@
 }
 
 /* banner区 */
-.find-banner {
+/* .find-banner {
     width: 710rpx;
     margin: 0 auto;
     margin-top: 17rpx;
@@ -167,4 +165,12 @@
 }
 .find-bottom {
     margin-bottom: 54rpx;
+} */
+.kong {
+  width: 710rpx;
+  line-height: 500rpx;
+  text-align: center;
+  margin: 50rpx auto;
+  font-size: 33rpx;
+  color: #a8a8a8;
 }

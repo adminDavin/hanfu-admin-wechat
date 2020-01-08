@@ -10,6 +10,7 @@ Page({
     isLogin: false,
     canGetSite: true,
     guigeshow:false,
+    isUserId:false,
     goodsId: '',
     openId:'',
     arr: [],
@@ -21,7 +22,44 @@ Page({
     userId:'',
     slideNumber: '1',//详情滑动跳动数字
     collects: false,
+    goodsNum:1,
+    totalprice:'',
+    userAddressId:''
   },
+
+  //商品数量减
+  subNum() {
+    var that = this;
+    let goodsNum = that.data.goodsNum;
+    let list=that.data.arr
+    let totalprice = that.data.totalprice;
+    if (goodsNum > 1) {
+      goodsNum = goodsNum - 1;
+      totalprice = totalprice + goodsNum * list.sellPrice
+      that.setData({
+        goodsNum: goodsNum,
+        totalprice: totalprice
+      })
+    } else {
+      return;
+    }
+  },
+  //商品数量加
+  addNum() {
+    var that = this;
+    let goodsNum = that.data.goodsNum;
+    let list = that.data.arr
+    console.log(that.data.totalprice)
+    let totalprice = that.data.totalprice;
+    goodsNum = goodsNum + 1;
+    totalprice = totalprice + goodsNum * list.sellPrice
+    that.setData({
+      goodsNum: goodsNum,
+      totalprice: totalprice
+    })
+  },
+
+
   //关注
   collect:function () {
     var that = this;
@@ -82,6 +120,22 @@ Page({
     var that = this;
     that.setData({
       guigeshow: false
+    })
+  },
+  //规格获取
+  getGuige() {
+    var that = this;
+    wx.request({
+      url: app.globalData.urlGoods + '/goods/specifies',
+      method: 'get',
+      data: {
+        goodsId: 2
+      },
+      success(res) {
+        let spec = res.data.data;
+        let specList = [];
+        console.log(specList)
+      },
     })
   },
   //分享
@@ -165,9 +219,13 @@ Page({
       method: 'Get',
       success: function (res) {
         console.log(res)
+        let list=res.data.data[0]
         that.setData({
-          arr: res.data.data
+          arr: list,
+          totalprice:list.sellPrice
         })
+        that.site();
+        console.log(that.data.totalprice)
       },
       data: {
         goodsId: that.data.dataId
@@ -215,9 +273,13 @@ Page({
       },
       data: {
         token: 13,
-        userId: 13 //that.data.userIds
+        userId:that.data.userId
       }
     })
+  },
+  //展示地址
+  showSiteList(){
+    
   },
   //加入购物车
   shppingcar: function (e) {
@@ -233,12 +295,12 @@ Page({
         url: app.globalData.urlshppingcar + '/cart/add',
         method: 'Get',
         success: function (res) {
-          if (res.data.data =='成功加入购物车'){
+          if (res.data.data == '成功加入购物车') {
             wx.showToast({
               title: '添加购物车成功',
             })
-            
-            let  num =app.globalData.cartNum+1 ;
+
+            let num = app.globalData.cartNum + 1;
             let num1 = JSON.stringify(num)
             that.setData({
               cartNum: num1
@@ -253,40 +315,26 @@ Page({
           }
         },
         data: {
-          goodsId: that.data.goodsId,
-          num: 2,
+          goodsId: that.data.dataId,
+          num: that.data.goodsNum,
           userId: that.data.userId
         }
       })
     }
   },
   //立即购买
-  buyquick: function (e) {
-    // console.log(e)
+  buyquick() {
     var that = this;
-    let isLogin = that.data.isLogin;
-    if (isLogin == false) {
-      that.setData({
-        show: true
-      })
-    } else {
-      wx.request({
-        url: app.globalData.information + '/order/creat',
-        method: 'Get',
-        success: function (res) {
-          that.setData({
-
-          })
-        },
-        data: {
-
-        }
-      })
-      // wx.navigateTo({
-      //   url: '../../order/order',
-      // })
-    }
+    let purchasePrice = that.data.arr.sellPrice;
+    let purchaseQuantity = that.data.goodsNum;
+    let amount = purchasePrice * purchaseQuantity;
+    let goodsid = that.data.dataId;
+    let userAddressId = that.data.userAddressId;
+    wx.navigateTo({
+      url: '../../ljbuy/ljbuy?purchasePrice=' + purchasePrice + '&purchaseQuantity=' + purchaseQuantity + '&amount=' + amount + '&goodsid=' + goodsid + '&userAddressId=' + userAddressId,
+    })
   },
+
 
   // 判断userid
   isUserId() {
@@ -295,12 +343,15 @@ Page({
       key: 'user',
       success: function (res) {
         that.setData({
-          canGetSite: true
+          canGetSite: true,
+          isUserId:true,
+          userId:res.data.userId
         })
       },
       fail: function (res) {
         that.setData({
-          canGetSite: false
+          canGetSite: false,
+          isUserId:false
         })
       }
     })
@@ -310,16 +361,13 @@ Page({
   isLogin() {
     var that = this;
     wx.getStorage({
-      key: 'phone',
+      key: 'user',
       success: function (res) {
-        wx.getStorage({
-          key: 'user',
-          success: function (res) {
-            that.setData({
-              userId: res.data.userId,
-            })
-          },
+
+        that.setData({
+          userId: res.data.userId,
         })
+
       },
       fail: function (res) {
         that.setData({
@@ -333,19 +381,13 @@ Page({
   firstIsLogin() {
     var that = this;
     wx.getStorage({
-      key: 'phone',
+      key: 'user',
       success: function (res) {
         that.setData({
+          userId: res.data.userId,
           isLogin: true
         })
-        wx.getStorage({
-          key: 'user',
-          success: function (res) {
-            that.setData({
-              userId: res.data.userId,
-            })
-          },
-        })
+        console.log(that.data.userId)
       },
       fail: function (res) {
         that.setData({
@@ -482,12 +524,11 @@ Page({
         that.setData({
           userId: res.data.userId,
         })
-        console.log(that.data.userId)
+        that.site();
       },
     });
     this.particulars();
     // this.evaluate();
-    this.site();
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

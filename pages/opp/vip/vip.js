@@ -39,6 +39,7 @@ Page({
         that.setData({
           userId:res.data.userId
         })
+        that.getYue();
       },
     })
     wx.getStorage({
@@ -63,7 +64,16 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    var that=this;
+    wx.getStorage({
+      key: 'user',
+      success: function (res) {
+        that.setData({
+          userId: res.data.userId
+        })
+        that.getYue();
+      },
+    })
   },
 
   /**

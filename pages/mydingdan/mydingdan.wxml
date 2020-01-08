@@ -56,7 +56,7 @@
       </view>
     </view>
     <view class="card-bottom">
-      <view class="shenqing" style="color:white;background:red;border:none" wx:if="{{item.orderDetailStatus=='待支付'}}" bindtap="gopay" data-orderid="{{item.orderDetailId}}" data-price="{{item.amount}}">去支付</view>
+      <view class="shenqing" style="color:white;background:red;border:none" wx:if="{{item.orderDetailStatus=='待支付'}}" bindtap="gopay" data-orderid="{{item.orderId}}" data-price="{{item.amount}}">去支付</view>
       <!-- <view class="shenqing" wx:if="{{item.orderDetailStatus=='已完成'}}">申请售后</view> -->
       <view class="shenqing" wx:if="{{item.orderDetailStatus=='待收货' }}" bindtap="wuliu" data-orderid="{{item.orderDetailId}}" data-logisticscompany="{{item.logisticsCompany}}" data-logisticsordersid="{{item.logisticsOrdersId}}">查看物流</view>
       <view class="shenqing" style="color:red;border-color:red" wx:if="{{item.orderDetailStatus=='待收货'}}" bindtap="querenshouhuo" data-orderid="{{item.orderDetailId}}">确认收货</view>

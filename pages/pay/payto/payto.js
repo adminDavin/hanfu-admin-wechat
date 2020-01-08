@@ -17,6 +17,12 @@ Page({
     qrAdd: '',
     qrshow: false
   },
+  // 返回上一级
+  gopre(){
+    wx.navigateBack({
+      delta: 1
+    })
+  },
   //获取用户余额
   getYue() {
     var that = this;

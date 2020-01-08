@@ -57,10 +57,10 @@
     <view class="ziti" style="line-height:80rpx">商品金额</view>
     <text class="ziti" style="line-height:80rpx">￥{{price}}</text>
   </view>
-  <view class="youfei" hidden="{{quhuomethod}}">
+  <!-- <view class="youfei" hidden="{{quhuomethod}}">
       <view class="ziti" style="line-height:40rpx">邮费</view>
     <text class="ziti" style="line-height:40rpx;color:red;">+￥{{yunfei}}</text>
-  </view>
+  </view> -->
   </view>
   <view class="quhuomethod" style="height:80rpx">
     <view class="ziti" style="width:400rpx;line-height:80rpx">备注</view>

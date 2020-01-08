@@ -6,14 +6,14 @@
                 <text class="header-text">思创科技</text>
             </view>
             <view class="header-fl">
-                <view class="header-sao header-margin">
+                <view class="header-sao header-margin" bindtap="getScancode">
                     <image src="../images/tabs/saoyisao.png" class="sao-tu" />
                     <view class="sao">扫一扫</view>
                 </view>
-                <view class="header-sao">
+                <button class="header-sao" style="padding:0;margin:0;width:75rpx;background:rgba(255,51,51,1);margin-top:15rpx" open-type="contact">
                     <image src="../images/tabs/xiaoxis.png" class="sao-tu" />
                     <view class="sao">客服</view>
-                </view>
+                </button>
             </view>
         </view>
         <view class="sou" bindtap="sousuo">
@@ -21,22 +21,10 @@
             <input type="text" class="input-sou" />
         </view>
     </view>
-    <view class="seckill-img" wx:for="{{lunBoTu}}" wx:key="index" data-id="{{item.id}}">
+    <view class="seckill-img">
         <swiper vertical="{{false}}" indicator-dots="{{true}}" autoplay="{{true}}">
-            <swiper-item bindtap="lunbotutiao" data-id="{{item.id}}">
-                <image src="{{item.hfGoodsPictureId}}" class="img-size"></image>
-            </swiper-item>
-            <swiper-item bindtap="lunbotutiao" data-id="{{item.id}}">
-                <image src="{{item.hfGoodsPictureId}}" class="img-size"></image>
-            </swiper-item>
-            <swiper-item bindtap="lunbotutiao" data-id="{{item.id}}">
-                <image src="{{item.hfGoodsPictureId}}" class="img-size"></image>
-            </swiper-item>
-            <swiper-item bindtap="lunbotutiao" data-id="{{item.id}}">
-                <image src="{{item.hfGoodsPictureId}}" class="img-size"></image>
-            </swiper-item>
-            <swiper-item bindtap="lunbotutiao" data-id="{{item.id}}">
-                <image src="{{item.hfGoodsPictureId}}" class="img-size"></image>
+            <swiper-item bindtap="lunbotutiao" wx:for="{{lunBoTu}}" wx:key="index" data-id="{{item.id}}">
+                <image src="{{item.img}}" class="img-size"></image>
             </swiper-item>
         </swiper>
     </view>

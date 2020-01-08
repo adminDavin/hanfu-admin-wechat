@@ -193,10 +193,9 @@ Page({
   },
   myoftenBuy() {
     var that=this;
-    app.globalData.toCartTag=true
-    wx.switchTab({
-      url: '../shopping/shopping',
-    })
+  wx.navigateTo({
+    url: '../classify/commodity/commodity?tag=5',
+  })
   },
   myPinglun(){
     wx.navigateTo({

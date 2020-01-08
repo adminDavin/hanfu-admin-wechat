@@ -3,84 +3,36 @@
     <view class="seek-sou">
         <view class="seek-header">
             <image class="seek-tu" src="../../images/tabs/sousuo.png" />
-            <input type="text" class="seek-input" placeholder="显示器2K" />
+            <input type="text" class="seek-input" placeholder="请输入您要搜索的内容" bindblur="getsousuo" value="{{inputval}}"/>
         </view>
-        <view class="seek-table">取消</view>
+        <view class="seek-table" bindtap="quxiao">取消</view>
     </view>
-    <view class="seek-history">
-        <view class="history-title">
-            <view class="seek-box">
-                <image src="../../images/tabs/圆角矩形 3.png" class="images" />
-                <text class="history-table">搜索历史</text>
-            </view>
-            <image src="../../images/tabs/head (4).png" class="images-hou" />
+     <view class="banner-centent">
+    <!-- 商品 -->
+    <view class="centent" bindtap="commodity" wx:for="{{list}}" wx:key="index" data-id="{{item.id}}">
+      <!-- 图片 -->
+      <image src="{{item.img}}" class="centent-image" />
+      <!-- 详情 -->
+      <view class="centent-particulars">
+        <text class="particulars-text">{{item.hfName}}</text>
+        <view class="particulars-money">
+          <view class="money-box">
+            <text class="money-title">¥</text>
+            <text class="money-number">{{item.sellPrice}}</text>
+            <image src="../../images/tabs/vip.png" class="money-vip" />
+          </view>
+          <view class="money-table">
+            <text class="money-discounts">新品</text>
+            <text class="money-discounts">包邮</text>
+            <text class="money-discounts">每满200减30</text>
+          </view>
+          <view class="comment">
+            <text class="comment-number">23万+条评论</text>
+            <text>99%好评</text>
+          </view>
         </view>
-        <view class="history-text">
-            <text class="history-label">显示屏</text>
-            <text class="history-label">电脑</text>
-            <text class="history-label">办公桌</text>
-            <text class="history-label label-one">办公桌椅</text>
-        </view>
-        <view class="history-text">
-            <text class="history-label label-two">小米空调2匹自营</text>
-            <text class="history-label label-two">小米空调2匹自营</text>
-        </view>
-        <view class="history-text">
-            <text class="history-label">显示屏</text>
-            <text class="history-label label-two">小米空调2匹自营</text>
-            <text class="history-label label-one">办公桌椅</text>
-        </view>
-        <view class="history-more">
-            <text class="more-table">更多搜索历史</text>
-            <image src="../../images/tabs/jinru.png" class="more-image" />
-        </view>
-        <view class="history-wire"></view>
+      </view>
     </view>
-    <!-- 搜索发现 -->
-    <view class="seek-history">
-        <view class="history-title">
-            <view class="seek-box">
-                <image src="../../images/tabs/圆角矩形 3.png" class="images" />
-                <text class="history-table">搜索发现</text>
-            </view>
-            <image src="../../images/tabs/head (3).png" class="images-hou" />
-        </view>
-        <view class="find-eye">
-            <view class="history-text">
-                <text class="history-label">显示屏</text>
-                <text class="history-label">电脑</text>
-                <text class="history-label">办公桌</text>
-                <text class="history-label label-one">办公桌椅</text>
-            </view>
-            <image src="../../images/tabs/head (2).png" class="images-hou" />
-        </view>
-        <view class="history-text">
-            <text class="history-label label-two">小米空调2匹自营</text>
-            <text class="history-label label-two">小米空调2匹自营</text>
-        </view>
-        <view class="history-text">
-            <text class="history-label">显示屏</text>
-            <text class="history-label label-two">小米空调2匹自营</text>
-            <text class="history-label label-one">办公桌椅</text>
-        </view>
-        <view class="history-wire"></view>
-    </view>
-    <!-- 常购清单 -->
-    <view class="seek-history">
-        <view class="history-title">
-            <view class="seek-box">
-                <image src="../../images/tabs/圆角矩形 3.png" class="images" />
-                <text class="history-table">常购清单</text>
-                <text class="inventory">这些商品降价啦</text>
-            </view>
-            <view class="inventory-box">
-                <view class="inventory-images">
-                    <image src="../../images/tabs/head (1).png" class="inventory-head" />
-                    <image src="../../images/tabs/head (1).png" class="inventory-head inventory-position" />
-                    <image src="../../images/tabs/head (1).png" class="inventory-head inventory-positions" />
-                </view>
-                <image src="../../images/tabs/jinru (1).png" class="inventory-right" />
-            </view>
-        </view>
-    </view>
+  </view>
+
 </view>

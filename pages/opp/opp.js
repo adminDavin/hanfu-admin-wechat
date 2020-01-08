@@ -9,7 +9,10 @@ Page({
    */
   data: {
     grid:[],
+    tag:0,
+    userId:'',
     money:'',
+    times:'',
     chongzhiList:[],
     goumaiList:[]
   },
@@ -19,14 +22,23 @@ Page({
    */
   onLoad: function (){
     var that=this;
+    wx.getStorage({
+      key: 'user',
+      success: function(res) {
+        userId:res.data.userId
+      },
+    })
     that.getchmsg();
   },
   /* 微信支付 */
   lijicz: function (e) {
     let money=e.currentTarget.dataset.money;
+    let times=e.currentTarget.dataset.id
     var that = this;
+    console.log(that.data.tag)
     that.setData({
-      money:money
+      money:money,
+      times:times
     })
     wx.getStorage({
       key: 'user',
@@ -54,33 +66,14 @@ Page({
       }, //设置请求的 header
       success: function (res) {
         console.log("返回商户", res.data);
-        // var result_code = util.getXMLNodeValue('result_code', res.data.toString("utf-8"));
-        // var resultCode = result_code.split('[')[2].split(']')[0];
-        // if (resultCode == 'FAIL') {
-        //   var err_code_des = util.getXMLNodeValue('err_code_des', res.data.toString("utf-8"));
-        //   var errDes = err_code_des.split('[')[2].split(']')[0];
-        //   wx.showToast({
-        //     title: errDes,
-        //     icon: 'none',
-        //     duration: 3000
-        //   })
-        // } else {
-        //   //发起支付
-        //   var prepay_id = util.getXMLNodeValue('prepay_id', res.data.toString("utf-8"));
-        //   var tmp = prepay_id.split('[');
-        //   var tmp1 = tmp[2].split(']');
-        //   //签名  
-        //   var key = '';//商户key必填，在商户后台获得
-        //   var appId = '';//appid必填
-        //   var timeStamp = util.createTimeStamp();
-        //   var nonceStr = util.randomString();
-        //   var stringSignTemp = "appId=" + appId + "&nonceStr=" + nonceStr + "&package=prepay_id=" + tmp1[0] + "&signType=MD5&timeStamp=" + timeStamp + "&key=" + key;
-        //   console.log("签名字符串", stringSignTemp);
-        //   var sign = md5.md5(stringSignTemp).toUpperCase();
-        //   console.log("签名", sign);
-        //   var param = { "timeStamp": timeStamp, "package": 'prepay_id=' + tmp1[0], "paySign": sign, "signType": "MD5", "nonceStr": nonceStr }
-        //   console.log("param小程序支付接口参数", param);
-        //   that.processPay(param;
+        let config=res.data.data.data
+        let timeStamp = config.timeStamp
+        let pac = config.package
+        let sig = config.signType
+        let nonceStr = config.nonceStr
+        let paySign = config.paySign  
+        var param = { "timeStamp": timeStamp, "package": pac, "paySign": paySign, "signType": sig, "nonceStr": nonceStr }
+          that.processPay(param);
         // }
       },
     })
@@ -88,6 +81,8 @@ Page({
 
   /* 小程序支付 */
   processPay: function (param) {
+    var that=this;
+    var tag=that.data.tag;
     wx.requestPayment({
       timeStamp: param.timeStamp,
       nonceStr: param.nonceStr,
@@ -101,8 +96,10 @@ Page({
           content: '官方号中收到支付凭证',
           showCancel: false,
           success: function (res) {
-            if (res.confirm) {
-            } else if (res.cancel) {
+            if(tag==0){
+              that.grant()
+            }else if(tag==1){
+              that.buy()
             }
           }
         })
@@ -172,6 +169,9 @@ Page({
     console.log(e)
     let tag=e.detail.index
     var that=this;
+    that.setData({
+      tag:tag
+    })
     if(tag==0){
       that.getchmsg()
     }else{
@@ -204,46 +204,56 @@ Page({
   },
   // 购买会员
   buy:function(){
+    var that=this;
    wx.request({
-     url: app.globalData.purchase + "/member/buyMember",
+     url: app.globalData.urlpay + "/member/buyMember",
      method:'get',
      header: {
       "Content-Type": "application/x-www-form-urlencoded"
      },
      data:{
-      money:1,
-      number:1,
-      total:50,
-      userId:2
+      money:that.data.money,
+      number:that.data.times,
+      total:that.data.money,
+      userId:that.data.userId
      },
      success: function(res) {
        console.log("成功",res)
-
-       
-       
+      wx.showToast({
+        title: '购买会员成功',
+        mask:true
+      })
+       wx.navigateTo({
+         url: './vip/vip',
+       })
      }
    })
 
   },
   // 赠送会员
   grant:function(){
+    var that=this;
     wx.request({
-      url: app.globalData.purchase + "/member/rechargeMember",
+      url: app.globalData.urlpay + "/member/rechargeMember",
       method:'get',
       header: {
        "Content-Type": "application/x-www-form-urlencoded"
       },
       data:{
-       money:1,
-       number:1,
-       total:50,
-       userId:2
+       money:that.data.money,
+       number:that.data.times,
+       total:that.data.money,
+       userId:that.data.userId
       },
       success: function(res) {
         console.log("成功",res)
- 
-        
-        
+        wx.showToast({
+          title: '充值会员成功',
+          mask:true
+        })
+        wx.navigateTo({
+          url: './vip/vip',
+        })
       }
     })
  

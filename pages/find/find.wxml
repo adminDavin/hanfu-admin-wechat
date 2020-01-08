@@ -1,5 +1,5 @@
 <view class="find">
-    <view class="find-header">
+    <!-- <view class="find-header">
         <view class="header-title">
             <view class="header-t">
                 <view class="header-tu"></view>
@@ -16,9 +16,9 @@
                 </view>
             </view>
         </view>
-    </view>
+    </view> -->
     <!-- banner区 -->
-    <view class="find-banner">
+    <!-- <view class="find-banner">
         <view class="find-time">2019-09-25  15:56</view>
         <text class="find-text">防串味去异味，美的让食物的处理更便捷 </text>
         <view class="find-video">
@@ -70,5 +70,8 @@
                 <text class="shares-number">8888</text>
             </view>
         </view>
+    </view> -->
+    <view class="kong">
+      抱歉，此页暂无内容
     </view>
 </view>
