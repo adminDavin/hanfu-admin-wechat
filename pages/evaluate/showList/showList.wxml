@@ -1,0 +1,33 @@
+<!--pages/evaluate/evaluateList/evaluateList.wxml-->
+
+  
+
+<view class="evaluate-list">
+  <view class="evaluate-item">
+    <image class="left" src="/pages/images/handpick/07fbbc84987980b7.jpg!cc_350x449.png"></image>
+    <view class="right">
+      <text>夹克外套男秋冬季新款修身工装衣服男装加绒加厚学生春秋季上衣青...</text>
+      <van-rate
+        value="{{ value }}"
+        size="40rpx"
+        color="#ff0000"
+        void-color="#eee"
+        void-icon="star"
+      />
+    </view>
+  </view>
+<view class="fb_content" >
+  <textarea value="{{textVal}}" bindinput="handleTextInput" placeholder="有什么问题"></textarea>
+  <view class="fb_tool">
+    <button bindtap="handeIeChooseImg">+</button>
+    <view class="up_img_item"
+    wx:for="{{chooseImgs}}"
+    wx:key="*this"
+    bindtap="handeIeRemoveImg"
+    data-index="{{index}}">
+      <UpImg src="{{item}}"></UpImg>
+    </view>
+  </view>
+</view>
+</view>
+ <text class="submit" bindtap="comment">提交</text>

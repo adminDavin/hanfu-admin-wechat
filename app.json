@@ -1,0 +1,108 @@
+{
+  "pages": [
+    "pages/evaluate/myevaluate/myevaluate",
+    "pages/evaluate/evaluateList/evaluateList",
+    "pages/evaluate/remark/remark",
+    "pages/evaluate/showList/showList",
+        "pages/mine/mine",
+        "pages/opp/opp",
+    
+    "pages/evaluate/all",
+    "pages/ljbuy/ljbuy",
+    "pages/classify/particulars/particulars",
+    "pages/seckill/seckill",
+    "pages/opp/vip/vip",
+    "pages/pay/payto/payto",
+    "pages/pay/paySuccess/paySuccess",
+    "pages/orderform/logistics",
+    "pages/tuikuan/tuikuan",
+    "pages/orderprocessing/daizhifu/orderprocessing",
+    "pages/orderprocessing/orderprocessing",
+    "pages/orderprocessing/daifahuo/orderprocessing",
+    "pages/mydingdan/mydingdan",
+    "pages/orderprocessing/daishouhuo/orderprocessing",
+    "pages/orderprocessing/yiquxiao/orderprocessing",
+    "pages/orderprocessing/tuikuanzhong/orderprocessing",
+    "pages/orderprocessing/daitihuo/orderprocessing",
+    "pages/shopping/shopping",
+    "pages/orderprocessing/yituikuan/orderprocessing",
+    "pages/order/order",
+    "pages/classify/puzzle-particulars/puzzle-particulars",
+    "pages/classify/Limited-time/Limited-time",
+    "pages/orderprocessing/yipingjia/orderprocessing",
+    "pages/orderprocessing/pintuanzhong/orderprocessing",
+    "pages/classify/ping-pay/ping-pay",
+    
+    
+    "pages/evaluate/review/review",
+    
+    "pages/hexiao/hexiaosucc/hexiaosucc",
+    "pages/goodsList/goodsList",
+    "pages/address/address",
+    "pages/address/addaddress/addaddress",
+    "pages/hexiao/hexiao",
+    "pages/impower/impower",
+    "pages/address/editaddress/editaddress",
+    "pages/classify/classify",
+    "pages/classify/commodity/commodity",
+    "pages/Getdiscount/Getdiscount",
+    "pages/MEdiscount/MEdiscount",
+    "pages/discount/discount",
+    "pages/seckill/seek/seek",
+    "pages/find/find",
+    "pages/register/register",
+    "pages/logs/logs"
+  ],
+  "usingComponents": {
+    "van-tab": "./pages/vant/weapp/dist/tab/index",
+    "van-tabs": "./pages/vant/weapp/dist/tabs/index",
+    "van-sidebar": "./pages/vant/weapp/dist/sidebar/index",
+    "van-sidebar-item": "./pages/vant/weapp/dist/sidebar-item/index"
+  },
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTextStyle": "black"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "tabBar": {
+    "color": "#999",
+    "backgroundColor": "#fafafa",
+    "selectedColor": "#FF0000",
+    "borderStyle": "white",
+    "list": [
+      {
+        "text": "首页",
+        "pagePath": "pages/seckill/seckill",
+        "iconPath": "pages/images/tabs/jiazais.png",
+        "selectedIconPath": "pages/images/tabs/jiazai.png"
+      },
+      {
+        "text": "分类",
+        "pagePath": "pages/classify/classify",
+        "iconPath": "pages/images/tabs/feng.png",
+        "selectedIconPath": "pages/images/tabs/fenleis.png"
+      },
+      {
+        "text": "发现",
+        "pagePath": "pages/find/find",
+        "iconPath": "pages/images/tabs/faxians.png",
+        "selectedIconPath": "pages/images/tabs/faxian.png"
+      },
+      {
+        "text": "购物车",
+        "pagePath": "pages/shopping/shopping",
+        "iconPath": "pages/images/tabs/gouwus.png",
+        "selectedIconPath": "pages/images/tabs/gouwu.png"
+      },
+      {
+        "text": "我的",
+        "pagePath": "pages/mine/mine",
+        "iconPath": "pages/images/tabs/mine.png",
+        "selectedIconPath": "pages/images/tabs/mines.png"
+      }
+    ],
+    "position": "bottom"
+  }
+}
