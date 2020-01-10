@@ -70,14 +70,14 @@ Page({
     }
     checkgoods.push(price)
     checkgoods.push(user)
-    let checkgood=JSON.stringify(checkgoods)
-    console.log(checkgood)
+    // let checkgood=JSON.stringify(checkgoods)
+    // console.log(checkgood)
     console.log(checkgoods)
     wx.request({
       url: app.globalData.urlCart +'/cart/Settlemen',
-      method:'get',
+      method:'post',
       data:{
-      productMessage: checkgood
+      productMessage: checkgoods
       },
       success(res){
       if (res.data.status == 200) {

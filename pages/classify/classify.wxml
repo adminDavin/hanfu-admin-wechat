@@ -16,15 +16,15 @@
     <!-- 右 -->
     <view class="banner-text">
       <image src="{{images[0].img}}" class="text-image" />
-      <view class="text-table" wx:for="{{arrs}}" wx:key="index">
-        <view class="text-classify">{{item.twoLevelName}}</view>
+      <view class="text-table" wx:for="{{arrs}}" wx:for-item="arritem" wx:key="index">
+        <view class="text-classify">{{arritem.twoLevelName}}</view>
         <view class="shpping-big">
-          <view class="yige" wx:for="{{item.threeLevelName}}" wx:key="index">
-            <view class="tupian">
-              <image src="{{item.img}}" class="imagestu" wx:for="{{arrs}}" wx:key="index" />
+          <view class="yige" wx:for="{{arritem.categories}}" wx:for-item="ait">
+            <view class="tupian" bindtap="goThreeLevel">
+              <image src="{{ait.img}}" class="imagestu"  />
             </view>
             <view class="wenzi">
-              <text class="textwenzi">{{item}}</text>
+              <text class="textwenzi">{{ait.hfName}}</text>
             </view>
           </view>
         </view>

@@ -9,11 +9,19 @@ Page({
     arr:[],
     arrs:[],
     parentCategoryId:"",
-    images:''
+    images:'',
+    firstId:'',
   },
   sousuo: function () {
     wx.navigateTo({
       url: '../seckill/seek/seek',
+    })
+  },
+  // 去到三级类目
+  goThreeLevel(){
+    var that=this;
+    wx.request({
+      url: '',
     })
   },
   //查询类目页面图片
@@ -35,6 +43,30 @@ Page({
       },
     })
   },
+  // 首次加载二级类目
+  firstGetSec(){
+    var that = this;
+    wx.request({
+      url: app.globalData.urlmorecategory + '/product/category',
+      method: 'Get',
+      success: function (res) {
+        let list = res.data.data;
+        console.log(list)
+        for (var index in list) {
+          for (var j in list[index].categories) {
+            list[index].categories[j].img = app.globalData.urlmorecategory + '/goods/getFile?fileId=' + list[index].categories[j].fileId;
+          }
+        }
+        that.setData({
+          arrs: list
+        })
+      },
+      data: {
+        parentCategoryId: that.data.firstId,
+        type: 1
+      }
+    })
+  },
   //一级类目
   morecategory: function (e) {
     var that = this;
@@ -43,8 +75,10 @@ Page({
       method: 'Get',
       success: function (res) {
         console.log(res)
+        let firstId=res.data.data[0].id
         that.setData({
-           arr:res.data.data
+           arr:res.data.data,
+           firstId:firstId
         })
       },
     })
@@ -59,14 +93,17 @@ Page({
         let list = res.data.data;
         console.log(list)
         for (var index in list) {
-          list[index].img = app.globalData.urlmorecategory + '/goods/getFile?fileId=' + list[index].threeLevelFileId[index];
+          for(var j in list[index].categories){
+            list[index].categories[j].img = app.globalData.urlmorecategory + '/goods/getFile?fileId=' + list[index].categories[j].fileId;
+          }
         }
         that.setData({
           arrs: list
         })
+        console.log(list)
       },
       data:{
-        parentCategoryId: 1,
+        parentCategoryId: that.data.id,
         type: 1
       }
     })
@@ -77,32 +114,18 @@ Page({
     var that = this;
     var id = e.currentTarget.dataset.id
     console.log(id)
-    wx.request({
-      url: app.globalData.urlmorecategory + '/product/category',
-      method: 'Get',
-      success: function (res) {
-        console.log(res)
-        let list = res.data.data;
-        for (var index in list) {
-          list[index].img = app.globalData.urlmorecategory + '/goods/getFile?fileId=' + list[index].threeLevelFileId[index];
-        }
-        that.setData({
-          arrs: list
-        })
-      },
-      data: {
-        parentCategoryId: id,
-        type: 1
-      }
+    that.setData({
+      id:id
     })
+    that.morecategorys();
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     this.morecategory()
-    this.morecategorys()
     this.images()
+    this.firstGetSec()
   },
 
   /**

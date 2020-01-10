@@ -93,6 +93,7 @@
     font-size: 28rpx;
     color: #151515;
     font-weight: Medium;
+    overflow:hidden;
 }
 .shpping-big {
     width: 528rpx;

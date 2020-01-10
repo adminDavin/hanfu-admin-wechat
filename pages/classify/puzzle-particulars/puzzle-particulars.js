@@ -19,7 +19,97 @@ Page({
     openId:'',
     slideNumber: '1',//详情滑动跳动数字
     collects: false,
+    inquire: [],//查询正在开团
+    guigeshow: false,
+    totalprice: '',
+    goodsNum: 1,
   },
+  //分享
+  onShareAppMessage: function (ops) {
+    if (ops.from === 'button') {
+      // 来自页面内转发按钮
+      console.log(ops.target)
+    }
+    return {
+      title: '同城优品小程序',
+      path: 'pages/classify/ping-pay/ping-pay',
+      success: function (res) {
+        // 转发成功
+        console.log("转发成功:" + JSON.stringify(res));
+      },
+      fail: function (res) {
+        // 转发失败
+        console.log("转发失败:" + JSON.stringify(res));
+      }
+    }
+
+  },
+  //规格弹框
+  guigeshow() {
+    var that = this;
+    that.setData({
+      guigeshow: true
+    })
+  },
+  guigeguanbi() {
+    var that = this;
+    that.setData({
+      guigeshow: false
+    })
+  },
+  //规格获取
+  getGuige() {
+    var that = this;
+    wx.request({
+      url: app.globalData.urlGoods + '/goods/specifies',
+      method: 'get',
+      data: {
+        goodsId: 2
+      },
+      success(res) {
+        let spec = res.data.data;
+        let specList = [];
+        console.log(specList)
+      },
+    })
+  },
+  //商品数量减
+  // subNum() {
+  //   var that = this;
+  //   let goodsNum = that.data.goodsNum;
+  //   let list = that.data.arr
+  //   let totalprice = that.data.totalprice;
+  //   if (goodsNum > 1) {
+  //     goodsNum = goodsNum - 1;
+  //     totalprice = totalprice + goodsNum * list.sellPrice
+  //     that.setData({
+  //       goodsNum: goodsNum,
+  //       totalprice: totalprice
+  //     })
+  //   } else {
+  //     return;
+  //   }
+  // },
+  // //商品数量加
+  // addNum() {
+  //   var that = this;
+  //   let goodsNum = that.data.goodsNum;
+  //   let list = that.data.arr
+  //   console.log(that.data.totalprice)
+  //   let totalprice = that.data.totalprice;
+  //   goodsNum = goodsNum + 1;
+  //   totalprice = totalprice + goodsNum * list.sellPrice
+  //   that.setData({
+  //     goodsNum: goodsNum,
+  //     totalprice: totalprice
+  //   })
+  // },
+  // //跳转购物车
+  //   gouwucar:function(){
+  //     wx.switchTab({
+  //       url:'../../shopping/shopping'
+  //     })
+  //   },
   //关注
   collect: function () {
     var that = this;
@@ -35,7 +125,7 @@ Page({
         collects: !that.data.collects,
       })
       wx.showToast({
-        title: '关注成功',
+        title: that.data.attention,
       });
     }
   },
@@ -65,9 +155,6 @@ Page({
         openId: that.data.openId
       }
     })
-    wx.showToast({
-      title: that.data.attention,
-    });
   },
   showModal: function () {
     var that = this;
@@ -113,39 +200,23 @@ Page({
     })
   },
   //详情滑动跳动数字
-  current: function (e) {
+  change: function (e) {
     console.log(e)
     var that = this
     that.setData({
       slideNumber: e.detail.current + 1
     })
   },
-  
-  //点击分享
-  fenxiang: function () {
-    wx.navigateTo({
-      url: '../ping-pay/ping-pay'
-    })
-  },
   //单独购买
   dandushpping:function(){
-    var that=this;
-    wx.request({
-      url: app.globalData.urlpuzzle + '/group/shopping',
-      method: 'Post',
-      success: function (res) {
-        console.log(res)
-        that.setData({
-
-        })
-      },
-      data: {
-        groupId: 1,//列表商品传过来
-        userId:that.data.userId
-      }
-    });
+    var that = this;
+    let purchasePrice = that.data.dongtai.price;
+    let purchaseQuantity = that.data.dongtai.number;
+    let amount = purchasePrice * purchaseQuantity;
+    let goodsid = that.data.dataid;
+    let userAddressId = that.data.userAddressId;
     wx.navigateTo({
-      url: '../../orderprocessing/daizhifu/orderprocessing'
+      url: '../../ljbuy/ljbuy?purchasePrice=' + purchasePrice + '&purchaseQuantity=' + purchaseQuantity + '&amount=' + amount + '&goodsid=' + goodsid + '&userAddressId=' + userAddressId,
     })
   },
   //获取顾客地址
@@ -184,22 +255,39 @@ Page({
       }
     })
   },
-  // 更多拼团
+  //查询正在开团
+  inquire:function(){
+    var that = this;
+    wx.request({
+      url: app.globalData.urlpuzzle + '/group/selectGroup',
+      method: 'Get',
+      success: function (res) {
+        console.log(res)
+        that.setData({
+          inquire: res.data
+        })
+      },
+      data: {
+        id: 7 //that.data.dataid
+      }
+    })
+  },
+  // 查询正在更多开团
   more: function (e) {
     console.log(e)
     var that = this;
     wx.request({
-      url: app.globalData.urlseckill + '/group/selectGroup',
+      url: app.globalData.urlpuzzle + '/group/selectAllGroup',
       method: 'Get',
       success: function (res) {
         console.log(res)
         that.setData({
           showModal: true,
-          number:res.data
+           number:res.data
         })
       },
       data: {
-        id: that.data.dataid
+        id:7 //that.data.dataid
       }
     })
   },
@@ -222,12 +310,15 @@ Page({
       method: 'Get',
       success: function (res) {
         console.log(res)
+        let list = res.data
+        list.img = app.globalData.urlmorecategory + '/goods/getFile?fileId=' + list.fileDesc[0].id;
+        // console.log(list)
         that.setData({
-          dongtai: res.data
+          dongtai: list
         })
       },
       data: {
-        id: that.data.contentid
+        id:6//that.data.contentid
       }
     })
   },
@@ -259,8 +350,9 @@ Page({
     this.setData({
       day: Day
     })
-    this.pinsckill();
-    this.site();
+    this.pinsckill()
+    this.site()
+    this.inquire()
   },
 
   /**

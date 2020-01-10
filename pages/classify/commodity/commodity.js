@@ -117,7 +117,7 @@ Page({
   categoryId: function (e) {
     var that = this;
     wx.request({
-      url: app.globalData.urlparticulars + '/goods/listGoods',
+      url: app.globalData.urlGoods + '/goods/listGoods',
       method: 'Get',
       success: function (res) {
         console.log(res)
@@ -192,6 +192,7 @@ Page({
    */
   onLoad: function (options) {
     var that=this;
+    let id=options.id;
     if(options.tag){
       wx.getStorage({
         key: 'user',

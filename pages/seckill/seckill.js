@@ -13,9 +13,6 @@ Page({
     day: '', //当前时间
     time: [], //时间
     times: [],
-    times1: '',
-    times2: '',
-    times3: '',
     schedule: '',
     currentTab: 0,//切换
     userId: '',
@@ -25,11 +22,32 @@ Page({
     userId:'',
     show: false,
     shibaishow: false,
+    beforetimes:[],
+    beforestatus:[],
+    startstatus:''
   },
   /**
    * 生命周期函数--监听页面加载
    */
 
+  //查询排行相关信息
+  ranking: function () {
+    var that = this;
+    wx.request({
+      url: app.globalData.urlmorecategory + '/seniority/findSeniorityInfo',
+      method: 'Get',
+      success: function (res) {
+        console.log(res)
+        let list = res.data.data;
+        for (var index in list) {
+          list[index].img = app.globalData.urlGoods + '/goods/getFile?fileId=' + list[index].fileId;
+        }
+        that.setData({
+          ranking: list
+        })
+      },
+    })
+  },
 
   // 扫一扫
   getScancode: function () {
@@ -170,8 +188,8 @@ Page({
     this.setData({
       day: Day
     })
-    this.requestData();
-    this.lunBoTu()
+    this.lunBoTu();
+    this.ranking();
   },
   //搜索
   sousuo:function (){
@@ -209,65 +227,126 @@ Page({
      })
    },
   //推荐榜单
-  bangdan: function () {
+  bangdan: function (e) {
+    let id=e.currentTarget.dataset.id;
     wx.navigateTo({
-      url: '../classify/commodity/commodity',
+      url: '../classify/commodity/commodity?id='+id,
     })
   },
   //秒杀切换
   clickTab: function (e) {
     var that = this;
-    let currentTab = e.currentTarget.dataset.id;
-    console.log(currentTab)
+    let beforetimes=that.data.beforetimes;
+    let beforestatus=that.data.beforestatus;
+    let currentTab = e.detail.index;
+    let title=e.detail.title;
+    let startTime='';
+    let startstatus=''
     that.setData({
-      currentTab: e.currentTarget.dataset.id,
+      currentTab: currentTab,
     })
-    let time = 0;
-    if (currentTab == 0) {
-      time = that.data.times
-    } else if (currentTab == 1) {
-      time = that.data.times1
-    } else if (currentTab == 2) {
-      time = that.data.times2
-    } else if (currentTab == 3) {
-      time = that.data.times3
+    for(var index in beforetimes){
+      let time=beforetimes[index].substring(11,16);
+      if(title==time){
+        startstatus=beforestatus[index]
+        startTime=beforetimes[index];
+      }
     }
+    console.log(startstatus)
+    that.setData({
+      startstatus:startstatus
+    })
     wx.request({
       url: app.globalData.urlseckill + '/kill/seleteDate',
       method: 'Get',
       success: function (res) {
+        console.log(res.data)
+        let list = res.data;
+        for (var index in list) {
+          list[index].img = app.globalData.urlmorecategory + '/goods/getFile?fileId=' + list[index].fileDesc[0].id;
+        }
         that.setData({
-          schedule: res.data,
+          schedule: list,
         })
       },
       data: {
-        startTime: that.data.day + '  ' + time
+        startTime: startTime
       }
     })
   },
+  // 点击拼团
   requestData: function () {
     var that = this;
     wx.request({
       url: app.globalData.urlpuzzle + '/group/selectCategoryName',
       method: 'Get',
       success: function (res) {
+        let list=res.data;
+        console.log(list)
         that.setData({
-          arr: res.data
+          arr: list
         })
+        let pingtuanfirst=list[0]
+        that.requestfirst(pingtuanfirst)
       },
+    })
+  },
+  // 首次点击拼团
+  requestfirst: function (name) {
+    var that = this;
+    wx.request({
+      url: app.globalData.urlpuzzle + '/group/selectCategory',
+      method: 'Get',
+      success: function (res) {
+        let list = res.data
+        let nowTime=new Date().getTime();
+        for (var index in list) {
+          let starttime = list[index].startTime ;
+          let stoptime = list[index].stopTime;
+          if(starttime-nowTime>0){
+            list[index].qinggoustatus=0 //还没开始
+          }else if(starttime-nowTime<=0&&stoptime-nowTime>0){
+            list[index].qinggoustatus = 1 //已经开始
+          }else if(stoptime-nowTime<=0){
+            list[index].qinggoustatus = 2  //已经结束
+          }
+          list[index].img = app.globalData.urlmorecategory + '/goods/getFile?fileId=' + list[index].fileDesc[0].id;
+        }
+        that.setData({
+          name: list,
+        })
+        console.log(list)
+      },
+      data: {
+        name: name
+      }
     })
   },
   // 拼团内容
   requestcontent: function (e) {
-     console.log(e)
+    console.log(e)
     var that = this;
     wx.request({
       url: app.globalData.urlpuzzle + '/group/selectCategory',
       method: 'Get',
       success: function (res) {
         console.log(res)
+        let list = res.data
+        let nowTime = new Date().getTime();
+        for (var index in list) {
+          let starttime = list[index].startTime;
+          let stoptime = list[index].stopTime;
+          if (starttime - nowTime > 0) {
+            list[index].qinggoustatus = 0 //还没开始
+          } else if (starttime - nowTime <= 0 && stoptime - nowTime > 0) {
+            list[index].qinggoustatus = 1 //已经开始
+          } else if (stoptime - nowTime <= 0) {
+            list[index].qinggoustatus = 2  //已经结束
+          }
+          list[index].img = app.globalData.urlmorecategory + '/goods/getFile?fileId=' + list[index].fileDesc[0].id;
+        }
         that.setData({
-          name: res.data,
+          name: list,
         })
       },
       data: {
@@ -277,43 +356,70 @@ Page({
   },
   //根据时间查秒杀商品
   seckillshpping: function (e) {
-    // console.log(e)
     var that = this;
-    wx.request({
-      url: app.globalData.urlseckill + '/kill/selectByDate',
-      method: 'Get',
-      success: function (res) {
-        // console.log(res)
-        that.setData({
-          time: res.data
-        })
-        let str = that.data.time[0].substring(11, 16)
-        let str1 = that.data.time[1].substring(11, 16)
-        let str2 = that.data.time[2].substring(11, 16)
-        let str3 = that.data.time[3].substring(11, 16)
-        that.setData({
-          times: str,
-          times1: str1,
-          times2: str2,
-          times3: str3
-        })
-        wx.request({
-          url: app.globalData.urlseckill + '/kill/seleteDate',
-          method: 'Get',
-          success: function (res) {
-            // console.log(res)
-            that.setData({
-              schedule: res.data,
-            })
-          },
-          data: {
-            startTime: that.data.day + '  ' + that.data.times
-          }
-        })
-      },
-    })
+    if(e.detail.title=='精选'){
+      that.ranking()
+    } else if (e.detail.title == '拼团'){
+      that.requestData();
+    } else if (e.detail.title == '秒杀') {
+      that.miaosha();
+    }
   },
-
+// 点击秒杀
+miaosha(){
+  var that=this;
+  let beforetimes = [];
+  let beforestatus = [];
+  let timebox = [];
+  wx.request({
+    url: app.globalData.urlseckill + '/kill/selectByDate',
+    method: 'Get',
+    success: function (res) {
+      let times = res.data;
+      let nowTime = new Date().getTime();
+      for (var index in times) {
+        let timestart = times[index].time;
+        if (timestart - nowTime > 0) {
+          times[index].status = 1  //即将开始
+        } else {
+          times[index].status = 0 //已开始
+        }
+      }
+      let startTime = util.formatDate(times[0].time);
+      let startstatus = times[0].status;
+      that.setData({
+        startTime: startTime,
+        startstatus: startstatus
+      })
+      for (var index in times) {
+        beforestatus.push(times[index].status)
+        beforetimes.push(util.formatDate(times[index].time))
+        times[index].time = util.formatDate(times[index].time).substring(11, 16)
+      }
+      that.setData({
+        beforetimes: beforetimes,
+        beforestatus: beforestatus,
+        times: times
+      })
+      wx.request({
+        url: app.globalData.urlseckill + '/kill/seleteDate',
+        method: 'Get',
+        success: function (res) {
+          let list = res.data;
+          for (var index in list) {
+            list[index].img = app.globalData.urlmorecategory + '/goods/getFile?fileId=' + list[index].fileDesc[0].id;
+          }
+          that.setData({
+            schedule: res.data,
+          })
+        },
+        data: {
+          startTime: startTime
+        }
+      })
+    },
+  })
+},
   // 跳转携带id跳拼团
   particulars: function (e) {
     var id = e.currentTarget.dataset.id
@@ -342,7 +448,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.lunBoTu();
+    this.ranking();
   },
 
   /**

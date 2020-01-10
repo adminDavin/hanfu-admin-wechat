@@ -76,7 +76,7 @@
       </scroll-view>
       </block>
     </checkbox-group>
-    <view class="xiajia" hidden="true">
+    <view class="xiajia" >
       <view class="xiajia-top">
         <text style="font-size:28rpx;font-weight:500;color:rgba(21,21,21,1);">已下架商品({{xiajiagoods.length}})</text>
         <!-- <view class="xiajia-top-del">全部删除</view> -->
