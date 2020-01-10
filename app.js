@@ -13,6 +13,7 @@ App({
     cartNum: '0',
     cartPrice: 0,
     toCartTag:false,
+    urlmorecategory: 'http://192.168.1.101:9095',//分类
     purchase: 'http://192.168.1.104:8082',
     urlLogin: 'http://192.168.1.104:8082', //登录
     urlsite: 'http://192.168.1.104:8082', //地点
@@ -28,6 +29,7 @@ App({
     urlseckill: 'http://192.168.1.175:9910', //秒杀
     urlRefund: 'http://192.168.1.196:9099/',
     urlpay:'http://192.168.1.196:8082'
+    // // urlmorecategory: 'https://www.tjsichuang.cn:1443/api/product',//分类
     // purchase: 'https://www.tjsichuang.cn:1443/api/user',
     // urlLogin: 'https://www.tjsichuang.cn:1443/api/user', //登录
     // urlsite: 'https://www.tjsichuang.cn:1443/api/user', //地点

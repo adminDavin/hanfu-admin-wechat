@@ -8,7 +8,7 @@
           <image class="img" src="../images/vip/皇冠@2x.png"></image>
           <text class="texts">PLUS会员月卡</text>
         </view>
-        <view class="money-box"  bindtap="lijicz" data-money="{{chongzhiList[0].money}}">
+        <view class="money-box"  bindtap="lijicz" data-money="{{chongzhiList[0].money}}" data-id="{{chongzhiList[0].id}}">
           <text class="money-number">￥{{chongzhiList[0].money}}</text>
           <text class="money-text">充值即送</text>
         </view>
@@ -20,7 +20,7 @@
         <image class="img" src="../images/vip/皇冠@2x.png"></image>
         <text class="texts">PLUS会员季卡</text>
       </view>
-      <view class="money-box"  bindtap="lijicz" data-money="{{chongzhiList[0].money}}">
+      <view class="money-box"  bindtap="lijicz" data-money="{{chongzhiList[1].money}}" data-id="{{chongzhiList[1].id}}">
         <text class="money-number">￥{{chongzhiList[1].money}}</text>
         <text class="money-text">充值即送</text>
       </view>
@@ -31,7 +31,7 @@
         <image class="img" src="../images/vip/皇冠@2x.png"></image>
         <text class="texts">PLUS会员年卡</text>
       </view>
-      <view class="money-box"  bindtap="lijicz" data-money="{{chongzhiList[0].money}}">
+      <view class="money-box"  bindtap="lijicz" data-money="{{chongzhiList[2].money}}" data-id="{{chongzhiList[2].id}}">
         <text class="money-number">￥{{chongzhiList[2].money}}</text>
         <text class="money-text">充值即送</text>
       </view>
@@ -46,7 +46,7 @@
           <image class="img" src="../images/vip/皇冠@2x.png"></image>
           <text class="texts">PLUS会员月卡</text>
         </view>
-        <view class="money-box" bindtap='buy'>
+        <view class="money-box" bindtap="lijicz" data-money="{{goumaiList[0].money}}" data-id="{{goumaiList[0].id}}">
           <text class="money-number">￥{{goumaiList[0].money}}</text>
           <text class="money-text">立即购买</text>
         </view>
@@ -58,7 +58,7 @@
         <image class="img" src="../images/vip/皇冠@2x.png"></image>
         <text class="texts">PLUS会员季卡</text>
       </view>
-      <view class="money-box" bindtap='buy'>
+      <view class="money-box" bindtap="lijicz" data-money="{{goumaiList[1].money}}" data-id="{{goumaiList[1].id}}">
         <text class="money-number">￥{{goumaiList[1].money}}</text>
         <text class="money-text">立即购买</text>
       </view>
@@ -69,7 +69,7 @@
         <image class="img" src="../images/vip/皇冠@2x.png"></image>
         <text class="texts">PLUS会员年卡</text>
       </view>
-      <view class="money-box" bindtap='buy'>
+      <view class="money-box" bindtap="lijicz" data-money="{{goumaiList[2].money}}" data-id="{{goumaiList[2].id}}">
         <text class="money-number">￥{{goumaiList[2].money}}</text>
         <text class="money-text">立即购买</text>
       </view>

@@ -16,6 +16,12 @@ Page({
     userId:'',
     collects: false,
   },
+  //购物车
+  gouwucar:function(){
+    wx.switchTab({
+      url: '../../shopping/shopping',
+    })
+  },
   //关注
   collect: function () {
     var that = this;

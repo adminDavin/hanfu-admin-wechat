@@ -84,17 +84,16 @@
 }
 .text-table {
     width: 530rpx;
-    height: 380rpx;
     margin-top: 35rpx;
 }
 .text-classify {
-    width: 508rpx;
-    height: 61rpx;
+    width: 528rpx;
     line-height: 61rpx;
     margin-left: 22rpx;
     font-size: 28rpx;
     color: #151515;
     font-weight: Medium;
+    overflow:hidden;
 }
 .shpping-big {
     width: 528rpx;
@@ -102,7 +101,7 @@
     margin-left: 40rpx;
     margin-top: 5rpx;
 }
-.text-shpping {
+/* .text-shpping {
     display: flex;
     flex-direction:column;
     align-items: center;
@@ -120,9 +119,42 @@
     color: #151515;
     font-weight: 'Regular';
     font-family:'PingFang-SC-Regular';
-}
+} */
 .box {
     width: 710rpx;
     height: 50rpx;
     border: 3rpx solid #000;
 }
+.yige {
+    width: 105rpx;
+    height: 140rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    float: left;
+    margin-top: 18rpx;
+    margin-right: 70rpx;
+    }
+    .tupian {
+        width: 105rpx;
+        height: 105rpx;
+    }
+    .imagestu {
+        width: 105rpx;
+        height: 105rpx;
+    }
+    .wenzi {
+        margin-top: 7rpx;
+        width: 99rpx;
+        height: 38rpx;
+        padding: 0 3rpx;
+    }
+    .textwenzi {
+        display: block;
+        text-align: center;
+        font-size:24rpx;
+        color: #151515;
+        font-weight: 'Regular';
+        font-family:'PingFang-SC-Regular';
+        line-height: 38rpx;
+    }

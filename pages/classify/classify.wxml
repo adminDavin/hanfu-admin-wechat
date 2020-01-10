@@ -1,84 +1,34 @@
 <view class="classify">
-    <view class="classify-header-box">
-        <image src="../images/tabs/saoma.png" class="classify-tus" />
-        <view class="classify-header" bindtap="sousuo">
-            <image class="classify-tu" src="../images/tabs/sousuo.png" />
-            <input type="text" class="classify-input" placeholder="显示器2K" />
-        </view>
-        <image src="../images/tabs/xiaoxi.png" class="classify-tus" />
+  <view class="classify-header-box">
+    <image src="../images/tabs/saoma.png" class="classify-tus" />
+    <view class="classify-header" bindtap="sousuo">
+      <image class="classify-tu" src="../images/tabs/sousuo.png" />
+      <input type="text" class="classify-input" placeholder="显示器2K" />
     </view>
-    <!-- banner区 -->
-    <view class="classify-banner">
-        <!-- 左 -->
-            <van-sidebar active-key="{{ activeKey }}">
-                <van-sidebar-item title="精选推荐" custom-class="banner-box" />
-                <van-sidebar-item title="一级分类" custom-class="banner-box" />
-                <van-sidebar-item title="美妆护肤" custom-class="banner-box" />
-                <van-sidebar-item title="男鞋" custom-class="banner-box" />
-                <van-sidebar-item title="女鞋" custom-class="banner-box" />
-                <van-sidebar-item title="个护清洁" custom-class="banner-box" />
-                <van-sidebar-item title="女装" custom-class="banner-box" />
-                <van-sidebar-item title="个护清洁" custom-class="banner-box" />
-                <van-sidebar-item title="女装" custom-class="banner-box" />
-            </van-sidebar>
-            <!-- 右 -->
-            <view class="banner-text">
-                <image src="../images/handpick/1.png" class="text-image" />
-                <view class="text-table">
-                    <view class="text-classify">二级分类</view>
-                    <view class="shpping-big">
-                        <view class="text-shpping">
-                            <image src="" class="shpping-box" />
-                            <text class="shpping-title">三级分类</text>
-                        </view>
-                        <view class="text-shpping">
-                            <image src="" class="shpping-box" />
-                            <text class="shpping-title">三级分类</text>
-                        </view>
-                        <view class="text-shpping">
-                            <image src="" class="shpping-box" />
-                            <text class="shpping-title">三级分类</text>
-                        </view>
-                        <view class="text-shpping">
-                            <image src="" class="shpping-box" />
-                            <text class="shpping-title">三级分类</text>
-                        </view>
-                        <view class="text-shpping">
-                            <image src="" class="shpping-box" />
-                            <text class="shpping-title">三级分类</text>
-                        </view>
-                        <view class="text-shpping">
-                            <image src="" class="shpping-box" />
-                            <text class="shpping-title">三级分类</text>
-                        </view>
-                    </view>
-                </view>
-                <view class="text-table">
-                    <view class="text-classify">二级分类</view>
-                    <view class="shpping-big">
-                        <view class="text-shpping">
-                            <image src="" class="shpping-box" />
-                            <text class="shpping-title">三级分类</text>
-                        </view>
-                        <view class="text-shpping">
-                            <image src="" class="shpping-box" />
-                            <text class="shpping-title">三级分类</text>
-                        </view>
-                        <view class="text-shpping">
-                            <image src="" class="shpping-box" />
-                            <text class="shpping-title">三级分类</text>
-                        </view>
-                        <view class="text-shpping">
-                            <image src="" class="shpping-box" />
-                            <text class="shpping-title">三级分类</text>
-                        </view>
-                        <view class="text-shpping">
-                            <image src="" class="shpping-box" />
-                            <text class="shpping-title">三级分类</text>
-                        </view>
-                    </view>
-                </view>
+    <image src="../images/tabs/xiaoxi.png" class="classify-tus" />
+  </view>
+  <!-- banner区 -->
+  <view class="classify-banner">
+    <!-- 左 -->
+    <van-sidebar active-key="{{ activeKey }}">
+      <van-sidebar-item title="{{item.hfName}}" bind:click="onChange" custom-class="banner-box" wx:for="{{arr}}" wx:key="index" data-id="{{item.id}}" />
+    </van-sidebar>
+    <!-- 右 -->
+    <view class="banner-text">
+      <image src="{{images[0].img}}" class="text-image" />
+      <view class="text-table" wx:for="{{arrs}}" wx:for-item="arritem" wx:key="index">
+        <view class="text-classify">{{arritem.twoLevelName}}</view>
+        <view class="shpping-big">
+          <view class="yige" wx:for="{{arritem.categories}}" wx:for-item="ait">
+            <view class="tupian" bindtap="goThreeLevel">
+              <image src="{{ait.img}}" class="imagestu"  />
             </view>
-       
+            <view class="wenzi">
+              <text class="textwenzi">{{ait.hfName}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
     </view>
+  </view>
 </view>

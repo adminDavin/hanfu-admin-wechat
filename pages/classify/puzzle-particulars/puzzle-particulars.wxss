@@ -160,8 +160,12 @@ swiper {
 
 .table-box {
     display: flex;
+    align-items: center;
     /* width: 86rpx; */
     height: 31rpx;
+    padding: 0;
+    line-height: 31rpx;
+    background-color: #fff;
 }
 
 .table-images {
@@ -565,7 +569,7 @@ swiper {
     font-weight: 500;
     color: rgba(255, 255, 255, 1);
     margin-top: 15rpx;
-    margin-left: 190rpx;
+    margin-left: 60rpx;
 }
 
 .purchase {
@@ -747,7 +751,7 @@ swiper {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 26rpx;
+    height: 30rpx;
     margin-top: 19rpx;
 }
 
@@ -1004,4 +1008,74 @@ swiper {
     position: absolute;
     top: 0;
     left: 198rpx;
+}
+/* 规格弹窗 */
+.guigebox{
+  width:100%;
+  height: 706rpx;
+  padding:24rpx;
+  box-sizing: border-box;
+  position: fixed;
+  bottom:0;
+  background-color: white;
+}
+.guigebox-top{
+  width:100%;
+  height:160rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.guanbibox-price{
+  margin-left: 20rpx;
+  width: 500rpx;
+  height:100%;
+font-size:42rpx;
+font-family:PingFang SC;
+font-weight:bold;
+color:rgba(255,0,0,1);
+padding-top:74rpx;
+box-sizing: border-box;
+}
+.guanbipic{
+  width:24rpx;
+  margin-left:10rpx;
+}
+.guige-scroll{
+  margin-top:20rpx;
+  width:100%;
+  height:400rpx;
+}
+.guanbibox-sec{
+  width:100%;
+  
+}
+.guigebox-num{
+  width:100%;
+  height: 62rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.guigenum-right{
+  width:130rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.guigenum{
+  font-size: 26rpx;
+}
+.guigeqr{
+position: fixed;
+bottom:10rpx;
+  width:702rpx;
+height:88rpx;
+background:rgba(255,51,51,1);
+border-radius:44rpx;
+text-align: center;
+line-height: 88rpx;
+color:white;
+font-weight: 500;
+font-size:34rpx
 }

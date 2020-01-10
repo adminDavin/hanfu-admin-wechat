@@ -55,7 +55,7 @@
                 <text class="over-number">00</text>
                 <text class="over">秒</text>
             </view>
-            <view class="puzzle-mark">已拼成0件</view>
+            <view class="puzzle-mark"></view>
         </view>
     </view>
     <!-- 优惠项 -->
@@ -159,10 +159,10 @@
             <image src="../../images/tabs/xiaoxi.png" class="footer-image" />
             <text class="foot-text">客服</text>
         </view>
-        <!-- <view class="footter-service footer-margin">
+        <view class="footter-service footer-margin" bindtap="gouwucar">
             <image src="../../images/tabs/buycar.png" class="footer-image" />
             <text class="foot-text">购物车</text>
-        </view> -->
+        </view>
         <view class="footer-shppingcar">加入购物车</view>
         <view class="footer-shppingcar purchase">立即购买</view>
     </view>

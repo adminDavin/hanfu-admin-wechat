@@ -1,4 +1,6 @@
-const app = getApp()
+const app = getApp();
+var util = require('../../../utils/util.js')
+const apiCart = require('../../../utils/api/cart.js');
 Page({
   data: {
     lists: false,
@@ -9,7 +11,9 @@ Page({
     pictureId: '',
     fileId: '',// 获取物品图片
     fileIds: '',
-    morepicture: ''//图片都在这里
+    morepicture: '',//图片都在这里
+    mosthigher:'',
+    mostlower:'',
   },
   //搜索
   sousuo: function () {
@@ -64,96 +68,74 @@ Page({
       })
     }
   },
+  // 最低价
+  mostlower(e){
+    var that=this;
+    let mostlower=e.detail.value;
+    that.setData({
+      mostlower:mostlower
+    })
+  },
+  // 最高价
+  mosthigher(e) {
+    var that = this;
+    let mosthigher = e.detail.value;
+    that.setData({
+      mosthigher: mosthigher
+    })
+  },
+
   // 筛选
   onReady: function () {
     this.animation = wx.createAnimation()
   },
   translate: function (event) {
-    // console.log(event);
     this.setData({
       isRuleTrue: true
     })
-    // this.animation.translate(-245, 0).step()
-    // this.setData({
-    //   animation: this.animation.export()
-    // })
   },
 
   success: function () {
     this.setData({
       isRuleTrue: false
     })
-    // this.animation.translate(0, 0).step()
-    // this.setData({
-    //   animation: this.animation.export()
-    // })
+    apiCart.toSettle(app.globalData.urlGoods, '/goods/queryList', {
+      sellPrice1:that.data.mostlower,
+      sellPrice2:that.data.mosthigher
+    }, (res) => {
+      console.log(res)
+      let list = res.data.data;
+      for (var index in list) {
+        list[index].img = app.globalData.urlGoods + '/goods/getFile?fileId=' + list[index].fileId;
+      }
+      that.setData({
+        arr: list
+      })
+    });
   },
   // 获取商品列表
   categoryId: function (e) {
     var that = this;
     wx.request({
-      url: app.globalData.urlparticulars + '/goods/listGoods',
+      url: app.globalData.urlGoods + '/goods/listGoods',
       method: 'Get',
       success: function (res) {
         console.log(res)
+        let list=res.data.data;
+        for(var index in list){
+          list[index].img = app.globalData.urlGoods + '/goods/getFile?fileId=' + list[index].fileId;
+        }
         that.setData({
-          arr: res.data.data,
+          arr: list,
         })
+        console.log(list)
       },
       data:{
         stoneId:1
       }
     })
   },
-  // 获取物品图片
-  picture: function (e) {
-    console.log(e)
-    var that = this;
-    wx.request({
-      url: app.globalData.urlparticulars + '/goods/pictures',
-      method: 'Get',
-      success: function (res) {
-        console.log(res);
-        that.setData({
-          fileId: res.data.data
-        })
-      },
-      data: {
-        goodsId: that.data.pictureId
-      }
-    })
-  },
-  //获取图片
-  morepicture: function () {
-    var that = this;
-    wx.request({
-      url: app.globalData.urlparticulars + '/goods/getFile',
-      method: 'Get',
-      success: function (res) {
-        console.log(res);
-        that.setData({
-          morepicture: res.data.data
-        })
-      },
-      data: {
-        fileId: that.data.fileIds
-      }
-    })
-  },
-  //综合
-  synthesize: function () {
-    var that = this;
-    wx.request({
-      url: app.globalData.urlparticulars + '/goods/categoryId',
-      method: 'Get',
-      success: function (res) {
-        console.log(res);
-        that.setData({
-          arr: res.data.data,
-        })
-      },
-    })
-  },
+ 
   //价格排序
   prices: function () {
     var that = this;
@@ -162,8 +144,13 @@ Page({
       method: 'Get',
       success: function (res) {
         console.log(res)
+
+        let list = res.data.data;
+        for (var index in list) {
+          list[index].img = app.globalData.urlGoods + '/goods/getFile?fileId=' + list[index].fileId;
+        }
         that.setData({
-          arr: res.data.data
+          arr: list,
         })
       },
     })
@@ -184,19 +171,41 @@ Page({
       url: `../particulars/particulars?id=${id}`,
     })
   },
+  // 常买
+  getOftenBuy() {
+    var that = this;
+    apiCart.toSettle(app.globalData.urlCart, '/cart/selectOftenBuy', {
+      userId: that.data.userId,
+    }, (res) => {
+      console.log(res)
+      var list = res.data.data;
+      for (var index in list) {
+        list[index].img = app.globalData.urlGoods + '/goods/getFile?fileId=' + list[index].productIcon;
+      }
+      that.setData({
+        arr: list,
+      })
+    });
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let id = options.id;
-    var that = this;
-    console.log(id);
-    that.setData({
-      dataId: id,
-    });
-    this.categoryId();
-    this.picture();
-    this.morepicture();
+    var that=this;
+    let id=options.id;
+    if(options.tag){
+      wx.getStorage({
+        key: 'user',
+        success: function(res) {
+          that.setData({
+            userId:res.data.userId
+          })
+          that.getOftenBuy();
+        },
+      })
+    }else{
+      this.categoryId();
+    }
   },
 
   /**

@@ -562,7 +562,7 @@ swiper {
     font-weight: 500;
     color: rgba(255, 255, 255, 1);
     margin-top: 15rpx;
-    margin-left: 190rpx;
+    margin-left: 60rpx;
 }
 
 .purchase {
