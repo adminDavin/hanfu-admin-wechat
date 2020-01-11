@@ -1,5 +1,5 @@
 <view class="puzzle-particulars">
-  <!-- 图片 -->
+  图片
   <view class="header-images">
     <block>
       <swiper bindchange="change" vertical="{{false}}" indicator-dots="{{flase}}" autoplay="{{flase}}">

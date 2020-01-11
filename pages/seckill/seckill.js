@@ -183,6 +183,7 @@ Page({
 
 
   onLoad: function (options) {
+    console.log(options);
     // 获取当前时间
     var Day = util.formatTime(new Date());
     this.setData({
