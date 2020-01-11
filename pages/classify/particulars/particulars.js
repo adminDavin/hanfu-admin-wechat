@@ -7,7 +7,7 @@ Page({
     // hideModals:false,
     dataId: '',
     show: false,
-    isLogin: false,
+    isLogin: true,
     canGetSite: true,
     guigeshow: false,
     tsiteshow:false,
@@ -21,7 +21,7 @@ Page({
     sites: '',
     shppingcar: '', //购物车
     attention: '',
-    userId: '',
+    userId: '2',
     slideNumber: '1', //详情滑动跳动数字
     collects: false,
     goodsNum: 1,
@@ -148,7 +148,7 @@ Page({
       url: app.globalData.urlGoods + '/goods/specifiess',
       method: 'get',
       data: {
-        goodsId:2 //that.data.dataId
+        goodsId: 2//that.data.dataId
       },
       success(res) {
         console.log(res)
@@ -183,7 +183,7 @@ Page({
         spec[i].hfGoodsDisplayList[j].des = 0
       } 
       if (spec[i].productSpecName==name){
-        spec[i].hfGoodsDisplayList[j].des = 1
+        spec[i].des = 1
         spec[i].value=value
       }
     }
@@ -383,7 +383,7 @@ Page({
       url: app.globalData.urlsite + '/user/address/queryAddress',
       method: 'Get',
       success: function(res) {
-        // console.log(res)
+         console.log(res)
         that.setData({
           site: res.data.data
         })
@@ -398,7 +398,7 @@ Page({
       },
       data: {
         token: 13,
-        userId: that.data.userId
+        userId:2 //that.data.userId
       }
     })
   },
@@ -425,9 +425,10 @@ Page({
   },
   //加入购物车
   shppingcar: function(e) {
+
     var that = this;
     let isLogin = that.data.isLogin;
-    if (isLogin == false) {
+    if (isLogin == true) {
       that.setData({
         show: true
       })

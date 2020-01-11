@@ -16,7 +16,7 @@ App({
     // urlmorecategory: 'http://192.168.1.101:9095',//分类
     // purchase: 'http://192.168.1.104:8082',
     // urlLogin: 'http://192.168.1.104:8082', //登录
-    // urlsite: 'http://192.168.1.104:8082', //地点
+    //urlsite: 'http://192.168.1.104:8082', //地点
     // urlGoods: 'http://192.168.1.104:9095', //商品
     // urlparticulars: 'http://192.168.1.104:9095', //详情
     // information: 'http://192.168.1.104:9097',

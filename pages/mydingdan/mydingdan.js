@@ -39,6 +39,7 @@ Page({
   },
   //去到订单详情页
   godetail(e) {
+    debugger
     console.log(e)
     let orderid = e.currentTarget.dataset.orderid;
     let orderstatus = e.currentTarget.dataset.orderstatus;
@@ -150,10 +151,12 @@ Page({
   },
   // 去支付
   gopay(e) {
+    var that=this;
+    debugger
     let orderId = e.currentTarget.dataset.orderid;
     let price = e.currentTarget.dataset.price;
     that.setData({
-      ordersId: ordersId,
+      ordersId: orderId,
       amount:price
     })
     that.lijicz();

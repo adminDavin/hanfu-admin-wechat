@@ -132,13 +132,15 @@ Page({
         amount: that.data.amount,
         distribution: distribution,
         hfRemark: that.data.elevalue,
-        googsId: googsId,
+        googsId: 1,
         payMethodName: payMethodName,
         purchaseQuantity: that.data.purchaseQuantity,
-        userAddressId: that.data.addressList.id,
+        userAddressId:1,   //that.data.addressList.id,
         purchasePrice: that.data.purchasePrice,
+        userId:2
       },
       success(res) {
+        console.log(res)
         let ordersId = res.data.data[0].ordersId;
         that.setData({
           ordersId: ordersId
