@@ -29,7 +29,13 @@ Page({
     userAddressId: '',
     spec: [],
     guigestr: '',
-    curr:0
+    curr:0,
+  },
+  //跳转购物车
+  gouwucar: function () {
+    wx.switchTab({
+      url: '../../shopping/shopping'
+    })
   },
   //购物车
   gouwucar: function () {
@@ -142,10 +148,16 @@ Page({
       url: app.globalData.urlGoods + '/goods/specifiess',
       method: 'get',
       data: {
-        goodsId: 2
+        goodsId:2 //that.data.dataId
       },
       success(res) {
+        console.log(res)
         let spec = res.data.data;
+        for(var i in spec){
+          for (var j in spec[i].hfGoodsDisplayList){
+            spec[i].hfGoodsDisplayList[j].des= 0
+          }
+        }
         that.setData({
           spec: spec
         })
@@ -159,14 +171,20 @@ Page({
     let name = e.currentTarget.dataset.name;
     let value = e.currentTarget.dataset.value;
     let curr=e.currentTarget.dataset.index;
+    let des = e.currentTarget.dataset.des
     var that=this;
     that.setData({
       curr:curr
     })
     let spec = that.data.spec;
-    for (var index in spec) {
-      if (spec[index].productSpecName == name) {
-        spec[index].value = value
+    console.log(spec)
+    for (var i in spec) {
+      for (var j in spec[i].hfGoodsDisplayList) {
+        spec[i].hfGoodsDisplayList[j].des = 0
+      } 
+      if (spec[i].productSpecName==name){
+        spec[i].hfGoodsDisplayList[j].des = 1
+        spec[i].value=value
       }
     }
   },
@@ -322,12 +340,12 @@ Page({
           arr: list,
           totalprice: list.sellPrice
         })
-        console.log(list)
+        console.log(that.data.arr)
         that.site();
         console.log(that.data.totalprice)
       },
       data: {
-        goodsId: that.data.dataId
+        goodsId:that.data.dataId
       }
     })
   },
@@ -422,6 +440,7 @@ Page({
         })
         return
       }
+      this.guigeshow()
       wx.request({
         url: app.globalData.urlCart + '/cart/add',
         method: 'Get',
@@ -550,7 +569,6 @@ Page({
         if (res.authSetting['scope.userInfo']) {
           console.log("已授权=====")
           // 已经授权，可以直接调用 getUserInfo 获取头像昵称
-
           wx.getUserInfo({
             success(res) {
               console.log("获取用户信息成功", res)

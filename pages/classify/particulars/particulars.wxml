@@ -143,7 +143,7 @@
       <image src="../../images/tabs/xiaoxi.png" class="footer-image" />
       <text class="foot-text">客服</text>
     </view>
-    <view class="footter-service footer-margin">
+    <view class="footter-service footer-margin" bindtap="gouwucar">
       <image src="../../images/tabs/buycar.png" class="footer-image" />
       <text class="foot-text">购物车</text>
     </view>
@@ -191,7 +191,7 @@
       <view class="guigecon" wx:for="{{spec}}" wx:key="index" wx:for-item="specitem">
         <view class="guigecon-top">{{specitem.productSpecName}}</view>
         <view class="guigecon-bottom">
-          <view class="guigebot-item {{curr==index?'guigebot-item-active':''}}" data-index="{{index}}" wx:for="{{specitem.hfGoodsDisplayList}}" wx:for-item="item" wx:key catchtap="guigevalue" data-name="{{specitem.productSpecName}}" data-value="{{item.hfValue}}">{{item.hfValue}}</view>
+          <view class="guigebot-item {{item.des==1?'guigebot-item-active':''}}"  data-index="{{index}}" wx:for="{{specitem.hfGoodsDisplayList}}" wx:for-item="item" wx:key="index" catchtap="guigevalue" data-name="{{specitem.productSpecName}}" data-value="{{item.hfValue}}" data-des="{{item.des}}">{{item.hfValue}}</view>
         </view>
       </view>
       <view class="guigebox-num">

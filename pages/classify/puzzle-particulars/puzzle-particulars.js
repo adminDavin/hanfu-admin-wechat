@@ -104,12 +104,12 @@ Page({
   //     totalprice: totalprice
   //   })
   // },
-  // //跳转购物车
-  //   gouwucar:function(){
-  //     wx.switchTab({
-  //       url:'../../shopping/shopping'
-  //     })
-  //   },
+  //跳转购物车
+    gouwucar:function(){
+      wx.switchTab({
+        url:'../../shopping/shopping'
+      })
+    },
   //关注
   collect: function () {
     var that = this;

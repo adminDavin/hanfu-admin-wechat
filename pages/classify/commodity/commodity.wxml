@@ -85,7 +85,7 @@
           <view class="money-box">
             <text class="money-title">¥</text>
             <text class="money-number">{{item.sellPrice}}</text>
-            <image src="../../images/tabs/vip.png" class="money-vip" />
+            <!-- <image src="../../images/tabs/vip.png" class="money-vip" /> -->
           </view>
           <view class="money-table">
             <text class="money-discounts">新品</text>
