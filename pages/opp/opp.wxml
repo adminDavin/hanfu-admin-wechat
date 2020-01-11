@@ -1,0 +1,85 @@
+<van-tabs active="a" color="#ffc02b" bind:click="chongzhi">
+  <!-- 充值赠送 -->
+  <van-tab title="充值赠送" name="a" >
+    <view class="tu" >
+      <!-- 月卡 -->
+      <view class="tu_1" wx:if="{{chongzhiList[0].money}}">
+        <view class="tu1s">
+          <image class="img" src="../images/vip/皇冠@2x.png"></image>
+          <text class="texts">PLUS会员月卡</text>
+        </view>
+        <view class="money-box"  bindtap="lijicz" data-money="{{chongzhiList[0].money}}" data-id="{{chongzhiList[0].id}}">
+          <text class="money-number">￥{{chongzhiList[0].money}}</text>
+          <text class="money-text">充值即送</text>
+        </view>
+      </view>
+    </view>
+    <!-- 季卡 -->
+    <view class="tu_2" wx:if="{{chongzhiList[1].money}}">
+      <view class="tu1s">
+        <image class="img" src="../images/vip/皇冠@2x.png"></image>
+        <text class="texts">PLUS会员季卡</text>
+      </view>
+      <view class="money-box"  bindtap="lijicz" data-money="{{chongzhiList[1].money}}" data-id="{{chongzhiList[1].id}}">
+        <text class="money-number">￥{{chongzhiList[1].money}}</text>
+        <text class="money-text">充值即送</text>
+      </view>
+    </view>
+    <!-- 年卡 -->
+    <view class="tu_3" wx:if="{{chongzhiList[2].money}}">
+      <view class="tu1s">
+        <image class="img" src="../images/vip/皇冠@2x.png"></image>
+        <text class="texts">PLUS会员年卡</text>
+      </view>
+      <view class="money-box"  bindtap="lijicz" data-money="{{chongzhiList[2].money}}" data-id="{{chongzhiList[2].id}}">
+        <text class="money-number">￥{{chongzhiList[2].money}}</text>
+        <text class="money-text">充值即送</text>
+      </view>
+    </view>
+  </van-tab>
+  <!-- 购买会员 -->
+  <van-tab title="购买会员" name="b">
+    <view class="tu">
+      <!-- 月卡 -->
+      <view class="tu_1" wx:if="{{goumaiList[0].money}}">
+        <view class="tu1s">
+          <image class="img" src="../images/vip/皇冠@2x.png"></image>
+          <text class="texts">PLUS会员月卡</text>
+        </view>
+        <view class="money-box" bindtap="lijicz" data-money="{{goumaiList[0].money}}" data-id="{{goumaiList[0].id}}">
+          <text class="money-number">￥{{goumaiList[0].money}}</text>
+          <text class="money-text">立即购买</text>
+        </view>
+      </view>
+    </view>
+    <!-- 季卡 -->
+    <view class="tu_2" wx:if="{{goumaiList[1].money}}">
+      <view class="tu1s">
+        <image class="img" src="../images/vip/皇冠@2x.png"></image>
+        <text class="texts">PLUS会员季卡</text>
+      </view>
+      <view class="money-box" bindtap="lijicz" data-money="{{goumaiList[1].money}}" data-id="{{goumaiList[1].id}}">
+        <text class="money-number">￥{{goumaiList[1].money}}</text>
+        <text class="money-text">立即购买</text>
+      </view>
+    </view>
+    <!-- 年卡 -->
+    <view class="tu_3" wx:if="{{goumaiList[2].money}}">
+      <view class="tu1s">
+        <image class="img" src="../images/vip/皇冠@2x.png"></image>
+        <text class="texts">PLUS会员年卡</text>
+      </view>
+      <view class="money-box" bindtap="lijicz" data-money="{{goumaiList[2].money}}" data-id="{{goumaiList[2].id}}">
+        <text class="money-number">￥{{goumaiList[2].money}}</text>
+        <text class="money-text">立即购买</text>
+      </view>
+    </view>
+  </van-tab>
+  <view class="tongxun">
+    <text class="tongxun_1">
+      更多会员权益，或有疑问，欢迎致电客服（点击号码直接拨打）
+    </text>
+    <a href="#">18596346589</a>
+  </view>
+  <view class="ceshi"style="width:100rpx;height:100rpx;background:black" bindtap="lijicz"></view>
+</van-tabs>

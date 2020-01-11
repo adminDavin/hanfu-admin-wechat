@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "van-rate": "/vant/rate/index",
+    "van-field": "/vant/field/index",
+    "van-uploader": "/vant/uploader/index"
+  },
+ 
+  "navigationBarTitleText": "评价晒单"
+}
