@@ -9,7 +9,7 @@ Page({
     quhuomethod: true,
     zhifumethod: true,
     textshow: false,
-    userId: '',
+    userId: 2,
     arr:[],
     goodsid: [],
     elevalue: '',
@@ -126,20 +126,24 @@ Page({
     } else {
       payMethodName = '余额支付'
     }
+    console.log(this.data.selectedGoods);
     wx.request({
       url: app.globalData.url + '/order/creat',
       method: 'get',
       data: {
-        amount: that.data.amount,
+        amount: this.data.selectedGoods.totalprice,
         distribution: distribution,
         hfRemark: that.data.elevalue,
-        googsId: googsId,
+        googsId: this.data.selectedGoods.goodsId,
+        userId: this.data.userId,
         payMethodName: payMethodName,
-        purchaseQuantity: that.data.purchaseQuantity,
+        purchaseQuantity: this.data.selectedGoods.goodsNum,
         userAddressId: that.data.addressList.id,
-        purchasePrice: that.data.purchasePrice,
+        purchasePrice: this.data.selectedGoods.totalprice,
       },
       success(res) {
+        console.log(res);
+
         let ordersId = res.data.data[0].ordersId;
         that.setData({
           ordersId: ordersId
@@ -153,8 +157,9 @@ Page({
     var that = this;
     wx.getStorage({
       key: 'user',
-      success: function (res) {
-        that.unitedPayRequest(res.data.userInfo.openId);
+      success: (res) => {
+        console.log(res);
+        this.unitedPayRequest(res.data.userInfo.openId);
       },
     })
   },
@@ -170,7 +175,7 @@ Page({
         id: that.data.userId,
         body: '单品',
         openId: openid,
-        total_fee: that.data.amount,
+        total_fee: 0.1,
       }, //设置请求的 header
       success: function (res) {
         console.log("返回商户", res.data);

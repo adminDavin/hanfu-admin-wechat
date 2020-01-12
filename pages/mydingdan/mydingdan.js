@@ -268,7 +268,7 @@ Page({
         "Content-Type": "application/x-www-form-urlencoded"
       },
       data: {
-        userId: 2
+        userId: this.data.userId
       },
       success: function(res) {
         console.log('查询订单', res);

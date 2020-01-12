@@ -3,10 +3,6 @@
     height: 100%;
     position: relative;
 }
-/* 地址弹窗 */
-.dizhibox{
-  
-}
 .address-card{
   width:100%;
   height:127rpx;

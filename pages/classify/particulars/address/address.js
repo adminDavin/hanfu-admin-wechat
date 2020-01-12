@@ -35,7 +35,7 @@ Component({
     //展示地址
     getsitelist() {
       particularsUtil.getSitelist({
-        userId: 2,
+        userId: this.data.userId,
         token: 2
       }, (res) => {
         this.setData({
