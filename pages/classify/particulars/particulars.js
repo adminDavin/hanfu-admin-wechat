@@ -1,4 +1,6 @@
 const app = getApp()
+import particularsUtil from './particulars-util.js';
+
 Page({
 
   data: {
@@ -18,12 +20,11 @@ Page({
     openId: '',
     arr: [],
     evaluate: '', //评价
-    addressList: [],
     site: '', //地址
     sites: '',
     shppingcar: '', //购物车
     attention: '',
-    userId: '',
+    userId: 2,
     slideNumber: '1', //详情滑动跳动数字
     collects: false,
     goodsNum: 1,
@@ -32,7 +33,8 @@ Page({
     spec: [],
     guigestr: '',
     curr: 0,
-    selectedGoods: {}
+    selectedGoods: {},
+    selectedAddress: {}
   },
   //跳转购物车
   gouwucar: function () {
@@ -44,40 +46,6 @@ Page({
   gouwucar: function () {
     wx.switchTab({
       url: '../../shopping/shopping',
-    })
-  },
-  //商品数量减
-  subNum() {
-    var that = this;
-    let goodsNum = that.data.goodsNum;
-    let list = that.data.arr
-    console.log(list)
-    let totalprice = that.data.totalprice;
-    if (goodsNum > 1) {
-      goodsNum = goodsNum - 1;
-      totalprice = totalprice - list.sellPrice
-      console.log(totalprice)
-      that.setData({
-        goodsNum: goodsNum,
-        totalprice: totalprice
-      })
-    } else {
-      return;
-    }
-  },
-  //商品数量加
-  addNum() {
-    var that = this;
-    let goodsNum = that.data.goodsNum;
-    let list = that.data.arr
-    console.log(that.data.totalprice)
-    let totalprice = that.data.totalprice;
-    goodsNum = goodsNum + 1;
-    totalprice = totalprice + list.sellPrice
-    console.log(totalprice)
-    that.setData({
-      goodsNum: goodsNum,
-      totalprice: totalprice
     })
   },
   //关注
@@ -121,7 +89,7 @@ Page({
         })
       },
       data: {
-        goodsId: that.data.goodsId, //列表商品传过来
+        goodsId: that.data.productId, //列表商品传过来
         openId: that.data.openId
       }
     })
@@ -148,34 +116,13 @@ Page({
       selectedGoods: e.detail
     });
   },
-  //规格确认
-  guigesubmit() {
-    var that = this;
-    let spec = that.data.spec;
-    let str = '';
-    let flag = false;
-    for (var index in spec) {
-      console.log(spec[index])
-      if (spec[index].value) {
-        flag = true
-        str += spec[index].value + " "
-      } else {
-        flag = false
-        let name = spec[index].productSpecName
-        wx.showToast({
-          title: '请选择' + name,
-          icon: 'none',
-        })
-        return
-      }
-    }
-    if (flag == true) {
-      str = str + ' ' + that.data.goodsNum + '件'
-      that.setData({
-        guigestr: str,
-        guigeshow: false
-      })
-    }
+  listenSelectAddress(e) {
+    this.setData({
+      tsiteshow: false,
+    });
+    this.setData({
+      selectedAddress: e.detail.selectedAddress
+    });
   },
   // 地址弹框
   showSiteList() {
@@ -183,35 +130,11 @@ Page({
     that.setData({
       tsiteshow: true
     })
-    that.getsitelist()
   },
   tsiteguanbi() {
     var that = this;
     that.setData({
-      tsiteshow: false,
-    })
-  },
-  // 点击选择地址
-  editadd(e) {
-    let id = e.currentTarget.dataset.addid
-    var that = this;
-    console.log(id)
-    wx.request({
-      url: app.globalData.urlsite + '/user/address/addressDetail',
-      method: 'get',
-      data: {
-        id: id
-      },
-      success(res) {
-        console.log(list)
-        let list = res.data.data;
-        let sitss = list.hfProvince + list.hfCity + list.hfAddressDetail
-        that.setData({
-          sites: sitss,
-          tsiteshow: false,
-          userAddressId: id
-        })
-      }
+      tsiteshow: false
     })
   },
   //分享
@@ -287,27 +210,17 @@ Page({
   },
   //商品详情价格及内容
   particulars: function (e) {
-    console.log(e)
-    var that = this;
-    wx.request({
-      url: app.globalData.urlGoods + '/goods/byGoodsId',
-      method: 'Get',
-      success: function (res) {
-        console.log(res)
-        let list = res.data.data[0]
-        list.img = app.globalData.urlGoods + '/goods/getFile?fileId=' + list.fileId
-        that.setData({
-          arr: list,
-          totalprice: list.sellPrice
-        })
-        console.log(that.data.arr)
-        that.site();
-        console.log(that.data.totalprice)
-      },
-      data: {
-        goodsId: that.data.dataId
-      }
-    })
+    particularsUtil.getProductInfo({
+      goodsId: 5
+    }, (res) => {
+      console.log(res)
+      let list = res.data.data[0]
+      list.img = app.globalData.urlGoods + '/goods/getFile?fileId=' + list.fileId
+      this.setData({
+        arr: list,
+        totalprice: list.sellPrice
+      });
+    });
   },
   // 获取图片
   getpic() {
@@ -317,71 +230,8 @@ Page({
         url: '',
       })
   },
-  //详情页评价
-  // evaluate: function (e) {
-  //   console.log(e)
-  //   var that = this;
-  //   wx.request({
-  //     url: app.globalData.information + '/message/SeekReply',
-  //     method: 'Get',
-  //     success: function (res) {
-  //       that.setData({
-  //         evaluate: res.data
-  //       })
-  //     },
-  //     data: {
-  //       orderId: 2,
-  //       userId: that.data.userId
-  //     }
-  //   })
-  // },
-  //获取顾客地址
-  site: function (e) {
-    console.log(e)
-    var that = this;
-    wx.request({
-      url: app.globalData.urlsite + '/user/address/queryAddress',
-      method: 'Get',
-      success: function (res) {
-        // console.log(res)
-        that.setData({
-          site: res.data.data
-        })
-        for (let i = 0; i < that.data.site.length; i++) {
-          if (that.data.site[i].isFaultAddress == 0) {
-            let sitss = that.data.site[i].hfProvince + that.data.site[i].hfCity + that.data.site[i].hfAddressDetail
-            that.setData({
-              sites: sitss
-            })
-          }
-        }
-      },
-      data: {
-        token: 13,
-        userId: that.data.userId
-      }
-    })
-  },
-  //展示地址
-  getsitelist() {
-    var that = this;
-    wx.request({
-      url: app.globalData.urlLogin + '/user/address/queryAddress',
-      method: 'get',
-      header: {
-        "Content-Type": "application/x-www-form-urlencoded"
-      },
-      data: {
-        userId: that.data.userId,
-        token: 2
-      },
-      success: function (res) {
-        console.log('获取地址', res);
-        that.setData({
-          addressList: res.data.data
-        })
-      }
-    })
+  checkUserIslogin() {
+    return particularsUtil.checkUserIslogin(this.data.userId);
   },
   //加入购物车
   shppingcar: function (e) {
@@ -435,18 +285,15 @@ Page({
   },
   //立即购买
   buyquick() {
-    var that = this;
-    let purchasePrice = that.data.arr.sellPrice;
-    let purchaseQuantity = that.data.goodsNum;
-    let amount = purchasePrice * purchaseQuantity;
-    let goodsid = that.data.dataId;
-    let userAddressId = that.data.userAddressId;
-    wx.navigateTo({
-      url: '../../ljbuy/ljbuy?purchasePrice=' + purchasePrice + '&purchaseQuantity=' + purchaseQuantity + '&amount=' + amount + '&goodsid=' + goodsid + '&userAddressId=' + userAddressId,
-    })
+    let goodsid = this.data.selectedGoods;
+    let userAddressId = this.data.selectedAddress;
+    console.log(app.globalData.selectedGoods);
+    if (app.globalData.selectedGoods.length > 0) {
+      app.globalData.selectedGoods = [];
+    } 
+    app.globalData.selectedGoods.push({ selectedGoods: this.data.selectedGoods, selectedAddress: this.data.selectedAddress});
+    wx.navigateTo({url: '../../ljbuy/ljbuy?purchasePrice='});
   },
-
-
   // 判断userid
   isUserId() {
     var that = this;
@@ -634,7 +481,6 @@ Page({
         that.setData({
           userId: res.data.userId,
         })
-        that.site();
       },
     });
     this.particulars();

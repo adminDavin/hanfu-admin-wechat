@@ -12,7 +12,8 @@
     <!-- 左 -->
     <van-sidebar active-key="{{ activeKey }}">
       商品类目
-      <van-sidebar-item title="{{item.hfName}}" bind:click="onChange" custom-class="banner-box" wx:for="{{arr}}" wx:key="index" data-id="{{item.id}}" />
+      <van-sidebar-item title="{{item.productCategoryName}}" bind:click="onChange" custom-class="banner-box" wx:for="{{arr}}" wx:key="index" 
+      data-id="{{item.id}}" />
     </van-sidebar>
     <!-- 右 -->
     <view class="banner-text">

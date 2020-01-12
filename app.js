@@ -13,6 +13,7 @@ App({
     cartNum: '0',
     cartPrice: 0,
     toCartTag:false,
+    selectedGoods: [],
     // urlmorecategory: 'http://192.168.1.101:9095',//分类
     // purchase: 'http://192.168.1.104:8082',
     // urlLogin: 'http://192.168.1.104:8082', //登录

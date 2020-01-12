@@ -1,0 +1,24 @@
+<view class="bottom-dialog-body bottom-pos" animation="{{animationData}}">
+  <view class="services">
+    <text class="services-title">基础服务</text>
+    <scroll-view scroll-y="true" class="services services-bottom">
+      <view class="services-content services-margin">
+        <image src="../../../images/tabs/duigou.png" class="kind-image" />
+        <view class="services-kind">
+          <text class="kind-table">7天无理由</text>
+          <view class="kind-text">
+            满足7天无理由退换货的前提下，包邮商品需要买家承担退货邮费，非包邮需要买家承担发货和退货邮费
+          </view>
+        </view>
+      </view>
+      <view class="services-content services-margin">
+        <image src="../../../images/tabs/duigou.png" class="kind-image" />
+        <view class="services-kind">
+          <text class="kind-table">15天退货</text>
+          <view class="kind-text">15天退货，退货邮费卖家承担</view>
+        </view>
+      </view>
+    </scroll-view>
+    <view class="complete" bindtap="hideModal">完成</view>
+  </view>
+</view>

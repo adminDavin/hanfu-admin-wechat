@@ -20,7 +20,8 @@ Page({
     amount:'',
     purchasePrice:'',
     purchaseQuantity:'',
-    userAddressId:''
+    userAddressId:'',
+    selectedGoods: {}
   },
 
   showtext() {
@@ -251,19 +252,29 @@ Page({
     let amount = options.amount;
     let goodid = options.goodsid;
     let userAddressId = options.userAddressId;
-    var that = this;
+    let selectedGoods = {};
+    if (app.globalData.selectedGoods.length > 0) {
+      let selectedGoodsArr = JSON.parse(JSON.stringify(app.globalData.selectedGoods));
+      console.log(selectedGoodsArr);
+      selectedGoods = selectedGoodsArr[0];
+      userAddressId = selectedGoods.selectedAddress.id;
+      goodsid = selectedGoods.selectedGoods.goodsId;
+    }
+    console.log(app.globalData.selectedGoods);
     wx.getStorage({
       key: 'user',
-      success: function (res) {
-        that.setData({
+      success:  (res) => {
+        this.setData({
           userId: res.data.userId,
           goodsid: goodid,
           amount:amount,
           purchasePrice: purchasePrice,
           purchaseQuantity: purchaseQuantity,
-          userAddressId: userAddressId
+          userAddressId: userAddressId,
+          selectedGoods: selectedGoods.selectedGoods.selectedGoods
         })
-        that.getAddress()
+        this.getAddress()
+        console.log(this.data)
       },
     })
   },

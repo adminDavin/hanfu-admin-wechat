@@ -41,6 +41,7 @@ module.exports = {
           list[index].categories[j].img = app.globalData.urlmorecategory + '/goods/getFile?fileId=' + list[index].categories[j].fileId;
         }
       }
+      console.log(list);
       mine.setData({
         arrs: list
       });

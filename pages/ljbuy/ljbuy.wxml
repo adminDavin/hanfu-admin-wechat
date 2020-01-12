@@ -29,14 +29,18 @@
       <image src="{{arr.img}}" style="width:230rpx;height:230rpx"></image>
       <view class="contentitem-right" style="justify-content: flex-start;">
         <text class="item-name">{{arr.productName}}</text>
+          <text>商品名称: {{selectedGoods.goodsId}}</text>
+          <text>规格参数: {{selectedGoods.spec}}</text>
+          <view wx:for='{{selectedGoods.spec}}' wx:for-item="specValue" wx:key="selectedGoodsKey" wx:for-index="specValueIndex">
+              <label><text>{{specValue}}:{{selectedGoodsKey}}</text></label>
+          </view>        
         <view class="serve">
-          <text>白色40x40cm</text>
           <!-- <view class="selectserve">选服务</view> -->
           <image style="width:20rpx;height:11rpx;margin-top:12rpx;" src="../images/cart/servexiala.png"></image>
         </view>
-        <view class="hiddenxiala" hidden="{{servehidden}}">
+        <!-- <view class="hiddenxiala" hidden="{{servehidden}}">
           <view wx:for=""></view>
-        </view>
+        </view> -->
         <view class="card-money" style="margin-top:50rpx">
           <view class="discounts-money">
             <text class="money-title">¥</text>

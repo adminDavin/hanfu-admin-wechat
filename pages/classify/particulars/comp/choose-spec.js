@@ -64,7 +64,7 @@ Component({
             goodsSpec.set(s.productSpecName, values);
           }
         });
-
+        console.log([...goodsSpec])
         this.setData({
           goodsSpec: [...goodsSpec]
         })
@@ -78,7 +78,7 @@ Component({
     },
     detached: () => {
       console.log("退出")
-    },
+    }
 
   }
 })

@@ -19,14 +19,9 @@
       <view class="productName-dollor">
         <text class="dollor">¥</text>
         <text class="money">{{arr.sellPrice}}</text>
-        <!-- <text class="money-del">{{arr.isDeleted}}</text> -->
         <text class="news">新品</text>
       </view>
       <view class="productName-collect">
-        <!-- <view class="collect-one">
-          <image src="../../images/tabs/jiangjia.png" class="depreciate-image" />
-          <text class="depreciate-text">降价通知</text>
-        </view> -->
         <view class="collect-one collect-margin" bindtap="attention">
           <image src="../../images/tabs/chakantieziguanzhu.png" class="depreciate-image" bindtap="collect" wx:if="{{collects==false}}" />
           <image src="../../images/tabs/aixin.png" class="depreciate-image" bindtap="collect" wx:if="{{collects==true}}" />
@@ -42,17 +37,11 @@
       </button>
     </view>
   </view>
-  <!-- 优惠项 -->
-  <!-- <view class="discounts">
-    <text class="discounts-title">优惠</text>
-    <text class="discounts-table table-left">每满200减30</text>
-    <text class="discounts-table table-margin">包邮</text>
-  </view> -->
   <!-- 地址及已选 -->
   <view class="site">
     <view class="site-selected">
       <view class="selected-box">
-        <text class="selected">已选</text>
+        <text class="selected">选择</text>
         <text class="selected-text" wx:if="{{guigestr==''}}">请选择</text>
         <text class="selected-text" wx:if="{{guigestr!=''}}">{{guigestr}}</text>
       </view>
@@ -63,7 +52,7 @@
         <view class="selected">送至</view>
         <image src="../../images/tabs/weizhi.png" class="delivery-image" />
         <view class="selected-text text-left">
-          {{isUserId==true?sites:'请先登录'}}
+          {{checkUserIslogin() ? sites:'请先登录'}}
         </view>
       </view>
       <image src="../../images/tabs/diandian.png" class="selected-images" bindtap="showSiteList" />
@@ -107,27 +96,6 @@
         <image src="../../images/tabs/jinru (1).png" class="limit-image" bindtap="discuss" />
       </view>
     </view>
-    <!-- <view class="appraise-user">
-      <image src="../../images/tabs/t (1).png" class="user-head" />
-      <view class="user-text">
-        <text class="head-name">欢乐小可</text>
-        <view class="stars-image">
-          <image src="../../images/tabs/wujiaoxing.png" class="stars" />
-          <image src="../../images/tabs/wujiaoxing.png" class="stars" />
-          <image src="../../images/tabs/wujiaoxing.png" class="stars" />
-          <image src="../../images/tabs/wujiaoxing.png" class="stars" />
-          <image src="../../images/tabs/wujiaoxings.png" class="stars" />
-        </view>
-      </view>
-    </view> -->
-    <!-- <view class="appraise-content">穿戴舒服穿戴舒服穿戴舒服穿戴舒服穿戴舒服，默认好评!</view>
-    <view class="appraise-pictures">
-      <image src="../../images/handpick/shangping.png" class="appraise-photo" />
-      <image src="../../images/handpick/shangping.png" class="appraise-photo" />
-      <image src="../../images/handpick/shangping.png" class="appraise-photo" />
-      <image src="../../images/handpick/shangping.png" class="appraise-photo" />
-    </view>
-    <view class="appraise-times">2018.02.03 12:00 规格:红色,s</view> -->
     <view class="appraise-more">
       <text class="more-title" bindtap="discuss">查看全部评论</text>
     </view>
@@ -153,52 +121,21 @@
   <!-- 服务弹窗 -->
   <view class="modals modals-bottom-dialog" hidden="{{hideModal}}">
     <view class="modals-cancel" bindtap="hideModal"></view>
-    <view class="bottom-dialog-body bottom-pos" animation="{{animationData}}">
-      <view class="services">
-        <text class="services-title">基础服务</text>
-        <scroll-view scroll-y="true" class="services services-bottom">
-          <view class="services-content services-margin">
-            <image src="../../images/tabs/duigou.png" class="kind-image" />
-            <view class="services-kind">
-              <text class="kind-table">7天无理由</text>
-              <view class="kind-text">
-                满足7天无理由退换货的前提下，包邮商品需要买家承担退货邮费，非包邮需要买家承担发货和退货邮费
-              </view>
-            </view>
-          </view>
-          <view class="services-content services-margin">
-            <image src="../../images/tabs/duigou.png" class="kind-image" />
-            <view class="services-kind">
-              <text class="kind-table">15天退货</text>
-              <view class="kind-text">15天退货，退货邮费卖家承担</view>
-            </view>
-          </view>
-        </scroll-view>
-        <view class="complete" bindtap="hideModal">完成</view>
-      </view>
-    </view>
+    <component-service/>
   </view>
-  <!-- 规格 -->
+  <!-- 选取物品 -->
   <view class="guigebox" wx:if="{{guigeshow==true}}">
     <view class="guanbipic">
       <image src="../../images/cart/guigegb.png" bindtap="guigeguanbi" style="width:12rpx;height:12rpx"></image>
     </view>
     <component-tag-name product-id="{{productId}}" bind:chooseGoodsCommitEvent="listenChooseGoodsCommitEvent"></component-tag-name>
   </view>
-  <!-- 地址 -->
+  <!-- 选取地址 -->
   <view class="guigebox" style="overflow:auto" wx:if="{{tsiteshow==true}}">
     <view class="guanbipic" style="position:absolute;right:20rpx;top:0">
       <image src="../../images/cart/guigegb.png" bindtap="tsiteguanbi" style="width:24rpx;height:24rpx;"></image>
     </view>
-    <view class="address-card" style="border:1rpx solid rgba(153,153,153,1);margin-top:10rpx;" wx:for="{{addressList}}" wx:key="index" bindtap="editadd" data-addid="{{item.id}}">
-      <view class="address-card-top">
-        <view style="min-width:146rpx;" class="top-ziti">{{item.contact}}</view>
-        <text class="top-ziti" style="margin-right:20rpx">{{item.phoneNumber}}</text>
-      </view>
-      <view class="address-card-bottom">
-        <view class="bot-ziti">{{item.hfProvince}}{{item.hfCity}}{{item.hfAddressDetail}}</view>
-      </view>
-    </view>
+    <component-address user-id="{{userId}}" bind:selectAddressEvent="listenSelectAddress"></component-address>
   </view>
 </view>
 
