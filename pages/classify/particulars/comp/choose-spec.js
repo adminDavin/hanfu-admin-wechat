@@ -25,29 +25,47 @@ Component({
       spec: {},
       goodsId: 5,
     },
-    
+    // 保持被点击的元素的值
+    value: '',
   },
 
   /**
    * 组件的方法列表
    */
   methods: {
+    // test(fruit) {
+    //   let fruit = this.selectedGoods.spec,
+    //     let goodsSpe = this.goodsSpec,
+    //   if (goodsSpe.includes(fruit)) {
+    //     console.log('red');
+    //   } else {
+    //     console.log('blue');
+    //   }
+    // },
     onInputNum(e) {
       console.log(e);
     },
     onSelectSpecValue(e) {
-      let selectedGoods = this.data.selectedGoods;      
+     let thit = this
+      let selectedGoods = this.data.selectedGoods;
       console.log(e.currentTarget.dataset);
       selectedGoods.spec[e.currentTarget.dataset.name] = e.currentTarget.dataset.value;
       selectedGoods.goodsId = 5;
       selectedGoods.totalprice = 1000;
       selectedGoods.goodsNum = 5;
       console.log(selectedGoods);
-      // TODO 检查库存是否有库存
-      this.setData({ selectedGoods: selectedGoods });
+      // TODO 检查库存是否有库存 goodsSpe.includes(fruit)
+      this.setData({
+        selectedGoods: selectedGoods,
+        value: e.currentTarget.dataset.value
+      });
+      console.log(this.data.goodsSpec)
+      console.log(this.data.goodsSpec)
+      console.log(this.selectedGoods)
+
     },
     onSubmitSelectedGoods() {
-      this.triggerEvent('chooseGoodsCommitEvent', {selectedGoods: this.data.selectedGoods});
+      this.triggerEvent('chooseGoodsCommitEvent', { selectedGoods: this.data.selectedGoods });
     },
     getGoodsByProductId() {
       particularsUtil.getGoodsByProductId({
@@ -64,7 +82,6 @@ Component({
             goodsSpec.set(s.productSpecName, values);
           }
         });
-        console.log([...goodsSpec])
         this.setData({
           goodsSpec: [...goodsSpec]
         })
@@ -73,7 +90,7 @@ Component({
   },
   lifetimes: {
     // 组件的生命周期函数，用于声明组件的生命周期
-    ready: function() {
+    ready: function () {
       this.getGoodsByProductId();
     },
     detached: () => {

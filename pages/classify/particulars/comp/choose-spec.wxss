@@ -193,7 +193,29 @@ swiper {
     font-weight: 500;
     color: rgba(248, 248, 248, 1);
 }
-
+/* 规格弹窗样式 */
+.onSelect-Spec {
+  border: 1rpx solid #ccc;
+  border-radius:15px;
+  background: #ccc;
+  margin: 20rpx;
+}
+/* 规格弹窗样式d点击样式*/
+.active {
+  border: 1rpx solid rgb(216, 10, 10);
+  border-radius:15px;
+  background: #ccc;
+  color: rgb(216, 10, 10);
+  margin: 20rpx;
+}
+/* 弹窗文字样式 */
+.Select-text {
+ margin: 6rpx;
+}
+.Select-view {
+ flex-direction:row;
+ margin: 8rpx;
+}
 /* 商品价格及名称 */
 .productName {
     width: 100%;
