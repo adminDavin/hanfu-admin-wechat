@@ -1,0 +1,36 @@
+<view class="inner">
+    <view class="guigebox-top">
+      <image src="{{arr.img}}" style="width:160rpx;height:160rpx"></image>
+      <view class="guanbibox-price">￥{{selectedGoods.totalprice}}</view>
+    </view>
+    <scroll-view scroll-y="true" class="guige-scroll">
+      <view wx:for='{{goodsSpec}}' wx:key="goodsSpecKey" wx:for-item="item">
+        <checkbox-group class="group" bindchange="checkboxChange">
+          <view wx:for='{{item}}' wx:for-item="childItem" wx:key="goodsSpecChildKey" wx:for-index="childIndex">
+            <block wx:if="{{childIndex==0}}">
+              <label><text>{{childItem}}</text></label>
+            </block>
+            <block wx:else>
+            <view wx:for='{{childItem}}' wx:for-item="specValue" wx:key="goodsSpecValue" wx:for-index="specValueIndex">
+              <label bindtap="onSelectSpecValue" data-value="{{specValue}}" data-name="{{item[0]}}"><text>{{specValue}}</text></label>
+            </view>
+            </block>
+          </view>
+        </checkbox-group>
+      </view>
+      <view class="guigebox-num">
+        <view style="font-size:26rpx;line-height:62rpx;">数量</view>
+        <view class="guigenum-right">
+          <image src="../../../images/cart/guigesub.png" style="width:20rpx;height:20rpx;" bindtap="subNum"></image>
+          <view class="onInputNum">
+            <input type="number" value="{{selectedGoods.goodsNum}}" />
+          </view>
+          <image src="../../../images/cart/guigeadd.png" style="width:20rpx;height:20rpx;" bindtap="addNum"></image>
+        </view>
+      </view>
+
+    </scroll-view>
+    <view class="guigeqr" bindtap="onSubmitSelectedGoods">确认</view>
+  </view>
+
+  <slot></slot>

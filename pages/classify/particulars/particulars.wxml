@@ -180,30 +180,10 @@
   </view>
   <!-- 规格 -->
   <view class="guigebox" wx:if="{{guigeshow==true}}">
-    <view class="guigebox-top">
-      <image src="{{arr.img}}" style="width:160rpx;height:160rpx"></image>
-      <view class="guanbibox-price">￥{{totalprice}}</view>
-      <view class="guanbipic">
-        <image src="../../images/cart/guigegb.png" bindtap="guigeguanbi" style="width:24rpx;height:24rpx"></image>
-      </view>
+    <view class="guanbipic">
+      <image src="../../images/cart/guigegb.png" bindtap="guigeguanbi" style="width:12rpx;height:12rpx"></image>
     </view>
-    <scroll-view scroll-y="true" class="guige-scroll">
-      <view class="guigecon" wx:for="{{spec}}" wx:key="index" wx:for-item="specitem">
-        <view class="guigecon-top">{{specitem.productSpecName}}</view>
-        <view class="guigecon-bottom">
-          <view class="guigebot-item {{item.des==1?'guigebot-item-active':''}}"  data-index="{{index}}" wx:for="{{specitem.hfGoodsDisplayList}}" wx:for-item="item" wx:key="index" catchtap="guigevalue" data-name="{{specitem.productSpecName}}" data-value="{{item.hfValue}}" data-des="{{item.des}}">{{item.hfValue}}</view>
-        </view>
-      </view>
-      <view class="guigebox-num">
-        <view style="font-size:26rpx;line-height:62rpx;">数量</view>
-        <view class="guigenum-right">
-          <image src="../../images/cart/guigesub.png" style="width:20rpx;height:20rpx;" bindtap="subNum"></image>
-          <view class="guigenum">{{goodsNum}}</view>
-          <image src="../../images/cart/guigeadd.png" style="width:20rpx;height:20rpx;" bindtap="addNum"></image>
-        </view>
-      </view>
-    </scroll-view>
-    <view class="guigeqr" bindtap="guigesubmit">确认</view>
+    <component-tag-name product-id="{{productId}}" bind:chooseGoodsCommitEvent="listenChooseGoodsCommitEvent"></component-tag-name>
   </view>
   <!-- 地址 -->
   <view class="guigebox" style="overflow:auto" wx:if="{{tsiteshow==true}}">

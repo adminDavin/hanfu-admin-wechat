@@ -1,8 +1,8 @@
 {
   "pages": [
+    "pages/classify/particulars/particulars",
     "pages/classify/classify",
     "pages/classify/commodity/commodity",
-    "pages/classify/particulars/particulars",
     "pages/classify/puzzle-particulars/puzzle-particulars",
     "pages/classify/Limited-time/Limited-time",
     "pages/seckill/seckill",
