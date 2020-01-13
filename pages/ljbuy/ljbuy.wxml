@@ -35,7 +35,7 @@
               <label><text>{{specValue}}:{{selectedGoodsKey}}</text></label>
           </view>        
         <view class="serve">
-          <!-- <view class="selectserve">选服务</view> -->
+          
           <image style="width:20rpx;height:11rpx;margin-top:12rpx;" src="../images/cart/servexiala.png"></image>
         </view>
         <!-- <view class="hiddenxiala" hidden="{{servehidden}}">

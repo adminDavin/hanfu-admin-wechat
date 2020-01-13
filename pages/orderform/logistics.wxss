@@ -26,6 +26,3 @@ page {
 .logisticsBottom {
   background-color: #fff;
 }
-.van-step.van-step--vertical {
-  font-size: 28rpx;
-}

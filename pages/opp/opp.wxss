@@ -34,11 +34,7 @@
     width: 67rpx;
     height: 48rpx;
 }
-/* .one{
-    width: 294rpx;
-    height: 48px;
-   
-} */
+
 .texts{
     margin-left: 32rpx;
  height: 48rpx; 

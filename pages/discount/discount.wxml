@@ -1,15 +1,5 @@
 <view class="discount">
-    <!-- 标题 -->
-    <!-- <view class="discount-title">
-        <view class="discount-table">
-            <text class="discount-text">可使用</text>
-            <image src="../../images/tabs/圆角矩形 3@2x.png" class="discount-images" />
-        </view>
-        <view class="discount-table">
-            <text class="discount-text">不可用</text>
-            <image src="" class="discount-images" />
-        </view>
-    </view> -->
+  
     <!-- 优惠券 -->
     <van-tabs active="a">
         <van-tab title="可使用" name="a">

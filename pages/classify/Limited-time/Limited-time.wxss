@@ -440,34 +440,6 @@ swiper {
     margin-left: 6rpx;
 }
 
-.appraise-content {
-    font-size: 26rpx;
-    font-family: PingFang SC;
-    font-weight: 400;
-    margin: 19rpx 20rpx 0 21rpx;
-    color: rgba(21, 21, 21, 1);
-}
-
-.appraise-pictures {
-    margin-left: 21rpx;
-    margin-top: 20rpx;
-}
-
-.appraise-photo {
-    width: 141rpx;
-    height: 141rpx;
-    margin-right: 10rpx;
-    margin-bottom: 11rpx;
-    float: left;
-}
-
-.appraise-times {
-    font-size: 24rpx;
-    font-family: PingFang SC;
-    font-weight: 400;
-    color: rgba(153, 153, 153, 1);
-    margin-left: 23rpx;
-}
 
 .appraise-more {
     width: 750rpx;

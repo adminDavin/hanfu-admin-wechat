@@ -13,9 +13,9 @@
             </label>
           </block>
           <block wx:else>
-            <view wx:for='{{childItem}}' class="Select-view {{}}" wx:for-item="specValue" wx:key="goodsSpecValue" wx:for-index="specValueIndex">
-              <label class="onSelect-Spec" bindtap="onSelectSpecValue" data-value="{{specValue}}" data-name="{{item[0]}}">
-               <text class="Select-text" >{{specValue}}</text>
+            <view wx:for='{{childItem}}' class="Select-view" wx:for-item="specValue" wx:key="goodsSpecValue" wx:for-index="specValueIndex">
+              <label class="onSelect-Spec  " bindtap="onSelectSpecValue" data-value="{{specValue}}" data-name="{{item[0]}}">
+               <text class="Select-text" >{{specValue }}</text>
               </label>
             </view>
           </block>

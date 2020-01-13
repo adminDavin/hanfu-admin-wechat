@@ -38,14 +38,6 @@
       <view style="font-size:24rpx;color:rgba(153,153,153,1);margin-right:5rpx" wx:if="{{item.orderDetailStatus=='已退款'}}">已退款</view>
     </view>
     <view class="card-center">
-      <!-- <scroll-view scroll-x="true" style="width: 70%;" hidden="true" wx:if="{{prolength>1}}">
-        <view style="white-space: nowrap;">
-          <image src="../images/cart/cartitem.png" class="card-pic"></image>
-          <image src="../images/cart/cartitem.png" class="card-pic"></image>
-          <image src="../images/cart/cartitem.png" class="card-pic"></image>
-          <image src="../images/cart/cartitem.png" class="card-pic"></image>
-        </view>
-      </scroll-view> -->
       <view class="danshop">
         <image src="{{item.img}}" class="card-pic"></image>
         <view class="danshop-name">{{item.hfName}}</view>

@@ -219,10 +219,7 @@
     margin-top: 10rpx;
 }
 
-.news-green {
-    color: #33CC00;
-    border: 1rpx solid #33CC00;
-}
+
 .observer {
     width: 316rpx;
     float: left;
@@ -422,9 +419,7 @@
     float: left;
     color: rgba(21, 21, 21, 1);
 }
-.subject-top {
-    margin-top: 60rpx; 
-}
+
 .subject-box {
     width: 600rpx;
     overflow: hidden;

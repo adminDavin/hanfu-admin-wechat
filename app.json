@@ -1,25 +1,36 @@
 {
   "pages": [
-      "pages/seckill/seckill",
     "pages/classify/particulars/particulars",
+    "pages/opp/vip/vip",
+    "pages/mydingdan/mydingdan",
+    "pages/goodsList/goodsList",
+    "pages/evaluate/myevaluate/myevaluate",
+    "pages/evaluate/evaluateList/evaluateList",
+    "pages/evaluate/remark/remark",
+    "pages/evaluate/review/review",
+    "pages/evaluate/showList/showList",
+    
+    "pages/evaluate/all",
+
+    "pages/discount/discount",
     "pages/classify/classify",
-    "pages/classify/commodity/commodity",
     "pages/classify/puzzle-particulars/puzzle-particulars",
     "pages/classify/Limited-time/Limited-time",
-  
+    
+    "pages/seckill/seckill",
+    "pages/classify/commodity/commodity",
     "pages/mine/mine",
     "pages/opp/opp",
-    "pages/evaluate/myevaluate/myevaluate",
-    "pages/evaluate/all",
+    
     "pages/ljbuy/ljbuy",
-    "pages/opp/vip/vip",
+    
     "pages/pay/payto/payto",
     "pages/pay/paySuccess/paySuccess",
     "pages/orderform/logistics",
     "pages/orderprocessing/daizhifu/orderprocessing",
     "pages/orderprocessing/orderprocessing",
     "pages/orderprocessing/daifahuo/orderprocessing",
-    "pages/mydingdan/mydingdan",
+    
     "pages/orderprocessing/daishouhuo/orderprocessing",
     "pages/orderprocessing/yiquxiao/orderprocessing",
     "pages/orderprocessing/tuikuanzhong/orderprocessing",
@@ -30,12 +41,9 @@
     "pages/orderprocessing/yipingjia/orderprocessing",
     "pages/orderprocessing/pintuanzhong/orderprocessing",
     "pages/classify/ping-pay/ping-pay",
-    "pages/evaluate/remark/remark",
-    "pages/evaluate/evaluateList/evaluateList",
-    "pages/evaluate/review/review",
-    "pages/evaluate/showList/showList",
+    
     "pages/hexiao/hexiaosucc/hexiaosucc",
-    "pages/goodsList/goodsList",
+    
     "pages/address/address",
     "pages/address/addaddress/addaddress",
     "pages/hexiao/hexiao",
@@ -43,7 +51,7 @@
     "pages/address/editaddress/editaddress",
     "pages/Getdiscount/Getdiscount",
     "pages/MEdiscount/MEdiscount",
-    "pages/discount/discount",
+    
     "pages/seckill/seek/seek",
     "pages/find/find",
     "pages/register/register",

@@ -10,6 +10,7 @@ Component({
     productId: {
       type: Number,
       value: 0,
+      dd:''
     }
   },
 
@@ -27,21 +28,29 @@ Component({
     },
     // 保持被点击的元素的值
     value: '',
+    isChecked: false
   },
 
   /**
    * 组件的方法列表
    */
   methods: {
-    // test(fruit) {
-    //   let fruit = this.selectedGoods.spec,
-    //     let goodsSpe = this.goodsSpec,
-    //   if (goodsSpe.includes(fruit)) {
-    //     console.log('red');
-    //   } else {
-    //     console.log('blue');
-    //   }
-    // },
+    test() {
+      let goodsSpec = this.data.goodsSpec
+      let value = this.data.value
+      for (var i = 0; i <= goodsSpec.length;i++) {
+        //  console.log(goodsSpec[i])
+        for (var j = 0; j <= i+1;j++) {
+          // console.log(goodsSpec[i][j])
+          // rr.indexOf('nothing')
+          if (goodsSpec[i][j].indexOf(value)){
+            isChecked: true
+          } else {
+            isChecked: false
+          }
+        }
+       }
+    },
     onInputNum(e) {
       console.log(e);
     },
@@ -59,9 +68,8 @@ Component({
         selectedGoods: selectedGoods,
         value: e.currentTarget.dataset.value
       });
-      console.log(this.data.goodsSpec)
-      console.log(this.data.goodsSpec)
-      console.log(this.selectedGoods)
+      this.test()
+      console.log(this.test() == '0' ? 'active' : 'onSelect-Spec')
 
     },
     onSubmitSelectedGoods() {

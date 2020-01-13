@@ -23,10 +23,7 @@
         <text class="news">新品</text>
       </view>
       <view class="productName-collect">
-        <!-- <view class="collect-one">
-                    <image src="../../images/tabs/jiangjia.png" class="depreciate-image" />
-                    <text class="depreciate-text">降价通知</text>
-                </view> -->
+
         <view class="collect-one collect-margin" bindtap="attention">
           <image src="../../images/tabs/chakantieziguanzhu.png" class="depreciate-image" bindtap="collect" wx:if="{{collects==false}}" />
           <image src="../../images/tabs/aixin.png" class="depreciate-image" bindtap="collect" wx:if="{{collects==true}}" />
@@ -71,20 +68,7 @@
         <text class="share">分享</text>
       </button>
     </view>
-    <!-- <view class="partner">
-            <view class="partner-box">
-                <text class="partner-title">参团小伙伴</text>
-                <view class="partner-image">
-                    <image src="" class="partner-images" />
-                    <image src="" class="partner-images partner-p" />
-                    <image src="" class="partner-images partner-p1" />
-                    <image src="" class="partner-images partner-p2" />
-                    <image src="" class="partner-images partner-p3" />
-                    <image src="" class="partner-images partner-p4" />
-                </view>
-            </view>
-            <image src="../../images/tabs/diandian.png" class="selected-images" />
-        </view> -->
+
   </view>
   <!-- 优惠项 -->
   <view class="discounts">
@@ -175,27 +159,7 @@
         <image src="../../images/tabs/jinru (1).png" class="limit-image" />
       </view>
     </view>
-    <!-- <view class="appraise-user">
-            <image src="../../images/tabs/t (1).png" class="user-head" />
-            <view class="user-text">
-                <text class="head-name">欢乐小可</text>
-                <view class="stars-image">
-                    <image src="../../images/tabs/wujiaoxing.png" class="stars" />
-                    <image src="../../images/tabs/wujiaoxing.png" class="stars" />
-                    <image src="../../images/tabs/wujiaoxing.png" class="stars" />
-                    <image src="../../images/tabs/wujiaoxing.png" class="stars" />
-                    <image src="../../images/tabs/wujiaoxings.png" class="stars" />
-                </view>
-            </view>
-        </view> -->
-    <!-- <view class="appraise-content">穿戴舒服穿戴舒服穿戴舒服穿戴舒服穿戴舒服，默认好评!</view>
-        <view class="appraise-pictures">
-            <image src="../../images/handpick/shangping.png" class="appraise-photo" />
-            <image src="../../images/handpick/shangping.png" class="appraise-photo" />
-            <image src="../../images/handpick/shangping.png" class="appraise-photo" />
-            <image src="../../images/handpick/shangping.png" class="appraise-photo" />
-        </view>
-        <view class="appraise-times">2018.02.03 12:00  规格:红色,s</view> -->
+  
     <view class="appraise-more">
       <text class="more-title" bindtap="discuss">查看全部评论</text>
     </view>
