@@ -3,6 +3,7 @@ var util = require('../../../utils/util.js')
 const apiCart = require('../../../utils/api/cart.js');
 Page({
   data: {
+    ids:'',
     lists: false,
     arr: [],
     prices: '',
@@ -14,6 +15,7 @@ Page({
     morepicture: '',//图片都在这里
     mosthigher:'',
     mostlower:'',
+    idw:'',
   },
   //搜索
   sousuo: function () {
@@ -117,7 +119,7 @@ Page({
   categoryId: function (e) {
     var that = this;
     wx.request({
-      url: app.globalData.urlGoods + '/goods/listGoods',
+      url: app.globalData.urlGoods + '/seniority/findSeniorityContent',
       method: 'Get',
       success: function (res) {
         console.log(res)
@@ -131,8 +133,9 @@ Page({
         console.log(list)
       },
       data:{
-        stoneId:1
+        seniorityId:that.data.ids
       }
+      
     })
   },
  
@@ -205,8 +208,17 @@ Page({
       })
     }else{
       this.categoryId();
-    }
+    };
+   let ids=options.id
+   console.log(ids);
+   that.setData({
+     ids:ids
+   })
+   
+
   },
+ 
+  
 
   /**
    * 生命周期函数--监听页面初次渲染完成

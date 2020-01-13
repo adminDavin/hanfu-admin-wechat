@@ -13,8 +13,8 @@ Page({
   pintuans:function(){
     var that = this;
     wx.request({
-      url: app.globalData.urlpuzzle + '/group/joinGroup',
-      method: 'Post',
+      url: app.globalData.urlpuzzle + '/group/shopping',
+      method: 'POST',
       success: function (res) {
         console.log(res)
         that.setData({
@@ -22,8 +22,10 @@ Page({
         })
       },
       data: {
-        id: that.data.dataid,
-        userId:that.data.userId
+        groupId:10,//that.data.dataid,//团购表id
+        userId:980 ,//that.data.userId,//用户id
+        addressId:9, //用户地址id
+        hfDesc:'红色' //所选商品规格
       }
     })
   },

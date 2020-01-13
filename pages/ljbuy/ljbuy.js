@@ -148,7 +148,7 @@ Page({
         that.setData({
           ordersId: ordersId
         })
-        that.lijicz();
+         that.lijicz();
       }
     })
   },

@@ -50,15 +50,28 @@
     height: 86rpx;
     display: flex;
     text-align: center;
-    font-size: 25rpx !important;
+    font-size: 28rpx !important;
 }
-
+.banner-box:hover {
+    background-color: #fff;
+}
 .van-sidebar-item {
     text-align: center;
 }
-
-
-
+.van-sidebar-item__text {
+   position: absolute;
+   top:-17rpx;
+   left: 0rpx; 
+}
+.table-text {
+    font-family: 'PingFang-SC-Medium';
+    font-weight: Medium;
+    color:#666666;
+    font-size: 30rpx;
+}
+.table-text:hover {
+    color: #151515;
+}
 /* 右 */
 .banner-text {
     width: 530rpx;
@@ -75,18 +88,27 @@
 }
 .text-classify {
     width: 528rpx;
+    padding-top: 48rpx;
     line-height: 61rpx;
     margin-left: 22rpx;
-    font-size: 28rpx;
+    font-size: 32rpx;
     color: #151515;
     font-weight: Medium;
-    overflow: hidden
+    overflow: hidden;
+    
+    
 }
 .shpping-big {
     width: 528rpx;
     height: 144.5rpx;
     margin-left: 40rpx;
     margin-top: 5rpx;
+}
+
+.box {
+    width: 710rpx;
+    height: 50rpx;
+    border: 3rpx solid #000;
 }
 .yige {
     width: 105rpx;

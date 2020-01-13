@@ -1,5 +1,4 @@
 <view class="puzzle-particulars">
-  图片
   <view class="header-images">
     <block>
       <swiper bindchange="change" vertical="{{false}}" indicator-dots="{{flase}}" autoplay="{{flase}}">
@@ -34,12 +33,12 @@
     <view class="puzzle">
       <view class="puzzle-times">
         <image src="../../images/tabs/naozhong.png" class="times-begin" />
-        <text class="over">距开始</text>
-        <text class="over-number">00</text>
+        <text class="over">开始</text>
+        <text class="over-number">{{hour}}</text>
         <text class="over">时</text>
-        <text class="over-number">01</text>
+        <text class="over-number">{{minute}}</text>
         <text class="over">分</text>
-        <text class="over-number">59</text>
+        <text class="over-number">{{second}}</text>
         <text class="over">秒</text>
         <view></view>
       </view>
@@ -48,12 +47,12 @@
     <view class="puzzle" style="display:none">
       <view class="puzzle-times">
         <image src="../../images/tabs/naozhong.png" class="times-begin" />
-        <text class="over">距结束</text>
-        <text class="over-number">00</text>
+        <text class="over">结束</text>
+        <text class="over-number">{{hour}}</text>
         <text class="over">时</text>
-        <text class="over-number">01</text>
+        <text class="over-number">{{minute}}</text>
         <text class="over">分</text>
-        <text class="over-number">59</text>
+        <text class="over-number">{{second}}</text>
         <text class="over">秒</text>
       </view>
       <view class="puzzle-mark">已拼成0件</view>
@@ -157,7 +156,6 @@
         <image src="../../images/tabs/jinru (1).png" class="limit-image" />
       </view>
     </view>
-  
     <view class="appraise-more">
       <text class="more-title" bindtap="discuss">查看全部评论</text>
     </view>
