@@ -9,7 +9,7 @@ Page({
     quhuomethod: true,
     zhifumethod: true,
     textshow: false,
-    userId: 2,
+    userId: 975,
     arr:[],
     goodsid: [],
     elevalue: '',
@@ -21,7 +21,7 @@ Page({
     purchasePrice:'',
     purchaseQuantity:'',
     userAddressId:'',
-    selectedGoods: {}
+    selectedGoods: {},
   },
 
   showtext() {
@@ -87,7 +87,6 @@ Page({
       }
     })
   },
-
   // 拿商品信息
   getGoods() {
     var that = this;
@@ -97,13 +96,13 @@ Page({
       success: function (res) {
         console.log(res)
         let arr=res.data.data;
-        arr.img = app.globalData.urlGoods + '/goods/getFile?fileId=' + arr.productIcon;
+        arr.img = app.globalData.urlGoods + '/goods/getFile?fileId=' + arr[0].fileId;
         that.setData({
           arr: res.data.data
         })
       },
       data: {
-        goodsId: that.data.goodsid
+        goodsId:5 //that.data.goodsid
       }
     })
   },
@@ -111,7 +110,8 @@ Page({
   // 提交订单
   submit() {
     var that = this;
-    let googsId = that.data.goodsid
+    let googsId = 5 //that.data.goodsid
+    console.log(googsId)
     let distribution = '邮寄'
     let payMethodName = '微信支付'
     var zhifumethod = that.data.zhifumethod
@@ -148,7 +148,7 @@ Page({
         that.setData({
           ordersId: ordersId
         })
-        that.lijicz();
+         that.lijicz();
       }
     })
   },
@@ -172,10 +172,10 @@ Page({
       method: 'POST',
       head: 'application/x-www-form-urlencoded',
       data: {
-        id: that.data.userId,
+        id: that.data.ordersId, //订单ID
         body: '单品',
         openId: openid,
-        total_fee: 0.1,
+        total_fee: 1,
       }, //设置请求的 header
       success: function (res) {
         console.log("返回商户", res.data);
@@ -213,7 +213,9 @@ Page({
           showCancel: false,
           success: function (res) {
             if (res.confirm) {
-              that.changeStatus();
+              wx.navigateTo({
+                url: '../mydingdan/mydingdan'
+              })
             } else if (res.cancel) { }
           }
         })
@@ -252,10 +254,11 @@ Page({
   onLoad: function (options) {
     console.log(options);
     var goodsid = options.goodsid
+    console.log(goodsid)
     let purchasePrice = options.purchasePrice;
     let purchaseQuantity = options.purchaseQuantity;
     let amount = options.amount;
-    let goodid = options.goodsid;
+    // let goodid = options.goodsid;
     let userAddressId = options.userAddressId;
     let selectedGoods = {};
     if (app.globalData.selectedGoods.length > 0) {
@@ -271,7 +274,7 @@ Page({
       success:  (res) => {
         this.setData({
           userId: res.data.userId,
-          goodsid: goodid,
+          goodsid: goodsid,
           amount:amount,
           purchasePrice: purchasePrice,
           purchaseQuantity: purchaseQuantity,
@@ -279,6 +282,7 @@ Page({
           selectedGoods: selectedGoods.selectedGoods.selectedGoods
         })
         this.getAddress()
+        this.getGoods()
         console.log(this.data)
       },
     })

@@ -228,10 +228,11 @@ Page({
      })
    },
   //推荐榜单
-  bangdan: function (e) {
+  bangdan: function (e) {console.log(e);
+  
     let id=e.currentTarget.dataset.id;
     wx.navigateTo({
-      url: '../classify/commodity/commodity?id='+id,
+      url: `../classify/commodity/commodity?id=${id}`,
     })
   },
   //秒杀切换

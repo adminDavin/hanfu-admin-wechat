@@ -5,6 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    idw:[],
+    id:[],
     activeKey: 0,
     arr:[],
     arrs:[],
@@ -18,11 +20,12 @@ Page({
     })
   },
   // 跳转到列表
-  goThreeLevel(e){
+  goThreeLevel:function(e){
     console.log(e)
-    var that=this;
+    
+    let id=e.currentTarget.dataset.id;
     wx.navigateTo({
-      url: '../classify/commodity/commodity',
+      url: `../classify/commodity/commodity?id=${id}`,
     })
   },
   //查询类目页面图片

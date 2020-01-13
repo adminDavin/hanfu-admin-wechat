@@ -10,7 +10,6 @@ Component({
     productId: {
       type: Number,
       value: 0,
-      dd:''
     }
   },
 
@@ -23,53 +22,61 @@ Component({
     selectedGoods: {
       goodsNum: 0,
       totalprice: 0,
-      spec: {},
+      spec: { 色彩: "红色", 大小: "6.5寸"},
       goodsId: 5,
     },
     // 保持被点击的元素的值
     value: '',
-    isChecked: false
+    spec:[]
   },
 
   /**
    * 组件的方法列表
    */
   methods: {
-    test() {
-      let goodsSpec = this.data.goodsSpec
-      let value = this.data.value
-      for (var i = 0; i <= goodsSpec.length;i++) {
-        //  console.log(goodsSpec[i])
-        for (var j = 0; j <= i+1;j++) {
-          // console.log(goodsSpec[i][j])
-          // rr.indexOf('nothing')
-          if (goodsSpec[i][j].indexOf(value)){
-            isChecked: true
-          } else {
-            isChecked: false
-          }
-        }
-       }
-    },
+
     onInputNum(e) {
-      console.log(e);
+      this.setData({
+       goodsNum : e.detail.value
+      })
+
     },
     onSelectSpecValue(e) {
+      console.log
      let thit = this
       let selectedGoods = this.data.selectedGoods;
+      let spec = this.data.spec;
       console.log(e.currentTarget.dataset);
+      spec[e.currentTarget.dataset.name] = e.currentTarget.dataset.value;
+      console.log(spec)
       selectedGoods.spec[e.currentTarget.dataset.name] = e.currentTarget.dataset.value;
       selectedGoods.goodsId = 5;
       selectedGoods.totalprice = 1000;
-      selectedGoods.goodsNum = 5;
+      selectedGoods.goodsNum = 2;
       console.log(selectedGoods);
-      // TODO 检查库存是否有库存 goodsSpe.includes(fruit)
+      // TODO 检查库存是否有库存 
+      wx.request({
+        url: app.globalData.urlparticulars + '/goods/checkResp',
+        method: 'POST',
+        data: {
+          productId:this.properties.productId,
+          goodsNum: this.data.selectedGoods.goodsNum,
+          respList: this.data.selectedGoods.spec,
+        },
+        header: {
+          // 'content-type': 'application/x-www-form-urlencoded' 
+        },
+        success(res) {
+          console.log(res.data)
+        }
+      })
       this.setData({
         selectedGoods: selectedGoods,
         value: e.currentTarget.dataset.value
       });
-      this.test()
-      console.log(this.test() == '0' ? 'active' : 'onSelect-Spec')
+      // console.log(this.data.goodsSpec)
+      console.log(this.data.selectedGoods.goodsNum)
+      // console.log(this.selectedGoods)
 
     },
     onSubmitSelectedGoods() {
