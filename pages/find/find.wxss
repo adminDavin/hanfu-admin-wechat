@@ -4,7 +4,6 @@
     background: #FF3333;
 }
 
-
 .kong {
   width: 710rpx;
   line-height: 500rpx;

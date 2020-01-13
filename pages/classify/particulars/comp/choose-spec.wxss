@@ -201,7 +201,7 @@ swiper {
 .active {
   border: 1rpx solid rgb(216, 10, 10);
   border-radius:15px;
-  background: #fff;
+  background: #ccc;
   color: rgb(216, 10, 10);
   margin: 20rpx;
 }
@@ -210,7 +210,7 @@ swiper {
  margin: 6rpx;
 }
 .Select-view {
-display: inline-block;
+ flex-direction:row;
  margin: 8rpx;
 }
 /* 商品价格及名称 */

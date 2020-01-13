@@ -700,5 +700,7 @@ swiper {
     font-weight: 500;
     color: rgba(255, 255, 255, 1);
     margin-top: 15rpx;
-    margin-left: 60rpx;
+    margin-left: 55rpx;
 }
+/* 选取地址 */
+

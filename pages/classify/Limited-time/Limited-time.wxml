@@ -121,7 +121,27 @@
                 <image src="../../images/tabs/jinru (1).png" class="limit-image" />
             </view>
         </view>
-        
+        <!-- <view class="appraise-user">
+            <image src="../../images/tabs/t (1).png" class="user-head" />
+            <view class="user-text">
+                <text class="head-name">欢乐小可</text>
+                <view class="stars-image">
+                    <image src="../../images/tabs/wujiaoxing.png" class="stars" />
+                    <image src="../../images/tabs/wujiaoxing.png" class="stars" />
+                    <image src="../../images/tabs/wujiaoxing.png" class="stars" />
+                    <image src="../../images/tabs/wujiaoxing.png" class="stars" />
+                    <image src="../../images/tabs/wujiaoxings.png" class="stars" />
+                </view>
+            </view>
+        </view> -->
+        <!-- <view class="appraise-content">穿戴舒服穿戴舒服穿戴舒服穿戴舒服穿戴舒服，默认好评!</view>
+        <view class="appraise-pictures">
+            <image src="../../images/handpick/shangping.png" class="appraise-photo" />
+            <image src="../../images/handpick/shangping.png" class="appraise-photo" />
+            <image src="../../images/handpick/shangping.png" class="appraise-photo" />
+            <image src="../../images/handpick/shangping.png" class="appraise-photo" />
+        </view>
+        <view class="appraise-times">2018.02.03 12:00  规格:红色,s</view> -->
         <view class="appraise-more">
             <text class="more-title" bindtap="discuss">查看全部评论</text>
         </view>

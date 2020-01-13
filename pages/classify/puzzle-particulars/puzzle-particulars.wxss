@@ -211,7 +211,9 @@ swiper {
     padding: 0 10rpx;
 }
 
-
+.table-left {
+    margin-left: 24rpx;
+}
 
 .table-margin {
     margin-left: 20rpx;
@@ -618,16 +620,6 @@ swiper {
     color: rgba(255, 255, 255, 1);
     background: linear-gradient(-90deg, rgba(255, 0, 0, 1), rgba(255, 69, 69, 1));
 }
-
-
-
-
-
-
-
-
-
-
 
 
 

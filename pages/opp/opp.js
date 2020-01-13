@@ -10,7 +10,7 @@ Page({
   data: {
     grid:[],
     tag:0,
-    userId:'',
+    userId:975,
     money:'',
     times:'',
     chongzhiList:[],

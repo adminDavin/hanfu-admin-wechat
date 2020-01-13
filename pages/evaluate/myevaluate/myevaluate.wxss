@@ -1,7 +1,6 @@
 page {
   background-color: #f8f8f8;
 }
-
 .evaluate-done {
   padding: 20rpx;
 }

@@ -10,7 +10,6 @@ Component({
     productId: {
       type: Number,
       value: 0,
-      dd:''
     }
   },
 
@@ -59,17 +58,19 @@ Component({
       let selectedGoods = this.data.selectedGoods;
       console.log(e.currentTarget.dataset);
       selectedGoods.spec[e.currentTarget.dataset.name] = e.currentTarget.dataset.value;
+   
+      console.log(selectedGoods);
+      // TODO 检查库存是否有库存 goodsSpe.includes(fruit)
       selectedGoods.goodsId = 5;
       selectedGoods.totalprice = 1000;
       selectedGoods.goodsNum = 5;
-      console.log(selectedGoods);
-      // TODO 检查库存是否有库存 goodsSpe.includes(fruit)
       this.setData({
         selectedGoods: selectedGoods,
-        value: e.currentTarget.dataset.value
+        value: e.currentTarget.dataset.value,
       });
-      this.test()
-      console.log(this.test() == '0' ? 'active' : 'onSelect-Spec')
+      // console.log(this.data.goodsSpec)
+      // console.log(this.data.goodsSpec)
+      console.log(thit.data.selectedGoods.spec =='' )
 
     },
     onSubmitSelectedGoods() {
@@ -81,6 +82,7 @@ Component({
       }, (res) => {
         let goodsSpec = new Map();
         let productSpec = new Map();
+
         res.data.data.forEach(s => {
           if (goodsSpec.has(s.productSpecName)) {
             goodsSpec.get(s.productSpecName).push(s.hfValue);
@@ -90,6 +92,7 @@ Component({
             goodsSpec.set(s.productSpecName, values);
           }
         });
+        
         this.setData({
           goodsSpec: [...goodsSpec]
         })

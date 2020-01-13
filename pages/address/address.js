@@ -6,7 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    userId:'',
+    userId:975,
     addressList:[],
     tipshow:false
   },

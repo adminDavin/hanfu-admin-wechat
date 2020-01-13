@@ -45,7 +45,13 @@
     margin: 0 auto;
     margin-top: 43rpx;
 }
-
+.history-title {
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    width: 710rpx;
+    height: 35rpx;
+}
 .images {
     width: 6rpx;
     height: 27rpx;

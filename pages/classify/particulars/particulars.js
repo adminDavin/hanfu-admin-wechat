@@ -24,7 +24,7 @@ Page({
     sites: '',
     shppingcar: '', //购物车
     attention: '',
-    userId: 2,
+    userId: 975,
     slideNumber: '1', //详情滑动跳动数字
     collects: false,
     goodsNum: 1,
@@ -292,7 +292,7 @@ Page({
       app.globalData.selectedGoods = [];
     } 
     app.globalData.selectedGoods.push({ selectedGoods: this.data.selectedGoods, selectedAddress: this.data.selectedAddress});
-    wx.navigateTo({url: '../../ljbuy/ljbuy?purchasePrice='});
+    wx.navigateTo({ url: `../../ljbuy/ljbuy?purchasePrice=`});
   },
   // 判断userid
   isUserId() {

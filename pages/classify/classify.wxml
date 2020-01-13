@@ -11,7 +11,7 @@
   <view class="classify-banner">
     <!-- 左 -->
     <van-sidebar active-key="{{ activeKey }}">
-      <van-sidebar-item title="{{item.productName}}" bind:click="onChange" custom-class="banner-box" wx:for="{{arr}}" wx:key="index" data-id="{{item.id}}" />
+      <van-sidebar-item title="{{item.hfName}}" bind:click="onChange" custom-class="banner-box" wx:for="{{arr}}" wx:key="index" data-id="{{item.id}}" />
     </van-sidebar>
     <!-- 右 -->
     <view class="banner-text">

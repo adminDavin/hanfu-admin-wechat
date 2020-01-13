@@ -19,7 +19,7 @@ Page({
     lunBoTu:[],//轮播图
     ordersId:'',
     goodsId:'',
-    userId:'',
+    userId:975,
     show: false,
     shibaishow: false,
     beforetimes:[],

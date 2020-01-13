@@ -4,7 +4,6 @@ page {
 .evaluate-list {
   padding: 20rpx;
 }
-
 .evaluate-item {
   display: flex;
   width: 100%;

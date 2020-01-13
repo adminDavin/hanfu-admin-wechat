@@ -138,7 +138,10 @@ font-weight:400;
   margin-bottom: 8rpx;
 }
 
-
+.selectserve {
+  margin-right: 10rpx;
+  margin-left: 10rpx;
+}
 
 .card-money {
   width: 100%;

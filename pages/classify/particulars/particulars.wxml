@@ -42,7 +42,7 @@
     <view class="site-selected">
       <view class="selected-box">
         <text class="selected">选择</text>
-        <text class="selected-text" wx:if="{{guigestr==''}}">请选择</text>
+        <text class="selected-text" wx:if="{{guigestr==''}}">未选择</text>
         <text class="selected-text" wx:if="{{guigestr!=''}}">{{guigestr}}</text>
       </view>
       <image src="../../images/tabs/diandian.png" bindtap="guigeshow" class="selected-images" />
@@ -132,6 +132,7 @@
   </view>
   <!-- 选取地址 -->
   <view class="guigebox" style="overflow:auto" wx:if="{{tsiteshow==true}}">
+   <view>派送至</view>
     <view class="guanbipic" style="position:absolute;right:20rpx;top:0">
       <image src="../../images/cart/guigegb.png" bindtap="tsiteguanbi" style="width:24rpx;height:24rpx;"></image>
     </view>
