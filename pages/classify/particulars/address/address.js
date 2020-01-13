@@ -29,7 +29,16 @@ Component({
     tsiteguanbi() {
       this.onSubmitSelectedAddress(false);
     },
-    onSubmitSelectedAddress(isSeleted=true) {
+    onSubmitSelectedAddress() {
+      console.log(typeof (this.data.selectedAddress.id));
+      if (typeof (this.data.selectedAddress.id) == "undefined") {
+        console.log('ddddd');
+        wx.showToast({
+          title: '该功能未上线！',
+          icon: 'none',
+          duration: 1500
+        });
+      }
       this.triggerEvent('selectAddressEvent', { selectedAddress: this.data.selectedAddress });      
     },
     //展示地址
@@ -62,6 +71,7 @@ Component({
   lifetimes: {
     // 组件的生命周期函数，用于声明组件的生命周期
     ready: function () {
+      wx.hideLoading();
       this.getsitelist();
     },
     detached: () => {

@@ -107,6 +107,12 @@ Page({
         isFaultAddress: 1
       })
     }
+
+    if (this.data.userId==null) {
+      alart("ddfsdf");
+    }
+
+    console.log(this.data);
     wx.request({
       url: app.globalData.urlLogin + '/user/address/addAddress',
       method: 'get',
@@ -120,7 +126,7 @@ Page({
         hfProvince: that.data.hfProvince,
         hfCity: that.data.hfCity,
         hfAddressDetail: that.data.hfAddressDetail,
-        userId: that.data.userId,
+        userId: this.data.userId,
         isFaultAddress: that.data.isFaultAddress,
         hfDesc:'备注'
       },
