@@ -1,0 +1,38 @@
+/**app.wxss**/
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 200rpx 0;
+  box-sizing: border-box;
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-fenlei:before {
+  content: "\e67b";
+}
+
+.icon-faxian:before {
+  content: "\e68c";
+}
+
+.icon-load:before {
+  content: "\e606";
+}
+
+.icon-weibiaoti-:before {
+  content: "\e614";
+}
+
+.icon-gouwuche-fuben:before {
+  content: "\e640";
+}
