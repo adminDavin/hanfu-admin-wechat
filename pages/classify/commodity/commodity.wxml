@@ -52,18 +52,18 @@
       <!-- 图片 -->
       <image src="{{item.img}}" class="content-images" />
       <!-- 详情 -->
-      <text class="content-text">{{item.hfName}}</text>
+      <view class="content-text">{{item.hfName}}</view>
       <!-- 价格 -->
       <view class="content-discounts">
         <view class="discounts-money">
           <text class="money-title">¥</text>
           <text class="money-number">{{item.sellPrice}}</text>
-         
+          <!-- <image src="../../images/tabs/vip.png" class="money-vip" /> -->
         </view>
         <view class="news">
-
+          <!-- <text class="news-shpping">每满200减30</text> -->
           <text class="news-shpping">包邮</text>
-
+          <!-- <text class="news-shpping">领券满1000减300</text> -->
         </view>
         <view class="observer">
           <text class="observe-one">9000+条评论</text>
@@ -134,7 +134,22 @@
               <text class="tag"></text>
             </view>
           </view>
- 
+          <!-- <view class="subject-box subject-top">
+                        <view class="subject-title">
+                            <text class="title-subject">品牌</text>
+                            <image src="../../images/tabs/jinru.png" class="subject-image" />
+                        </view>
+                        <view class="subject-table">
+                            <text class="tag">男装</text>
+                            <text class="tag">花花公子</text>
+                            <text class="tag">七匹狼</text>
+                            <text class="tag">七匹狼</text>
+                            <text class="tag">男装</text>
+                            <text class="tag">男装</text>
+                            <text class="tag">男装</text>
+                            <text class="tag">男装</text>
+                        </view>
+                    </view> -->
         </view>
       </view>
       <view class='buttom'>

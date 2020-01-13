@@ -23,7 +23,13 @@ Page({
     guigeshow: false,
     totalprice: '',
     goodsNum: 1,
+    startTime:'',//开始
+    stopTime:'',//结束
+    hour:'',
+    minute:'',
+    second:'',
   },
+
   //分享
   onShareAppMessage: function (ops) {
     if (ops.from === 'button') {
@@ -209,15 +215,7 @@ Page({
   },
   //单独购买
   dandushpping:function(){
-    var that = this;
-    let purchasePrice = that.data.dongtai.price;
-    let purchaseQuantity = that.data.dongtai.number;
-    let amount = purchasePrice * purchaseQuantity;
-    let goodsid = that.data.dataid;
-    let userAddressId = that.data.userAddressId;
-    wx.navigateTo({
-      url: '../../ljbuy/ljbuy?purchasePrice=' + purchasePrice + '&purchaseQuantity=' + purchaseQuantity + '&amount=' + amount + '&goodsid=' + goodsid + '&userAddressId=' + userAddressId,
-    })
+   
   },
   //获取顾客地址
   site: function (e) {
@@ -251,7 +249,7 @@ Page({
       },
       data: {
         token: 13,
-        userId: 13//that.data.userId
+        userId: that.data.userId
       }
     })
   },
@@ -268,7 +266,7 @@ Page({
         })
       },
       data: {
-        id: 7 //that.data.dataid
+        id:that.data.dataid
       }
     })
   },
@@ -287,7 +285,7 @@ Page({
         })
       },
       data: {
-        id:7 //that.data.dataid
+        id:that.data.dataid
       }
     })
   },
@@ -312,21 +310,33 @@ Page({
         console.log(res)
         let list = res.data
         list.img = app.globalData.urlmorecategory + '/goods/getFile?fileId=' + list.fileDesc[0].id;
-        // console.log(list)
         that.setData({
-          dongtai: list
+          dongtai: list,
+          startTime: list.startTime,
+          stopTime: list.stopTime,
+        })
+        //开始时间
+        let start_hour = (that.data.startTime).substring(11, 13)
+        let start_minute = (that.data.startTime).substring(14, 16)
+        let start_second = (that.data.startTime).substring(17, 19)
+        that.setData({
+          hour: start_hour,
+          minute: start_minute,
+          second: start_second
         })
       },
       data: {
-        id:6//that.data.contentid
+        id:that.data.contentid
       }
     })
   },
   //一键拼团跳转
   yijianpintuan:function(e){
     var that=this;
-    var id = that.data.contentid
+    var id = that.data.dataid;//团购表id
     console.log(id)
+    var hfDesc ="" ;//所选商品规格
+    var addressId = ""//用户地址id
     wx.navigateTo({
       url:`../ping-pay/ping-pay?id=${id}`
     })

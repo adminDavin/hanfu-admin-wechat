@@ -81,5 +81,4 @@
     </text>
     <a href="#">18596346589</a>
   </view>
-  <view class="ceshi"style="width:100rpx;height:100rpx;background:black" bindtap="lijicz"></view>
 </van-tabs>

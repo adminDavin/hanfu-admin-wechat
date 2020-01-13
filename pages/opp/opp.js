@@ -10,7 +10,7 @@ Page({
   data: {
     grid:[],
     tag:0,
-    userId:'',
+    userId:975,
     money:'',
     times:'',
     chongzhiList:[],
@@ -59,7 +59,7 @@ Page({
       method: 'POST',
       head: 'application/x-www-form-urlencoded',
       data: {
-        id: that.data.userId,
+        id: Date.parse(new Date())+'',
         body:'会员',
         openId:openid,
         total_fee:1,

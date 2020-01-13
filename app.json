@@ -1,5 +1,8 @@
 {
   "pages": [
+    "pages/classify/classify",
+    "pages/seckill/seckill",
+    "pages/seckill/seek/seek",
     "pages/classify/particulars/particulars",
     "pages/opp/vip/vip",
     "pages/mydingdan/mydingdan",
@@ -13,11 +16,11 @@
     "pages/evaluate/all",
 
     "pages/discount/discount",
-    "pages/classify/classify",
+    
     "pages/classify/puzzle-particulars/puzzle-particulars",
     "pages/classify/Limited-time/Limited-time",
     
-    "pages/seckill/seckill",
+    
     "pages/classify/commodity/commodity",
     "pages/mine/mine",
     "pages/opp/opp",
@@ -52,7 +55,7 @@
     "pages/Getdiscount/Getdiscount",
     "pages/MEdiscount/MEdiscount",
     
-    "pages/seckill/seek/seek",
+    
     "pages/find/find",
     "pages/register/register",
     "pages/logs/logs"

@@ -13,9 +13,9 @@
             </label>
           </block>
           <block wx:else>
-            <view wx:for='{{childItem}}' class="Select-view" wx:for-item="specValue" wx:key="goodsSpecValue" wx:for-index="specValueIndex">
-              <label class="onSelect-Spec  " bindtap="onSelectSpecValue" data-value="{{specValue}}" data-name="{{item[0]}}">
-               <text class="Select-text" >{{specValue }}</text>
+            <view wx:for='{{childItem}}' class="Select-view {{}}" wx:for-item="specValue" wx:key="goodsSpecValue"           wx:for-index="specValueIndex">
+              <label class="onSelect-Spec" bindtap="onSelectSpecValue" data-value="{{specValue}}" data-name="{{item[0]}}">
+               <text class="Select-text" >{{specValue}}</text>
               </label>
             </view>
           </block>
@@ -27,7 +27,7 @@
       <view class="guigenum-right">
         <image src="../../../images/cart/guigesub.png" style="width:20rpx;height:20rpx;" bindtap="subNum"></image>
         <view class="onInputNum">
-          <input type="number" value="{{selectedGoods.goodsNum}}" />
+          <input type="number" value="{{selectedGoods.goodsNum}}" bindinput='onInputNum' />
         </view>
         <image src="../../../images/cart/guigeadd.png" style="width:20rpx;height:20rpx;" bindtap="addNum"></image>
       </view>

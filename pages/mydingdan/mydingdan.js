@@ -284,7 +284,6 @@ Page({
       }
     })
   },
-
   //待付款
   getfukuan() {
     var that = this;
@@ -399,7 +398,7 @@ Page({
       key: 'user',
       success: function(res) {
         that.setData({
-          userId: res.data.userId
+          userId:975 //res.data.userId
         })
         console.log(that.data.userId)
       },
@@ -422,6 +421,10 @@ Page({
       })
       that.getshouhuo();
     }
+    this.getfukuan()
+    this.getshouhuo()
+    this.gettihuo()
+    this.getwancheng()
   },
 
 
