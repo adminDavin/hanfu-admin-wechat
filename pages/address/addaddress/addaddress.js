@@ -109,7 +109,9 @@ Page({
     }
 
     if (this.data.userId==null) {
-      alart("ddfsdf");
+      wx.showToast({
+        title: '用户未登录',
+      })
     }
 
     console.log(this.data);
