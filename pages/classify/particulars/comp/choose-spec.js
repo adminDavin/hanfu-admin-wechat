@@ -63,23 +63,22 @@ Component({
         method: 'POST',
         data: {
           productId:this.properties.productId,
-          goodsNum: this.data.selectedGoods.goodsNum,
-          respList: this.data.selectedGoods.spec,
+          goodsNum: selectedGoods.goodsNum,
+          respList: JSON.stringify(selectedGoods.spec),
         },
         header: {
-          // 'content-type': 'application/x-www-form-urlencoded' 
+          'content-type': 'application/x-www-form-urlencoded' 
         },
         success(res) {
           console.log(res.data)
+          
         }
       })
       this.setData({
         selectedGoods: selectedGoods,
         value: e.currentTarget.dataset.value,
       });
-      // console.log(this.data.goodsSpec)
-      console.log(this.data.selectedGoods.goodsNum)
-      // console.log(this.selectedGoods)
+       console.log(this.data.goodsSpec)
 
     },
     onSubmitSelectedGoods() {
