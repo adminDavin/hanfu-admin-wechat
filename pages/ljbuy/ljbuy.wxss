@@ -73,8 +73,8 @@
   color: rgba(21, 21, 21, 1);
   line-height: 100rpx;
 }
-.youji{
-  width:100%;
+.youji {
+  width: 100%;
   line-height: 80rpx;
   display: flex;
   justify-content: space-between;
@@ -83,12 +83,12 @@
   box-sizing: border-box;
   margin-top: 20rpx;
 }
-.youjicard{
-  width:100%;
+.youjicard {
+  width: 100%;
   background-color: white;
 }
-.youfei{
-  width:100%;
+.youfei {
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -106,11 +106,14 @@
 }
 
 .xiajia-content {
-  margin-bottom:20rpx;
+  margin-bottom: 20rpx;
   width: 100%;
   height: 270rpx;
   display: flex;
   justify-content: flex-start;
+}
+.item-goodname{
+  height: 80rpx;
 }
 
 .contentitem-right {
@@ -120,6 +123,7 @@
   flex-direction: column;
   justify-content: space-around;
   margin-left: 30rpx;
+  position: relative;
 }
 
 .item-name {
@@ -155,11 +159,13 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: absolute;
+  bottom: 20px;
 }
 
 .discounts-money {
   color: #f00;
-  margin-top: 22rpx;
+  /* margin-top: 22rpx; */
   line-height: 26rpx;
   display: flex;
   align-items: center;
@@ -168,11 +174,11 @@
 .money-title {
   font-size: 36rpx;
   font-weight: bold;
-  font-family: 'PingFang-SC-Bold';
+  font-family: "PingFang-SC-Bold";
 }
 
 .money-number {
-  font-family: 'PingFang-SC-Medium';
+  font-family: "PingFang-SC-Medium";
   font-size: 34rpx;
   font-weight: 500;
   margin-left: 3rpx;
@@ -184,26 +190,27 @@
   color: rgba(51, 51, 51, 1);
 }
 /* footer */
-.footer{
-  width:100%;
-  height:98rpx;
+.footer {
+  width: 100%;
+  height: 98rpx;
   position: fixed;
   bottom: 0;
+  background-color: #fff;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding:0 24rpx;
+  padding: 0 24rpx;
   box-sizing: border-box;
 }
-.submit{
-  width:176rpx;
-height:60rpx;
-background:rgba(255,0,0,1);
-border-radius:30rpx;
-font-size:30rpx;
-font-family:PingFang SC;
-font-weight:500;
-color:rgba(255,255,255,1);
-line-height:60rpx;
-text-align: center
+.submit {
+  width: 176rpx;
+  height: 60rpx;
+  background: rgba(255, 0, 0, 1);
+  border-radius: 30rpx;
+  font-size: 30rpx;
+  font-family: PingFang SC;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 1);
+  line-height: 60rpx;
+  text-align: center;
 }

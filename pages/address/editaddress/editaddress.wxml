@@ -1,7 +1,7 @@
 <view class="editaddress">
   <view class="del" bindtap="del">删除</view>
   <view class="addr-content">
-    <view class="addr-card">
+    <view class="addr-card" style="width:100%">
       <view class="card-left-item">收货人</view>
       <input value="{{contact}}" bindinput="contact"></input>
     </view>
