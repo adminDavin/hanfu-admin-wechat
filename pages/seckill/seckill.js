@@ -37,7 +37,6 @@ Page({
       url: app.globalData.urlmorecategory + '/seniority/findSeniorityInfo',
       method: 'Get',
       success: function (res) {
-        console.log(res)
         let list = res.data.data;
         for (var index in list) {
           list[index].img = app.globalData.urlGoods + '/goods/getFile?fileId=' + list[index].fileId;
@@ -205,7 +204,6 @@ Page({
       url: app.globalData.urlGoods + '/goods/listGoods',
       method: 'Get',
       success: function (res) {
-        console.log(res)
         let list = res.data.data;
         for (var index in list) {
           list[index].img = app.globalData.urlGoods + '/goods/getFile?fileId=' + list[index].fileId;

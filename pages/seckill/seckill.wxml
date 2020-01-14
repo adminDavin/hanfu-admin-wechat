@@ -2,7 +2,8 @@
   <view class="seckill-header">
     <view class="header-title">
       <view class="header-t">
-        <view class="header-tu"></view>
+        <view class="header-tu">
+        </view>
         <text class="header-text">同橙优品</text>
       </view>
       <view class="header-fl">
@@ -11,7 +12,7 @@
           <view class="sao">扫一扫</view>
         </view>
         <button class="header-sao" style="padding:0;margin:0;width:75rpx;background:rgba(255,51,51,1);margin-top:15rpx" open-type="contact">
-          <image src="../images/tabs/xiaoxis.png" class="sao-tu" />
+          <image src="../images/cart/kefu.png" class="sao-tu" />
           <view class="sao">客服</view>
         </button>
       </view>
@@ -22,8 +23,8 @@
     </view>
   </view>
   <view class="seckill-img">
-    <swiper vertical="{{false}}" indicator-dots="{{true}}" autoplay="{{true}}">
-      <swiper-item bindtap="lunbotutiao" wx:for="{{lunBoTu}}" wx:key="index" data-id="{{item.id}}">
+    <swiper circular="{{true}}" vertical="{{false}}" indicator-dots="{{true}}" autoplay="{{true}}">
+      <swiper-item class="swiper-item-box" bindtap="lunbotutiao" wx:for="{{lunBoTu}}" wx:key="index" data-id="{{item.id}}">
         <image src="{{item.img}}" class="img-size"></image>
       </swiper-item>
     </swiper>
@@ -34,7 +35,7 @@
       <!-- 精选盒子 -->
       <view class="banner-box-three">
         <view class="handpick-text" bindtap="bangdan" wx:for="{{ranking}}" wx:key="index" data-id="{{item.id}}">
-          <text class="handpick-title">{{item.seniorityName}}</text>
+          <text class="handpick-title handpick-title-{{index}}">{{item.seniorityName}}</text>
           <image class="handpick-image" src="{{item.img}}"></image>
         </view>
       </view>
