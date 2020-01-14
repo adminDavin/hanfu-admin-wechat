@@ -59,7 +59,7 @@
     </view>
     <view class="site-freight">
       <text class="selected">运费</text>
-      <text class="selected-text">免运费</text>
+      <text class="selected-text">免运费111</text>
     </view>
     <view class="site-refund" bindtap="showModal">
       <view class="refund-flex">
