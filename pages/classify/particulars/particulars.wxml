@@ -107,16 +107,18 @@
   </view>
   <!-- 底部 -->
   <view class="footer">
-    <view class="footter-service">
-      <image src="../../images/tabs/xiaoxi.png" class="footer-image" />
-      <text class="foot-text">客服</text>
+      <view class="footer-inner">
+        <view class="footter-service">
+        <image src="../../images/tabs/xiaoxi.png" class="footer-image" />
+        <text class="foot-text">客服</text>
+      </view>
+      <view class="footter-service" bindtap="gouwucar">
+        <image src="../../images/tabs/buycar.png" class="footer-image" />
+        <text class="foot-text">购物车</text>
+      </view>
+       <view class="footer-shppingcar" bindtap="shppingcar">加入购物车</view>
+       <view class="footer-shppingcar purchase" bindtap="buyquick">立即购买</view>
     </view>
-    <view class="footter-service footer-margin" bindtap="gouwucar">
-      <image src="../../images/tabs/buycar.png" class="footer-image" />
-      <text class="foot-text">购物车</text>
-    </view>
-    <view class="footer-shppingcar" bindtap="shppingcar">加入购物车</view>
-    <view class="footer-shppingcar purchase" bindtap="buyquick">立即购买</view>
   </view>
   <!-- 服务弹窗 -->
   <view class="modals modals-bottom-dialog" hidden="{{hideModal}}">

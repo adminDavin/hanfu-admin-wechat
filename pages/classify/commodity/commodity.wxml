@@ -52,7 +52,7 @@
       <!-- 图片 -->
       <image src="{{item.img}}" class="content-images" />
       <!-- 详情 -->
-      <view class="content-text">{{item.hfName}}</view>
+      <view class="content-text">{{item.goodName}}</view>
       <!-- 价格 -->
       <view class="content-discounts">
         <view class="discounts-money">

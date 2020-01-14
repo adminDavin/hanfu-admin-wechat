@@ -3,10 +3,7 @@
     height: 100%;
     position: relative;
 }
-/* 地址弹窗 */
-.dizhibox{
-  
-}
+
 .address-card{
   width:100%;
   height:127rpx;
@@ -648,31 +645,30 @@ swiper {
 
 /* 底部 */
 .footer {
-    width: 750rpx;
+    width: 100%;
     height: 98rpx;
     background: red;
     position: fixed;
     bottom: 0;
     left: 0;
     background-color: #FFFFFF;
-    position: fixed;
-    bottom: 0;
-    left: 0;
     overflow: hidden;
     display: flex;
-    border-radius: 10px 10px 0px 0px;
+    /* border-radius: 10px 10px 0px 0px; */
+    justify-content: center;
+}
+
+.footer-inner {
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .footter-service {
     display: flex;
     flex-direction: column;
-    margin-top: 12rpx;
     align-items: center;
-    margin-left: 41rpx;
-}
-
-.footer-margin {
-    margin-left: 61rpx;
 }
 
 .footer-image {
@@ -689,7 +685,7 @@ swiper {
 }
 
 .footer-shppingcar {
-    width: 211rpx;
+    width: 210rpx;
     height: 68rpx;
     background: rgba(255, 51, 51, 1);
     border-radius: 34px;
@@ -699,8 +695,6 @@ swiper {
     font-family: 'PingFang SC';
     font-weight: 500;
     color: rgba(255, 255, 255, 1);
-    margin-top: 15rpx;
-    margin-left: 55rpx;
 }
 /* 选取地址 */
 

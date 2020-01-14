@@ -15,7 +15,7 @@
     </van-sidebar>
     <!-- 右 -->
     <view class="banner-text">
-      <image src="{{images[0].img}}" class="text-image" />
+      <!-- <image src="{{images[0].img}}" class="text-image" /> -->
       <view class="text-table" wx:for="{{arrs}}" wx:for-item="arritem" wx:key="index">
         <view class="text-classify">{{arritem.twoLevelName}}</view>
         <view class="shpping-big">

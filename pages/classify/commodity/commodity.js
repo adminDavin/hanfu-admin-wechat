@@ -17,36 +17,28 @@ Page({
     mostlower:'',
     idw:'',
   },
+  
   //搜索
   sousuo: function () {
     wx.navigateTo({
       url: '../../seckill/seek/seek',
     })
   },
+
   //列表切换
   list: function () {
-    var that = this;
-    if (that.data.lists) {
-      that.setData({
-        lists: !that.data.lists,
-      })
-    } else {
-      that.setData({
-        lists: !that.data.lists,
-      })
-    }
+    this.setData({
+      lists: !this.data.lists,
+    })
   },
-  //切换标题栏底部颜色
+  // 切换目录
   clickTab: function (e) {
-    console.log(e)
-    var that = this;
-    that.setData({
+    this.setData({
       currentTab: e.currentTarget.dataset.id,
     })
   },
   // 获取滚动条当前位置
   onPageScroll: function (e) {
-    // console.log(e)
     if (e.scrollTop > 100) {
       this.setData({
         floorstatus: true
@@ -105,37 +97,37 @@ Page({
       sellPrice1:that.data.mostlower,
       sellPrice2:that.data.mosthigher
     }, (res) => {
-      console.log(res)
       let list = res.data.data;
-      for (var index in list) {
-        list[index].img = app.globalData.urlGoods + '/goods/getFile?fileId=' + list[index].fileId;
-      }
+      list.forEach(item => {
+        item.img = app.globalData.urlGoods + '/goods/getFile?fileId=' + item.fileId;
+      });
       that.setData({
         arr: list
       })
     });
   },
+
   // 获取商品列表
-  categoryId: function (e) {
+  categoryId: function () {
     var that = this;
+    const { ids } = this.data;
     wx.request({
       url: app.globalData.urlGoods + '/seniority/findSeniorityContent',
       method: 'Get',
       success: function (res) {
-        console.log(res)
         let list=res.data.data;
-        for(var index in list){
-          list[index].img = app.globalData.urlGoods + '/goods/getFile?fileId=' + list[index].fileId;
-        }
+
+        list.forEach(item => {
+          item.img = app.globalData.urlGoods + '/goods/getFile?fileId=' + item.fileId;
+        });
+        
         that.setData({
           arr: list,
         })
-        console.log(list)
       },
       data:{
-        seniorityId:that.data.ids
+        seniorityId:ids
       }
-      
     })
   },
  
@@ -146,8 +138,6 @@ Page({
       url: app.globalData.urlparticulars + '/goods/Price',
       method: 'Get',
       success: function (res) {
-        console.log(res)
-
         let list = res.data.data;
         for (var index in list) {
           list[index].img = app.globalData.urlGoods + '/goods/getFile?fileId=' + list[index].fileId;
@@ -158,13 +148,11 @@ Page({
       },
     })
   },
+
   // 跳转携带id
   commodity: function (e) {
-    console.log(e)
     var id = e.currentTarget.dataset.id
     var fileid = e.currentTarget.dataset.fileid
-    console.log(id)
-    console.log(fileid)
     var that = this;
     that.setData({
       pictureId: id,
@@ -174,13 +162,13 @@ Page({
       url: `../particulars/particulars?id=${id}`,
     })
   },
+
   // 常买
   getOftenBuy() {
     var that = this;
     apiCart.toSettle(app.globalData.urlCart, '/cart/selectOftenBuy', {
       userId: that.data.userId,
     }, (res) => {
-      console.log(res)
       var list = res.data.data;
       for (var index in list) {
         list[index].img = app.globalData.urlGoods + '/goods/getFile?fileId=' + list[index].productIcon;
@@ -190,12 +178,14 @@ Page({
       })
     });
   },
+
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     var that=this;
-    let id=options.id;
+    const { id } = options;
     if(options.tag){
       wx.getStorage({
         key: 'user',
@@ -207,65 +197,9 @@ Page({
         },
       })
     }else{
+      this.setData({ ids: id})
       this.categoryId();
     };
-   let ids=options.id
-   console.log(ids);
-   that.setData({
-     ids:ids
-   })
-   
-
   },
  
-  
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })

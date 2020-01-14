@@ -55,7 +55,22 @@
 		},
 		"miniprogram": {
 			"current": -1,
-			"list": []
+			"list": [
+				{
+					"id": 0,
+					"name": "pages/classify/commodity/commodity",
+					"pathName": "pages/classify/commodity/commodity",
+					"query": "id=26",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/classify/particulars/particulars",
+					"pathName": "pages/classify/particulars/particulars",
+					"query": "id=23",
+					"scene": null
+				}
+			]
 		}
 	}
 }
