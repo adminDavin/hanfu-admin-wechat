@@ -61,6 +61,7 @@ Component({
       selectedGoods.goodsNum = 1;
       console.log(selectedGoods);
       // TODO 检查库存是否有库存 
+      let that = this;
       wx.request({
         url: app.globalData.urlparticulars + '/goods/checkResp',
         method: 'POST',
@@ -73,16 +74,17 @@ Component({
           'content-type': 'application/x-www-form-urlencoded' 
         },
         success(res) {
-          console.log(res.data);
-          selectedGoods.goodsId = data.id;
-          selectedGoods.goodsNum = data.goodsNum;
-          selectedGoods.totalprice = money;
+          console.log(res.data.data, 'dfddsfsafd');
+          selectedGoods.goodsId = res.data.data.id;
+          selectedGoods.goodsNum = res.data.data.goodsNum;
+          selectedGoods.totalprice = res.data.data.money;
+
+          that.setData({
+            selectedGoods: selectedGoods,
+            value: e.currentTarget.dataset.value,
+          });
         }
       })
-      this.setData({
-        selectedGoods: selectedGoods,
-        value: e.currentTarget.dataset.value,
-      });
        console.log(this.data.goodsSpec)
 
     },

@@ -113,6 +113,7 @@ Page({
     })
   },
   listenChooseGoodsCommitEvent(e) {
+    console.log(e.detail, 'dddd');
     this.setData({
       guigeshow: false,
       selectedGoods: e.detail
