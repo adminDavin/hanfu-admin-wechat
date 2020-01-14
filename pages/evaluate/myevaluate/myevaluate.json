@@ -1,8 +1,8 @@
 {
   "usingComponents": {
-    "van-tab": "/vant/tab/index",
-    "van-tabs": "/vant/tabs/index",
-    "van-rate": "/vant/rate/index"
+    "van-tab": "/pages/vant/weapp/dist/tab/index",
+    "van-tabs": "/pages/vant/weapp/dist/tabs/index",
+    "van-rate": "/pages/vant/weapp/dist/rate/index"
   },
   "navigationBarTitleText": "我的评价"
 }

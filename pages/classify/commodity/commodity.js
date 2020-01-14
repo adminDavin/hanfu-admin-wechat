@@ -151,6 +151,7 @@ Page({
 
   // 跳转携带id
   commodity: function (e) {
+    debugger
     var id = e.currentTarget.dataset.id
     var price = e.currentTarget.dataset.price
     var fileid = e.currentTarget.dataset.fileid

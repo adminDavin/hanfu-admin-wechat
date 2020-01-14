@@ -12,10 +12,9 @@ Page({
     canGetSite: true,
     guigeshow: false,
     tsiteshow: false,
-    productId: 5,
+    productId: 0,
     goodsSpecMap: {},
     isUserId: false,
-    goodsId: '',
     openId: '',
     arr: [],
     evaluate: '', //评价
@@ -469,9 +468,10 @@ Page({
     var that = this;
     this.isUserId();
     this.firstIsLogin();
+    debugger
     that.setData({
       dataId: id,
-      goodsId: id,
+      productId: id,
       price: price,
     });
     //用户的id

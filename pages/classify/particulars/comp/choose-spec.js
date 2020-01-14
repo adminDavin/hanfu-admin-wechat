@@ -25,6 +25,7 @@ Component({
       spec: { 色彩: "红色", 大小: "6.5寸"},
       goodsId: 5,
     },
+    productSpec: new Map(),
     // 保持被点击的元素的值
     value: '',
     spec:[]
@@ -47,15 +48,17 @@ Component({
       let selectedGoods = this.data.selectedGoods;
       let spec = this.data.spec;
       console.log(e.currentTarget.dataset);
-      spec[e.currentTarget.dataset.name] = e.currentTarget.dataset.value;
+
+      let productSpecId = this.data.productSpec.get(e.currentTarget.dataset.name);
+      spec[productSpecId] = e.currentTarget.dataset.value;
       console.log(spec)
-      selectedGoods.spec[e.currentTarget.dataset.name] = e.currentTarget.dataset.value;
+      selectedGoods.spec[productSpecId] = e.currentTarget.dataset.value;
    
       console.log(selectedGoods);
       // TODO 检查库存是否有库存 goodsSpe.includes(fruit)
       selectedGoods.goodsId = 5;
       selectedGoods.totalprice = 1000;
-      selectedGoods.goodsNum = 2;
+      selectedGoods.goodsNum = 1;
       console.log(selectedGoods);
       // TODO 检查库存是否有库存 
       wx.request({
@@ -70,8 +73,10 @@ Component({
           'content-type': 'application/x-www-form-urlencoded' 
         },
         success(res) {
-          console.log(res.data)
-          
+          console.log(res.data);
+          selectedGoods.goodsId = data.id;
+          selectedGoods.goodsNum = data.goodsNum;
+          selectedGoods.totalprice = money;
         }
       })
       this.setData({
@@ -90,7 +95,7 @@ Component({
       }, (res) => {
         let goodsSpec = new Map();
         let productSpec = new Map();
-
+        
         res.data.data.forEach(s => {
           if (goodsSpec.has(s.productSpecName)) {
             goodsSpec.get(s.productSpecName).push(s.hfValue);
@@ -98,11 +103,14 @@ Component({
             let values = new Array();
             values.push(s.hfValue);
             goodsSpec.set(s.productSpecName, values);
+            productSpec.set(s.productSpecName, s.id)
+
+
           }
         });
-        
         this.setData({
-          goodsSpec: [...goodsSpec]
+          goodsSpec: [...goodsSpec],
+          productSpec: productSpec
         })
       });
     }
