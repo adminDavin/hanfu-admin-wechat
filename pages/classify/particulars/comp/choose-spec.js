@@ -23,7 +23,8 @@ Component({
       goodsNum: 0,
       totalprice: 0,
       spec: { 色彩: "红色", 大小: "6.5寸"},
-      goodsId: 5,
+      goodsId: 1,
+      productId: 0
     },
     productSpec: new Map(),
     // 保持被点击的元素的值
@@ -51,7 +52,6 @@ Component({
 
       let productSpecId = this.data.productSpec.get(e.currentTarget.dataset.name);
       spec[productSpecId] = e.currentTarget.dataset.value;
-      console.log(spec)
       selectedGoods.spec[productSpecId] = e.currentTarget.dataset.value;
    
       console.log(selectedGoods);
@@ -78,6 +78,7 @@ Component({
           selectedGoods.goodsId = res.data.data.id;
           selectedGoods.goodsNum = res.data.data.goodsNum;
           selectedGoods.totalprice = res.data.data.money;
+          selectedGoods.productId = that.properties.productId;
 
           that.setData({
             selectedGoods: selectedGoods,

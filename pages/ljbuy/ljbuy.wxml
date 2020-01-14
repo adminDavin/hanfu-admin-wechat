@@ -68,7 +68,7 @@
   <view class="youjicard">
     <view class="youji">
       <view class="ziti" style="line-height:80rpx">商品金额</view>
-      <text class="ziti" style="line-height:80rpx">￥{{price}}</text>
+      <text class="ziti" style="line-height:80rpx">￥{{productPrice}}</text>
     </view>
     <view class="youfei" hidden="{{quhuomethod}}">
       <view class="ziti" style="line-height:40rpx">邮费</view>

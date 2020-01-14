@@ -152,11 +152,11 @@ Page({
   gopay(e) {
     let orderId = e.currentTarget.dataset.orderid;
     let price = e.currentTarget.dataset.price;
-    that.setData({
-      ordersId: ordersId,
+    this.setData({
+      ordersId: orderId,
       amount:price
     })
-    that.lijicz();
+    this.lijicz();
   },
   /* 微信支付 */
   lijicz: function () {
@@ -397,8 +397,9 @@ Page({
     wx.getStorage({
       key: 'user',
       success: function(res) {
+        console.log(res);
         that.setData({
-          userId:975 //res.data.userId
+          userId: res.data.userId
         })
         console.log(that.data.userId)
       },

@@ -134,15 +134,16 @@ Page({
       url: app.globalData.url + "/order/creat",
       method: "get",
       data: {
-        amount: this.data.selectedGoods.totalprice,
+        
+        amount: that.data.amount,
         distribution: distribution,
         hfRemark: that.data.elevalue,
-        googsId: this.data.selectedGoods.goodsId,
+        googsId: that.data.goodsid,
         userId: this.data.userId,
         payMethodName: payMethodName,
-        purchaseQuantity: this.data.selectedGoods.goodsNum,
+        purchaseQuantity: that.data.purchaseQuantity,
         userAddressId: that.data.addressList.id,
-        purchasePrice: this.data.selectedGoods.totalprice
+        purchasePrice: that.data.productPrice
       },
       success(res) {
         console.log(res);
@@ -251,6 +252,10 @@ Page({
         console.log(res.data.data);
       }
     });
+    
+  },
+  getSelectedGoods: function () {
+
   },
   /**
    * 生命周期函数--监听页面加载
@@ -278,27 +283,57 @@ Page({
       userAddressId = selectedGoods.selectedAddress.id;
       goodsid = selectedGoods.selectedGoods.goodsId;
     }
-    console.log("---selectedGoods", app.globalData.selectedGoods);
-    wx.getStorage({
-      key: "user",
-      success: res => {
-        const {
-          data = {
-            userId: 975
+    console.log("---selectedGoods", selectedGoods.selectedGoods);
+    let that = this;
+    wx.request({
+      url: app.globalData.urlparticulars + '/goods/checkResp',
+      method: 'POST',
+      data: {
+        productId: selectedGoods.selectedGoods.selectedGoods.productId,
+        goodsNum: selectedGoods.selectedGoods.selectedGoods.goodsNum,
+        goodsId: selectedGoods.selectedGoods.selectedGoods.goodsId,
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      success(res) {
+        console.log(res.data.data, 'dfddsfsafd');
+        let selectedGoodsNew = {}; 
+        selectedGoodsNew.goodsId = res.data.data.id;
+        selectedGoodsNew.goodsNum = res.data.data.goodsNum;
+        selectedGoodsNew.totalprice = res.data.data.money;
+        selectedGoodsNew.discountMoney = res.data.data.discountMoney;
+        
+        wx.getStorage({
+          key: "user",
+          success: res => {
+            console.log(res);
+            const {
+              data = {
+                userId: 975
+              }
+            } = res;
+            console.log(selectedGoods);
+            that.setData({
+              userId: data.userId,
+              goodsid: selectedGoodsNew.goodsId,
+              amount: selectedGoodsNew.discountMoney || 0,
+              productPrice: selectedGoodsNew.totalprice || 0,
+              purchaseQuantity: selectedGoodsNew.goodsNum || 1,
+              userAddressId: userAddressId || "2",
+              selectedGoods: selectedGoods.selectedGoods,
+              selectedAddress: selectedGoods.selectedAddress
+            });
+            that.getAddress();
+            that.getGoods();
           }
-        } = res;
-        this.setData({
-          userId: data.userId,
-          goodsid: goodsid || 5,
-          amount: amount || 100,
-          purchasePrice: purchasePrice || 200,
-          purchaseQuantity: purchaseQuantity || 1,
-          userAddressId: userAddressId || "2",
-          selectedGoods: selectedGoods.selectedGoods.selectedGoods
         });
-        this.getAddress();
-        this.getGoods();
-        console.log(this.data);
+
+
+        that.setData({
+          selectedGoods: selectedGoods,
+          value: e.currentTarget.dataset.value,
+        });
       }
     });
   },
