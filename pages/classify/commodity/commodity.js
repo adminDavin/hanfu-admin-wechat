@@ -3,28 +3,27 @@ var util = require('../../../utils/util.js')
 const apiCart = require('../../../utils/api/cart.js');
 Page({
   data: {
-    ids:'',
     lists: false,
     arr: [],
     prices: '',
-    currentTab: 0,//切换
-    dataId: '',//待用
+    currentTab: 0, //切换
+    dataId: '', //待用
     pictureId: '',
-    fileId: '',// 获取物品图片
+    fileId: '', // 获取物品图片
     fileIds: '',
-    morepicture: '',//图片都在这里
-    mosthigher:'',
-    mostlower:'',
-    idw:'',
+    morepicture: '', //图片都在这里
+    mosthigher: '',
+    mostlower: '',
+    id:''
   },
   //搜索
-  sousuo: function () {
+  sousuo: function() {
     wx.navigateTo({
       url: '../../seckill/seek/seek',
     })
   },
   //列表切换
-  list: function () {
+  list: function() {
     var that = this;
     if (that.data.lists) {
       that.setData({
@@ -37,7 +36,7 @@ Page({
     }
   },
   //切换标题栏底部颜色
-  clickTab: function (e) {
+  clickTab: function(e) {
     console.log(e)
     var that = this;
     that.setData({
@@ -45,7 +44,7 @@ Page({
     })
   },
   // 获取滚动条当前位置
-  onPageScroll: function (e) {
+  onPageScroll: function(e) {
     // console.log(e)
     if (e.scrollTop > 100) {
       this.setData({
@@ -58,7 +57,7 @@ Page({
     }
   },
   // 回到顶部
-  goTop: function (e) {  // 一键回到顶部
+  goTop: function(e) { // 一键回到顶部
     if (wx.pageScrollTo) {
       wx.pageScrollTo({
         scrollTop: 0
@@ -71,11 +70,11 @@ Page({
     }
   },
   // 最低价
-  mostlower(e){
-    var that=this;
-    let mostlower=e.detail.value;
+  mostlower(e) {
+    var that = this;
+    let mostlower = e.detail.value;
     that.setData({
-      mostlower:mostlower
+      mostlower: mostlower
     })
   },
   // 最高价
@@ -88,22 +87,22 @@ Page({
   },
 
   // 筛选
-  onReady: function () {
+  onReady: function() {
     this.animation = wx.createAnimation()
   },
-  translate: function (event) {
+  translate: function(event) {
     this.setData({
       isRuleTrue: true
     })
   },
 
-  success: function () {
+  success: function() {
     this.setData({
       isRuleTrue: false
     })
     apiCart.toSettle(app.globalData.urlGoods, '/goods/queryList', {
-      sellPrice1:that.data.mostlower,
-      sellPrice2:that.data.mosthigher
+      sellPrice1: that.data.mostlower,
+      sellPrice2: that.data.mosthigher
     }, (res) => {
       console.log(res)
       let list = res.data.data;
@@ -116,36 +115,39 @@ Page({
     });
   },
   // 获取商品列表
-  categoryId: function (e) {
+  categoryId: function(e) {
     var that = this;
     wx.request({
       url: app.globalData.urlGoods + '/seniority/findSeniorityContent',
+      
       method: 'Get',
-      success: function (res) {
+      
+      success: function(res) {
         console.log(res)
-        let list=res.data.data;
-        for(var index in list){
+        let list = res.data.data;
+        for (var index in list) {
           list[index].img = app.globalData.urlGoods + '/goods/getFile?fileId=' + list[index].fileId;
         }
         that.setData({
           arr: list,
         })
+        console.log(123)
         console.log(list)
       },
-      data:{
-        seniorityId:that.data.ids
+      data: {
+        seniorityId: that.data.id
       }
-      
+
     })
   },
- 
+
   //价格排序
-  prices: function () {
+  prices: function() {
     var that = this;
     wx.request({
       url: app.globalData.urlparticulars + '/goods/Price',
       method: 'Get',
-      success: function (res) {
+      success: function(res) {
         console.log(res)
 
         let list = res.data.data;
@@ -159,7 +161,7 @@ Page({
     })
   },
   // 跳转携带id
-  commodity: function (e) {
+  commodity: function(e) {
     console.log(e)
     var id = e.currentTarget.dataset.id
     var fileid = e.currentTarget.dataset.fileid
@@ -193,79 +195,98 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-    var that=this;
-    let id=options.id;
-    if(options.tag){
+  onLoad: function(options) {
+    var that = this;
+    let id = options.id;
+    that.setData({
+      id:id,
+    });
+    if (options.tag) {
       wx.getStorage({
         key: 'user',
         success: function(res) {
           that.setData({
-            userId:res.data.userId
+            userId: res.data.userId
           })
           that.getOftenBuy();
         },
       })
-    }else{
+    } else {
       this.categoryId();
     };
-   let ids=options.id
-   console.log(ids);
-   that.setData({
-     ids:ids
-   })
-   
-
   },
- 
-  
+
+
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
-  }
+  },
+  cId: function(e) {
+    var that = this;
+    wx.request({
+      url: app.globalData.urlGoods + '/goods/findProductBycategoryId',
+      method: 'Get',
+      success: function(res) {
+        console.log(res)
+        let list = res.data.data;
+        for (var index in list) {
+          list[index].img = app.globalData.urlGoods + '/goods/getFile?fileId=' + list[index].fileId;
+        }
+        that.setData({
+          arr: list,
+        })
+        console.log(list)
+      },
+      data: {
+        categoryId: that.data.id
+      }
+
+    })
+  },
+
 })

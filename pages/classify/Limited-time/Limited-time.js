@@ -15,6 +15,12 @@ Page({
     slideNumber:'1',
     userId:'',
     collects: false,
+    startTime: '', //开始时间
+    stopTime: '', //结束时间 
+    hour: '',
+    minute: '',
+    second: '',
+    fileDesc: ''//商品图片
   },
   //购物车
   gouwucar:function(){
@@ -93,23 +99,23 @@ Page({
     })
   },
   //设置关注
-  attention: function () {
-    var that = this;
-    wx.request({
-      url: app.globalData.urlGoods + '/goods/Concern',
-      method: 'Get',
-      success: function (res) {
-        console.log(res)
-        that.setData({
-
-        })
-      },
-      data: {
-        goodsId: 1,//列表商品传过来
-        openId: 1
-      }
-    })
-  },
+  // attention: function () {
+  //   var that = this;
+  //   wx.request({
+  //     url: app.globalData.urlGoods + '/goods/Concern',
+  //     method: 'Get',
+  //     success: function (res) {
+  //       console.log(res)
+  //       that.setData({
+          
+  //       })
+  //     },
+  //     data: {
+  //       goodsId: 1,//列表商品传过来
+  //       openId: 1
+  //     }
+  //   })
+  // },
   //分享
   onShareAppMessage: function (ops) {
     if (ops.from === 'button') {
@@ -138,6 +144,7 @@ Page({
       url: app.globalData.urlsite + '/user/address/queryAddress',
       method: 'Get',
       success: function (res) {
+        console.log(res)
         that.setData({
           site: res.data.data
         })
@@ -152,7 +159,7 @@ Page({
       },
       data: {
         token: 13,
-        userId: 13 //that.data.userId
+        userId:that.data.userId
       }
     })
   },
@@ -163,10 +170,26 @@ Page({
       url: app.globalData.urlseckill + '/kill/seletById',
       method: 'Get',
       success: function (res) {
+        let list = res.data;
         console.log(res)
         that.setData({
-          arr: res.data
-        })
+          arr: list,
+          fileDesc: list.fileDesc,
+          startTime: list.startTime,
+          stopTime: list.stopTime
+        });
+        //开始时间
+        let start_hour = (that.data.startTime).substring(11, 13)
+        let start_minute = (that.data.startTime).substring(14, 16)
+        let start_second = (that.data.startTime).substring(17, 19)
+        that.setData({
+          hour: start_hour,
+          minute: start_minute,
+          second: start_second
+        });
+        for (var index in that.data.fileDesc){
+          that.data.fileDesc[index].img = app.globalData.urlGoods + '/goods/getFile?fileId=' + that.data.fileDesc[index].id;
+        }
       },
       data: {
         id: that.data.contentid

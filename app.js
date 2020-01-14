@@ -26,8 +26,8 @@ App({
     // urlCart: 'http://192.168.1.104:9098', //购物车
     // urlshppingcar: 'http://192.168.1.104:9098', //购物车
     // urlHexiao: 'http://192.168.1.125:9901', //核销
-    // urlpuzzle: 'http://192.168.1.175:9911', //拼团
-    // urlseckill: 'http://192.168.1.175:9910', //秒杀
+    //urlpuzzle: 'http://192.168.1.175:9911', //拼团
+    //urlseckill: 'http://192.168.1.175:9910', //秒杀
     // urlRefund: 'http://192.168.1.196:9099/',
     // urlpay:'http://192.168.1.196:8082'
     urlmorecategory: 'https://www.tjsichuang.cn:1443/api/product',//分类

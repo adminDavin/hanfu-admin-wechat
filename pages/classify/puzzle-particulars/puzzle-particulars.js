@@ -48,7 +48,6 @@ Page({
         console.log("转发失败:" + JSON.stringify(res));
       }
     }
-
   },
   //规格弹框
   guigeshow() {
@@ -235,21 +234,23 @@ Page({
       url: app.globalData.urlsite + '/user/address/queryAddress',
       method: 'Get',
       success: function (res) {
+        console.log(res)
         that.setData({
           site: res.data.data
         })
         for (let i = 0; i < that.data.site.length; i++) {
           if (that.data.site[i].isFaultAddress == 0) {
-            let sitss = that.data.site[i].hfProvince + that.data.site[i].hfCity + that.data.site[i].hfAddressDetail
+            let sitss = that.data.site[0].hfProvince + that.data.site[0].hfCity + that.data.site[0].hfAddressDetail
             that.setData({
               sites: sitss
             })
+            console.log(that.data.sites)
           }
         }
       },
       data: {
         token: 13,
-        userId: that.data.userId
+        userId:975 //that.data.userId
       }
     })
   },

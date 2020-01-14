@@ -34,12 +34,10 @@ Component({
    * 组件的方法列表
    */
   methods: {
-
     onInputNum(e) {
       this.setData({
        goodsNum : e.detail.value
       })
-
     },
     onSelectSpecValue(e) {
       console.log
@@ -50,7 +48,6 @@ Component({
       spec[e.currentTarget.dataset.name] = e.currentTarget.dataset.value;
       console.log(spec)
       selectedGoods.spec[e.currentTarget.dataset.name] = e.currentTarget.dataset.value;
-   
       console.log(selectedGoods);
       // TODO 检查库存是否有库存 goodsSpe.includes(fruit)
       selectedGoods.goodsId = 5;
@@ -71,7 +68,6 @@ Component({
         },
         success(res) {
           console.log(res.data)
-          
         }
       })
       this.setData({
@@ -79,7 +75,6 @@ Component({
         value: e.currentTarget.dataset.value,
       });
        console.log(this.data.goodsSpec)
-
     },
     onSubmitSelectedGoods() {
       this.triggerEvent('chooseGoodsCommitEvent', { selectedGoods: this.data.selectedGoods });
@@ -99,8 +94,7 @@ Component({
             values.push(s.hfValue);
             goodsSpec.set(s.productSpecName, values);
           }
-        });
-        
+        }); 
         this.setData({
           goodsSpec: [...goodsSpec]
         })

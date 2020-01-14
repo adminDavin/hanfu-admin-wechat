@@ -4,7 +4,7 @@
         <block>
             <swiper vertical="{{false}}" indicator-dots="{{flase}}" autoplay="{{flase}}" bindchange="current">
                 <swiper-item wx:for="{{arr.fileDesc}}" wx:key="index">
-                    <image src="{{item}}" class="images-head" />
+                    <image src="{{item.img}}" class="images-head"/>
                 </swiper-item>
             </swiper>
         </block>
@@ -48,11 +48,11 @@
             <view class="puzzle-times" data-startime="{{arr.startTime}}" data-stoptime="{{arr.stopTime}}">
                 <image src="../../images/tabs/naozhong.png" class="times-begin" />
                 <text class="over">限时秒杀</text>
-                <text class="over-number">00</text>
+                <text class="over-number">{{hour}}</text>
                 <text class="over">时</text>
-                <text class="over-number">00</text>
+                <text class="over-number">{{minute}}</text>
                 <text class="over">分</text>
-                <text class="over-number">00</text>
+                <text class="over-number">{{second}}</text>
                 <text class="over">秒</text>
             </view>
             <view class="puzzle-mark"></view>
@@ -107,7 +107,6 @@
             <text class="safeguard-text">货到付款</text>
         </view>
     </view>
-    <!-- 开团 -->
     <!-- 评价 -->
     <view class="appraise">
         <view class="appraise-title">
@@ -121,27 +120,6 @@
                 <image src="../../images/tabs/jinru (1).png" class="limit-image" />
             </view>
         </view>
-        <!-- <view class="appraise-user">
-            <image src="../../images/tabs/t (1).png" class="user-head" />
-            <view class="user-text">
-                <text class="head-name">欢乐小可</text>
-                <view class="stars-image">
-                    <image src="../../images/tabs/wujiaoxing.png" class="stars" />
-                    <image src="../../images/tabs/wujiaoxing.png" class="stars" />
-                    <image src="../../images/tabs/wujiaoxing.png" class="stars" />
-                    <image src="../../images/tabs/wujiaoxing.png" class="stars" />
-                    <image src="../../images/tabs/wujiaoxings.png" class="stars" />
-                </view>
-            </view>
-        </view> -->
-        <!-- <view class="appraise-content">穿戴舒服穿戴舒服穿戴舒服穿戴舒服穿戴舒服，默认好评!</view>
-        <view class="appraise-pictures">
-            <image src="../../images/handpick/shangping.png" class="appraise-photo" />
-            <image src="../../images/handpick/shangping.png" class="appraise-photo" />
-            <image src="../../images/handpick/shangping.png" class="appraise-photo" />
-            <image src="../../images/handpick/shangping.png" class="appraise-photo" />
-        </view>
-        <view class="appraise-times">2018.02.03 12:00  规格:红色,s</view> -->
         <view class="appraise-more">
             <text class="more-title" bindtap="discuss">查看全部评论</text>
         </view>

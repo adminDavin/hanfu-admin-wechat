@@ -13,7 +13,7 @@
       <view class="banner-box">
         <view class="table">
           <view class="table-sum" bindtap="clickTab" data-id="0">
-            <text class="sum-text" bindtap="categoryId">综合</text>
+            <text class="sum-text" bindtap="categoryId" bindtap="cId">综合</text>
             <view class="sum-color {{currentTab==0?'colors':''}}"></view>
           </view>
           <image src="../../images/tabs/xiangxia.png" class="sum-image" />

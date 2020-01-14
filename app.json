@@ -2,7 +2,6 @@
   "pages": [
     "pages/seckill/seckill",
     "pages/hexiao/hexiao",
-      
     "pages/classify/particulars/particulars",
     "pages/classify/classify",
     "pages/classify/commodity/commodity",
@@ -38,7 +37,6 @@
     "pages/goodsList/goodsList",
     "pages/address/address",
     "pages/address/addaddress/addaddress",
-    
     "pages/impower/impower",
     "pages/address/editaddress/editaddress",
     "pages/Getdiscount/Getdiscount",

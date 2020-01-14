@@ -20,13 +20,17 @@ Page({
     })
   },
   // 跳转到列表
-  goThreeLevel:function(e){
-    console.log(e)
+  go:function(e){
+    // console.log(e)
     
     let id=e.currentTarget.dataset.id;
+    console.log(id)
     wx.navigateTo({
+      
       url: `../classify/commodity/commodity?id=${id}`,
+      
     })
+    console.log(id)
   },
   //查询类目页面图片
   images: function (e) {
