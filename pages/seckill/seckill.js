@@ -19,7 +19,7 @@ Page({
     lunBoTu:[],//轮播图
     ordersId:'',
     goodsId:'',
-    userId:975,
+    userId:'',
     show: false,
     shibaishow: false,
     beforetimes:[],
@@ -228,11 +228,10 @@ Page({
      })
    },
   //推荐榜单
-  bangdan: function (e) {console.log(e);
-  
+  bangdan: function (e) {
     let id=e.currentTarget.dataset.id;
     wx.navigateTo({
-      url: `../classify/commodity/commodity?id=${id}`,
+      url: '../classify/commodity/commodity?id='+id,
     })
   },
   //秒杀切换

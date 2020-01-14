@@ -37,7 +37,6 @@
           <text class="handpick-title">{{item.seniorityName}}</text>
           <image class="handpick-image" src="{{item.img}}"></image>
         </view>
-        
       </view>
     </van-tab>
     <van-tab title="拼团" name="b">

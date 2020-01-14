@@ -71,8 +71,8 @@
       {
         "text": "首页",
         "pagePath": "pages/seckill/seckill",
-        "iconPath": "pages/images/tabs/jiazais.png",
-        "selectedIconPath": "pages/images/tabs/jiazai.png"
+        "iconPath": "pages/images/tabs/home.png",
+        "selectedIconPath": "pages/images/tabs/home-active.png"
       },
       {
         "text": "分类",
