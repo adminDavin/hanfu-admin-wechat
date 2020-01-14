@@ -69,6 +69,13 @@
 					"pathName": "pages/classify/particulars/particulars",
 					"query": "id=5",
 					"scene": null
+				},
+				{
+					"id": 2,
+					"name": "pages/classify/particulars/particulars",
+					"pathName": "pages/classify/particulars/particulars",
+					"query": "id=3&price=4000",
+					"scene": null
 				}
 			]
 		}

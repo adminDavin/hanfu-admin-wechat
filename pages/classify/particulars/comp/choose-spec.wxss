@@ -1,4 +1,15 @@
 /* pages/classify/particulars/comp/choose-spec.wxss */
+.inner {
+  background-color: #f8f8f8;
+}
+
+.group {
+  display: flex;
+}
+
+.group-item {
+  display: flex;
+}
 
 .particulars {
     width: 750rpx;

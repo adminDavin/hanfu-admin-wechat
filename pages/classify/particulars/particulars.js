@@ -37,7 +37,7 @@ Page({
 
     //----------
     goods: {},
-    pirce: 4500,
+    price: 4500,
   },
   //跳转购物车
   gouwucar: function () {
@@ -465,15 +465,14 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    const { id, pirce } = options;
+    const { id, price } = options;
     var that = this;
     this.isUserId();
     this.firstIsLogin();
-    console.log(pirce)
     that.setData({
       dataId: id,
       goodsId: id,
-      pirce: pirce,
+      price: price,
     });
     //用户的id
     wx.getStorage({

@@ -162,7 +162,7 @@ Page({
 
     console.log(e.currentTarget.dataset)
     wx.navigateTo({
-      url: `../particulars/particulars?id=${id}&&price=${price}`,
+      url: `../particulars/particulars?id=${id}&price=${price}`,
     })
   },
 

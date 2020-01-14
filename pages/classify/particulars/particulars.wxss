@@ -78,7 +78,7 @@ margin-bottom:10rpx;
   box-sizing: border-box;
   position: fixed;
   bottom:0;
-  background-color: white;
+  background-color: #f8f8f8;
 }
 .guigebox-top{
   width:100%;
