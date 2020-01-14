@@ -152,14 +152,17 @@ Page({
   // 跳转携带id
   commodity: function (e) {
     var id = e.currentTarget.dataset.id
+    var price = e.currentTarget.dataset.price
     var fileid = e.currentTarget.dataset.fileid
     var that = this;
     that.setData({
       pictureId: id,
       fileIds: fileid
     });
+
+    console.log(e.currentTarget.dataset)
     wx.navigateTo({
-      url: `../particulars/particulars?id=${id}`,
+      url: `../particulars/particulars?id=${id}&&price=${price}`,
     })
   },
 
@@ -198,7 +201,9 @@ Page({
       })
     }else{
       this.setData({ ids: id})
-      this.categoryId();
+      // todo 前期写死列表返回
+      this.prices();
+      // this.categoryId();
     };
   },
  

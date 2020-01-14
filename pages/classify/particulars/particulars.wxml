@@ -4,11 +4,11 @@
     <block>
       <swiper vertical="{{false}}" indicator-dots="{{flase}}" bindchange="current" autoplay="{{flase}}">
         <swiper-item>
-          <image src="{{arr.img}}" class="images-head" />
+          <image src="{{goods.img}}" class="images-head" />
         </swiper-item>
       </swiper>
     </block>
-    <view class="images-return">
+    <view class="images-return" bindtap="goBack">
       <image src="../../images/tabs/jinru (4).png" class="return" />
     </view>
     <view class="images-index">{{slideNumber}}/5</view>
@@ -18,7 +18,7 @@
     <view class="productName-box">
       <view class="productName-dollor">
         <text class="dollor">¥</text>
-        <text class="money">{{arr.sellPrice}}</text>
+        <text class="money">{{pirce}}</text>
         <text class="news">新品</text>
       </view>
       <view class="productName-collect">
@@ -30,7 +30,7 @@
       </view>
     </view>
     <view class="productName-box-two">
-      <text class="productName-table">{{arr.hfName}}</text>
+      <text class="productName-table">{{goods.goodName}}</text>
       <button class="table-box" open-type="share" style="width:120rpx">
         <image src="../../images/tabs/fenxiang.png" class="table-images" />
         <text class="share">分享</text>

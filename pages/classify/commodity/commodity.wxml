@@ -13,7 +13,7 @@
       <view class="banner-box">
         <view class="table">
           <view class="table-sum" bindtap="clickTab" data-id="0">
-            <text class="sum-text" bindtap="categoryId">综合</text>
+            <text class="sum-text" bindtap="prices">综合</text>
             <view class="sum-color {{currentTab==0?'colors':''}}"></view>
           </view>
           <image src="../../images/tabs/xiangxia.png" class="sum-image" />
@@ -48,34 +48,34 @@
   </view>
   <!-- 商品区域一个 -->
   <view wx:if="{{lists==false}}" class="shpping-content" >
-    <view class="content" bindtap="commodity" data-id='{{item.id}}' wx:for="{{arr}}" wx:key="index" data-fileid="{{item.fileId}}">
-      <!-- 图片 -->
-      <image src="{{item.img}}" class="content-images" />
-      <!-- 详情 -->
-      <view class="content-text">{{item.goodName}}</view>
-      <!-- 价格 -->
-      <view class="content-discounts">
-        <view class="discounts-money">
-          <text class="money-title">¥</text>
-          <text class="money-number">{{item.sellPrice}}</text>
-          <!-- <image src="../../images/tabs/vip.png" class="money-vip" /> -->
-        </view>
-        <view class="news">
-          <!-- <text class="news-shpping">每满200减30</text> -->
-          <text class="news-shpping">包邮</text>
-          <!-- <text class="news-shpping">领券满1000减300</text> -->
-        </view>
-        <view class="observer">
-          <text class="observe-one">9000+条评论</text>
-          <text class="observe-two">99%好评</text>
+    <view class="content" wx:for="{{arr}}" wx:key="index">
+      <view bindtap="commodity" data-id="{{item.id}}" data-price="{{item.sellPrice}}" data-fileid="{{item.fileId}}">
+        <image src="{{item.img}}" class="content-images" />
+        <view class="content-text">{{item.goodName}}</view>
+        <view class="content-discounts">
+          <view class="discounts-money">
+            <text class="money-title">¥</text>
+            <text class="money-number">{{item.sellPrice}}</text>
+          </view>
+          <view class="news">
+            <!-- <text class="news-shpping">每满200减30</text> -->
+            <text class="news-shpping">包邮</text>
+            <!-- <text class="news-shpping">领券满1000减300</text> -->
+          </view>
+          <view class="observer">
+            <text class="observe-one">9000+条评论</text>
+            <text class="observe-two">99%好评</text>
+          </view>
         </view>
       </view>
     </view>
   </view>
+
   <!-- 商品区域两个 -->
   <view class="banner-centent" wx:if="{{lists==true}}"  >
     <!-- 商品 -->
-    <view class="centent" bindtap="commodity" wx:for="{{arr}}" wx:key="index" data-id="{{item.id}}">
+    <view class="centent" wx:for="{{arr}}" wx:key="index" >
+      <view bindtap="commodity" data-id="{{item.id}}" data-price="{{item.sellPrice}}">
       <!-- 图片 -->
       <image src="{{item.img}}" class="centent-image" />
       <!-- 详情 -->
@@ -97,6 +97,7 @@
             <text>99%好评</text>
           </view>
         </view>
+      </view>
       </view>
     </view>
   </view>

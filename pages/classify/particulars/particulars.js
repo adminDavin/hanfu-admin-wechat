@@ -2,7 +2,6 @@ const app = getApp()
 import particularsUtil from './particulars-util.js';
 
 Page({
-
   data: {
     hideModal: true, //模态框的状态  true-隐藏  false-显示
     animationData: {}, //
@@ -34,7 +33,11 @@ Page({
     guigestr: '',
     curr: 0,
     selectedGoods: {},
-    selectedAddress: {}
+    selectedAddress: {},
+
+    //----------
+    goods: {},
+    pirce: 4500,
   },
   //跳转购物车
   gouwucar: function () {
@@ -209,27 +212,20 @@ Page({
     })
   },
   //商品详情价格及内容
-  particulars: function (e) {
+  particulars: function (goodsId) {
     particularsUtil.getProductInfo({
-      goodsId: 5
+      goodsId,
     }, (res) => {
-      console.log(res)
-      let list = res.data.data[0]
-      list.img = app.globalData.urlGoods + '/goods/getFile?fileId=' + list.fileId
+      let goods = res.data.data[0]
+      console.log(goods)
+      goods.img = app.globalData.urlGoods + '/goods/getFile?fileId=' + goods.fileId
       this.setData({
-        arr: list,
-        totalprice: list.sellPrice
+        goods: goods,
+        totalprice: goods.sellPrice
       });
     });
   },
-  // 获取图片
-  getpic() {
-    var that = this;
-    let list = that.data.arr.
-      wx.request({
-        url: '',
-      })
-  },
+ 
   checkUserIslogin() {
     return particularsUtil.checkUserIslogin(this.data.userId);
   },
@@ -459,21 +455,25 @@ Page({
       url: '../../evaluate/all',
     })
   },
+
+  goBack: function() {
+    wx.navigateTo({
+      url: '../../classify/commodity/commodity',
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options)
-    let id = options.id;
-    let goodsid = options.goodsid;
+    const { id, pirce } = options;
     var that = this;
     this.isUserId();
     this.firstIsLogin();
-    console.log(id);
-    console.log(goodsid)
+    console.log(pirce)
     that.setData({
       dataId: id,
-      goodsId: goodsid
+      goodsId: id,
+      pirce: pirce,
     });
     //用户的id
     wx.getStorage({
@@ -484,53 +484,7 @@ Page({
         })
       },
     });
-    this.particulars();
+    this.particulars(id);
     // this.evaluate();
-  },
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () { },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
   }
 })
