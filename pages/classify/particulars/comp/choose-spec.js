@@ -1,7 +1,6 @@
 // pages/classify/particulars/comp/choose-spec.js
 const app = getApp();
 import particularsUtil from '../particulars-util.js';
-
 Component({
   /**
    * 组件的属性列表
@@ -42,7 +41,6 @@ Component({
       this.setData({
        goodsNum : e.detail.value
       })
-
     },
     onSelectSpecValue(e) {
       let thit = this

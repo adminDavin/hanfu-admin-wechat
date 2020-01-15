@@ -455,11 +455,11 @@ Page({
     })
   },
   //查看更多评论跳转
-  discuss: function () {
-    wx.navigateTo({
-      url: '../../evaluate/all',
-    })
-  },
+  // discuss: function () {
+  //   wx.navigateTo({
+  //     url: '../../evaluate/all',
+  //   })
+  // },
 
   goBack: function() {
     wx.navigateTo({

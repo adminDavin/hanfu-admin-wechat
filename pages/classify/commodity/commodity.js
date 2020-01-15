@@ -107,12 +107,12 @@ Page({
     });
   },
 
-  // 获取商品列表
+  // 获取类目商品列表
   categoryId: function () {
     var that = this;
     const { ids } = this.data;
     wx.request({
-      url: app.globalData.urlGoods + '/seniority/findSeniorityContent',
+      url: app.globalData.urlGoods + '/goods/findProductBycategoryId',
       method: 'Get',
       success: function (res) {
         let list=res.data.data;
@@ -120,17 +120,37 @@ Page({
         list.forEach(item => {
           item.img = app.globalData.urlGoods + '/goods/getFile?fileId=' + item.fileId;
         });
-        
         that.setData({
           arr: list,
         })
       },
       data:{
-        seniorityId:ids
+        categoryId:ids
       }
     })
   },
- 
+  // 获取排行榜商品列表
+  seniorityId: function () {
+    var that = this;
+    const { ids } = this.data;
+    wx.request({
+      url: app.globalData.urlGoods + '/seniority/findSeniorityContent',
+      method: 'Get',
+      success: function (res) {
+        let list = res.data.data;
+
+        list.forEach(item => {
+          item.img = app.globalData.urlGoods + '/goods/getFile?fileId=' + item.fileId;
+        });
+        that.setData({
+          arr: list,
+        })
+      },
+      data: {
+        seniorityId: ids
+      }
+    })
+  },
   //价格排序
   prices: function () {
     var that = this;
@@ -204,6 +224,7 @@ Page({
       // todo 前期写死列表返回
       this.prices();
       this.categoryId();
+      this.seniorityId();
     };
   },
  

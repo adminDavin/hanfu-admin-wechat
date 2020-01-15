@@ -9,7 +9,7 @@ Page({
   data: {
     username: '',
     avatar: '',
-    userId:975,
+    userId:'',
     hfBalance:''
   },
 

@@ -8,7 +8,7 @@ Page({
     quhuomethod: true,
     zhifumethod: true,
     textshow: false,
-    userId: 975,
+    userId: '',
     arr: [],
     goodsid: [],
     elevalue: "",
@@ -309,7 +309,7 @@ Page({
             console.log(res);
             const {
               data = {
-                userId: 975
+                userId: that.data.userId
               }
             } = res;
             console.log(selectedGoods, 'ddfsdfas');

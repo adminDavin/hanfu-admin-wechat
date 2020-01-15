@@ -649,7 +649,6 @@ swiper {
 }
 
 .appraise-more {
-  margin-top: 16rpx;
   width: 239rpx;
   height: 48rpx;
   margin: 0 auto;
@@ -754,6 +753,8 @@ swiper {
   line-height: 21rpx;
   font-weight:bold;
   margin: 0 auto;
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
 }
 .newsites {
   width:360rpx;

@@ -511,18 +511,19 @@
 
 .particulars-text {
   width: 442rpx;
-  height: 66rpx;
+  height: 50rpx;
   font-size: 26rpx;
   color: #151515;
   font-weight: 500;
   margin-right: 34rpx;
   font-family: PingFang SC;
+  line-height: 55rpx;
 }
 
 .particulars-money {
   width: 442rpx;
   height: 138rpx;
-  margin-top: 36rpx;
+  margin-top: 30rpx;
 }
 
 .money-box {

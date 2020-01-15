@@ -2,15 +2,28 @@
 .inner {
   background-color: #f8f8f8;
 }
-
 .group {
   display: flex;
+  align-items: center;
+  background: #EEEEEE;
+  padding:0 15rpx;
+  border-radius: 30rpx;
+  width: 47%;
+  height: 50rpx;
+  line-height: 50rpx;
+  margin-bottom: 10rpx;
+  font-size: 28rpx;
+  font-weight: 500;
 }
-
+.Select-text {
+  margin-left: 25rpx;
+}
 .group-item {
   display: flex;
 }
-
+.group-item-list {
+  margin-left: 25rpx;
+}
 .particulars {
     width: 750rpx;
     height: 100%;
@@ -143,7 +156,7 @@ box-sizing: border-box;
 .guigeqr{
 position: fixed;
 bottom:10rpx;
-  width:702rpx;
+width:702rpx;
 height:88rpx;
 background:rgba(255,51,51,1);
 border-radius:44rpx;
@@ -200,29 +213,6 @@ swiper {
     font-family: PingFang SC;
     font-weight: 500;
     color: rgba(248, 248, 248, 1);
-}
-/* 规格弹窗样式 */
-.onSelect-Spec {
-  border: 1rpx solid #ccc;
-  border-radius:15px;
-  background: #ccc;
-  margin: 20rpx;
-}
-/* 规格弹窗样式d点击样式*/
-.active {
-  border: 1rpx solid rgb(216, 10, 10);
-  border-radius:15px;
-  background: #ccc;
-  color: rgb(216, 10, 10);
-  margin: 20rpx;
-}
-/* 弹窗文字样式 */
-.Select-text {
- margin: 6rpx;
-}
-.Select-view {
- flex-direction:row;
- margin: 8rpx;
 }
 /* 商品价格及名称 */
 .productName {

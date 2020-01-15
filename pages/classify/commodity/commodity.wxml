@@ -13,7 +13,7 @@
       <view class="banner-box">
         <view class="table">
           <view class="table-sum" bindtap="clickTab" data-id="0">
-            <text class="sum-text" bindtap="prices">综合</text>
+            <text class="sum-text" bindtap="categoryId">综合</text>
             <view class="sum-color {{currentTab==0?'colors':''}}"></view>
           </view>
           <image src="../../images/tabs/xiangxia.png" class="sum-image" />
@@ -47,9 +47,9 @@
     </view>
   </view>
   <!-- 商品区域一个 -->
-  <view wx:if="{{lists==false}}" class="shpping-content" >
+  <view wx:if="{{lists==false}}" class="shpping-content">
     <view class="content" wx:for="{{arr}}" wx:key="index">
-      <view bindtap="commodity" data-id="{{1}}" data-price="{{item.sellPrice}}" data-fileid="{{item.fileId}}">
+      <view class="content" bindtap="commodity" data-id="{{1}}" data-price="{{item.sellPrice}}" data-fileid="{{item.fileId}}">
         <image src="{{item.img}}" class="content-images" />
         <view class="content-text">{{item.goodName}}</view>
         <view class="content-discounts">
@@ -70,35 +70,33 @@
       </view>
     </view>
   </view>
-
   <!-- 商品区域两个 -->
-  <view class="banner-centent" wx:if="{{lists==true}}"  >
+  <view class="banner-centent" wx:if="{{lists==true}}">
     <!-- 商品 -->
-    <view class="centent" wx:for="{{arr}}" wx:key="index" >
-      <view bindtap="commodity" data-id="{{item.id}}" data-price="{{item.sellPrice}}">
-      <!-- 图片 -->
-      <image src="{{item.img}}" class="centent-image" />
-      <!-- 详情 -->
-      <view class="centent-particulars">
-        <text class="particulars-text">{{item.goodName}}</text>
-        <view class="particulars-money">
-          <view class="money-box">
-            <text class="money-title">¥</text>
-            <text class="money-number">{{item.sellPrice}}</text>
-            <!-- <image src="../../images/tabs/vip.png" class="money-vip" /> -->
-          </view>
-          <view class="money-table">
-            <text class="money-discounts">新品</text>
-            <text class="money-discounts">包邮</text>
-            <text class="money-discounts">每满200减30</text>
-          </view>
-          <view class="comment">
-            <text class="comment-number">23万+条评论</text>
-            <text>99%好评</text>
+    <view class="centent" wx:for="{{arr}}" wx:key="index" bindtap="commodity" data-id="{{item.id}}" data-price="{{item.sellPrice}}">
+        <!-- 图片 -->
+        <image src="{{item.img}}" class="centent-image" />
+        <!-- 详情 -->
+        <view class="centent-particulars">
+          <text class="particulars-text">{{item.goodName}}</text>
+          <view class="particulars-money">
+            <view class="money-box">
+              <text class="money-title">¥</text>
+              <text class="money-number">{{item.sellPrice}}</text>
+              <!-- <image src="../../images/tabs/vip.png" class="money-vip" /> -->
+            </view>
+            <view class="money-table">
+              <!-- <text class="money-discounts">新品</text> -->
+              <text class="money-discounts">包邮</text>
+              <!-- <text class="money-discounts">每满200减30</text> -->
+            </view>
+            <view class="comment">
+              <text class="comment-number">23万+条评论</text>
+              <text>99%好评</text>
+            </view>
           </view>
         </view>
-      </view>
-      </view>
+
     </view>
   </view>
   <view class="top" hidden='{{!floorstatus}}' bindtap="goTop">
@@ -112,9 +110,9 @@
         <view class="supernatant-price">
           <text class="price-title">价格区间</text>
           <view class="price-box">
-            <input class="price-low" placeholder="最低价" value="{{mostlower}}" bindblur="mostlower"/>
+            <input class="price-low" placeholder="最低价" value="{{mostlower}}" bindblur="mostlower" />
             <view class="price-clue"></view>
-            <input class="price-low" placeholder="最高价" value="{{mosthigher}}" bindblur="mosthigher"/>
+            <input class="price-low" placeholder="最高价" value="{{mosthigher}}" bindblur="mosthigher" />
           </view>
         </view>
         <view class="subject">

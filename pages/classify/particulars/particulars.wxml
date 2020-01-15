@@ -42,7 +42,7 @@
     <view class="site-selected">
       <view class="selected-box">
         <text class="selected">选择</text>
-        <text class="selected-text" wx:if="{{guigestr==''}}">未选择</text>
+        <text class="selected-text" wx:if="{{guigestr==''}}">{{selectedGoods.selectedGoods.goodsNum}}件</text>
         <text class="selected-text" wx:if="{{guigestr!=''}}">{{guigestr}}</text>
       </view>
       <image src="../../images/tabs/diandian.png" bindtap="guigeshow" class="selected-images" />
@@ -97,7 +97,7 @@
       </view>
     </view>
     <view class="appraise-more">
-      <text class="more-title" bindtap="discuss">查看全部评论</text>
+      <text class="more-title" bindtap="discuss">暂无评论</text>
     </view>
   </view>
   <!-- 商品详情 -->
