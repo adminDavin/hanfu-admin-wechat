@@ -74,6 +74,7 @@ Component({
           'content-type': 'application/x-www-form-urlencoded' 
         },
         success(res) {
+          console.log(res)
           console.log(res.data.data, 'dfddsfsafd');
           selectedGoods.goodsId = res.data.data.id;
           selectedGoods.goodsNum = res.data.data.goodsNum;

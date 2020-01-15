@@ -151,7 +151,6 @@ Page({
 
   // 跳转携带id
   commodity: function (e) {
-    debugger
     var id = e.currentTarget.dataset.id
     var price = e.currentTarget.dataset.price
     var fileid = e.currentTarget.dataset.fileid
@@ -204,7 +203,7 @@ Page({
       this.setData({ ids: id})
       // todo 前期写死列表返回
       this.prices();
-      // this.categoryId();
+      this.categoryId();
     };
   },
  

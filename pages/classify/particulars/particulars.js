@@ -16,13 +16,12 @@ Page({
     goodsSpecMap: {},
     isUserId: false,
     openId: '',
-    arr: [],
     evaluate: '', //评价
     site: '', //地址
     sites: '',
     shppingcar: '', //购物车
     attention: '',
-    userId: 975,
+    userId:'',
     slideNumber: '1', //详情滑动跳动数字
     collects: false,
     goodsNum: 1,
@@ -37,6 +36,12 @@ Page({
     //----------
     goods: {},
     price: 4500,
+  },
+  //跳转添加地址页
+  newsite:function(){
+    wx.navigateTo({
+      url: '../../address/address',
+    })
   },
   //跳转购物车
   gouwucar: function () {
@@ -227,7 +232,6 @@ Page({
       });
     });
   },
- 
   checkUserIslogin() {
     return particularsUtil.checkUserIslogin(this.data.userId);
   },
@@ -343,7 +347,6 @@ Page({
           userId: res.data.userId,
           isLogin: true
         })
-        console.log(that.data.userId)
       },
       fail: function (res) {
         that.setData({
@@ -471,7 +474,6 @@ Page({
     var that = this;
     this.isUserId();
     this.firstIsLogin();
-    debugger
     that.setData({
       dataId: id,
       productId: id,

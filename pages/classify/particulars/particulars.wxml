@@ -59,9 +59,9 @@
     </view>
     <view class="site-freight">
       <text class="selected">运费</text>
-      <text class="selected-text">免运费111</text>
+      <text class="selected-text">免运费</text>
     </view>
-    <view class="site-refund" bindtap="showModal">
+    <view class="site-refund">
       <view class="refund-flex">
         <image src="../../images/tabs/fangxingou.png" class="refund-image" />
         <view class="refund-box">
@@ -74,7 +74,7 @@
       </view>
       <image src="../../images/tabs/diandian.png" class="selected-images" />
     </view>
-    <view class="site-safeguard" bindtap="showModal">
+    <view class="site-safeguard">
       <image src="../../images/tabs/对.png" class="safeguard-image" />
       <text class="safeguard-text">店铺发货&售后</text>
       <image src="../../images/tabs/对.png" class="safeguard-image" />
@@ -103,7 +103,7 @@
   <!-- 商品详情 -->
   <view class="description">
     <view class="description-title">商品详情</view>
-    <view class="description-contents">{{arr.goodsDesc}}</view>
+    <view class="description-contents">{{goods.goodsDesc}}</view>
   </view>
   <!-- 底部 -->
   <view class="footer">
@@ -128,17 +128,18 @@
   <!-- 选取物品 -->
   <view class="guigebox" wx:if="{{guigeshow==true}}">
     <view class="guanbipic">
-      <image src="../../images/cart/guigegb.png" bindtap="guigeguanbi" style="width:12rpx;height:12rpx"></image>
+      <image src="../../images/cart/guigegb.png" bindtap="guigeguanbi" style="width:12px;height:12px; position: absolute; top: 25rpx; right: 25rpx;"></image>
     </view>
     <component-tag-name product-id="{{productId}}" bind:chooseGoodsCommitEvent="listenChooseGoodsCommitEvent"></component-tag-name>
   </view>
   <!-- 选取地址 -->
   <view class="guigebox" style="overflow:auto" wx:if="{{tsiteshow==true}}">
-   <view>派送至</view>
-    <view class="guanbipic" style="position:absolute;right:20rpx;top:0">
-      <image src="../../images/cart/guigegb.png" bindtap="tsiteguanbi" style="width:24rpx;height:24rpx;"></image>
+   <view class="delivery">派送至</view>
+    <view class="guanbipic">
+      <image src="" bindtap="tsiteguanbi" class="outs"></image>
     </view>
     <component-address user-id="{{userId}}" bind:selectAddressEvent="listenSelectAddress"></component-address>
+    <view class="newsites" bindtap="newsite">+新建收货地址</view>
   </view>
 </view>
 
