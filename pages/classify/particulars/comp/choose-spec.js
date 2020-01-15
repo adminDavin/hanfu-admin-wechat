@@ -21,7 +21,7 @@ Component({
     productSpec: {},
     goodsList: [],
     selectedGoods: {
-      goodsNum: 0,
+      goodsNum: 1,
       totalprice: 0,
       spec: { },
       goodsId: 1,
@@ -48,29 +48,16 @@ Component({
       let thit = this
       let selectedGoods = this.data.selectedGoods;
       let spec = this.data.spec;
-      
-      console.log(this.data.productSpec)
-      let productSpecId = this.data.productSpec.get(e.currentTarget.dataset.name);
-      spec[productSpecId] = e.currentTarget.dataset.value;
-      selectedGoods.spec[productSpecId] = e.currentTarget.dataset.value;
-
-    console.log(this.data.selectedGoods, 'sdfsdfs');
-
-      console.log(selectedGoods);
-      // TODO 检查库存是否有库存 goodsSpe.includes(fruit)
-      selectedGoods.goodsId = 5;
-      selectedGoods.totalprice = 1000;
-      selectedGoods.goodsNum = 1;
-      console.log(selectedGoods);
-      // TODO 检查库存是否有库存 
+       // TODO 检查库存是否有库存 
       let that = this;
+      console.log(e.currentTarget.dataset.goods[0]);
       wx.request({
         url: app.globalData.urlparticulars + '/goods/checkResp',
         method: 'POST',
         data: {
           productId:this.properties.productId,
           goodsNum: selectedGoods.goodsNum,
-          respList: JSON.stringify(selectedGoods.spec),
+          goodsId: e.currentTarget.dataset.goods[0]
         },
         header: {
           'content-type': 'application/x-www-form-urlencoded' 
