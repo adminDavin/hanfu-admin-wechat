@@ -19,10 +19,11 @@ Component({
   data: {
     goodsSpec: [],
     productSpec: {},
+    goodsList: [],
     selectedGoods: {
       goodsNum: 0,
       totalprice: 0,
-      spec: { 色彩: "红色", 大小: "6.5寸"},
+      spec: { },
       goodsId: 1,
       productId: 0
     },
@@ -44,16 +45,17 @@ Component({
 
     },
     onSelectSpecValue(e) {
-      console.log
-     let thit = this
+      let thit = this
       let selectedGoods = this.data.selectedGoods;
       let spec = this.data.spec;
-      console.log(e.currentTarget.dataset);
-
+      
+      console.log(this.data.productSpec)
       let productSpecId = this.data.productSpec.get(e.currentTarget.dataset.name);
       spec[productSpecId] = e.currentTarget.dataset.value;
       selectedGoods.spec[productSpecId] = e.currentTarget.dataset.value;
-   
+
+    console.log(this.data.selectedGoods, 'sdfsdfs');
+
       console.log(selectedGoods);
       // TODO 检查库存是否有库存 goodsSpe.includes(fruit)
       selectedGoods.goodsId = 5;
@@ -97,26 +99,23 @@ Component({
       particularsUtil.getGoodsByProductId({
         productId: this.data.productId
       }, (res) => {
-        let goodsSpec = new Map();
-        let productSpec = new Map();
-        
+        let goodsMap = new Map();
+
         res.data.data.forEach(s => {
-          if (goodsSpec.has(s.productSpecName)) {
-            goodsSpec.get(s.productSpecName).push(s.hfValue);
+          if (goodsMap.has(s.id)) {
+            goodsMap.get(s.id).push(s.hfValue);
           } else {
             let values = new Array();
             values.push(s.hfValue);
-            goodsSpec.set(s.productSpecName, values);
-            productSpec.set(s.productSpecName, s.id)
-
-
+            goodsMap.set(s.id, values);
           }
         });
         this.setData({
-          goodsSpec: [...goodsSpec],
-          productSpec: productSpec
+          goodsMap: [...goodsMap],
         })
+        console.log(this.data.goodsMap);
       });
+
     }
   },
   lifetimes: {

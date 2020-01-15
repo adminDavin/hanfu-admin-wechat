@@ -4,7 +4,7 @@
     <view class="guanbibox-price">￥{{selectedGoods.totalprice}}</view>
   </view>
   <scroll-view scroll-y="true" class="guige-scroll">
-    <view wx:for='{{goodsSpec}}' wx:key="goodsSpecKey" wx:for-item="item">
+    <view wx:for='{{goodsMap}}' wx:key="goodsSpecKey" wx:for-item="item">
       <checkbox-group class="group" bindchange="checkboxChange">
         <view class="group-item" wx:for='{{item}}' wx:for-item="childItem" wx:key="goodsSpecChildKey" wx:for-index="childIndex">
           <block wx:if="{{childIndex==0}}">
@@ -13,9 +13,9 @@
             </label>
           </block>
           <block wx:else>
-            <view wx:for='{{childItem}}' class="Select-view {{}}" wx:for-item="specValue" wx:key="goodsSpecValue"           wx:for-index="specValueIndex">
+            <view wx:for='{{childItem}}' class="Select-view {{}}" wx:for-item="specValue" wx:key="goodsSpecValue" wx:for-index="specValueIndex">
               <label class="onSelect-Spec" bindtap="onSelectSpecValue" data-value="{{specValue}}" data-name="{{item[0]}}">
-               <text class="Select-text" >{{specValue}}</text>
+                <text class="Select-text">{{specValue}}</text>
               </label>
             </view>
           </block>
