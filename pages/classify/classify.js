@@ -22,7 +22,6 @@ Page({
   // 跳转到列表
   goThreeLevel:function(e){
     console.log(e)
-    
     let id=e.currentTarget.dataset.id;
     wx.navigateTo({
       url: `../classify/commodity/commodity?id=${id}`,

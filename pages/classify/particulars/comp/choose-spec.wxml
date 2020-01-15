@@ -8,7 +8,7 @@
       <checkbox-group class="group" bindchange="checkboxChange">
         <view class="group-item" wx:for='{{item}}' wx:for-item="childItem" wx:key="goodsSpecChildKey" wx:for-index="childIndex">
           <block wx:if="{{childIndex==0}}">
-            <label>
+            <label class="group-item-list">
               <text>{{childItem}}</text>
             </label>
           </block>

@@ -152,7 +152,7 @@ Page({
       },
       data: {
         token: 13,
-        userId: 13 //that.data.userId
+        userId:that.data.userId
       }
     })
   },
