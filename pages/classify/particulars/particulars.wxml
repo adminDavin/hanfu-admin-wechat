@@ -52,7 +52,7 @@
         <view class="selected">送至</view>
         <image src="../../images/tabs/weizhi.png" class="delivery-image" />
         <view class="selected-text text-left">
-          {{checkUserIslogin() ? sites:'请先登录'}}
+          {{sites}}
         </view>
       </view>
       <image src="../../images/tabs/diandian.png" class="selected-images" bindtap="showSiteList" />
@@ -113,10 +113,10 @@
         <text class="foot-text">客服</text>
       </view>
       <view class="footter-service" bindtap="gouwucar">
-        <image src="../../images/tabs/buycar.png" class="footer-image" />
-        <text class="foot-text">购物车</text>
+        <!-- <image src="../../images/tabs/buycar.png" class="footer-image" />
+        <text class="foot-text">购物车</text> -->
       </view>
-       <view class="footer-shppingcar" bindtap="shppingcar">加入购物车</view>
+       <view class="footer-shppingcar" bindtap="shppingcar">到店支付</view>
        <view class="footer-shppingcar purchase" bindtap="buyquick">立即购买</view>
     </view>
   </view>
@@ -135,11 +135,11 @@
   <!-- 选取地址 -->
   <view class="guigebox" style="overflow:auto" wx:if="{{tsiteshow==true}}">
    <view class="delivery">派送至</view>
+   <view class="newsites" bindtap="newsite">+新建收货地址</view>
     <view class="guanbipic">
       <image src="" bindtap="tsiteguanbi" class="outs"></image>
     </view>
     <component-address user-id="{{userId}}" bind:selectAddressEvent="listenSelectAddress"></component-address>
-    <view class="newsites" bindtap="newsite">+新建收货地址</view>
   </view>
 </view>
 

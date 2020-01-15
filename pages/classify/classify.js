@@ -65,7 +65,7 @@ Page({
         })
       },
       data: {
-        parentCategoryId: 1,
+        parentCategoryId: that.data.firstId,
         type: 1
       }
     })
@@ -79,13 +79,13 @@ Page({
       success: function (res) {
         console.log(res)
         let firstId=res.data.data[0].id
+        let shu = res.data.data[0]
         that.setData({
            arr:res.data.data,
-           firstId:firstId
+           firstId:firstId,
         })
         console.log(that.data.fileId)
         console.log(that.data.arr)
-        
       },
     })
   },

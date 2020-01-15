@@ -142,7 +142,7 @@ swiper {
 .star-table {
     font-weight: bold;
     color: #fff;
-    width: 127rpx;
+    width: 130rpx;
     height: 70rpx;
     line-height: 70rpx;
     margin-left: 20rpx;

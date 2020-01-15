@@ -66,8 +66,8 @@
                         </view>
                       </view>
                     </view>
-                    <view class="commodity-qg" wx:if="{{item.qinggoustatus==1}}" bindtap="particulars" data-id='{{item.id}}' data-goodsid='{{item.goodsId}}'>立即抢购</view>
-                    <view class="commodity-qg" style="background:#ffd553" wx:if="{{item.qinggoustatus==0}}">尚未开始</view>
+                    <view class="commodity-qg" wx:if="{{item.qinggoustatus==0}}" bindtap="particulars" data-id='{{item.id}}' data-goodsid='{{item.goodsId}}'>立即拼团</view>
+                    <view class="commodity-qg" style="background:#ffd553" wx:if="{{item.qinggoustatus==1}}">尚未开始</view>
                     <view class="commodity-qg" style="background:#e6e6e6" wx:if="{{item.qinggoustatus==2}}">已结束</view>
                   </view>
                 </view>

@@ -18,20 +18,6 @@
           </view>
           <image src="../../images/tabs/xiangxia.png" class="sum-image" />
         </view>
-        <view class="table table-flex" bindtap="clickTab" data-id="1">
-          <view class="sum-text sales">销量</view>
-          <view class="sum-color {{currentTab==1?'colors':''}}"></view>
-        </view>
-        <view class="flex-box">
-          <view class="table table-flex" bindtap="clickTab" data-id="2">
-            <text class="sales" bindtap="prices">价格</text>
-            <view class="sum-color {{currentTab==2?'colors':''}}"></view>
-          </view>
-          <view class="flex-box-two">
-            <image src="../../images/tabs/shang.png" class="flex-imgae" />
-            <image src="../../images/tabs/xiangxia.png" class="flex-imgae imgae-top" />
-          </view>
-        </view>
       </view>
       <view class="banner-box-two">
         <image src="../../images/tabs/liebiao2.png" bindtap="list" wx:if="{{lists==false}}" class="image-saoma" />

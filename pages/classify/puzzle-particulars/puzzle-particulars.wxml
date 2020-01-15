@@ -174,11 +174,11 @@
       <text class="foot-text">客服</text>
     </view>
     <view class="footter-service footer-margin" bindtap="gouwucar">
-      <image src="../../images/tabs/buycar.png" class="footer-image" />
-      <text class="foot-text">购物车</text>
+      <!-- <image src="../../images/tabs/buycar.png" class="footer-image" />
+      <text class="foot-text">购物车</text> -->
     </view>
     <view class="footer-shppingcar" bindtap="dandushpping">单独购买</view>
-    <view class="footer-shppingcar purchase" bindtap="yijianpintuan">一键拼团</view>
+    <view class="footer-shppingcar purchase" bindtap="yijianpintuan">加入团购</view>
   </view>
   <!-- 服务弹窗 -->
   <view class="modals modals-bottom-dialog" hidden="{{hideModal}}">

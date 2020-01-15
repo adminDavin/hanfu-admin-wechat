@@ -766,5 +766,6 @@ swiper {
   margin: 0 auto;
   border-radius: 30rpx;
   color: #fff;
-  background: rgba(255,51,51,1) 
+  background: rgba(255,51,51,1);
+  margin-bottom: 20rpx;
 }

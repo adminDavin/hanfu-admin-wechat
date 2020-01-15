@@ -201,10 +201,11 @@ Page({
   lunBoTu:function(e){
     var that=this;
     wx.request({
-      url: app.globalData.urlGoods + '/goods/listGoods',
+      url: app.globalData.urlGoods + '/product/slideshow',
       method: 'Get',
       success: function (res) {
         let list = res.data.data;
+        console.log(res)
         for (var index in list) {
           list[index].img = app.globalData.urlGoods + '/goods/getFile?fileId=' + list[index].fileId;
         }
@@ -212,9 +213,6 @@ Page({
           lunBoTu:list
         })
       },
-      data:{
-        stoneId:1
-      }
     });
   },
   //轮播图跳转

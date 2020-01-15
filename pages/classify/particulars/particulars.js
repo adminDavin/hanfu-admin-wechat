@@ -75,35 +75,35 @@ Page({
     }
   },
   //设置关注
-  attention: function () {
-    var that = this;
-    //获取用户的openId
-    wx.getStorage({
-      key: 'user',
-      success: function (res) {
-        that.setData({
-          openId: res.data.userInfo.openId,
-        })
-      },
-    });
-    wx.request({
-      url: app.globalData.urlGoods + '/goods/Concern',
-      method: 'Get',
-      success: function (res) {
-        console.log(res)
-        that.setData({
-          attention: that.data.data
-        })
-      },
-      data: {
-        goodsId: that.data.productId, //列表商品传过来
-        openId: that.data.openId
-      }
-    })
-    wx.showToast({
-      title: that.data.attention,
-    });
-  },
+  // attention: function () {
+  //   var that = this;
+  //   //获取用户的openId
+  //   wx.getStorage({
+  //     key: 'user',
+  //     success: function (res) {
+  //       that.setData({
+  //         openId: res.data.userInfo.openId,
+  //       })
+  //     },
+  //   });
+  //   wx.request({
+  //     url: app.globalData.urlGoods + '/goods/Concern',
+  //     method: 'Get',
+  //     success: function (res) {
+  //       console.log(res)
+  //       that.setData({
+  //         attention: that.data.data
+  //       })
+  //     },
+  //     data: {
+  //       goodsId: that.data.productId, //列表商品传过来
+  //       openId: that.data.openId
+  //     }
+  //   })
+  //   wx.showToast({
+  //     title: that.data.attention,
+  //   });
+  // },
   //规格弹框
   guigeshow() {
     this.setData({
@@ -287,14 +287,17 @@ Page({
   },
   //立即购买
   buyquick() {
-    let goodsid = this.data.selectedGoods;
-    let userAddressId = this.data.selectedAddress;
-    console.log(app.globalData.selectedGoods);
-    if (app.globalData.selectedGoods.length > 0) {
-      app.globalData.selectedGoods = [];
-    } 
-    app.globalData.selectedGoods.push({ selectedGoods: this.data.selectedGoods, selectedAddress: this.data.selectedAddress});
-    wx.navigateTo({ url: `../../ljbuy/ljbuy?purchasePrice=`});
+    
+      let goodsid = this.data.selectedGoods;
+      let userAddressId = this.data.selectedAddress;
+      console.log(app.globalData.selectedGoods);
+      if (app.globalData.selectedGoods.length > 0) {
+        app.globalData.selectedGoods = [];
+      }
+      app.globalData.selectedGoods.push({ selectedGoods: this.data.selectedGoods, selectedAddress: this.data.selectedAddress });
+      wx.navigateTo({ url: `../../ljbuy/ljbuy?purchasePrice=` });
+    
+   
   },
   // 判断userid
   isUserId() {

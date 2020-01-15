@@ -15,7 +15,7 @@ Page({
     morepicture: '',//图片都在这里
     mosthigher:'',
     mostlower:'',
-    idw:'',
+    shuid:''
   },
   
   //搜索
@@ -88,7 +88,6 @@ Page({
       isRuleTrue: true
     })
   },
-
   success: function () {
     this.setData({
       isRuleTrue: false
@@ -115,8 +114,8 @@ Page({
       url: app.globalData.urlGoods + '/goods/findProductBycategoryId',
       method: 'Get',
       success: function (res) {
+        // console.log(res)
         let list=res.data.data;
-
         list.forEach(item => {
           item.img = app.globalData.urlGoods + '/goods/getFile?fileId=' + item.fileId;
         });
@@ -130,21 +129,22 @@ Page({
     })
   },
   // 获取排行榜商品列表
-  seniorityId: function () {
+  seniorityIds: function () {
     var that = this;
     const { ids } = this.data;
     wx.request({
       url: app.globalData.urlGoods + '/seniority/findSeniorityContent',
       method: 'Get',
       success: function (res) {
+        console.log(res)
         let list = res.data.data;
-
         list.forEach(item => {
           item.img = app.globalData.urlGoods + '/goods/getFile?fileId=' + item.fileId;
         });
         that.setData({
           arr: list,
         })
+        console.log(that.data.seniorityId)
       },
       data: {
         seniorityId: ids
@@ -166,9 +166,12 @@ Page({
           arr: list,
         })
       },
+      data: {
+        categoryId: that.data.shuid,
+        seniorityId: that.data.shuid
+      }
     })
   },
-
   // 跳转携带id
   commodity: function (e) {
     var id = e.currentTarget.dataset.id
@@ -209,6 +212,8 @@ Page({
   onLoad: function (options) {
     var that=this;
     const { id } = options;
+    that.setData({ids:id,shuid:id})
+    console.log(that.data.ids)
     if(options.tag){
       wx.getStorage({
         key: 'user',
@@ -224,7 +229,7 @@ Page({
       // todo 前期写死列表返回
       this.prices();
       this.categoryId();
-      this.seniorityId();
+      this.seniorityIds();
     };
   },
  

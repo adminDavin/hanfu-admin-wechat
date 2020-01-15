@@ -100,7 +100,6 @@ Component({
         })
         console.log(this.data.goodsMap);
       });
-
     }
   },
   lifetimes: {
