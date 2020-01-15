@@ -2,7 +2,7 @@
   "pages": [
     "pages/seckill/seckill",
     "pages/hexiao/hexiao",
-      
+    "pages/orderprocessing/daitihuo/orderprocessing",
     "pages/classify/particulars/particulars",
     "pages/classify/classify",
     "pages/classify/commodity/commodity",
@@ -23,7 +23,6 @@
     "pages/orderprocessing/daishouhuo/orderprocessing",
     "pages/orderprocessing/yiquxiao/orderprocessing",
     "pages/orderprocessing/tuikuanzhong/orderprocessing",
-    "pages/orderprocessing/daitihuo/orderprocessing",
     "pages/shopping/shopping",
     "pages/orderprocessing/yituikuan/orderprocessing",
     "pages/order/order",
@@ -38,7 +37,6 @@
     "pages/goodsList/goodsList",
     "pages/address/address",
     "pages/address/addaddress/addaddress",
-    
     "pages/impower/impower",
     "pages/address/editaddress/editaddress",
     "pages/Getdiscount/Getdiscount",

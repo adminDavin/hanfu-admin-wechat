@@ -101,7 +101,7 @@ Page({
       mask: true
     })
     wx.request({
-      url: app.globalData.urlHexiao + '/cancel/testCancel',
+      url: app.globalData.urlHexiao + '/Demo/testCancel',
       method: 'get',
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
