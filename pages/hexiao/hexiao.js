@@ -14,7 +14,8 @@ Page({
 
   tiHuo: function(e) {
     var that = this;
-    let goodsid=e.currentTargrt.dataset.goodsid;
+    console.log(e.currentTarget);
+    let goodsid = e.currentTarget.dataset.goodsid;
     that.setData({
       qrshow: true,
       qrAdd: app.globalData.urlHexiao + '/test/activity/create/activity-code?goodsId=' + goodsid + '&orderId=' + that.data.orderId
@@ -43,9 +44,9 @@ Page({
       success: function (res) {
         console.log("成功", res)
         let orders=res.data.data;
-        for(var index in orders){
-          orders[index].img = app.globalData.urlGoods + '/goods/getFile?fileId=' + cartList[index].productIcon;
-        }
+        // for(var index in orders){
+        //   orders[index].img = app.globalData.urlGoods + '/goods/getFile?fileId=' + cartList[index].productIcon;
+        // }
         that.setData({
           orderList: orders
         })
@@ -63,55 +64,7 @@ Page({
     that.setData({
       orderid:orderid
     })
+    console.log(this.data, 'dsfdf');
     that.getList();
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function() {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function() {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function() {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function() {
-
-  }
 })

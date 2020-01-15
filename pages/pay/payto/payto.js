@@ -8,7 +8,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    total: '',
+    total: 0,
     show: false, // 是否显示弹框
     affirm: false, // 不显示确认按钮
     hfBalance: '',
@@ -37,20 +37,27 @@ Page({
       }
     });
   },
+  bindKeyInput: function (e) {
+    console.log(e);
+    if (util.isRealNum(e.detail.value)) {
+      this.setData({
+        total: e.detail.value
+      })
+    }    
+  },
   // 点击充值显示弹框
-  show: function() {
-    var that = this
-    if (that.data.orderid != '') {
+  onCreateCode: function() {
+    var that = this;
+    if (util.isRealNum(this.data.total)) {
       that.setData({
         show: true,
-        qrAdd: app.globalData.urlpay + '/user/balance/setCode?hfBalance=' + that.data.hfBalance + '&total=' + that.data.total + '&userId=' + that.data.userId
-      })
-    } else {
-      
+        qrAdd: app.globalData.urlpay + '/user/balance/setCode?total=' + that.data.total + '&userId=' + that.data.userId
+      });
     }
 
-
   },
+
+  
   /**
    * 生命周期函数--监听页面加载
    */

@@ -64,7 +64,8 @@
       <view class="shenqing " wx:if="{{item.orderDetailStatus=='已完成' }}" bindtap="pingjia" data-orderid="{{item.orderDetailId}}">评价晒单</view>
       <!-- <view class="shenqing" style="color:red;border-color:red" wx:if="{{item.orderDetailStatus=='已完成'||item.orderDetailStatus=='已取消'}}" data-goodsid="{{item.googsId}}" bindtap="againbuy">再次购买</view> -->
       <view class=" shenqing " style="color:red;border-color:red " wx:if="{{item.orderDetailStatus=='待发货' }}" bindtap="tixing">提醒发货</view>
-      <view class="shenqing " style="color:red;border-color:red " wx:if="{{item.orderDetailStatus=='待提货' }}" bindtap="hexiao " data-orderid="{{item.ordersId}} ">提货核销</view>
+      <view class="shenqing " style="color:red;border-color:red " wx:if="{{item.orderDetailStatus=='待提货' }}" bindtap="hexiao" 
+      data-orderid="{{item.id}}">提货核销</view>
     </view>
   </view>
   <!-- <view style="width:100%;margin-top:300rpx;font-size:28rpx;text-align:center; " wx:if="{{tipshow==true}} ">还没有订单呦</view> -->

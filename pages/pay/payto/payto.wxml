@@ -15,23 +15,23 @@
   <view class="numinput">
       <view class="numtop">
         <text>¥</text>
-        <input class="weui-input" value="{{total}}" type="digit" placeholder="输入金额" confirm-type="done"/>
+        <input class="weui-input" value="{{total}}" bindinput="bindKeyInput" type="digit" placeholder="输入金额" confirm-type="done"/>
       </view>
   </view>
-      <button class="numBottom" bindtap="show" >付款</button>
+      <button class="numBottom" bindtap="onCreateCode" >付款</button>
 </view>
 
 <!-- 弹出遮罩层 数据控制显示隐藏 详情查看vantweapp组件用法 -->
 <van-dialog
   use-slot
   show="{{ show }}"
-  show-confirm-button="{{true}}"
+  show-confirm-button="{{show}}"
   closeOnClickOverlay
   showConfirmButton="{{affirm}}"
 >
   <view class="content">
     <view class="pop-top">
-      <text>付款码</text>
+      <text>付款金額</text>
       <!-- <text>付款给 我是一只毒蘑菇啊</text> -->
       <text>¥{{total}}</text>
     </view>

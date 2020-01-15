@@ -253,10 +253,11 @@ Page({
     })
   },
   //核销
-  hexiao: function(e) {
+  hexiao(e) {
     let orderid = e.currentTarget.dataset.orderid;
+    console.log(e.currentTarget.dataset.orderid);
     wx.navigateTo({
-      url: '../hexiao/hexiao?order=' + orderid,
+      url: '../hexiao/hexiao?orderid=' + orderid,
     })
   },
   getOrder() {
@@ -273,9 +274,9 @@ Page({
       success: function(res) {
         console.log('查询订单', res);
         var goods=res.data.data;
-        for(var index in goods){
-          goods[index].img = app.globalData.urlGoods + '/goods/getFile?fileId=' + goods[index].fileId;
-        }
+        // for(var index in goods){
+        //   goods[index].img = app.globalData.urlGoods + '/goods/getFile?fileId=' + goods[index].fileId;
+        // }
         console.log(goods)
         that.setData({
           productlist: goods,
@@ -440,41 +441,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-
+    console.log("dddd");
+    this.getOrder();
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function() {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function() {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function() {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function() {
-
-  }
+ 
 })

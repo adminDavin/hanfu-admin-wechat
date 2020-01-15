@@ -2,7 +2,7 @@
 <view class="card" wx:for="{{orderList}}">
   <image src="{{item.img}}" style="width:170rpx;height:170rpx"></image>
   <view class="card-right">
-    <view class="name">{{item.hfName}}</view>
+    <view class="name">{{item.productName}}</view>
     <view class="tihuo" bindtap="tiHuo" data-goodsid="{{item.googsId}}">提货</view>
   </view>
 </view>
