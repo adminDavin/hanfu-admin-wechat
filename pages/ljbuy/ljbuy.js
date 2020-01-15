@@ -267,7 +267,6 @@ Page({
     let purchasePrice = options.purchasePrice;
     let purchaseQuantity = options.purchaseQuantity;
     let amount = options.amount;
-    // let goodid = options.goodsid;
     let userAddressId = options.userAddressId;
     let selectedGoods = {
       selectedGoods: {
@@ -291,7 +290,7 @@ Page({
       data: {
         productId: selectedGoods.selectedGoods.selectedGoods.productId,
         goodsNum: selectedGoods.selectedGoods.selectedGoods.goodsNum,
-        goodsId: selectedGoods.selectedGoods.selectedGoods.goodsId,
+        goodId: selectedGoods.selectedGoods.selectedGoods.goodsId,
       },
       header: {
         'content-type': 'application/x-www-form-urlencoded'
@@ -313,7 +312,7 @@ Page({
                 userId: 975
               }
             } = res;
-            console.log(selectedGoods);
+            console.log(selectedGoods, 'ddfsdfas');
             that.setData({
               userId: data.userId,
               goodsid: selectedGoodsNew.goodsId,
@@ -331,8 +330,7 @@ Page({
 
 
         that.setData({
-          selectedGoods: selectedGoods,
-          value: e.currentTarget.dataset.value,
+          selectedGoods: selectedGoods
         });
       }
     });

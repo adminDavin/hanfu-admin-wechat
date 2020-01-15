@@ -57,7 +57,7 @@ Component({
         data: {
           productId:this.properties.productId,
           goodsNum: selectedGoods.goodsNum,
-          goodsId: e.currentTarget.dataset.goods[0]
+          goodId: e.currentTarget.dataset.goods[0]
         },
         header: {
           'content-type': 'application/x-www-form-urlencoded' 
