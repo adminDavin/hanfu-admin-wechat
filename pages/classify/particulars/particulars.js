@@ -33,7 +33,7 @@ Page({
     curr: 0,
     selectedGoods: {},
     selectedAddress: {},
-
+    str:'',
     //----------
     goods: {},
     price: 4500,
@@ -113,11 +113,15 @@ Page({
     })
   },
   listenChooseGoodsCommitEvent(e) {
+    var that=this
     console.log(e.detail, 'dddd');
-    this.setData({
+    that.setData({
       guigeshow: false,
-      selectedGoods: e.detail
+      selectedGoods: e.detail,
     });
+    let int = that.data.selectedGoods.selectedGoods.spec
+    let str=JSON.stringify(int)
+    console.log(str)
   },
   listenSelectAddress(e) {
     this.setData({

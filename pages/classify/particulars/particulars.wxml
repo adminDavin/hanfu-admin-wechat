@@ -42,8 +42,8 @@
     <view class="site-selected">
       <view class="selected-box">
         <text class="selected">选择</text>
-        <text class="selected-text" wx:if="{{guigestr==''}}">未选择</text>
-        <text class="selected-text" wx:if="{{guigestr!=''}}">{{guigestr}}</text>
+        <!-- <text class="selected-text" wx:if="{{guigestr==''}}">未选择</text> -->
+        <text class="selected-text">{{selectedGoods.selectedGoods.goodsNum}}件{{}}</text>
       </view>
       <image src="../../images/tabs/diandian.png" bindtap="guigeshow" class="selected-images" />
     </view>
