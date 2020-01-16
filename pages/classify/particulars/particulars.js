@@ -36,6 +36,7 @@ Page({
     //----------
     goods: {},
     price: 4500,
+
   },
   //跳转添加地址页
   newsite:function(){
@@ -287,17 +288,25 @@ Page({
   },
   //立即购买
   buyquick() {
-    
-      let goodsid = this.data.selectedGoods;
+
+    let goodsid = this.data.selectedGoods;
+    console.log(this.data.selectedGoods)
       let userAddressId = this.data.selectedAddress;
-      console.log(app.globalData.selectedGoods);
+    console.log(this.data.selectedAddress);
       if (app.globalData.selectedGoods.length > 0) {
         app.globalData.selectedGoods = [];
       }
       app.globalData.selectedGoods.push({ selectedGoods: this.data.selectedGoods, selectedAddress: this.data.selectedAddress });
+
+    if (JSON.stringify(this.data.selectedGoods) == '{}' || JSON.stringify(this.data.selectedAddress) == '{}') {
+      wx.showToast({
+        title: '规格或地址未选',
+        icon: 'none',
+      });
+    } else if (JSON.stringify(this.data.selectedGoods) !== '{}' && JSON.stringify(this.data.selectedAddress) !== '{}' ) {
       wx.navigateTo({ url: `../../ljbuy/ljbuy?purchasePrice=` });
-    
-   
+    }
+    //  
   },
   // 判断userid
   isUserId() {

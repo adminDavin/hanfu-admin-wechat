@@ -15,7 +15,7 @@
   </view>
   <view class="address-card">
     <view class="address-card-top">
-      <view style="min-width:146rpx;" class="top-ziti">{{goodsList.userName}}</view>
+      <view style="min-width:146rpx;" class="top-ziti">{{goodsList.nickName}}</view>
       <text class="top-ziti" style="margin-right:20rpx">{{phoneNumber}}</text>
     </view>
     <view class="address-card-bottom">
@@ -24,11 +24,11 @@
   </view>
   <view class="content-card">
     <view class="xiajia-content">
-      <image src="../images/cart/cartitem.png" style="width:230rpx;height:230rpx"></image>
+      <image src="{{goodsList.img}}" style="width:230rpx;height:230rpx"></image>
       <view class="contentitem-right" style="justify-content: flex-start;">
         <text class="item-name">{{goodsList.hfName}}</text>
         <view class="serve">
-          <text>白色40x40cm,保修一年</text>
+          <text wx:for="{{goodsSpecList}}" wx:key="index" wx:for-item="spec">{{spec.specValue}}</text>
         </view>
         <view class="hiddenxiala" hidden="{{servehidden}}">
           <view wx:for=""></view>
@@ -50,12 +50,12 @@
   <view class="dingdan-card">
     <view class="dingdan-card-item">
       <view class="dingitem-ziti">订单编号：</view>
-      <view class="dingitem-ziti" style="color:black;margin-right:37rpx">{{goodsList.ordersId}}</view>
+      <view class="dingitem-ziti" style="color:black;margin-right:37rpx">{{goodsList.id}}</view>
       <view class="fuzhi">复制</view>
     </view>
     <view class="dingdan-card-item">
       <view class="dingitem-ziti">下单时间：</view>
-      <view class="dingitem-ziti" style="color:black;">{{goodsList.createTime}}</view>
+      <view class="dingitem-ziti" style="color:black;">{{modifyTime}}</view>
     </view>
     <view class="dingdan-card-item">
       <view class="dingitem-ziti">支付方式：</view>

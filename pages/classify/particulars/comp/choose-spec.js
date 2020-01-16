@@ -27,8 +27,8 @@ Component({
       productId: 0
     },
     productSpec: new Map(),
-    // 保持被点击的元素的值
-    value: '',
+    // 保持数量
+    goodNum: '1',
     spec:[]
   },
 
@@ -38,8 +38,9 @@ Component({
   methods: {
 
     onInputNum(e) {
+      console.log(e)
       this.setData({
-       goodsNum : e.detail.value
+        goodNum: e.detail.value
       })
     },
     onSelectSpecValue(e) {
@@ -49,12 +50,13 @@ Component({
        // TODO 检查库存是否有库存 
       let that = this;
       console.log(e.currentTarget.dataset.goods[0]);
+      console.log(e);
       wx.request({
         url: app.globalData.urlparticulars + '/goods/checkResp',
         method: 'POST',
         data: {
           productId:this.properties.productId,
-          goodsNum: selectedGoods.goodsNum,
+          goodsNum: this.data.goodNum,
           goodId: e.currentTarget.dataset.goods[0]
         },
         header: {
@@ -63,6 +65,13 @@ Component({
         success(res) {
           console.log(res)
           console.log(res.data.data, 'dfddsfsafd');
+          if (res.data.data=='库存不足') {
+            wx.showToast({
+              title: '库存不足',
+              icon: 'none'
+            });
+            return
+          }
           selectedGoods.goodsId = res.data.data.id;
           selectedGoods.goodsNum = res.data.data.goodsNum;
           selectedGoods.totalprice = res.data.data.money;

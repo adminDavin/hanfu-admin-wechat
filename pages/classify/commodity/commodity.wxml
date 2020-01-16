@@ -13,7 +13,7 @@
       <view class="banner-box">
         <view class="table">
           <view class="table-sum" bindtap="clickTab" data-id="0">
-            <text class="sum-text" bindtap="categoryId">综合</text>
+            <text class="sum-text">综合</text>
             <view class="sum-color {{currentTab==0?'colors':''}}"></view>
           </view>
           <image src="../../images/tabs/xiangxia.png" class="sum-image" />
@@ -35,7 +35,7 @@
   <!-- 商品区域一个 -->
   <view wx:if="{{lists==false}}" class="shpping-content">
     <view class="content" wx:for="{{arr}}" wx:key="index">
-      <view class="content" bindtap="commodity" data-id="{{1}}" data-price="{{item.sellPrice}}" data-fileid="{{item.fileId}}">
+      <view class="content" bindtap="commodity" data-id="{{item.id}}" data-price="{{item.sellPrice}}" data-fileid="{{item.fileId}}">
         <image src="{{item.img}}" class="content-images" />
         <view class="content-text">{{item.goodName}}</view>
         <view class="content-discounts">

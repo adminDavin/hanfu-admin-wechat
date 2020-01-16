@@ -204,10 +204,15 @@ Page({
       url: app.globalData.urlGoods + '/product/slideshow',
       method: 'Get',
       success: function (res) {
+        console.log(res)
         let list = res.data.data;
         console.log(res)
         for (var index in list) {
           list[index].img = app.globalData.urlGoods + '/goods/getFile?fileId=' + list[index].fileId;
+          let lunid=list[index].id
+          // that.setData({
+          //   lunid:lunid 
+          // })
         }
         that.setData({
           lunBoTu:list
@@ -219,8 +224,9 @@ Page({
    lunbotutiao:function(e){
      var that = this;
      var id = e.currentTarget.dataset.id;
+     console.log(id)
      wx.navigateTo({
-       url: `../classify/particulars/particulars?id=${id}`,
+       url: '../classify/particulars/particulars?id='+id,
      })
    },
   //推荐榜单

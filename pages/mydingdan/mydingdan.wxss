@@ -179,3 +179,19 @@
 .input_control { 
   position: relative; left: -300rpx; bottom: 0; width: 100rpx; height: 100rpx;
 }
+.dan-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 300rpx;
+  height:170rpx;
+}
+.dan-guige {
+  font-size: 22rpx;
+  color: #999999;
+  font-weight: 400;
+  margin: 10rpx;
+}
+.dan-box-2 {
+  display: flex;
+}

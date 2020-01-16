@@ -25,11 +25,11 @@
     <view class="guigebox-num">
       <view style="font-size:16px;line-height:62rpx;">数量</view>
       <view class="guigenum-right">
-        <image src="../../../images/cart/guigesub.png" style="width:20rpx;height:20rpx;" bindtap="subNum"></image>
-        <view class="onInputNum">
-          <input type="number" value="{{selectedGoods.goodsNum}}" bindinput='onInputNum' />
+        <!-- <image src="../../../images/cart/guigesub.png" style="width:20rpx;height:20rpx;" bindtap="subNum"></image> -->
+        <view>
+          <input class="onInputNum" type="number" value="{{selectedGoods.goodsNum}}" bindblur='onInputNum' />
         </view>
-        <image src="../../../images/cart/guigeadd.png" style="width:20rpx;height:20rpx;" bindtap="addNum"></image>
+        <!-- <image src="../../../images/cart/guigeadd.png" style="width:20rpx;height:20rpx;" bindtap="addNum"></image> -->
       </view>
     </view>
 

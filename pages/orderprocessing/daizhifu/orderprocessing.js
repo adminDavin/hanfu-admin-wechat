@@ -15,7 +15,9 @@ Page({
     phoneNumber: '',
     goodsprice: '',
     price:0,
-    orderId:''
+    orderId:'',
+    goodsSpecList:'',
+    modifyTime:''
   },
   //返回
   fanhui() {
@@ -101,11 +103,16 @@ Page({
         let addid = orderList.userAddressId
         let amount=orderList.amount;
         let goodsprice = orderList.purchaseQuantity * orderList.purchasePrice
+        let goodsSpecList = orderList.goodsSpecList
+        let modifyTime = orderList.modifyTime.replace("T"," ")
+        orderList.img = app.globalData.urlGoods + '/goods/getFile?fileId=' + orderList.fileId
         that.setData({
           goodsList: orderList,
           addid: addid,
           goodsprice: goodsprice,
-          amount:amount
+          amount:amount,
+          goodsSpecList:goodsSpecList,
+          modifyTime: modifyTime
         })
         that.getAddress();
       }
