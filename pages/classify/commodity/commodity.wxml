@@ -1,0 +1,146 @@
+<view class="commodity">
+  <view class="commodity-header-box">
+    <!-- <image src="../../images/tabs/xiala.png" class="commodity-tus" /> -->
+    <view class="commodity-header" bindtap="sousuo">
+      <image class="commodity-tu" src="../../images/tabs/sousuo.png" />
+      <input type="text" class="commodity-input" placeholder="搜一下" />
+    </view>
+    <image src="../../images/tabs/saoma.png" class="commodity-tus" />
+  </view>
+  <!-- banner区域 -->
+  <view class="commodity-banner">
+    <view class="banner-table">
+      <view class="banner-box">
+        <view class="table">
+          <view class="table-sum" bindtap="clickTab" data-id="0">
+            <text class="sum-text" bindtap="categoryId">综合</text>
+            <view class="sum-color {{currentTab==0?'colors':''}}"></view>
+          </view>
+          <image src="../../images/tabs/xiangxia.png" class="sum-image" />
+        </view>
+      </view>
+      <view class="banner-box-two">
+        <image src="../../images/tabs/liebiao2.png" bindtap="list" wx:if="{{lists==false}}" class="image-saoma" />
+        <image src="../../images/tabs/liebiaomoshi.png" bindtap="list" wx:if="{{lists==true}}" class="image-saoma" />
+        <view class="table">
+          <view class="table-sum">
+            <text class="sum-text sales" bindtap="translate">筛选</text>
+            <view class="sum-color"></view>
+          </view>
+          <image src="../../images/tabs/shaixuan.png" class="sai-image" />
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 商品区域一个 -->
+  <view wx:if="{{lists==false}}" class="shpping-content">
+    <view class="content" wx:for="{{arr}}" wx:key="index">
+      <view class="content" bindtap="commodity" data-id="{{1}}" data-price="{{item.sellPrice}}" data-fileid="{{item.fileId}}">
+        <image src="{{item.img}}" class="content-images" />
+        <view class="content-text">{{item.goodName}}</view>
+        <view class="content-discounts">
+          <view class="discounts-money">
+            <text class="money-title">¥</text>
+            <text class="money-number">{{item.sellPrice}}</text>
+          </view>
+          <view class="news">
+            <!-- <text class="news-shpping">每满200减30</text> -->
+            <text class="news-shpping">包邮</text>
+            <!-- <text class="news-shpping">领券满1000减300</text> -->
+          </view>
+          <view class="observer">
+            <text class="observe-one">9000+条评论</text>
+            <text class="observe-two">99%好评</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 商品区域两个 -->
+  <view class="banner-centent" wx:if="{{lists==true}}">
+    <!-- 商品 -->
+    <view class="centent" wx:for="{{arr}}" wx:key="index" bindtap="commodity" data-id="{{item.id}}" data-price="{{item.sellPrice}}">
+        <!-- 图片 -->
+        <image src="{{item.img}}" class="centent-image" />
+        <!-- 详情 -->
+        <view class="centent-particulars">
+          <text class="particulars-text">{{item.goodName}}</text>
+          <view class="particulars-money">
+            <view class="money-box">
+              <text class="money-title">¥</text>
+              <text class="money-number">{{item.sellPrice}}</text>
+              <!-- <image src="../../images/tabs/vip.png" class="money-vip" /> -->
+            </view>
+            <view class="money-table">
+              <!-- <text class="money-discounts">新品</text> -->
+              <text class="money-discounts">包邮</text>
+              <!-- <text class="money-discounts">每满200减30</text> -->
+            </view>
+            <view class="comment">
+              <text class="comment-number">23万+条评论</text>
+              <text>99%好评</text>
+            </view>
+          </view>
+        </view>
+
+    </view>
+  </view>
+  <view class="top" hidden='{{!floorstatus}}' bindtap="goTop">
+    <view class="top-image">
+      <image src="../../images/tabs/dingb.png" class="images-d" />
+    </view>
+  </view>
+  <view class="float {{isRuleTrue?'isRuleShow':'isRuleHide'}} ">
+    <view class="animation-element" animation="{{animation}}">
+      <view class="supernatant">
+        <view class="supernatant-price">
+          <text class="price-title">价格区间</text>
+          <view class="price-box">
+            <input class="price-low" placeholder="最低价" value="{{mostlower}}" bindblur="mostlower" />
+            <view class="price-clue"></view>
+            <input class="price-low" placeholder="最高价" value="{{mosthigher}}" bindblur="mosthigher" />
+          </view>
+        </view>
+        <view class="subject">
+          <view class="subject-box">
+            <text class="price-title">全部分类</text>
+            <view class="subject-title">
+              <text class="title-subject">分类</text>
+              <image src="../../images/tabs/jinru (2).png" class="subject-image" />
+            </view>
+            <view class="subject-table">
+              <text class="tag"></text>
+              <text class="tag"></text>
+              <text class="tag"></text>
+              <text class="tag"></text>
+              <text class="tag"></text>
+              <text class="tag"></text>
+              <text class="tag"></text>
+              <text class="tag"></text>
+            </view>
+          </view>
+          <!-- <view class="subject-box subject-top">
+                        <view class="subject-title">
+                            <text class="title-subject">品牌</text>
+                            <image src="../../images/tabs/jinru.png" class="subject-image" />
+                        </view>
+                        <view class="subject-table">
+                            <text class="tag">男装</text>
+                            <text class="tag">花花公子</text>
+                            <text class="tag">七匹狼</text>
+                            <text class="tag">七匹狼</text>
+                            <text class="tag">男装</text>
+                            <text class="tag">男装</text>
+                            <text class="tag">男装</text>
+                            <text class="tag">男装</text>
+                        </view>
+                    </view> -->
+        </view>
+      </view>
+      <view class='buttom'>
+        <view class="animation-reset">重置</view>
+        <view class="animation-reset animation-button" bindtap="success">完成</view>
+      </view>
+    </view>
+  </view>
+</view>

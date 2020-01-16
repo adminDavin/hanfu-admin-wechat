@@ -1,0 +1,14 @@
+.find-header {
+    width: 100%;
+    height: 88rpx;
+    background: #FF3333;
+}
+
+.kong {
+  width: 710rpx;
+  line-height: 500rpx;
+  text-align: center;
+  margin: 50rpx auto;
+  font-size: 33rpx;
+  color: #a8a8a8;
+}

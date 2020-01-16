@@ -1,0 +1,34 @@
+<view class="classify">
+  <view class="classify-header-box">
+    <image src="../images/tabs/saoma.png" class="classify-tus" />
+    <view class="classify-header" bindtap="sousuo">
+      <image class="classify-tu" src="../images/tabs/sousuo.png" />
+      <input type="text" class="classify-input" placeholder="显示器2K" />
+    </view>
+    <image src="../images/tabs/xiaoxi.png" class="classify-tus" />
+  </view>
+  <!-- banner区 -->
+  <view class="classify-banner">
+    <!-- 左 -->
+    <van-sidebar active-key="{{ activeKey }}">
+      <van-sidebar-item title="{{item.hfName}}" bind:click="onChange" custom-class="banner-box" wx:for="{{arr}}" wx:key="index" data-id="{{item.id}}" />
+    </van-sidebar>
+    <!-- 右 -->
+    <view class="banner-text">
+      <image src="{{images[0].img}}" class="text-image" />
+      <view class="text-table" wx:for="{{arrs}}" wx:for-item="arritem" wx:key="index">
+        <view class="text-classify">{{arritem.twoLevelName}}</view>
+        <view class="shpping-big">
+          <view class="yige" wx:for="{{arritem.categories}}" wx:for-item="ait" bindtap="goThreeLevel" data-id="{{ait.id}}">
+            <view class="tupian">
+              <image src="{{ait.img}}" class="imagestu"  />
+            </view>
+            <view class="wenzi">
+              <text class="textwenzi">{{ait.hfName}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

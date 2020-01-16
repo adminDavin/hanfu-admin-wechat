@@ -1,0 +1,11 @@
+{
+  "usingComponents": {
+    "van-radio": "/pages/vant/weapp/dist/radio/index",
+    "van-radio-group": "/pages/vant/weapp/dist/radio-group/index",
+    "van-button": "/pages/vant/weapp/dist/button/index"
+  },
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "我的关注",
+    "navigationBarTextStyle": "black"
+}

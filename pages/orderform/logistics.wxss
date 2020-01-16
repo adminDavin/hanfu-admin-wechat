@@ -1,0 +1,31 @@
+page {
+  background-color: #f8f8f8;
+}
+.logisticsTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 20rpx;
+  height: 120rpx;
+  box-sizing: border-box;
+  background-color: #fff;
+  font-size: 28rpx;
+  margin-bottom: 20rpx;
+}
+.logisticsTopLeft {
+  display: flex;
+  flex-direction: column;
+}
+.logisticsTopLeft :nth-child(1) {
+  margin-bottom: 10rpx;
+}
+.logisticsTopRight {
+  color: #ff3333;
+}
+
+.logisticsBottom {
+  background-color: #fff;
+}
+.van-step.van-step--vertical {
+  font-size: 28rpx;
+}

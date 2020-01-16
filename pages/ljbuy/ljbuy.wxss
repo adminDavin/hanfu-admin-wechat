@@ -1,0 +1,216 @@
+/* pages/order/order.wxss */
+
+.order {
+  width: 100%;
+  height: 100%;
+  background-color: #f8f8f8;
+}
+
+.address {
+  width: 100%;
+  height: 220rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20rpx 24rpx;
+  box-sizing: border-box;
+  background-color: white;
+}
+
+.address-top {
+  width: 100%;
+  height: 35rpx;
+  display: flex;
+}
+
+.moren {
+  width: 70rpx;
+  height: 35rpx;
+  background: rgba(255, 0, 0, 1);
+  border-radius: 10rpx;
+  text-align: center;
+  line-height: 35rpx;
+  font-size: 24rpx;
+  font-family: PingFang SC;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 1);
+  margin-right: 32rpx;
+}
+
+.address-center {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 108rpx;
+  padding: 20rpx 0;
+  box-sizing: border-box;
+}
+
+.address-bottom {
+  font-size: 24rpx;
+  font-weight: 400;
+  color: rgba(21, 21, 21, 1);
+}
+
+/* 取货方式 */
+
+.quhuomethod {
+  width: 100%;
+  height: 100rpx;
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 24rpx;
+  box-sizing: border-box;
+  margin-top: 20rpx;
+}
+
+.ziti {
+  font-size: 26rpx;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: rgba(21, 21, 21, 1);
+  line-height: 100rpx;
+}
+.youji {
+  width: 100%;
+  line-height: 80rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 24rpx;
+  box-sizing: border-box;
+  margin-top: 20rpx;
+}
+.youjicard {
+  width: 100%;
+  background-color: white;
+}
+.youfei {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 24rpx;
+  box-sizing: border-box;
+}
+/* 商品详情 */
+
+.content-card {
+  width: 100%;
+  margin-top: 20rpx;
+  background: white;
+  padding: 20rpx 24rpx 0 24rpx;
+  box-sizing: border-box;
+}
+
+.xiajia-content {
+  margin-bottom: 20rpx;
+  width: 100%;
+  height: 270rpx;
+  display: flex;
+  justify-content: flex-start;
+}
+.item-goodname{
+  height: 80rpx;
+}
+
+.contentitem-right {
+  width: 440rpx;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-left: 30rpx;
+  position: relative;
+}
+
+.item-name {
+  font-size: 26rpx;
+  font-family: PingFang SC;
+  font-weight: 500;
+  color: rgba(21, 21, 21, 1);
+}
+
+.serve {
+  padding: 11rpx 24rpx;
+  box-sizing: border-box;
+  background: rgba(240, 240, 240, 1);
+  border-radius: 24rpx;
+  font-size: 24rpx;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: rgba(21, 21, 21, 1);
+  display: flex;
+  justify-content: flex-start;
+  width: 324rpx;
+  margin-top: 8rpx;
+  margin-bottom: 8rpx;
+}
+
+.selectserve {
+  margin-right: 10rpx;
+  margin-left: 10rpx;
+}
+
+.card-money {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  bottom: 20px;
+}
+
+.discounts-money {
+  color: #f00;
+  /* margin-top: 22rpx; */
+  line-height: 26rpx;
+  display: flex;
+  align-items: center;
+}
+
+.money-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  font-family: "PingFang-SC-Bold";
+}
+
+.money-number {
+  font-family: "PingFang-SC-Medium";
+  font-size: 34rpx;
+  font-weight: 500;
+  margin-left: 3rpx;
+}
+
+.num {
+  font-size: 28rpx;
+  font-weight: 500;
+  color: rgba(51, 51, 51, 1);
+}
+/* footer */
+.footer {
+  width: 100%;
+  height: 98rpx;
+  position: fixed;
+  bottom: 0;
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 24rpx;
+  box-sizing: border-box;
+}
+.submit {
+  width: 176rpx;
+  height: 60rpx;
+  background: rgba(255, 0, 0, 1);
+  border-radius: 30rpx;
+  font-size: 30rpx;
+  font-family: PingFang SC;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 1);
+  line-height: 60rpx;
+  text-align: center;
+}

@@ -1,0 +1,158 @@
+<view class="particulars">
+  <!-- 图片 -->
+  <view class="header-images">
+    <block>
+      <swiper vertical="{{false}}" indicator-dots="{{flase}}" bindchange="current" autoplay="{{flase}}">
+        <swiper-item>
+          <image src="{{goods.img}}" class="images-head" />
+        </swiper-item>
+      </swiper>
+    </block>
+    <view class="images-return" bindtap="goBack">
+      <image src="../../images/tabs/jinru (4).png" class="return" />
+    </view>
+    <view class="images-index">{{slideNumber}}/5</view>
+  </view>
+  <!-- 商品价格及名称 -->
+  <view class="productName">
+    <view class="productName-box">
+      <view class="productName-dollor">
+        <text class="dollor">¥</text>
+        <text class="money">{{price}}</text>
+        <text class="news">新品</text>
+      </view>
+      <view class="productName-collect">
+        <view class="collect-one collect-margin" bindtap="attention">
+          <image src="../../images/tabs/chakantieziguanzhu.png" class="depreciate-image" bindtap="collect" wx:if="{{collects==false}}" />
+          <image src="../../images/tabs/aixin.png" class="depreciate-image" bindtap="collect" wx:if="{{collects==true}}" />
+          <text class="depreciate-text"></text>
+        </view>
+      </view>
+    </view>
+    <view class="productName-box-two">
+      <text class="productName-table">{{goods.goodName}}</text>
+      <button class="table-box" open-type="share" style="width:120rpx">
+        <image src="../../images/tabs/fenxiang.png" class="table-images" />
+        <text class="share">分享</text>
+      </button>
+    </view>
+  </view>
+  <!-- 地址及已选 -->
+  <view class="site">
+    <view class="site-selected">
+      <view class="selected-box">
+        <text class="selected">选择</text>
+        <text class="selected-text" wx:if="{{guigestr==''}}">{{selectedGoods.selectedGoods.goodsNum}}件</text>
+        <text class="selected-text" wx:if="{{guigestr!=''}}">{{guigestr}}</text>
+      </view>
+      <image src="../../images/tabs/diandian.png" bindtap="guigeshow" class="selected-images" />
+    </view>
+    <view class="site-selected">
+      <view class="selected-box delivery-box">
+        <view class="selected">送至</view>
+        <image src="../../images/tabs/weizhi.png" class="delivery-image" />
+        <view class="selected-text text-left">
+          {{sites}}
+        </view>
+      </view>
+      <image src="../../images/tabs/diandian.png" class="selected-images" bindtap="showSiteList" />
+    </view>
+    <view class="site-freight">
+      <text class="selected">运费</text>
+      <text class="selected-text">免运费</text>
+    </view>
+    <view class="site-refund">
+      <view class="refund-flex">
+        <image src="../../images/tabs/fangxingou.png" class="refund-image" />
+        <view class="refund-box">
+          <text class="refund-text">闪电退款</text>
+          <view class="refund-d"></view>
+          <text class="refund-text">极速审核</text>
+          <view class="refund-d"></view>
+          <text class="refund-text">7天价保</text>
+        </view>
+      </view>
+      <image src="../../images/tabs/diandian.png" class="selected-images" />
+    </view>
+    <view class="site-safeguard">
+      <image src="../../images/tabs/对.png" class="safeguard-image" />
+      <text class="safeguard-text">店铺发货&售后</text>
+      <image src="../../images/tabs/对.png" class="safeguard-image" />
+      <text class="safeguard-text">7天无理由退货</text>
+      <image src="../../images/tabs/对.png" class="safeguard-image" />
+      <text class="safeguard-text">货到付款</text>
+    </view>
+  </view>
+  <!-- 评价 -->
+  <view class="appraise">
+    <view class="appraise-title">
+      <view class="appraise-number">
+        <image src="../../images/tabs/yuanjiaoju.png" class="number-image" />
+        <text class="number-table">评价</text>
+        <text class="number-text"></text>
+      </view>
+      <view class="appraise-limit">
+        <text class="limit"></text>
+        <image src="../../images/tabs/jinru (1).png" class="limit-image" bindtap="discuss" />
+      </view>
+    </view>
+    <view class="appraise-more">
+      <text class="more-title" bindtap="discuss">暂无评论</text>
+    </view>
+  </view>
+  <!-- 商品详情 -->
+  <view class="description">
+    <view class="description-title">商品详情</view>
+    <view class="description-contents">{{goods.goodsDesc}}</view>
+  </view>
+  <!-- 底部 -->
+  <view class="footer">
+      <view class="footer-inner">
+        <view class="footter-service">
+        <image src="../../images/tabs/xiaoxi.png" class="footer-image" />
+        <text class="foot-text">客服</text>
+      </view>
+      <view class="footter-service" bindtap="gouwucar">
+        <!-- <image src="../../images/tabs/buycar.png" class="footer-image" />
+        <text class="foot-text">购物车</text> -->
+      </view>
+       <view class="footer-shppingcar" bindtap="shppingcar">到店支付</view>
+       <view class="footer-shppingcar purchase" bindtap="buyquick">立即购买</view>
+    </view>
+  </view>
+  <!-- 服务弹窗 -->
+  <view class="modals modals-bottom-dialog" hidden="{{hideModal}}">
+    <view class="modals-cancel" bindtap="hideModal"></view>
+    <component-service/>
+  </view>
+  <!-- 选取物品 -->
+  <view class="guigebox" wx:if="{{guigeshow==true}}">
+    <view class="guanbipic">
+      <image src="../../images/cart/guigegb.png" bindtap="guigeguanbi" style="width:12px;height:12px; position: absolute; top: 25rpx; right: 25rpx;"></image>
+    </view>
+    <component-tag-name product-id="{{productId}}" bind:chooseGoodsCommitEvent="listenChooseGoodsCommitEvent"></component-tag-name>
+  </view>
+  <!-- 选取地址 -->
+  <view class="guigebox" style="overflow:auto" wx:if="{{tsiteshow==true}}">
+   <view class="delivery">派送至</view>
+   <view class="newsites" bindtap="newsite">+新建收货地址</view>
+    <view class="guanbipic">
+      <image src="" bindtap="tsiteguanbi" class="outs"></image>
+    </view>
+    <component-address user-id="{{userId}}" bind:selectAddressEvent="listenSelectAddress"></component-address>
+  </view>
+</view>
+
+<view class="mask" wx:if="{{show==true}}">
+  <view class="mask-dl">
+    <text class="mask-tible">{{shibaishow==true?'登录失败，请重新登录':'您还未登录'}}</text>
+    <text class="mask-tibles">请先登录再进行操作</text>
+    <view class="mask-head">
+      <view class="header">头像</view>
+    </view>
+    <view class="mask-buttom">
+      <view class="buttom" bindtap="nologin">暂不登录</view>
+      <button class="buttom-two" open-type="getUserInfo" bindgetuserinfo="getUserInfo" style="width:183rpx;font-size:28rpx;font-weight:400">立即登录</button>
+    </view>
+  </view>
+</view>

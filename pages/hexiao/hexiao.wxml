@@ -1,0 +1,17 @@
+<view style="width:100%;height:100%">
+<view class="card" wx:for="{{orderList}}">
+  <image src="{{item.img}}" style="width:170rpx;height:170rpx"></image>
+  <view class="card-right">
+    <view class="name">{{item.productName}}</view>
+    <view class="tihuo" bindtap="tiHuo" data-goodsid="{{item.googsId}}">提货</view>
+  </view>
+</view>
+<view class="wuquan" wx:if="{{qrshow}}">
+  <view class="hexiaoma">
+    <image src="{{qrAdd}}" style="width:360rpx;height:360rpx;margin:66rpx 100rpx 34rpx"></image>
+    <view class="tip">请用此核销码到指定地点指定店铺核销提货</view>
+  </view>
+  <image src="../images/cart/guanbi.png" style="width:61rpx;height:61rpx;margin:15rpx 345rpx" bindtap="guanbi"></image>
+</view>
+
+</view>

@@ -1,0 +1,110 @@
+<view class="zt">
+  <view class="hand">
+    <view class="hang-box">
+      <image class="tx" src="{{avatar}}"></image>
+      <view class="zj">
+        <view class="zj_1">
+          <text class="nc">{{username}}</text>
+          <!-- <view class="nk">年卡</view> -->
+        </view>
+        <view class="zj_2">
+          <text class="xx">￥{{hfBalance}}</text>
+          <!-- <text class="xx_1">账单记录</text>
+          <image class="gd" src="../../images/vip/xiala@2x(1).png"></image> -->
+        </view>
+      </view>
+    </view>
+    <view class="zz" bindtap="ontab">充值</view>
+  </view>
+  <!-- 专项特权 -->
+  <view class="bt">
+    <image class="biaoji" src="../../images/vip/圆角矩形 7 拷贝@2x.png"></image>
+    <text class="headline">PLUS会员专项特权</text>
+  </view>
+  <!-- 功能 -->
+  <view class="gongneng">
+    <view class="gongneng_1">
+      <image class="zxj" src="../../images/vip/yhq.png"></image>
+      <text class="headline_1">PLUS专享券</text>
+    </view>
+    <view class="gongneng_1">
+      <image class="zxj" src="../../images/vip/quan.png"></image>
+      <text class="headline_1">P运费券</text>
+    </view>
+    <view class="gongneng_1">
+      <image class="zxj" src="../../images/vip/zhuanshukefu.png"></image>
+      <text class="headline_1">专属客服</text>
+    </view>
+    <view class="gongneng_1 headline_2">
+      <image class="zxj_1" src="../../images/vip/more.png"></image>
+      <text class="headline_1">期待更多</text>
+    </view>
+  </view>
+  <!-- 专享券 -->
+  <!-- <view class="bt_1">
+    <view class="bt-box">
+      <image class="biaoji" src="../../images/vip/圆角矩形 7 拷贝@2x.png"></image>
+      <text class="headline">PLUS会员专项券</text>
+    </view>
+    <view class="q">
+      <text class="gd">
+                更多
+                <image class="" src="../../images/vip/xiala@2x(1).png"></image>
+            </text>
+    </view>
+  </view> -->
+  <!-- 轮播 -->
+  <!-- <scroll-view class='scrollView' scroll-x='true'>
+    <view class='cc'>
+      <view class='vvv' wx:for='{{6}}'>
+        <view class="vvv-box">
+          <view class="qqq"> -->
+            <!-- 左侧 -->
+            <!-- <view>
+            <view class="z_1_1">PLUS</view>
+            <view class="z_1">
+              <view class="z_1_2">￥200</view>
+              <view class="z_1_3">满298元可用</view>
+            </view>
+            </view>
+            
+            <view class="z_2">立即领取</view>
+          </view>
+          
+        </view>
+
+      </view>
+    </view>
+  </scroll-view> -->
+
+  <!-- 轮播结束 -->
+  <!-- 免费券 -->
+  <!-- <view class="bt_1">
+    <view class="bt-box">
+      <image class="biaoji" src="../../images/vip/圆角矩形 7 拷贝@2x.png"></image>
+      <text class="headline">免运费券</text>
+    </view>
+    <view class="q">
+      <text class="gd">更多></text>
+    </view>
+  </view> -->
+  <!--  -->
+  <!-- <scroll-view class='scrollView' scroll-x='true'>
+    <view class='cc'>
+      <view class='vvv' wx:for='{{6}}'>
+                  <view class="ppp"> -->
+            <!-- 左侧 -->
+            <!-- <view>
+            <view class="x_1_1">PLUS</view>
+            <view class="x_1">
+              <view class="x_1_2">免运费券</view>
+            </view>
+            </view>
+            
+            <view class="x_2">去使用</view>
+          </view>
+      </view>
+    </view>
+  </scroll-view> -->
+  <!--  -->
+</view>
