@@ -84,7 +84,6 @@ Page({
            arr:res.data.data,
            firstId:firstId,
         })
-        console.log(that.data.fileId)
         console.log(that.data.arr)
       },
     })
@@ -128,7 +127,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-   
+    
   },
 
   /**
@@ -142,9 +141,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.morecategory()
-    this.images()
     this.firstGetSec()
+    this.images()
+    this.morecategory()
   },
 
   /**

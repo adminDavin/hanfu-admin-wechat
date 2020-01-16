@@ -18,7 +18,7 @@
     <view class="productName-box">
       <view class="productName-dollor">
         <text class="dollor">¥</text>
-        <text class="money">{{price}}</text>
+        <text class="money">{{totalprice}}</text>
         <text class="news">新品</text>
       </view>
       <view class="productName-collect">

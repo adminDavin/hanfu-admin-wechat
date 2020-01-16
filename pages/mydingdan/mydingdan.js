@@ -15,6 +15,7 @@ Page({
     pwdVal: '',  //输入的密码
     payFocus: true, //文本框焦点
     amount:'',
+    specs:''//规格
   },
 
   toggle: function(e) {
@@ -303,6 +304,13 @@ Page({
         console.log(orders)
         let goods = [];
         for (var index in orders) {
+          // let spec = orders[index].goodsSpecList
+          // for (var i in spec){
+          //    let specs=spec[i]
+          //    that.setData({
+          //      specs: specs
+          //    })
+          // }
           if (orders[index].orderDetailStatus == '待支付') {
             orders[index].img = app.globalData.urlGoods + '/goods/getFile?fileId=' + orders[index].fileId;
             goods.push(orders[index])

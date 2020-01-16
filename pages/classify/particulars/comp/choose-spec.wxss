@@ -927,3 +927,10 @@ button {margin: 10px;}
   border-radius: 10rpx;
   padding:0;
 }
+.onInputNum {
+  text-align: center;
+  width: 85rpx;
+  border-radius: 10rpx;
+  background-color: #EEEEEE;
+  padding: 0 10rpx;
+}

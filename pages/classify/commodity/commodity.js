@@ -124,7 +124,7 @@ Page({
         })
       },
       data:{
-        categoryId:ids
+        categoryId:that.data.ids
       }
     })
   },
@@ -144,10 +144,9 @@ Page({
         that.setData({
           arr: list,
         })
-        console.log(that.data.seniorityId)
       },
       data: {
-        seniorityId: ids
+        seniorityId: that.data.ids
       }
     })
   },
@@ -204,16 +203,12 @@ Page({
       })
     });
   },
-
-
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     var that=this;
     const { id } = options;
-    that.setData({ids:id,shuid:id})
-    console.log(that.data.ids)
     if(options.tag){
       wx.getStorage({
         key: 'user',
@@ -227,10 +222,8 @@ Page({
     }else{
       this.setData({ ids: id})
       // todo 前期写死列表返回
-      this.prices();
-      this.categoryId();
-      this.seniorityIds();
     };
+    this.categoryId();
+    this.seniorityIds();
   },
- 
 })
