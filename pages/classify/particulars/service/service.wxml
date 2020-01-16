@@ -14,8 +14,8 @@
       <view class="services-content services-margin">
         <image src="../../../images/tabs/duigou.png" class="kind-image" />
         <view class="services-kind">
-          <text class="kind-table">15天退货</text>
-          <view class="kind-text">15天退货，退货邮费卖家承担</view>
+          <text class="kind-table">自提核销</text>
+          <view class="kind-text">到店自提核销，支持到店核销提货</view>
         </view>
       </view>
     </scroll-view>

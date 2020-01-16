@@ -1,13 +1,13 @@
 //app.js
 App({
-  onLaunch: function() {
-    var that = this;
-    // 购物车数量
-    wx.setTabBarBadge({
-      index: 3,
-      text: that.globalData.cartNum
-    })
-  },
+  // onLaunch: function() {
+  //   var that = this;
+  //   // 购物车数量
+  //   wx.setTabBarBadge({
+  //     index: 3,
+  //     text: that.globalData.cartNum
+  //   })
+  // },
   globalData: {
     userInfo: null,
     cartNum: '0',

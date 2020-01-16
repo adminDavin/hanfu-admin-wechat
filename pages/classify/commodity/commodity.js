@@ -152,26 +152,26 @@ Page({
     })
   },
   //价格排序
-  prices: function () {
-    var that = this;
-    wx.request({
-      url: app.globalData.urlparticulars + '/goods/Price',
-      method: 'Get',
-      success: function (res) {
-        let list = res.data.data;
-        for (var index in list) {
-          list[index].img = app.globalData.urlGoods + '/goods/getFile?fileId=' + list[index].fileId;
-        }
-        that.setData({
-          arr: list,
-        })
-      },
-      data: {
-        categoryId: that.data.shuid,
-        seniorityId: that.data.shuid
-      }
-    })
-  },
+  // prices: function () {
+  //   var that = this;
+  //   wx.request({
+  //     url: app.globalData.urlparticulars + '/goods/Price',
+  //     method: 'Get',
+  //     success: function (res) {
+  //       let list = res.data.data;
+  //       for (var index in list) {
+  //         list[index].img = app.globalData.urlGoods + '/goods/getFile?fileId=' + list[index].fileId;
+  //       }
+  //       that.setData({
+  //         arr: list,
+  //       })
+  //     },
+  //     data: {
+  //       categoryId: that.data.shuid,
+  //       seniorityId: that.data.shuid
+  //     }
+  //   })
+  // },
   // 跳转携带id
   commodity: function (e) {
     var id = e.currentTarget.dataset.id
@@ -227,7 +227,7 @@ Page({
     }else{
       this.setData({ ids: id})
       // todo 前期写死列表返回
-      this.prices();
+      // this.prices();
       this.categoryId();
       this.seniorityIds();
     };

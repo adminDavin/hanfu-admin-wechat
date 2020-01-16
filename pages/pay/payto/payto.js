@@ -40,6 +40,9 @@ Page({
   // 点击充值显示弹框
   show: function() {
     var that = this
+    // console.log(that.data.hfBalance)
+    // console.log(that.data.total)
+    // console.log(that.data.userId)
     if (that.data.orderid != '') {
       that.setData({
         show: true,

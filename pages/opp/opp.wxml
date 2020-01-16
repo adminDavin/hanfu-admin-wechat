@@ -77,8 +77,8 @@
   </van-tab>
   <view class="tongxun">
     <text class="tongxun_1">
-      更多会员权益，或有疑问，欢迎致电客服（点击号码直接拨打）
+      更多会员权益，或有疑问，请咨询客服！
     </text>
-    <a href="#">18596346589</a>
+    <!-- <a href="#">18298822141</a> -->
   </view>
 </van-tabs>

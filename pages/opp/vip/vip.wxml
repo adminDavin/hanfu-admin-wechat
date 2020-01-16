@@ -5,12 +5,12 @@
       <view class="zj">
         <view class="zj_1">
           <text class="nc">{{username}}</text>
-          <view class="nk">年卡</view>
+          <!-- <view class="nk">年卡</view> -->
         </view>
         <view class="zj_2">
           <text class="xx">￥{{hfBalance}}</text>
-          <text class="xx_1">账单记录</text>
-          <image class="gd" src="../../images/vip/xiala@2x(1).png"></image>
+          <!-- <text class="xx_1">账单记录</text> -->
+          <!-- <image class="gd" src="../../images/vip/xiala@2x(1).png"></image> -->
         </view>
       </view>
     </view>

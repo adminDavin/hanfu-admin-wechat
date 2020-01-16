@@ -1,6 +1,13 @@
 {
   "pages": [
     "pages/seckill/seckill",
+    "pages/pay/payto/payto",
+    
+    
+    
+    
+    "pages/pay/paySuccess/paySuccess",
+    
     "pages/hexiao/hexiao",
       
     "pages/classify/particulars/particulars",
@@ -13,8 +20,7 @@
     "pages/evaluate/all",
     "pages/ljbuy/ljbuy",
     "pages/opp/vip/vip",
-    "pages/pay/payto/payto",
-    "pages/pay/paySuccess/paySuccess",
+    
     "pages/orderform/logistics",
     "pages/orderprocessing/daizhifu/orderprocessing",
     "pages/orderprocessing/orderprocessing",
