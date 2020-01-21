@@ -13,6 +13,7 @@
   height: 88rpx;
   width: 100rpx;
   padding-top: 14rpx;
+  align-items: center;
 }
 
 .sao-tu {

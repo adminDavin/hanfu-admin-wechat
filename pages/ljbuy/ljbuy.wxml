@@ -11,7 +11,7 @@
       <view style="font-size:30rpx;font-weight:bold;color:rgba(21,21,21,1);width:547rpx">
         {{addressList.hfAddressDetail}}
       </view>
-      <image src="../images/cart/rightjiantou.png" style="width:16rpx;height:29rpx"></image>
+      <image src="../images/cart/rightjiantou.png" style="width:16rpx;height:29rpx" bindtap="address"></image>
     </view>
     <view class="address-bottom">{{addressList.contact}} {{addressList.phoneNumber}}</view>
   </view>

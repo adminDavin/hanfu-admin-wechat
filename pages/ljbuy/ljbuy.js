@@ -22,7 +22,12 @@ Page({
     userAddressId: "",
     selectedGoods: {}
   },
-
+  //跳地址
+  address:function(){
+    wx.navigateTo({
+      url: '../address/address',
+    })
+  },
   showtext() {
     var that = this;
     that.setData({
@@ -134,7 +139,6 @@ Page({
       url: app.globalData.url + "/order/creat",
       method: "get",
       data: {
-        
         amount: that.data.amount,
         distribution: distribution,
         hfRemark: that.data.elevalue,

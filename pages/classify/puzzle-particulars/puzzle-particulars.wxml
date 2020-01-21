@@ -211,19 +211,22 @@
   <!-- 规格 -->
   <view class="guigebox" wx:if="{{guigeshow==true}}">
     <view class="guigebox-top">
-      <image src="" style="width:160rpx;height:160rpx"></image>
-      <view class="guanbibox-price">￥{{totalprice}}</view>
+      <image src="{{dongtai.img}}" style="width:160rpx;height:160rpx"></image>
+      <view class="guanbibox-price">￥{{dongtai.price}}</view>
       <view class="guanbipic">
         <image src="../../images/cart/guigegb.png" bindtap="guigeguanbi" style="width:24rpx;height:24rpx"></image>
       </view>
     </view>
     <scroll-view scroll-y="true" class="guige-scroll">
+      <view class="geshi-box">
+        <view class="geshi" wx:for="{{dongtai.hfGoodsSpec}}" wx:for-item="geshi" wx:key="index">{{geshi.hfValue}}</view>
+      </view>
       <view class="guigebox-num">
         <view style="font-size:26rpx;line-height:62rpx;">数量</view>
         <view class="guigenum-right">
-          <image src="../../images/cart/guigesub.png" style="width:20rpx;height:20rpx;" bindtap="subNum"></image>
-          <view class="guigenum">{{goodsNum}}</view>
-          <image src="../../images/cart/guigeadd.png" style="width:20rpx;height:20rpx;" bindtap="addNum"></image>
+          <!-- <image src="../../images/cart/guigesub.png" style="width:20rpx;height:20rpx;" bindtap="subNum"></image> -->
+          <input class="guigenum" type="text" placeholder="1">{{goodsNum}}</input>
+          <!-- <image src="../../images/cart/guigeadd.png" style="width:20rpx;height:20rpx;" bindtap="addNum"></image> -->
         </view>
       </view>
     </scroll-view>
