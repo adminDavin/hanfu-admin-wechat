@@ -28,6 +28,10 @@ Page({
     hour:'',
     minute:'',
     second:'',
+    hfGoodsSpec:'',//规格
+    sitssId:'',//地址ID
+    arrhfGoodsSpec:[],
+    kong:''
   },
 
   //分享
@@ -136,32 +140,32 @@ Page({
     }
   },
   //设置关注
-  attention: function () {
-    var that = this;
-    //获取用户的openId
-    wx.getStorage({
-      key: 'user',
-      success: function (res) {
-        that.setData({
-          openId: res.data.userInfo.openId,
-        })
-      },
-    });
-    wx.request({
-      url: app.globalData.urlGoods + '/goods/Concern',
-      method: 'Get',
-      success: function (res) {
-        console.log(res)
-        that.setData({
-          attention: res.data.data
-        })
-      },
-      data: {
-        goodsId: that.data.goodsId,//列表商品传过来
-        openId: that.data.openId
-      }
-    })
-  },
+  // attention: function () {
+  //   var that = this;
+  //   //获取用户的openId
+  //   wx.getStorage({
+  //     key: 'user',
+  //     success: function (res) {
+  //       that.setData({
+  //         openId: res.data.userInfo.openId,
+  //       })
+  //     },
+  //   });
+  //   wx.request({
+  //     url: app.globalData.urlGoods + '/goods/Concern',
+  //     method: 'Get',
+  //     success: function (res) {
+  //       console.log(res)
+  //       that.setData({
+  //         attention: res.data.data
+  //       })
+  //     },
+  //     data: {
+  //       goodsId: that.data.goodsId,//列表商品传过来
+  //       openId: that.data.openId
+  //     }
+  //   })
+  // },
   showModal: function () {
     var that = this;
     that.setData({
@@ -219,37 +223,29 @@ Page({
   },
   //获取顾客地址
   site: function (e) {
-    console.log(e)
     var that = this;
-    //用户的id
-    wx.getStorage({
-      key: 'user',
-      success: function (res) {
-        that.setData({
-          userId: res.data.userId,
-        })
-        console.log(that.data.userId)
-      },
-    });
     wx.request({
       url: app.globalData.urlsite + '/user/address/queryAddress',
       method: 'Get',
       success: function (res) {
+        console.log(res)
         that.setData({
           site: res.data.data
         })
         for (let i = 0; i < that.data.site.length; i++) {
-          if (that.data.site[i].isFaultAddress == 0) {
+          if (that.data.site[i].isFaultAddress == 1) {
+            let sitssId = that.data.site[i].id
             let sitss = that.data.site[i].hfProvince + that.data.site[i].hfCity + that.data.site[i].hfAddressDetail
             that.setData({
-              sites: sitss
+              sites: sitss,
+              sitssId: sitssId
             })
           }
         }
       },
       data: {
         token: 13,
-        userId: that.data.userId
+        userId:2 //that.data.userId
       }
     })
   },
@@ -309,6 +305,14 @@ Page({
       success: function (res) {
         console.log(res)
         let list = res.data
+        for (var index in list.hfGoodsSpec){
+          let hfGoodsSpec = list.hfGoodsSpec[index].hfValue
+          that.data.arrhfGoodsSpec.push(hfGoodsSpec)
+          that.setData({
+            hfGoodsSpec: hfGoodsSpec
+          })
+          console.log(hfGoodsSpec)
+        }
         list.img = app.globalData.urlmorecategory + '/goods/getFile?fileId=' + list.fileDesc[0].id;
         that.setData({
           dongtai: list,
@@ -332,22 +336,49 @@ Page({
   },
   //一键拼团跳转
   yijianpintuan:function(e){
-    var that=this;
+    var that = this;
+    wx.request({
+      url: app.globalData.urlpuzzle + '/group/shopping',
+      method: 'POST',
+      success: function (res) {
+        console.log(res)
+        that.setData({
+           kong:res.data
+        })
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      data: {
+        addressId: that.data.sitssId,//用户地址id
+        groupId: that.data.dataid,//团购表id
+        hfDesc: that.data.arrhfGoodsSpec,//所选商品规格
+        userId:2 //that.data.userId
+      }
+    })
     var id = that.data.dataid;//团购表id
     console.log(id)
-    var hfDesc ="" ;//所选商品规格
-    var addressId = ""//用户地址id
     wx.navigateTo({
-      url:`../ping-pay/ping-pay?id=${id}`
+      url: `../ping-pay/ping-pay?id=${id}`
     })
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let id = options.id;
+    let id =parseInt (options.id);
     let goodsid = options.goodsid;
     var that =this;
+    //用户的id
+    wx.getStorage({
+      key: 'user',
+      success: function (res) {
+        that.setData({
+          userId: res.data.userId,
+        })
+        console.log(that.data.userId)
+      },
+    });
     console.log (id);
     console.log(goodsid);
     that.setData({
