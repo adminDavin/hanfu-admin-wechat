@@ -569,7 +569,7 @@ swiper {
     font-weight: 500;
     color: rgba(255, 255, 255, 1);
     margin-top: 15rpx;
-    margin-left: 60rpx;
+    margin-left: 130rpx;
 }
 
 .purchase {
@@ -1056,12 +1056,17 @@ box-sizing: border-box;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-top: 15rpx;
 }
 .guigenum-right{
-  width:130rpx;
+  width:90rpx;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: #EEEEEE;
+  border-radius: 12rpx;
+  text-align: center;
+  font-weight: 500;
 }
 .guigenum{
   font-size: 26rpx;
@@ -1078,4 +1083,19 @@ line-height: 88rpx;
 color:white;
 font-weight: 500;
 font-size:34rpx
+}
+.geshi-box {
+  display: flex;
+  flex-direction: row;
+  width: 270rpx;
+  border-radius: 25rpx;
+  background-color:  #EEEEEE;
+}
+.geshi {
+  width: 90rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  text-align: center;
+  font-size: 22rpx;
+  font-weight: 500;
 }

@@ -22,9 +22,33 @@ Page({
   // 跳转到列表
   goThreeLevel:function(e){
     console.log(e)
-    let id=e.currentTarget.dataset.id;
+    let categoryId = e.currentTarget.dataset.categoryid;
     wx.navigateTo({
-      url: `../classify/commodity/commodity?id=${id}`,
+      url: `../classify/commodity/commodity?categoryid=${categoryId}`,
+    })
+  },
+  // 首次加载二级类目
+  firstGetSec() {
+    var that = this;
+    wx.request({
+      url: app.globalData.urlmorecategory + '/product/category',
+      method: 'Get',
+      success: function (res) {
+        console.log(res)
+        let list = res.data.data;
+        for (var index in list) {
+          for (var j in list[index].categories) {
+            list[index].categories[j].img = app.globalData.urlmorecategory + '/goods/getFile?fileId=' + list[index].categories[j].fileId;
+          }
+        }
+        that.setData({
+          arrs: list
+        })
+      },
+      data: {
+        parentCategoryId: that.data.firstId,
+        type: 1
+      }
     })
   },
   //查询类目页面图片
@@ -46,30 +70,7 @@ Page({
       },
     })
   },
-  // 首次加载二级类目
-  firstGetSec(){
-    var that = this;
-    wx.request({
-      url: app.globalData.urlmorecategory + '/product/category',
-      method: 'Get',
-      success: function (res) {
-        let list = res.data.data;
-        console.log(list)
-        for (var index in list) {
-          for (var j in list[index].categories) {
-            list[index].categories[j].img = app.globalData.urlmorecategory + '/goods/getFile?fileId=' + list[index].categories[j].fileId;
-          }
-        }
-        that.setData({
-          arrs: list
-        })
-      },
-      data: {
-        parentCategoryId: that.data.firstId,
-        type: 1
-      }
-    })
-  },
+  
   //一级类目
   morecategory: function (e) {
     var that = this;
@@ -112,36 +113,25 @@ Page({
       }
     })
   },
-  //点击类目
-  onChange:function(e) {
-    console.log(e)
-    var that = this;
-    var id = e.currentTarget.dataset.id
-    console.log(id)
-    that.setData({
-      id:id
-    })
-    that.morecategorys();
-  },
+ 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    this.firstGetSec()
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.firstGetSec()
     this.images()
     this.morecategory()
   },
@@ -179,5 +169,16 @@ Page({
    */
   onShareAppMessage: function () {
 
-  }
+  },
+ //点击类目
+  onChange: function (e) {
+    console.log(e)
+    var that = this;
+    var id = e.currentTarget.dataset.id
+    console.log(id)
+    that.setData({
+      id: id
+    })
+    that.morecategorys();
+  },
 })

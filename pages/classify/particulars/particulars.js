@@ -298,12 +298,13 @@ Page({
       }
       app.globalData.selectedGoods.push({ selectedGoods: this.data.selectedGoods, selectedAddress: this.data.selectedAddress });
 
-    if (JSON.stringify(this.data.selectedGoods) == '{}' || JSON.stringify(this.data.selectedAddress) == '{}') {
+    if (JSON.stringify(this.data.selectedGoods) == '{}') {
+      this.guigeshow()
       wx.showToast({
         title: '规格或地址未选',
         icon: 'none',
       });
-    } else if (JSON.stringify(this.data.selectedGoods) !== '{}' && JSON.stringify(this.data.selectedAddress) !== '{}' ) {
+    } else if (JSON.stringify(this.data.selectedGoods) !== '{}') {
       wx.navigateTo({ url: `../../ljbuy/ljbuy?purchasePrice=` });
     }
     //  
