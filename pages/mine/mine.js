@@ -8,7 +8,7 @@ Page({
   data: {
     username: '',
     avatar: '',
-    phone: '',
+    phone: '', 
     show: false,
     xinxishow: true,
     shibaishow: false,
@@ -256,7 +256,7 @@ Page({
     // 获取用户信息
     main.setData({
       show: false
-    })
+    }) 
     console.log(main.data.show)
     wx.getSetting({
       success(res) {

@@ -1,0 +1,4 @@
+<view>
+  <product-list scrollH="{{scrollH}}" imgWidth="{{imgWidth}}"></product-list>
+</view>
+

@@ -1,0 +1,139 @@
+/* src/pages/product/detail.wxss */
+
+.p20 {
+  margin: 20rpx;
+  text-align: start;
+}
+
+.p10 {
+  margin: 10rpx;
+}
+
+.right {
+  margin: 20rpx;
+  text-align: end;
+}
+
+.box {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* 底部 */
+
+.footer {
+  width: 100%;
+  height: 98rpx;
+  background: red;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  background-color: #fff;
+  overflow: hidden;
+  display: flex;
+  /* border-radius: 10px 10px 0px 0px; */
+  justify-content: center;
+}
+
+.footer-inner {
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footter-service {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footer-image {
+  width: 48rpx;
+  height: 48rpx;
+}
+
+.foot-text {
+  font-size: 24rpx;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: rgba(21, 21, 21, 1);
+  margin-top: 1rpx;
+}
+
+.footer-shppingcar {
+  width: 210rpx;
+  height: 68rpx;
+  background: rgba(255, 51, 51, 1);
+  border-radius: 34px;
+  line-height: 68rpx;
+  text-align: center;
+  font-size: 30rpx;
+  font-family: 'PingFang SC';
+  font-weight: 500;
+  color: rgba(255, 255, 255, 1);
+}
+
+/** 自底部弹出 **/
+
+.cover_screen {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000;
+  opacity: 0.2;
+  overflow: hidden;
+  z-index: 1000;
+  color: #fff;
+}
+
+.buy_box {
+  width: 100%;
+  box-sizing: border-box;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 2000;
+  background: #fff;
+  padding: 20rpx;
+  overflow: hidden;
+}
+
+.buy_box .title {
+  font-size: 28rpx;
+  line-height: 40rpx;
+  color: #333;
+  padding: 20rpx 0;
+}
+
+.buy_box .num {
+  font-size: 28rpx;
+  color: #333;
+  padding: 40rpx 0;
+}
+
+.buy_box .num .set {
+  display: inline-block;
+  height: 40rpx;
+  width: 60rpx;
+  text-align: center;
+  line-height: 40rpx;
+  border: 1px solid #444;
+  margin-right: 2rpx;
+  border-radius: 8rpx;
+}
+
+.guigeqr {
+  bottom: 10rpx;
+  width: 100%;
+  height: 88rpx;
+  background: rgba(255, 51, 51, 1);
+  border-radius: 44rpx;
+  text-align: center;
+  line-height: 88rpx;
+  color: white;
+  font-weight: 500;
+  font-size: 34rpx;
+}

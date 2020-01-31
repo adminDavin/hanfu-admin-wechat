@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "chosen": "/components/product/chosen-spec/index",
+    "login": "/components/user/login/index"
+  }
+}

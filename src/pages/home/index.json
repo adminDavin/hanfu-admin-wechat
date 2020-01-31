@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "chosen": "./components/chosen",
+    "flash-sale": "./components/flash-sale",
+    "group-buy": "./components/group-buy"
+  }
+}

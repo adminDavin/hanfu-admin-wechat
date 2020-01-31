@@ -1,16 +1,21 @@
 {
+	"projectname": "thinking-creation",
 	"description": "项目配置文件",
-	"packOptions": {
-		"ignore": []
-	},
+	"libVersion": "2.10.1",
+	"appid": "wx2641aaa105c07dd4",
+	"compileType": "miniprogram",
+	"miniprogramRoot": "src/",
 	"setting": {
 		"urlCheck": false,
 		"es6": true,
+		"enhance": true,
 		"postcss": true,
 		"minified": true,
 		"newFeature": true,
 		"coverView": true,
+		"nodeModules": true,
 		"autoAudits": false,
+		"uglifyFileName": true,
 		"checkInvalidKey": true,
 		"checkSiteMap": true,
 		"uploadWithSourceMap": true,
@@ -22,62 +27,7 @@
 		"showShadowRootInWxmlPanel": true,
 		"scopeDataCheck": false
 	},
-	"compileType": "miniprogram",
-	"libVersion": "2.9.4",
-	"appid": "wx2641aaa105c07dd4",
-	"projectname": "guangDond",
-	"debugOptions": {
-		"hidedInDevtools": []
-	},
-	"isGameTourist": false,
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
-	"condition": {
-		"search": {
-			"current": -1,
-			"list": []
-		},
-		"conversation": {
-			"current": -1,
-			"list": []
-		},
-		"plugin": {
-			"current": -1,
-			"list": []
-		},
-		"game": {
-			"currentL": -1,
-			"list": []
-		},
-		"gamePlugin": {
-			"current": -1,
-			"list": []
-		},
-		"miniprogram": {
-			"current": -1,
-			"list": [
-				{
-					"id": 0,
-					"name": "pages/classify/commodity/commodity",
-					"pathName": "pages/classify/commodity/commodity",
-					"query": "id=26",
-					"scene": null
-				},
-				{
-					"id": 1,
-					"name": "pages/classify/particulars/particulars",
-					"pathName": "pages/classify/particulars/particulars",
-					"query": "id=5",
-					"scene": null
-				},
-				{
-					"id": 2,
-					"name": "pages/classify/particulars/particulars",
-					"pathName": "pages/classify/particulars/particulars",
-					"query": "id=3&price=4000",
-					"scene": null
-				}
-			]
-		}
-	}
+	"condition": {}
 }

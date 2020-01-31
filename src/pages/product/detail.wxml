@@ -1,0 +1,111 @@
+<!--src/pages/product/detail.wxml-->
+<import src="/templates/user/login" />
+<template name="showSelectedSpec">
+  <view class="p20">
+    <text>已选规格</text>
+    <view class="box">
+      <view class="p10" wx:for="{{selectedGoods.hfGoodsSpecs}}" wx:key="index">
+        {{item.hfName}}: {{item.hfValue}}
+      </view>
+    </view>
+    <view>购买数量:{{quantity}}</view>
+  </view>
+</template>
+
+
+<swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+  <block wx:for="{{imgageUrls}}" wx:key="index">
+    <swiper-item>
+      <image src="{{item}}" style="width:100%; display:flex" />
+    </swiper-item>
+  </block>
+</swiper>
+<view class="box">
+  <view class="p20">
+    <text>{{product.productName}}</text>
+  </view>
+  <view class="right">
+    <text>分享</text>
+    <text style="margin-left: 20rpx;">收藏</text>
+  </view>
+</view>
+
+<view class="p20">
+  <text>价格: {{selectedGoods.sellPrice}}</text>
+</view>
+
+<view class="p20">
+  <text>描述: {{product.productDesc}}</text>
+</view>
+
+<view class="p20">
+  <text>商铺: {{product.stoneName}}</text>
+</view>
+
+<view class="box">
+  <template is="showSelectedSpec" data="{{ selectedGoods, ...{quantity: quantity} }}"></template>
+  <view class="right">
+    <view class='buy' bind:tap="onSelectedGoodsSpec" data-type="selectionSpecification">选择规格</view>
+  </view>
+</view>
+<view class="cover_screen" bindtap="onCloseGoodsSpec" wx:if="{{showModalSelectionSpecification}}" data-type="selectionSpecification"></view>
+<view animation="{{animationData}}" class="buy_box" wx:if="{{showModalSelectionSpecification}}">
+  <chosen product-id="{{productId}}" selected-goods-id="{{selectedGoods.id}}" quantity="{{quantity}}" bind:chooseGoodsCommitEvent="listenChooseGoodsCommitEvent"></chosen>
+</view>
+
+<view style="content">
+  <view style="text-align:center">
+    <text>商品详情</text>
+  </view>
+  <view class="p20">
+    <view>
+      <text>所属类目: </text>
+      <text>{{product.categoryName}}</text>
+    </view>
+    <view>
+      <text>商品编号: </text>
+      <text>{{product.id}}</text>
+    </view>
+    <view>
+      <text>商品名称: </text>
+      <text>{{product.productName}}</text>
+    </view>
+    <view>
+      <text>更新时间: </text>
+      <text>{{product.modifyTime}}</text>
+    </view>
+  </view>
+</view>
+
+<!-- 底部 -->
+<view class="footer">
+  <view class="footer-inner">
+    <view class="footter-service">
+      <image src="../../images/tabs/xiaoxi.png" class="footer-image" />
+      <text class="foot-text">客服</text>
+    </view>
+    <view class="footter-service" bindtap="gouwucar">
+      <!-- <image src="../../images/tabs/buycar.png" class="footer-image" />
+        <text class="foot-text">购物车</text> -->
+    </view>
+    <view class="footer-shppingcar" bind:tap="onSelectedGoodsSpec" data-type="shopPayment">到店支付</view>
+    <view class="footer-shppingcar purchase" bind:tap="onSelectedGoodsSpec" data-type="createOrder">立即购买</view>
+  </view>
+</view>
+
+<view class="cover_screen" bindtap="onCloseGoodsSpec" wx:if="{{showModalShopPayment}}" data-type="shopPayment"></view>
+<view animation="{{animationData}}" class="buy_box" wx:if="{{showModalShopPayment}}">
+  <view>
+    <template is="showSelectedSpec" data="{{ selectedGoods, ...{quantity: quantity} }}"></template>
+    <view><template is="login"></template></view>
+    <view class="guigeqr" bindtap="onConfirmSelectedGoods" data-type="shopPayment">确认</view>
+  </view>
+</view>
+
+<view class="cover_screen" bindtap="onCloseGoodsSpec" wx:if="{{showModalCreateOrder}}" data-type="createOrder"></view>
+<view animation="{{animationData}}" class="buy_box" wx:if="{{showModalCreateOrder}}">
+  <view>
+    <template is="showSelectedSpec" data="{{ selectedGoods, ...{quantity: quantity} }}"></template>
+    <view class="guigeqr" bindtap="onConfirmSelectedGoods" data-type="createOrder">确认</view>
+  </view>
+</view>

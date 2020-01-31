@@ -1,0 +1,82 @@
+<view class='header'>
+  <view class="personcard-top">
+    <view class='headImageView'>
+      <open-data type="userAvatarUrl"></open-data>
+    </view>
+    <view class="t40">
+      <open-data type="userNickName"></open-data>
+      <view>会员<text>(立即充值)</text></view>
+    </view>
+    <view class="header-fl">
+      <button class="header-sao" open-type="contact">
+        <image src="/images/xiaoxis.png" class="sao-tu" />
+        <view class="sao">客服</view>
+      </button>
+    </view>
+  </view>
+ <view class='middle'>
+  <view class="center">
+    <view>4</view>
+    <view>商品收藏</view>
+  </view>
+  <view class="center">
+    <view>4</view>
+    <view>店铺关注</view>
+  </view>
+  <view class="center">
+    <view>4</view>
+    <view>浏览历史</view>
+  </view>
+</view>
+
+</view>
+
+<view class="t20">
+  <text>我的订单</text>
+</view>
+<view class='middle center'>
+  <view class="center-inner">
+    <view>4</view>
+    <view>待付款</view>
+  </view>
+  <view class="center-inner">
+    <view>0</view>
+    <view>待收货</view>
+  </view>
+  <view class="center-inner">
+    <view>0</view>
+    <view>待评价</view>
+  </view>
+  <view class="center-inner">
+    <view>0</view>
+    <view>退换/售后</view>
+  </view>
+</view>
+
+
+<view class="t20">
+  <text>我的钱包</text>
+</view>
+<view class='middle center'>
+  <view class="center-inner">
+    <view>4</view>
+    <view>我的余额</view>
+  </view>
+  <view class="center-inner">
+    <view>0</view>
+    <view>积分</view>
+  </view>
+  <view class="center-inner">
+    <view>0</view>
+    <view>优惠券</view>
+  </view>
+  <view class="center-inner">
+    <view>0</view>
+    <view>我的特权</view>
+  </view>
+</view>
+
+<view class="t20">
+  <text>地址管理</text>
+</view>
+

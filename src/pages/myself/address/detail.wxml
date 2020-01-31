@@ -1,0 +1,45 @@
+<!-- <text>src/pages/myself/address/detail.wxml</text>
+<view bindtap='getCurrentLocal'>获取当前位置</view> -->
+<!-- 信息部分 -->
+<view class="m30">
+  <form bindsubmit="saveAddr" report-submit="true">
+    <view class="info">
+
+      <!-- 收货地址部分 -->
+      <view class="item">
+        <text>地址</text>
+        <view class="right1" bindtap='getCurrentLocal'>
+          <text class='t1' wx:if="{{!address.address}}">点击选择</text>
+          <input name="address" wx:else value="{{address.address}} {{address.formatted_addresses}}" />
+        </view>
+      </view>
+
+      <!-- 详细地址部分 -->
+      <view class="item">
+        <text>详细地址</text>
+        <view class="right">
+          <input name="door_card" type="text" placeholder="例： 10栋5层502室" value="{{address.detail}}" />
+        </view>
+      </view>
+    </view>
+    <!-- 姓名部分 -->
+    <view class="item">
+      <text>姓名</text>
+      <view class="right">
+        <input type="text" name="contact" placeholder="请填写收货人姓名" value="{{address.contact}}" />
+      </view>
+    </view>
+
+    <!-- 电话部分 -->
+    <view class="item">
+      <text>电话</text>
+      <view class="right">
+        <input name="phone" type="number" placeholder="请填写收货手机号" value="{{address.phone}}" />
+      </view>
+    </view>
+
+    <view class='save'>
+      <button class="savebt" formType="submit" hover-class="none">保存</button>
+    </view>
+  </form>
+</view>

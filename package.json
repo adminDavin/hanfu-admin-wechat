@@ -1,0 +1,24 @@
+{
+  "name": "miniprogram-custom-component",
+  "version": "1.0.0",
+  "miniprogram": "dist",
+  "dependencies": {
+    "weui-miniprogram": "^0.2.1"
+  },
+  "main": "./src/app.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adminDavin/hanfu-admin-wechat.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/adminDavin/hanfu-admin-wechat/issues"
+  },
+  "homepage": "https://github.com/adminDavin/hanfu-admin-wechat#readme",
+  "description": ""
+}
