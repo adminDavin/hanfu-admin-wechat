@@ -37,12 +37,20 @@
 .tab-bar-item cover-view {
   font-size: 20rpx;
 }
-
-.centerImage {
-  width: 80rpx;
+.cheek{
+    width: 80rpx;
   height: 80rpx;
   position: absolute;
   top: 5rpx;
   border-radius: 50%;
   border: 6rpx solid #fff;
+}
+.centerImage {
+  width: 60rpx;
+  height: 60rpx;
+  position: absolute;
+  top: 43rpx;
+
+
+ 
 }

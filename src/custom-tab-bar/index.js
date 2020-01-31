@@ -10,15 +10,17 @@ Component({
       selectedIconPath: "/images/home-selected.png",
       text: "首页",
       isSpecial: false
-    }, {
+    }, 
+    {
       pagePath: "/pages/category/index",
       iconPath: "/images/category.png",
       selectedIconPath: "/images/category-selected.png",
       text: "分类",
       isSpecial: false
-      }, {
+      },
+       {
         pagePath: "/pages/scan/index",
-        iconPath: "/images/discover.png",
+         iconPath: "/images/saoyisao.png",
         selectedIconPath: "/images/discover-selected.png",
         text: "",
         isSpecial: true
