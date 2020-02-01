@@ -21,7 +21,7 @@
   margin: 20rpx;
 }
 .middle > view{
-  width: 133rpx;
+  /* width: 133rpx; */
 }
 
 .center{
