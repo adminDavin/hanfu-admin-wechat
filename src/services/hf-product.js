@@ -3,9 +3,6 @@ const app = getApp();
 function getProductForRotation(rotationQuantity, handleResult) {
   wx.request({
     url: app.endpoint.product + '/hfProduct/getProductsForRotation',
-    header: {
-      'content-type': 'application/json'
-    },
     data: {
       quantity: rotationQuantity
     },

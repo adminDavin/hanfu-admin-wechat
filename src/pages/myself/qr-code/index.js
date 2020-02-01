@@ -1,9 +1,11 @@
-// src/pages/scan/index.js
-const app = getApp()
+// src/pages/myself/qr-code/index.js
 Page({
 
+  /**
+   * 页面的初始数据
+   */
   data: {
-    result: ''
+
   },
 
   /**
@@ -60,29 +62,5 @@ Page({
    */
   onShareAppMessage: function () {
 
-  },
-  getScancode: function () {
-    var _this = this;
-    // 允许从相机和相册扫码
-    wx.scanCode({
-      success: (res) => {
-        var result = res.result;
-
-        _this.setData({
-          result: result,
-
-        })
-      }
-    })
-    wx.requestPayment({
-      timeStamp: '',
-      nonceStr: '',
-      // package: '',
-      signType: 'MD5',
-      paySign: '',
-      success(res) { },
-      fail(res) { }
-    })
   }
-
 })

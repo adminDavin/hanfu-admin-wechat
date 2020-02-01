@@ -22,10 +22,6 @@ Page({
       checked: false,
       desc: '余额支付',
       name: 'balance'
-    }, {
-      checked: false,
-      desc: '到店支付',
-      name: 'shop'
     }]
   },
 
@@ -33,8 +29,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    console.log(options.params);
-    options.params = "%7B%22selectedGoods%22%3A%7B%22fileIds%22%3A%5B%5D%2C%22goodsDesc%22%3A%22%E7%89%9B%E8%82%89%22%2C%22goodsName%22%3A%22%E7%89%9B%E8%82%89%22%2C%22hfGoodsSpecs%22%3A%5B%7B%22goodsId%22%3A4%2C%22hfName%22%3A%22%E5%A4%A7%E5%B0%8F%22%2C%22hfValue%22%3A%225%E6%96%A4%22%2C%22id%22%3A4%7D%5D%2C%22id%22%3A4%2C%22isUsePriceMode%22%3A0%2C%22modifyTime%22%3A%222020-01-20T04%3A40%3A17%22%2C%22priceId%22%3A4%2C%22productId%22%3A2%2C%22quantity%22%3A40%2C%22respStatus%22%3A1%2C%22sellPrice%22%3A150%7D%2C%22paymentType%22%3A%22shopPayment%22%2C%22userId%22%3A965%7D";
     var params = JSON.parse(decodeURIComponent(options.params))
     this.setData(params);
   },
@@ -98,26 +92,33 @@ Page({
     this.setData({paymentMethod: paymentMethod});
   },
   onCreateOrder: function(e) {
+    console.log(e.currentTarget.dataset);
     let params = {
-      amount: e.currentTarget.dataset,
-      distribution: this.data.pickUp.wayOfPickUp,
-      hfRemark: '',
-      googsId: this.data.selectedGoods.id,
       userId: this.data.userId,
-      payMethodName: this.data.paymentMethod[0].name,
-      purchaseQuantity: this.data.selectedGoods.quantity,
+      amount: e.currentTarget.dataset.payment,
+      orderType: 'nomalOrder',
+      paymentName: this.data.paymentMethod[0].name,
+      hfRemark: "订单备注",
+      //物品属性配置
+      goodsId: this.data.selectedGoods.id,
+      sellPrice: this.data.selectedGoods.sellPrice,
+      actualPrice: this.data.selectedGoods.sellPrice,
+      freight: this.data.pickUp.freight,
+      takingType: this.data.pickUp.wayOfPickUp,
+      quantity: this.data.selectedGoods.quantity,
       userAddressId: this.data.selectedAddress.id,
-      purchasePrice: this.data.selectedGoods.sellPrice
+      sellPrice: this.data.selectedGoods.sellPrice,
+      hfDesc: JSON.stringify(this.data.selectedGoods)
     };
-
     for (let payment of this.data.paymentMethod) {
-      if (e.detail.checked) {
-        params.payMethodName = payment.name;
+      if (payment.checked) {
+        params.paymentName = payment.name;
       }
     }
-    
     orderApi.createOrder(params, (res) => {
-      console.log(res);
+      wx.navigateTo({
+        url: '/pages/order/list?userId=' + this.data.userId,
+      })
     });
   }
 })
