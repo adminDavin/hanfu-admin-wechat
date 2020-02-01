@@ -19,6 +19,10 @@ function query(userId, handleResult) {
 function addAddress(params={}, handleResult) {
   wx.request({
     url: app.endpoint.user + '/hf-user-address/addAddress',
+    method: 'POST',
+    header: {
+      'content-type': 'application/x-www-form-urlencoded'
+    },
     data: params,
     success: res => handleResult(res),
     fail: (res) => {

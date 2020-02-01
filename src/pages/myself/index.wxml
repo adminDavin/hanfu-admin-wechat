@@ -5,7 +5,9 @@
     </view>
     <view class="t40">
       <open-data type="userNickName"></open-data>
-      <view>会员<text>(立即充值)</text></view>
+      <view>会员
+        <text>(立即充值)</text>
+      </view>
     </view>
     <view class="header-fl">
       <button class="header-sao" open-type="contact">
@@ -14,69 +16,45 @@
       </button>
     </view>
   </view>
- <view class='middle'>
-  <view class="center">
-    <view>4</view>
-    <view>商品收藏</view>
-  </view>
-  <view class="center">
-    <view>4</view>
-    <view>店铺关注</view>
-  </view>
-  <view class="center">
-    <view>4</view>
-    <view>浏览历史</view>
-  </view>
-</view>
-
-</view>
-
-<view class="t20">
-  <text>我的订单</text>
-</view>
-<view class='middle center'>
-  <view class="center-inner">
-    <view>4</view>
-    <view>待付款</view>
-  </view>
-  <view class="center-inner">
-    <view>0</view>
-    <view>待收货</view>
-  </view>
-  <view class="center-inner">
-    <view>0</view>
-    <view>待评价</view>
-  </view>
-  <view class="center-inner">
-    <view>0</view>
-    <view>退换/售后</view>
-  </view>
-</view>
-
-
-<view class="t20">
-  <text>我的钱包</text>
-</view>
-<view class='middle center'>
-  <view class="center-inner">
-    <view>4</view>
-    <view>我的余额</view>
-  </view>
-  <view class="center-inner">
-    <view>0</view>
-    <view>积分</view>
-  </view>
-  <view class="center-inner">
-    <view>0</view>
-    <view>优惠券</view>
-  </view>
-  <view class="center-inner">
-    <view>0</view>
-    <view>我的特权</view>
+  <view class='middle'>
+    <view wx:for="{{involveProducts}}" wx:key="index" bindtap="onSelectedProduct" data-action='{{item.action}}' class="center">
+      <view>{{item.desc}}</view>
+    </view>
   </view>
 </view>
 
 <view class="t20">
-  <text>地址管理</text>
+  <view bindtap="onSelectedOrder" data-action='all'>
+    <text>我的订单</text>
+    <image class="rightRow" src="/images/rightjiantou.png" bindtap="changeMethod"></image>
+  </view>
+</view>
+<view class='middle'>
+  <view wx:for="{{orderStatuses}}" wx:key="index" bindtap="onSelectedOrder" data-action='{{item.action}}' class="center-inner">
+    <view>{{item.quantity}}</view>
+    <view>{{item.desc}}</view>
+  </view>
 </view>
 
+<view class="t20">
+  <view bindtap="onSelectedwallet" data-action='all'>
+    <text>我的钱包</text>
+    <image class="rightRow" src="/images/rightjiantou.png" bindtap="changeMethod"></image>
+  </view>
+</view>
+<view class='middle'>
+  <view wx:for="{{myWalletResoures}}" wx:key="index" bind:tap="onSelectedwallet" data-action='{{item.action}}' class="center-inner">
+    <view>{{item.quantity}}</view>
+    <view>{{item.desc}}</view>
+  </view>
+</view>
+
+<view class="t20">
+  <text>工具与服务</text>
+</view>
+<view class='middle'>
+  <view wx:for="{{toolAndService}}" wx:key="index" bindtap="onSelectedToolAndService" data-action='{{item.action}}'  data-uri='{{item.uri}}' class="center-inner">
+    <image src="{{item.image}}" style="width:96rpx;height:96rpx"></image>
+    <view>{{item.desc}}</view>
+  </view>
+</view>
