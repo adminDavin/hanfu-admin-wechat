@@ -1,1 +1,124 @@
-/* src/pages/category/index.wxss */
+page {
+    background: #F8F8F8;
+}
+/*总体主盒子*/  
+.container {  
+  width:750rpx;
+   height: 100%;
+   margin-bottom: 28rpx;   
+}
+.classify-header-box{
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    width: 710rpx;
+    height: 72rpx;
+    margin: 20rpx auto;
+}
+.classify-tus {
+    width: 46rpx;
+    height: 46rpx;
+}
+.classify-header {
+    display: flex;
+    width: 575rpx;
+    height: 72rpx;
+    display: flex;
+    align-items: center;
+    border-radius: 30rpx;
+    background-color:#EBEBEB;
+}
+.classify-tu {
+    width: 40rpx;
+    height: 35rpx;
+    margin-left: 20rpx;
+}
+.classify-input {
+    width: 557rpx;
+    height: 72rpx;
+    margin-left: 20rpx;
+    font-family: 'PingFang-SC-Regular';
+    font-size: 26rpx;
+    color: #999999;
+    text-indent: 10rpx;
+}
+ /*左侧栏主盒子*/  
+.nav_left{  
+  width: 178rpx;
+  height: 1344rpx;   
+  background-color:#EEEEEE;
+  float: left;
+}  
+/*左侧栏list的item*/  
+.nav_left .nav_left_items{  
+  height: 40px;   
+  line-height: 40px;  
+  padding: 6px 0;
+  border-bottom: 1px solid #dedede;  
+  font-size: 14px; 
+  text-align: center;
+}  
+/*左侧栏list的item被选中时*/  
+.nav_left .nav_left_items.active{  
+  background: #fff;
+  color: #0B0B0B;
+  border-left: 6rpx solid #E74941;
+}  
+/*右侧栏主盒子*/  
+.nav_right{
+ width: 572rpx;
+ height: 100%;
+ float: left;
+}  
+/*右侧栏list的item*/  
+.nav_right .nav_right_items{  
+  float: left;  
+  width: 101rpx;  
+  height: 160rpx;  
+  text-align: center;
+  margin: 0 35rpx 33rpx 40rpx;
+}  
+.nav_right .nav_right_items image{  
+  width: 101rpx;  
+  height: 102rpx;
+  background: #000;
+}  
+.nav_right .nav_right_items text{   
+  display: block;   
+  font-size: 24rpx;
+  color: black;
+  margin-top: 4rpx;
+  padding:0 5rpx;
+  overflow: hidden;  
+  white-space: nowrap;  
+  text-overflow: ellipsis;
+} 
+.nodata_text{
+  color: black;
+  font-size: 28rpx;  
+  text-align: center;  
+}
+.title-table {
+    width: 530rpx;
+    line-height: 80rpx;
+    font-size: 25rpx;
+    font-weight: 500;
+    padding-left: 20rpx;
+}
+.nav_right .title-boxs {
+   width: 530rpx;
+   background-color: #fff;
+   margin-left: 22rpx;
+   margin-top: 20rpx;
+   border-radius: 12rpx;
+}
+.title-image {
+   width: 530rpx;
+   height: 260rpx;
+   background: #000;
+   margin-left: 22rpx;
+}
+.box {
+    display: flex;
+    flex-wrap:wrap;
+}

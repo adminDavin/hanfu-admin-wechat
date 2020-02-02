@@ -14,12 +14,12 @@ App({
     cartPrice: 0,
     toCartTag:false,
     selectedGoods: [],
-    urlmorecategory: 'http://localhost:9095',//分类
+    //urlmorecategory: 'http://localhost:9095',//分类
     // purchase: 'http://192.168.1.104:8082',
     // urlLogin: 'http://192.168.1.104:8082', //登录
     // urlsite: 'http://192.168.1.104:8082', //地点
-    urlGoods: 'http://localhost:9095', //商品
-     urlparticulars: 'http://localhost:9095', //详情
+    //urlGoods: 'http://localhost:9095', //商品
+     //urlparticulars: 'http://localhost:9095', //详情
     // information: 'http://192.168.1.104:9097',
     // urlevaluate: 'http://192.168.1.104:9097', //评价
     // url: 'http://192.168.1.104:9097', //
