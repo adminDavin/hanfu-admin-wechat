@@ -2,6 +2,7 @@
 const app = getApp();
 
 import userAddressApi from '../../services/hf-user-address.js';
+import paymentApi from '../../services/hf-payment.js';
 import util from '../../utils/util.js';
 
 Page({
@@ -99,6 +100,13 @@ Page({
         url: '/pages/login/index',
       });
     }
+
+  
+    paymentApi.paymentOrder({
+      userId: userId, orderId: 100
+    }, (res) => {
+      console.log(res);
+    });
     this.setData({
       userId: userId
     });

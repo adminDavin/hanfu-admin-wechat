@@ -5,6 +5,7 @@ import userAddressApi from '../../../services/hf-user-address.js';
 import util from '../../../utils/util.js';
 const QQMapWX = require('../../../utils/qqmap-wx-jssdk.min.js');
 const demo = new QQMapWX({ key: 'CLGBZ-V5SCF-PJ4JQ-NUZUA-2YP45-C6BMX' });
+const chooseLocation = requirePlugin('chooseLocation');
 Page({
 
   /**
@@ -58,7 +59,7 @@ Page({
   // 获取当前地理位置
   getMyLocation() {
     wx.getLocation({
-      type: 'wgs84',
+      type: 'gcj02',
       success: (res) => {
         wx.chooseLocation({
           success: (res) => {
@@ -75,11 +76,21 @@ Page({
               },
               fail: (res) => {
                 console.log(res);
+                wx.showModal({
+                  title: '解析地址失败',
+                  content: res,
+                })
               }
             });
           },
         })
         console.log(res)
+      },
+      fail: (res) => {
+        wx.showModal({
+          title: '已选择地址',
+          content: res,
+        })
       }
     })
   },

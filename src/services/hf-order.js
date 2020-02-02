@@ -15,6 +15,22 @@ function createOrder(params={}, handleResult) {
   });
 }
 
+function queryOrder(userId, orderStatus, handleResult) {
+  let params = {
+    userId: userId,
+    orderStatus: orderStatus
+  };
+  wx.request({
+    url: app.endpoint.order + '/hf-order/query',
+    data: params,
+    success: res => handleResult(res),
+    fail: (res) => {
+      console.log(params, res);
+    }
+  });
+}
+
 export default {
-  createOrder: createOrder
+  createOrder: createOrder,
+  queryOrder: queryOrder
 };

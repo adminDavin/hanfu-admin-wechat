@@ -81,6 +81,12 @@ Page({
       for (let fileId of goods.fileIds) {
         imgageUrls.push(app.endpoint.file + '/goods/getFile?fileId=' + fileId);
       }
+      if (goods.quantity > this.data.quantity) {
+        goods.quantity = this.data.quantity;
+      } else {
+        // 库存不足
+        goods.quantity = 0;
+      }
       this.setData({ product: product, imgageUrls: imgageUrls, selectedGoods: goods });
     });
   },

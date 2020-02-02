@@ -29,7 +29,16 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    var params = JSON.parse(decodeURIComponent(options.params))
+    let params = JSON.parse(decodeURIComponent(options.params))
+    let userId = wx.getStorageSync('userId');
+    console.log(options);
+    if (util.isEmpty(userId)) {
+      wx.navigateTo({
+        url: '/pages/login/index?orderStatus=payment',
+      });
+    } else {
+      params.userId = userId;
+    }
     this.setData(params);
   },
 

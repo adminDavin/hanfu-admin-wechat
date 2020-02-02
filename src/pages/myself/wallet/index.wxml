@@ -1,2 +1,6 @@
-<!--src/pages/myself/wallet/index.wxml-->
-<text>src/pages/myself/wallet/index.wxml</text>
+  <view class="nav">
+    <view wx:for="{{myWalletResoures}}" wx:key="index" class="nav-item" data-id="1">
+      <view class="nav-ziti">{{item.desc}}</view>
+      <view class="{{item.selectedSytle}}"></view>
+    </view>
+  </view>

@@ -1,6 +1,9 @@
 const app = getApp();
 
 function getProductForRotation(rotationQuantity, handleResult) {
+  let params = {
+    quantity: rotationQuantity
+  };
   wx.request({
     url: app.endpoint.product + '/hfProduct/getProductsForRotation',
     data: {
@@ -14,6 +17,8 @@ function getProductForRotation(rotationQuantity, handleResult) {
 }
 
 function getProductDetail(productId, handleResult) {
+  let params = {
+  };
   wx.request({
     url: app.endpoint.product + '/hfProduct/getDetail',
     data: {
@@ -27,6 +32,8 @@ function getProductDetail(productId, handleResult) {
 }
 
 function getTopRanking(handleResult) {
+  let params = {
+  };
   wx.request({
     url: app.endpoint.product + '/seniority/findSeniorityInfo',
     success: res => handleResult(res),
