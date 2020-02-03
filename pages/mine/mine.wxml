@@ -1,10 +1,10 @@
-<view class="mine" >
+<view class="mine">
   <view class="personcard">
     <view class="personcard-top">
       <image src="{{avatar?avatar:'../images/cart/avatar.png'}}" style="width:120rpx;height:120rpx;margin-right:30rpx;border-radius:50%"></image>
       <view class="personcard-namebox">
-        <view style="font-weight:bold;"  wx:if="{{xinxishow==false}}">{{username}}</view>
-        <view style="font-size:32rpx"  wx:if="{{xinxishow==false}}">{{phone}}</view>
+        <view style="font-weight:bold;" wx:if="{{xinxishow==false}}">{{username}}</view>
+        <view style="font-size:32rpx" wx:if="{{xinxishow==false}}">{{phone}}</view>
         <view style="font-weight:bold;" wx:if="{{xinxishow==true}}" bindtap="gologin">登录</view>
       </view>
       <view class="header-fl">
@@ -86,7 +86,6 @@
         <view class="serve-ziti">联系客服</view>
       </button>
       <view class="serve-item" bindtap="yue">
-        <image src="../images/cart/yue.png" style="width:96rpx;height:96rpx"></image>
         <view class="serve-ziti">余额付款</view>
       </view>
     </view>

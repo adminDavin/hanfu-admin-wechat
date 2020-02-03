@@ -1,0 +1,130 @@
+.header {
+  margin: 90rpx 0 90rpx 50rpx;
+  border-bottom: 1px solid #ccc;
+  text-align: center;
+  width: 650rpx;
+  height: 300rpx;
+  line-height: 450rpx;
+}
+
+.header image {
+  width: 200rpx;
+  height: 200rpx;
+}
+
+.content {
+  margin-left: 50rpx;
+  margin-bottom: 90rpx;
+}
+
+.content text {
+  display: block;
+  color: #9d9d9d;
+  margin-top: 40rpx;
+}
+
+.bottom {
+  border-radius: 80rpx;
+  margin: 70rpx 50rpx;
+  font-size: 35rpx;
+}
+
+.loginbtn {
+  width: 150px;
+  height: 45px;
+  background: #06c05f;
+  margin: 100px auto 0;
+  line-height: 45px;
+  font-size: 15px;
+  color: #fff;
+}
+
+.info {
+  width: 80px;
+  height: 100px;
+  margin: 50px auto 0;
+}
+
+.info .headimg {
+  width: 80px;
+  height: 80px;
+  border-radius: 100%;
+}
+
+.info .nickname {
+  text-align: center;
+}
+
+.headView {
+  margin: 20rpx;
+}
+
+.headImageView {
+  width: 30%;
+  display: flex;
+  text-align: start;
+}
+
+.line {
+  text-align: center;
+  width: 90%;
+  height: 2rpx;
+  margin-left: 5%;
+  background: rgb(204, 201, 201);
+}
+.register {
+    width: 750rpx;
+    height: 100%;
+    display: flex;
+    flex-direction:column;
+}
+.register-title {
+    font-size: 32rpx;
+    color: #000000;
+    margin-left: 20rpx;
+}
+.register-input {
+    display: flex;
+    flex-direction:column;
+    margin-top: 41rpx;
+    margin-left: 19rpx;
+}
+.input-box {
+    display: flex;
+}
+.input-bottom {
+    margin-bottom: 44rpx;
+}
+.input-tu {
+   width: 80rpx;
+   height: 80rpx;
+}
+.input-text {
+    width: 350rpx;
+    height: 70rpx;
+}
+.button-y {
+    width: 202rpx;
+    height: 60rpx;
+    margin-top: 5rpx;
+    margin-left: 10rpx;
+    line-height: 60rpx;
+    text-align: center;
+    font-size: 28rpx;
+    border-radius: 10rpx;
+    color: #FF0000;
+    border: 1px solid #FF0000;
+}
+.register-deng {
+    width: 710rpx;
+    height: 80rpx;
+    background-color: #FF0000;
+    margin-left: 20rpx;
+    text-align: center;
+    line-height: 80rpx;
+    color: #fff;
+    font-size: 34rpx;
+    font-weight: bold;
+    margin-top: 57rpx;
+    border-radius: 10rpx;
+}

@@ -107,8 +107,8 @@
   </view>
   <!-- 底部 -->
   <view class="footer">
-      <view class="footer-inner">
-        <view class="footter-service">
+    <view class="footer-inner">
+      <view class="footter-service">
         <image src="../../images/tabs/xiaoxi.png" class="footer-image" />
         <text class="foot-text">客服</text>
       </view>
@@ -116,8 +116,8 @@
         <!-- <image src="../../images/tabs/buycar.png" class="footer-image" />
         <text class="foot-text">购物车</text> -->
       </view>
-       <view class="footer-shppingcar" bindtap="shppingcar">到店支付</view>
-       <view class="footer-shppingcar purchase" bindtap="buyquick">立即购买</view>
+      <view class="footer-shppingcar" bindtap="shppingcar">到店支付</view>
+      <view class="footer-shppingcar purchase" bindtap="buyquick">立即购买</view>
     </view>
   </view>
   <!-- 服务弹窗 -->
@@ -134,8 +134,8 @@
   </view>
   <!-- 选取地址 -->
   <view class="guigebox" style="overflow:auto" wx:if="{{tsiteshow==true}}">
-   <view class="delivery">派送至</view>
-   <view class="newsites" bindtap="newsite">+新建收货地址</view>
+    <view class="delivery">派送至</view>
+    <view class="newsites" bindtap="newsite">+新建收货地址</view>
     <view class="guanbipic">
       <image src="" bindtap="tsiteguanbi" class="outs"></image>
     </view>

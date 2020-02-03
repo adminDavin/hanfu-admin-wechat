@@ -1,0 +1,12 @@
+.box {
+  text-align: center;
+}
+
+.p20 {
+  margin: 20rpx;
+  text-align: start;
+}
+
+.p10 {
+  margin: 10rpx;
+}

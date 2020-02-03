@@ -1,0 +1,55 @@
+{
+  "pages": [
+    "pages/myself/index",
+    "pages/home/index",
+    "pages/category/index",
+    "pages/discover/index",
+    "pages/scan/index",
+    "pages/product/list",
+    "pages/product/detail",
+    "pages/login/index",
+    "pages/payment/index",
+    "pages/myself/address/list",
+    "pages/myself/address/detail"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "Demo"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "subpackages": [],
+  "requiredBackgroundModes": [
+    "audio",
+    "location"
+  ],
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
+  },
+  "debug": true,
+  "tabBar": {
+    "custom": true,
+    "color": "#7A7E83",
+    "selectedColor": "#0000FF",
+    "borderStyle": "black",
+    "backgroundColor": "#f0ffff",
+    "list": [
+      {
+        "pagePath": "pages/home/index"
+      },
+      {
+        "pagePath": "pages/category/index"
+      },
+      {
+        "pagePath": "pages/discover/index"
+      },
+      {
+        "pagePath": "pages/myself/index"
+      }
+    ]
+  }
+}

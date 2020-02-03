@@ -1,0 +1,78 @@
+ <!-- pages/order/order.wxml -->
+<import src="/templates/product/selectedGoods" />
+
+<view class="address">
+  <view wx:if="{{selectedAddress.hfCity }}">
+    <view class="address-top">
+      <view style="font-size:24rpx;line-height:35rpx;font-weight:400;color:rgba(21,21,21,1);">
+        {{selectedAddress.hfCity}} ({{selectedAddress.hfDesc}})
+      </view>
+    </view>
+    <view>
+      <view style="font-size:24rpx;line-height:35rpx;font-weight:400;color:rgba(21,21,21,1);">
+        详细地址: {{selectedAddress.hfAddressDetail}}
+      </view>
+      <view>
+        联系人: {{selectedAddress.contact}}
+      </view>
+      <view>
+        联系电话: {{selectedAddress.phoneNumber}}
+      </view>
+    </view>
+    <view class="address-bottom">{{addressList.contact}} {{addressList.phoneNumber}}</view>
+  </view>
+  <view wx:else>
+    <button bind:tap="onAddUserAddress">新增收货地址</button>
+  </view>
+</view>
+
+<view style="width:100%;height:5rpx;margin-top:-30rpx">
+  <image src="/images/line.png" style="width:100%;height:100%;"></image>
+</view>
+
+
+<view class="quhuomethod" style="margin-top:50rpx">
+  <view class="ziti" style="width:600rpx">取货方式</view>
+  <text class="ziti">{{pickUp.wayOfPickUpDesc}}</text>
+  <image src="/images/rightjiantou.png" style="width:12rpx;height:22rpx" bindtap="changeMethod"></image>
+</view>
+<view class="youfei" hidden="{{quhuomethod}}">
+  <view class="ziti" style="line-height:40rpx">邮费</view>
+  <text class="ziti" style="line-height:40rpx;color:red;">+￥{{pickUp.freight}}</text>
+</view>
+
+<view class="p20">支付方式</view>
+<view class="paymentMethod">
+  <radio-group class="item-right radio-group" wx:for="{{paymentMethod}}" wx:key="index" bindchange="onPaymentMethod">
+    <label class="radio">
+      <radio value="{{item.name}}" checked="{{item.checked}}" />{{item.desc}}
+    </label>
+  </radio-group>
+</view>
+
+<view class="youjicard">
+  <view class="youji">
+    <view class="ziti" style="line-height:80rpx">商品金额</view>
+    <text class="ziti" style="line-height:80rpx">￥{{selectedGoods.sellPrice}}</text>
+  </view>
+</view>
+
+<template is="showSelectedSpec" data="{{ selectedGoods }}"></template>
+
+
+<view class="quhuomethod" style="height:80rpx">
+  <view class="ziti" style="width:400rpx;line-height:80rpx">备注</view>
+  <view class="ziti" style="width:230rpx;line-height:80rpx;text-overflow:ellipsis;white-space:nowrap;overflow:hidden">
+    {{elevalue}}
+  </view>
+  <image src="/images/rightjiantou.png" style="width:12rpx;height:22rpx" bindtap="showtext"></image>
+</view>
+
+<textarea wx:if="{{textshow==true}}" value="{{elevalue}}" bindinput="getVal" style="padding:10rpx 24rpx;width:100%;height:90rpx" placeholder="请输入您的备注"></textarea>
+<view style="height:98rpx"></view>
+<view class="footer">
+  <view style="font-size:40rpx;font-weight:bold;color:rgba(255,0,0,1);line-height:98rpx">
+    ￥{{ selectedGoods.sellPrice + pickUp.freight }}
+  </view>
+  <view class="submit" bindtap="onCreateOrder" data-payment="{{ selectedGoods.sellPrice + pickUp.freight }}">提交订单</view>
+</view>

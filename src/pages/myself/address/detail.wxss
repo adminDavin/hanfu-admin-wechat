@@ -1,0 +1,4 @@
+/* src/pages/myself/address/detail.wxss */
+.m30 {
+  margin: 5%;
+}

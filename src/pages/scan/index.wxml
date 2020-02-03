@@ -1,0 +1,20 @@
+<view class="container">
+  <view class="style">
+    <button bindtap='getScancode'>扫一扫余额支付</button>
+    <view wx:if="{{result !=''}}">
+      <view>扫码的内容:{{result}}</view>
+    </view>
+  </view>
+    <view class="style">
+    <button bindtap='getScancode'>扫一扫微信支付</button>
+    <view wx:if="{{result !=''}}">
+      <view>扫码的内容:{{result}}</view>
+    </view>
+  </view>
+    <view class="style">
+    <button bindtap='getScancode'>扫一扫核销</button>
+    <view wx:if="{{result !=''}}">
+      <view>扫码的内容:{{result}}</view>
+    </view>
+  </view>
+</view>

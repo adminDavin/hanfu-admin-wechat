@@ -1,0 +1,13 @@
+<template name="showSelectedSpec">
+  <view class="p20">
+    <view>物品名称: {{selectedGoods.goodsName}}</view>
+    <view>物品描述: {{selectedGoods.goodsDesc}}</view>
+    <text>已选规格</text>
+    <view class="box">
+      <view class="p10" wx:for="{{selectedGoods.hfGoodsSpecs}}" wx:key="index">
+        {{item.hfName}}: {{item.hfValue}}
+      </view>
+    </view>
+    <view>购买数量:{{selectedGoods.quantity}}</view>
+  </view>
+</template>

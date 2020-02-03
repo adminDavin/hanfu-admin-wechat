@@ -1,0 +1,46 @@
+<!--components/product/chosen/index.wxml-->
+<view class="inner">
+  <view class="guigebox-top">
+    <view wx:for="{{selectedGoods.fileIds}}" wx:key="index">
+      <image src="{{item}}" style="width:160rpx;height:160rpx"></image>
+    </view>
+    <view >￥{{selectedGoods.sellPrice}}</view>
+  </view>
+  <scroll-view scroll-y="true" class="guige-scroll">
+    <view wx:for='{{goodsList}}' wx:key="index">
+      <block wx:if="{{item.id==selectedGoods.id}}">
+        <checkbox-group class="p10  selected" style="display:flex" bindtap="onCheckboxChange" data-item="{{item}}">
+          <view class="p10" wx:for='{{item.hfGoodsSpecs}}' wx:for-item="childItem" wx:key="goodsSpecChildKey" wx:for-index="childIndex">
+            <label>
+              <text>{{childItem.hfName}}:{{childItem.hfValue}}</text>
+            </label> 
+          </view>
+        </checkbox-group>
+      </block>
+      <block wx:else>
+        <checkbox-group class="p10" style="display:flex" bindtap="onCheckboxChange" data-item="{{item}}">
+          <view class="p10" wx:for='{{item.hfGoodsSpecs}}' wx:for-item="childItem" wx:key="goodsSpecChildKey" wx:for-index="childIndex">
+            <label>
+              <text>{{childItem.hfName}}:{{childItem.hfValue}}</text>
+            </label> 
+          </view>
+        </checkbox-group>
+      </block>
+    </view>
+    
+    <view class="guigebox-num">
+      <view style="font-size:16px;line-height:62rpx;">数量</view>
+      <view class="stepper">  
+        <!-- 减号 -->  
+        <text class="{{minusStatus}}" bind:tap="onBindMinus">-</text>  
+        <!-- 数值 -->  
+        <input type="number" bind:change="onBindManual" value="{{quantity}}" />  
+        <!-- 加号 -->  
+        <text class="normal" bind:tap="onBindPlus">+</text>  
+    </view>  
+    </view>
+  </scroll-view>
+  <view class="guigeqr" bindtap="onSubmitSelectedGoods">确认</view>
+</view>
+
+<slot></slot>
