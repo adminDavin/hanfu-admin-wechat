@@ -1,5 +1,5 @@
 <!--src/pages/category/index.wxml-->
-<text>src/pages/category/index.wxml</text>
+<!-- <text>src/pages/category/index.wxml</text> -->
 <view class="classify-banner">
     <!-- 左 -->
     <van-sidebar active-key="{{ activeKey }}">

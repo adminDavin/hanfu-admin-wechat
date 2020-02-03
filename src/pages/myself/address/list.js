@@ -1,18 +1,57 @@
 // src/pages/myself/address/list.js
+const app = getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    userId: '',
+    addressList: [],
+    tipshow: false
+  },
 
+  editadd: function (e) {
+    wx.navigateTo({
+      url: '/pages/myself/address/alterAddress/aiter?id=' + e.currentTarget.dataset.addid,
+    })
+  },
+
+  addaddress() {
+    console.log(1)
+    wx.navigateTo({
+      url: '/pages/myself/address/newAddress/new',
+    })
+  },
+
+  getAddress() {
+    var that = this;
+    wx.request({
+      url: app.endpoint.user + '/user/address/queryAddress',
+      method: 'get',
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      data: {
+        userId: wx.getStorageSync('userId'),
+        token: 2
+      },
+      success: function (res) {
+        console.log('获取地址', res);
+        that.setData({
+          addressList: res.data.data
+        })
+
+      }
+    })
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var that = this;
+    that.getAddress()
   },
 
   /**
@@ -26,7 +65,16 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    var that = this;
+    wx.getStorage({
+      key: 'user',
+      success: function (res) {
+        that.setData({
+          userId: res.data.userId
+        })
+        that.getAddress()
+      },
+    })
   },
 
   /**

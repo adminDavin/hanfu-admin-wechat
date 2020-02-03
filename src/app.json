@@ -15,7 +15,10 @@
     "pages/myself/wallet/index",
     "pages/myself/evaluated/list",
     "pages/myself/qr-code/index",
-    "pages/myself/wallet/balance/payment"
+    "pages/myself/wallet/balance/payment",
+    "pages/myself/address/newAddress/new",
+    "pages/myself/address/alterAddress/aiter",
+    "pages/myself/vipRecharge/vip"
   ],
   "window": {
     "backgroundTextStyle": "light",
