@@ -10,9 +10,9 @@ App({
     isIphoneX: false
   },
   endpoint: {
-    product: 'http://localhost:9095',
-    file: 'http://localhost:9095',
-    user: 'http://localhost:8082',
-    order: 'http://localhost:8082'
+    product: 'https://www.tjsichuang.cn:1443/api/product',
+    file: 'https://www.tjsichuang.cn:1443/api/product',
+    user: 'https://www.tjsichuang.cn:1443/api/user',
+    order: 'https://www.tjsichuang.cn:1443/api/order'
   }
 })

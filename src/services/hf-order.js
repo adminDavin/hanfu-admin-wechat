@@ -2,7 +2,11 @@ const app = getApp();
 
 function createOrder(params={}, handleResult) {
   wx.request({
-    url: app.endpoint.order + '/hf-user-address/query',
+    url: app.endpoint.order + '/hf-order/create',
+    method: 'POST',
+    header: {
+      'content-type': 'application/x-www-form-urlencoded'
+    },
     data: params,
     success: res => handleResult(res),
     fail: (res) => {

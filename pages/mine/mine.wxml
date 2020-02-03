@@ -77,7 +77,7 @@
         <image src="../images/cart/dizhi.png" style="width:96rpx;height:96rpx"></image>
         <view class="serve-ziti">我的地址</view>
       </view>
-      <view class="serve-item">
+      <view class="serve-item"> 
         <image src="../images/cart/erweima.png" style="width:96rpx;height:96rpx"></image>
         <view class="serve-ziti">我的二维码</view>
       </view>
