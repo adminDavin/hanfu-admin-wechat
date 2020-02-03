@@ -1,4 +1,78 @@
-<view>
-  <product-list scrollH="{{scrollH}}" imgWidth="{{imgWidth}}"></product-list>
+<view class="commodity-header-box">
+    <!-- <image src="" class="commodity-tus" /> -->
+    <view class="commodity-header">
+        <image class="commodity-tu" src="../../images/sousuo.png" />
+        <input type="text" class="commodity-input" placeholder="搜一下" />
+    </view>
+    <image src="../../images/saoyisao.png" class="commodity-tus" />
 </view>
-
+<!-- banner区域 -->
+<view class="commodity-banner">
+    <view class="banner-table">
+        <view class="banner-box">
+            <view class="table">
+                <view class="table-sum" bindtap="clickTab" data-id="0">
+                    <text class="sum-text">综合</text>
+                    <view class="sum-color {{currentTab==0?'colors':''}}"></view>
+                </view>
+                <image src="../../../images/xiangxia.png" class="sum-image" />
+            </view>
+        </view>
+        <view class="banner-box-two">
+            <image src="../../images/liebiao2.png" bindtap="list" wx:if="{{lists==false}}" class="image-saoma" />
+            <image src="../../images/liebiaomoshi.png" bindtap="list" wx:if="{{lists==true}}" class="image-saoma" />
+            <view class="table">
+                <view class="table-sum">
+                    <text class="sum-text sales" bindtap="translate">筛选</text>
+                    <view class="sum-color"></view>
+                </view>
+                <image src="../../images/shaixuan.png" class="sai-image" />
+            </view>
+        </view>
+    </view>
+</view>
+<view class="top" hidden='{{!floorstatus}}' bindtap="goTop">
+    <view class="top-image">
+        <image src="../../images/dingb.png" class="images-d" />
+    </view>
+</view>
+<view class="float {{isRuleTrue?'isRuleShow':'isRuleHide'}} ">
+    <view class="animation-element" animation="{{animation}}">
+        <view class="supernatant">
+            <view class="supernatant-price">
+                <text class="price-title">价格区间</text>
+                <view class="price-box">
+                    <input class="price-low" placeholder="最低价" value="{{mostlower}}" bindblur="mostlower" />
+                    <view class="price-clue"></view>
+                    <input class="price-low" placeholder="最高价" value="{{mosthigher}}" bindblur="mosthigher" />
+                </view>
+            </view>
+            <view class="subject">
+                <view class="subject-box">
+                    <text class="price-title">全部分类</text>
+                    <view class="subject-title">
+                        <text class="title-subject">分类</text>
+                        <image src="../../images/tabs/jinru (2).png" class="subject-image" />
+                    </view>
+                    <view class="subject-table">
+                        <text class="tag"></text>
+                        <text class="tag"></text>
+                        <text class="tag"></text>
+                        <text class="tag"></text>
+                        <text class="tag"></text>
+                        <text class="tag"></text>
+                        <text class="tag"></text>
+                        <text class="tag"></text>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class='buttom'>
+            <view class="animation-reset">重置</view>
+            <view class="animation-reset animation-button" bindtap="success">完成</view>
+        </view>
+    </view>
+</view>
+<view>
+    <product-list scrollH="{{scrollH}}" imgWidth="{{imgWidth}}" wx:if="{{lists==false}}"></product-list>
+</view>

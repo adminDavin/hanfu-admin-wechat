@@ -1,11 +1,7 @@
-page {
-    background: #F8F8F8;
-}
-/*总体主盒子*/  
-.container {  
-  width:750rpx;
-   height: 100%;
-   margin-bottom: 28rpx;   
+.classify {
+    width: 750rpx;
+    height: 100%;
+    margin-bottom: 28rpx;
 }
 .classify-header-box{
     display: flex;
@@ -13,7 +9,7 @@ page {
     align-items: center;
     width: 710rpx;
     height: 72rpx;
-    margin: 20rpx auto;
+    margin: 0 auto;
 }
 .classify-tus {
     width: 46rpx;
@@ -29,8 +25,8 @@ page {
     background-color:#EBEBEB;
 }
 .classify-tu {
-    width: 40rpx;
-    height: 35rpx;
+    width: 33rpx;
+    height: 33rpx;
     margin-left: 20rpx;
 }
 .classify-input {
@@ -42,83 +38,108 @@ page {
     color: #999999;
     text-indent: 10rpx;
 }
- /*左侧栏主盒子*/  
-.nav_left{  
-  width: 178rpx;
-  height: 1344rpx;   
-  background-color:#EEEEEE;
-  float: left;
-}  
-/*左侧栏list的item*/  
-.nav_left .nav_left_items{  
-  height: 40px;   
-  line-height: 40px;  
-  padding: 6px 0;
-  border-bottom: 1px solid #dedede;  
-  font-size: 14px; 
-  text-align: center;
-}  
-/*左侧栏list的item被选中时*/  
-.nav_left .nav_left_items.active{  
-  background: #fff;
-  color: #0B0B0B;
-  border-left: 6rpx solid #E74941;
-}  
-/*右侧栏主盒子*/  
-.nav_right{
- width: 572rpx;
- height: 100%;
- float: left;
-}  
-/*右侧栏list的item*/  
-.nav_right .nav_right_items{  
-  float: left;  
-  width: 101rpx;  
-  height: 160rpx;  
-  text-align: center;
-  margin: 0 35rpx 33rpx 40rpx;
-}  
-.nav_right .nav_right_items image{  
-  width: 101rpx;  
-  height: 102rpx;
-  background: #000;
-}  
-.nav_right .nav_right_items text{   
-  display: block;   
-  font-size: 24rpx;
-  color: black;
-  margin-top: 4rpx;
-  padding:0 5rpx;
-  overflow: hidden;  
-  white-space: nowrap;  
-  text-overflow: ellipsis;
-} 
-.nodata_text{
-  color: black;
-  font-size: 28rpx;  
-  text-align: center;  
-}
-.title-table {
-    width: 530rpx;
-    line-height: 80rpx;
-    font-size: 25rpx;
-    font-weight: 500;
-    padding-left: 20rpx;
-}
-.nav_right .title-boxs {
-   width: 530rpx;
-   background-color: #fff;
-   margin-left: 22rpx;
-   margin-top: 20rpx;
-   border-radius: 12rpx;
-}
-.title-image {
-   width: 530rpx;
-   height: 260rpx;
-   background: #000;
-   margin-left: 22rpx;
-}
-.box {
+/* banner区 */
+.classify-banner {
     display: flex;
-    flex-wrap:wrap;
+    width: 730rpx;
+    height: 100%;
+    margin-right: 20rpx;
+    margin-top: 20rpx;
 }
+.banner-box {
+    height: 86rpx;
+    display: flex;
+    text-align: center;
+    font-size: 28rpx !important;
+}
+.banner-box:hover {
+    background-color: #fff;
+}
+.van-sidebar-item {
+    text-align: center;
+}
+.van-sidebar-item__text {
+   position: absolute;
+   top:-17rpx;
+   left: 0rpx; 
+}
+.table-text {
+    font-family: 'PingFang-SC-Medium';
+    font-weight: Medium;
+    color:#666666;
+    font-size: 30rpx;
+}
+.table-text:hover {
+    color: #151515;
+}
+/* 右 */
+.banner-text {
+    width: 530rpx;
+    height: 100%;
+    margin-left: 22rpx;
+}
+.text-image {
+    width: 530rpx;
+    height: 260rpx;
+}
+.text-table {
+    width: 530rpx;
+    margin-top: 35rpx;
+}
+.text-classify {
+    width: 528rpx;
+    padding-top: 48rpx;
+    line-height: 61rpx;
+    margin-left: 22rpx;
+    font-size: 32rpx;
+    color: #151515;
+    font-weight: Medium;
+    overflow: hidden;
+    
+    
+}
+.shpping-big {
+    width: 528rpx;
+    height: 144.5rpx;
+    margin-left: 40rpx;
+    margin-top: 5rpx;
+}
+
+.box {
+    width: 710rpx;
+    height: 50rpx;
+    border: 3rpx solid #000;
+}
+.yige {
+    width: 105rpx;
+    height: 140rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    float: left;
+    margin-top: 18rpx;
+    margin-right: 70rpx;
+    }
+    .tupian {
+        width: 105rpx;
+        height: 105rpx;
+    }
+    .imagestu {
+        width: 105rpx;
+        height: 105rpx;
+    }
+    .wenzi {
+        margin-top: 7rpx;
+        width: 99rpx;
+        height: 38rpx;
+        padding: 0 3rpx;
+    }
+    .textwenzi {
+        display: block;
+        text-align: center;
+        font-size:24rpx;
+        color: #151515;
+        font-weight: 'Regular';
+        font-family:'PingFang-SC-Regular';
+        line-height: 38rpx;
+    }
