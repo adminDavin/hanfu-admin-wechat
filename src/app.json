@@ -16,7 +16,8 @@
     "pages/myself/evaluated/list",
     "pages/myself/qr-code/index",
     "pages/myself/wallet/balance/payment",
-    "pages/order/detail"
+    "pages/order/detail",
+    "pages/payment/payment"
   ],
   "window": {
     "backgroundTextStyle": "light",

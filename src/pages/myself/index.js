@@ -102,11 +102,6 @@ Page({
     }
 
   
-    // paymentApi.paymentOrder({
-    //   userId: userId, orderId: 100
-    // }, (res) => {
-    //   console.log(res);
-    // });
     this.setData({
       userId: userId
     });

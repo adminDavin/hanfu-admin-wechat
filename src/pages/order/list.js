@@ -72,7 +72,7 @@ Page({
       for (let orderStatus of this.data.orderStatuses) {
         status[orderStatus.action] = orderStatus.desc;
       }
-
+      console.log(status);
       let hfOrders = res.data.data;
       for (let hfOrder of hfOrders) {
         hfOrder.orderStatusDesc = status[hfOrder.orderStatus];

@@ -90,6 +90,7 @@ Page({
       this.setData({ product: product, imgageUrls: imgageUrls, selectedGoods: goods });
     });
   },
+  
   onSelectedGoodsSpec: function(e) {
     let animation = wx.createAnimation({
       duration: 200,
@@ -125,7 +126,7 @@ Page({
       console.log(this.data);
     }, 200);
   },
-  onCloseGoodsSpec: function(e) {
+  onCloseGoodsSpec: function (e) {
     // 隐藏遮罩层
     var animation = wx.createAnimation({
       duration: 200,
@@ -144,7 +145,20 @@ Page({
           animationData: animation.export(),
           showModalSelectionSpecification: false
         });
-    },
+      } else if (e.currentTarget.dataset.type == "createOrder") {
+        this.setData({
+          animationData: animation.export(),
+          showModalCreateOrder: false
+        });
+      } else if (e.currentTarget.dataset.type == "shopPayment") {
+        this.setData({
+          animationData: animation.export(),
+          showModalShopPayment: false
+        });
+      }
+      console.log(this)
+    }.bind(this), 200)
+  },
 
     /**
      * 生命周期函数--监听页面初次渲染完成
