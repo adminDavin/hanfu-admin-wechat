@@ -15,8 +15,19 @@
     "pages/myself/wallet/index",
     "pages/myself/evaluated/list",
     "pages/myself/qr-code/index",
-    "pages/myself/wallet/balance/payment"
+    "pages/myself/wallet/balance/payment",
+    "pages/order/detail",
+    "pages/payment/payment",
+    "pages/myself/address/newAddress/new",
+    "pages/myself/address/alterAddress/aiter",
+    "pages/myself/vipRecharge/vip"
   ],
+  "usingComponents": {
+    "van-tab": "./pages/vant/weapp/dist/tab/index",
+    "van-tabs": "./pages/vant/weapp/dist/tabs/index",
+    "van-sidebar": "./pages/vant/weapp/dist/sidebar/index",
+    "van-sidebar-item": "./pages/vant/weapp/dist/sidebar-item/index"
+  },
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
@@ -30,6 +41,12 @@
     "audio",
     "location"
   ],
+  "plugins": {
+    "chooseLocation": {
+      "version": "1.0.0",
+      "provider": "wx76a9a06e5b4e693e"
+    }
+  },
   "permission": {
     "scope.userLocation": {
       "desc": "你的位置信息将用于小程序位置接口的效果展示"

@@ -29,7 +29,16 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    var params = JSON.parse(decodeURIComponent(options.params))
+    let params = JSON.parse(decodeURIComponent(options.params))
+    let userId = wx.getStorageSync('userId');
+    console.log(options);
+    if (util.isEmpty(userId)) {
+      wx.navigateTo({
+        url: '/pages/login/index?orderStatus=payment',
+      });
+    } else {
+      params.userId = userId;
+    }
     this.setData(params);
   },
 
@@ -106,18 +115,21 @@ Page({
       freight: this.data.pickUp.freight,
       takingType: this.data.pickUp.wayOfPickUp,
       quantity: this.data.selectedGoods.quantity,
-      userAddressId: this.data.selectedAddress.id,
       sellPrice: this.data.selectedGoods.sellPrice,
       hfDesc: JSON.stringify(this.data.selectedGoods)
     };
+    if (typeof (this.data.selectedAddress.id) != 'undefined') {
+      params.userAddressId = this.data.selectedAddress.id;
+    }
     for (let payment of this.data.paymentMethod) {
       if (payment.checked) {
         params.paymentName = payment.name;
       }
     }
     orderApi.createOrder(params, (res) => {
+      console.log(res);
       wx.navigateTo({
-        url: '/pages/order/list?userId=' + this.data.userId,
+        url: '/pages/payment/payment?userId=' + this.data.userId + '&outTradeNo=' + res.data.data.orderCode,
       })
     });
   }

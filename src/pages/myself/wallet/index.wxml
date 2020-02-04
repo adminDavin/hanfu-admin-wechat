@@ -1,2 +1,32 @@
+  <view class="nav">
+    <view wx:for="{{myWalletResoures}}" wx:key="index" class="nav-item" data-id="1">
+      <view class="nav-ziti">{{item.desc}}</view>
+      <view class="{{item.selectedSytle}}"></view>
+    </view>
+  </view>
 <!--src/pages/myself/wallet/index.wxml-->
-<text>src/pages/myself/wallet/index.wxml</text>
+<view class="nav">
+  <image src="/pages/images/tabs/xiala.png" mode="aspectFit" bindtap="gopre"></image>
+  <text class="title">付款</text>
+  <view class="titleright"></view>
+</view>
+<view class="pay-to">
+  <!-- <view class="pay-to-left"> -->
+    <!-- <text class="pay-to-left-top">付款给</text> -->
+    <!-- <text class="pay-to-left-bottom">我是一只毒蘑菇啊</text> -->
+  <!-- </view> -->
+  <!-- <image src="/pages/images/tabs/36542ad2bcfcab377e9fa0e2c5bf9fb1fc84950d925e-zP5HbN.png" /> -->
+</view>
+<view class="pay-num">
+  <text class="pay-num-title">金额</text>
+  <view class="numinput">
+      <view class="numtop">
+        <text>¥</text>
+        <input class="weui-input" value="{{total}}" bindinput="bindKeyInput" type="digit" placeholder="输入金额" confirm-type="done"/>
+      </view>
+  </view>
+      <button class="numBottom" bindtap="onCreateCode" >付款</button>
+</view>
+
+
+

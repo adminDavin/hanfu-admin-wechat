@@ -5,9 +5,7 @@
     </view>
     <view class="t40">
       <open-data type="userNickName"></open-data>
-      <view>会员
-        <text>(立即充值)</text>
-      </view>
+      <view bindtap="recharge">普通会员</view>
     </view>
     <view class="header-fl">
       <button class="header-sao" open-type="contact">

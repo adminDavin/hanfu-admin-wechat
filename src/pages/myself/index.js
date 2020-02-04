@@ -1,7 +1,9 @@
 // pages/myself/index.js
 const app = getApp();
 
+import hfOrderApi from '../../services/hf-order.js';
 import userAddressApi from '../../services/hf-user-address.js';
+import paymentApi from '../../services/hf-payment.js';
 import util from '../../utils/util.js';
 
 Page({
@@ -99,17 +101,37 @@ Page({
         url: '/pages/login/index',
       });
     }
+
+  
     this.setData({
       userId: userId
     });
   },
   onShow: function() {
-    if (typeof this.getTabBar === 'function' &&
-      this.getTabBar()) {
+    if (typeof this.getTabBar === 'function') {
+
       this.getTabBar().setData({
         selected: 4
-      })
+      });
+      hfOrderApi.queryOrderStatistics(this.data.userId, (res) => {
+        let orderStatusMap = {};
+        for (let orderStatus of res.data.data) {
+          orderStatusMap[orderStatus.orderStatus] = orderStatus.quantity;
+        }
+        let orderStatuses = this.data.orderStatuses;
+        for (let orderStatus of orderStatuses) {
+          let status = orderStatusMap[orderStatus.action];
+          if (typeof(status) != 'undefined') {
+            orderStatus.quantity = status;
+          }
+        }
+        this.setData({ orderStatuses: orderStatuses });
+      });
     }
+  },
+  recharge: function (e) {
+    console.log(123)
+    this.handleSelected('pages/myself/vipRecharge/vip', e.currentTarget.dataset.action);
   },
   onSelectedOrder: function(e) {
     this.handleSelected('/pages/order/list', e.currentTarget.dataset.action);
