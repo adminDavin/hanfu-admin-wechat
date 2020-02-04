@@ -31,10 +31,10 @@ Page({
   onLoad: function(options) {
     let params = JSON.parse(decodeURIComponent(options.params))
     let userId = wx.getStorageSync('userId');
-    console.log(options);
+    
     if (util.isEmpty(userId)) {
       wx.navigateTo({
-        url: '/pages/login/index?orderStatus=payment',
+        url: '/pages/login/index',
       });
     } else {
       params.userId = userId;
@@ -62,6 +62,7 @@ Page({
         });
       }
     });
+    
   },
 
   onAddUserAddress(e) {

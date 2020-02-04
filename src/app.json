@@ -20,7 +20,8 @@
     "pages/payment/payment",
     "pages/myself/address/newAddress/new",
     "pages/myself/address/alterAddress/aiter",
-    "pages/myself/vipRecharge/vip"
+    "pages/myself/vipRecharge/vip",
+    "pages/payment/shopping"
   ],
   "window": {
     "backgroundTextStyle": "light",

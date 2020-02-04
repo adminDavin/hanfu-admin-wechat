@@ -273,26 +273,43 @@ Page({
     },
     onConfirmSelectedGoods: function (e) {
         this.onCloseGoodsSpec(e);
-        if (util.isEmpty(wx.getStorageSync('userId'))) {
-            wx.navigateTo({
-                url: '/pages/login/index',
-            });
+      let userId = wx.getStorageSync('userId');
 
+      if (util.isEmpty(userId)) {
+            //  跳转到登录页
+            wx.navigateTo({url: '/pages/login/index'});
         } else {
-            let userId = wx.getStorageSync('userId');
-            let paymentType = e.currentTarget.dataset.type;
-            console.log(this.data.selectedGoods, paymentType);
-            let params = {
-                selectedGoods: this.data.selectedGoods,
-                paymentType: paymentType,
-                userId: userId,
-                stoneId: this.data.product.stoneId
-            };
-
-            wx.navigateTo({
-                url: '/pages/payment/index?params=' + encodeURIComponent(JSON.stringify(params))
-            });
+          let paymentType = e.currentTarget.dataset.type;
+          if (paymentType == "shopPayment") {
+            this.shoppingPayment(paymentType, userId);
+          } else {
+            this.createOrder(paymentType, userId);
+          }
         }
-    }
+    },
+    // 创建订单
+    createOrder: function(paymentType, userId) {
+      console.log(this.data.selectedGoods, paymentType);
+      let params = {
+        selectedGoods: this.data.selectedGoods,
+        paymentType: paymentType,
+        userId: userId,
+        stoneId: this.data.product.stoneId
+      };
+      wx.navigateTo({
+        url: '/pages/payment/index?params=' + encodeURIComponent(JSON.stringify(params))
+      });
+    },
+    // 到店支付
+    shoppingPayment: function (paymentType, userId) {
+      let params = {
+        paymentType: paymentType,
+        stoneId: this.data.product.stoneId,
+        stoneName: this.data.product.stoneName
+      };
+      wx.navigateTo({
+        url: '/pages/payment/shopping?params=' + encodeURIComponent(JSON.stringify(params)),
+      })
 
+    }
 })
