@@ -1,0 +1,42 @@
+<!--src/pages/myself/address/newAddress/new.wxml-->
+<view class="editaddress">
+  <view class="addr-content">
+    <view class="addr-card">
+      <view class="card-left-item">收货人</view>
+      <input value="{{contact}}" bindinput="contact"></input>
+    </view>
+    <view class="addr-card">
+      <view class="card-left-item">手机号码</view>
+      <input value="{{phoneNumber}}" bindinput="phoneNumber"></input>
+    </view>
+    <view class="addr-card" style="height:160rpx;align-items:flex-start">
+      <view class="card-left-item">所在地区</view>
+      <view style="display:flex;justify-content:space-around;flex-direction:column;height:100%;font-size: 30rpx;width:430rpx">
+        <view style="display:flex;justify-content:space-between">
+        <view style="min-width:60rpx">省</view>
+          <input value="{{hfProvince}}" bindinput="hfProvince"></input>
+        </view>
+        <view style="display:flex;justify-content:space-between">
+        <view style="min-width:60rpx">城市</view>
+          <input value="{{hfCity}}" bindinput="hfCity"></input>
+        </view>
+      </view>
+    </view>
+    <view class="text-card">
+      <view class="card-left-item">详细地址</view>
+      <textarea value="{{hfAddressDetail}}" style="width:536rpx;padding:34rpx 0;height:100rpx" bindinput="hfAddressDetail"></textarea>
+    </view>
+    <view class="dingwei" bindtap="getCityNameOFLocation">
+      <image src="../../images/cart/dingwei.png" style="width:29rpx;height:29rpx;margin-right:9rpx"></image>
+      <text style="\font-size:26rpx;font-weight:500;color:black;">定位</text>
+    </view>
+  </view>
+  <view class="setmoren">
+    <view class="setmoren-left">
+      <view class="set-ziti">设置默认地址</view>
+      <text class="set-ziti" style="font-size:24rpx">提醒：每次下单会推荐使用该默认地址</text>
+    </view>
+    <image src="{{setshow==true?'../../images/cart/kai.png':'../../images/cart/guan.png'}}" style="width:95rpx;height:48rpx" bindtap="setshowbtn"></image>
+  </view>
+  <view class="footer" bindtap="submit">保存</view>
+</view>

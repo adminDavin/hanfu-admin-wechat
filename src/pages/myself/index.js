@@ -114,6 +114,10 @@ Page({
       })
     }
   },
+  recharge: function (e) {
+    console.log(123)
+    this.handleSelected('pages/myself/vipRecharge/vip', e.currentTarget.dataset.action);
+  },
   onSelectedOrder: function(e) {
     this.handleSelected('/pages/order/list', e.currentTarget.dataset.action);
   },
