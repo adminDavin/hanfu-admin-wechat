@@ -97,7 +97,7 @@ Page({
       success: function (res) {
         wx.showToast({
           title: '地址添加成功',
-        })
+        }) 
         wx.navigateTo({
           url: '/pages/myself/address/list'
         })

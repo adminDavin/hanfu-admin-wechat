@@ -27,7 +27,7 @@
       <textarea value="{{hfAddressDetail}}" style="width:536rpx;padding:34rpx 0;height:100rpx" bindinput="hfAddressDetail"></textarea>
     </view>
     <view class="dingwei" bindtap="getCityNameOFLocation">
-      <image src="../../images/cart/dingwei.png" style="width:29rpx;height:29rpx;margin-right:9rpx"></image>
+      <image src="../../../../images/dingwei.png" style="width:29rpx;height:29rpx;margin-right:9rpx"></image>
       <text style="\font-size:26rpx;font-weight:500;color:black;">定位</text>
     </view>
   </view>
@@ -36,7 +36,7 @@
       <view class="set-ziti">设置默认地址</view>
       <text class="set-ziti" style="font-size:24rpx">提醒：每次下单会推荐使用该默认地址</text>
     </view>
-    <image src="{{setshow==true?'../../images/cart/kai.png':'../../images/cart/guan.png'}}" style="width:95rpx;height:48rpx" bindtap="setshowbtn"></image>
+    <image src="{{setshow==true?'../../../../images/kai.png':'../../../../images/guan.png'}}" style="width:95rpx;height:48rpx" bindtap="setshowbtn"></image>
   </view>
   <view class="footer" bindtap="submit">保存</view>
 </view>
