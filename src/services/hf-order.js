@@ -29,8 +29,21 @@ function queryOrder(userId, orderStatus, handleResult) {
     }
   });
 }
+function queryOrderStatistics(userId, handleResult) {
+  let params = {
+    userId: userId  };
+  wx.request({
+    url: app.endpoint.order + '/hf-order/statistics',
+    data: params,
+    success: res => handleResult(res),
+    fail: (res) => {
+      console.log(params, res);
+    }
+  });
+}
 
 export default {
   createOrder: createOrder,
-  queryOrder: queryOrder
+  queryOrder: queryOrder,
+  queryOrderStatistics: queryOrderStatistics
 };

@@ -14,7 +14,7 @@ App({
     file: 'https://www.tjsichuang.cn:1443/api/product',
     user: 'https://www.tjsichuang.cn:1443/api/user',
     order: 'https://www.tjsichuang.cn:1443/api/order',
-    payment: 'https://www.tjsichuang.cn:1443/api/cart'
-    // payment: 'http://localhost:9098'
+    payment: 'https://www.tjsichuang.cn:1443/api/cart',
+    // order: 'http://localhost:9097'
   }
 })
