@@ -116,7 +116,8 @@ Page({
       takingType: this.data.pickUp.wayOfPickUp,
       quantity: this.data.selectedGoods.quantity,
       sellPrice: this.data.selectedGoods.sellPrice,
-      hfDesc: JSON.stringify(this.data.selectedGoods)
+      hfDesc: JSON.stringify(this.data.selectedGoods),
+      stoneId: this.data.stoneId
     };
     if (typeof (this.data.selectedAddress.id) != 'undefined') {
       params.userAddressId = this.data.selectedAddress.id;

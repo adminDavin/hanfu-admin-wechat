@@ -285,8 +285,10 @@ Page({
             let params = {
                 selectedGoods: this.data.selectedGoods,
                 paymentType: paymentType,
-                userId: userId
+                userId: userId,
+                stoneId: this.data.product.stoneId
             };
+
             wx.navigateTo({
                 url: '/pages/payment/index?params=' + encodeURIComponent(JSON.stringify(params))
             });
