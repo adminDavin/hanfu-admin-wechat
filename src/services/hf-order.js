@@ -41,9 +41,25 @@ function queryOrderStatistics(userId, handleResult) {
     }
   });
 }
-
+function modifyStatus(id, orderCode, originOrderStatus, targetOrderStatus, handleResult) {
+  let params = {
+    id: id,
+    orderCode: orderCode,
+    originOrderStatus: originOrderStatus,
+    targetOrderStatus: targetOrderStatus
+  };
+  wx.request({
+    url: app.endpoint.order + '/hf-order/modify-status',
+    data: params,
+    success: res => handleResult(res),
+    fail: (res) => {
+      console.log(params, res);
+    }
+  });
+}
 export default {
   createOrder: createOrder,
   queryOrder: queryOrder,
-  queryOrderStatistics: queryOrderStatistics
+  queryOrderStatistics: queryOrderStatistics,
+  modifyStatus: modifyStatus
 };

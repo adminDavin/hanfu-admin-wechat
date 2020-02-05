@@ -1,3 +1,16 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "payment":"/components/order/payment/payment",
+    "cancel":"/components/order/cancel/cancel",
+    "finished": "/components/order/finished/finished",
+    "process": "/components/order/process/process",
+    "transport": "/components/order/transport/transport",
+    "pickup": "/components/order/pickup/pickup",
+    "evaluate": "/components/order/evaluate/evaluate"
+  },
+  "backgroundTextStyle": "light",
+  "navigationBarBackgroundColor": "#ffffff",
+  "navigationBarTitleText": "订单详情",
+  "navigationBarTextStyle": "black",
+  "navigationStyle": "custom"
 }

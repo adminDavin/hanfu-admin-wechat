@@ -1,29 +1,8 @@
-<!--src/pages/order/detail.wxml-->
-<text>src/pages/order/detail.wxml</text>
-<text>actualPrice: {{hfOrder.actualPrice}}</text>
-<text>address: {{hfOrder.address}}</text>
-<text>addressDesc: {{hfOrder.addressDesc}}</text>
-addressDetail: "撒旦发的v啊"
-addressId: 216
-amount: 10
-contact: "张大伟"
-fileId: 195
-freight: 0
-goodsId: 1
-goodsName: "毛巾"
-hfDesc: "{"fileIds":[195],"goodsDesc":"紫色 x xl xl","goodsName":"毛巾","hfGoodsSpecs":[{"goodsId":1,"hfName":"颜色","hfValue":"红色","id":1,"specType":"1","specUnit":"1"},{"goodsId":1,"hfName":"大小","hfValue":"15*10","id":2,"specType":"1","specUnit":"1"},{"goodsId":1,"hfName":"材质","hfValue":"棉","id":3,"specType":"1","specUnit":"1"}],"id":1,"isUsePriceMode":0,"modifyTime":"2019-11-03T18:39:22","priceId":1,"productId":1,"quantity":10,"respStatus":1,"sellPrice":10,"warehouseId":1}"
-hfRemark: "订单备注"
-id: 89
-modifyTime: "2020-02-01T06:02:54"
-orderCode: "1617d8b15d8e4ad692851f6e8b4fc7c3"
-orderStatus: "payment"
-orderType: "nomalOrder"
-payStatus: 1
-paymentName: "wechart"
-paymentType: 1
-phone: "18758268513"
-quantity: 10
-stoneId: 1
-stoneName: "思维创造店铺"
-takingType: "selfPickUp"
-userId: 965
+<image src="../../images/fanhuibai.png" style="width:30rpx;height:35rpx;position:absolute;left:24rpx;top:65rpx" bindtap="fanhui"></image>
+<payment hfOrder="{{hfOrder}}" wx:if="{{hfOrder.orderStatus=='payment'}}"></payment>
+<cancel hfOrder="{{hfOrder}}" wx:if="{{hfOrder.orderStatus=='cancel'}}"></cancel>
+<finished hfOrder="{{hfOrder}}" wx:if="{{hfOrder.orderStatus=='finished'}}"></finished>
+<process hfOrder="{{hfOrder}}" wx:if="{{hfOrder.orderStatus=='process'}}"></process>
+<transport hfOrder="{{hfOrder}}" wx:if="{{hfOrder.orderStatus=='transport'}}"></transport>
+<pickup hfOrder="{{hfOrder}}" wx:if="{{hfOrder.orderStatus=='pickup'}}"></pickup>
+<evaluate hfOrder="{{hfOrder}}" wx:if="{{hfOrder.orderStatus=='evaluate'}}"></evaluate>
