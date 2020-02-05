@@ -272,7 +272,7 @@ Page({
         this.onCloseGoodsSpec(e);
     },
     onConfirmSelectedGoods: function (e) {
-        this.onCloseGoodsSpec(e);
+      this.onCloseGoodsSpec(e);
       let userId = wx.getStorageSync('userId');
 
       if (util.isEmpty(userId)) {

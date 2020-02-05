@@ -11,11 +11,6 @@ Page({
    */
   data: {
     amount: 0,
-    pickUp: {
-      wayOfPickUp: 'selfPickUp',
-      wayOfPickUpDesc: '自提',
-      freight: 0
-    },
     paymentMethod: [{
       checked: true,
       desc: '微信支付',
@@ -70,9 +65,45 @@ Page({
   },
   onInputPaymentAmount: function(e) {
     if (util.isRealNum(e.detail.value)) {
-      console.log(e.detail.value);
-      this.setData({ amount: parseInt(e.detail.value)});
-    } else {
+      this.setData({ amount: e.detail.value });
     }
+  },
+  onCreateOrder: function (e) {
+    if (util.isRealNum(this.data.amount)) {
+      wx.showModal({
+        title: '输入的金额不合法',
+        content: '您输入的是' + this.data.amount,
+      });
+    }  else {
+      let amount = parseInt(this.data.amount);
+      if (amount == 0) {
+        wx.showModal({
+          title: '输入的金额不合法',
+          content: '支付金额不可以为0',
+        });
+      } else {
+        this.createOrder(amount);
+      }
+    }    
+  },
+  createOrder(amount) {
+    let params = {
+      userId: this.data.userId,
+      amount: this.data.amount,
+      orderType: 'shoppingOrder',
+      paymentName: this.data.paymentMethod[0].name,
+      hfRemark: "到店支付订单",
+      stoneId: this.data.stoneId
+    };
+    for (let payment of this.data.paymentMethod) {
+      if (payment.checked) {
+        params.paymentName = payment.name;
+      }
+    }
+    orderApi.createOrder(params, (res) => {
+      wx.navigateTo({
+        url: '/pages/payment/payment?userId=' + this.data.userId + '&outTradeNo=' + res.data.data.orderCode + '&paymentName=' + params.paymentName,
+      })
+    });
   }
 })

@@ -24,7 +24,7 @@
 
 <view class="footer">
   <view style="font-size:40rpx;font-weight:bold;color:rgba(255,0,0,1);line-height:98rpx">
-    ￥{{ amount + pickUp.freight }}
+    ￥{{ amount }}
   </view>
-  <view class="submit" bindtap="onCreateOrder" data-payment="{{ selectedGoods.sellPrice + pickUp.freight }}">确认支付</view>
+  <view class="submit" bindtap="onCreateOrder" data-payment="{{ selectedGoods.sellPrice }}">确认支付</view>
 </view>

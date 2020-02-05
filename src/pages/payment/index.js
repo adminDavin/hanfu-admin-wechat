@@ -101,6 +101,7 @@ Page({
     }
     this.setData({paymentMethod: paymentMethod});
   },
+  
   onCreateOrder: function(e) {
     console.log(e.currentTarget.dataset);
     let params = {
@@ -129,9 +130,9 @@ Page({
       }
     }
     orderApi.createOrder(params, (res) => {
-      console.log(res);
+      console.log(params);
       wx.navigateTo({
-        url: '/pages/payment/payment?userId=' + this.data.userId + '&outTradeNo=' + res.data.data.orderCode,
+        url: '/pages/payment/payment?userId=' + this.data.userId + '&outTradeNo=' + res.data.data.orderCode + '&paymentName=' + params.paymentName,
       })
     });
   }
