@@ -33,7 +33,7 @@ Page({
     }, {
       action: "complete",
       selectedSytle: '',
-      desc: "已完成""
+      desc: "已完成"
     }, {
       action: "controversial",
       selectedSytle: '',
