@@ -31,14 +31,16 @@ Page({
   firstGetSec() {
     var that = this;
     wx.request({
-      url: app.globalData.urlmorecategory + '/product/category',
+      url: app.endpoint.product + '/product/category',
       method: 'Get',
       success: function (res) {
         console.log(res)
         let list = res.data.data;
+        console.log('fileId首次', list)
         for (var index in list) {
           for (var j in list[index].categories) {
-            list[index].categories[j].img = app.globalData.urlmorecategory + '/goods/getFile?fileId=' + list[index].categories[j].fileId;
+            list[index].categories[j].img = app.endpoint.product + '/goods/getFile?fileId=' + list[index].categories[j].fileId;
+            console.log('fileId首次值', list[index].categories[j].fileId)
           }
         }
         that.setData({
@@ -55,14 +57,15 @@ Page({
   images: function (e) {
     var that = this;
     wx.request({
-      url: app.globalData.urlmorecategory + '/product/findCategoryPagePicture',
+      url: app.endpoint.product + '/product/findCategoryPagePicture',
       method: 'Get',
       success: function (res) {
         console.log(res)
         let list = res.data.data;
-        console.log(list)
+        console.log('fileId列表1',list)
         for (var index in list) {
-          list[index].img = app.globalData.urlmorecategory + '/goods/getFile?fileId=' + list[index].id;
+          list[index].img = app.endpoint.product + '/goods/getFile?fileId=' + list[index].id;
+          console.log('fileId值1', list[index].id)
         }
         that.setData({
           images:list
@@ -75,7 +78,7 @@ Page({
   morecategory: function (e) {
     var that = this;
     wx.request({
-      url: app.globalData.urlmorecategory + '/product/category',
+      url: app.endpoint.product + '/product/category',
       method: 'Get',
       success: function (res) {
         console.log(res)
@@ -93,13 +96,15 @@ Page({
   morecategorys: function () {
     var that = this;
     wx.request({
-      url: app.globalData.urlmorecategory + '/product/category',
+      url: app.endpoint.product + '/product/category',
       method: 'Get',
       success: function (res) {
         let list = res.data.data;
+        console.log('fileId列表2', list)
         for (var index in list) {
           for(var j in list[index].categories){
-            list[index].categories[j].img = app.globalData.urlmorecategory + '/goods/getFile?fileId=' + list[index].categories[j].fileId;
+            list[index].categories[j].img = app.endpoint.product + '/goods/getFile?fileId=' + list[index].categories[j].fileId;
+            console.log('fileId值2', list[index].categories[j].fileId)
           }
         }
         that.setData({

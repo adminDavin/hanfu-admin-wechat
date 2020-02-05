@@ -23,6 +23,12 @@
     "pages/myself/vipRecharge/vip",
     "pages/payment/shopping"
   ],
+  "usingComponents": {
+    "van-tab": "./pages/vant/weapp/dist/tab/index",
+    "van-tabs": "./pages/vant/weapp/dist/tabs/index",
+    "van-sidebar": "./pages/vant/weapp/dist/sidebar/index",
+    "van-sidebar-item": "./pages/vant/weapp/dist/sidebar-item/index"
+  },
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
