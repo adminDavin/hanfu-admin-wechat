@@ -27,6 +27,7 @@ Page({
         this.wechartPaymentConfirm(options, payment)
       } else {
         //余额支付 直接跳转到订单列表
+        paymentApi.completeOrder(options.outTradeNo, options.userId, (res) => console.log(res));
         wx.navigateTo({
           url: '/pages/order/list?action=all',
         });
