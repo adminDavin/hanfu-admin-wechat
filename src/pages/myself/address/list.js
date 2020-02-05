@@ -18,7 +18,6 @@ Page({
   },
 
   addaddress() {
-    console.log(1)
     wx.navigateTo({
       url: '/pages/myself/address/newAddress/new',
     })
