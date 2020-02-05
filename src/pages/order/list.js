@@ -31,6 +31,10 @@ Page({
       selectedSytle: '',
       desc: "待评价"
     }, {
+      action: "complete",
+      selectedSytle: '',
+      desc: "已完成""
+    }, {
       action: "controversial",
       selectedSytle: '',
       desc: "退换/售后"
@@ -45,7 +49,7 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad: function (options) {
     let userId = wx.getStorageSync('userId');
     console.log(options);
     if (util.isEmpty(userId)) {
@@ -54,7 +58,7 @@ Page({
       });
     } else {
       options.userId = userId;
-      if (typeof(options.action) == 'undefined') {
+      if (typeof (options.action) == 'undefined') {
         options.action = "all";
       }
       this.setData(options);
@@ -64,7 +68,7 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {
+  onShow: function () {
     console.log(this.data);
     hfOrderApi.queryOrder(this.data.userId, this.data.action, (res) => {
       console.log(res);
@@ -76,20 +80,20 @@ Page({
       let hfOrders = res.data.data;
       for (let hfOrder of hfOrders) {
         hfOrder.orderStatusDesc = status[hfOrder.orderStatus];
-        if (typeof(hfOrder.fileId) != 'undefined') {
+        if (typeof (hfOrder.fileId) != 'undefined') {
           hfOrder.image = app.endpoint.file + '/goods/getFile?fileId=' + hfOrder.fileId;
         }
         if (typeof (hfOrder.hfDesc) != 'undefined') {
           hfOrder.gooodsDesc = JSON.parse(hfOrder.hfDesc);
         }
       }
-      this.setData({hfOrders: res.data.data});
+      this.setData({ hfOrders: res.data.data });
     });
   },
-  onSelectedOrder:function(e) {
+  onSelectedOrder: function (e) {
     wx.navigateTo({
       url: '/pages/order/detail?hfOrder=' + encodeURIComponent(JSON.stringify(e.currentTarget.dataset.hfOrder)),
     })
-    
+
   }
 })
