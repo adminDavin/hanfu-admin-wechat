@@ -24,7 +24,7 @@ Page({
     console.log(e)
     let categoryId = e.currentTarget.dataset.categoryid;
     wx.navigateTo({
-      url: `../classify/commodity/commodity?categoryid=${categoryId}`,
+      url: `/pages/product/list?categoryid=${categoryId}`,
     })
   },
   // 首次加载二级类目
