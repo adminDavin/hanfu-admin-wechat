@@ -15,20 +15,7 @@ function createOrder(params={}, handleResult) {
   });
 }
 
-function queryOrder(userId, orderStatus, handleResult) {
-  let params = {
-    userId: userId,
-    orderStatus: orderStatus
-  };
-  wx.request({
-    url: app.endpoint.order + '/hf-order/query',
-    data: params,
-    success: res => handleResult(res),
-    fail: (res) => {
-      console.log(params, res);
-    }
-  });
-}
+
 function queryOrderStatistics(userId, handleResult) {
   let params = {
     userId: userId  };
@@ -42,8 +29,3 @@ function queryOrderStatistics(userId, handleResult) {
   });
 }
 
-export default {
-  createOrder: createOrder,
-  queryOrder: queryOrder,
-  queryOrderStatistics: queryOrderStatistics
-};
