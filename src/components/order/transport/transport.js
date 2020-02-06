@@ -22,6 +22,20 @@ Component({
    * 组件的方法列表
    */
   methods: {
+    copy() {
+      wx.setClipboardData({
+        data: this.hfOrder.orderCode,
+        success: function (res) {
+          wx.getClipboardData({
+            success: function (res) {
+              wx.showToast({
+                title: '复制成功'
+              })
+            }
+          })
+        }
+      })
+    },
     receipt(){
       orderApi.modifyStatus(this.properties.hfOrder.id, this.properties.hfOrder.orderCode, this.properties.hfOrder.orderStatus, 'evaluate', (res) => {
         let data = res.data.data;

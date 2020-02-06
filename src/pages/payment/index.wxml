@@ -1,4 +1,4 @@
- <!-- pages/order/order.wxml -->
+w <!-- pages/order/order.wxml -->
 <import src="/templates/product/selectedGoods" />
 
 <view class="address">

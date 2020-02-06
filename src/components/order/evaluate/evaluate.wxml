@@ -46,7 +46,7 @@
     <view class="dingdan-card-item">
       <view class="dingitem-ziti">订单编号：</view>
       <view class="dingitem-ziti" style="color:black;margin-right:20rpx">{{hfOrder.orderCode}}</view>
-      <view class="fuzhi">复制</view>
+      <view class="fuzhi" bindtap="copy">复制</view>
     </view>
     <view class="dingdan-card-item">
       <view class="dingitem-ziti">下单时间：</view>

@@ -22,7 +22,25 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    repurchase(){},
+    copy() {
+      wx.setClipboardData({
+        data: this.hfOrder.orderCode,
+        success: function (res) {
+          wx.getClipboardData({
+            success: function (res) {
+              wx.showToast({
+                title: '复制成功'
+              })
+            }
+          })
+        }
+      })
+    },
+    repurchase(){
+      wx.redirectTo({
+        url: '/pages/product/detail?productId=' + this.properties.hfOrder.gooodsDesc.productId
+      });
+    },
     evaluate(){}
   }
 })

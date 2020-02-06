@@ -22,6 +22,20 @@ Component({
    * 组件的方法列表
    */
   methods: {
+    copy() {
+      wx.setClipboardData({
+        data: this.hfOrder.orderCode,
+        success: function (res) {
+          wx.getClipboardData({
+            success: function (res) {
+              wx.showToast({
+                title: '复制成功'
+              })
+            }
+          })
+        }
+      })
+    },
     gopay(){
       wx.navigateTo({
         url: '/pages/payment/payment?userId=' + this.properties.hfOrder.userId + '&outTradeNo=' + this.properties.hfOrder.orderCode,

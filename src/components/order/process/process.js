@@ -22,6 +22,20 @@ Component({
    * 组件的方法列表
    */
   methods: {
+    copy() {
+      wx.setClipboardData({
+        data: this.hfOrder.orderCode,
+        success: function (res) {
+          wx.getClipboardData({
+            success: function (res) {
+              wx.showToast({
+                title: '复制成功'
+              })
+            }
+          })
+        }
+      })
+    },
     remind(){
       wx.showToast({
         title: '已经提醒商家啦，请耐心等待',
