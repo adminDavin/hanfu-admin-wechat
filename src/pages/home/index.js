@@ -1,4 +1,5 @@
 // pages/index/index/index.js
+const app = getApp();
 Page({
 
   /**
@@ -38,7 +39,7 @@ Page({
           imgWidth: imgWidth });
         }
     });
-    
+    this.lunBoTu()
   },
   
   onShow: function () {
@@ -63,6 +64,38 @@ Page({
     this.setData({ currentTab: e.detail.current });
   },
   
+  //轮播图
+  lunBoTu: function (e) {
+    var that = this;
+    wx.request({
+      url: app.endpoint.product + '/product/slideshow',
+      method: 'Get',
+      success: function (res) {
+        console.log(res)
+        let list = res.data.data;
+        console.log(res.data.data)
+        for (var index in list) {
+          list[index].img = app.endpoint.product + '/goods/getFile?fileId=' + list[index].fileId;
+          let lunid = list[index].id
+          // that.setData({
+          //   lunid:lunid 
+          // })
+        }
+        that.setData({
+          imgUrls: list
+        })
+      },
+    });
+  },
+  //轮播图跳转
+  lunbotutiao: function (e) {
+    var that = this;
+    var id = e.currentTarget.dataset.id;
+    console.log(id)
+    wx.navigateTo({
+      url: '/pages/product/detail?productId=' + id,
+    })
+  },
   onPullDownRefresh: function (e) {
     console.log(e);
   }

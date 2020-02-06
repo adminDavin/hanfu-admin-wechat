@@ -1,8 +1,8 @@
 <!-- 轮播图 -->
 <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
   <block wx:for="{{imgUrls}}" wx:key="index">
-    <swiper-item>
-      <image src="{{item}}" class="slide-image" />
+    <swiper-item bindtap="lunbotutiao" data-id="{{item.id}}">
+      <image src="{{item.img}}" class="slide-image" />
     </swiper-item>
   </block>
 </swiper>
