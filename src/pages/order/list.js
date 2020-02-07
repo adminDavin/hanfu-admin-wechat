@@ -23,6 +23,11 @@ Page({
         selectedSytle: '',
         desc: "待处理"
       }, {
+        action: "shipped",
+        selectedSytle: '',
+        desc: "待发货"
+      }, 
+       {
         action: "transport",
         selectedSytle: '',
         desc: "待收货"

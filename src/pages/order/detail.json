@@ -1,12 +1,14 @@
 {
   "usingComponents": {
     "payment":"/components/order/payment/payment",
+    "shipped": "/components/order/shipped/shipped",
     "cancel":"/components/order/cancel/cancel",
     "finished": "/components/order/finished/finished",
     "process": "/components/order/process/process",
     "transport": "/components/order/transport/transport",
     "pickup": "/components/order/pickup/pickup",
-    "evaluate": "/components/order/evaluate/evaluate"
+    "evaluate": "/components/order/evaluate/evaluate",
+    "controversial": "/components/order/controversial/controversial"
   },
   "backgroundTextStyle": "light",
   "navigationBarBackgroundColor": "#ffffff",

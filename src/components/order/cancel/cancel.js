@@ -24,7 +24,7 @@ Component({
   methods: {
     copy() {
       wx.setClipboardData({
-        data: this.hfOrder.orderCode,
+        data: this.properties.hfOrder.orderCode,
         success: function (res) {
           wx.getClipboardData({
             success: function (res) {

@@ -15,10 +15,10 @@ function createOrder(params={}, handleResult) {
   });
 }
 
-function queryOrder(userId, orderStatus, handleResult) {
+function queryOrder(userId, action, handleResult) {
   let params = {
     userId: userId,
-    orderStatus: orderStatus
+    orderStatus: action 
   };
   wx.request({
     url: app.endpoint.order + '/hf-order/query',
@@ -29,6 +29,7 @@ function queryOrder(userId, orderStatus, handleResult) {
     }
   });
 }
+
 function queryOrderStatistics(userId, handleResult) {
   let params = {
     userId: userId  };
@@ -57,9 +58,25 @@ function modifyStatus(id, orderCode, originOrderStatus, targetOrderStatus, handl
     }
   });
 }
+function qrCode(userId, goodsId,orderId,handleResult) {
+  let params = {
+    userId: userId,
+    goodsId:goodsId,
+    orderId:orderId
+  };
+  wx.request({
+    url: app.endpoint.order + '/hf-order/statistics',
+    data: params,
+    success: res => handleResult(res),
+    fail: (res) => {
+      console.log(params, res);
+    }
+  });
+}
 export default {
   createOrder: createOrder,
   queryOrder: queryOrder,
   queryOrderStatistics: queryOrderStatistics,
-  modifyStatus: modifyStatus
+  modifyStatus: modifyStatus,
+  qrCode: qrCode
 };

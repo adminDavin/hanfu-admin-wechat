@@ -15,6 +15,6 @@ App({
     user: 'https://www.tjsichuang.cn:1443/api/user',
     order: 'https://www.tjsichuang.cn:1443/api/order',
     payment: 'https://www.tjsichuang.cn:1443/api/cart',
-    // order: 'http://localhost:9097'
+    // payment: 'http://localhost:9098'
   }
 })

@@ -62,10 +62,10 @@
       <view class="dingitem-ziti">商品金额：</view>
       <view class="dingitem-ziti" style="color:black;">￥{{hfOrder.actualPrice}}</view>
     </view>
-    <!-- <view class="dingdan-card-item" style="justify-content:space-between">
+    <view class="dingdan-card-item" style="justify-content:space-between">
       <view class="dingitem-ziti">运费：</view>
-      <view class="dingitem-ziti" style="color:black;">+￥{{goodsList.fare}}</view>
-    </view> -->
+      <view class="dingitem-ziti" style="color:black;">+￥{{hfOrder.freight}}</view>
+    </view>
     <view class="yifu">
       <view style="font-size:26rpx;font-weight:400;color:rgba(21,21,21,1);margin-right:19rpx">已付款</view>
       <view style="font-size:32rpx;font-weight:500;color:rgba(255,0,0,1);">￥{{hfOrder.actualPrice}}</view>

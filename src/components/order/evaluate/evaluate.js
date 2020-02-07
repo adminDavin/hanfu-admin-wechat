@@ -24,7 +24,7 @@ Component({
   methods: {
     copy() {
       wx.setClipboardData({
-        data: this.hfOrder.orderCode,
+        data: this.properties.hfOrder.orderCode,
         success: function (res) {
           wx.getClipboardData({
             success: function (res) {
@@ -41,6 +41,16 @@ Component({
         url: '/pages/product/detail?productId=' + this.properties.hfOrder.gooodsDesc.productId
       });
     },
-    evaluate(){}
+    evaluate(){
+      let params={
+        image: this.properties.hfOrder.image,
+        goodsName: this.properties.hfOrder.goodsName,
+        id: this.properties.hfOrder.id,
+        orderCode: this.properties.hfOrder.orderCode
+      }
+      wx.navigateTo({
+        url: '/pages/myself/evaluated/dryinglist/dryinglist?params=' + encodeURIComponent(JSON.stringify(params))
+      });
+    }
   }
 })

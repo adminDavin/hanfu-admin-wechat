@@ -24,6 +24,16 @@ Component({
     checkEvaluate(){
       
     },
-    evalute(){}
+    evaluate() {
+      let params = {
+        image: this.properties.hfOrder.image,
+        goodsName: this.properties.hfOrder.goodsName,
+        id: this.properties.hfOrder.id,
+        orderCode: this.properties.hfOrder.orderCode
+      }
+      wx.navigateTo({
+        url: '/pages/myself/evaluated/dryinglist/dryinglist?params=' + encodeURIComponent(JSON.stringify(params))
+      });
+    }
   }
 })

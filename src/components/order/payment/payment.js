@@ -24,7 +24,7 @@ Component({
   methods: {
     copy() {
       wx.setClipboardData({
-        data: this.hfOrder.orderCode,
+        data: this.properties.hfOrder.orderCode,
         success: function (res) {
           wx.getClipboardData({
             success: function (res) {
@@ -44,6 +44,7 @@ Component({
     cancel(){
       orderApi.modifyStatus(this.properties.hfOrder.id,this.properties.hfOrder.orderCode,this.properties.hfOrder.orderStatus,'cancel',(res)=>{
         let data=res.data.data;
+        console.log(data)
         if(1){
           wx.showToast({
             title: '订单取消成功',

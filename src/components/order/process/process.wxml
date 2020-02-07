@@ -3,12 +3,11 @@
     <view class="dai-box">
       <view class="dai-title">
         <image src="../../../images/dengdai.png" style="width:36rpx;height:36rpx;margin-right:19rpx;"></image>
-        <view class="dai-ziti">待发货</view>
+        <view class="dai-ziti">等待商家处理</view>
       </view>
       <view class="dai-content">
-       <view class="content-ziti">10日23小时33分钟后 系统自动确认收货</view>
+        <view class="content-ziti" style="margin-right:40rpx">已付款：￥{{hfOrder.actualPrice}}</view>
       </view>
-      <view class="dai-btn" bindtap="remind">提醒发货</view>
     </view>
   </view>
   <view class="address-card">
@@ -65,10 +64,10 @@
       <view class="dingitem-ziti">商品金额：</view>
       <view class="dingitem-ziti" style="color:black;">￥{{hfOrder.actualPrice}}</view>
     </view>
-    <!-- <view class="dingdan-card-item" style="justify-content:space-between">
+    <view class="dingdan-card-item" style="justify-content:space-between">
       <view class="dingitem-ziti">运费：</view>
-      <view class="dingitem-ziti" style="color:black;">+￥{{goodsList.fare}}</view>
-    </view> -->
+      <view class="dingitem-ziti" style="color:black;">+￥{{hfOrder.freight}}</view>
+    </view>
     <view class="yifu">
       <view style="font-size:26rpx;font-weight:400;color:rgba(21,21,21,1);margin-right:19rpx">需付款</view>
       <view style="font-size:32rpx;font-weight:500;color:rgba(255,0,0,1);">￥{{hfOrder.actualPrice}}</view>
@@ -76,7 +75,7 @@
   </view>
   <view style="height:98rpx"></view>
   <view class="footer">
-    <view class="querenbtn" style="margin-right:30rpx" bindtap="refund">申请退款</view>
-    <view class="querenbtn" style="background-color:red;color:white;border:none" bindtap="remind">提醒发货</view>
+    <view class="querenbtn" style="margin-right:30rpx" bindtap="cancel">取消订单</view>
+    <view class="querenbtn" style="background-color:red;color:white;border:none" bindtap="refund">直接退款</view>
   </view>
 </view>
