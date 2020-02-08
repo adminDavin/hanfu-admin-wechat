@@ -1,0 +1,6 @@
+ <view class="wuquan" wx:if="{{qrshow}}">
+    <view class="hexiaoma">
+      <image src="{{qradd}}" style="width:360rpx;height:360rpx;margin:66rpx 100rpx 34rpx"></image>
+    </view>
+    <image src="../../images/guanbi.png" style="width:61rpx;height:61rpx;margin:15rpx 345rpx" bindtap="guanbi"></image>
+  </view>

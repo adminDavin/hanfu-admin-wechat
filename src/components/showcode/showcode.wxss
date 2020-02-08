@@ -1,0 +1,24 @@
+.wuquan{
+  position: absolute;
+  left: 0;
+  top:0;
+  width:100%;
+  height:100%;
+  background-color:rgba(0,0,0,0.4);
+  overflow: hidden
+}
+.hexiaoma{
+  width:560rpx;
+height:510rpx;
+background:rgba(255,255,255,1);
+border-radius:30rpx;
+margin:200rpx 95rpx 0;
+}
+.tip{
+  width:331rpx;
+font-size:30rpx;
+text-align: center;
+font-weight:500;
+color:rgba(21,21,21,1);
+margin:0 auto
+}

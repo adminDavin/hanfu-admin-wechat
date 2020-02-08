@@ -73,9 +73,21 @@ function qrCode(userId, goodsId,orderId,handleResult) {
     }
   });
 }
+function evaluate(params={}, handleResult) {
+  wx.request({
+    url: app.endpoint.order + '/message/insertReply',
+    data: params,
+    success: res => handleResult(res),
+    fail: (res) => {
+      console.log(params, res);
+    }
+  });
+}
 export default {
   createOrder: createOrder,
   queryOrder: queryOrder,
   queryOrderStatistics: queryOrderStatistics,
-  modifyStatus: modifyStatus
+  modifyStatus: modifyStatus,
+  qrCode: qrCode,
+  evaluate: evaluate
 };

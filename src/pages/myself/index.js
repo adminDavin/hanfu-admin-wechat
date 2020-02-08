@@ -116,8 +116,7 @@ Page({
       hfOrderApi.queryOrderStatistics(this.data.userId, (res) => {
         let orderStatusMap = {};
         for (let orderStatus of res.data.data) {
-          orderStatusMap[orderStatus.orderStatus] = orderStatus.quantity;
-        }
+          orderStatusMap[orderStatus.orderStatus] = orderStatus.quantity;  }
         let orderStatuses = this.data.orderStatuses;
         for (let orderStatus of orderStatuses) {
           let status = orderStatusMap[orderStatus.action];
