@@ -36,16 +36,24 @@ Component({
         }
       })
     },
-    gopay(){
-      wx.navigateTo({
-        url: '/pages/payment/payment?userId=' + this.properties.hfOrder.userId + '&outTradeNo=' + this.properties.hfOrder.orderCode,
+    remind(){
+      wx.showToast({
+        title: '已经提醒商家啦，请耐心等待',
+        icon:"success",
+        mask: true
       })
     },
-    cancel(){
-      orderApi.modifyStatus(this.properties.hfOrder.id,this.properties.hfOrder.orderCode,this.properties.hfOrder.orderStatus,'cancel',(res)=>{
-        let data=res.data.data;
+    refund() {
+      paymentOrder.refundOrder({ userId: this.properties.hfOrder.userId, orderCode: this.properties.hfOrder.orderCode }, (res) => {
+        let data = res.data;
         console.log(data)
-        if(1){
+      })
+    },
+    cancel() {
+      orderApi.modifyStatus(this.properties.hfOrder.id, this.properties.hfOrder.orderCode, this.properties.hfOrder.orderStatus, 'cancel', (res) => {
+        let data = res.data.data;
+        console.log(data)
+        if (1) {
           wx.showToast({
             title: '订单取消成功',
             icon: 'success',

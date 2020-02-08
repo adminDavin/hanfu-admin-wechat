@@ -1,8 +1,10 @@
 <image src="../../images/fanhuibai.png" style="width:30rpx;height:35rpx;position:absolute;left:24rpx;top:65rpx" bindtap="fanhui"></image>
 <payment hfOrder="{{hfOrder}}" wx:if="{{hfOrder.orderStatus=='payment'}}"></payment>
+<shipped hfOrder="{{hfOrder}}" wx:if="{{hfOrder.orderStatus=='shipped'}}"></shipped>
 <cancel hfOrder="{{hfOrder}}" wx:if="{{hfOrder.orderStatus=='cancel'}}"></cancel>
 <finished hfOrder="{{hfOrder}}" wx:if="{{hfOrder.orderStatus=='finished'}}"></finished>
 <process hfOrder="{{hfOrder}}" wx:if="{{hfOrder.orderStatus=='process'}}"></process>
 <transport hfOrder="{{hfOrder}}" wx:if="{{hfOrder.orderStatus=='transport'}}"></transport>
 <pickup hfOrder="{{hfOrder}}" wx:if="{{hfOrder.orderStatus=='pickup'}}"></pickup>
 <evaluate hfOrder="{{hfOrder}}" wx:if="{{hfOrder.orderStatus=='evaluate'}}"></evaluate>
+<controversial hfOrder="{{hfOrder}}" wx:if="{{hfOrder.orderStatus=='controversial'}}"></controversial>

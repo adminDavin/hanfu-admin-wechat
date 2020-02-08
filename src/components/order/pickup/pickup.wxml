@@ -50,7 +50,7 @@
     <view class="dingdan-card-item">
       <view class="dingitem-ziti">订单编号：</view>
       <view class="dingitem-ziti" style="color:black;margin-right:20rpx">{{hfOrder.orderCode}}</view>
-      <view class="fuzhi">复制</view>
+      <view class="fuzhi" bindtap="copy">复制</view>
     </view>
     <view class="dingdan-card-item">
       <view class="dingitem-ziti">下单时间：</view>
@@ -66,10 +66,10 @@
       <view class="dingitem-ziti">商品金额：</view>
       <view class="dingitem-ziti" style="color:black;">￥{{hfOrder.actualPrice}}</view>
     </view>
-    <!-- <view class="dingdan-card-item" style="justify-content:space-between">
+    <view class="dingdan-card-item" style="justify-content:space-between">
       <view class="dingitem-ziti">运费：</view>
-      <view class="dingitem-ziti" style="color:black;">+￥{{goodsList.fare}}</view>
-    </view> -->
+      <view class="dingitem-ziti" style="color:black;">+￥{{hfOrder.freight}}</view>
+    </view>
     <view class="yifu">
       <view style="font-size:26rpx;font-weight:400;color:rgba(21,21,21,1);margin-right:19rpx">需付款</view>
       <view style="font-size:32rpx;font-weight:500;color:rgba(255,0,0,1);">￥{{hfOrder.actualPrice}}</view>
@@ -81,3 +81,10 @@
     <view class="querenbtn" style="background-color:red;color:white;border:none" bindtap="pickup">提货核销</view>
   </view>
 </view>
+ <view class="wuquan" wx:if="{{qrshow}}">
+    <view class="hexiaoma">
+      <image src="{{qrAdd}}" style="width:360rpx;height:360rpx;margin:66rpx 100rpx 34rpx"></image>
+      <view class="tip">请用此核销码到指定地点指定店铺核销提货</view>
+    </view>
+    <image src="../../../images/guanbi.png" style="width:61rpx;height:61rpx;margin:15rpx 345rpx" bindtap="guanbi"></image>
+  </view>

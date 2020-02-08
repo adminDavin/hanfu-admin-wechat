@@ -3,13 +3,12 @@
     <view class="dai-box">
       <view class="dai-title">
         <image src="../../../images/dengdai.png" style="width:36rpx;height:36rpx;margin-right:19rpx;"></image>
-        <view class="dai-ziti">等待付款</view>
+        <view class="dai-ziti">待发货</view>
       </view>
       <view class="dai-content">
-        <view class="content-ziti" style="margin-right:40rpx">需付款：￥{{hfOrder.actualPrice}}</view>
-        <view class="content-ziti">剩余：23小时</view>
+       <view class="content-ziti">10日23小时33分钟后 系统自动确认收货</view>
       </view>
-      <view class="dai-btn" bindtap="gopay">去支付</view>
+      <view class="dai-btn" bindtap="remind">提醒发货</view>
     </view>
   </view>
   <view class="address-card">
@@ -77,7 +76,8 @@
   </view>
   <view style="height:98rpx"></view>
   <view class="footer">
-    <view class="querenbtn" style="margin-right:30rpx" bindtap="cancel">取消订单</view>
-    <view class="querenbtn" style="background-color:red;color:white;border:none" bindtap="gopay">去支付</view>
+      <view class="querenbtn" style="margin-right:30rpx" bindtap="refund">申请退款</view>
+    <view class="querenbtn" style="margin-right:30rpx；background:red;color:red;"  bindtap="cancel">取消订单</view>
+    <view class="querenbtn" style="background-color:red;color:white;border:none" bindtap="remind">提醒发货</view>
   </view>
 </view>

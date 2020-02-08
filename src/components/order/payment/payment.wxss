@@ -244,7 +244,7 @@
 .yunfei-card {
   margin-top: 20rpx;
   width: 100%;
-  height: 144rpx;
+  height: 204rpx;
   background: rgba(255, 255, 255, 1);
   border-radius: 10rpx;
   display: flex;

@@ -1,0 +1,14 @@
+<view class="content-card">
+  <view class="xiajia-content">
+    <image src="{{hfOrder.image}}" style="width:230rpx;height:230rpx"></image>
+    <view class="contentitem-right" style="justify-content: flex-start;">
+      <text class="item-name">{{hfOrder.goodsName}}</text>
+      <view class='star-wrap'>
+        <view class='star-item' wx:for="{{stars}}" wx:key="" style='background:url("{{item.flag==1?item.lightImg:item.blackImg}}") no-repeat top;background-size:100%;' data-index="{{index}}" bindtap='starClick'>
+        </view>
+      </view>
+    </view>
+  </view>
+  <textarea value="{{evaluate}}" bindinput="getVal" style="padding:10rpx 24rpx;width:100%;height:400rpx;margin-top:24rpx" placeholder="请输入您的评价"></textarea>
+  <view class="guigeqr" bindtap="onSubmitSelectedGoods">确认</view>
+</view>

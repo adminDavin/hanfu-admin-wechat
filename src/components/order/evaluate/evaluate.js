@@ -22,7 +22,35 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    repurchase(){},
-    evaluate(){}
+    copy() {
+      wx.setClipboardData({
+        data: this.properties.hfOrder.orderCode,
+        success: function (res) {
+          wx.getClipboardData({
+            success: function (res) {
+              wx.showToast({
+                title: '复制成功'
+              })
+            }
+          })
+        }
+      })
+    },
+    repurchase(){
+      wx.redirectTo({
+        url: '/pages/product/detail?productId=' + this.properties.hfOrder.gooodsDesc.productId
+      });
+    },
+    evaluate(){
+      let params={
+        image: this.properties.hfOrder.image,
+        goodsName: this.properties.hfOrder.goodsName,
+        id: this.properties.hfOrder.id,
+        orderCode: this.properties.hfOrder.orderCode
+      }
+      wx.navigateTo({
+        url: '/pages/myself/evaluated/dryinglist/dryinglist?params=' + encodeURIComponent(JSON.stringify(params))
+      });
+    }
   }
 })

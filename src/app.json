@@ -21,8 +21,9 @@
     "pages/payment/payment",
     "pages/myself/address/newAddress/new",
     "pages/myself/address/alterAddress/aiter",
-    "pages/myself/vipRecharge/vip"
-    
+    "pages/myself/vipRecharge/vip",
+    "pages/payment/shopping",
+    "pages/myself/evaluated/dryinglist/dryinglist"
   ],
   "usingComponents": {
     "van-tab": "./pages/vant/weapp/dist/tab/index",

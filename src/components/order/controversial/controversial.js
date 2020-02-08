@@ -36,10 +36,15 @@ Component({
         }
       })
     },
-    repurchase(){
-      wx.redirectTo({
-        url: '/pages/product/detail?productId=' + this.properties.hfOrder.gooodsDesc.productId
-      });
-    }
+    cancel(){
+      
+    },
+    remind() {
+      wx.showToast({
+        title: '已经提醒商家啦，请耐心等待',
+        icon: "success",
+        mask: true
+      })
+    },
   }
 })
