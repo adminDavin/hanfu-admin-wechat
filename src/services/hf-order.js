@@ -77,6 +77,5 @@ export default {
   createOrder: createOrder,
   queryOrder: queryOrder,
   queryOrderStatistics: queryOrderStatistics,
-  modifyStatus: modifyStatus,
-  qrCode: qrCode
+  modifyStatus: modifyStatus
 };

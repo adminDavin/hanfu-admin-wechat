@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/payment/shopping",
     "pages/myself/index",
     "pages/home/index",
     "pages/category/index",
