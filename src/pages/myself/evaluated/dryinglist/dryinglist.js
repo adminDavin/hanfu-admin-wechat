@@ -1,38 +1,45 @@
 // src/pages/myself/evaluated/dryinglist/dryinglist.js
+import orderApi from '../../../../services/hf-product.js'
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    evaluate:'',
-    hfOrder:{},
+    star: 5,
+    evaluate: '',
+    hfOrder: {},
     starDesc: '非常满意，无可挑剔',
     stars: [{
       lightImg: '../../../../images/starth.png',
       blackImg: '../../../../images/startw.png',
       flag: 1,
-      message: '非常不满意，各方面都很差'
+      message: '非常不满意，各方面都很差',
+      star: 1
     }, {
       lightImg: '../../../../images/starth.png',
       blackImg: '../../../../images/startw.png',
       flag: 1,
-      message: '不满意，比较差'
+      message: '不满意，比较差',
+      star: 2
     }, {
       lightImg: '../../../../images/starth.png',
       blackImg: '../../../../images/startw.png',
       flag: 1,
-      message: '一般，还要改善'
+      message: '一般，还要改善',
+      star: 3
     }, {
       lightImg: '../../../../images/starth.png',
       blackImg: '../../../../images/startw.png',
       flag: 1,
-      message: '比较满意，仍要改善'
+      message: '比较满意，仍要改善',
+      star: 4
     }, {
       lightImg: '../../../../images/starth.png',
       blackImg: '../../../../images/startw.png',
       flag: 1,
-      message: '非常满意，无可挑剔'
+      message: '非常满意，无可挑剔',
+      star: 5
     }],
     assessLists: ['意见很有帮助', '态度非常好', '非常敬业', '非常专业认真', '回复很及时', '耐心细致']
   },
@@ -53,20 +60,42 @@ Page({
     }
     // 评价星星文字说明
     this.setData({
-      starDesc: this.data.stars[index].message
+      starDesc: this.data.stars[index].message,
+      star: this.data.stars[index].star
     })
     wx.showToast({
       title: this.data.starDesc,
-      icon:'none'
+      icon: 'none'
     })
   },
-  getVal(e){
-    var that=this;
-    that.setData({ evaluate:e.detail.value})
+  getVal(e) {
+    var that = this;
+    that.setData({
+      evaluate: e.detail.value
+    })
   },
-  onSubmitSelectedGoods(){
-    var that=this;
-    
+  onSubmitSelectedGoods() {
+    var that = this;
+    let params = {
+      star: this.data.star,
+      evaluate: this.data.evaluate,
+      goodsId: this.data.hfOrder.goodsId,
+      orderId: this.data.hfOrder.orderId,
+      userId: this.data.hfOrder.userId
+    }
+    orderApi.evaluate(params, (res) => {
+      if (1) {
+        wx.showToast({
+          title: '评价成功',
+          icon: 'success',
+          success: function() {
+            wx.redirectTo({
+              url: '/pages/order/order?hfOrder=' + encodeURIComponent(JSON.stringify(this.data.hfOrder))
+            })
+          }
+        })
+      }
+    })
   },
   /**
    * 生命周期函数--监听页面加载
