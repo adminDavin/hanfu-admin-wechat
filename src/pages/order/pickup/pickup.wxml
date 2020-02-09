@@ -81,4 +81,4 @@
     <view class="querenbtn" style="background-color:red;color:white;border:none" bindtap="pickup">提货核销</view>
   </view>
 </view>
-<qrcode wx:if="qrshow==true" qradd="{{qrAdd}}" bind:hiddenQr="hiddenQr"></qrcode>
+<qrcode wx:if="{{qrshow==true}}" qradd="{{qrAdd}}" bind:hiddenQr="hiddenQr"></qrcode>

@@ -14,7 +14,7 @@ Component({
    * 组件的初始数据
    */
   data: {
-    qrshow: false,
+    qrshow: true,
   },
 
   /**
@@ -25,5 +25,10 @@ Component({
       var that = this;
       this.triggerEvent('hiddenQr',{});
     },
+  },
+  lifetimes:{
+    ready:function(){
+      console.log(this.properties.qradd)
+    }
   }
 })

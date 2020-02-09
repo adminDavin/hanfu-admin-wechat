@@ -1,5 +1,7 @@
 // components/order/payment.js
 import orderApi from '../../../services/hf-order.js';
+import paymentApi from '../../../services/hf-payment.js';
+const app = getApp();
 Component({
   /**
    * 组件的属性列表
@@ -43,7 +45,7 @@ Component({
       })
     },
     refund() {
-      paymentOrder.refundOrder({
+      paymentApi.refundOrder({
         userId: this.properties.hfOrder.userId,
         orderCode: this.properties.hfOrder.orderCode
       }, (res) => {
@@ -57,6 +59,7 @@ Component({
         qrAdd: qrUrl + '?goodsId=' + this.properties.hfOrder.goodsId + '&orderId' + this.properties.hfOrder.orderCode,
         qrshow: true
       })
+      console.log(this.data.qrshow)
     }
   }
 })

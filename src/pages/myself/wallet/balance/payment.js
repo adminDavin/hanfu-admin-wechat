@@ -14,7 +14,47 @@ Page({
       // url: '/pages/login/index',
     });
   },
-
+  /**
+  * 组件的方法列表
+  */
+  methods: {
+    hiddenQr() {
+      this.setData({
+        qrshow: false
+      })
+    },
+    // copy() {
+    //   wx.setClipboardData({
+    //     data: this.properties.hfOrder.orderCode,
+    //     success: function (res) {
+    //       wx.getClipboardData({
+    //         success: function (res) {
+    //           wx.showToast({
+    //             title: '复制成功'
+    //           })
+    //         }
+    //       })
+    //     }
+    //   })
+    // },
+    // refund() {
+    //   paymentApi.refundOrder({
+    //     userId: this.properties.hfOrder.userId,
+    //     orderCode: this.properties.hfOrder.orderCode
+    //   }, (res) => {
+    //     let data = res.data;
+    //     console.log(data)
+    //   })
+    // },
+    pickup() {
+      let qrUrl = app.endpoint.order + '/cancel/activity/create/activity-code'
+      this.setData({
+        qrAdd: qrUrl + '?goodsId=' + this.properties.hfOrder.goodsId + '&orderId' + this.properties.hfOrder.orderCode,
+        qrshow: true
+      })
+      console.log(this.data.qrshow)
+    }
+  },
   /**
    * 生命周期函数--监听页面加载
    */

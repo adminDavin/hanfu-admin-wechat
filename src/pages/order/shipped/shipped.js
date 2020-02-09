@@ -1,5 +1,6 @@
 // components/order/payment.js
 import orderApi from '../../../services/hf-order.js';
+import paymentApi from '../../../services/hf-payment.js';
 Component({
   /**
    * 组件的属性列表
@@ -44,7 +45,7 @@ Component({
       })
     },
     refund() {
-      paymentOrder.refundOrder({ userId: this.properties.hfOrder.userId, orderCode: this.properties.hfOrder.orderCode }, (res) => {
+      paymentApi.refundOrder({ userId: this.properties.hfOrder.userId, orderCode: this.properties.hfOrder.orderCode }, (res) => {
         let data = res.data;
         console.log(data)
       })
