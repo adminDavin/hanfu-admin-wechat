@@ -1,0 +1,21 @@
+<view class="orderprocessing">
+  <view class="nav">
+    <view class="dai-box">
+      <view class="dai-title">
+        <image src="../../../images/wancheng.png" style="width:36rpx;height:36rpx;margin-right:19rpx;"></image>
+        <view class="dai-ziti">评价成功，感谢您</view>
+      </view>
+      <view class="chakanpingjia" bindtap="checkEvaluate">查看我的评价</view>
+    </view>
+  </view>
+  <!-- pingjia -->
+  <view class="content-card">
+    <view class="xiajia-content">
+      <image src="{{hfOrder.image}}" style="width:230rpx;height:230rpx"></image>
+      <view class="contentitem-right" style="justify-content: flex-start;">
+        <text class="item-name">{{hfOrder.goodsName}}</text>
+        <view class="pingjia" bindtap="evalute">评价</view>
+      </view>
+    </view>
+  </view>
+</view>

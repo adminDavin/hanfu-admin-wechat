@@ -4,7 +4,7 @@
     <view class="address-card-top">
       <view style="min-width:146rpx;" class="top-ziti">{{item.contact}}</view>
       <text class="top-ziti" style="margin-right:20rpx">{{item.phoneNumber}}</text>
-      <view class="moren" wx:if="{{item.isFaultAddress==0}}">默认</view>
+      <view class="moren" wx:if="{{item.isFaultAddress==1}}">默认</view>
     </view>
     <view class="address-card-bottom">
       <view class="bot-ziti">{{item.hfProvince}}{{item.hfCity}}{{item.hfAddressDetail}}</view>

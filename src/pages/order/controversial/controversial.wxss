@@ -1,0 +1,264 @@
+.orderprocessing {
+  width: 100%;
+  height: 100%;
+  background-color: #f8f8f8;
+}
+
+.nav {
+  width: 100%;
+  height: 364rpx;
+  background: linear-gradient(-90deg, rgba(254, 29, 66, 1), rgba(255, 120, 61, 1));
+}
+
+.dai-box {
+  width: 100%;
+  height: 100%;
+  padding: 75rpx 0 40rpx;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+}
+
+.dai-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dai-ziti {
+  font-size: 36rpx;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 1);
+}
+
+.dai-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.content-ziti {
+  font-size: 28rpx;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 1);
+}
+
+.dai-btn {
+  width: 197rpx;
+  height: 61rpx;
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 0 6rpx 10rpx 0 rgba(152, 0, 24, 0.05);
+  border-radius: 31rpx;
+  margin: 0 276rpx;
+  text-align: center;
+  line-height: 61rpx;
+  font-size: 30rpx;
+  font-weight: 500;
+  color: rgba(254, 29, 66, 1);
+}
+
+/* 地址 */
+
+.address-card {
+  padding: 0 24rpx;
+  box-sizing: border-box;
+  width: 100%;
+  height: 152rpx;
+  background: rgba(255, 255, 255, 1);
+  border-radius: 10px;
+}
+
+.address-card-top {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  font-size: 34rpx;
+  line-height: 60rpx;
+  font-weight: 500;
+  color: rgba(21, 21, 21, 1);
+}
+
+.address-card-bottom {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.top-ziti {
+  font-size: 28rpx;
+  font-weight: 500;
+  color: rgba(21, 21, 21, 1);
+}
+
+.bot-ziti {
+  width: 636px;
+  color: rgba(102, 102, 102, 1);
+  line-height: 32rpx;
+  font-size: 24rpx;
+  font-weight: 400;
+}
+
+/* 商品详情 */
+
+.content-card {
+  width: 100%;
+  height: 270rpx;
+  margin-top: 20rpx;
+  background: white;
+  padding: 20rpx 24rpx 0 24rpx;
+  box-sizing: border-box;
+}
+
+.xiajia-content {
+  margin-bottom: 20rpx;
+  width: 100%;
+  height: 270rpx;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.contentitem-right {
+  width: 440rpx;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-left: 30rpx;
+}
+
+.item-name {
+  font-size: 26rpx;
+  font-family: PingFang SC;
+  font-weight: 500;
+  color: rgba(21, 21, 21, 1);
+}
+
+.serve {
+  padding: 4rpx 24rpx;
+  box-sizing: border-box;
+  background: rgba(240, 240, 240, 1);
+  border-radius: 24rpx;
+  font-size: 24rpx;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: rgba(21, 21, 21, 1);
+  /* width: 320rpx; */
+  margin-top: 8rpx;
+}
+
+.selectserve {
+  margin-right: 10rpx;
+  margin-left: 10rpx;
+}
+
+.card-money {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.discounts-money {
+  color: #f00;
+  line-height: 26rpx;
+  display: flex;
+  align-items: center;
+}
+
+.money-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  font-family: 'PingFang-SC-Bold';
+}
+
+.money-number {
+  font-family: 'PingFang-SC-Medium';
+  font-size: 34rpx;
+  font-weight: 500;
+  margin-left: 3rpx;
+}
+
+.num {
+  font-size: 28rpx;
+  font-weight: 500;
+  color: rgba(51, 51, 51, 1);
+}
+
+/* plus */
+
+.plus-card {
+  margin-top: 20rpx;
+  width: 100%;
+  height: 75rpx;
+  background: rgba(255, 255, 255, 1);
+  border-radius: 10rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* dingdan-card */
+
+.dingdan-card {
+  margin-top: 20rpx;
+  width: 100%;
+  height: 172rpx;
+  background: rgba(255, 255, 255, 1);
+  border-radius: 10rpx;
+  padding: 24rpx;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.dingdan-card-item {
+  display: flex;
+  align-items: center;
+}
+
+.dingitem-ziti {
+  min-width: 128rpx;
+  font-size: 26rpx;
+  font-weight: 400;
+  color: rgba(102, 102, 102, 1);
+}
+
+.fuzhi {
+  width: 69rpx;
+  height: 31rpx;
+  background: rgba(229, 229, 229, 1);
+  border-radius: 10rpx;
+  text-align: center;
+  line-height: 31rpx;
+  font-size: 22rpx;
+  font-weight: 400;
+  color: rgba(21, 21, 21, 1);
+}
+
+/* yunfei */
+
+.yunfei-card {
+  margin-top: 20rpx;
+  width: 100%;
+  height: 204rpx;
+  background: rgba(255, 255, 255, 1);
+  border-radius: 10rpx;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+
+.yifu {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+
