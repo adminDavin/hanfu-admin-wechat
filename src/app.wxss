@@ -2,3 +2,9 @@
 .style{
   margin-top: 10rpx
 }
+.row {
+  display: flex;
+}
+.row view {
+  margin: 5rpx;
+}

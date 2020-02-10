@@ -18,6 +18,12 @@ Component({
    * 组件的方法列表
    */
   methods: {
+    onSelectedMore: function (e) {
+      console.log(e);
+      wx.navigateTo({
+        url: '/pages/product/seckill/list',
+      })
+    }
 
   },
 

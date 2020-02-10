@@ -1,2 +1,1 @@
-<!--pages/home/components/flash-sale.wxml-->
-<text>pages/home/components/flash-sale.wxml</text>
+<button bindtap="onSelectedMore">查看更多</button>

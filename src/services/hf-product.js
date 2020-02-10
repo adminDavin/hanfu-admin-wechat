@@ -90,6 +90,7 @@ function getProducts(params, handleResult) {
 }
 
 function getCategory(params = {}, handleResult) {
+  params.quantity = 3;
   wx.request({
     url: app.endpoint.product + '/product/category',
     data: params,
@@ -100,11 +101,50 @@ function getCategory(params = {}, handleResult) {
   });
 }
 
+function getProductGroup(params = {}, handleResult) {
+  params.quantity = 3;
+  wx.request({
+    url: app.endpoint.product + '/hfProduct/getProductsForRotation',
+    data: params,
+    success: res => handleResult(res),
+    fail: (res) => {
+      console.log(params, res);
+    }
+  });
+}
+
+function getSeckillTimeBar(handleResult) {
+  let params = {};
+  params.quantity = 3;
+  wx.request({
+    url: app.endpoint.product + '/hfProduct/getProductsForRotation',
+    data: params,
+    success: res => handleResult(res),
+    fail: (res) => {
+      console.log(params, res);
+    }
+  });
+}
+
+function getProductSeckill(params = {}, handleResult) {
+  params.quantity = 3;
+  wx.request({
+    url: app.endpoint.product + '/hfProduct/getProductsForRotation',
+    data: params,
+    success: res => handleResult(res),
+    fail: (res) => {
+      console.log(params, res);
+    }
+  });
+}
 export default {
   getProductForRotation: getProductForRotation,
   getProductDetail: getProductDetail,
   getTopRanking: getTopRanking,
   getCategory: getCategory,
   getRotation: getRotation,
-  getProducts: getProducts
+  getProducts: getProducts,
+  getProductGroup: getProductGroup,
+  getProductSeckill: getProductSeckill,
+  getSeckillTimeBar: getSeckillTimeBar
 };
