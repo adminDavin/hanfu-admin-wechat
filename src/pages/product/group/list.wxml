@@ -1,4 +1,4 @@
-<scroll-view scroll-y="true" style="height:{{scrollH}}px" bindscrolltolower="loadImages">
+<scroll-view scroll-y="true" style="height:{{scrollH}}px;margin:24rpx 0" bindscrolltolower="loadImages">
     <view wx:for="{{productGroups}}" wx:key="id">
         <view class="flex-row p10" style="display: flex;" bind:tap="onSeletedProduct" data-item="{{item}}">
             <image class="flex-view-item" src="{{item.imageUrl}}" style="width:40%;height:250rpx"></image>

@@ -1,1 +1,6 @@
 /* pages/home/components/group-buy.wxss */
+.p10{
+  margin-bottom: 20rpx;
+  padding:0 24rpx;
+  box-sizing: border-box
+}

@@ -6,20 +6,19 @@ import projectUtils from '../../../utils/project-utils.js';
 Page({
 
   /**
-   * Page initial data
+   * Page initial dataccc
    */
   data: {
+    slotLen:true,
     isCloseTimingTask: false,
     scrollH: 0,
     slots: [
       {sTime: "10:00", isActivity: true, startTime: "2020-02-10T07:26:29.357Z", desc: '抢购中' },
       { sTime: "14:00", isActivity: true, startTime: "2020-02-10T09:26:29.357Z", desc: '即将开始' },
-      { sTime: "16:00", isActivity: true, startTime: "2020-02-10T09:26:29.357Z", desc: '即将开始' },
-      { sTime: "18:00", isActivity: true, startTime: "2020-02-10T09:26:29.357Z", desc: '即将开始' }
+      { sTime: "16:00", isActivity: true, startTime: "2020-02-10T09:26:29.357Z", desc: '即将开始' }
     ],
     selectedSlot: {},
     productSecKillData: [],
-
   },
 
   /**
@@ -34,6 +33,12 @@ Page({
   updateData: function (selectedTime) {
     productApi.getProductSeckill({ currentTime: selectedTime }, (res) => {
       let productSecKillData = res.data.data;
+      console.log(productSecKillData)
+      if (productSecKillData.length>4){
+        this.setData({slotLen:false})
+      }else{
+        this.setData({slotLen: true})
+      }
       requestUtils.setImageUrls(productSecKillData);
       this.setData({
         productSecKillData: productSecKillData,
@@ -79,13 +84,23 @@ Page({
     });
   },
   onSelectedTime: function (e) {
+    let index=e.currentTarget.dataset.ind;
+    console.log(e)
+    this.setData({ currentTab:index})
     let selectedSlot = e.currentTarget.dataset.item;
+    console.log(selectedSlot)
     let updateData = this.data.selectedSlot.sTime == selectedSlot.sTime ? {} : { selectedSlot: selectedSlot };
     productApi.getProductSeckill(selectedSlot, (res) => {
       let productSecKillData = res.data.data;
       requestUtils.setImageUrls(productSecKillData);
       updateData.productSecKillData = productSecKillData;
       this.setData(updateData);
+    });
+  },
+  onSeletedProduct: function (e) {
+    let selected = e.currentTarget.dataset.item;
+    wx.navigateTo({
+      url: '/pages/product/detail?productId=' + selected.id
     });
   },
   /**

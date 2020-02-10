@@ -1,1 +1,20 @@
 /* src/pages/product/seckill/list.wxss */
+.row{
+  height:120rpx;
+}
+.item{
+  width:160rpx;
+  text-align: center;
+}
+.p10{
+  margin-bottom:20rpx;
+  padding:0 24rpx;
+  box-sizing: border-box
+}
+.swiper-tab-list{  font-size: 30rpx;
+    display: inline-block;
+    width: 33.33%;
+    color: #777777;
+}
+.on{ color: red;
+    border-bottom: 3rpx solid red;}
