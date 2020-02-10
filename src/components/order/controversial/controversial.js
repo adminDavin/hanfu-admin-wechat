@@ -36,8 +36,23 @@ Component({
         }
       })
     },
-    cancel(){
-      
+    cancel() {
+      orderApi.modifyStatus(this.properties.hfOrder.id, this.properties.hfOrder.orderCode, this.properties.hfOrder.orderStatus, 'payment', (res) => {
+        let data = res.data.data;
+        console.log(data)
+        if (1) {
+          wx.showToast({
+            title: '订单退款申请成功',
+            icon: 'success',
+            duration: 2000,
+            success: function () {
+              wx.redirectTo({
+                url: '/pages/order/list?action=payment',
+              })
+            }
+          })
+        }
+      })
     },
     remind() {
       wx.showToast({

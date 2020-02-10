@@ -1,0 +1,3 @@
+<!--src/pages/order/mock/mock.wxml-->
+<text>src/pages/order/mock/mock.wxml</text>
+<view bindtap="todetail">点击</view>

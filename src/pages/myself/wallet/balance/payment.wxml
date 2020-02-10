@@ -21,7 +21,7 @@
   <!-- </view> -->
   <!-- <image src="/pages/images/tabs/36542ad2bcfcab377e9fa0e2c5bf9fb1fc84950d925e-zP5HbN.png" /> -->
 </view>
-<view class="pay-num">
+<view class="pay-num" wx:if="{{qrshow==false}}">
   <text class="pay-num-title">金额</text>
   <view class="numinput">
       <view class="numtop">
@@ -31,4 +31,4 @@
   </view>
       <button class="numBottom" bindtap="onCreateCode" >付款</button>
 </view> 
-<qrcode wx:if="qrshow==true" qradd="{{qrAdd}}" bind:hiddenQr="hiddenQr"></qrcode>
+<qrcode wx:if="{{qrshow==true}}" qradd="{{qrAdd}}" bind:hiddenQr="hiddenQr"></qrcode>

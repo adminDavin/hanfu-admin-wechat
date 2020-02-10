@@ -1,13 +1,15 @@
 // components/order/payment.js
 import orderApi from '../../../services/hf-order.js';
+import paymentApi from '../../../services/hf-payment.js';
+const app = getApp();
 Component({
   /**
    * 组件的属性列表
    */
   properties: {
-    hfOrder:{
-      type:Object,
-      value:{}
+    hfOrder: {
+      type: Object,
+      value: {}
     }
   },
 
@@ -15,25 +17,25 @@ Component({
    * 组件的初始数据
    */
   data: {
-    qrshow:false,
+    qrshow: false,
+    qrAdd:''
   },
 
   /**
    * 组件的方法列表
    */
   methods: {
-    guanbi: function () {
-      var that = this;
-      that.setData({
+    hiddenQr() {
+      this.setData({
         qrshow: false
       })
     },
     copy() {
       wx.setClipboardData({
         data: this.properties.hfOrder.orderCode,
-        success: function (res) {
+        success: function(res) {
           wx.getClipboardData({
-            success: function (res) {
+            success: function(res) {
               wx.showToast({
                 title: '复制成功'
               })
@@ -43,17 +45,20 @@ Component({
       })
     },
     refund() {
-      paymentOrder.refundOrder({ userId: this.properties.hfOrder.userId, orderCode: this.properties.hfOrder.orderCode }, (res) => {
+      paymentApi.refundOrder({
+        userId: this.properties.hfOrder.userId,
+        orderCode: this.properties.hfOrder.orderCode
+      }, (res) => {
         let data = res.data;
         console.log(data)
       })
     },
-    pickup(){
+    pickup() {
       let qrUrl = app.endpoint.order + '/cancel/activity/create/activity-code'
       this.setData({
-        qrshow:true,
-        qrAdd: qrUrl + '?goodsId=' + this.properties.hfOrder.goodsId+ '&orderId'+this.properties.hfOrder.orderCode
-        })
+        qrAdd: qrUrl + '?goodsId=' + this.properties.hfOrder.goodsId + '&orderId' + this.properties.hfOrder.id,
+        qrshow: true
+      })
     }
   }
 })

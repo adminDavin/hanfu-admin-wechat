@@ -1,28 +1,36 @@
 // src/pages/myself/wallet/balance/payment.js
+const app = getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    qrshow: false,
+    qrAdd: '',
+    money:''
   },
 
   // 点击充值显示弹框
   onCreateCode: function () {
-    wx.navigateTo({
-      // url: '/pages/login/index',
-    });
+    // console.log(1234)
+    this.setData({
+      qrshow: true
+    })
+    let qrUrl = app.endpoint.payment + '/balance/activity/payment/activity-code'
+    this.setData({
+      qrAdd: qrUrl + '?money=' + this.data.money + '&userld' + wx.getStorageSync('userId'),
+      qrshow: true
+    })
+    console.log(this.data.qrshow)
   },
   /**
   * 组件的方法列表
   */
-  methods: {
-    hiddenQr() {
-      this.setData({
-        qrshow: false
-      })
-    },
+  // methods: {
+    // onCreateCode() {
+     
+    // },
     // copy() {
     //   wx.setClipboardData({
     //     data: this.properties.hfOrder.orderCode,
@@ -46,15 +54,14 @@ Page({
     //     console.log(data)
     //   })
     // },
-    pickup() {
-      let qrUrl = app.endpoint.order + '/cancel/activity/create/activity-code'
+  bindKeyInput: function (e) {
+    console.log(e);
       this.setData({
-        qrAdd: qrUrl + '?goodsId=' + this.properties.hfOrder.goodsId + '&orderId' + this.properties.hfOrder.orderCode,
-        qrshow: true
+        money: e.detail.value
       })
-      console.log(this.data.qrshow)
-    }
+    console.log(this.data.money);
   },
+  // },
   /**
    * 生命周期函数--监听页面加载
    */

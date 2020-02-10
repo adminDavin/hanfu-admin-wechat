@@ -45,8 +45,9 @@ Component({
       let params={
         image: this.properties.hfOrder.image,
         goodsName: this.properties.hfOrder.goodsName,
-        id: this.properties.hfOrder.id,
-        orderCode: this.properties.hfOrder.orderCode
+        goodsId: this.properties.hfOrder.goodsId,
+        orderCode: this.properties.hfOrder.orderCode,
+        userId: this.properties.hfOrder.userId
       }
       wx.navigateTo({
         url: '/pages/myself/evaluated/dryinglist/dryinglist?params=' + encodeURIComponent(JSON.stringify(params))

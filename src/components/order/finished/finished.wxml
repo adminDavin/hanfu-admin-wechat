@@ -14,7 +14,7 @@
       <image src="{{hfOrder.image}}" style="width:230rpx;height:230rpx"></image>
       <view class="contentitem-right" style="justify-content: flex-start;">
         <text class="item-name">{{hfOrder.goodsName}}</text>
-        <view class="pingjia" bindtap="evalute">评价</view>
+        <view class="pingjia" bindtap="evaluate">评价</view>
       </view>
     </view>
   </view>

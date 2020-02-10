@@ -58,14 +58,9 @@ function modifyStatus(id, orderCode, originOrderStatus, targetOrderStatus, handl
     }
   });
 }
-function qrCode(userId, goodsId,orderId,handleResult) {
-  let params = {
-    userId: userId,
-    goodsId:goodsId,
-    orderId:orderId
-  };
+function qrCode(url,params,handleResult) {
   wx.request({
-    url: app.endpoint.order + '/hf-order/statistics',
+    url: url,
     data: params,
     success: res => handleResult(res),
     fail: (res) => {

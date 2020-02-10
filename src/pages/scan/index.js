@@ -1,11 +1,63 @@
 // src/pages/scan/index.js
 const app = getApp()
+import util from '../../utils/util.js';
+import orderApi from '../../services/hf-order.js';
 Page({
 
   data: {
     result: ''
   },
-
+  pickupScancode(){
+    var that=this;
+    let url = app.endpoint.order + '/cancel/testCancel'
+    let userId = wx.getStorageSync('userId');
+    if (util.isEmpty(userId)) {
+      wx.navigateTo({
+        url: '/pages/login/index?orderStatus=payment',
+      });
+    } else{
+      wx.scanCode({
+        success: (res) => {
+          let qrl = JSON.parse(res.result)
+          console.log(qrl)
+          let params = {
+            userId: userId,
+            UgoodsId: qrl[0].goodsId,
+            UorderId: qrl[0].orderId
+          };
+          // orderApi.qrCode(url,params,(res)=>{
+          //   console.log(res)
+          // })
+        }
+      })
+    }
+  },
+  payScancode(){
+    var that = this;
+    let url = app.endpoint.payment + '/balance/payment '
+    let userId = wx.getStorageSync('userId');
+    if (util.isEmpty(userId)) {
+      wx.navigateTo({
+        url: '/pages/login/index?orderStatus=payment',
+      });
+    } else {
+      wx.scanCode({
+        success: (res) => {
+          let qrl = JSON.parse(res.result)
+          console.log(qrl)
+          let params = {
+            userId: qrl[0].userId,
+            qrCode:qrl[0].qrCode,
+            qrCodeType: qrl[0].qrCodeType,
+            userCancelId: userId
+          };
+          // orderApi.qrCode(url,params,(res)=>{
+          //   console.log(res)
+          // })
+        }
+      })
+    }
+  },
   /**
    * 生命周期函数--监听页面加载
    */

@@ -1,4 +1,6 @@
 {
   "component": true,
-  "usingComponents": {}
+  "usingComponents": {
+    "qrcode": "/components/showcode/showcode"
+  }
 }

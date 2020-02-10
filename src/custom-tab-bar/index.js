@@ -23,7 +23,7 @@ Component({
                 iconPath: "/images/saoyisao.png",
                 selectedIconPath: "/images/saoyisao.png",
                 text: "",
-                isSpecial: false
+                isSpecial: true
             }, {
                 pagePath: "/pages/discover/index",
                 iconPath: "/images/discover.png",
