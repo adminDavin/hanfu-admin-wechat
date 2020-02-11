@@ -141,7 +141,11 @@ Page({
 
   },
   onSelectedwallet: function(e) {
-    this.handleSelected('/pages/myself/wallet/index', e.currentTarget.dataset.action);
+    if (e.currentTarget.dataset.action =='coupon') {
+      this.handleSelected('/pages/myself/coupons/coupons', e.currentTarget.dataset.action);
+    }else {
+      this.handleSelected('/pages/myself/wallet/index', e.currentTarget.dataset.action);
+    }
   },
   onSelectedProduct: function(e) {
     let item = e.currentTarget.dataset;

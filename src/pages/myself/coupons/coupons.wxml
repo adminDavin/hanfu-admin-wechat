@@ -1,0 +1,59 @@
+<!--src/pages/myself/coupons/coupons.wxml-->
+<view class="discount">
+    <!-- 优惠券 -->
+    <van-tabs active="a">
+        <van-tab  title="未使用" name="a">
+             <view wx:for="{{unused}}" class="discount-boxs">
+                <view class="discount-box">
+                    <view class="discount-number red">
+                        <text class="number-money">¥{{item.couponsInfo.reduce}}</text>
+                        <text class="money-discount">满{{item.couponsInfo.threshold}}元可用</text>
+                    </view>
+                    <view class="discount-content">
+                        <text class="content-title">{{item.hfName}}</text>
+                        <view class="content-user">
+                            <text class="content-time">{{item.effectiveDate}}~{{item.expireDate}}</text>
+                            <view class="outmoded">已使用</view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </van-tab>
+        <van-tab  title="已使用" name="b">
+         <view wx:for="{{use}}" class="discount-boxs">
+                <view class="discount-box">
+                    <view class="discount-number gray">
+                        <text class="number-money">¥{{item.couponsInfo.reduce}}</text>
+                        <text class="money-discount">满{{item.couponsInfo.threshold}}元可用</text>
+                    </view>
+                    <view class="discount-content">
+                        <text class="content-title">{{item.hfName}}</text>
+                        <view class="content-user">
+                            <text class="content-time">{{item.effectiveDate}}~{{item.expireDate}}</text>
+                            <view class="outmoded">已使用</view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+          </van-tab>
+
+          <van-tab  title="已过期" name="b">
+        <view wx:for="{{outmoded}}" class="discount-boxs">
+                <view class="discount-box">
+                    <view class="discount-number gray">
+                        <text class="number-money">¥{{item.couponsInfo.reduce}}</text>
+                        <text class="money-discount">满{{item.couponsInfo.threshold}}元可用</text>
+                    </view>
+                    <view class="discount-content">
+                        <text class="content-title">{{item.hfName}}</text>
+                        <view class="content-user">
+                            <text class="content-time">{{item.effectiveDate}}~{{item.expireDate}}</text>
+                            <view class="outmoded">已使用</view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+          </van-tab>
+    </van-tabs>
+    <view class="discount-footer">不使用优惠</view>
+</view>

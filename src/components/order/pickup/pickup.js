@@ -56,7 +56,7 @@ Component({
     pickup() {
       let qrUrl = app.endpoint.order + '/cancel/activity/create/activity-code'
       this.setData({
-        qrAdd: qrUrl + '?goodsId=' + this.properties.hfOrder.goodsId + '&orderId' + this.properties.hfOrder.id,
+        qrAdd: qrUrl + '?goodsId=' + this.properties.hfOrder.goodsId + '&orderId=' + this.properties.hfOrder.id,
         qrshow: true
       })
     }

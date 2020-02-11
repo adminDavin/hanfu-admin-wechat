@@ -22,7 +22,19 @@ function modifyUserInfo(params = {}, handleResult) {
   });
 }
 
+function selectCoupons(params = {}, handleResult) {
+  wx.request({
+    url: app.endpoint.payment + '/Coupons/selectCoupons?userId=' + wx.getStorageSync('userId') + '&status=' + params,
+  
+    success: res => handleResult(res),
+    fail: (res) => {
+      console.log(params, res);
+    }
+  });
+}
+
 export default {
   login: login,
-  modifyUserInfo: modifyUserInfo
+  modifyUserInfo: modifyUserInfo,
+  selectCoupons: selectCoupons
 };

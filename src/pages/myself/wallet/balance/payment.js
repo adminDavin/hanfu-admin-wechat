@@ -13,7 +13,7 @@ Page({
 
   // 点击充值显示弹框
   onCreateCode: function () {
-    // console.log(1234)
+    // console.log(wx.getStorageSync('userId'))
     this.setData({
       qrshow: true
     })
