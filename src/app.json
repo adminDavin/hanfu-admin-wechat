@@ -1,7 +1,8 @@
 {
   "pages": [
-    "pages/myself/index",
     "pages/home/index",
+    "pages/product/seckill/list",
+    "pages/myself/index",
     "pages/category/index",
     "pages/discover/index",
     "pages/scan/index",
@@ -23,7 +24,8 @@
     "pages/myself/vipRecharge/vip",
     "pages/payment/shopping",
     "pages/myself/evaluated/dryinglist/dryinglist",
-    "pages/myself/coupons/coupons"
+    "pages/myself/coupons/coupons",
+    "pages/product/group/list"
   ],
   "usingComponents": {
     "van-tab": "./pages/vant/weapp/dist/tab/index",
@@ -35,7 +37,7 @@
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTextStyle": "black",
-    "navigationBarTitleText": "Demo"
+    "navigationBarTitleText": "思維商城"
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json",

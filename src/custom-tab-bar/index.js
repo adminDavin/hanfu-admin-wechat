@@ -48,7 +48,10 @@ Component({
             let path = dataset.path;
             let index = dataset.index;
             // 如果是特殊跳转界面
+          console.log(dataset);
             if (this.data.list[index].isSpecial) {
+                console.log(dataset);
+
                 wx.navigateTo({
                     url: path
                 });
@@ -57,9 +60,6 @@ Component({
                 wx.switchTab({
                     url: path
                 });
-                // this.setData({
-                //   selected: index
-                // });
             }
         }
     }
