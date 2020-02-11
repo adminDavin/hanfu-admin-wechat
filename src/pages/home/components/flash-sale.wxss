@@ -1,1 +1,8 @@
 /* pages/home/components/flash-sale.wxss */
+.swiper-tab-list{  font-size: 30rpx;
+    display: inline-block;
+    width: 33.33%;
+    color: #777777;
+}
+.on{ color: red;
+    border-bottom: 3rpx solid red;}

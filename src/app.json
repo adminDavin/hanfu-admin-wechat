@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/product/seckill/list",
     "pages/home/index",
+    "pages/product/seckill/list",
     "pages/myself/index",
     "pages/category/index",
     "pages/discover/index",
