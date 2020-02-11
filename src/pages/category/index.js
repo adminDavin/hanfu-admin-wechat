@@ -26,7 +26,7 @@ Page({
   goThreeLevel: function (e) {
     let categoryId = e.currentTarget.dataset.categoryid;
     wx.navigateTo({
-      url: `/pages/product/list?action=category&categoryId=${categoryId}`,
+     url: `/pages/product/list?action=category&categoryId=${categoryId}`,
     })
   },
 

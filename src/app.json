@@ -24,6 +24,7 @@
     "pages/myself/vipRecharge/vip",
     "pages/payment/shopping",
     "pages/myself/evaluated/dryinglist/dryinglist",
+    "pages/myself/coupons/coupons",
     "pages/product/group/list"
   ],
   "usingComponents": {

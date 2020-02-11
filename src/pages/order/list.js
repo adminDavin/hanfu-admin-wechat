@@ -65,7 +65,7 @@ Page({
       });
     } else {
       options.userId = userId;
-      if (typeof(options.action) == 'undefined') {
+      if (typeof (options.action) == 'undefined' || options.action == 'finished') {
         options.action = "all";
       } else {
         let orderStatuses = this.data.orderStatuses;
