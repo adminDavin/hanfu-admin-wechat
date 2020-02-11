@@ -1,6 +1,5 @@
-const app = getApp();
-
 import productApi from '../../../services/hf-product.js';
+import requestUtils from '../../../services/request-utils.js';
 import util from '../../../utils/util.js';
 
 
@@ -32,24 +31,21 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    onClickRanking: function(e) {
+    onClickRanking: function (e) {
       let selected = e.currentTarget.dataset.item;
+      
       wx.navigateTo({
-        url: '/pages/product/list?rankingId=' + selected.id
+        url: '/pages/product/list?action=chosen&rankingId=' + selected.id
       });
     }
   },
   lifetimes: {
     attached: function () {
-      // 在组件实例进入页面节点树时执行
-     productApi.getTopRanking((res) => {
+      productApi.getTopRanking((res) => {
         let rankings = res.data.data;
-        for (let ranking of rankings) {
-          if (util.isRealNum(ranking.fileId)) {
-            ranking.imageUrl = app.endpoint.file + '/goods/getFile?fileId=' + ranking.fileId;
-          }
-        }
         
+        requestUtils.setImageUrls(rankings);
+
         this.setData({
           rankingData: rankings,
           scrollH: this.properties.scrollH,
@@ -57,8 +53,6 @@ Component({
         });
       });
     },
-    detached: function () {
-      // 在组件实例被从页面节点树移除时执行
-    },
+    detached: function () { },
   }
 })

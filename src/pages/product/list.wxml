@@ -52,7 +52,7 @@
                     <text class="price-title">全部分类</text>
                     <view class="subject-title">
                         <text class="title-subject">分类</text>
-                        <image src="../../images/tabs/jinru (2).png" class="subject-image" />
+                        <!-- <image src="../../images/tabs/jinru (2).png" class="subject-image" /> -->
                     </view>
                     <view class="subject-table">
                         <text class="tag"></text>
@@ -74,5 +74,5 @@
     </view>
 </view>
 <view>
-    <product-list scrollH="{{scrollH}}" imgWidth="{{imgWidth}}" wx:if="{{lists==false}}"></product-list>
+    <product-list scrollH="{{scrollH}}" imgWidth="{{imgWidth}}" wx:if="{{lists==false}}" parameters="{{parameters}}" ></product-list>
 </view>

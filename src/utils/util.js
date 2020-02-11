@@ -67,10 +67,42 @@ function isEmpty(obj) {
   }
 }
 
+function getCurrentGMTString() {
+  let odate = new Date();
+  return odate.toISOString();
+}
+
+function myTimeToLocal(inputTime) {
+  if (!inputTime && typeof inputTime !== 'number') {
+    return '';
+  }
+  var localTime = '';
+  inputTime = new Date(inputTime).getTime();
+  const offset = (new Date()).getTimezoneOffset();
+  localTime = (new Date(inputTime - offset * 60000)).toISOString();
+  localTime = localTime.substr(0, localTime.lastIndexOf('.'));
+  localTime = localTime.replace('T', ' ');
+  return localTime;
+}
+
+function getInterveMilSecond(startTime, endTime) {
+  let date3 = endTime.getTime() - startTime.getTime();   //时间差的毫秒数        
+  return date3 % (24 * 3600 * 1000);
+}
+
+function getInterveMinSecond(startTime, endTime) {
+  let leave1 = getInterveMilSecond(startTime, endTime);
+  return Math.floor(leave1 / (60 * 1000));
+}
+
 module.exports = {
   formatTime: formatTime,
   getNum: getNum,
   formatDate: formatDate,
   isRealNum: isRealNum,
-  isEmpty: isEmpty
+  isEmpty: isEmpty,
+  getCurrentGMTString: getCurrentGMTString,
+  myTimeToLocal: myTimeToLocal,
+  getInterveMinSecond: getInterveMinSecond
+  
 }

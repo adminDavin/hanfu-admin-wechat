@@ -15,9 +15,6 @@ Page({
       action: 'collection',
       desc: "商品收藏"
     }, {
-      action: 'follow',
-      desc: "店铺关注"
-    }, {
       action: 'history',
       desc: "浏览历史"
     }],

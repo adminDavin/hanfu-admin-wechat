@@ -1,4 +1,4 @@
-/* pages/home/components/group-buy.wxss */
+/* src/pages/product/group/list.wxss */
 .p10{
   margin-bottom: 20rpx;
   padding:0 24rpx;
