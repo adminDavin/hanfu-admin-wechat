@@ -50,7 +50,7 @@ function modifyStatus(id, orderCode, originOrderStatus, targetOrderStatus, handl
     targetOrderStatus: targetOrderStatus
   };
   wx.request({
-    url: app.endpoint.order + '/hf-order/modify-status',
+    url: app.endpoint.order + '/hf-order/modifystatus',
     data: params,
     success: res => handleResult(res),
     fail: (res) => {
