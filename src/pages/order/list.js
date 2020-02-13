@@ -142,8 +142,14 @@ Page({
     }
   },
   onSelectedOrder: function(e) {
-    wx.navigateTo({
-      url: '/pages/order/detail?hfOrder=' + encodeURIComponent(JSON.stringify(e.currentTarget.dataset.hfOrder)),
-    })
+    if (e.currentTarget.dataset.hfOrder.orderType =='shoppingOrder'){
+      wx.navigateTo({
+        url: '/pages/payment/payment?userId=' + e.currentTarget.dataset.hfOrder.userId + '&outTradeNo=' + e.currentTarget.dataset.hfOrder.orderCode + '&paymentName=' + e.currentTarget.dataset.hfOrder.paymentName,
+      })
+    }else{
+      wx.redirectTo({
+        url: '/pages/order/detail?hfOrder=' + encodeURIComponent(JSON.stringify(e.currentTarget.dataset.hfOrder)),
+      })
+    }
   }
 })

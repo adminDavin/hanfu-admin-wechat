@@ -19,10 +19,10 @@ Page({
     })
     let qrUrl = app.endpoint.payment + '/balance/activity/payment/activity-code'
     this.setData({
-      qrAdd: qrUrl + '?money=' + this.data.money + '&userld' + wx.getStorageSync('userId'),
+      qrAdd: qrUrl + '?money=' + this.data.money + '&userld=' + wx.getStorageSync('userId'),
       qrshow: true
     })
-    console.log(this.data.qrshow)
+    console.log(qrUrl)
   },
   /**
   * 组件的方法列表

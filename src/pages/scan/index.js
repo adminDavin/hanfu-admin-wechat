@@ -87,9 +87,9 @@ Page({
             qrCodeType: qrl[0].qrCodeType,
             userCancelId: userId
           };
-          // orderApi.qrCode(url,params,(res)=>{
-          //   console.log(res)
-          // })
+          orderApi.qrCode(url,params,(res)=>{
+            console.log(res)
+          })
         }
       })
     }
