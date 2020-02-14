@@ -10,7 +10,11 @@ Page({
     qrAdd: '',
     money:''
   },
-
+  hiddenQr() {
+    this.setData({
+      qrshow: false
+    })
+  },
   // 点击充值显示弹框
   onCreateCode: function () {
     // console.log(wx.getStorageSync('userId'))
