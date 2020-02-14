@@ -7,8 +7,11 @@ Page({
    */
   data: {
     unused: [],
+    unusedEach:[],
     use: [],
-    outmoded: []
+    useEach: [],
+    outmoded: [],
+    outmodedEach: []
   },
  
 
@@ -58,29 +61,40 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    
     hfOrderApi.selectCoupons('unused', (res) => {
       console.log(res.data.data);
+      
+      let unused = res.data.data
+      for (let unusedEach of unused) {
+        unusedEach.couponsEach = JSON.parse(unusedEach.couponsInfo)
+      };
       this.setData({
         unused: res.data.data,
-        // hfOrdersAll: res.data.data
       });
-      console.log(this.data.hfOrders)
+      console.log(unused)
     });
     hfOrderApi.selectCoupons('use', (res) => {
       console.log(res.data.data);
+      let uses = res.data.data
+      for (let useEach of uses) {
+        useEach.couponsEach = JSON.parse(useEach.couponsInfo)
+      }
       this.setData({
         use: res.data.data,
-        // hfOrdersAll: res.data.data
       });
-      console.log(this.data.hfOrders)
+      console.log(uses)
     });
     hfOrderApi.selectCoupons('outmoded', (res) => {
       console.log(res.data.data);
+      let outmoded = res.data.data
+      for (let outmodedEach of outmoded) {
+        outmodedEach.couponsEach = JSON.parse(outmodedEach.couponsInfo)
+      }
       this.setData({
         outmoded: res.data.data,
-        // hfOrdersAll: res.data.data
       });
-      console.log(this.data.hfOrders)
+      console.log(outmoded)
     });
   },
 
