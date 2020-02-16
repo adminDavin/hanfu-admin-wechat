@@ -10,7 +10,11 @@ Page({
     qrAdd: '',
     money:''
   },
-
+  hiddenQr() {
+    this.setData({
+      qrshow: false
+    })
+  },
   // 点击充值显示弹框
   onCreateCode: function () {
     // console.log(wx.getStorageSync('userId'))
@@ -19,10 +23,10 @@ Page({
     })
     let qrUrl = app.endpoint.payment + '/balance/activity/payment/activity-code'
     this.setData({
-      qrAdd: qrUrl + '?money=' + this.data.money + '&userld' + wx.getStorageSync('userId'),
+      qrAdd: qrUrl + '?money=' + this.data.money + '&userld=' + wx.getStorageSync('userId'),
       qrshow: true
     })
-    console.log(this.data.qrshow)
+    console.log(qrUrl)
   },
   /**
   * 组件的方法列表

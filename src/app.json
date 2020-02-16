@@ -18,6 +18,7 @@
     "pages/myself/qr-code/index",
     "pages/myself/wallet/balance/payment",
     "pages/order/detail",
+    "pages/order/mock/mock",
     "pages/payment/payment",
     "pages/myself/address/newAddress/new",
     "pages/myself/address/alterAddress/aiter",

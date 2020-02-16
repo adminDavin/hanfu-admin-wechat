@@ -69,7 +69,7 @@ Page({
     }
   },
   onCreateOrder: function (e) {
-    if (! util.isRealNum(this.data.amount)) {
+    if (!util.isRealNum(this.data.amount)) {
       wx.showModal({
         title: '输入的金额不合法',
         content: '您输入的是' + this.data.amount,
