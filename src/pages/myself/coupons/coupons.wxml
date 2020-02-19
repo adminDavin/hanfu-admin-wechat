@@ -6,8 +6,8 @@
              <view wx:for="{{unused}}" class="discount-boxs">
                 <view class="discount-box">
                     <view class="discount-number red">
-                        <text class="number-money">¥{{item.couponsInfo.reduce}}</text>
-                        <text class="money-discount">满{{item.couponsInfo.threshold}}元可用</text>
+                        <text class="number-money">¥{{item.couponsEach.reduce}}</text>
+                        <text class="money-discount">满{{item.couponsEach.threshold}}元可用</text>
                     </view>
                     <view class="discount-content">
                         <text class="content-title">{{item.hfName}}</text>
@@ -23,8 +23,8 @@
          <view wx:for="{{use}}" class="discount-boxs">
                 <view class="discount-box">
                     <view class="discount-number gray">
-                        <text class="number-money">¥{{item.couponsInfo.reduce}}</text>
-                        <text class="money-discount">满{{item.couponsInfo.threshold}}元可用</text>
+                        <text class="number-money">¥{{item.couponsEach.reduce}}</text>
+                        <text class="money-discount">满{{item.couponsEach.threshold}}元可用</text>
                     </view>
                     <view class="discount-content">
                         <text class="content-title">{{item.hfName}}</text>
@@ -41,8 +41,8 @@
         <view wx:for="{{outmoded}}" class="discount-boxs">
                 <view class="discount-box">
                     <view class="discount-number gray">
-                        <text class="number-money">¥{{item.couponsInfo.reduce}}</text>
-                        <text class="money-discount">满{{item.couponsInfo.threshold}}元可用</text>
+                        <text class="number-money">¥{{item.couponsEach.reduce}}</text>
+                        <text class="money-discount">满{{item.couponsEach.threshold}}元可用</text>
                     </view>
                     <view class="discount-content">
                         <text class="content-title">{{item.hfName}}</text>

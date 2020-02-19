@@ -5,15 +5,16 @@ import productApi from '../../services/hf-product.js';
 import goodsApi from '../../services/hf-goods.js';
 import util from '../../utils/util.js';
 
-
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    collects: false,// 点赞按钮
+    slideNumber: '1', //详情滑动跳动数字
     current: 0,
-    indicatorDots: true,
+    indicatorDots: false,
     autoplay: true,
     interval: 3000,
     duration: 800,
@@ -46,7 +47,7 @@ Page({
       }
     });
   },
-
+ 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -159,6 +160,35 @@ Page({
       }
       console.log(this)
     }.bind(this), 200)
+  },
+
+  //详情滑动跳动数字
+  current: function (e) {
+    console.log(e)
+    var that = this
+    that.setData({
+      slideNumber: e.detail.current + 1
+    })
+  },
+
+  //关注
+  collect: function () {
+    var that = this;
+    if (that.data.collects) {
+      that.setData({
+        collects: !that.data.collects,
+      })
+      wx.showToast({
+        title: '取消关注',
+      });
+    } else {
+      that.setData({
+        collects: !that.data.collects,
+      })
+      wx.showToast({
+        title: '关注成功',
+      });
+    }
   },
 
     /**
