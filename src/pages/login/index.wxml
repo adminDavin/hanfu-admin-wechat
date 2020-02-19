@@ -1,4 +1,4 @@
-<view wx:if="{{!isAuth}}">
+<!-- <view wx:if="{{!isAuth}}">
   <view class='headView'>
     <open-data class='headImageView' type="userAvatarUrl"></open-data>
     <open-data type="userNickName"></open-data>
@@ -38,4 +38,25 @@
       <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">获取手机号</button>
     </view>
   </view>
+</view> -->
+
+
+<view class="register">
+  <text class="register-title">登录以使用更多服务</text>
+  <view class="register-input">
+    <view class="input-box input-bottom">
+      <view class="input-tu">
+        <image style="width: 46rpx; height: 46rpx" src="../../images/login/phone.png"></image>
+      </view>
+      <input  type='number' class="input-text" maxlength="11" value="{{phone}}" placeholder="请输入手机号" bindinput="phone" />
+    </view>
+    <view class="input-box">
+      <view class="input-tu">
+        <image style="width: 48rpx; height: 48rpx" src="../../images/login/captcha.png"></image>
+      </view>
+      <input type="username" class="input-text" value="{{captcha}}" placeholder="请输入验证码" />
+      <view class="button-y" bindtap="huoQu">获取验证码</view>
+    </view>
+  </view>
+  <view class="register-deng" bindtap="submit">登录</view>
 </view>
