@@ -70,7 +70,7 @@ Page({
   },
   payScancode(){
     var that = this;
-    let url = app.endpoint.payment + '/balance/payment '
+    let url = app.endpoint.payment + '/balance/payment'
     let userId = wx.getStorageSync('userId');
     if (util.isEmpty(userId)) {
       wx.navigateTo({
@@ -87,9 +87,14 @@ Page({
             qrCodeType: qrl[0].qrCodeType,
             userCancelId: userId
           };
-          // orderApi.qrCode(url,params,(res)=>{
-          //   console.log(res)
-          // })
+          orderApi.qrCode(url,params,(res)=>{
+            console.log(res)
+            wx.showToast({
+              title: res.data.data,
+              icon:'none',
+              mask:true
+            })
+          })
         }
       })
     }
@@ -149,28 +154,6 @@ Page({
   onShareAppMessage: function () {
 
   },
-  getScancode: function () {
-    var _this = this;
-    // 允许从相机和相册扫码
-    wx.scanCode({
-      success: (res) => {
-        var result = res.result;
 
-        _this.setData({
-          result: result,
-
-        })
-      }
-    })
-    wx.requestPayment({
-      timeStamp: '',
-      nonceStr: '',
-      // package: '',
-      signType: 'MD5',
-      paySign: '',
-      success(res) { },
-      fail(res) { }
-    })
-  }
 
 })

@@ -44,13 +44,13 @@ function queryOrderStatistics(userId, handleResult) {
 }
 function modifyStatus(id, orderCode, originOrderStatus, targetOrderStatus, handleResult) {
   let params = {
-    id: id,
+    Id: id,
     orderCode: orderCode,
     originOrderStatus: originOrderStatus,
     targetOrderStatus: targetOrderStatus
   };
   wx.request({
-    url: app.endpoint.order + '/hf-order/modifystatus',
+    url: app.endpoint.order + '/hf-order/modifyStatus',
     data: params,
     success: res => handleResult(res),
     fail: (res) => {

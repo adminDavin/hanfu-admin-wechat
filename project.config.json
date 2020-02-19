@@ -54,9 +54,15 @@
 			"list": [
 				{
 					"id": -1,
-					"name": "pages/product/detail",
-					"pathName": "pages/product/detail",
+					"name": "pages/home/index",
+					"pathName": "pages/home/index",
 					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/order/mock/mock",
+					"pathName": "pages/order/mock/mock",
 					"scene": null
 				}
 			]

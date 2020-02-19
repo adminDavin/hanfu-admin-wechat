@@ -10,7 +10,7 @@ Page({
       amount: 10,
       fileId: 195,
       freight: 0,
-      goodsId: 1,
+      goodsId: 6,
       goodsName: "毛巾",
       goodsSpecs: "红色15*10棉",
       gooodsDesc: {
@@ -42,7 +42,7 @@ Page({
             specUnit: "1"
           }
         ],
-        id: 1,
+        id: 217,
         isUsePriceMode: 0,
         modifyTime: "2019-11-03T18:39:22",
         priceId: 1,
@@ -57,7 +57,7 @@ Page({
       image: "https://www.tjsichuang.cn:1443/api/product/goods/getFile?fileId=195",
       modifyTime: "2020-02-08T18:07:22",
       orderCode: "edd6ec5252db4b14a64737d1b3b6e22b",
-      orderStatus: "pickup",
+      orderStatus: "process",
       orderStatusDesc: "待处理",
       orderType: "nomalOrder",
       payStatus: 1,
