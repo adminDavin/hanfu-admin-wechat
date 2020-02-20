@@ -29,19 +29,6 @@ Page({
         orderStatuses: orderStatuses
       })
     }
-    // if (action == 'all') {
-    //   this.setData({
-    //     hfOrders: this.data.hfOrdersAll
-    //   })
-    // } else {
-    //   let hf = hfOrders.filter((hfOrder, index) => {
-    //     console.log(hfOrder)
-    //     return hfOrder.orderStatus == action
-    //   })
-    //   this.setData({
-    //     hfOrders: hf
-    //   })
-    // }
   },
   /**
    * 生命周期函数--监听页面加载
