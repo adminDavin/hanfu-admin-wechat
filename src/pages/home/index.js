@@ -44,6 +44,18 @@ Page({
     })
   },
 
+  chongqingjzb: function () {
+    // wx.checkIsSoterEnrolledInDevice({
+    //   success: function(res) {},
+    //   fail: function(res) {},
+    //   complete: function(res) {},
+    // })
+    console.log(122)
+    wx.navigateTo({
+      url: '/pages/scan/index' ,
+    })
+  },
+
   onPullDownRefresh: function (e) {
     console.log(e);
   }

@@ -1,4 +1,4 @@
-const app = getApp();
+ const app = getApp();
 import productApi from '../../services/hf-product.js';
 import util from '../../utils/util.js';
 import projectUtils from '../../utils/project-utils.js';

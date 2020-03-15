@@ -1,8 +1,33 @@
 /* pages/home/components/flash-sale.wxss */
-.swiper-tab-list{  font-size: 30rpx;
-    display: inline-block;
-    width: 33.33%;
-    color: #777777;
+
+.swiper-tab-list {
+  font-size: 30rpx;
+  display: inline-block;
+  width: 33.33%;
+  color: rgba(255, 255, 255, 1);
 }
-.on{ color: red;
-    border-bottom: 3rpx solid red;}
+
+.on {
+  color: red;
+  border-bottom: 3rpx solid red;
+}
+
+.star-table {
+  /* width: 127px;
+  height: 31px; */
+  font-size: 32rpx;
+  font-family: PingFang SC;
+  font-weight: bold;
+  color: rgba(255, 255, 255, 1);
+}
+.moldbaby {
+  background-color: #FF6064;
+  padding-left: 20rpx;
+  margin-top: 20rpx; 
+}
+.row {
+  background-color: #FF6064;
+}
+.flex-row {
+  margin-bottom:10rpx; 
+}

@@ -75,4 +75,5 @@
 </view>
 <view>
     <product-list scrollH="{{scrollH}}" imgWidth="{{imgWidth}}" wx:if="{{lists==false}}" parameters="{{parameters}}" ></product-list>
+    <pisces-list scrollH="{{scrollH}}" imgWidth="{{imgWidth}}" wx:if="{{lists==true}}" parameters="{{parameters}}" ></pisces-list>
 </view>

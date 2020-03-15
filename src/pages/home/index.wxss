@@ -27,3 +27,302 @@ swiper-item {
 .swiper-box view{
     text-align: center;
 }
+
+.seckill {
+    width: 750rpx;
+    height: 100%;
+    margin-bottom: 28rpx;
+    position: relative;
+}
+.seckill-header {
+    width: 100%;
+    height: 326rpx;
+    background: #FF3333;
+}
+
+.header-title {
+    display: flex;
+    height: 88rpx;
+    margin-left: 20rpx;
+}
+
+.header-t {
+    display: flex;
+    overflow: hidden;
+}
+.header-tu {
+    width: 60rpx;
+    height: 60rpx;
+    background-color: #fff;
+    margin-top: 14rpx;
+}
+.header-text {
+    line-height: 88rpx;
+    font-size: 32rpx;
+    color: #fff;
+    margin-left: 11rpx;
+}
+
+.header-fl {
+    display: flex;
+}
+
+.header-sao {
+    display: flex;
+    flex-direction: column;
+    height: 88rpx;
+    width: 100rpx;
+    padding-top: 14rpx;
+}
+
+.header-margin {
+    margin-left: 280rpx;
+    margin-right: 33rpx;
+}
+
+.sao-tu {
+    width: 36rpx;
+    height: 36rpx;
+    margin: 0 auto;
+}
+
+.sao {
+    line-height: 50rpx;
+    color: #fff;
+    font-size: 24rpx;
+    text-align: center;
+}
+.sao-sou {
+    width: 33rpx;
+    height: 33rpx;
+    margin: 21rpx 0 19rpx 20rpx;
+    /* background: #000; */
+}
+.sou {
+    display: flex;
+    width: 710rpx;
+    height: 72rpx;
+    margin-left: 20rpx;
+    margin-top: 27rpx;
+    background: #fff;
+    border-radius: 36rpx;
+}
+.sou-tu {
+    width: 33rpx;
+    height: 32rpx;
+    margin: 21rpx 0 21rpx 20rpx;
+    background-size: 33rpx;
+    background: #000;
+}
+
+.input-sou {
+    /* text-indent: 10rpx; */
+    margin-left: 15rpx;
+    width: 660rpx;
+    height: 72rpx;
+    line-height: 72rpx;
+}
+.seckill-img {
+    width: 710rpx;
+    height: 350rpx;
+    position: absolute;
+    top: 200rpx;
+    left: 18rpx;
+    background: pink;
+    margin: 0 auto;
+    border-radius: 0.4rem;
+}
+
+.img-size {
+    width: 710rpx;
+    height: 100%;
+    /* border-radius: 0.4rem; */
+}
+
+swiper {
+    width: 100%;
+    height: 350rpx;
+    border-radius: 0.6rem;
+}
+
+.swiper-item-box{
+    border-radius: 0.4rem;
+}
+.seckill-box {
+    width: 750rpx;
+    height: 225rpx;
+    background: #F8F8F8;
+}
+
+/* 秒杀盒子 */
+/* .banner-box {
+    width: 710rpx;
+    height: 100%;
+    margin: 0 auto;
+}
+
+.seckill-star {
+    width: 710rpx;
+    height: 182rpx;
+    border-radius: 15rpx;
+    background-size: 710rpx 182rpx;
+}
+
+.star-table {
+    font-weight: bold;
+    color: #fff;
+    width: 130rpx;
+    height: 70rpx;
+    line-height: 70rpx;
+    margin-left: 20rpx;
+    font-family: 'PingFang-SC-Bold';
+}
+.seckill-stars {
+    display: flex;
+    width: 710rpx;
+    height: 91rpx;
+    font-size: 30rpx;
+    color: #FFEDED;
+    background: #FF3333;
+}
+
+.stars-one {
+    width: 178rpx;
+    height: 91rpx;
+    float: left;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+   
+}
+
+.stars-two {
+    background: #fff;
+    color: #FF3333;
+}
+.seckill-banner {
+    width: 710rpx;
+    height: 100%;
+    background: #fff;
+}
+.seckill-commodity {
+    margin-top: 20rpx;
+    display: flex;
+    width: 710rpx;
+    height: 180rpx;
+}
+
+.commodity-tu image {
+    width: 180rpx;
+    height: 180rpx;
+}
+
+.commodity-text {
+    height: 180rpx;
+    width: 507rpx;
+    margin-left: 21rpx;
+}
+.commodity-title {
+    width: 507rpx;
+    height: 60rpx;
+    line-height: 60rpx;
+    font-size: 28rpx;
+    color: #151515;
+    margin-top: 10rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.commodity-money {
+    width: 507rpx;
+    height: 75rpx;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 41rpx;
+}
+
+.commodity-number {
+    width: 248rpx;
+    height: 75rpx;
+}
+
+.commodity-j {
+    font-size: 24rpx;
+    color: #999999;
+    font-weight: Medium;
+}
+.commodity-shu {
+    display: flex;
+    width: 243rpx;
+    height: 25rpx;
+    margin-top: 8rpx;
+}
+.commodity-dollar {
+    font-size: 32rpx;
+    font-family: 'PingFang-SC-Bold';
+    font-weight: bold;
+    line-height: 25rpx;
+}
+.commodity-del {
+    margin-left: 9rpx;
+    font-family: 'PingFang-SC-Regular';
+    text-decoration: line-through;
+    color: #999999;
+    font-size: 24rpx;
+    line-height: 25rpx;
+}
+.commodity-qg {
+    width: 133rpx;
+    height: 50rpx;
+    line-height: 50rpx;
+    font-size: 24rpx;
+    color: #fff;
+    border-radius: 10rpx;
+    background-color: #FF3333;
+    text-align: center;
+    font-family: 'PingFang-SC-Medium';
+} */
+
+/* 拼团盒子 */
+/* .banner-box-two {
+    width: 710rpx;
+    height: 100%;
+
+    margin: 0 auto;
+}
+
+.banner-table {
+    width: 710rpx;
+    height: 25rpx;
+    display: flex;
+    justify-content: space-around;
+}
+
+.table-one {
+    width: 112rpx;
+    height: 35rpx;
+    line-height: 25rpx;
+}
+.table-name {
+    font-weight: Medium;
+    line-height: 25rpx;
+    font-size: 28rpx;
+    color: #151515;
+    font-family: 'PingFang-SC-Medium';
+}
+.table-box {
+    width: 48rpx;
+    height: 5rpx;
+    margin: 0 auto;
+    margin-top: 10rpx;
+    border-radius: 3rpx;
+}
+.table-color {
+    background-color: #FF3333;
+}
+
+.bgc {
+  background-color: #FF3333;
+} */
+

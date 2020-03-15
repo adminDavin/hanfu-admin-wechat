@@ -1,21 +1,26 @@
-<view class="row"  style="display:flex;justify-content:space-around;align-items:center">
-<view wx:for="{{slots}}" class="swiper-tab-list {{currentTab==index ? 'on' : ''}}"  wx:key="index" bindtap="onSelectedTime" data-item="{{item}}" data-ind="{{index}}"> 
-  <view class="item">{{item.sTime}}</view>
-  <view class="item">{{item.desc}}</view>
+<view class="moldbaby" style="width:100%;display:flex;align-item:center">
+  <text class="star-table">今日爆款</text>
 </view>
+<view class="row" style="display:flex;justify-content:space-around;align-items:center">
+  <view wx:for="{{slots}}" class="swiper-tab-list {{currentTab==index ? 'on' : ''}}" wx:key="index" bindtap="onSelectedTime" data-item="{{item}}" data-ind="{{index}}">
+    <view class="item">{{item.sTime}}</view>
+    <view class="item">{{item.desc}}</view>
+  </view>
 </view>
 <scroll-view scroll-y="true" style="margin-top:24rpx;">
-    <view wx:for="{{productSecKillData}}" wx:key="id">
-        <view class="flex-row p10" style="display: flex;" bind:tap="onSeletedProduct" data-item="{{item}}">
-            <image class="flex-view-item" src="{{item.imageUrl}}" style="width:40%;height:250rpx"></image>
-            <view class="flex-view-item p10" style="width:60%">
-                <view style="text-align: left">{{item.productName}}</view>
-                <view style="text-align: left">{{item.stoneName}}</view>
-                <view class="product-price-wrap" style="text-align: right">
-                    <p class="product-price-new">{{item.newPrice}}</p>
-                </view>
-            </view>
+  <view wx:for="{{productSecKillData}}" wx:key="id">
+    <view class="flex-row p10" style="display: flex;" bind:tap="onSeletedProduct" data-item="{{item}}">
+      <image class="flex-view-item" src="{{item.imageUrl}}" style="width:40%;height:250rpx"></image>
+      <view class="flex-view-item p10" style="width:60%">
+        <view style="text-align: left">{{item.productName}}</view>
+        <view style="text-align: left">{{item.stoneName}}</view>
+        <view style="text-align: left; margin-top: 50rpx;color: red;">￥{{item.priceArea}}</view>
+        <view class="product-price-wrap" style="text-align: right">
+          <!-- <p class="product-price-new">{{item.newPrice}}</p> -->
+          <button></button>
         </view>
+      </view>
     </view>
+  </view>
 </scroll-view>
 <button bindtap="onSelectedMore">查看更多</button>

@@ -13,9 +13,15 @@ Page({
     showModalDlg: true,
     involveProducts: [{
       action: 'collection',
+      quantity: 0,
       desc: "商品收藏"
-    }, {
+    },{
+        action: 'Concern',
+        quantity: 0,
+        desc: "店铺关注"
+      },{
       action: 'history',
+        quantity: 0,
       desc: "浏览历史"
     }],
     orderStatuses: [{

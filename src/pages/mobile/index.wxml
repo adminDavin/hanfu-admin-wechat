@@ -1,0 +1,64 @@
+<!-- <view wx:if="{{!isAuth}}">
+  <view class='headView'>
+    <open-data class='headImageView' type="userAvatarUrl"></open-data>
+    <open-data type="userNickName"></open-data>
+  </view>
+  <view class='line'></view>
+  <view class='content'>
+    <view>申请获取以下权限</view>
+    <text>获得你的公开信息(昵称, 头像, 地址及性别)</text>
+  </view>
+  <button class='bottom' type='primary' open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="bindGetUserInfo">
+    微信授权
+  </button>
+</view> -->
+
+<!-- <view wx:else>
+  <view class='headView'>
+    <view class='headImageView'>
+      <open-data type="userAvatarUrl"></open-data>
+    </view>
+
+    <view class='headImageView'>
+      <open-data type="userNickName"></open-data>
+    </view>
+
+  </view>
+  <view class='line'></view>
+  <view>
+    <view class="register">
+      <view class="register-deng" bindtap="onWechartLogin">登录</view>
+    </view>
+  </view>
+  <view class="headView">
+    <view>用户昵称: {{user.nickName}}</view>
+    <view>用户邮箱: {{user.nickName}}</view>
+    <view>手机号码: {{user.nickName}}</view>
+    <view>设置生日: {{user.nickName}}</view>
+    <view class="input-box input-bottom">
+      <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">获取手机号</button>
+    </view>
+  </view>
+</view> -->
+
+
+
+<view class="register">
+  <text class="register-title">登录以使用更多服务</text>
+  <view class="register-input">
+    <view class="input-box input-bottom">
+      <view class="input-tu">
+        <image style="width: 46rpx; height: 46rpx" src="../../images/login/phone.png"></image>
+      </view>
+      <input  type='number' class="input-text" maxlength="11" value="{{phone}}" placeholder="请输入手机号" bindinput="phone" />
+    </view>
+    <view class="input-box">
+      <view class="input-tu">
+        <image style="width: 48rpx; height: 48rpx" src="../../images/login/captcha.png"></image>
+      </view>
+      <input type="username" class="input-text" value="{{captcha}}" placeholder="请输入验证码" />
+      <view class="button-y" bindtap="huoQu">获取验证码</view>
+    </view>
+  </view>
+  <view class="register-deng" bindtap="onWechartLogin">登录</view>
+</view>

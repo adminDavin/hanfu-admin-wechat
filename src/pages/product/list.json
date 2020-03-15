@@ -1,5 +1,6 @@
 {
   "usingComponents": {
-    "product-list": "/components/product/list/product-list"
+    "product-list": "/components/product/list/product-list",
+    "pisces-list": "/components/product/pisces-list/product-list"
   }
 }
