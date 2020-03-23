@@ -14,7 +14,7 @@ Page({
     collects: false,// 点赞按钮
     slideNumber: '1', //详情滑动跳动数字
     current: 0,
-    indicatorDots: false,
+    indicatorDots: true,
     autoplay: true,
     interval: 3000,
     duration: 800,

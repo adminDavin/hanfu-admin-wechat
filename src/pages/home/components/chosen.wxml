@@ -1,6 +1,6 @@
 <view class="banner-box-three">
-  <view bind:tap="onClickRanking" wx:for="{{rankingData}}" wx:key="index" data-item="{{item}}">
-    <view><text>{{item.seniorityName}}</text></view>
+  <view  bind:tap="onClickRanking" wx:for="{{rankingData}}" wx:key="index" data-item="{{item}}">
+    <view class="featured"><text>{{item.seniorityName}}</text></view>
     <image src="{{item.imageUrl}}" style="width:100%"></image>
   </view>
 </view>

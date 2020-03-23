@@ -3,6 +3,9 @@
   width: 20%;
   display: flex;
   text-align: start;
+  /* width: 120rpx; */
+  /* height: 120rpx; */
+  clip-path: circle(70rpx at center)
 }
 
 .rightRow {
@@ -23,13 +26,13 @@
 
 .middle {
   display: inline-flex;
-  width: 94%;
+  width: 92%;
   margin-left: 20rpx;
   margin-right: 20rpx;
 }
 
 .middle > view {
-  width: 133rpx;
+  width: 184rpx;
   font-size: 24rpx;
 }
 
@@ -37,9 +40,10 @@
   text-align: center;
   padding: 5rpx;
   margin: 5rpx;
-  border: rgb(243, 225, 225);
+  /* border: rgb(243, 225, 225); */
+  color: rgb(243, 225, 225);
   border-radius: 20rpx;
-  border-style: solid;
+  /* border-style: solid; */
 }
 
 .center-inner {
@@ -48,9 +52,22 @@
   margin: 10rpx;
 }
 
+.myLeft {
+  float: left;
+  margin-left: 20rpx;
+}
+
 .t40 {
-  margin-top: 80rpx;
+  margin-top: 36rpx;
   margin-left: 30rpx;
+  color: rgba(248, 248, 248, 1);
+}
+
+.t30 {
+  font-size: 26rpx;
+  font-family: PingFang SC;
+  font-weight: 500;
+  color: rgba(248, 248, 248, 1);
 }
 
 .t20 {

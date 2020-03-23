@@ -1,0 +1,18 @@
+<!-- components/product/pisces-list/product-list.wxml -->
+<scroll-view scroll-y="true"  style="height:{{scrollH}}px" bindscrolltolower="loadImages">
+<view class="top-outer">
+    <view class="two-row" wx:for="{{chosenData}}" wx:key="id">
+        <view class="flex-row p10"  bind:tap="onSeletedProduct" data-item="{{item}}">
+            <image class="flex-view-item" src="{{item.imageUrl}}" style="width:90%;height:250rpx"></image>
+            <view class="flex-view-item p10" style="width:100%">
+                <view style="text-align: left">{{item.productName}}</view>
+                <view style="text-align: left">{{item.stoneName}}</view>
+                <view style="margin-top: 20rpx;color: red;">￥{{item.priceArea}}</view>
+                <view class="product-price-wrap" style="text-align: right">
+                    <p class="product-price-new">{{item.newPrice}}</p>
+                </view>
+            </view>
+        </view>
+    </view>
+    </view>
+</scroll-view>

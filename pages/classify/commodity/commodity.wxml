@@ -64,11 +64,11 @@
         <image src="{{item.img}}" class="centent-image" />
         <!-- 详情 -->
         <view class="centent-particulars">
-          <text class="particulars-text">{{item.goodName}}</text>
+          <text class="particulars-text">{{item.goodName}}1</text>
           <view class="particulars-money">
             <view class="money-box">
               <text class="money-title">¥</text>
-              <text class="money-number">{{item.sellPrice}}</text>
+              <text class="money-number">{{item.sellPrice}}2</text>
               <!-- <image src="../../images/tabs/vip.png" class="money-vip" /> -->
             </view>
             <view class="money-table">
@@ -118,7 +118,7 @@
               <text class="tag"></text>
             </view>
           </view>
-          <!-- <view class="subject-box subject-top">
+          <view class="subject-box subject-top">
                         <view class="subject-title">
                             <text class="title-subject">品牌</text>
                             <image src="../../images/tabs/jinru.png" class="subject-image" />
@@ -133,7 +133,7 @@
                             <text class="tag">男装</text>
                             <text class="tag">男装</text>
                         </view>
-                    </view> -->
+                    </view>
         </view>
       </view>
       <view class='buttom'>

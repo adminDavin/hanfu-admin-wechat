@@ -12,6 +12,7 @@ Page({
   },
 
   editadd: function (e) {
+    console.log(e.currentTarget)
     wx.navigateTo({
       url: '/pages/myself/address/alterAddress/aiter?id=' + e.currentTarget.dataset.addid,
     })
@@ -37,6 +38,9 @@ Page({
       },
       success: function (res) {
         console.log('获取地址', res);
+        if (res.data.data=='用户没有添加地址') {
+         return
+        }
         that.setData({
           addressList: res.data.data
         })

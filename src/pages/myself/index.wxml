@@ -1,11 +1,11 @@
 <view class='header'>
   <view class="personcard-top">
     <view class='headImageView'>
-      <open-data type="userAvatarUrl"></open-data>
+      <open-data  type="userAvatarUrl"></open-data>
     </view>
     <view class="t40">
       <open-data type="userNickName"></open-data>
-      <view bindtap="recharge">普通会员</view>
+      <view class="t30" bindtap="recharge">普通会员</view>
     </view>
     <view class="header-fl">
       <button class="header-sao" open-type="contact">
@@ -16,6 +16,7 @@
   </view>
   <view class='middle'>
     <view wx:for="{{involveProducts}}" wx:key="index" bindtap="onSelectedProduct" data-action='{{item.action}}' class="center">
+    <view>{{item.quantity}}</view>
       <view>{{item.desc}}</view>
     </view>
   </view>
@@ -23,7 +24,7 @@
 
 <view class="t20">
   <view bindtap="onSelectedOrder" data-action='all'>
-    <text>我的订单</text>
+    <text class="myLeft">我的订单</text>
     <image class="rightRow" src="/images/rightjiantou.png" bindtap="changeMethod"></image>
   </view>
 </view>
@@ -36,7 +37,7 @@
 
 <view class="t20">
   <view bindtap="onSelectedwallet" data-action='all'>
-    <text>我的钱包</text>
+    <text class="myLeft">我的钱包</text>
     <image class="rightRow" src="/images/rightjiantou.png" bindtap="changeMethod"></image>
   </view>
 </view>
@@ -48,7 +49,8 @@
 </view>
 
 <view class="t20">
-  <text>工具与服务</text>
+  <text class="myLeft">工具与服务</text>
+  <image class="rightRow" src="/images/rightjiantou.png" bindtap="changeMethod"></image>
 </view>
 <view class='middle'>
   <view wx:for="{{toolAndService}}" wx:key="index" bindtap="onSelectedToolAndService" data-action='{{item.action}}'  data-uri='{{item.uri}}' class="center-inner">
