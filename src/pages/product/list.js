@@ -67,6 +67,7 @@ Page({
   },
 
   onLoad: function (options) {
+    console.log(options)
     this.setData({ parameters: options });
     projectUtils.adjustSystemInfo(this);
   }

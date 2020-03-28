@@ -35,7 +35,7 @@ function getTopRanking(handleResult) {
   let params = {
   };
   wx.request({
-    url: app.endpoint.product + '/seniority/findSeniorityInfo',
+    url: app.endpoint.product + '/hfProductActivity/findProdcutActivity?activityType=seniorityActivity',
     success: res => handleResult(res),
     fail: (res) => {
       console.log(params, res);
@@ -72,11 +72,11 @@ function getProducts(params, handleResult) {
   let uri = '/hfProduct/getProductsForRotation';
   if (params.action == "chosen") {
     // 精选 跳转过来的
-    uri = '/hfProduct/getProductsForRotation';
+    uri = '/hfProduct/getProductListSeniority';
 
   } else if (params.action == "category") {
     // 分类页面
-    uri = '/hfProduct/getProductsForRotation';
+    uri = '/hfProduct/getCategory';
 
   } else if (params.action == "collection") {
     // 商品收藏
@@ -101,11 +101,9 @@ function getCategory(params = {}, handleResult) {
   });
 }
 
-function getProductGroup(params = {}, handleResult) {
-  params.quantity = 3;
+function getProductGroup(handleResult) {
   wx.request({
-    url: app.endpoint.product + '/hfProduct/getProductsForRotation',
-    data: params,
+    url: app.endpoint.product + '/hfProduct/getActivityProductList?activityType=groupActivity',
     success: res => handleResult(res),
     fail: (res) => {
       console.log(params, res);
@@ -129,7 +127,8 @@ function getSeckillTimeBar(handleResult) {
 function getProductSeckill(params = {}, handleResult) {
   params.quantity = 3;
   wx.request({
-    url: app.endpoint.product + '/hfProduct/getProductsForRotation',
+    // url: app.endpoint.product + '/hfProduct/getProductsForRotation',
+    url: app.endpoint.product + '/hfProduct/getActivityProductList?activityType=seckillActivity',
     data: params,
     success: res => handleResult(res),
     fail: (res) => {

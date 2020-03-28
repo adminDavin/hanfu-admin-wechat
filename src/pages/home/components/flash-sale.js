@@ -36,14 +36,20 @@ Component({
         url: '/pages/product/seckill/list',
       })
     },
+    onSeletedProduct: function (e) {
+      wx.navigateTo({
+        url: '/pages/product/detail?action=rotation&productId=' + e.currentTarget.dataset.item.id,
+      })
+    },
     updateData: function (selectedTime) {
       console.log(selectedTime)
       productApi.getProductSeckill({ currentTime: selectedTime }, (res) => {
         let productSecKillData = res.data.data;
         console.log(productSecKillData)
-        requestUtils.setImageUrls(productSecKillData);
+        requestUtils.setImageUrls(productSecKillData[0].productList);
         this.setData({
-          productSecKillData: productSecKillData,
+          productSecKillData: productSecKillData[0].productList,
+          slots: productSecKillData,
         });
       });
     },
@@ -51,15 +57,19 @@ Component({
       let index = e.currentTarget.dataset.ind;
       console.log(e)
       this.setData({ currentTab: index })
-      let selectedSlot = e.currentTarget.dataset.item;
+      let selectedSlot = e.currentTarget.dataset.item.productList;
       console.log(selectedSlot)
+      requestUtils.setImageUrls(selectedSlot);
       let updateData = this.data.selectedSlot.sTime == selectedSlot.sTime ? {} : { selectedSlot: selectedSlot };
-      productApi.getProductSeckill(selectedSlot, (res) => {
-        let productSecKillData = res.data.data;
-        requestUtils.setImageUrls(productSecKillData);
-        updateData.productSecKillData = productSecKillData;
-        this.setData(updateData);
+      this.setData({
+        productSecKillData: selectedSlot,
       });
+      // productApi.getProductSeckill(selectedSlot, (res) => {
+      //   let productSecKillData = res.data.data;
+      //   requestUtils.setImageUrls(productSecKillData);
+      //   updateData.productSecKillData = productSecKillData;
+      //   this.setData(updateData);
+      // });
     },
   },
 

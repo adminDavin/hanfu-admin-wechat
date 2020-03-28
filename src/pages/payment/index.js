@@ -130,6 +130,7 @@ Page({
       }
     }
     orderApi.createOrder(params, (res) => {
+      console.log(res)
       console.log(params);
       wx.navigateTo({
         url: '/pages/payment/payment?userId=' + this.data.userId + '&outTradeNo=' + res.data.data.orderCode + '&paymentName=' + params.paymentName,

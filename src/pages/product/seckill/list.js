@@ -39,9 +39,10 @@ Page({
       }else{
         this.setData({slotLen: true})
       }
-      requestUtils.setImageUrls(productSecKillData);
+      requestUtils.setImageUrls(productSecKillData[0].productList);
       this.setData({
-        productSecKillData: productSecKillData,
+        productSecKillData: productSecKillData[0].productList,
+        slots: productSecKillData,
       });
     });
   },
@@ -87,15 +88,19 @@ Page({
     let index=e.currentTarget.dataset.ind;
     console.log(e)
     this.setData({ currentTab:index})
-    let selectedSlot = e.currentTarget.dataset.item;
+    let selectedSlot = e.currentTarget.dataset.item.productList;
     console.log(selectedSlot)
+    requestUtils.setImageUrls(selectedSlot);
     let updateData = this.data.selectedSlot.sTime == selectedSlot.sTime ? {} : { selectedSlot: selectedSlot };
-    productApi.getProductSeckill(selectedSlot, (res) => {
-      let productSecKillData = res.data.data;
-      requestUtils.setImageUrls(productSecKillData);
-      updateData.productSecKillData = productSecKillData;
-      this.setData(updateData);
+    this.setData({
+      productSecKillData: selectedSlot,
     });
+    // productApi.getProductSeckill(selectedSlot, (res) => {
+    //   let productSecKillData = res.data.data;
+    //   requestUtils.setImageUrls(productSecKillData);
+    //   updateData.productSecKillData = productSecKillData;
+    //   this.setData(updateData);
+    // });
   },
   onSeletedProduct: function (e) {
     let selected = e.currentTarget.dataset.item;

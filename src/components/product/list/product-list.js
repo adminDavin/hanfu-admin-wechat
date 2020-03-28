@@ -52,8 +52,10 @@ Component({
     },
     loadImages: function () { },
     getProducts: function (params) {
+      console.log(params)
       productApi.getProducts(params, (res) => {
-        let products = res.data.data;
+        let products = res.data.data.list;
+        console.log(products)
         reuqestUtils.setImageUrls(products);
         for (let product of products) {
           console.log(product);

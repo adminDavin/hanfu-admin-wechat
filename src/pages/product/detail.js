@@ -165,10 +165,10 @@ Page({
   //详情滑动跳动数字
   current: function (e) {
     console.log(e)
-    var that = this
-    that.setData({
-      slideNumber: e.detail.current + 1
-    })
+    // var that = this
+    // that.setData({
+    //   slideNumber: e.detail.current + 1
+    // })
   },
 
   //关注

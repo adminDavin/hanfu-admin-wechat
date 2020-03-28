@@ -23,21 +23,35 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    onSelectedMore: function(e) {
-      console.log(e);
+    onSelectedMore: function (e) {
       wx.navigateTo({
         url: '/pages/product/group/list',
       })
+    },
+    onSeletedProduct:function(e) {
+      wx.navigateTo({
+        url: '/pages/product/detail?action=rotation&productId=' + e.currentTarget.dataset.item.id,
+      })
     }
   },
-  lifetimes:{
-    ready:function(){
-      productApi.getProductGroup({}, (res) => {
-        let productGroups = res.data.data;
+  lifetimes: {
+    ready: function () {
+      productApi.getProductGroup((res) => {
+        let productGroups = [];
+        console.log(res.data.data)
+        for (let i = 0; i < res.data.data.length; i++) {
+          // console.log(res.data.data[i].productList)
+          let productList = res.data.data[i].productList
+          for (let j = 0; j < productList.length; j++) {
+            productGroups.push(productList[j])
+          }
+        }
+        console.log(productGroups)
         requestUtils.setImageUrls(productGroups);
         this.setData({
           productGroups: productGroups,
         });
+        console.log(this.data.productGroups);
       });
     }
   }

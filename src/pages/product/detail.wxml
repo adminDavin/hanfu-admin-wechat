@@ -118,7 +118,7 @@
       </block>
     </swiper>
 
-    <view class="images-index">{{slideNumber}}/5</view>
+    <!-- <view class="images-index">{{slideNumber}}/5</view> -->
   </view>
   <!-- 商品价格及名称 -->
   <view class="productName">
