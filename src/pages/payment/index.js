@@ -8,6 +8,7 @@ import util from '../../utils/util.js';
 
 Page({
   data: {
+    quantity:'',
     selectedAddress: {},
     pickUp: {
       wayOfPickUp: 'selfPickUp',
@@ -106,6 +107,7 @@ Page({
   onCreateOrder: function (e) {
     console.log(e.currentTarget.dataset);
     console.log(this.data.groupActivity);
+    console.log(this.data.selectedGoods);
     let params = {
       userId: this.data.userId,
       amount: e.currentTarget.dataset.payment,
@@ -115,10 +117,10 @@ Page({
       //物品属性配置
       goodsId: this.data.selectedGoods.id,
       sellPrice: this.data.selectedGoods.sellPrice,
-      actualPrice: this.data.selectedGoods.sellPrice,
+      actualPrice: this.data.selectedGoods.sellPrices,
       freight: this.data.pickUp.freight,
       takingType: this.data.pickUp.wayOfPickUp,
-      quantity: this.data.selectedGoods.quantity,
+      quantity: this.data.quantity,
       sellPrice: this.data.selectedGoods.sellPrice,
       hfDesc: JSON.stringify(this.data.selectedGoods),
       stoneId: this.data.stoneId
@@ -141,7 +143,7 @@ Page({
         let param={
           activityId:this.data.activityId,
           goodsId: this.data.selectedGoods.id,
-          userId:'343',
+          userId: this.data.userId,
         }
         orderApi.addGroup(param, (res) => {
           console.log('开团成功')

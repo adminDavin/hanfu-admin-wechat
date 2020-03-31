@@ -18,6 +18,7 @@
       <view>
         联系电话: {{selectedAddress.phoneNumber}}
       </view>
+       <view style="margin-left: 40%;">选择地址</view>
     </view>
     <view class="address-bottom">{{addressList.contact}} {{addressList.phoneNumber}}</view>
   </view>
@@ -25,7 +26,7 @@
     <button bind:tap="onAddUserAddress">新增收货地址</button>
   </view>
 </view>
-
+     
 <view style="width:100%;height:5rpx;margin-top:-30rpx">
   <image src="/images/line.png" style="width:100%;height:100%;"></image>
 </view>
@@ -33,8 +34,8 @@
 
 <view class="quhuomethod" style="margin-top:50rpx">
   <view class="ziti" style="width:600rpx">取货方式</view>
-  <text class="ziti">{{pickUp.wayOfPickUpDesc}}</text>
-  <image src="/images/rightjiantou.png" style="width:12rpx;height:22rpx" bindtap="changeMethod"></image>
+  <text bindtap="changeMethod"  class="ziti">{{pickUp.wayOfPickUpDesc}}</text>
+  <image src="/images/rightjiantou.png" style="width:12rpx;height:22rpx" bindtap="changeMethod" ></image>
 </view>
 <view class="youfei" hidden="{{quhuomethod}}">
   <view class="ziti" style="line-height:40rpx">邮费</view>
@@ -72,7 +73,7 @@
 <view style="height:98rpx"></view>
 <view class="footer">
   <view style="font-size:40rpx;font-weight:bold;color:rgba(255,0,0,1);line-height:98rpx">
-    ￥{{ selectedGoods.sellPrice + pickUp.freight }}
+    ￥{{ selectedGoods.sellPrices + pickUp.freight }}
   </view>
-  <view class="submit" bindtap="onCreateOrder" data-payment="{{ selectedGoods.sellPrice + pickUp.freight }}">提交订单</view>
+  <view class="submit" bindtap="onCreateOrder" data-payment="{{ selectedGoods.sellPrices + pickUp.freight }}">提交订单</view>
 </view>

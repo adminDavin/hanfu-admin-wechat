@@ -88,7 +88,6 @@ Page({
       this.data.seckillActivity = true
     
     }
-  
     wx.getSystemInfo({
       success: (res) => {
         let ww = res.windowWidth;
@@ -413,6 +412,7 @@ Page({
         stoneId: this.data.product.stoneId,
         groupActivity: this.data.groupActivity,
         activityId: this.data.activityId,
+        quantity: this.data.quantity
       };
       wx.navigateTo({
         url: '/pages/payment/index?params=' + encodeURIComponent(JSON.stringify(params))

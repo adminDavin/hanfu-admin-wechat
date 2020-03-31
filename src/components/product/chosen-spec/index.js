@@ -83,13 +83,40 @@ Component({
     },
 
     onCheckboxChange(e) {
-      let selectedGoods = e.currentTarget.dataset.item;
+      let that = this
+      let selectedGoods = e.currentTarget.dataset.item
       // TODO 获取物品价格及库存检查
-      if (selectedGoods.id != this.data.selectedGoods.id) {
-        this.setData({
-          selectedGoods:selectedGoods
-        });
-      }
+      console.log(e.currentTarget.dataset.item)
+      
+      wx.request({
+        url: app.endpoint.product + '/hf-goods/checkResp',
+        method: 'POST',
+        data: {
+          GoodsNum: this.data.quantity,
+          goodsId: selectedGoods.id
+        },
+        header: {
+          'content-type': 'application/x-www-form-urlencoded'
+        },
+        success(res) {
+          console.log(res)
+          console.log(res.data.data, 'dfddsfsafd');
+          if (res.data.data == 'understock') {
+            wx.showToast({
+              title: '库存不足',
+              icon: 'none'
+            });
+            return
+          } else {
+            that.setData({
+              selectedGoods: selectedGoods,
+           });
+            selectedGoods.sellPrices = res.data.data.money
+            console.log(that.data.selectedGoods)
+          }
+        }
+      })
+
     }
   },
   lifetimes: {
