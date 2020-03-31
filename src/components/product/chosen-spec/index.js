@@ -96,6 +96,7 @@ Component({
     ready: function() {
       goodsApi.getGoodDetailByProductId({productId: this.properties.productId, quantity: this.properties.quantity}, (res) => {
         let goodsList = res.data.data;
+        console.log(res.data.data)
         for (let goods of goodsList) {
           for (let index in goods.fileIds) {
             goods.fileIds[index] = app.endpoint.file + '/goods/getFile?fileId=' + goods.fileIds[index]
@@ -104,6 +105,7 @@ Component({
 
         let selectedGoods = goodsList.filter(item => this.properties.selectedGoodsId==item.id)[0];
         this.setData({ ...this.data, ...this.properties, ...{ goodsList: goodsList, selectedGoods: selectedGoods } });
+        console.log(this.data.goodsList)
       });
     },
     detached: () => console.log("退出")

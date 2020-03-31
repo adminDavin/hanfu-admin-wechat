@@ -29,8 +29,10 @@ Component({
       })
     },
     onSeletedProduct:function(e) {
+      console.log(e.currentTarget.dataset)
+      let dataset = e.currentTarget.dataset.item
       wx.navigateTo({
-        url: '/pages/product/detail?action=rotation&productId=' + e.currentTarget.dataset.item.id,
+        url: '/pages/product/detail?action=groupActivity&productId=' + dataset.id + '&stoneId=' + dataset.stoneId + '&activityId=' + dataset.activityId
       })
     }
   },

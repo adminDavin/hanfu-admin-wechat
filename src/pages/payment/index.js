@@ -28,10 +28,11 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad: function (options) {
     let params = JSON.parse(decodeURIComponent(options.params))
+    console.log(params)
     let userId = wx.getStorageSync('userId');
-    
+
     if (util.isEmpty(userId)) {
       wx.navigateTo({
         url: '/pages/login/index',
@@ -45,14 +46,14 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function() {
+  onReady: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {
+  onShow: function () {
     console.log(this.data);
     userAddressApi.query(this.data.userId, (res) => {
       console.log(res.data.data, res.data.data.length);
@@ -62,7 +63,7 @@ Page({
         });
       }
     });
-    
+
   },
 
   onAddUserAddress(e) {
@@ -71,7 +72,7 @@ Page({
       url: '/pages/myself/address/detail?action=addAddress&userId=' + this.data.userId,
     })
   },
-  changeMethod: function(e) {
+  changeMethod: function (e) {
     if (this.data.pickUp.wayOfPickUp == 'selfPickUp') {
       this.setData({
         pickUp: {
@@ -90,7 +91,7 @@ Page({
       });
     }
   },
-  onPaymentMethod: function(e) {
+  onPaymentMethod: function (e) {
     let paymentMethod = this.data.paymentMethod;
     for (let payment of this.data.paymentMethod) {
       if (e.detail.value == payment.name) {
@@ -99,11 +100,12 @@ Page({
         payment.checked = false;
       }
     }
-    this.setData({paymentMethod: paymentMethod});
+    this.setData({ paymentMethod: paymentMethod });
   },
-  
-  onCreateOrder: function(e) {
+
+  onCreateOrder: function (e) {
     console.log(e.currentTarget.dataset);
+    console.log(this.data.groupActivity);
     let params = {
       userId: this.data.userId,
       amount: e.currentTarget.dataset.payment,
@@ -135,6 +137,16 @@ Page({
       wx.navigateTo({
         url: '/pages/payment/payment?userId=' + this.data.userId + '&outTradeNo=' + res.data.data.orderCode + '&paymentName=' + params.paymentName,
       })
+      if (this.data.groupActivity) {
+        let param={
+          activityId:this.data.activityId,
+          goodsId: this.data.selectedGoods.id,
+          userId:'343',
+        }
+        orderApi.addGroup(param, (res) => {
+          console.log('开团成功')
+        })
+      }
     });
   }
 })

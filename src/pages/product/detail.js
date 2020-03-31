@@ -1,6 +1,7 @@
 // src/pages/product/detail.js
 const app = getApp();
 
+import requestUtils from '../../services/request-utils.js';
 import productApi from '../../services/hf-product.js';
 import goodsApi from '../../services/hf-goods.js';
 import util from '../../utils/util.js';
@@ -11,10 +12,25 @@ Page({
    * 页面的初始数据
    */
   data: {
+    goodsId:'',
+    countdown: '',
+    startTime:'',
+    endTime:'',
+    endDate2: '2020-03-030 14:41:00',
+    groupList:[],
     collects: false,// 点赞按钮
+    showModal:false,
     slideNumber: '1', //详情滑动跳动数字
     current: 0,
+    seckillActivity: false, //秒杀
+    groupActivity:false,// 团购
     indicatorDots: true,
+    inquire: [
+      {sum:'1',
+        open: [{ name: '1' }, { name: '2' }],
+      }
+
+    ],//查询正在开团
     autoplay: true,
     interval: 3000,
     duration: 800,
@@ -28,12 +44,51 @@ Page({
 
 
   },
-
+  // 查询正在更多开团
+  more: function (e) {
+    console.log(e)
+    var that = this;
+    that.setData({
+      showModal: true,
+      // number: res.data
+    })
+    // wx.request({
+    //   url: app.globalData.urlpuzzle + '/group/selectAllGroup',
+    //   method: 'Get',
+    //   success: function (res) {
+    //     console.log(res)
+        
+    //   },
+    //   data: {
+    //     id: that.data.dataid
+    //   }
+    // })
+  },
+  close_mask: function () {
+    this.setData({
+      showModal: false
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var that = this;
+    // that.data.startTime= options.startTime;
+    that.data.endTime = options.endTime
+    // console.log(options.endTime)
+    that.countTime()
     console.log(options)
+    if (options.action=='groupActivity') {
+      console.log('拼团')
+      this.data.groupActivity = true
+    }
+    if (options.action == 'seckillActivity') {
+      console.log('秒杀')
+      this.data.seckillActivity = true
+    
+    }
+  
     wx.getSystemInfo({
       success: (res) => {
         let ww = res.windowWidth;
@@ -60,6 +115,7 @@ Page({
    */
   onShow: function () {
     let productId = this.data.productId;
+    let stoneId = this.data.stoneId;
     if (typeof(productId) == 'undefined') {
       wx.showToast({
         title: '商品ID不存在',
@@ -68,9 +124,18 @@ Page({
         mask: true
       });
     } else {
-      productApi.getProductDetail(productId, (res) => {
+      productApi.getProductDetail(productId,stoneId, (res) => {
+        console.log(res)
+        let goods = res.data.data;
+        console.log('商品图', goods)
+        let imgageUrls = [];
+
+        for (let fileId of goods.fileIds) {
+          imgageUrls.push(app.endpoint.file + '/goods/getFile?fileId=' + fileId);
+        }
         let product = res.data.data;
         this.updateSelectedGoods(product.defaultGoodsId, product);
+        this.setData({ imgageUrls: imgageUrls }); 
       })      
     }
   },
@@ -202,7 +267,8 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-        let productId = this.data.productId;
+      let productId = this.data.productId;
+      let stoneId = this.data.stoneId;
         if (typeof (productId) == 'undefined') {
             wx.showToast({
                 title: '商品ID不存在',
@@ -211,9 +277,17 @@ Page({
                 mask: true
             });
         } else {
-            productApi.getProductDetail(productId, (res) => {
+            productApi.getProductDetail(productId,stoneId, (res) => {
+              let goods = res.data.data;
+              console.log('商品图',goods)
+              let imgageUrls = [];
+
+              for (let fileId of goods.fileIds) {
+                imgageUrls.push(app.endpoint.file + '/goods/getFile?fileId=' + fileId);
+              }
                 let product = res.data.data;
                 this.updateSelectedGoods(product.defaultGoodsId, product);
+               this.setData({ imgageUrls: imgageUrls }); 
             })
         }
     },
@@ -221,12 +295,23 @@ Page({
     updateSelectedGoods: function (goodsId, product) {
         goodsApi.getGoodsDetail({ goodsId: goodsId, quantity: this.data.quantity }, (res) => {
             let goods = res.data.data;
+          console.log('详情',res.data.data)
             let imgageUrls = [];
 
             for (let fileId of goods.fileIds) {
                 imgageUrls.push(app.endpoint.file + '/goods/getFile?fileId=' + fileId);
             }
-            this.setData({ product: product, imgageUrls: imgageUrls, selectedGoods: goods });
+          this.setData({ product: product, selectedGoods: goods });
+          // this.setData({ product: product, imgageUrls: imgageUrls, selectedGoods: goods });    
+          goodsApi.getListGrou(goods.productId,(res)=>{
+            console.log('团购列表',res.data.data)
+            let groupList = res.data.data
+            requestUtils.groupFileId(groupList)
+            this.setData({
+              groupList: groupList
+            })
+            console.log(this.data.groupList)
+          })
         });
     },
     onSelectedGoodsSpec: function (e) {
@@ -325,7 +410,9 @@ Page({
         selectedGoods: this.data.selectedGoods,
         paymentType: paymentType,
         userId: userId,
-        stoneId: this.data.product.stoneId
+        stoneId: this.data.product.stoneId,
+        groupActivity: this.data.groupActivity,
+        activityId: this.data.activityId,
       };
       wx.navigateTo({
         url: '/pages/payment/index?params=' + encodeURIComponent(JSON.stringify(params))
@@ -342,5 +429,37 @@ Page({
         url: '/pages/payment/shopping?params=' + encodeURIComponent(JSON.stringify(params)),
       })
 
+    },
+  countTime() {
+    var that = this;
+    var date = new Date();
+    var now = date.getTime();
+    var endDate = new Date(that.data.endTime);//设置截止时间
+    var end = endDate.getTime();
+    console.log(now)
+    console.log(end)
+    var leftTime = end - now; //时间差                              
+    var d, h, m, s, ms;
+    if (leftTime >= 0) {
+      d = Math.floor(leftTime / 1000 / 60 / 60 / 24);
+      h = Math.floor(leftTime / 1000 / 60 / 60 % 24);
+      m = Math.floor(leftTime / 1000 / 60 % 60);
+      s = Math.floor(leftTime / 1000 % 60);
+      ms = Math.floor(leftTime % 1000);
+      // ms = ms < 100 ? "0" + ms : ms
+      s = s < 10 ? "0" + s : s
+      m = m < 10 ? "0" + m : m
+      h = h < 10 ? "0" + h : h
+      that.setData({
+        countdown: d + "天" + h + "时" + m + "分" + s + "秒",
+      })
+      //递归每秒调用countTime方法，显示动态时间效果
+      setTimeout(that.countTime, 1000);
+    } else {
+      console.log('已截止')
+      that.setData({
+        countdown: '00:00:00'
+      })
     }
+  },
 })

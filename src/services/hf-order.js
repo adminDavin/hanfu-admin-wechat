@@ -14,7 +14,20 @@ function createOrder(params={}, handleResult) {
     }
   });
 }
-
+function addGroup(params = {}, handleResult) {
+  wx.request({
+    url: app.endpoint.product + '/hfProductActivity/addGroup',
+    method: 'POST',
+    header: {
+      'content-type': 'application/x-www-form-urlencoded'
+    },
+    data: params,
+    success: res => handleResult(res),
+    fail: (res) => {
+      console.log(params, res);
+    }
+  });
+}
 function queryOrder(userId, action, handleResult) {
   let params = {
     userId: userId,
@@ -84,5 +97,6 @@ export default {
   queryOrderStatistics: queryOrderStatistics,
   modifyStatus: modifyStatus,
   qrCode: qrCode,
-  evaluate: evaluate
+  evaluate: evaluate,
+  addGroup: addGroup
 };

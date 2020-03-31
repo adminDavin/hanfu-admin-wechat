@@ -12,6 +12,15 @@ function setImageUrls(list) {
 }
 
 
+function groupFileId(list) {
+  for (let item of list) {
+    // if (util.isRealNum(item.groupFileId)) {
+      item.imageUrl = app.endpoint.file + '/goods/getFile?fileId=' + item.groupFileId;
+    // }
+  }
+}
+
 export default {
-  setImageUrls: setImageUrls
+  setImageUrls: setImageUrls,
+  groupFileId: groupFileId
 };

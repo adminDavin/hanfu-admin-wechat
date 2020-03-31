@@ -51,9 +51,9 @@
   </view>
 </view> -->
 <view class="cover_screen" bindtap="onCloseGoodsSpec" wx:if="{{showModalSelectionSpecification}}" data-type="selectionSpecification"></view>
-<view animation="{{animationData}}" class="buy_box" wx:if="{{showModalSelectionSpecification}}">
+<!-- <view animation="{{animationData}}" class="buy_box" wx:if="{{showModalSelectionSpecification}}">
   <chosen product-id="{{productId}}" selected-goods-id="{{selectedGoods.id}}" quantity="{{quantity}}" bind:chooseGoodsCommitEvent="listenChooseGoodsCommitEvent"></chosen>
-</view>
+</view> -->
 
 <!-- <view style="content">
   <view style="text-align:center">
@@ -144,6 +144,13 @@
       </button>
     </view>
   </view>
+  <view wx:if="{{seckillActivity}}" class="pay-header">
+   <view class="header-table">
+    <image src="../../images/tabs/naozhong.png" class="times-begin" />
+      <text class="table-time">限时秒杀：</text>
+      <text class="table-number">{{countdown}}</text>
+    </view>
+   </view>
   <!-- 地址及已选 -->
   <view class="site">
     <view class="site-selected" bind:tap="onSelectedGoodsSpec" data-type="selectionSpecification" >
@@ -188,6 +195,34 @@
       <text class="safeguard-text">7天无理由退货</text>
       <image src="../../images/tabs/对.png" class="safeguard-image" />
       <text class="safeguard-text">货到付款</text>
+    </view>
+  </view>
+<!-- 拼团 -->
+  <view class="open-roll" wx:if="{{groupActivity}}">
+    <view class="open-more">
+      <text class="roll-text">{{groupList.length}}人在开团,可直接参与</text>
+      <view class="roll-more">
+        <text class="more-titles" bindtap="more">查看更多</text>
+      </view>
+    </view>
+    <view  wx:for="{{groupList}}" wx:key="groupId">
+      <view class="open-client">
+        <view class="client">
+         <image src="{{item.imageUrl}}" class="client-head" />
+          <text class="client-title">{{item.groupUserName}}</text>
+        </view>
+        <view class="client-roll">
+          <view class="client-time">
+            <view class="photos">
+              <text class="client-photo">还差</text>
+              <text class="client-photo photo-color">{{item.groupSum-item.nowSum}}人</text>
+              <text class="client-photo">拼成</text>
+            </view>
+            <text class="client-second">2019.12.09 19:00</text>
+          </view>
+          <view class="client-button" bindtap="guigeshow">去拼单</view>
+        </view>
+      </view>
     </view>
   </view>
   <!-- 评价 -->
@@ -235,7 +270,33 @@
   <view animation="{{animationData}}" class="buy_box" wx:if="{{showModalSelectionSpecification}}">
     <chosen product-id="{{productId}}" selected-goods-id="{{selectedGoods.id}}" quantity="{{quantity}}" bind:chooseGoodsCommitEvent="listenChooseGoodsCommitEvent"></chosen>
   </view>
-
+  <!-- 查看更多拼团 -->
+  <view class="modalDlg" wx:if="{{showModal}}">
+    <image src="../../images/tabs/guanbi.png" class="modalDlg-over" bindtap="close_mask" />
+    <text class="modalDlg-text">正在开团</text>
+    <view class="modalDlg-box">
+      <view class="open-client" wx:for="{{groupList}}" wx:key="index">
+        <view class="open-client-box">
+          <image src="{{item.imageUrl}}" class="client-head" />
+          <view class="client-flex">
+            <text class="client-title title-margin">{{item.groupUserName}}</text>
+            <text class="client-second">2019.12.09 19:00</text>
+          </view>
+        </view>
+        <view class="client-roll">
+          <view class="client-time time-heights">
+            <view class="photos">
+              <text class="client-photo">还差</text>
+              <text class="client-photo photo-color">{{item.number}}人</text>
+              <text class="client-photo">拼成</text>
+            </view>
+          </view>
+          <view class="client-button" bindtap="guigeshow">去拼单</view>
+        </view>
+      </view>
+    </view>
+    <text class="open-text">仅显示10个正在开团的人</text>
+  </view>
   <!-- 底部 -->
   <view class="footer">
     <view class="footer-inner">
@@ -248,8 +309,8 @@
         <text class="foot-text">购物车</text>
       </view>
       <view class="footer-shppingcar" bind:tap="onConfirmSelectedGoods" data-type="shopPayment">到店支付</view>
-      <view class="footer-shppingcar purchase" bind:tap="onSelectedGoodsSpec" data-type="createOrder">立即购买</view>
+      <view class="footer-shppingcar purchase" bind:tap="onSelectedGoodsSpec" data-type="createOrder">{{groupActivity?'发起拼团':'立即购买'}}</view>
     </view>
   </view>
-
+  
 </view>

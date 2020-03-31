@@ -50,19 +50,13 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
+			"current": -1,
 			"list": [
 				{
 					"id": -1,
 					"name": "pages/home/index",
 					"pathName": "pages/home/index",
 					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/order/mock/mock",
-					"pathName": "pages/order/mock/mock",
 					"scene": null
 				}
 			]

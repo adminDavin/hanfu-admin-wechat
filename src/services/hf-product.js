@@ -16,13 +16,14 @@ function getProductForRotation(rotationQuantity, handleResult) {
   });
 }
 
-function getProductDetail(productId, handleResult) {
+function getProductDetail(productId, stoneId, handleResult) {
   let params = {
   };
   wx.request({
     url: app.endpoint.product + '/hfProduct/getDetail',
     data: {
-      productId: productId
+      productId: productId,
+      stoneId: stoneId
     },
     success: res => handleResult(res),
     fail: (res) => {

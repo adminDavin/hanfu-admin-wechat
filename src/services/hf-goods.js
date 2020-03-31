@@ -10,6 +10,16 @@ function getGoodsDetail(params = {}, handleResult) {
     }
   }); 
 }
+// 获取团购列表
+function getListGrou(productId,handleResult) {
+  wx.request({
+    url: app.endpoint.product + '/hfProductActivity/ListGroup?bossId=1&productId=' + productId,
+    success: res => handleResult(res),
+    fail: (res) => {
+      console.log(params, res);
+    }
+  });
+}
 
 function getGoodDetailByProductId(params={}, handleResult) {
   wx.request({
@@ -41,5 +51,6 @@ function checkGoodsResp(params, handleResult) {
 export default {
   getGoodsDetail: getGoodsDetail,
   getGoodDetailByProductId: getGoodDetailByProductId,
-  checkGoodsResp: checkGoodsResp
+  checkGoodsResp: checkGoodsResp,
+  getListGrou: getListGrou
 };
