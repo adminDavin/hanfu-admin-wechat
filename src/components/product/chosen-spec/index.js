@@ -42,6 +42,7 @@ Component({
    */
   methods: {
     /* 点击减号 */
+    
     onBindMinus: function () {
       var quantity = this.data.quantity;
       // 如果大于1时，才可以减  
