@@ -37,7 +37,7 @@
       <view class="set-ziti">设置默认地址</view>
       <text class="set-ziti" style="font-size:24rpx">提醒：每次下单会推荐使用该默认地址</text>
     </view>
-    <image src="{{setshow==true?'../../../../images/kai.png':'../../../../images/guan.png'}}" style="width:95rpx;height:48rpx" bindtap="setshowbtn"></image>
+    <image src="{{setshow==true?'../../../../images/guan.png':'../../../../images/kai.png'}}" style="width:95rpx;height:48rpx" bindtap="setshowbtn"></image>
   </view>
   <view class="footer" bindtap="submit">保存</view>
 </view>

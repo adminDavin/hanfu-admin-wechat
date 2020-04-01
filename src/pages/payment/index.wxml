@@ -18,7 +18,7 @@
       <view>
         联系电话: {{selectedAddress.phoneNumber}}
       </view>
-       <view style="margin-left: 40%;">选择地址</view>
+       <view bind:tap="selectLocation" style="margin-left: 40%;">选择地址</view>
     </view>
     <view class="address-bottom">{{addressList.contact}} {{addressList.phoneNumber}}</view>
   </view>

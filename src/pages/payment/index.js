@@ -42,6 +42,14 @@ Page({
       params.userId = userId;
     }
     this.setData(params);
+    userAddressApi.query(this.data.userId, (res) => {
+      console.log(res.data.data, res.data.data.length);
+      if (res.data.data.length > 0) {
+        this.setData({
+          selectedAddress: res.data.data[0]
+        });
+      }
+    });
   },
 
   /**
@@ -56,15 +64,13 @@ Page({
    */
   onShow: function () {
     console.log(this.data);
-    userAddressApi.query(this.data.userId, (res) => {
-      console.log(res.data.data, res.data.data.length);
-      if (res.data.data.length > 0) {
-        this.setData({
-          selectedAddress: res.data.data[0]
-        });
-      }
-    });
 
+  },
+  // 选择地址 跳到地址栏
+  selectLocation(){
+    wx.navigateTo({
+      url: '/pages/myself/address/list?action=addAddress',
+    })
   },
 
   onAddUserAddress(e) {

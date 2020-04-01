@@ -48,7 +48,22 @@ Page({
       }
     })
   },
-
+  GetNextPageData: function (e) {
+    console.log(e)
+    let i = e.currentTarget.dataset.index
+    let fruit = e.currentTarget.dataset.addresslist;
+    console.log(fruit[i])
+    var pages = getCurrentPages();
+    var currPage = pages[pages.length - 1];   //当前页面
+    var prevPage = pages[pages.length - 2];  //上一个页面
+    //直接调用上一个页面的setData()方法，把数据存到上一个页面中去
+    var newtitle = 'It is new title';
+    // prevPage.data.selectedAddress = fruit[i]; //不需要页面更新
+    prevPage.setData({
+      selectedAddress: fruit[i]
+    })
+    wx.navigateBack()
+  },
   /**
    * 生命周期函数--监听页面加载
    */

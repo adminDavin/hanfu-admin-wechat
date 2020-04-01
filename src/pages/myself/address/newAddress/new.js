@@ -66,11 +66,11 @@ Page({
     var that = this;
     if (that.data.setshow == true) {
       that.setData({
-        isFaultAddress: 0
+        isFaultAddress: 1
       })
     } else {
       that.setData({
-        isFaultAddress: 1
+        isFaultAddress: 0
       })
     }
 

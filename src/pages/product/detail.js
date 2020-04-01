@@ -12,8 +12,11 @@ Page({
    * 页面的初始数据
    */
   data: {
+    priceArea:'',
     goodsId:'',
+    activityState:'',// 活动状态
     countdown: '',
+    eventStatus:'限时秒杀',
     startTime:'',
     endTime:'',
     endDate2: '2020-03-030 14:41:00',
@@ -70,15 +73,16 @@ Page({
     })
   },
   /**
-   * 生命周期函数--监听页面加载
+   * 生命周期函数--监听页面加载 priceArea
    */
   onLoad: function (options) {
     var that = this;
-    // that.data.startTime= options.startTime;
+    that.data.activityState = options.activityState;
+    that.data.startTime = options.startTime;
+    that.data.priceArea = options.priceArea;
     that.data.endTime = options.endTime
-    // console.log(options.endTime)
-    that.countTime()
     console.log(options)
+    that.countTime()
     if (options.action=='groupActivity') {
       console.log('拼团')
       this.data.groupActivity = true
@@ -226,14 +230,14 @@ Page({
     }.bind(this), 200)
   },
 
-  //详情滑动跳动数字
-  current: function (e) {
-    console.log(e)
-    // var that = this
-    // that.setData({
-    //   slideNumber: e.detail.current + 1
-    // })
-  },
+  // //详情滑动跳动数字
+  // current: function (e) {
+  //   console.log(e)
+  //   // var that = this
+  //   // that.setData({
+  //   //   slideNumber: e.detail.current + 1
+  //   // })
+  // },
 
   //关注
   collect: function () {
@@ -292,7 +296,7 @@ Page({
     },
 
     updateSelectedGoods: function (goodsId, product) {
-        goodsApi.getGoodsDetail({ goodsId: goodsId, quantity: this.data.quantity }, (res) => {
+        goodsApi.getGoodsDetail({ goodsId: goodsId, quantity: '1' }, (res) => {
             let goods = res.data.data;
           console.log('详情',res.data.data)
             let imgageUrls = [];
@@ -301,16 +305,20 @@ Page({
                 imgageUrls.push(app.endpoint.file + '/goods/getFile?fileId=' + fileId);
             }
           this.setData({ product: product, selectedGoods: goods });
-          // this.setData({ product: product, imgageUrls: imgageUrls, selectedGoods: goods });    
-          goodsApi.getListGrou(goods.productId,(res)=>{
-            console.log('团购列表',res.data.data)
-            let groupList = res.data.data
-            requestUtils.groupFileId(groupList)
-            this.setData({
-              groupList: groupList
+          // this.setData({ product: product, imgageUrls: imgageUrls, selectedGoods: goods }); 
+          if (this.data.groupActivity){
+            console.log(goods.productId)
+            console.log(goods)
+            goodsApi.getListGrou(goods.productId, (res) => {
+              console.log('团购列表', res.data.data)
+              let groupList = res.data.data
+              requestUtils.groupFileId(groupList)
+              this.setData({
+                groupList: groupList
+              })
+              console.log(this.data.groupList)
             })
-            console.log(this.data.groupList)
-          })
+          }
         });
     },
     onSelectedGoodsSpec: function (e) {
@@ -405,6 +413,9 @@ Page({
     // 创建订单
     createOrder: function(paymentType, userId) {
       console.log(this.data.selectedGoods, paymentType);
+      if (this.data.selectedGoods.sellPrices == undefined) {
+        this.data.selectedGoods.sellPrices = this.data.selectedGoods.sellPrice
+      }
       let params = {
         selectedGoods: this.data.selectedGoods,
         paymentType: paymentType,
@@ -438,8 +449,34 @@ Page({
     var end = endDate.getTime();
     console.log(now)
     console.log(end)
-    var leftTime = end - now; //时间差                              
+    var leftTime = end - now; //时间差                           
     var d, h, m, s, ms;
+    if (this.data.activityState == -1) {
+      var staDate = new Date(that.data.startTime);//设置截止时间
+      var sta = staDate.getTime();
+      var leftTime = sta - now; //时间差   
+      if (leftTime >= 0) {
+        d = Math.floor(leftTime / 1000 / 60 / 60 / 24);
+        h = Math.floor(leftTime / 1000 / 60 / 60 % 24);
+        m = Math.floor(leftTime / 1000 / 60 % 60);
+        s = Math.floor(leftTime / 1000 % 60);
+        ms = Math.floor(leftTime % 1000);
+        // ms = ms < 100 ? "0" + ms : ms
+        s = s < 10 ? "0" + s : s
+        m = m < 10 ? "0" + m : m
+        h = h < 10 ? "0" + h : h
+        //递归每秒调用countTime方法，显示动态时间效果
+        setTimeout(that.countTime, 1000);
+      }
+      this.setData({
+        eventStatus: '距活动开始时间',
+        countdown: d + "天" + h + "时" + m + "分" + s + "秒"
+      })
+      console.log('活动未开始')
+      //递归每秒调用countTime方法，显示动态时间效果
+      setTimeout(that.countTime, 1000);
+    }
+    if (this.data.activityState !== -1) {
     if (leftTime >= 0) {
       d = Math.floor(leftTime / 1000 / 60 / 60 / 24);
       h = Math.floor(leftTime / 1000 / 60 / 60 % 24);
@@ -458,8 +495,10 @@ Page({
     } else {
       console.log('已截止')
       that.setData({
-        countdown: '00:00:00'
+        eventStatus:'活动已结束',
+        countdown: '0天0时0分0秒'
       })
     }
+  }
   },
 })
