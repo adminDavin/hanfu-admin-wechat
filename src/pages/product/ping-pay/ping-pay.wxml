@@ -1,0 +1,70 @@
+<view class="ping-pay">
+  <!-- 头部 -->
+  <view class="pay-header">
+    <view class="notice">拼团须知</view>
+    <!-- <view class="header-table">
+      <text class="table-time">成团倒计时：</text>
+      <text class="table-number">{{hour}}</text>
+      <text class="table-time">时</text>
+      <text class="table-number">{{minute}}</text>
+      <text class="table-time">分</text>
+      <text class="table-number">{{second}}</text>
+      <text class="table-time">秒</text>
+    </view> -->
+  </view>
+  <!-- 拼团失败 -->
+  <view class="pay-header" style="display:none">
+    <view class="notice">拼团须知</view>
+    <text class="table-failure">拼团失败</text>
+  </view>
+  <!-- 拼团成功 -->
+  <view class="pay-header" style="display:none">
+    <view class="notice">拼团须知</view>
+    <text class="table-failure table-color">拼团成功</text>
+  </view>
+  <!-- banner -->
+  <view class="pay-shpping">
+    <image src="{{groupFile}}" class="pay-image" />
+    <view class="pay-content">
+      <view class="content-title">{{productName}}</view>
+      <view class="title-box">
+        <text class="title-number"></text>
+        <view class="title-money">
+          <text class="money-number">￥{{sellPrice}}</text>
+          <text class="money-del"></text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 拼团 -->
+  <view class="par-succeed">
+    <view class="succeed">
+      <text class="succeed-text">还差</text>
+      <text class="succeed-color">{{groupSum-nowSum}}人</text>
+      <text class="succeed-text">拼购成功</text>
+    </view>
+    <view class="succeed" style="display:none">恭喜拼购成功</view>
+    <view class="succeed-photos">
+      <text class="photo-tubbish">团长</text>
+      <view class="photos-head">
+        <image src="{{imgageUrls}}" class="photo-heads" />
+        <text class="photo-title">{{userName}}</text>
+      </view>
+    </view>
+    <view>
+      <!-- <view class="more-all">
+        <text class="all-text">查看全部</text>
+        <image src="../../images/tabs/xiangxia.png" class="all-image" />
+      </view>
+      <view class="succeed-photos" style="display:none">
+        <view class="photos-head">
+          <view class="photo-heads heads-wen">?</view>
+          <text class="photo-title">待邀请</text>
+        </view>
+      </view> -->
+      <button class="invite" open-type="share" style=" width: 560rpx;height: 80rpx;line-height: 80rpx">邀请好友</button>
+      <view class="invite" style="display:none">一键参团</view>
+      <view class="invite" style="display:none" bindtap="goHome">去首页</view>
+    </view>
+  </view>
+</view>

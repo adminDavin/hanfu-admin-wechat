@@ -30,6 +30,10 @@ Component({
       type: Number,
       value: 0
     },
+    groupId:{
+      type:Number,
+      value:0
+    }
   },
 
   /**
@@ -88,9 +92,14 @@ Component({
       if (this.data.selectedGoods.sellPrices == undefined) {
         this.data.selectedGoods.sellPrices = this.data.selectedGoods.sellPrice
       }
+      if (this.properties.groupId !== 0) {
+        this.data.selectedGoods.groupid = this.properties.groupId
+      }
+      console.log(this.data.selectedGoods)
       let that = this
       // TODO 获取物品价格及库存检查
-      console.log('活动ID', this.properties.activityId)
+      console.log('活动ID', that.properties.activityId)
+      console.log('团购活动ID', that.properties.groupId)
       if (this.data.activityId !== 0) {
         console.log('活动校验')
         wx.request({

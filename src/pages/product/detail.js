@@ -12,6 +12,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    loading:'',
     priceArea:'',
     goodsId:'',
     activityState:'',// 活动状态
@@ -265,7 +266,10 @@ Page({
     onReady: function () {
 
     },
-
+  onHide: function () {
+    //写在onHide()中，切换页面或者切换底部菜单栏时关闭定时器。
+    clearInterval(this.data.loading);
+  },
     /**
      * 生命周期函数--监听页面显示
      */
@@ -294,7 +298,10 @@ Page({
             })
         }
     },
-
+  onUnload:function (){
+  clearInterval(this.data.loading)
+    console.log('结束', this.data.loading)
+  },
     updateSelectedGoods: function (goodsId, product) {
         goodsApi.getGoodsDetail({ goodsId: goodsId, quantity: '1' }, (res) => {
             let goods = res.data.data;
@@ -306,19 +313,6 @@ Page({
             }
           this.setData({ product: product, selectedGoods: goods });
           // this.setData({ product: product, imgageUrls: imgageUrls, selectedGoods: goods }); 
-          if (this.data.groupActivity){
-            console.log(goods.productId)
-            console.log(goods)
-            goodsApi.getListGrou(goods.productId, (res) => {
-              console.log('团购列表', res.data.data)
-              let groupList = res.data.data
-              requestUtils.groupFileId(groupList)
-              this.setData({
-                groupList: groupList
-              })
-              console.log(this.data.groupList)
-            })
-          }
         });
     },
     onSelectedGoodsSpec: function (e) {
@@ -466,7 +460,9 @@ Page({
         m = m < 10 ? "0" + m : m
         h = h < 10 ? "0" + h : h
         //递归每秒调用countTime方法，显示动态时间效果
-        setTimeout(that.countTime, 1000);
+        that.setData({
+          loading: setTimeout(that.countTime, 1000)
+        }) 
       }
       this.setData({
         eventStatus: '距活动开始时间',
@@ -491,7 +487,9 @@ Page({
         countdown: d + "天" + h + "时" + m + "分" + s + "秒",
       })
       //递归每秒调用countTime方法，显示动态时间效果
-      setTimeout(that.countTime, 1000);
+      that.setData({
+        loading: setTimeout(that.countTime, 1000)
+      }) 
     } else {
       console.log('已截止')
       that.setData({

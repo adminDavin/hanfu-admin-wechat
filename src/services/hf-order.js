@@ -28,6 +28,20 @@ function addGroup(params = {}, handleResult) {
     }
   });
 }
+function entranceGroup(params = {}, handleResult) {
+  wx.request({
+    url: app.endpoint.product + '/hfProductActivity/entranceGroup',
+    method: 'POST',
+    header: {
+      'content-type': 'application/x-www-form-urlencoded'
+    },
+    data: params,
+    success: res => handleResult(res),
+    fail: (res) => {
+      console.log(params, res);
+    }
+  });
+}
 function queryOrder(userId, action, handleResult) {
   let params = {
     userId: userId,
@@ -98,5 +112,6 @@ export default {
   modifyStatus: modifyStatus,
   qrCode: qrCode,
   evaluate: evaluate,
-  addGroup: addGroup
+  addGroup: addGroup,
+  entranceGroup:entranceGroup
 };

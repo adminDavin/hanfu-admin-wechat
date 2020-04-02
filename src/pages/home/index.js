@@ -41,7 +41,7 @@ Page({
   onSelectRotation: function (e) {
     console.log(e.currentTarget.dataset)
     wx.navigateTo({
-      url: '/pages/product/detail?action=rotation&productId=' + e.currentTarget.dataset.id + '&stoneId=0'
+      url: '/pages/product/detail?action=rotation&productId=' + e.currentTarget.dataset.id + '&stoneId=1'
     })
   },
 

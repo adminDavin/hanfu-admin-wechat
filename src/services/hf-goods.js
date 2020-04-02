@@ -11,9 +11,10 @@ function getGoodsDetail(params = {}, handleResult) {
   }); 
 }
 // 获取团购列表
-function getListGrou(productId,handleResult) {
+function getListGrou(params,handleResult) {
   wx.request({
-    url: app.endpoint.product + '/hfProductActivity/ListGroup?bossId=1&productId=' + productId,
+    url: app.endpoint.product + '/hfProductActivity/ListGroup',
+    data: params,
     success: res => handleResult(res),
     fail: (res) => {
       console.log(params, res);

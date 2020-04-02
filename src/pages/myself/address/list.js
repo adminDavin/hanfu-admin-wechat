@@ -6,6 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    action:'',
     userId: '',
     addressList: [],
     tipshow: false
@@ -49,6 +50,7 @@ Page({
     })
   },
   GetNextPageData: function (e) {
+    if (this.data.action == 'Gotoaddress'){
     console.log(e)
     let i = e.currentTarget.dataset.index
     let fruit = e.currentTarget.dataset.addresslist;
@@ -63,13 +65,18 @@ Page({
       selectedAddress: fruit[i]
     })
     wx.navigateBack()
+    }
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     var that = this;
+    console.log(options.action)
     that.getAddress()
+    that.setData({
+      action: options.action
+    })
   },
 
   /**

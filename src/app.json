@@ -26,7 +26,10 @@
     "pages/payment/shopping",
     "pages/myself/evaluated/dryinglist/dryinglist",
     "pages/myself/coupons/coupons",
-    "pages/product/group/list"
+    "pages/product/group/list",
+    "pages/product/ping-pay/ping-pay",
+    "pages/product/group-detail"
+   
   ],
   "usingComponents": {
     "van-tab": "./pages/vant/weapp/dist/tab/index",

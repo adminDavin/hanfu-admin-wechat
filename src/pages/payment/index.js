@@ -69,7 +69,7 @@ Page({
   // 选择地址 跳到地址栏
   selectLocation(){
     wx.navigateTo({
-      url: '/pages/myself/address/list?action=addAddress',
+      url: '/pages/myself/address/list?action=Gotoaddress',
     })
   },
 
@@ -143,18 +143,18 @@ Page({
       console.log(res)
       console.log(params);
       wx.navigateTo({
-        url: '/pages/payment/payment?userId=' + this.data.userId + '&outTradeNo=' + res.data.data.orderCode + '&paymentName=' + params.paymentName,
+        url: '/pages/payment/payment?userId=' + this.data.userId + '&outTradeNo=' + res.data.data.orderCode + '&paymentName=' + params.paymentName + '&groupActivity=' + this.data.groupActivity + '&activityId=' + this.data.activityId + '&goodsId=' + this.data.selectedGoods.id + '&userId=' + this.data.userId + '&orderId=' + res.data.data.id + '&groupid=' + this.data.groupid,
       })
-      if (this.data.groupActivity) {
-        let param={
-          activityId:this.data.activityId,
-          goodsId: this.data.selectedGoods.id,
-          userId: this.data.userId,
-        }
-        orderApi.addGroup(param, (res) => {
-          console.log('开团成功')
-        })
-      }
+      // if (this.data.groupActivity) {
+      //   let param={
+      //     activityId:this.data.activityId,
+      //     goodsId: this.data.selectedGoods.id,
+      //     userId: this.data.userId,
+      //   }
+      //   orderApi.addGroup(param, (res) => {
+      //     console.log('开团成功')
+      //   })
+      // }
     });
   }
 })
