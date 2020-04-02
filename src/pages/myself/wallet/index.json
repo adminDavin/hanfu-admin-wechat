@@ -1,3 +1,4 @@
 {
-  "navigationStyle": "custom"
+  "usingComponents": {},
+  "navigationBarTitleText": "我的余额"
 }

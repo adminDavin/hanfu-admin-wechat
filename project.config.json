@@ -50,8 +50,36 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
-			"list": []
+			"current": 3,
+			"list": [
+				{
+					"id": -1,
+					"name": "quan",
+					"pathName": "pages/myself/quan/quan",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "coupons",
+					"pathName": "pages/myself/coupons/coupons",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "wallet",
+					"pathName": "pages/myself/wallet/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "jifen",
+					"pathName": "pages/myself/jifen/jifen",
+					"scene": null
+				}
+			]
 		}
 	}
 }

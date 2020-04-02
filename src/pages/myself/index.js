@@ -57,10 +57,6 @@ Page({
       action: 'coupon',
       quantity: 0,
       desc: "优惠券"
-    }, {
-      action: 'privilege',
-      quantity: 0,
-      desc: "我的特权"
     }],
     toolAndService: [{
       action: 'address',
@@ -131,6 +127,11 @@ Page({
       });
     }
   },
+  te:function(){
+  wx.navigateTo({
+    url: '/pages/myself/tequan/tequan',
+  })
+  },
   recharge: function (e) {
     console.log(123)
     this.handleSelected('pages/myself/vipRecharge/vip', e.currentTarget.dataset.action);
@@ -144,9 +145,14 @@ Page({
 
   },
   onSelectedwallet: function(e) {
+    console.log(e);
     if (e.currentTarget.dataset.action =='coupon') {
       this.handleSelected('/pages/myself/coupons/coupons', e.currentTarget.dataset.action);
-    }else {
+    }
+    else if (e.currentTarget.dataset.action == 'integral'){
+      this.handleSelected('/pages/myself/jifen/jifen', e.currentTarget.dataset.action);
+    }
+    else {
       this.handleSelected('/pages/myself/wallet/index', e.currentTarget.dataset.action);
     }
   },

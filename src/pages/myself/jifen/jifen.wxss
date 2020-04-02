@@ -1,0 +1,4 @@
+/* src/pages/myself/jifen/jifen.wxss */
+page{
+  background: #FAF7FA;
+}

@@ -1,32 +1,13 @@
-  <view class="nav">
-    <view wx:for="{{myWalletResoures}}" wx:key="index" class="nav-item" data-id="1">
-      <view class="nav-ziti">{{item.desc}}</view>
-      <view class="{{item.selectedSytle}}"></view>
-    </view>
+<view style='background:#FFFFFF;margin-top:20rpx;padding:30rpx;'>
+  <view style='color:#666666;'>余额</view>
+  <view style='color:#FF0000;margin-top:10rpx;'>
+    <sub style="font-size:25rpx;">¥</sub>
+    <span style="font-weight:bold;font-size:40rpx;">20</span>
   </view>
-<!--src/pages/myself/wallet/index.wxml-->
-<view class="nav">
-  <image src="/pages/images/tabs/xiala.png" mode="aspectFit" bindtap="gopre"></image>
-  <text class="title">付款</text>
-  <view class="titleright"></view>
 </view>
-<view class="pay-to">
-  <!-- <view class="pay-to-left"> -->
-    <!-- <text class="pay-to-left-top">付款给</text> -->
-    <!-- <text class="pay-to-left-bottom">我是一只毒蘑菇啊</text> -->
-  <!-- </view> -->
-  <!-- <image src="/pages/images/tabs/36542ad2bcfcab377e9fa0e2c5bf9fb1fc84950d925e-zP5HbN.png" /> -->
-</view>
-<view class="pay-num">
-  <text class="pay-num-title">金额</text>
-  <view class="numinput">
-      <view class="numtop">
-        <text>¥</text>
-        <input class="weui-input" value="{{total}}" bindinput="bindKeyInput" type="digit" placeholder="输入金额" confirm-type="done"/>
-      </view>
-  </view>
-      <button class="numBottom" bindtap="onCreateCode" >付款</button>
+<view style='margin-top:20rpx;background:#fff;display:flex;align-items:center;justify-content:space-between;padding:10px 0;'>
+   <view style='margin-left:20rpx;'>充值余额</view>
+     <input style="margin-right:25rpx; text-align:right;" placeholder="请输入充值金额" type='number' />
 </view>
 
-
-
+  <button style='background:#FF3333;color:#fff;width:90%;position:fixed;bottom:20px;left:5%;' bindtap="onCreateCode">立即充值</button>

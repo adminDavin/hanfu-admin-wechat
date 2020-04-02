@@ -1,0 +1,66 @@
+<!--src/pages/myself/coupons/coupons.wxml-->
+<view class="discount">
+  <!-- 优惠券 -->
+  <van-tabs active="a">
+    <van-tab title="平台券" name="a" style="">
+      <view style='margin: 15rpx 20rpx 0 20rpx;'>
+        <view style="display:flex; background:#fff;margin-bottom:15rpx;border-radius:10rpx;">
+          <view style=' color:#fff; background:linear-gradient(-51deg,rgba(255,0,0,1),rgba(254,89,89,1));' class='item'>
+            <view>
+              <sub style="font-size:25rpx;">¥</sub>
+              <span style="font-weight:bold;font-size:40rpx;">20</span>
+            </view>
+            <view style='font-size:26rpx;'>
+              满499元可用
+            </view>
+          </view>
+          <view style='margin-left:20rpx;flex:1;' class='quan'>
+            <view style='margin-top:22rpx;'>
+              全品类商品满减劵
+            </view>
+            <view style="display:flex;" class='qu'>
+              <view style='color:#666;font-size:24rpx;'>
+                2017.08.30~2017.09.02
+              </view>
+              <view class='lingqu'>
+                领取
+              </view>
+            </view>
+          </view>
+        </view>
+        <view style="display:flex; background:#fff;margin-bottom:15rpx;border-radius:10rpx;">
+          <view style=' color:#fff; background:linear-gradient(-51deg,rgba(255,0,0,1),rgba(254,89,89,1));' class='item'>
+            <view>
+              <sub style="font-size:25rpx;">¥</sub>
+              <span style="font-weight:bold;font-size:40rpx;">20</span>
+            </view>
+            <view style='font-size:26rpx;'>
+              满499元可用
+            </view>
+          </view>
+          <view style='margin-left:20rpx;flex:1;' class='quan'>
+            <view style='margin-top:22rpx;'>
+              全品类商品满减劵
+            </view>
+            <view style="display:flex;" class='qu'>
+              <view style='color:#666;font-size:24rpx;'>
+                2017.08.30~2017.09.02
+              </view>
+              <view class='lingqu'>
+                领取
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+
+
+
+      <!-- <image src="../../../img/yishiyong.png"></image> -->
+    </van-tab>
+    <van-tab title="会员券" name="b">
+      2222
+    </van-tab>
+  </van-tabs>
+  <view class="discount-footer" bindtap='goling'>查看我的优惠券</view>
+</view>
