@@ -2,22 +2,59 @@
 <view class="discount">
     <!-- 优惠券 -->
     <van-tabs active="a">
-        <van-tab  title="未使用" name="a">
-             <view wx:for="{{unused}}" class="discount-boxs">
-                <view class="discount-box">
-                    <view class="discount-number red">
-                        <text class="number-money">¥{{item.couponsEach.reduce}}</text>
-                        <text class="money-discount">满{{item.couponsEach.threshold}}元可用</text>
-                    </view>
-                    <view class="discount-content">
-                        <text class="content-title">{{item.hfName}}</text>
-                        <view class="content-user">
-                            <text class="content-time">{{item.effectiveDate}}~{{item.expireDate}}</text>
-                            <view class="outmoded">已使用</view>
-                        </view>
-                    </view>
-                </view>
+        <van-tab  title="未使用" name="a" >
+            <view style='margin: 15rpx 20rpx 0 20rpx;'>
+        <view style="display:flex; background:#fff;margin-bottom:15rpx;border-radius:10rpx;">
+          <view style=' color:#fff; background:linear-gradient(-51deg,rgba(255,0,0,1),rgba(254,89,89,1));' class='item'>
+            <view>
+              <sub style="font-size:25rpx;">¥</sub>
+              <span style="font-weight:bold;font-size:40rpx;">20</span>
             </view>
+            <view style='font-size:26rpx;'>
+              满499元可用
+            </view>
+          </view>
+          <view style='margin-left:20rpx;flex:1;' class='quan'>
+            <view style='margin-top:22rpx;'>
+              全品类商品满减劵
+            </view>
+            <view style="display:flex;" class='qu'>
+              <view style='color:#666;font-size:24rpx;'>
+                2017.08.30~2017.09.02
+              </view>
+              <view class='lingqu'>
+                领取
+              </view>
+            </view>
+          </view>
+        </view>
+        <view style="display:flex; background:#fff;margin-bottom:15rpx;border-radius:10rpx;">
+          <view style=' color:#fff; background:linear-gradient(-51deg,rgba(255,0,0,1),rgba(254,89,89,1));' class='item'>
+            <view>
+              <sub style="font-size:25rpx;">¥</sub>
+              <span style="font-weight:bold;font-size:40rpx;">20</span>
+            </view>
+            <view style='font-size:26rpx;'>
+              满499元可用
+            </view>
+          </view>
+          <view style='margin-left:20rpx;flex:1;' class='quan'>
+            <view style='margin-top:22rpx;'>
+              全品类商品满减劵
+            </view>
+            <view style="display:flex;" class='qu'>
+              <view style='color:#666;font-size:24rpx;'>
+                2017.08.30~2017.09.02
+              </view>
+              <view class='lingqu'>
+                领取
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+
+
         </van-tab>
         <van-tab  title="已使用" name="b">
          <view wx:for="{{use}}" class="discount-boxs">
@@ -55,5 +92,5 @@
             </view>
           </van-tab>
     </van-tabs>
-    <view class="discount-footer">不使用优惠</view>
+    <view class="discount-footer"  bindtap='goling'>去领券大厅</view>
 </view>

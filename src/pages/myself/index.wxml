@@ -3,7 +3,7 @@
     <view class='headImageView'>
       <open-data  type="userAvatarUrl"></open-data>
     </view>
-    <view class="t40">
+    <view class="t40" bindtap='te'>
       <open-data type="userNickName"></open-data>
       <view class="t30" bindtap="recharge">普通会员</view>
     </view>

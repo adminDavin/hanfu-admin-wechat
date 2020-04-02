@@ -7,13 +7,13 @@ Page({
    */
   data: {
     unused: [],
-    unusedEach:[],
+    unusedEach: [],
     use: [],
     useEach: [],
     outmoded: [],
     outmodedEach: []
   },
-  goling:function(){
+  goling: function () {
     wx.navigateTo({
       url: '../quan/quan',
     })
@@ -33,6 +33,11 @@ Page({
       })
     }
   },
+  goling: function () {
+    wx.navigateTo({
+      url: '../coupons/coupons',
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -51,10 +56,10 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    
+
     hfOrderApi.selectCoupons('unused', (res) => {
       console.log(res.data.data);
-      
+
       let unused = res.data.data
       for (let unusedEach of unused) {
         unusedEach.couponsEach = JSON.parse(unusedEach.couponsInfo)
