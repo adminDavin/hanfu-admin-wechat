@@ -69,22 +69,6 @@ quan.create(obj ,(res) => {
     quan.pay(obj1 , (res) => {
       console.log(res);
       if(res.data.status==200){
-        let obj2={
-          transactionType:'rechargeOrder',
-          outTradeNo :that.data.id,
-          userId :that.data.userId,
-        }
-        quan.complate(obj2, (res) => {
-          console.log(res);
-          quan.findInfoByUserId(that.data.userId, (res) => {
-            console.log(res);
-            that.setData({
-              surplus: res.data.data.surplus
-            })
-           
-           });
-         });
-       
         wx.requestPayment({
           timeStamp: res.data.data.timeStamp,
           nonceStr: res.data.data.nonce_str,
@@ -93,7 +77,20 @@ quan.create(obj ,(res) => {
           paySign: res.data.data.paySign,
           success (res) { 
             console.log(res);
-
+            let obj2={
+              transactionType:'rechargeOrder',
+              outTradeNo :that.data.id,
+              userId :that.data.userId,
+            }
+            quan.complate(obj2, (res) => {
+              console.log(res);
+              quan.findInfoByUserId(that.data.userId, (res) => {
+                console.log(res);
+                that.setData({
+                  surplus: res.data.data.surplus
+                })
+               });
+             });
           },
           fail (res) { }
         })

@@ -9,6 +9,7 @@ import tequan from '../../services/hf-tequan.js';
 
 Page({
   data: {
+    hui:'普通会员',
     add:{},
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     onOff: true,
@@ -118,7 +119,8 @@ Page({
      arr[1].quantity=res.data.data.integral;
      arr[2].quantity=res.data.data.couponCount;
      this.setData({
-      myWalletResoures:arr
+      myWalletResoures:arr,
+      hui:res.data.data.prerogative
     });
     });
   },
@@ -129,7 +131,10 @@ Page({
   },
   recharge: function (e) {
     console.log(123)
-    this.handleSelected('pages/myself/vipRecharge/vip', e.currentTarget.dataset.action);
+    if(this.data.hui!='普通会员'){
+      this.handleSelected('pages/myself/vipRecharge/vip', e.currentTarget.dataset.action);
+    }
+   
   },
   onSelectedOrder: function(e) {
     this.handleSelected('/pages/order/list', e.currentTarget.dataset.action);

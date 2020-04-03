@@ -25,14 +25,14 @@
               <view class='lingqu' bindtap="getCoupon" data-id="{{item.id}}">
                 领取
               </view>
-              <image src="../../../img/yishiyong.png" style="width:100rpx;height:100rpx;"></image>
+              <!-- <image wx:if="{{item.useState==-1}}" src="../../../img/yishiyong.png" style="width:100rpx;height:100rpx;"></image> -->
             </view>
             <view style="display:flex;" class='qu1' wx:if="{{item.useState==-1}}">
               <view style='color:#666;font-size:24rpx;'>
                {{item.startTime}}~{{item.stopTime}}
               </view>
               
-              <image src="../../../img/yishiyong.png" style="margin-right:30rpx; width:100rpx;height:100rpx;"></image>
+              <image wx:if="{{item.useState==-1}}" src="../../../img/yishiyong.png" style=" width:100rpx;height:100rpx;"></image>
             </view>
           </view>
         </view>
@@ -62,17 +62,17 @@
               <view style='color:#666;font-size:24rpx;'>
                {{item.startTime}}~{{item.stopTime}}
               </view>
-              <view class='lingqu' bindtap="getCoupon" data-id="{{item.id}}">
+              <view class='lingqu' bindtap="getCoupon" data-id="{{item.id}}" wx:if="{{member==1}}">
                 领取
               </view>
-              <image src="../../../img/yishiyong.png" style="width:100rpx;height:100rpx;"></image>
+              <!-- <image src="../../../img/yishiyong.png" style="width:100rpx;height:100rpx;"></image> -->
             </view>
             <view style="display:flex;" class='qu1' wx:if="{{item.useState==-1}}">
               <view style='color:#666;font-size:24rpx;'>
                {{item.startTime}}~{{item.stopTime}}
               </view>
               
-              <image src="../../../img/yishiyong.png" style="margin-right:30rpx; width:100rpx;height:100rpx;"></image>
+              <image wx:if="{{item.useState==-1}}" src="../../../img/yishiyong.png" style=" width:100rpx;height:100rpx;"></image>
             </view>
           </view>
         </view>

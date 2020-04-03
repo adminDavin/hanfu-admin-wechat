@@ -1,11 +1,13 @@
 // src/pages/myself/coupons/coupons.js
 import discount from '../../../services/discount.js';
+import quan from '../../../services/hf-tequan.js';
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    member:'',
     formling:{
       couponId :'',
       userId :'' ,
@@ -42,6 +44,14 @@ Page({
         that.setData({
           userId: res.data
         })
+        quan.findInfoByUserId(that.data.userId, (res) => {
+          console.log(res);
+         
+          that.setData({
+            member:res.data.data.member
+         });
+         console.log(that.data.member)
+         });
         console.log(res);
         let obj={
           userId:that.data.userId,
@@ -49,7 +59,7 @@ Page({
         }
         discount.getTingQuan(obj,(res) => {
           // let list = res.data.data;
-          // console.log(res);
+          console.log(res);
           that.setData({
             tequan: res.data.data
           })
@@ -82,6 +92,29 @@ Page({
        wx.showToast({
          title: '领取成功',
        })
+       let obj={
+        userId:that.data.userId,
+        scope : that.data.scope,
+      }
+      discount.getTingQuan(obj, (res) => {
+        // let list = res.data.data;
+        console.log(res);
+        that.setData({
+          tequan: res.data.data
+        })
+        let arr=that.data.tequan;
+        for(var i=0;i<arr.length;i++){
+          arr[i].useLimit=JSON.parse(arr[i].useLimit);
+          arr[i].startTime=arr[i].startTime.split(' ');
+          arr[i].startTime=arr[i].startTime[0];
+          arr[i].stopTime=arr[i].stopTime.split(' ');
+          arr[i].stopTime=arr[i].stopTime[0];
+        }
+        that.setData({
+          tequan:arr
+        })
+        console.log(that.data.tequan);
+      });
      }
     });
   },

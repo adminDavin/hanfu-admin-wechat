@@ -83,7 +83,7 @@
                {{item.startTime}}~{{item.stopTime}}
               </view>
               
-              <image src="../../../img/yiguoqi.png" style="margin-right:30rpx; width:100rpx;height:100rpx;"></image>
+              <image src="../../../img/yiguoqi.png" style=" width:100rpx;height:100rpx;"></image>
             </view>
           </view>
         </view>
