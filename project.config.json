@@ -1,7 +1,7 @@
 {
 	"projectname": "thinking-creation",
 	"description": "项目配置文件",
-	"libVersion": "2.10.1",
+	"libVersion": "2.9.4",
 	"appid": "wx2641aaa105c07dd4",
 	"compileType": "miniprogram",
 	"miniprogramRoot": "src/",
@@ -15,6 +15,8 @@
 		"coverView": true,
 		"nodeModules": true,
 		"autoAudits": false,
+		"showShadowRootInWxmlPanel": true,
+		"scopeDataCheck": false,
 		"uglifyFileName": true,
 		"checkInvalidKey": true,
 		"checkSiteMap": true,
@@ -23,9 +25,7 @@
 			"ignore": [],
 			"disablePlugins": [],
 			"outputPath": ""
-		},
-		"showShadowRootInWxmlPanel": true,
-		"scopeDataCheck": false
+		}
 	},
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},

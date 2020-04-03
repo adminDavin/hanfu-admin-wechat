@@ -1,18 +1,38 @@
 // src/pages/myself/tequan/tequan.js
+import quan from '../../../services/hf-tequan.js';
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    userId:'',
+    tequan:[]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    // console.log(111);
+    var that = this;
+    wx.getStorage({
+      key: 'userId',
+      success: function (res) {
+        that.setData({
+          userId: res.data
+        })
+        console.log(res);
+        quan.getquan(that.data.userId ,(res) => {
+          // let list = res.data.data;
+          console.log(res);
+          that.setData({
+            tequan: res.data.data
+          })
+        });
+      },
+    })
+   
   },
 
   /**

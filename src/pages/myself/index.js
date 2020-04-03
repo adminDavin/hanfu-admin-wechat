@@ -5,9 +5,11 @@ import hfOrderApi from '../../services/hf-order.js';
 import userAddressApi from '../../services/hf-user-address.js';
 import paymentApi from '../../services/hf-payment.js';
 import util from '../../utils/util.js';
+import tequan from '../../services/hf-tequan.js';
 
 Page({
   data: {
+    add:{},
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     onOff: true,
     showModalDlg: true,
@@ -104,6 +106,17 @@ Page({
   
     this.setData({
       userId: userId
+    });
+    
+    tequan.findInfoByUserId(this.data.userId, (res) => {
+     console.log(res);
+     let arr=this.data.myWalletResoures;
+     arr[0].quantity=res.data.data.surplus;
+     arr[1].quantity=res.data.data.integral;
+     arr[2].quantity=res.data.data.couponCount;
+     this.setData({
+      myWalletResoures:arr
+    });
     });
   },
   onShow: function() {

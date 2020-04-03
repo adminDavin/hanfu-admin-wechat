@@ -1,1 +1,7 @@
-
+<view wx:for="{{tequan}}" wx:key="index">
+ 特权名称：{{item.prerogative}}
+ 特权描述：{{item.levelDescribe}}
+ 特权名称：{{item.prerogativeState==1?'生效':'失效'}}
+ 特权开始时间：{{item.startTime}}
+ 特权结束时间：{{item.expireTime}}
+</view>

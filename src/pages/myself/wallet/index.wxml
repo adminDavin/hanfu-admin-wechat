@@ -2,12 +2,12 @@
   <view style='color:#666666;'>余额</view>
   <view style='color:#FF0000;margin-top:10rpx;'>
     <sub style="font-size:25rpx;">¥</sub>
-    <span style="font-weight:bold;font-size:40rpx;">20</span>
+    <span style="font-weight:bold;font-size:40rpx;">{{surplus}}</span>
   </view>
 </view>
 <view style='margin-top:20rpx;background:#fff;display:flex;align-items:center;justify-content:space-between;padding:10px 0;'>
    <view style='margin-left:20rpx;'>充值余额</view>
-     <input style="margin-right:25rpx; text-align:right;" placeholder="请输入充值金额" type='number' />
+     <input  bindinput='usernameInput' value='{{amount}}'
+     style="margin-right:25rpx; text-align:right;" placeholder="请输入充值金额(元)" type='number' />
 </view>
-
-  <button style='background:#FF3333;color:#fff;width:90%;position:fixed;bottom:20px;left:5%;' bindtap="onCreateCode">立即充值</button>
+<button style='background:#FF3333;color:#fff;width:90%;position:fixed;bottom:20px;left:5%;' bindtap="create">立即充值</button>
