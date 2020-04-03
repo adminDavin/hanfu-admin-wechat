@@ -12,6 +12,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    accession:'',//判断是不是加入拼团进入的
     activityId:'',//活动ID
     groupid:'',//拼团ID
     priceArea: '',
@@ -85,8 +86,10 @@ Page({
   },
   guigeshow:function (e) {
     console.log(e.currentTarget.dataset.groupid)
+    console.log(e.currentTarget.dataset.type)
     this.setData({
       groupid: e.currentTarget.dataset.groupid,
+      accession: e.currentTarget.dataset.type,
       showModalSelectionSpecification: true
     })
   },
@@ -435,6 +438,9 @@ Page({
     if (this.data.selectedGoods.sellPrices == undefined) {
       this.data.selectedGoods.sellPrices = this.data.selectedGoods.sellPrice
     }
+    console.log(this.data.selectedGoods)
+    console.log(paymentType)
+    console.log(this.data.groupActivity)
     let params = {
       selectedGoods: this.data.selectedGoods,
       paymentType: paymentType,

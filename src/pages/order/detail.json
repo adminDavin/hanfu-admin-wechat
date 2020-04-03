@@ -8,6 +8,7 @@
     "transport": "/components/order/transport/transport",
     "pickup": "/components/order/pickup/pickup",
     "evaluate": "/components/order/evaluate/evaluate",
+    "group": "/components/order/group/group",
     "controversial": "/components/order/controversial/controversial"
   },
   "backgroundTextStyle": "light",

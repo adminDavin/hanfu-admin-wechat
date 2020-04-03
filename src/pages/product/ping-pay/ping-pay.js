@@ -76,7 +76,7 @@ Page({
     }
     return {
       title: '同城优品小程序',
-      path: 'pages/classify/puzzle-particulars/puzzle-particulars',
+      path: 'pages/product/ping-pay/ping-pay',
       success: function (res) {
         // 转发成功
         console.log("转发成功:" + JSON.stringify(res));

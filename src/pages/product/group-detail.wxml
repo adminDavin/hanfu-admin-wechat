@@ -220,7 +220,7 @@
             </view>
             <text class="client-second">2019.12.09 19:00</text>
           </view>
-          <view class="client-button" data-groupId="{{item.groupId}}" bindtap="guigeshow">去拼单</view>
+          <view class="client-button" data-type="accession" data-groupId="{{item.groupId}}" bindtap="guigeshow">加入团购</view>
         </view>
       </view>
     </view>
@@ -268,7 +268,7 @@
   </view>
   <!-- 弹窗 -->
   <view animation="{{animationData}}" class="buy_box" wx:if="{{showModalSelectionSpecification}}">
-    <chosen activity-id="{{activityId}}" group-id="{{groupid}}" product-id="{{productId}}" selected-goods-id="{{selectedGoods.id}}" quantity="{{quantity}}" bind:chooseGoodsCommitEvent="listenChooseGoodsCommitEvent"></chosen>
+    <chosen accession="{{accession}}" activity-id="{{activityId}}" group-id="{{groupid}}" product-id="{{productId}}" selected-goods-id="{{selectedGoods.id}}" quantity="{{quantity}}" bind:chooseGoodsCommitEvent="listenChooseGoodsCommitEvent"></chosen>
   </view>
   <!-- 查看更多拼团 -->
   <view class="modalDlg" wx:if="{{showModal}}">
@@ -291,7 +291,7 @@
               <text class="client-photo">拼成</text>
             </view>
           </view>
-          <view class="client-button" data-groupId="{{item.groupId}}" bindtap="guigeshow">去拼单</view>
+          <view class="client-button" data-type="accession" data-groupId="{{item.groupId}}" bindtap="guigeshow">加入团购</view>
         </view>
       </view>
     </view>

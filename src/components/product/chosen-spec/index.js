@@ -33,6 +33,10 @@ Component({
     groupId:{
       type:Number,
       value:0
+    },
+    accession:{
+      type: String,
+      value: ''
     }
   },
 
@@ -40,11 +44,20 @@ Component({
    * 组件的初始数据
    */
   data: {
+    accessions:'',
     goodsList: [],
     selectedGoods: {},
     minusStatus: 'disabled' 
   },
-
+  /**
+    * 生命周期函数--监听页面加载
+    */
+  onShow: function (options) {
+    console.log('12333')
+    that.setData({
+      accessions: this.properties.accession
+    })
+  },
   /**
    * 组件的方法列表
    */
@@ -151,6 +164,29 @@ Component({
           }
         })
       }
+      console.log('参加拼团', that.properties.accession)
+      console.log('参加拼团data', that.data.accession)
+      if (that.data.accession=='accession'){
+        console.log('跳订单页')
+        console.log(this.data.selectedGoods)
+        // 创建订单
+          if (this.data.selectedGoods.sellPrices == undefined) {
+            this.data.selectedGoods.sellPrices = this.data.selectedGoods.sellPrice
+          }
+          console.log(this.data.groupActivity)
+          let params = {
+            selectedGoods: this.data.selectedGoods,
+            userId: wx.getStorageSync('userId'),
+            stoneId: this.data.selectedGoods.stoneId,
+            groupActivity: this.data.groupActivity,
+            activityId: that.properties.activityId,
+            quantity: this.data.quantity,
+            groupid: that.properties.groupId
+          };
+          wx.navigateTo({
+            url: '/pages/payment/index?params=' + encodeURIComponent(JSON.stringify(params))
+          });
+      }
       this.triggerEvent('chooseGoodsCommitEvent', { selectedGoods: this.data.selectedGoods, quantity: this.data.quantity });
     },
 
@@ -239,12 +275,18 @@ Component({
             goods.fileIds[index] = app.endpoint.file + '/goods/getFile?fileId=' + goods.fileIds[index]
           }
         }
-
         let selectedGoods = goodsList.filter(item => this.properties.selectedGoodsId==item.id)[0];
         this.setData({ ...this.data, ...this.properties, ...{ goodsList: goodsList, selectedGoods: selectedGoods } });
         console.log(this.data.goodsList)
       });
     },
-    detached: () => console.log("退出")
+   
+    detached: function ()  {
+      console.log("退出")
+      this.setData({ 
+        accession:''
+       });
+      console.log(this.data.accession)
+    }
   }
 })

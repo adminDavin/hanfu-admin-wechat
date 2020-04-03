@@ -31,7 +31,8 @@
     "pages/product/group-detail",
     "pages/myself/quan/quan",
     "pages/myself/jifen/jifen",
-    "pages/myself/tequan/tequan"
+    "pages/myself/tequan/tequan",
+    "components/order/group/group"
   ],
   "usingComponents": {
     "van-tab": "./pages/vant/weapp/dist/tab/index",

@@ -3,17 +3,13 @@
     <view class="dai-box">
       <view class="dai-title">
         <image src="../../../images/dengdai.png" style="width:36rpx;height:36rpx;margin-right:19rpx;"></image>
-        <view class="dai-ziti">等待商家处理</view>
-      </view>
-         <view class="dai-content">
-        <view wx:if="{{hfOrder.activityState == 0}}" class="content-ziti" style="margin-right:40rpx">团购中还差{{hfOrder.nowSum-hfOrder.groupSum}}人成团</view>
-             <view  wx:if="{{hfOrder.activityState == 3}}" class="content-ziti" bindtap="gopay" style="margin-right:40rpx">拼团已完成</view>
-        <view wx:if="{{hfOrder.activityState == 0}}" class="content-ziti">剩余：23小时</view>
+        <view class="dai-ziti"></view>
       </view>
       <view class="dai-content">
-        <view wx:if="{{hfOrder.activity!=='group'}}" class="content-ziti" style="margin-right:40rpx">已付款：￥{{hfOrder.actualPrice}}</view>
-        <view wx:if="{{hfOrder.activity =='group'}}" bindtap="gopay" class="dai-btn" >邀请参团</view>
+        <!-- <view class="content-ziti" style="margin-right:40rpx">需付款：￥{{hfOrder.actualPrice}}</view> -->
+        <view class="content-ziti">剩余：23小时</view>
       </view>
+      <view class="dai-btn" bindtap="gopay">邀请参团</view>
     </view>
   </view>
   <view class="address-card">
@@ -82,6 +78,6 @@
   <view style="height:98rpx"></view>
   <view class="footer">
     <view class="querenbtn" style="margin-right:30rpx" bindtap="cancel">取消订单</view>
-    <view class="querenbtn" style="background-color:red;color:white;border:none" bindtap="refund">直接退款</view>
+    <view class="querenbtn" style="background-color:red;color:white;border:none" bindtap="gopay">去支付</view>
   </view>
 </view>

@@ -50,7 +50,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 3,
+			"current": -1,
 			"list": [
 				{
 					"id": -1,
@@ -71,12 +71,6 @@
 					"name": "wallet",
 					"pathName": "pages/myself/wallet/index",
 					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "jifen",
-					"pathName": "pages/myself/jifen/jifen",
 					"scene": null
 				}
 			]
