@@ -96,6 +96,12 @@ page{
   align-items: center;
   justify-content: space-between;
 }
+.qu1{
+  margin-bottom: 12rpx;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
 .lingqu{
   margin-right: 15rpx;
   color:#FF0000;
@@ -109,7 +115,8 @@ sub{
      vertical-align:text-bottom;
 }
 .item{
-  padding:50rpx 20rpx;
+  padding:50rpx 0;
+  width:200rpx;
   display: flex;
   align-items: center;
   flex-direction: column;

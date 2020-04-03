@@ -1,54 +1,38 @@
 <!--src/pages/myself/coupons/coupons.wxml-->
 <view class="discount">
   <!-- 优惠券 -->
-  <van-tabs active="a">
-    <van-tab title="平台券" name="a" style="">
-      <view style='margin: 15rpx 20rpx 0 20rpx;'>
+  <van-tabs active="a" bindchange="tab">
+    <van-tab title="平台券" name="a" style="" >
+      <view  wx:for="{{tequan}}" wx:key="index" style='margin: 15rpx 20rpx 0 20rpx;'>
         <view style="display:flex; background:#fff;margin-bottom:15rpx;border-radius:10rpx;">
           <view style=' color:#fff; background:linear-gradient(-51deg,rgba(255,0,0,1),rgba(254,89,89,1));' class='item'>
             <view>
               <sub style="font-size:25rpx;">¥</sub>
-              <span style="font-weight:bold;font-size:40rpx;">20</span>
+              <span style="font-weight:bold;font-size:40rpx;"> {{item.useLimit.minus}}</span>
             </view>
             <view style='font-size:26rpx;'>
-              满499元可用
+              满{{item.useLimit.full}}元可用
             </view>
           </view>
           <view style='margin-left:20rpx;flex:1;' class='quan'>
             <view style='margin-top:22rpx;'>
-              全品类商品满减劵
+              {{item.discountCouponName}}
             </view>
-            <view style="display:flex;" class='qu'>
+             <view style="display:flex;" class='qu' wx:if="{{item.useState==1}}">
               <view style='color:#666;font-size:24rpx;'>
-                2017.08.30~2017.09.02
+               {{item.startTime}}~{{item.stopTime}}
               </view>
-              <view class='lingqu'>
+              <view class='lingqu' bindtap="getCoupon" data-id="{{item.id}}">
                 领取
               </view>
+              <image src="../../../img/yishiyong.png" style="width:100rpx;height:100rpx;"></image>
             </view>
-          </view>
-        </view>
-        <view style="display:flex; background:#fff;margin-bottom:15rpx;border-radius:10rpx;">
-          <view style=' color:#fff; background:linear-gradient(-51deg,rgba(255,0,0,1),rgba(254,89,89,1));' class='item'>
-            <view>
-              <sub style="font-size:25rpx;">¥</sub>
-              <span style="font-weight:bold;font-size:40rpx;">20</span>
-            </view>
-            <view style='font-size:26rpx;'>
-              满499元可用
-            </view>
-          </view>
-          <view style='margin-left:20rpx;flex:1;' class='quan'>
-            <view style='margin-top:22rpx;'>
-              全品类商品满减劵
-            </view>
-            <view style="display:flex;" class='qu'>
+            <view style="display:flex;" class='qu1' wx:if="{{item.useState==-1}}">
               <view style='color:#666;font-size:24rpx;'>
-                2017.08.30~2017.09.02
+               {{item.startTime}}~{{item.stopTime}}
               </view>
-              <view class='lingqu'>
-                领取
-              </view>
+              
+              <image src="../../../img/yishiyong.png" style="margin-right:30rpx; width:100rpx;height:100rpx;"></image>
             </view>
           </view>
         </view>
@@ -58,8 +42,41 @@
 
       <!-- <image src="../../../img/yishiyong.png"></image> -->
     </van-tab>
-    <van-tab title="会员券" name="b">
-      2222
+    <van-tab title="会员券" name="b" >
+       <view  wx:for="{{tequan}}" wx:key="index" style='margin: 15rpx 20rpx 0 20rpx;' >
+        <view style="display:flex; background:#fff;margin-bottom:15rpx;border-radius:10rpx;">
+          <view style=' color:#fff; background:linear-gradient(-51deg,rgba(255,0,0,1),rgba(254,89,89,1));' class='item'>
+            <view>
+              <sub style="font-size:25rpx;">¥</sub>
+              <span style="font-weight:bold;font-size:40rpx;"> {{item.useLimit.minus}}</span>
+            </view>
+            <view style='font-size:26rpx;'>
+              满{{item.useLimit.full}}元可用
+            </view>
+          </view>
+          <view style='margin-left:20rpx;flex:1;' class='quan'>
+            <view style='margin-top:22rpx;'>
+              {{item.discountCouponName}}
+            </view>
+            <view style="display:flex;" class='qu' wx:if="{{item.useState==1}}">
+              <view style='color:#666;font-size:24rpx;'>
+               {{item.startTime}}~{{item.stopTime}}
+              </view>
+              <view class='lingqu' bindtap="getCoupon" data-id="{{item.id}}">
+                领取
+              </view>
+              <image src="../../../img/yishiyong.png" style="width:100rpx;height:100rpx;"></image>
+            </view>
+            <view style="display:flex;" class='qu1' wx:if="{{item.useState==-1}}">
+              <view style='color:#666;font-size:24rpx;'>
+               {{item.startTime}}~{{item.stopTime}}
+              </view>
+              
+              <image src="../../../img/yishiyong.png" style="margin-right:30rpx; width:100rpx;height:100rpx;"></image>
+            </view>
+          </view>
+        </view>
+      </view>
     </van-tab>
   </van-tabs>
   <view class="discount-footer" bindtap='goling'>查看我的优惠券</view>

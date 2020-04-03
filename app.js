@@ -45,6 +45,6 @@ App({
     urlpuzzle: 'https://www.tjsichuang.cn:1443/api/group', //拼团
     urlseckill: 'https://www.tjsichuang.cn:1443/api/seckill', //秒杀
     urlRefund: 'https://www.tjsichuang.cn:1443/api/zslpayment',
-    urlpay: 'https://www.tjsichuang.cn:1443/api/user'
+    urlpay: 'https://www.tjsichuang.cn:1443/api/user',
   }
 })

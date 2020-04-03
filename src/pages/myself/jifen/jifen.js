@@ -1,18 +1,35 @@
-// src/pages/myself/jifen/jifen.js
+import quan from '../../../services/hf-tequan.js';
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    userId:'',
+    surplus:'',
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var that = this;
+    wx.getStorage({
+      key: 'userId',
+      success: function (res) {
+        console.log(res);
+        that.setData({
+          userId: res.data
+        })
+        quan.findInfoByUserId(that.data.userId, (res) => {
+          console.log(res);
+          that.setData({
+            surplus: res.data.data.surplus
+          })
+         
+         });
+      },
+    })
   },
 
   /**

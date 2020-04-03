@@ -5,9 +5,11 @@ import hfOrderApi from '../../services/hf-order.js';
 import userAddressApi from '../../services/hf-user-address.js';
 import paymentApi from '../../services/hf-payment.js';
 import util from '../../utils/util.js';
+import tequan from '../../services/hf-tequan.js';
 
 Page({
   data: {
+    add:{},
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     onOff: true,
     showModalDlg: true,
@@ -94,6 +96,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+   
+  },
+  onShow: function() {
     let userId = wx.getStorageSync('userId');
     if (util.isEmpty(wx.getStorageSync('userId'))) {
       wx.navigateTo({
@@ -105,27 +110,17 @@ Page({
     this.setData({
       userId: userId
     });
-  },
-  onShow: function() {
-    if (typeof this.getTabBar === 'function') {
-
-      this.getTabBar().setData({
-        selected: 4
-      });
-      hfOrderApi.queryOrderStatistics(this.data.userId, (res) => {
-        let orderStatusMap = {};
-        for (let orderStatus of res.data.data) {
-          orderStatusMap[orderStatus.orderStatus] = orderStatus.quantity;  }
-        let orderStatuses = this.data.orderStatuses;
-        for (let orderStatus of orderStatuses) {
-          let status = orderStatusMap[orderStatus.action];
-          if (typeof(status) != 'undefined') {
-            orderStatus.quantity = status;
-          }
-        }
-        this.setData({ orderStatuses: orderStatuses });
-      });
-    }
+    
+    tequan.findInfoByUserId(this.data.userId, (res) => {
+     console.log(res);
+     let arr=this.data.myWalletResoures;
+     arr[0].quantity=res.data.data.surplus;
+     arr[1].quantity=res.data.data.integral;
+     arr[2].quantity=res.data.data.couponCount;
+     this.setData({
+      myWalletResoures:arr
+    });
+    });
   },
   te:function(){
   wx.navigateTo({

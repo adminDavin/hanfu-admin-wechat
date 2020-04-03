@@ -159,6 +159,7 @@ Page({
     wx.getStorage({
       key: 'user',
       success: function (res) {
+        console.log(res)
         that.setData({
           userId: res.data.userId
         })

@@ -1,12 +1,14 @@
 // src/pages/myself/coupons/coupons.js
-import hfOrderApi from '../../../services/hf-user.js';
+import discount from '../../../services/discount.js';
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    unused: [],
+    state:0,
+    tequan:[],
+    userId: [],
     unusedEach:[],
     use: [],
     useEach: [],
@@ -18,28 +20,80 @@ Page({
       url: '../quan/quan',
     })
   },
-  onSelectedNav: function (e) {
-    let orderStatuses = this.data.orderStatuses;
-    let action = e.currentTarget.dataset.action;
-    let hfOrders = this.data.hfOrdersAll
-    for (let selected of orderStatuses) {
-      if (selected.action == action) {
-        selected.selectedSytle = 'hengxian'
-      } else {
-        selected.selectedSytle = ""
-      }
-      this.setData({
-        orderStatuses: orderStatuses
-      })
-    }
+  getCoupon:function(){
+    wx.switchTab({
+      url: '../../home/index',
+    })
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    
+     // console.log(111);
+     var that = this;
+     wx.getStorage({
+       key: 'userId',
+       success: function (res) {
+         that.setData({
+           userId: res.data
+         })
+         console.log(res);
+         let obj={
+          state :0,
+          userId :that.data.userId
+         }
+         console.log(obj);
+        
+         discount.myCoupon(obj ,(res) => {
+          that.setData({
+            tequan: res.data.data
+          })
+          let arr=that.data.tequan;
+          for(var i=0;i<arr.length;i++){
+            arr[i].useLimit=JSON.parse(arr[i].useLimit);
+            arr[i].startTime=arr[i].startTime.split(' ');
+            arr[i].startTime=arr[i].startTime[0];
+            arr[i].stopTime=arr[i].stopTime.split(' ');
+            arr[i].stopTime=arr[i].stopTime[0];
+          }
+          that.setData({
+            tequan:arr
+          })
+          console.log(that.data.tequan);
+         });
+       },
+     })
   },
+  tab: function (e) {
+    console.log(e);
+    var that=this;
+    that.setData({
+      state: e.detail.index
+    })
+    let obj={
+      userId:that.data.userId,
+      state :  e.detail.index,
+    }
 
+    discount.myCoupon(obj ,(res) => {
+      that.setData({
+        tequan: res.data.data
+      })
+      let arr=that.data.tequan;
+      for(var i=0;i<arr.length;i++){
+        arr[i].useLimit=JSON.parse(arr[i].useLimit);
+        arr[i].startTime=arr[i].startTime.split(' ');
+        arr[i].startTime=arr[i].startTime[0];
+        arr[i].stopTime=arr[i].stopTime.split(' ');
+        arr[i].stopTime=arr[i].stopTime[0];
+      }
+      that.setData({
+        tequan:arr
+      })
+      console.log(that.data.tequan);
+     });
+  },  
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -52,40 +106,6 @@ Page({
    */
   onShow: function () {
     
-    hfOrderApi.selectCoupons('unused', (res) => {
-      console.log(res.data.data);
-      
-      let unused = res.data.data
-      for (let unusedEach of unused) {
-        unusedEach.couponsEach = JSON.parse(unusedEach.couponsInfo)
-      };
-      this.setData({
-        unused: res.data.data,
-      });
-      console.log(unused)
-    });
-    hfOrderApi.selectCoupons('use', (res) => {
-      console.log(res.data.data);
-      let uses = res.data.data
-      for (let useEach of uses) {
-        useEach.couponsEach = JSON.parse(useEach.couponsInfo)
-      }
-      this.setData({
-        use: res.data.data,
-      });
-      console.log(uses)
-    });
-    hfOrderApi.selectCoupons('outmoded', (res) => {
-      console.log(res.data.data);
-      let outmoded = res.data.data
-      for (let outmodedEach of outmoded) {
-        outmodedEach.couponsEach = JSON.parse(outmodedEach.couponsInfo)
-      }
-      this.setData({
-        outmoded: res.data.data,
-      });
-      console.log(outmoded)
-    });
   },
 
   /**
