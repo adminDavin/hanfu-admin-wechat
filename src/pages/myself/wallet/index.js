@@ -76,7 +76,15 @@ quan.create(obj ,(res) => {
         }
         quan.complate(obj2, (res) => {
           console.log(res);
+          quan.findInfoByUserId(that.data.userId, (res) => {
+            console.log(res);
+            that.setData({
+              surplus: res.data.data.surplus
+            })
+           
+           });
          });
+       
         wx.requestPayment({
           timeStamp: res.data.data.timeStamp,
           nonceStr: res.data.data.nonce_str,

@@ -96,6 +96,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+   
+  },
+  onShow: function() {
     let userId = wx.getStorageSync('userId');
     if (util.isEmpty(wx.getStorageSync('userId'))) {
       wx.navigateTo({
@@ -118,27 +121,6 @@ Page({
       myWalletResoures:arr
     });
     });
-  },
-  onShow: function() {
-    if (typeof this.getTabBar === 'function') {
-
-      this.getTabBar().setData({
-        selected: 4
-      });
-      hfOrderApi.queryOrderStatistics(this.data.userId, (res) => {
-        let orderStatusMap = {};
-        for (let orderStatus of res.data.data) {
-          orderStatusMap[orderStatus.orderStatus] = orderStatus.quantity;  }
-        let orderStatuses = this.data.orderStatuses;
-        for (let orderStatus of orderStatuses) {
-          let status = orderStatusMap[orderStatus.action];
-          if (typeof(status) != 'undefined') {
-            orderStatus.quantity = status;
-          }
-        }
-        this.setData({ orderStatuses: orderStatuses });
-      });
-    }
   },
   te:function(){
   wx.navigateTo({
