@@ -75,22 +75,26 @@ Page({
       userId:that.data.userId,
       state :  e.detail.index,
     }
-
+console.log(obj)
     discount.myCoupon(obj ,(res) => {
+      console.log(res);
       that.setData({
         tequan: res.data.data
       })
       let arr=that.data.tequan;
-      for(var i=0;i<arr.length;i++){
-        arr[i].useLimit=JSON.parse(arr[i].useLimit);
-        arr[i].startTime=arr[i].startTime.split(' ');
-        arr[i].startTime=arr[i].startTime[0];
-        arr[i].stopTime=arr[i].stopTime.split(' ');
-        arr[i].stopTime=arr[i].stopTime[0];
+      if(arr){
+        for(var i=0;i<arr.length;i++){
+          arr[i].useLimit=JSON.parse(arr[i].useLimit);
+          arr[i].startTime=arr[i].startTime.split(' ');
+          arr[i].startTime=arr[i].startTime[0];
+          arr[i].stopTime=arr[i].stopTime.split(' ');
+          arr[i].stopTime=arr[i].stopTime[0];
+        }
+        that.setData({
+          tequan:arr
+        })
       }
-      that.setData({
-        tequan:arr
-      })
+      
       console.log(that.data.tequan);
      });
   },  
