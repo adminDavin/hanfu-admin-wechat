@@ -12,7 +12,7 @@
       </view>
       <view class="dai-content">
         <view wx:if="{{hfOrder.activity!=='group'}}" class="content-ziti" style="margin-right:40rpx">已付款：￥{{hfOrder.actualPrice}}</view>
-        <view wx:if="{{hfOrder.activity =='group'}}" bindtap="gopay" class="dai-btn" >邀请参团</view>
+        <button size="mini" open-type="share" wx:if="{{hfOrder.activity =='group'}}" class="dai-btn" >邀请</button>
       </view>
     </view>
   </view>

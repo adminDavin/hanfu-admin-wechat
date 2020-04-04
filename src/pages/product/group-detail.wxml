@@ -218,7 +218,7 @@
               <text class="client-photo photo-color">{{item.groupSum-item.nowSum}}人</text>
               <text class="client-photo">拼成</text>
             </view>
-            <text class="client-second">2019.12.09 19:00</text>
+            <text class="client-second">{{item.leftTime}}</text>
           </view>
           <view class="client-button" data-type="accession" data-groupId="{{item.groupId}}" bindtap="guigeshow">加入团购</view>
         </view>
@@ -280,7 +280,7 @@
           <image src="{{item.imageUrl}}" class="client-head" />
           <view class="client-flex">
             <text class="client-title title-margin">{{item.groupUserName}}</text>
-            <text class="client-second">2019.12.09 19:00</text>
+            <text class="client-second">{{item.leftTime}}</text>
           </view>
         </view>
         <view class="client-roll">

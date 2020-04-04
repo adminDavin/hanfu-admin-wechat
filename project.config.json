@@ -77,6 +77,7 @@
 					"id": -1,
 					"name": "pages/product/ping-pay/ping-pay",
 					"pathName": "pages/product/ping-pay/ping-pay",
+					"query": "",
 					"scene": null
 				}
 			]

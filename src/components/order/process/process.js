@@ -6,9 +6,9 @@ Component({
    * 组件的属性列表
    */
   properties: {
-    hfOrder:{
-      type:Object,
-      value:{}
+    hfOrder: {
+      type: Object,
+      value: {}
     }
   },
 
@@ -37,17 +37,17 @@ Component({
         }
       })
     },
-    refund(){
-      paymentOrder.refundOrder({ userId: this.properties.hfOrder.userId, orderCode: this.properties.hfOrder.orderCode},(res)=>{
-        let data=res.data;
+    refund() {
+      paymentOrder.refundOrder({ userId: this.properties.hfOrder.userId, orderCode: this.properties.hfOrder.orderCode }, (res) => {
+        let data = res.data;
         console.log(data)
       })
     },
-    cancel(){
-      orderApi.modifyStatus(this.properties.hfOrder.id,this.properties.hfOrder.orderCode,this.properties.hfOrder.orderStatus,'cancel',(res)=>{
-        let data=res.data.data;
+    cancel() {
+      orderApi.modifyStatus(this.properties.hfOrder.id, this.properties.hfOrder.orderCode, this.properties.hfOrder.orderStatus, 'cancel', (res) => {
+        let data = res.data.data;
         console.log(data)
-        if(1){
+        if (1) {
           wx.showToast({
             title: '订单取消成功',
             icon: 'success',
@@ -62,18 +62,22 @@ Component({
       })
     },
   },
-    onShareAppMessage: function () {
-      return {
-        title: '同城优品小程序',
-        path: 'pages/product/ping-pay/ping-pay',
-        success: function (res) {
-          // 转发成功
-          console.log("转发成功:" + JSON.stringify(res));
-        },
-        fail: function (res) {
-          // 转发失败
-          console.log("转发失败:" + JSON.stringify(res));
-        }
+  onShareAppMessage: function () {
+    if (ops.from === 'button') {
+      // 来自页面内转发按钮
+      console.log(ops.target)
+    }
+    return {
+      title: '同城优品小程序',
+      path: 'pages/product/ping-pay/ping-pay',
+      success: function (res) {
+        // 转发成功
+        console.log("转发成功:" + JSON.stringify(res));
+      },
+      fail: function (res) {
+        // 转发失败
+        console.log("转发失败:" + JSON.stringify(res));
       }
+    }
   }
 })

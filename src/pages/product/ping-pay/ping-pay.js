@@ -76,7 +76,7 @@ Page({
     }
     return {
       title: '同城优品小程序',
-      path: 'pages/product/ping-pay/ping-pay',
+      path: 'pages/product/ping-pay/ping-pay?id=199',
       success: function (res) {
         // 转发成功
         console.log("转发成功:" + JSON.stringify(res));
@@ -91,13 +91,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(options)
     let params = JSON.parse(decodeURIComponent(options.params))
     console.log(params)
-    let groupId = params.groupFileId
-    console.log(params.groupFileId)
-    console.log(groupId)
+    let productFileId = params.productFileId
     let fileId = params.user[0].fileId
-    let groupFileUrl = app.endpoint.product + '/goods/getFile?fileId=' + groupId
+    let groupFileUrl = app.endpoint.product + '/goods/getFile?fileId=' + productFileId
     let imgageUrls = app.endpoint.file + '/goods/getFile?fileId=' + fileId
     this.setData ({
       productName: params.productName,
