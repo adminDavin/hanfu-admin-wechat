@@ -56,6 +56,31 @@ Page({
       console.log('团购列表', res.data.data)
       let groupLists = res.data.data
       requestUtils.groupFileId(groupLists)
+      // for (let item of groupLists) {
+      //   if (util.isRealNum(item.groupFileId)) {
+      //     if (leftTime >= 0) {
+      //       d = Math.floor(leftTime / 1000 / 60 / 60 / 24);
+      //       h = Math.floor(leftTime / 1000 / 60 / 60 % 24);
+      //       m = Math.floor(leftTime / 1000 / 60 % 60);
+      //       s = Math.floor(leftTime / 1000 % 60);
+      //       ms = Math.floor(leftTime % 1000);
+      //       // ms = ms < 100 ? "0" + ms : ms
+      //       s = s < 10 ? "0" + s : s
+      //       m = m < 10 ? "0" + m : m
+      //       h = h < 10 ? "0" + h : h
+      //       that.setData({
+      //         countdown: d + "天" + h + "时" + m + "分" + s + "秒",
+      //       })
+      //       //递归每秒调用countTime方法，显示动态时间效果
+      //       that.setData({
+      //         loading: setTimeout(that.countTime, 1000)
+      //       })
+      //     } else {
+      //       console.log('已截止')
+      //         countdown: '0天0时0分0秒'
+      //     }
+      //   }
+      // }
       this.setData({
         groupLists: groupLists
       })
@@ -87,6 +112,16 @@ Page({
   guigeshow:function (e) {
     console.log(e.currentTarget.dataset.groupid)
     console.log(e.currentTarget.dataset.type)
+    console.log(wx.getStorageInfoSync('userId'))
+     let groupId = e.currentTarget.dataset.groupid
+     let userId = wx.getStorageSync('userId')
+
+    productApi.groupStatus(groupId, userId, (res) => {
+      console.log(res)
+      // wx.showToast({
+      //   title: '',
+      // });
+    })
     this.setData({
       groupid: e.currentTarget.dataset.groupid,
       accession: e.currentTarget.dataset.type,
@@ -438,6 +473,7 @@ Page({
     if (this.data.selectedGoods.sellPrices == undefined) {
       this.data.selectedGoods.sellPrices = this.data.selectedGoods.sellPrice
     }
+    this.data.selectedGoods.quantitys = this.data.quantity
     console.log(this.data.selectedGoods)
     console.log(paymentType)
     console.log(this.data.groupActivity)

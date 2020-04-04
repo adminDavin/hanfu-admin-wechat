@@ -24,7 +24,7 @@
   </view>
   <!-- banner -->
   <view class="pay-shpping">
-    <image src="{{groupFile}}" class="pay-image" />
+    <image src="{{groupFileUrl}}" class="pay-image" />
     <view class="pay-content">
       <view class="content-title">{{productName}}</view>
       <view class="title-box">
@@ -50,18 +50,22 @@
         <image src="{{imgageUrls}}" class="photo-heads" />
         <text class="photo-title">{{userName}}</text>
       </view>
+      <!-- <view wx:for="{{groupSum-nowSum}}" class="photos-head">
+        <image src="../../../images/yuan.png" class="photo-heads" />
+        <text class="photo-title">待邀请</text>
+      </view> -->
     </view>
     <view>
-      <!-- <view class="more-all">
+      <view class="more-all">
         <text class="all-text">查看全部</text>
-        <image src="../../images/tabs/xiangxia.png" class="all-image" />
+        <image src="../../../images/yuan.png" class="all-image" />
       </view>
       <view class="succeed-photos" style="display:none">
         <view class="photos-head">
           <view class="photo-heads heads-wen">?</view>
           <text class="photo-title">待邀请</text>
         </view>
-      </view> -->
+      </view>
       <button class="invite" open-type="share" style=" width: 560rpx;height: 80rpx;line-height: 80rpx">邀请好友</button>
       <view class="invite" style="display:none">一键参团</view>
       <view class="invite" style="display:none" bindtap="goHome">去首页</view>

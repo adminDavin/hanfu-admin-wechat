@@ -7,7 +7,7 @@ Page({
   data: {
     nowSum:'',
     groupSum:'', //总数
-    groupFile:'',
+    groupFileUrl:'',
     imgageUrls:'',
     userName:'',
     productName:'',
@@ -93,13 +93,17 @@ Page({
   onLoad: function (options) {
     let params = JSON.parse(decodeURIComponent(options.params))
     console.log(params)
-    let imgageUrls = app.endpoint.file + '/goods/getFile?fileId=' + params.user[0].fileId
-    let groupFile = app.endpoint.file + '/goods/getFile?fileId=' + params.groupFileId
+    let groupId = params.groupFileId
+    console.log(params.groupFileId)
+    console.log(groupId)
+    let fileId = params.user[0].fileId
+    let groupFileUrl = app.endpoint.product + '/goods/getFile?fileId=' + groupId
+    let imgageUrls = app.endpoint.file + '/goods/getFile?fileId=' + fileId
     this.setData ({
       productName: params.productName,
       sellPrice: params.sellPrice,
       userName: params.user[0].userName,
-      groupFile: groupFile,
+      groupFileUrl: groupFileUrl,
       imgageUrls: imgageUrls,
       groupSum: params.groupSum,
       nowSum: params.nowSum

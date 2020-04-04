@@ -72,6 +72,12 @@
 					"pathName": "pages/myself/wallet/index",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/product/ping-pay/ping-pay",
+					"pathName": "pages/product/ping-pay/ping-pay",
+					"scene": null
 				}
 			]
 		}

@@ -68,6 +68,16 @@ function requestProducts(uri, params, handleResult) {
   });
 }
 
+function groupStatus(groupId, userId, handleResult) {
+  wx.request({
+    url: app.endpoint.product + '/hfProductActivity/groupStatus?groupId=' + groupId + '&userId=' + userId,
+    success: res => handleResult(res),
+    fail: (res) => {
+      console.log(params, res);
+    }
+  });
+}
+
 function getProducts(params, handleResult) {
   params.quantity = 3;
   let uri = '/hfProduct/getProductsForRotation';
@@ -146,5 +156,6 @@ export default {
   getProducts: getProducts,
   getProductGroup: getProductGroup,
   getProductSeckill: getProductSeckill,
-  getSeckillTimeBar: getSeckillTimeBar
+  getSeckillTimeBar: getSeckillTimeBar,
+  groupStatus: groupStatus
 };
