@@ -124,17 +124,12 @@ Page({
     });
     });
   },
-  te:function(){
-  wx.navigateTo({
-    url: '/pages/myself/tequan/tequan',
-  })
-  },
+
   recharge: function (e) {
-    console.log(123)
-    if(this.data.hui!='普通会员'){
-      this.handleSelected('pages/myself/vipRecharge/vip', e.currentTarget.dataset.action);
-    }
-   
+    console.log(123,this.data.hui)
+    wx.navigateTo({
+      url: '/pages/myself/tequan/tequan',
+     })
   },
   onSelectedOrder: function(e) {
     this.handleSelected('/pages/order/list', e.currentTarget.dataset.action);

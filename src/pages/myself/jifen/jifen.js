@@ -5,8 +5,9 @@ Page({
    * 页面的初始数据
    */
   data: {
+    xi:[],
     userId:'',
-    surplus:'',
+    integral:'',
   },
 
   /**
@@ -24,10 +25,18 @@ Page({
         quan.findInfoByUserId(that.data.userId, (res) => {
           console.log(res);
           that.setData({
-            surplus: res.data.data.surplus
+            integral: res.data.data.integral
           })
          
          });
+         quan.jifenMing(that.data.userId, (res) => {
+          console.log(res);
+          that.setData({
+            xi: res.data.data
+          })
+         
+         });
+         
       },
     })
   },

@@ -14,6 +14,17 @@ function getquan(userId,handleResult) {
     }
   });
 }
+function getlevelList(handleResult) {
+  console.log(app.endpoint.quan + '/hf-auth/findUserMemberLevel')
+  wx.request({
+    url: app.endpoint.quan + '/hf-auth/findUserMemberLevel',
+    method: 'GET',
+    success: res => handleResult(res),
+    fail: (res) => {
+      console.log( res);
+    }
+  });
+}
 function pay(params,handleResult) {
   console.log(app.endpoint.payment + '/hf-payment/order')
   wx.request({
@@ -38,6 +49,35 @@ function complate(params,handleResult) {
     }
   });
 }
+function jifenMing(userId,handleResult) {
+  console.log(app.endpoint.product + '/home/findIntegralRechargeRecord')
+  wx.request({
+    url: app.endpoint.product + '/home/findIntegralRechargeRecord',
+    method: 'GET',
+    data: {
+      userId : userId
+    },
+    success: res => handleResult(res),
+    fail: (res) => {
+      console.log( res);
+    }
+  });
+}
+function yuMing(userId,handleResult) {
+  console.log(app.endpoint.product + '/home/findRechargeRecord')
+  wx.request({
+    url: app.endpoint.product + '/home/findRechargeRecord',
+    method: 'GET',
+    data: {
+      userId : userId
+    },
+    success: res => handleResult(res),
+    fail: (res) => {
+      console.log( res);
+    }
+  });
+}
+
 function findInfoByUserId(userId,handleResult) {
   console.log(app.endpoint.quan + '/hf-auth/findInfoByUserId')
   wx.request({
@@ -69,9 +109,12 @@ function create(params,handleResult) {
 }
 
 export default {
+  jifenMing:jifenMing,
   getquan: getquan,
   findInfoByUserId:findInfoByUserId,
   create:create,
   pay:pay,
   complate:complate,
+  getlevelList:getlevelList,
+  yuMing:yuMing,
 };

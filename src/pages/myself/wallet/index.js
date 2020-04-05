@@ -36,6 +36,14 @@ usernameInput: function (e) {
           })
          
          });
+         quan.yuMing(that.data.userId, (res) => {
+          console.log(res);
+          that.setData({
+            xi: res.data.data
+          })
+         
+         });
+         
       },
     })
   },

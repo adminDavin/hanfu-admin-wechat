@@ -16,6 +16,7 @@ function getTingQuan(params,handleResult) {
   });
 }
 
+
 function myCoupon(params={}, handleResult) {
   wx.request({
     url: app.endpoint.product + '/discountCoupon/couponMy',
@@ -48,4 +49,5 @@ export default {
   getTingQuan: getTingQuan,
   getCoupon:getCoupon,
   myCoupon:myCoupon,
+  
 };

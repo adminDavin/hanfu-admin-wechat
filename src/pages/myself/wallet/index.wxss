@@ -1,6 +1,7 @@
 /* src/pages/order/list.wxss */
 page{
   background: #FAF7F8;
+  padding-bottom:60px;
 }
 sub{
      font-size: 10px;

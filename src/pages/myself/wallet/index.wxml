@@ -10,4 +10,14 @@
      <input  bindinput='usernameInput' value='{{amount}}'
      style="margin-right:25rpx; text-align:right;" placeholder="请输入充值金额(元)" type='number' />
 </view>
+<view style="padding:10px;">
+<view style="margin-bottom:15px;text-align:center;">充值记录</view>
+<view wx:for="{{xi}}" :key="index" style="margin-bottom:10px;">
+ <view>{{item.paymentName}}</view>
+ <view style="display:flex;justify-content:space-between;">
+   <view style="color:#999;">{{item.dateTime}}</view>
+    <view  style="color:#999;">积分数量：{{item.amount}}</view>
+ </view>
+</view>
+</view>
 <button style='background:#FF3333;color:#fff;width:90%;position:fixed;bottom:20px;left:5%;' bindtap="create">立即充值</button>
