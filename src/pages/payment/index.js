@@ -27,7 +27,7 @@ Page({
   },
 
   /**
-   * 生命周期函数--监听页面加载
+   * 生命周期函数--监听页面加载 quantity
    */
   onLoad: function (options) {
     let params = JSON.parse(decodeURIComponent(options.params))

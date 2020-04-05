@@ -12,9 +12,10 @@ Page({
    * 页面的初始数据
    */
   data: {
-    accession:'',//判断是不是加入拼团进入的
-    activityId:'',//活动ID
-    groupid:'',//拼团ID
+    loading: '',
+    accession: '',//判断是不是加入拼团进入的
+    activityId: '',//活动ID
+    groupid: '',//拼团ID
     priceArea: '',
     goodsId: '',
     activityState: '',// 活动状态
@@ -84,9 +85,19 @@ Page({
       showModal: false
     })
   },
-  guigeshow:function (e) {
+  guigeshow: function (e) {
     console.log(e.currentTarget.dataset.groupid)
     console.log(e.currentTarget.dataset.type)
+    console.log(wx.getStorageInfoSync('userId'))
+    let groupId = e.currentTarget.dataset.groupid
+    let userId = wx.getStorageSync('userId')
+
+    productApi.groupStatus(groupId, userId, (res) => {
+      console.log(res)
+      // wx.showToast({
+      //   title: '',
+      // });
+    })
     this.setData({
       groupid: e.currentTarget.dataset.groupid,
       accession: e.currentTarget.dataset.type,
@@ -280,9 +291,17 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
   },
-
+  onHide: function () {
+    //写在onHide()中，切换页面或者切换底部菜单栏时关闭定时器。
+    clearInterval(this.data.loading);
+  },
+  
+  onUnload: function () {
+    clearInterval(this.data.loading)
+    console.log('结束', this.data.loading)
+    clearInterval(this.data.loading)
+  },
   /**
    * 生命周期函数--监听页面显示
    */
@@ -326,22 +345,43 @@ Page({
       if (this.data.groupActivity) {
         console.log(goods.productId)
         console.log(goods)
-        let params = {
-          bossId:1,
-          productId: goods.productId,
-          sum:2
-        }
-        goodsApi.getListGrou(params, (res) => {
-          console.log('团购列表', res.data.data)
-          let groupList = res.data.data
-          requestUtils.groupFileId(groupList)
-          this.setData({
-            groupList: groupList
-          })
-          console.log(this.data.groupList)
-        })
+        this.countTime()
       }
     });
+  },
+  countTime() {
+    let params = {
+      bossId: 1,
+      productId: this.data.selectedGoods.productId,
+      sum: 2
+    }
+    goodsApi.getListGrou(params, (res) => {
+      let that = this
+      console.log('团购列表', res.data.data)
+      let groupList = res.data.data
+      requestUtils.groupFileId(groupList)
+      for (let item of groupList) {
+        let leftTime = item.time
+        if (leftTime >= 0) {
+          let h = Math.floor(leftTime / 1000 / 60 / 60 % 24);
+          let m = Math.floor(leftTime / 1000 / 60 % 60);
+          let s = Math.floor(leftTime / 1000 % 60);
+          let ms = Math.floor(leftTime % 1000);
+          // ms = ms < 100 ? "0" + ms : ms
+          s = s < 10 ? "0" + s : s
+          m = m < 10 ? "0" + m : m
+          h = h < 10 ? "0" + h : h
+          item.leftTime = h + ":" + m + ":" + s
+          //递归每秒调用countTime方法，显示动态时间效果
+          that.setData({
+            // loading: setTimeout(that.countTime, 1000)
+          })
+        }
+      }
+      this.setData({
+        groupList: groupList
+      })
+    })
   },
   onSelectedGoodsSpec: function (e) {
     let animation = wx.createAnimation({
@@ -438,6 +478,7 @@ Page({
     if (this.data.selectedGoods.sellPrices == undefined) {
       this.data.selectedGoods.sellPrices = this.data.selectedGoods.sellPrice
     }
+    this.data.selectedGoods.quantitys = this.data.quantity
     console.log(this.data.selectedGoods)
     console.log(paymentType)
     console.log(this.data.groupActivity)

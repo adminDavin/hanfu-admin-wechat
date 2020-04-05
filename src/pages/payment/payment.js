@@ -46,9 +46,54 @@ Page({
       } else {
         //余额支付 直接跳转到订单列表
         paymentApi.completeOrder(options.outTradeNo, options.userId, (res) => console.log(res));
-        wx.navigateTo({
-          url: '/pages/order/list?action=all',
-        });
+        if (that.data.groupid !== '') {
+          wx.navigateTo({
+            url: '/pages/order/list?action=all',
+          });
+        }
+        console.log(that.data.groupActivity)
+        console.log(that.data.goodsId)
+        console.log(that.data.activityId)
+        console.log(that.data.orderId)
+        console.log(that.data.userId)
+        console.log(that.data.groupid)
+        if (that.data.groupid == '') {
+          if (that.data.groupActivity) {
+            let param = {
+              activityId: that.data.activityId,
+              goodsId: that.data.goodsId,
+              userId: that.data.userId,
+              orderId: that.data.orderId,
+            }
+            orderApi.addGroup(param, (res) => {
+              console.log('开团成功')
+              console.log(res.data)
+              if (res.data !== '') {
+                console.log('跳转页面')
+                let params = res.data.data
+                wx.navigateTo({
+                  url: '/pages/product/ping-pay/ping-pay?params=' + encodeURIComponent(JSON.stringify(params)),
+                });
+              }
+            })
+          }
+        }
+        if (that.data.groupid !== '' || that.data.activityId !== undefined) {
+          let param = {
+            activityId: that.data.activityId,
+            goodsId: that.data.goodsId,
+            userId: that.data.userId,
+            orderId: that.data.orderId,
+            hfActivityGroupId: that.data.groupid
+          }
+          orderApi.entranceGroup(param, (res) => {
+            console.log('参团成功')
+            wx.showToast({
+              title: '参团成功',
+              icon: 'none'
+            });
+          })
+        }
       }
     });
 
@@ -97,7 +142,7 @@ Page({
             })
           }
         }
-        if (that.data.groupid !== '') {
+        if (that.data.groupid !== '' || that.data.activityId !== undefined ) {
           let param = {
             activityId: that.data.activityId,
             goodsId: that.data.goodsId,

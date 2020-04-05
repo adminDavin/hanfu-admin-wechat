@@ -45,8 +45,6 @@
   color: rgba(255, 255, 255, 1);
 }
 .dai-btn {
-  width: 197rpx;
-  height: 61rpx;
   background: rgba(255, 255, 255, 1);
   box-shadow: 0 6rpx 10rpx 0 rgba(152, 0, 24, 0.05);
   border-radius: 31rpx;
@@ -69,15 +67,15 @@
 }
 
 .dai-btn {
-  width: 197rpx;
+  width: 200rpx;
   height: 61rpx;
   background: rgba(255, 255, 255, 1);
   box-shadow: 0 6rpx 10rpx 0 rgba(152, 0, 24, 0.05);
   border-radius: 31rpx;
-  margin: 0 276rpx;
+  /* margin: 0 276rpx; */
   text-align: center;
   line-height: 61rpx;
-  font-size: 30rpx;
+  font-size: 20rpx;
   font-weight: 500;
   color: rgba(254, 29, 66, 1);
 }

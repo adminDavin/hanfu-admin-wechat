@@ -407,6 +407,8 @@ Page({
     // 创建订单
     createOrder: function(paymentType, userId) {
       console.log(this.data.selectedGoods, paymentType);
+      console.log(this.data.quantity);
+      this.data.selectedGoods.quantitys = this.data.quantity
       if (this.data.selectedGoods.sellPrices == undefined) {
         this.data.selectedGoods.sellPrices = this.data.selectedGoods.sellPrice
       }

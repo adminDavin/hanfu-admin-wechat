@@ -7,7 +7,7 @@ Page({
   data: {
     nowSum:'',
     groupSum:'', //总数
-    groupFile:'',
+    groupFileUrl:'',
     imgageUrls:'',
     userName:'',
     productName:'',
@@ -76,7 +76,7 @@ Page({
     }
     return {
       title: '同城优品小程序',
-      path: 'pages/product/ping-pay/ping-pay',
+      path: 'pages/product/ping-pay/ping-pay?id=199',
       success: function (res) {
         // 转发成功
         console.log("转发成功:" + JSON.stringify(res));
@@ -91,15 +91,18 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(options)
     let params = JSON.parse(decodeURIComponent(options.params))
     console.log(params)
-    let imgageUrls = app.endpoint.file + '/goods/getFile?fileId=' + params.user[0].fileId
-    let groupFile = app.endpoint.file + '/goods/getFile?fileId=' + params.groupFileId
+    let productFileId = params.productFileId
+    let fileId = params.user[0].fileId
+    let groupFileUrl = app.endpoint.product + '/goods/getFile?fileId=' + productFileId
+    let imgageUrls = app.endpoint.file + '/goods/getFile?fileId=' + fileId
     this.setData ({
       productName: params.productName,
       sellPrice: params.sellPrice,
       userName: params.user[0].userName,
-      groupFile: groupFile,
+      groupFileUrl: groupFileUrl,
       imgageUrls: imgageUrls,
       groupSum: params.groupSum,
       nowSum: params.nowSum

@@ -75,8 +75,14 @@
 				},
 				{
 					"id": -1,
+<<<<<<< HEAD
 					"name": "pages/myself/tequan/tequan",
 					"pathName": "pages/myself/tequan/tequan",
+=======
+					"name": "pages/product/ping-pay/ping-pay",
+					"pathName": "pages/product/ping-pay/ping-pay",
+					"query": "",
+>>>>>>> 0a1da5069fd1f617b0604224beb3c2e22e539e58
 					"scene": null
 				}
 			]

@@ -8,6 +8,6 @@
         {{item.hfName}}: {{item.hfValue}}
       </view>
     </view>
-    <view>购买数量:{{selectedGoods.quantity}}</view>
+    <view>购买数量:{{selectedGoods.quantitys}}</view>
   </view>
 </template>
