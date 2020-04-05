@@ -91,17 +91,21 @@ Page({
     console.log(wx.getStorageInfoSync('userId'))
     let groupId = e.currentTarget.dataset.groupid
     let userId = wx.getStorageSync('userId')
-
+    let that = this
     productApi.groupStatus(groupId, userId, (res) => {
-      console.log(res)
-      // wx.showToast({
-      //   title: '',
-      // });
-    })
-    this.setData({
-      groupid: e.currentTarget.dataset.groupid,
-      accession: e.currentTarget.dataset.type,
-      showModalSelectionSpecification: true
+      console.log(res.data.data)
+      if (res.data.data == 0) {
+        this.setData({
+          groupid: e.currentTarget.dataset.groupid,
+          accession: e.currentTarget.dataset.type,
+          showModalSelectionSpecification: true
+        })
+      } else if (res.data.data == -1) {
+        wx.showToast({
+          title: '您已在该团,请勿重复添加',
+        });
+        return
+      }
     })
   },
   /**
@@ -296,7 +300,7 @@ Page({
     //写在onHide()中，切换页面或者切换底部菜单栏时关闭定时器。
     clearInterval(this.data.loading);
   },
-  
+
   onUnload: function () {
     clearInterval(this.data.loading)
     console.log('结束', this.data.loading)

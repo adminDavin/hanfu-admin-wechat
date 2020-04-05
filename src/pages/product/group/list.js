@@ -18,12 +18,20 @@ Page({
    */
   onLoad: function (options) {
     projectUtils.adjustSystemInfo(this);
-    productApi.getProductGroup({}, (res) => {
+    productApi.getProductGroup((res) => {
       let productGroups = res.data.data;
-      requestUtils.setImageUrls(productGroups);
+      console.log(productGroups)
+      let product =[]
+      for (let i = 0; i < productGroups.length;i++){
+        for (let j = 0; j < productGroups[i].productList.length; j++){
+          product.push(productGroups[i].productList[j])
+        }
+      }
+      requestUtils.setImageUrls(product);
       this.setData({
-        productGroups: productGroups,
+        productGroups: product,
       });
+      console.log(this.data.productGroups)
     });
   },
 
@@ -32,8 +40,9 @@ Page({
   },
   onSeletedProduct: function (e) {
     let selected = e.currentTarget.dataset.item;
+    console.log(selected)
     wx.navigateTo({
-      url: '/pages/product/detail?productId=' + selected.id
+      url: '/pages/product/detail?productId=' + selected.id +'&stoneId'+ selected.stoneId
     });
   },
 

@@ -5,9 +5,16 @@ const app = getApp();
 import userAddressApi from '../../services/hf-user-address.js';
 import orderApi from '../../services/hf-order.js';
 import util from '../../utils/util.js';
+import discount from '../../services/discount.js';
 
 Page({
   data: {
+    competitive:false,
+    CouponId:'',
+    showModalCreateOrder: false,
+    tequan:[],//可用优惠
+    mistake: [],// 不可用优惠
+    useLimit: { full: "", minus: "" },//选中的优惠
     quantity:'',
     selectedAddress: {},
     pickUp: {
@@ -33,7 +40,7 @@ Page({
     let params = JSON.parse(decodeURIComponent(options.params))
     console.log(params)
     let userId = wx.getStorageSync('userId');
-
+    this.data.competitive = params.competitive
     if (util.isEmpty(userId)) {
       wx.navigateTo({
         url: '/pages/login/index',
@@ -49,6 +56,33 @@ Page({
           selectedAddress: res.data.data[0]
         });
       }
+    });
+    let obj = {
+      state: 0,
+      userId: params.userId,
+      GoodsNum: params.quantity,
+      goodsId: params.selectedGoods.id
+    }
+    console.log(obj);
+    let idDeleted =0
+    discount.myCoupon(obj, (res) => {
+       let tequan = res.data.data
+      console.log(tequan)
+      let tequans = []
+      let mistake = []
+      for (var i = 0; i < tequan.length; i++) {
+        tequan[i].useLimit = JSON.parse(tequan[i].useLimit);
+        if (tequan[i].idDeleted == idDeleted) {
+         tequans.push(tequan[i])
+        } else {
+          mistake.push(tequan[i])
+        }
+      } 
+      this.setData({
+        tequan: tequans,
+        mistake: mistake
+      })
+      console.log(this.data.tequan);
     });
   },
 
@@ -97,6 +131,59 @@ Page({
         }
       });
     }
+  },
+  changeCoupon(e) {
+      this.setData({
+        showModalCreateOrder: true
+      });
+  },
+  changeCoupons(e) {
+    console.log(e.currentTarget.dataset.item)
+    this.setData({
+      CouponId: e.currentTarget.dataset.item.id,
+      ['useLimit.full']: e.currentTarget.dataset.item.useLimit.full,
+      ['useLimit.minus']: e.currentTarget.dataset.item.useLimit.minus
+    });
+    console.log(this.data)
+    console.log(this.data.selectedGoods.id)
+    console.log(this.data.quantity)
+    let thta = this
+    wx.request({
+      url: app.endpoint.product + '/hf-goods/checkResp',
+      method: 'POST',
+      data: {
+        GoodsNum: this.data.quantity,
+        goodsId: this.data.selectedGoods.id,
+        discountCouponId:e.currentTarget.dataset.item.id
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      success(res) {
+        console.log(res)
+        console.log(res.data.data, 'dfddsfsafd');
+        if (res.data.data == 'understock') {
+          wx.showToast({
+            title: '库存不足',
+            icon: 'none'
+          });
+        }
+        thta.data.selectedGoods.sellPrices= res.data.data.money
+      }
+    })
+  },
+  onCloseGoodsSpec: function (e) {
+    // 隐藏遮罩层
+    if (e.currentTarget.dataset.type == "createOrder") {
+      this.setData({
+        showModalCreateOrder: false
+      });
+    }
+  },
+  onConfirmSelectedGoods: function (e) {
+    this.setData({
+      showModalCreateOrder: false
+    });
   },
   onPaymentMethod: function (e) {
     let paymentMethod = this.data.paymentMethod;

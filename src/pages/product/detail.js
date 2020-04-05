@@ -28,6 +28,7 @@ Page({
     current: 0,
     seckillActivity: false, //秒杀
     groupActivity:false,// 团购
+    competitive:false,// 精选
     indicatorDots: true,
     inquire: [
       {sum:'1',
@@ -91,7 +92,10 @@ Page({
     if (options.action == 'seckillActivity') {
       console.log('秒杀')
       this.data.seckillActivity = true
-    
+    }
+    if (options.action == 'competitive') {
+      console.log('精选')
+      this.data.competitive = true
     }
     wx.getSystemInfo({
       success: (res) => {
@@ -417,9 +421,10 @@ Page({
         paymentType: paymentType,
         userId: userId,
         stoneId: this.data.product.stoneId,
-        groupActivity: this.data.groupActivity,
+        // groupActivity: this.data.groupActivity,
         activityId: this.data.activityId,
-        quantity: this.data.quantity
+        quantity: this.data.quantity,
+        competitive: this.data.competitive,
       };
       wx.navigateTo({
         url: '/pages/payment/index?params=' + encodeURIComponent(JSON.stringify(params))

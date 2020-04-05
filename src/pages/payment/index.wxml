@@ -1,5 +1,24 @@
- <!-- pages/order/order.wxml -->
+<!-- pages/order/order.wxml -->
 <import src="/templates/product/selectedGoods" />
+
+<view class="cover_screen" bindtap="onCloseGoodsSpec" wx:if="{{showModalCreateOrder}}" data-type="createOrder"></view>
+<!-- 弹窗内容 -->
+<view animation="{{animationData}}" class="buy_box" wx:if="{{showModalCreateOrder}}">
+  <view>可使用</view>
+<!-- <view wx:if="{{tequan==''}}">
+<text style="background: rgba(255, 51, 51, 1);font-size:26rpx;">暂无可用优惠卷</text></view> -->
+  <view class="p20" wx:for="{{tequan}}" wx:key="index" style="display:flex">
+    <view class="{{item.id==CouponId?'selected':''}}" bindtap="changeCoupons" data-item="{{item}}">
+      <text class="ziti">满￥{{item.useLimit.full}}元减￥{{item.useLimit.minus}}元         </text>
+    </view>
+  </view>
+
+  <view>不可用</view>
+  <view wx:for="{{mistake}}" wx:key="index">
+    <text  class="ziti">满￥{{item.useLimit.full}}元减￥{{item.useLimit.minus}}元</text>
+  </view>
+  <view class="guigeqr" bindtap="onConfirmSelectedGoods" data-type="createOrder">确认</view>
+</view>
 
 <view class="address">
   <view wx:if="{{selectedAddress.hfCity }}">
@@ -18,7 +37,7 @@
       <view>
         联系电话: {{selectedAddress.phoneNumber}}
       </view>
-       <view bind:tap="selectLocation" style="margin-left: 40%;">选择地址</view>
+      <view bind:tap="selectLocation" style="margin-left: 40%;">选择地址</view>
     </view>
     <view class="address-bottom">{{addressList.contact}} {{addressList.phoneNumber}}</view>
   </view>
@@ -26,7 +45,7 @@
     <button bind:tap="onAddUserAddress">新增收货地址</button>
   </view>
 </view>
-     
+
 <view style="width:100%;height:5rpx;margin-top:-30rpx">
   <image src="/images/line.png" style="width:100%;height:100%;"></image>
 </view>
@@ -34,12 +53,19 @@
 
 <view class="quhuomethod" style="margin-top:50rpx">
   <view class="ziti" style="width:600rpx">取货方式</view>
-  <text bindtap="changeMethod"  class="ziti">{{pickUp.wayOfPickUpDesc}}</text>
-  <image src="/images/rightjiantou.png" style="width:12rpx;height:22rpx" bindtap="changeMethod" ></image>
+  <text bindtap="changeMethod" class="ziti">{{pickUp.wayOfPickUpDesc}}</text>
+  <image src="/images/rightjiantou.png" style="width:12rpx;height:22rpx" bindtap="changeMethod"></image>
 </view>
 <view class="youfei" hidden="{{quhuomethod}}">
   <view class="ziti" style="line-height:40rpx">邮费</view>
   <text class="ziti" style="line-height:40rpx;color:red;">+￥{{pickUp.freight}}</text>
+</view>
+
+<view wx:if="{{competitive}}" class="quhuomethod" style="margin-top:50rpx">
+  <view class="ziti" style="width:300rpx">店铺优惠卷</view>
+  <text wx:if="{{useLimit.full!==''}}" bindtap="changeCoupon" style=" color:red;" class="ziti">满￥{{useLimit.full}}元减￥{{useLimit.minus}}元</text>
+  <text wx:if="{{useLimit.full==''}}" bindtap="changeCoupon" style=" color:red;" class="ziti">请选择优惠卷</text>
+  <image src="/images/rightjiantou.png" style="width:12rpx;height:22rpx" bindtap="changeCoupon"></image>
 </view>
 
 <view class="p20">支付方式</view>
