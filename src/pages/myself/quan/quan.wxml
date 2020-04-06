@@ -1,4 +1,4 @@
-<!--src/pages/myself/coupons/coupons.wxml-->
+、<!--src/pages/myself/coupons/coupons.wxml-->
 <view class="discount">
   <!-- 优惠券 -->
   <van-tabs active="a" bindchange="tab">

@@ -27,6 +27,7 @@ Page({
     groupList: [],//团购列表两条
     groupLists: [],//团购列表全部
     collects: false,// 点赞按钮
+    collecte: false,//收藏
     showModal: false,
     slideNumber: '1', //详情滑动跳动数字
     current: 0,
@@ -275,22 +276,68 @@ Page({
   collect: function () {
     var that = this;
     if (that.data.collects) {
-      that.setData({
-        collects: !that.data.collects,
+      let params = {
+        stoneId: this.data.stoneId,
+        userId: wx.getStorageSync('userId')
+      }
+      productApi.deleteStoneConcern(params, (res) => {
+        console.log(res)
+        that.setData({
+          collects: !that.data.collects,
+        })
+        wx.showToast({
+          title: '取消关注',
+        });
       })
-      wx.showToast({
-        title: '取消关注',
-      });
     } else {
-      that.setData({
-        collects: !that.data.collects,
+      let params = {
+        stoneId: this.data.stoneId,
+        userId: wx.getStorageSync('userId')
+      }
+      productApi.addStoneConcern(params, (res) => {
+        console.log(res)
+        that.setData({
+          collects: !that.data.collects,
+        })
+        wx.showToast({
+          title: '关注成功',
+        });
       })
-      wx.showToast({
-        title: '关注成功',
-      });
     }
   },
-
+  //收藏、
+  eventCollect() {
+    var that = this;
+    if (that.data.collecte) {
+      let params = {
+        productId: this.data.productId,
+        userId: wx.getStorageSync('userId')
+      }
+      productApi.deleteProductCollect(params, (res) => {
+        console.log(res)
+        that.setData({
+          collecte: !that.data.collecte,
+        })
+        wx.showToast({
+          title: '取消收藏',
+        });
+      })
+    } else {
+      let params = {
+        productId: this.data.productId,
+        userId: wx.getStorageSync('userId')
+      }
+      productApi.addProductCollect(params, (res) => {
+        console.log(res)
+        that.setData({
+          collecte: !that.data.collecte,
+        })
+        wx.showToast({
+          title: '收藏',
+        });
+      })
+    }
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -320,9 +367,26 @@ Page({
         mask: true
       });
     } else {
-      productApi.getProductDetail(productId, stoneId, (res) => {
+      let params = {
+        userId: wx.getStorageSync('userId'),
+        productId: this.data.productId,
+        stoneId: this.data.stoneId
+      }
+      productApi.getProductDetail(params, (res) => {
         let goods = res.data.data;
         console.log('商品图', goods)
+        if (res.data.data.isConcern == 1) {
+          console.log('关注')
+          this.setData({
+            collects: !this.data.collects,
+          })
+        }
+        if (res.data.data.isCollect == 1) {
+          console.log('收藏')
+          this.setData({
+            collecte: !this.data.collecte,
+          })
+        }
         let imgageUrls = [];
 
         for (let fileId of goods.fileIds) {

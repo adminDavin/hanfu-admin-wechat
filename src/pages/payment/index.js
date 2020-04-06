@@ -66,21 +66,20 @@ Page({
     console.log(obj);
     let idDeleted =0
     discount.myCoupon(obj, (res) => {
-       let tequan = res.data.data
-      console.log(tequan)
-      let tequans = []
-      let mistake = []
-      for (var i = 0; i < tequan.length; i++) {
-        tequan[i].useLimit = JSON.parse(tequan[i].useLimit);
-        if (tequan[i].idDeleted == idDeleted) {
-         tequans.push(tequan[i])
-        } else {
-          mistake.push(tequan[i])
-        }
-      } 
+      console.log(res.data.data);
       this.setData({
-        tequan: tequans,
-        mistake: mistake
+        tequan: res.data.data
+      })
+      let arr = this.data.tequan;
+      for (var i = 0; i < arr.length; i++) {
+        arr[i].useLimit = JSON.parse(arr[i].useLimit);
+        arr[i].startTime = arr[i].startTime.split(' ');
+        arr[i].startTime = arr[i].startTime[0];
+        arr[i].stopTime = arr[i].stopTime.split(' ');
+        arr[i].stopTime = arr[i].stopTime[0];
+      }
+      this.setData({
+        tequan: arr,
       })
       console.log(this.data.tequan);
     });
@@ -142,7 +141,8 @@ Page({
     this.setData({
       CouponId: e.currentTarget.dataset.item.id,
       ['useLimit.full']: e.currentTarget.dataset.item.useLimit.full,
-      ['useLimit.minus']: e.currentTarget.dataset.item.useLimit.minus
+      ['useLimit.minus']: e.currentTarget.dataset.item.useLimit.minus,
+      showModalCreateOrder: false
     });
     console.log(this.data)
     console.log(this.data.selectedGoods.id)
@@ -168,7 +168,11 @@ Page({
             icon: 'none'
           });
         }
-        thta.data.selectedGoods.sellPrices= res.data.data.money
+        thta.setData({
+          ['selectedGoods.sellPrices']: res.data.data.money,
+          ['selectedGoods.sellPrice']: res.data.data.money
+        });
+        console.log(thta.data.selectedGoods)
       }
     })
   },
@@ -180,11 +184,11 @@ Page({
       });
     }
   },
-  onConfirmSelectedGoods: function (e) {
-    this.setData({
-      showModalCreateOrder: false
-    });
-  },
+  // onConfirmSelectedGoods: function (e) {
+  //   this.setData({
+  //     showModalCreateOrder: false
+  //   });
+  // },
   onPaymentMethod: function (e) {
     let paymentMethod = this.data.paymentMethod;
     for (let payment of this.data.paymentMethod) {

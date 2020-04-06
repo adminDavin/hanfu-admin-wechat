@@ -10,7 +10,7 @@
         {{item.hfName}}: {{item.hfValue}}
       </view>
     </view>
-    <view>购买数量:{{quantity}}</view>
+    <view>购买数量:{{quantity}}<text style="margin-left: 16rpx">￥{{selectedGoods.sellPrices}}元</text></view>
   </view>
 </template>
 
@@ -246,8 +246,13 @@
         <image src="../../images/tabs/buycar.png" class="footer-image" />
         <text class="foot-text">购物车</text>
       </view>
+      <view class="footter-service" bindtap="eventCollect">
+        <image src="../../images/collect.png" wx:if="{{collecte==false}}" class="footer-image" />
+        <image src="../../images/hcollect.png" wx:if="{{collecte==true}}" class="footer-image" />
+        <text class="foot-text">收藏</text>
+      </view>
       <view class="footer-shppingcar" bind:tap="onConfirmSelectedGoods" data-type="shopPayment">到店支付</view>
-      <view class="footer-shppingcar purchase" bind:tap="onSelectedGoodsSpec" data-type="createOrder">{{groupActivity?'发起拼团':'立即购买'}}</view>
+      <view class="footer-shppingcar purchase" bind:tap="onSelectedGoodsSpec" data-type="createOrder">立即购买</view>
     </view>
   </view>
   

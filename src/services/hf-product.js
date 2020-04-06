@@ -16,15 +16,12 @@ function getProductForRotation(rotationQuantity, handleResult) {
   });
 }
 
-function getProductDetail(productId, stoneId, handleResult) {
-  let params = {
-  };
+
+function getProductDetail(params, handleResult) {
+
   wx.request({
     url: app.endpoint.product + '/hfProduct/getDetail',
-    data: {
-      productId: productId,
-      stoneId: stoneId
-    },
+    data: params,
     success: res => handleResult(res),
     fail: (res) => {
       console.log(params, res);
@@ -147,6 +144,58 @@ function getProductSeckill(params = {}, handleResult) {
     }
   });
 }
+// 关注
+function addStoneConcern(params, handleResult) {
+  wx.request({
+    url: app.endpoint.product + '/product/addStoneConcern',
+    method: 'POST',
+    header: {
+      'content-type': 'application/x-www-form-urlencoded'
+    },
+    data: params,
+    success: res => handleResult(res),
+    fail: (res) => {
+      console.log(params, res);
+    }
+  });
+}
+// 取消关注
+function deleteStoneConcern(params, handleResult) {
+  wx.request({
+    url: app.endpoint.product + '/product/deleteStoneConcern',
+    data: params,
+    success: res => handleResult(res),
+    fail: (res) => {
+      console.log(params, res);
+    }
+  });
+}
+// 收藏
+function addProductCollect(params, handleResult) {
+  wx.request({
+    url: app.endpoint.product + '/product/addProductCollect',
+    method: 'POST',
+    header: {
+      'content-type': 'application/x-www-form-urlencoded'
+    },
+    data: params,
+    success: res => handleResult(res),
+    fail: (res) => {
+      console.log(params, res);
+    }
+  });
+}
+// 取消收藏
+function deleteProductCollect(params, handleResult) {
+  wx.request({
+    url: app.endpoint.product + '/product/deleteProductCollect',
+    data: params,
+    success: res => handleResult(res),
+    fail: (res) => {
+      console.log(params, res);
+    }
+  });
+}
 export default {
   getProductForRotation: getProductForRotation,
   getProductDetail: getProductDetail,
@@ -157,5 +206,9 @@ export default {
   getProductGroup: getProductGroup,
   getProductSeckill: getProductSeckill,
   getSeckillTimeBar: getSeckillTimeBar,
-  groupStatus: groupStatus
+  groupStatus: groupStatus,
+  addStoneConcern:addStoneConcern,
+  deleteStoneConcern: deleteStoneConcern,
+  addProductCollect: addProductCollect,
+  deleteProductCollect: deleteProductCollect
 };
