@@ -33,7 +33,7 @@ Component({
   methods: {
     onClickRanking: function (e) {
       let selected = e.currentTarget.dataset.item;
-      // console.log(selected.id)
+      console.log(selected.id)
       wx.navigateTo({
         url: '/pages/product/list?action=chosen&activityId=' + selected.id
       });

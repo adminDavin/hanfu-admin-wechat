@@ -1,5 +1,7 @@
-import quan from '../../services/hf-tequan';
-
+import productApi from '../../services/hf-product.js';
+import util from '../../utils/util.js';
+import projectUtils from '../../utils/project-utils.js';
+import requestUtils from '../../services/request-utils.js';
 
 Page({
   data: {
@@ -9,20 +11,12 @@ Page({
     currentTab: 0, //切换
     mosthigher: '',
     mostlower: '',
-    cang:[],
   },
   //列表切换
   list: function () {
-    var that=this;
-   let aaa=wx.getStorageSync('userId');
-
-   quan.getcang(aaa, (res) => {
-      console.log(res);
-      that.setData({
-        cang: res.data.data
-      })
-      
-    });
+    this.setData({
+      lists: !this.data.lists,
+    })
   },
   // 切换目录
   clickTab: function (e) {
@@ -67,12 +61,14 @@ Page({
   translate: function (event) {
     this.setData({ isRuleTrue: true });
   },
-  
+
   success: function () {
     this.setData({ isRuleTrue: false });
   },
 
   onLoad: function (options) {
-    this.list();
+    console.log(options)
+    this.setData({ parameters: options });
+    projectUtils.adjustSystemInfo(this);
   }
 })

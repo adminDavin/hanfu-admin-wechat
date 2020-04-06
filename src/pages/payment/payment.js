@@ -36,6 +36,7 @@ Page({
       userId: options.userId, outTradeNo: options.outTradeNo
     }, (res) => {
       let payment = res.data.data;
+      
       if (options.paymentName == "wechart") {
         // 微信支付 待用户确认
         let params = {
@@ -46,6 +47,7 @@ Page({
       } else {
         //余额支付 直接跳转到订单列表
         paymentApi.completeOrder(options.outTradeNo, options.userId, (res) => console.log(res));
+        console.log(res)
         if (that.data.groupid !== '') {
           wx.navigateTo({
             url: '/pages/order/list?action=all',
