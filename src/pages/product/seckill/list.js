@@ -105,7 +105,7 @@ Page({
   onSeletedProduct: function (e) {
     let selected = e.currentTarget.dataset.item;
     wx.navigateTo({
-      url: '/pages/product/detail?productId=' + selected.id
+      url: '/pages/product/detail?productId=' + selected.id + '&stoneId' + selected.stoneId
     });
   },
   /**

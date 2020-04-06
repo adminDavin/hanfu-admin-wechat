@@ -25,11 +25,13 @@ Page({
     endDate2: '2020-03-030 14:41:00',
     groupList:[],
     collects: false,// 点赞按钮
+    collecte:false,//收藏
     showModal:false,
     slideNumber: '1', //详情滑动跳动数字
     current: 0,
     seckillActivity: false, //秒杀
     groupActivity:false,// 团购
+    competitive:false,// 精选
     indicatorDots: true,
     inquire: [
       {sum:'1',
@@ -93,7 +95,10 @@ Page({
     if (options.action == 'seckillActivity') {
       console.log('秒杀')
       this.data.seckillActivity = true
-    
+    }
+    if (options.action == 'competitive') {
+      console.log('精选')
+      this.data.competitive = true
     }
     wx.getSystemInfo({
       success: (res) => {
@@ -271,22 +276,68 @@ Page({
   collect: function () {
     var that = this;
     if (that.data.collects) {
-      that.setData({
-        collects: !that.data.collects,
+      let params = {
+        stoneId: this.data.stoneId,
+        userId: wx.getStorageSync('userId')
+      }
+      productApi.deleteStoneConcern(params, (res) => {
+        console.log(res)
+        that.setData({
+          collects: !that.data.collects,
+        })
+        wx.showToast({
+          title: '取消关注',
+        });
       })
-      wx.showToast({
-        title: '取消关注',
-      });
     } else {
-      that.setData({
-        collects: !that.data.collects,
+      let params = {
+        stoneId: this.data.stoneId,
+        userId: wx.getStorageSync('userId')
+      }
+      productApi.addStoneConcern(params,(res)=>{
+       console.log(res)
+        that.setData({
+          collects: !that.data.collects,
+        })
+        wx.showToast({
+          title: '关注成功',
+        });
       })
-      wx.showToast({
-        title: '关注成功',
-      });
     }
   },
-
+ //收藏、
+  eventCollect() {
+    var that = this;
+    if (that.data.collecte) {
+      let params = {
+        productId: this.data.productId,
+        userId: wx.getStorageSync('userId')
+      }
+      productApi.deleteProductCollect(params, (res) => {
+        console.log(res)
+        that.setData({
+          collecte: !that.data.collecte,
+        })
+        wx.showToast({
+          title: '取消收藏',
+        });
+      })
+    } else {
+      let params = {
+        productId: this.data.productId,
+        userId: wx.getStorageSync('userId')
+      }
+      productApi.addProductCollect(params, (res) => {
+        console.log(res)
+        that.setData({
+          collecte: !that.data.collecte,
+        })
+        wx.showToast({
+          title: '收藏',
+        });
+      })
+    }
+  },
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
@@ -311,11 +362,28 @@ Page({
                 mask: true
             });
         } else {
-            productApi.getProductDetail(productId,stoneId, (res) => {
+          let params = {
+            userId: wx.getStorageSync('userId'),
+            productId: this.data.productId,
+            stoneId: this.data.stoneId
+          }
+          productApi.getProductDetail(params, (res) => {
               let goods = res.data.data;
               console.log('商品图',goods)
               let imgageUrls = [];
-
+            console.log(goods)
+            if (res.data.data.isConcern == 1) {
+              console.log('关注')
+              this.setData({
+                collects: !this.data.collects,
+              })
+            }
+            if (res.data.data.isCollect == 1) {
+              console.log('收藏')
+              this.setData({
+                collecte: !this.data.collecte,
+              })
+            }
               for (let fileId of goods.fileIds) {
                 imgageUrls.push(app.endpoint.file + '/goods/getFile?fileId=' + fileId);
               }
@@ -330,11 +398,12 @@ Page({
     console.log('结束', this.data.loading)
   },
     updateSelectedGoods: function (goodsId, product) {
-        goodsApi.getGoodsDetail({ goodsId: goodsId, quantity: '1' }, (res) => {
+      let userId = wx.getStorageSync('userId')
+      goodsApi.getGoodsDetail({ goodsId: goodsId, quantity: '1', userId: userId}, (res) => {
             let goods = res.data.data;
           console.log('详情',res.data.data)
             let imgageUrls = [];
-
+        // this.setData({  });
             for (let fileId of goods.fileIds) {
                 imgageUrls.push(app.endpoint.file + '/goods/getFile?fileId=' + fileId);
             }
@@ -342,7 +411,8 @@ Page({
           // this.setData({ product: product, imgageUrls: imgageUrls, selectedGoods: goods }); 
         });
     },
-    onSelectedGoodsSpec: function (e) {
+    onSelectedGoodsSpec: function (e) { 
+      console.log(this.data.selectedGoods.sellPrice)
         let animation = wx.createAnimation({
             duration: 200,
             timingFunction: "ease",
@@ -444,9 +514,10 @@ Page({
         paymentType: paymentType,
         userId: userId,
         stoneId: this.data.product.stoneId,
-        groupActivity: this.data.groupActivity,
+        // groupActivity: this.data.groupActivity,
         activityId: this.data.activityId,
-        quantity: this.data.quantity
+        quantity: this.data.quantity,
+        competitive: this.data.competitive,
       };
       wx.navigateTo({
         url: '/pages/payment/index?params=' + encodeURIComponent(JSON.stringify(params))

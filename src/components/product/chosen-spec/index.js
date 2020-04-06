@@ -135,6 +135,10 @@ Component({
                 icon: 'none'
               });
             }
+            that.setData({
+              ['selectedGoods.sellPrices']: res.data.data.money,
+            });
+            console.log(that.data.selectedGoods)
           }
         })
       } else {
@@ -161,6 +165,12 @@ Component({
                 quantity: 1
               });
             }
+            that.setData({
+              ['selectedGoods.sellPrices']: res.data.data.money,
+            });
+            // that.data.selectedGoods.sellPrices = 
+            console.log(that.data.selectedGoods)
+          
           }
         })
       }
@@ -225,7 +235,7 @@ Component({
               that.setData({
                 selectedGoods: selectedGoods,
               });
-              selectedGoods.sellPrices = res.data.data.money
+              that.data.selectedGoods.sellPrices = res.data.data.money
               console.log(that.data.selectedGoods)
             }
           }
@@ -257,7 +267,7 @@ Component({
               that.setData({
                 selectedGoods: selectedGoods,
               });
-              selectedGoods.sellPrices = res.data.data.money
+              that.data.selectedGoods.sellPrices = res.data.data.money
               console.log(that.data.selectedGoods)
             }
           }
