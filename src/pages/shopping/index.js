@@ -1,14 +1,17 @@
 // pages/shopping/shopping.js
 const app = getApp();
-var util = require('../../utils/util.js')
+import car from '../../services/car.js';
+// var util = require('../../utils/util.js')
 // const apiCart = require('../../utils/api/cart.js');
-import projectUtils from '../../utils/project-utils.js';
+// import projectUtils from '../../utils/project-utils.js';
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    count:0,
+    carlist:[],
     openId: '',
     bannertoggle: 1,
     tiphidden: false,
@@ -21,13 +24,175 @@ Page({
     cartNum: 0,
     checkgoods: '',
     goodsarr: [],
-    shangjiagoods: [],
+    shangjiagoods: [
+      {
+        productStatus:1,
+      },
+      {
+        productStatus:1,
+      }
+    ],
     xiajiagoods: [],
     selectCountPrice: 0.00,
-    isAllSelect: true, //全选
+    isAllSelect: false, //全选
     selectValue: [], //选中的数据
   },
+       //删除商品
+       delGoods(e) {
+        var that = this;
+        let obj={
+          productId:e.currentTarget.dataset.goodsid,
+          userId: wx.getStorageSync('userId'),
+        }
+        car.delGoods(obj, (res) => {
+          if(res.data.status==200){
+            wx.showToast({
+              title: '删除成功',
+            })
+            that.checkcar();
+          }else{
+            wx.showToast({
+              title: '删除失败',
+              icon:'none'
+            })
+          }
+        });
+      },
+  checkcar:function(){
+    let obj={
+      userId: wx.getStorageSync('userId'),
+    }
+    var that=this;
+   car.checkcar(obj, (res) => {
+      console.log(res);
+      that.setData({
+        shangjiagoods:res.data.data
+      })
+        let arr=that.data.shangjiagoods;
+        
+      for(var i=0;i<arr.length;i++){
+        arr[i].productIcon=app.endpoint.file + '/goods/getFile?fileId='+arr[i].productIcon;
+        arr[i].check=0;
+      }
+      that.setData({
+        shangjiagoods:arr
+      })
+      console.log(that.data.shangjiagoods);
+    })   
+  },
+  check:function(e){
+    var that=this;
+    console.log(e.currentTarget.dataset.index);
+    let arr =that.data.shangjiagoods;
+    if(arr[e.currentTarget.dataset.index].check==0){
+      arr[e.currentTarget.dataset.index].check=1;
+    }else{
+      arr[e.currentTarget.dataset.index].check=0;
+    }
+    let ischoose=1;
+    for(var i=0;i<arr.length;i++){
+      if(arr[i].check==0){
+        ischoose=0;
+        that.setData({
+          isAllSelect:false,
+        })
+      }
+    }
+    if(ischoose==1){
+      that.setData({
+        isAllSelect:true,
+      })
+    }
+    let count=0;
+    for(var i=0;i<arr.length;i++){
+      if(arr[i].check==1){
+        count+=arr[i].productNum*arr[i].productPrice;
+      }
+    }
+    that.setData({
+      shangjiagoods:arr,
+      count:count
+    })
+    },
+    subCart: function(e) { //减少商品数量
+      var that = this;
+      var index = e.currentTarget.dataset.index;
+      let arr =that.data.shangjiagoods;
+      let count =that.data.count;
+       
+      if(arr[e.currentTarget.dataset.index].productNum>1){
+        if(arr[e.currentTarget.dataset.index].check==1){
+          count= count-arr[e.currentTarget.dataset.index].productPrice;
+        }
+        
+        arr[e.currentTarget.dataset.index].productNum=arr[e.currentTarget.dataset.index].productNum-1;
+        that.setData({
+          shangjiagoods:arr,
+          count:count
+        })
+        let obj={
+          goodsId:arr[e.currentTarget.dataset.index].productId,
+          num :arr[e.currentTarget.dataset.index].productNum,
+          userId :wx.getStorageSync('userId'),
+        }
+        car.updateCartNum(obj, (res) => {
+          console.log(res);
+        })   
+      }
+    },
+ 
+    addCart: function(e) { //添加商品数量
+      var that = this;
+      var index = e.currentTarget.dataset.index;
+      let arr =that.data.shangjiagoods;
+      arr[e.currentTarget.dataset.index].productNum=arr[e.currentTarget.dataset.index].productNum+1;
+      let count =that.data.count;
+      if(arr[e.currentTarget.dataset.index].check==1){
+        count= count+arr[e.currentTarget.dataset.index].productPrice;
+      }
+      that.setData({
+        shangjiagoods:arr,
+        count:count
+      })
+      let obj={
+        goodsId:arr[e.currentTarget.dataset.index].productId,
+        num :arr[e.currentTarget.dataset.index].productNum,
+        userId :wx.getStorageSync('userId'),
+      }
+      console.log(obj);
+      car.updateCartNum(obj, (res) => {
+        console.log(res);
+      })   
+    },
+      //全选
+  checkboxAllChange: function(event) {
+    var that=this;
+    let arr =that.data.shangjiagoods;
+   if(that.data.isAllSelect==true){
+    that.setData({
+      isAllSelect:false,
+      count:0,
+    })
+    for(var i=0;i<arr.length;i++){
+     arr[i].check=0;
 
+    }
+    }else{
+      let count=0;
+      for(var i=0;i<arr.length;i++){
+        arr[i].check=1;
+        count+=arr[i].productNum*arr[i].productPrice;
+       }
+      
+       that.setData({
+        count:count,
+        isAllSelect:true
+      })
+   }
+    that.setData({
+      shangjiagoods:arr,
+    })
+  },
   // banner切换
   toggle(e) {
     var that = this;
@@ -45,7 +210,7 @@ Page({
       that.getOftenBuy();
     }
   },
-
+  
   // 去结算
   submit() {
     var that = this;
@@ -149,15 +314,7 @@ Page({
     }
     console.log(that.data.selectCountPrice)
   },
-  //全选
-  checkboxAllChange: function(event) {
-    var value = event.detail.value;
-    if (value.length > 0) {
-      this.setAllSelectValue(1)
-    } else {
-      this.setAllSelectValue(0)
-    }
-  },
+
 
   setAllSelectValue: function(status) {
     var that = this;
@@ -274,20 +431,7 @@ Page({
      that.getCart();
     });
   },
-  //删除商品
-  delGoods(e) {
-    var that = this;
-    var goodslist = [];
-    var cart = that.data.shangjiagoods;
-    console.log(e)
-    let goodsid = e.currentTarget.dataset.goodsid
-    apiCart.toSettle(app.globalData.urlCart, '/cart/delGoods', {
-      productId: e.currentTarget.dataset.goodsid,
-      userId: that.data.userId,
-    }, (res) => {
-      that.getCart();
-    });
-  },
+
 
   //常买
   oftenbuy(e) {
@@ -406,25 +550,26 @@ Page({
    */
   onLoad: function() {
     var that = this;
-    wx.getStorage({
-      key: 'phone',
-      success: function(res) {
-        wx.getStorage({
-          key: 'user',
-          success: function(res) {
-            that.setData({
-              userId: res.data.userId
-            })
-            that.getCart();
-          },
-        })
-      },
-      fail: function(res) {
-        that.setData({
-          tiphidden: false,
-        })
-      }
-    })
+    that.checkcar();
+    // wx.getStorage({
+    //   key: 'phone',
+    //   success: function(res) {
+    //     wx.getStorage({
+    //       key: 'user',
+    //       success: function(res) {
+    //         that.setData({
+    //           userId: res.data.userId
+    //         })
+    //         that.getCart();
+    //       },
+    //     })
+    //   },
+    //   fail: function(res) {
+    //     that.setData({
+    //       tiphidden: false,
+    //     })
+    //   }
+    // })
   },
 
   /**
@@ -438,93 +583,40 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-    projectUtils.activeTabBar(this, 3)
-    var that = this;
-    if (app.globalData.toCartTag == true) {
-      that.getOftenBuy();
-      that.setData({
-        bannertoggle: 3
-      })
-      app.globalData.toCartTag = false;
-    } else {
-      wx.getStorage({
-        key: 'phone',
-        success: function(res) {
-          wx.getStorage({
-            key: 'user',
-            success: function(res) {
-              that.setData({
-                userId: res.data.userId
-              })
-              that.getCart();
-            },
-          })
-        },
-        fail: function(res) {
-          that.setData({
-            tiphidden: false,
-          })
-        }
-      })
-    }
+    // projectUtils.activeTabBar(this, 3)
+    // var that = this;
+    // if (app.globalData.toCartTag == true) {
+    //   that.getOftenBuy();
+    //   that.setData({
+    //     bannertoggle: 3
+    //   })
+    //   app.globalData.toCartTag = false;
+    // } else {
+    //   wx.getStorage({
+    //     key: 'phone',
+    //     success: function(res) {
+    //       wx.getStorage({
+    //         key: 'user',
+    //         success: function(res) {
+    //           that.setData({
+    //             userId: res.data.userId
+    //           })
+    //           that.getCart();
+    //         },
+    //       })
+    //     },
+    //     fail: function(res) {
+    //       that.setData({
+    //         tiphidden: false,
+    //       })
+    //     }
+    //   })
+    // }
   },
 
   //修改商品数量
-  subCart: function(event) { //减少商品数量
-    var that = this;
-    var status = false;
-    var selectValue=that.data.selectValue;
-    var index = event.currentTarget.dataset.index;
-    var item = that.data.shangjiagoods[index];
-    item.productNum = item.productNum - 1;
-    if (item.productNum < 1) status = true;
-    if (item.productNum <= 1) {
-      item.productNum = 1;
-      // item.numSub = true;
-    }
-    // else { item.numSub = false; item.numAdd = false; }
-    if (false == status) {
-      that.setCartNum(item.productId, item.productNum, function(data) {
-        var itemData = "shangjiagoods[" + index + "]";
-        that.setData({
-          [itemData]: item
-        });
-        that.switchSelect();
-      });
-    }
-  },
-  addCart: function(event) { //添加商品数量
-    var that = this;
-    var selectValue = that.data.selectValue;
-    var index = event.currentTarget.dataset.index;
-    var item = that.data.shangjiagoods[index];
-    item.productNum = item.productNum + 1;
-    that.setCartNum(item.productId, item.productNum, function(data) {
-      console.log(data)
-      var itemData = "shangjiagoods[" + index + "]";
-      console.log(itemData)
-      console.log(item)
-      that.setData({
-        [itemData]: item
-      });
-      that.switchSelect();
-    });
-    // var productInfo = item.productInfo;
-    // if (productInfo.hasOwnProperty('attrInfo') && item.cart_num >= item.productInfo.attrInfo.stock) {
-    //   item.cart_num = item.productInfo.attrInfo.stock;
-    //   item.numAdd = true;
-    //   item.numSub = false;
-    // } else if (item.cart_num >= item.productInfo.stock) {
-    //   item.cart_num = item.productInfo.stock;
-    //   item.numAdd = true;
-    //   item.numSub = false;
-    // } else { item.numAdd = false; item.numSub = false; }
-    // that.setCartNum(item.id, item.cart_num, function (data) {
-    //   var itemData = "cartList.valid[" + index + "]";
-    //   that.setData({ [itemData]: item });
-    //   that.switchSelect();
-    // });
-  },
+ 
+
 
   //商品数量
   setCartNum(goodsId, num, callback) {

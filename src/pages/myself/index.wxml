@@ -21,19 +21,21 @@
     </view>
   </view>
 </view>
-
+<view  bindtap="onSelectedOrder" data-action='all'>
 <view class="t20">
-  <view bindtap="onSelectedOrder" data-action='all'>
+  <view>
     <text class="myLeft">我的订单</text>
-    <image class="rightRow" src="/images/rightjiantou.png" bindtap="changeMethod"></image>
+    <image class="rightRow" src="/images/rightjiantou.png"></image>
   </view>
 </view>
 <view class='middle'>
-  <view wx:for="{{orderStatuses}}" wx:key="index" bindtap="onSelectedOrder" data-action='{{item.action}}' class="center-inner">
+  <view wx:for="{{orderStatuses}}" wx:key="index"  class="center-inner">
     <view>{{item.quantity}}</view>
     <view>{{item.desc}}</view>
   </view>
 </view>
+</view>
+
 
 <view class="t20">
   <view bindtap="onSelectedwallet" data-action='all'>

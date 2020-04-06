@@ -7,7 +7,7 @@
     </view>
     </view>
   </scroll-view>
-  <view class="card" wx:for="{{hfOrders}}" wx:key="index" bindtap="onSelectedOrder" data-hf-order="{{item}}">
+  <view class="card" wx:for="{{hfOrders}}" wx:key="index"  data-hf-order="{{item}}">
     <view class="card-top">
       <view class="dingdanhao">店铺：{{item.stoneName}}</view>
       <view style="color:red;font-size:24rpx" >{{item.orderStatusDesc}}</view>

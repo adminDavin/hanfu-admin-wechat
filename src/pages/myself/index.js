@@ -118,7 +118,12 @@ Page({
      arr[0].quantity=res.data.data.surplus;
      arr[1].quantity=res.data.data.integral;
      arr[2].quantity=res.data.data.couponCount;
+     let arr1=this.data.involveProducts;
+     arr1[0].quantity=res.data.data.collectCount;
+     arr1[1].quantity=res.data.data.concernCount;
+     arr1[2].quantity=res.data.data.browseCount;
      this.setData({
+      involveProducts:arr1,
       myWalletResoures:arr,
       hui:res.data.data.prerogative
     });
@@ -132,6 +137,8 @@ Page({
      })
   },
   onSelectedOrder: function(e) {
+    console.log(this.data.orderStatuses);
+    console.log(e);
     this.handleSelected('/pages/order/list', e.currentTarget.dataset.action);
   },
   onSelectedToolAndService: function(e) {
@@ -152,8 +159,17 @@ Page({
     }
   },
   onSelectedProduct: function(e) {
+    console.log(e);
     let item = e.currentTarget.dataset;
-    this.handleSelected('/pages/product/list', item.action);
+    if(e.currentTarget.dataset.action == 'collection'){
+      this.handleSelected('/pages/myself/cang/cang', item.action);
+    }
+    if(e.currentTarget.dataset.action == 'history'){
+      this.handleSelected('/pages/myself/history/history', item.action);
+    }
+    if(e.currentTarget.dataset.action == 'Concern'){
+      this.handleSelected('/pages/myself/Concern/Concern', item.action);
+    }
   },
   handleSelected(uri, action) {
     wx.navigateTo({

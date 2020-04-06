@@ -1,11 +1,11 @@
 <!--pages/shopping/shopping.wxml-->
 <view class="commodity">
-  <view class="editbtn">
-    <view bindtap="edit">{{editshow==true?'编辑':'完成'}}</view>
-    <view class="edit" style="color:white;padding-left:252rpx">购物车</view>
-  </view>
-  <!-- banner区域 -->
-  <view class="commodity-banner">
+	<view class="editbtn">
+		<!-- <view bindtap="edit">{{editshow==true?'编辑':'完成'}}</view> -->
+		<view class="edit" style="color:white;justify-content:center;">购物车</view>
+	</view>
+	<!-- banner区域 -->
+	<!-- <view class="commodity-banner">
     <view class="table" bindtap="toggle" data-index="1">
       <text class="">全部({{cartNum}})</text>
       <view class="sum-color {{bannertoggle==1?'colors':''}}"></view>
@@ -24,103 +24,112 @@
         <image src="../../images/cart/xiala1.png" class="sai-image" />
       </view>
     </view>
-  </view>
-  <!-- content -->
-  <view class="content" hidden="{{!tiphidden}}">
-    <checkbox-group bindchange="checkboxChange">
-      <block wx:for="{{shangjiagoods}}" wx:key wx:if="{{item.productStatus==1}}">
-        <scroll-view scroll-x direction="horizonta" style="margin-top:30rpx">
-          <view class="content-card">
-          <checkbox value="{{item.productId}}" checked="{{item.check==1}}"></checkbox>
+  </view> -->
+	<!-- content -->
+	<view class="content">
+		<checkbox-group bindchange="checkboxChange">
+			<block wx:for="{{shangjiagoods}}">
+				<scroll-view scroll-x direction="horizonta" style="margin-top:30rpx">
+					<view class="content-card">
+						<!-- <checkbox value="0" checked="{{item.check==1}}" bindtap="check" data-index='{{index}}'></checkbox> -->
+						<view style="margin-right:10rpx;">
+            <image src="../../img/choose.png" bindtap="check" wx:if="{{item.check==1}}"  data-index='{{index}}' style="width:20px;height:20px;"></image>
+            <image src="../../img/wei.png" bindtap="check" wx:if="{{item.check==0}}" data-index='{{index}}'  style="width:20px;height:20px;"></image>
+            </view>
             <view class="content-item">
-              <image src="{{item.img}}" style="width:230rpx;height:100%"></image>
-              <view class="contentitem-right">
-                <text class="item-name">{{item.productName}}</text>
-                <view class="serve">
+							<image src="{{item.productIcon}}" style="width:230rpx;height:100%"></image>
+							<view class="contentitem-right">
+								<text class="item-name">{{item.productName}}</text>
+								<!-- <view class="serve">
                   <text>白色40x40cm</text>
                   <view class="selectserve">选服务</view>
                   <image style="width:20rpx;height:11rpx;margin-top:12rpx;" src="../../images/cart/servexiala.png"></image>
-                </view>
-                <view class="hiddenxiala" hidden="{{servehidden}}">
+                </view> -->
+								<!-- <view class="hiddenxiala" >
                   <view wx:for=""></view>
-                </view>
-                <view class="manjian">每满200减50</view>
-                <view class="card-money">
-                  <view class="discounts-money">
-                    <text class="money-title">¥</text>
-                    <text class="money-number">{{item.productPrice}}</text>
-                    <image src="../../images/tabs/vip.png" class="money-vip" />
-                  </view>
-                  <view class="subadd">
-                  <view style="width:20rpx;height:20rpx" catchtap='subCart' data-index="{{index}}">
-                  <view style="width:20rpx;height:2rpx;background:black;margin-top:9rpx"></view>
-                  </view>
-                    <view class="subadd-money">{{item.productNum}}</view>
-                    <image src="../../images/cart/add.png" class="sub" catchtap='addCart' data-index="{{index}}" />
-                  </view>
-                </view>
-              </view>
-            </view>
-            <view class="hid-item">
-              <view style="width:50rpx;" wx:if="{{isOftenBuy==true}}" bindtap="oftenbuy" data-goodsid="{{item.productId}}">设为常买</view>
-              <view style="width:50rpx;" wx:if="{{isOftenBuy==false}}" bindtap="delOftenBuy" data-goodsid="{{item.productId}}" >取消常买</view>
-            </view>
-            <view class="hid-item" style="background:rgba(255,204,0,1);">
-              <view style="width:50rpx;color:white" wx:if="{{isGuanzhu==true}}" bindtap="concern" data-goodsid="{{item.productId}}">移入关注</view>
-              <view style="width:50rpx;color:white" wx:if="{{isGuanzhu==false}}" bindtap="delconcern" data-goodsid="{{item.productId}}">移出关注</view>
-            </view>
-            <view class="hid-item" style="background:rgba(255,0,0,1);" bindtap="delGoods" data-goodsid="{{item.productId}}" >
-              <view style="width:50rpx;color:white;margin-top:15rpx">删除</view>
-            </view>
-          </view>
-      </scroll-view>
-      </block>
-    </checkbox-group>
-    <view class="xiajia" >
-      <view class="xiajia-top">
+                </view> -->
+								<!-- <view class="manjian">每满200减50</view> -->
+								<view class="card-money">
+									<view class="discounts-money">
+										<text class="money-title">¥</text>
+										<text class="money-number">{{item.productPrice}}</text>
+										<!-- <image src="../../images/tabs/vip.png" class="money-vip" /> -->
+									</view>
+									<view class="subadd">
+										<view catchtap='subCart' data-index="{{index}}">
+											<view style="text-align:center;line-height:60rpx; width:100rpx;height:60rpx;background:#f8f8f8;">-</view>
+										</view>
+										<!-- <image src="../../images/cart/sub.png" class="sub" catchtap='addCart' data-index="{{index}}" /> -->
+										<view class="subadd-money" style="margin-left:3px;margin-right:3px;">{{item.productNum}}</view>
+                    <view catchtap='addCart' data-index="{{index}}">
+											<view style="text-align:center;line-height:60rpx; width:100rpx;height:60rpx;background:#f8f8f8;">+</view>
+										</view>
+										<!-- <image src="../../images/cart/add.png" class="sub"  /> -->
+									</view>
+								</view>
+							</view>
+						</view>
+						<view class="hid-item">
+							<view style="width:50rpx;" wx:if="{{isOftenBuy==true}}" bindtap="oftenbuy" data-goodsid="{{item.productId}}">设为常买</view>
+							<view style="width:50rpx;" wx:if="{{isOftenBuy==false}}" bindtap="delOftenBuy" data-goodsid="{{item.productId}}">取消常买</view>
+						</view>
+						<view class="hid-item" style="background:rgba(255,204,0,1);">
+							<view style="width:50rpx;color:white" wx:if="{{isGuanzhu==true}}" bindtap="concern" data-goodsid="{{item.productId}}">移入关注</view>
+							<view style="width:50rpx;color:white" wx:if="{{isGuanzhu==false}}" bindtap="delconcern" data-goodsid="{{item.productId}}">移出关注</view>
+						</view>
+						<view class="hid-item" style="background:rgba(255,0,0,1);" bindtap="delGoods" data-goodsid="{{item.productId}}">
+							<view style="width:50rpx;color:white;margin-top:15rpx">删除</view>
+						</view>
+					</view>
+				</scroll-view>
+			</block>
+		</checkbox-group>
+		<view class="xiajia">
+			<!-- <view class="xiajia-top">
         <text style="font-size:28rpx;font-weight:500;color:rgba(21,21,21,1);">已下架商品({{xiajiagoods.length}})</text>
-        <!-- <view class="xiajia-top-del">全部删除</view> -->
-      </view>
-      <view class="xiajia-content"   wx:for="{{xiajiagoods}}" wx:key="index">
-        <image src="../../images/cart/cartitem.png" style="width:230rpx;height:230rpx"></image>
-        <view class="contentitem-right" style="justify-content: flex-start;">
-          <text class="item-name">{{item.productName}}</text>
-          <view class="serve">
-            <text>白色40x40cm</text>
-            <view class="selectserve">选服务</view>
-            <image style="width:20rpx;height:11rpx;margin-top:12rpx;" src="../../images/cart/servexiala.png"></image>
-          </view>
-          <view class="hiddenxiala" hidden="{{servehidden}}">
-            <view wx:for=""></view>
-          </view>
-          <view class="card-money" style="margin-top:50rpx">
-            <text style="font-size:24rpx;font-weight:400;color:rgba(21,21,21,1);">商品已不支持购买</text>
-            <!-- <view class="kanxiangsi">看相似</view> -->
-          </view>
-        </view>
-      </view>
-      <!-- <view class="other">查看其它下架商品</view> -->
-    </view>
-  </view>
-  <view style="height:150rpx;"></view>
-  <view class="jiesuan" hidden="{{!tiphidden}}">
-    <view>
-        <checkbox-group bindchange="checkboxAllChange" style="height:50rpx">
-            <checkbox value="all" checked="{{isAllSelect}}" style="width:50rpx;" /><text class='checkAll'>全选</text>
-        </checkbox-group>
-     </view>
-    <view style="color:rgba(51,51,51,1);font-size:28rpx;margin-left:180rpx">合计：</view>
-    <view style="color:rgba(255,0,0,1);font-size:32rpx;font-weight:500">￥{{selectCountPrice}}</view>
-    <view class="gojiesuan" wx:if="{{editshow}}" bindtap="submit">去结算</view>
-    <view class="gojiesuan" wx:if="{{!editshow}}" bindtap="submitdel">删除</view>
+        <view class="xiajia-top-del">全部删除</view>
+      </view> -->
+			<view class="xiajia-content" wx:for="{{xiajiagoods}}" wx:key="index">
+				<image src="../../images/cart/cartitem.png" style="width:230rpx;height:230rpx"></image>
+				<view class="contentitem-right" style="justify-content: flex-start;">
+					<text class="item-name">{{item.productName}}</text>
+					<view class="serve">
+						<text>白色40x40cm</text>
+						<view class="selectserve">选服务</view>
+						<image style="width:20rpx;height:11rpx;margin-top:12rpx;" src="../../images/cart/servexiala.png"></image>
+					</view>
+					<view class="hiddenxiala">
+						<view wx:for=""></view>
+					</view>
+					<view class="card-money" style="margin-top:50rpx">
+						<text style="font-size:24rpx;font-weight:400;color:rgba(21,21,21,1);">商品已不支持购买</text>
+						<!-- <view class="kanxiangsi">看相似</view> -->
+					</view>
+				</view>
+			</view>
+			<!-- <view class="other">查看其它下架商品</view> -->
+		</view>
+	</view>
+	<view style="height:150rpx;"></view>
+	<view class="jiesuan">
+		<view>
+			<checkbox-group bindchange="checkboxAllChange" style="height:50rpx">
+				<checkbox value="all" checked="{{isAllSelect}}" style="width:50rpx;" /><text class='checkAll'>全选</text>
+			</checkbox-group>
+		</view>
+		<view style="color:rgba(51,51,51,1);font-size:28rpx;margin-left:180rpx">合计：</view>
+		<view style="color:rgba(255,0,0,1);font-size:32rpx;font-weight:500">￥{{count}}</view>
+		<view class="gojiesuan" wx:if="{{editshow}}" bindtap="submit">去结算</view>
+		<view class="gojiesuan" wx:if="{{!editshow}}" bindtap="submitdel">删除</view>
 
-  </view>
-  <!-- 购物车空时提示 -->
-  <view class="tip" hidden="{{tiphidden}}">
+	</view>
+	<!-- 购物车空时提示 -->
+	<!-- <view class="tip"
+  >
     <image src="../../images/cart/cart.png" class="cart-image" />
     <view class="abstip">
       <view class="bindtip">尚未添加商品</view>
       <view class="bindtip bindtip-right" bindtap="gobuy">前往购买</view>
     </view>
-  </view>
+  </view> -->
 </view>

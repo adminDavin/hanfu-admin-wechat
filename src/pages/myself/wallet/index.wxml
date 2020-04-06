@@ -11,7 +11,7 @@
      style="margin-right:25rpx; text-align:right;" placeholder="请输入充值金额(元)" type='number' />
 </view>
 <view style="padding:10px;">
-<view style="margin-bottom:15px;text-align:center;">充值记录</view>
+<view style="margin-bottom:15px;text-align:center;">交易明细</view>
 <view wx:for="{{xi}}" :key="index" style="margin-bottom:10px;">
  <view>{{item.paymentName}}</view>
  <view style="display:flex;justify-content:space-between;">

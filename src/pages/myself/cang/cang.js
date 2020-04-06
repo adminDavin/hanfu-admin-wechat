@@ -1,4 +1,5 @@
-import quan from '../../services/hf-tequan';
+const app = getApp();
+import quan from '../../../services/hf-tequan';
 
 
 Page({
@@ -21,7 +22,16 @@ Page({
       that.setData({
         cang: res.data.data
       })
-      
+      let arr=that.data.cang;
+      for(var i=0;i<arr.length;i++){
+        for(var j=0;j<arr[i].list.length;j++){
+          arr[i].list[j].fileId=app.endpoint.file + '/goods/getFile?fileId=' +arr[i].list[j].fileId
+        }
+       
+      }
+      that.setData({
+        cang: arr
+      })
     });
   },
   // 切换目录

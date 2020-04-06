@@ -5,6 +5,8 @@ import requestUtils from '../../services/request-utils.js';
 import productApi from '../../services/hf-product.js';
 import goodsApi from '../../services/hf-goods.js';
 import util from '../../utils/util.js';
+import car from '../../services/car.js';
+
 
 Page({
 
@@ -106,7 +108,32 @@ Page({
       }
     });
   },
- 
+  // 加入购物车
+  addcar:function(){
+    console.log(this.data.selectedGoods);
+    console.log(this.data.goodsId);
+    console.log(wx.getStorageSync('userId'))
+    console.log(this.data.quantity);
+    var that =this;
+    let obj={
+      goodsId :that.data.selectedGoods.id,
+      num :that.data.quantity,
+      userId : wx.getStorageSync('userId'),
+    }
+    car.addcar(obj, (res) => {
+      console.log(res);
+      if(res.data.data=="成功加入购物车"){
+        wx.showToast({
+          title: '加入购物车成功',
+        })
+      }else{
+        wx.showToast({
+          title: '加入购物车失败',
+          icon:'none'
+        })
+      }
+    });
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

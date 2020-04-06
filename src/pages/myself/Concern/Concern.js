@@ -1,4 +1,5 @@
-import quan from '../../services/hf-tequan';
+const app = getApp();
+import quan from '../../../services/hf-tequan';
 
 
 Page({
@@ -16,12 +17,16 @@ Page({
     var that=this;
    let aaa=wx.getStorageSync('userId');
 
-   quan.getcang(aaa, (res) => {
+   quan.guan(aaa, (res) => {
       console.log(res);
       that.setData({
         cang: res.data.data
       })
       
+     
+      that.setData({
+        cang: arr
+      })
     });
   },
   // 切换目录

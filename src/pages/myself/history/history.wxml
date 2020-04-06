@@ -1,0 +1,19 @@
+<view wx:for="{{cang}}" :key="{{index}}" wx:for-item="dayItem">
+	<view style="margin-bottom:20rpx;margin-top:40rpx;margin-left:25rpx;">{{dayItem.date}}</view>
+	<view style="display:flex;border-bottom:1rpx solid #d6d6d6;margin-bottom:10rpx;" wx:for="{{dayItem.list}}" wx:key="index1">
+		<image style="width:300rpx;height:280rpx;" src="{{item.fileId}}"></image>
+		<view style="margin-left:15rpx;">
+			<view style="margin-top:10rpx;">
+				{{item.productName}}
+			</view>
+			<view style="color:red;margin-top:10rpx;">
+				¥{{item.priceArea}}
+			</view>
+			<view style="margin-top:24px;">
+				{{item.productDesc}}
+			</view>
+		</view>
+
+	</view>
+
+</view>

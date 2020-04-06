@@ -32,7 +32,10 @@
     "pages/myself/quan/quan",
     "pages/myself/jifen/jifen",
     "pages/myself/tequan/tequan",
-    "components/order/group/group"
+    "components/order/group/group",
+    "pages/myself/cang/cang",
+    "pages/myself/history/history",
+    "pages/myself/Concern/Concern"
   ],
   "usingComponents": {
     "van-tab": "./pages/vant/weapp/dist/tab/index",

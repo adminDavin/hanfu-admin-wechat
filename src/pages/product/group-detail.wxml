@@ -304,9 +304,9 @@
         <image src="../../images/tabs/xiaoxi.png" class="footer-image" />
         <text class="foot-text">客服</text>
       </view>
-      <view class="footter-service" bindtap="gouwucar">
-        <image src="../../images/tabs/buycar.png" class="footer-image" />
-        <text class="foot-text">购物车</text>
+      <view class="footter-service" bindtap="addcar">
+        <!-- <image src="../../images/tabs/buycar.png" class="footer-image" /> -->
+        <text class="footer-shppingcar">加入购物车</text>
       </view>
       <view class="footer-shppingcar" bind:tap="onConfirmSelectedGoods" data-type="shopPayment">到店支付</view>
       <view class="footer-shppingcar purchase" bind:tap="onSelectedGoodsSpec" data-type="createOrder">发起拼团</view>

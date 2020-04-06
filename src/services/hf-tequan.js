@@ -1,5 +1,48 @@
 const app = getApp();
 
+function getcang(userId,handleResult) {
+  console.log(app.endpoint.product+ '/home/findProductCollectByUserId')
+  wx.request({
+    url: app.endpoint.product + '/home/findProductCollectByUserId',
+    method: 'GET',
+    data: {
+      userId : userId
+    },
+    success: res => handleResult(res),
+    fail: (res) => {
+      console.log( res);
+    }
+  });
+}
+function getlishi(userId,handleResult) {
+  console.log(app.endpoint.product+ '/home/findBrowseRecordByUserId')
+  wx.request({
+    url: app.endpoint.product + '/home/findBrowseRecordByUserId',
+    method: 'GET',
+    data: {
+      userId : userId
+    },
+    success: res => handleResult(res),
+    fail: (res) => {
+      console.log( res);
+    }
+  });
+}
+function guan(userId,handleResult) {
+  console.log(app.endpoint.product+ '/home/findStoneConcernByUserId')
+  wx.request({
+    url: app.endpoint.product + '/home/findStoneConcernByUserId',
+    method: 'GET',
+    data: {
+      userId : userId
+    },
+    success: res => handleResult(res),
+    fail: (res) => {
+      console.log( res);
+    }
+  });
+}
+
 function getquan(userId,handleResult) {
   console.log(app.endpoint.quan + '/hf-auth/findMemberPrerogative')
   wx.request({
@@ -117,4 +160,7 @@ export default {
   complate:complate,
   getlevelList:getlevelList,
   yuMing:yuMing,
+  getcang:getcang,
+  getlishi:getlishi,
+  guan:guan,
 };
