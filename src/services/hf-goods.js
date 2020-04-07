@@ -30,7 +30,7 @@ function getGoodDetailByProductId(params={}, handleResult) {
     fail: (res) => {
       console.log(params, res);
     }
-  }); getGoodDetailByProductId
+  });
 }
 
 function checkGoodsResp(params, handleResult) {

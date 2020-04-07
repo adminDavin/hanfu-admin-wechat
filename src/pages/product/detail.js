@@ -14,6 +14,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    goods:'',
+    linePrice:'',// 下线价格
     loading:'',
     priceArea:'',
     goodsId:'',
@@ -86,6 +88,7 @@ Page({
     that.data.startTime = options.startTime;
     that.data.priceArea = options.priceArea;
     that.data.endTime = options.endTime
+    // that.data.sellPrices = options.sellPrices
     console.log(options)
     that.countTime()
     if (options.action=='groupActivity') {
@@ -171,13 +174,13 @@ Page({
         }
         let product = res.data.data;
         this.updateSelectedGoods(product.defaultGoodsId, product);
-        this.setData({ imgageUrls: imgageUrls }); 
+        this.setData({ imgageUrls: imgageUrls}); 
       })      
     }
   },
 
   updateSelectedGoods: function(goodsId, product) {
-    goodsApi.getGoodsDetail({ goodsId: goodsId, quantity: this.data.quantity}, (res) => {
+    goodsApi.getGoodsDetail({ goodsId: goodsId, quantity: '1'}, (res) => {
       let goods = res.data.data;
       let imgageUrls = [];
 
@@ -195,6 +198,7 @@ Page({
   },
   
   onSelectedGoodsSpec: function(e) {
+    console.log(this.data.selectedGoods)
     let animation = wx.createAnimation({
       duration: 200,
       timingFunction: "ease",
@@ -389,7 +393,7 @@ Page({
               }
                 let product = res.data.data;
                 this.updateSelectedGoods(product.defaultGoodsId, product);
-               this.setData({ imgageUrls: imgageUrls }); 
+            this.setData({ imgageUrls: imgageUrls, linePrice: goods.linePrice, goods: goods}); 
             })
         }
     },
@@ -412,7 +416,7 @@ Page({
         });
     },
     onSelectedGoodsSpec: function (e) { 
-      console.log(this.data.selectedGoods.sellPrice)
+      console.log(this.data.selectedGoods)
         let animation = wx.createAnimation({
             duration: 200,
             timingFunction: "ease",
@@ -507,7 +511,7 @@ Page({
       console.log(this.data.quantity);
       this.data.selectedGoods.quantitys = this.data.quantity
       if (this.data.selectedGoods.sellPrices == undefined) {
-        this.data.selectedGoods.sellPrices = this.data.selectedGoods.sellPrice
+        this.data.selectedGoods.sellPrices = this.data.selectedGoods.sellPrices
       }
       let params = {
         selectedGoods: this.data.selectedGoods,

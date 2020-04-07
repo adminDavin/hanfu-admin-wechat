@@ -6,7 +6,9 @@
       <view class="flex-view-item p10" style="width:60%">
         <view style="text-align: left">{{item.productName}}</view>
         <view style="text-align: left">{{item.stoneName}}</view>
-        <view style="text-align: left; margin-top: 50rpx;color: red;">￥{{item.priceArea}}</view>
+        <view style="text-align: left; margin-top: 50rpx;color: red;">￥{{item.priceArea}}
+        <text style='color:#888;text-decoration:line-through;margin-left:10px; '>￥{{item.linePrice}}</text>
+        </view>
         <view class="product-price-wrap" style="text-align: right">
           <!-- <p class="product-price-new">{{item.newPrice}}</p> -->
           <button></button>

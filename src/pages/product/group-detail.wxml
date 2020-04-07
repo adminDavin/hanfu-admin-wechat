@@ -126,6 +126,7 @@
       <view class="productName-dollor">
         <text class="dollor">¥</text>
         <text class="money">{{selectedGoods.sellPrice}}</text>
+        <text style='color:#888;text-decoration:line-through;margin-left:10px;'>￥{{linePrice}}</text>
         <!-- <text class="news">新品</text> -->
       </view>
       <view class="productName-collect">

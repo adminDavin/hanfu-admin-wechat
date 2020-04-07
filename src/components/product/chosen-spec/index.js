@@ -30,11 +30,11 @@ Component({
       type: Number,
       value: 0
     },
-    groupId:{
-      type:Number,
-      value:0
+    groupId: {
+      type: Number,
+      value: 0
     },
-    accession:{
+    accession: {
       type: String,
       value: ''
     }
@@ -44,10 +44,10 @@ Component({
    * 组件的初始数据
    */
   data: {
-    accessions:'',
+    accessions: '',
     goodsList: [],
     selectedGoods: {},
-    minusStatus: 'disabled' 
+    minusStatus: 'disabled'
   },
   /**
     * 生命周期函数--监听页面加载
@@ -63,7 +63,7 @@ Component({
    */
   methods: {
     /* 点击减号 */
-    
+
     onBindMinus: function () {
       var quantity = this.data.quantity;
       // 如果大于1时，才可以减  
@@ -121,7 +121,7 @@ Component({
           data: {
             activityId: this.data.activityId,
             GoodsNum: this.data.quantity,
-            goodsId: this.properties.selectedGoodsId
+            goodsId: this.data.selectedGoods.id
           },
           header: {
             'content-type': 'application/x-www-form-urlencoded'
@@ -148,7 +148,7 @@ Component({
           method: 'POST',
           data: {
             GoodsNum: this.data.quantity,
-            goodsId: this.properties.selectedGoodsId
+            goodsId: this.data.selectedGoods.id
           },
           header: {
             'content-type': 'application/x-www-form-urlencoded'
@@ -170,32 +170,32 @@ Component({
             });
             // that.data.selectedGoods.sellPrices = 
             console.log(that.data.selectedGoods)
-          
+
           }
         })
       }
       console.log('参加拼团', that.properties.accession)
       console.log('参加拼团data', that.data.accession)
-      if (that.data.accession=='accession'){
+      if (that.data.accession == 'accession') {
         console.log('跳订单页')
         console.log(this.data.selectedGoods)
         // 创建订单
-          if (this.data.selectedGoods.sellPrices == undefined) {
-            this.data.selectedGoods.sellPrices = this.data.selectedGoods.sellPrice
-          }
-          console.log(this.data.groupActivity)
-          let params = {
-            selectedGoods: this.data.selectedGoods,
-            userId: wx.getStorageSync('userId'),
-            stoneId: this.data.selectedGoods.stoneId,
-            groupActivity: this.data.groupActivity,
-            activityId: that.properties.activityId,
-            quantity: this.data.quantity,
-            groupid: that.properties.groupId
-          };
-          wx.navigateTo({
-            url: '/pages/payment/index?params=' + encodeURIComponent(JSON.stringify(params))
-          });
+        if (this.data.selectedGoods.sellPrices == undefined) {
+          this.data.selectedGoods.sellPrices = this.data.selectedGoods.sellPrice
+        }
+        console.log(this.data.groupActivity)
+        let params = {
+          selectedGoods: this.data.selectedGoods,
+          userId: wx.getStorageSync('userId'),
+          stoneId: this.data.selectedGoods.stoneId,
+          groupActivity: this.data.groupActivity,
+          activityId: that.properties.activityId,
+          quantity: this.data.quantity,
+          groupid: that.properties.groupId
+        };
+        wx.navigateTo({
+          url: '/pages/payment/index?params=' + encodeURIComponent(JSON.stringify(params))
+        });
       }
       this.triggerEvent('chooseGoodsCommitEvent', { selectedGoods: this.data.selectedGoods, quantity: this.data.quantity });
     },
@@ -205,8 +205,8 @@ Component({
       let selectedGoods = e.currentTarget.dataset.item
       // TODO 获取物品价格及库存检查
       console.log(e.currentTarget.dataset.item)
-      console.log('活动ID', this.properties.activityId )
-      if (this.properties.activityId!==0) {
+      console.log('活动ID', this.properties.activityId)
+      if (this.properties.activityId !== 0) {
         console.log('活动校验')
         wx.request({
           url: app.endpoint.product + '/hf-goods/checkResp',
@@ -240,7 +240,7 @@ Component({
             }
           }
         })
-      } else{
+      } else {
         console.log('普通校验')
         wx.request({
           url: app.endpoint.product + '/hf-goods/checkResp',
@@ -276,8 +276,8 @@ Component({
     }
   },
   lifetimes: {
-    ready: function() {
-      goodsApi.getGoodDetailByProductId({productId: this.properties.productId, quantity: this.properties.quantity}, (res) => {
+    ready: function () {
+      goodsApi.getGoodDetailByProductId({ productId: this.properties.productId, quantity: this.properties.quantity }, (res) => {
         let goodsList = res.data.data;
         console.log(res.data.data)
         for (let goods of goodsList) {
@@ -285,17 +285,17 @@ Component({
             goods.fileIds[index] = app.endpoint.file + '/goods/getFile?fileId=' + goods.fileIds[index]
           }
         }
-        let selectedGoods = goodsList.filter(item => this.properties.selectedGoodsId==item.id)[0];
+        let selectedGoods = goodsList.filter(item => this.properties.selectedGoodsId == item.id)[0];
         this.setData({ ...this.data, ...this.properties, ...{ goodsList: goodsList, selectedGoods: selectedGoods } });
         console.log(this.data.goodsList)
       });
     },
-   
-    detached: function ()  {
+
+    detached: function () {
       console.log("退出")
-      this.setData({ 
-        accession:''
-       });
+      this.setData({
+        accession: ''
+      });
       console.log(this.data.accession)
     }
   }

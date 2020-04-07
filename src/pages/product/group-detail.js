@@ -12,6 +12,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    linePrice:'',
     loading: '',
     accession: '',//判断是不是加入拼团进入的
     activityId: '',//活动ID
@@ -419,7 +420,7 @@ Page({
         }
         let product = res.data.data;
         this.updateSelectedGoods(product.defaultGoodsId, product);
-        this.setData({ imgageUrls: imgageUrls });
+        this.setData({ imgageUrls: imgageUrls, linePrice: goods.linePrice});
       })
     }
   },

@@ -64,9 +64,11 @@
       <view class="productName-dollor">
         <text class="dollor">¥</text>
         <text class="money">{{priceArea==''?selectedGoods.sellPrice:priceArea}}</text>
+        <text style='color:#888;text-decoration:line-through;margin-left:10px; '>￥{{linePrice}}</text>
         <!-- <text class="news">新品</text> -->
       </view>
       <view class="productName-collect">
+      <text style="font-size: 24rpx;">{{goods.bossName}}</text>
         <view class="collect-one collect-margin" bindtap="attention">
           <image src="../../images/tabs/chakantieziguanzhu.png" class="depreciate-image" bindtap="collect" wx:if="{{collects==false}}" />
           <image src="../../images/tabs/aixin.png" class="depreciate-image" bindtap="collect" wx:if="{{collects==true}}" />
@@ -93,7 +95,7 @@
   <view class="site">
     <view class="site-selected" bind:tap="onSelectedGoodsSpec" data-type="selectionSpecification" >
       <view class="selected-box" name="showSelectedSpec">
-        <text class="selected">选择</text>
+        <text class="selected">已选择</text>
         <text class="selected-text"></text>
         <text wx:for="{{selectedGoods.hfGoodsSpecs}}" wx:key="index" class="selected-text">{{item.hfName}}: {{item.hfValue}}</text>
       </view>
