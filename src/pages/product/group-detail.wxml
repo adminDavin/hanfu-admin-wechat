@@ -304,10 +304,10 @@
         <image src="../../images/tabs/xiaoxi.png" class="footer-image" />
         <text class="foot-text">客服</text>
       </view>
-      <view class="footter-service" bindtap="addcar">
-        <!-- <image src="../../images/tabs/buycar.png" class="footer-image" /> -->
+      <!-- <view class="footter-service" bindtap="addcar">
+        <image src="../../images/tabs/buycar.png" class="footer-image" />
         <text class="footer-shppingcar">加入购物车</text>
-      </view>
+      </view> -->
       <view class="footter-service" bindtap="eventCollect">
         <image src="../../images/collect.png" wx:if="{{collecte==false}}" class="footer-image" />
         <image src="../../images/hcollect.png" wx:if="{{collecte==true}}" class="footer-image" />

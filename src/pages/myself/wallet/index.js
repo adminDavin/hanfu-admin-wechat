@@ -20,7 +20,7 @@ usernameInput: function (e) {
   })
   console.log(this.data.amount)
 },
-  onLoad: function (options) {
+  onShow: function (options) {
     var that = this;
     wx.getStorage({
       key: 'userId',
@@ -32,7 +32,7 @@ usernameInput: function (e) {
         quan.findInfoByUserId(that.data.userId, (res) => {
           console.log(res);
           that.setData({
-            surplus: res.data.data.surplus
+            surplus: (res.data.data.surplus/100).toFixed(2)
           })
          
          });
@@ -41,7 +41,13 @@ usernameInput: function (e) {
           that.setData({
             xi: res.data.data
           })
-         
+          let arr=that.data.xi;
+          for(var i=0;i<arr.length;i++){
+            arr[i].amount=(arr[i].amount/100).toFixed(2)
+          }
+          that.setData({
+            xi:arr
+          })
          });
          
       },
@@ -95,7 +101,20 @@ quan.create(obj ,(res) => {
               quan.findInfoByUserId(that.data.userId, (res) => {
                 console.log(res);
                 that.setData({
-                  surplus: res.data.data.surplus
+                  surplus: (res.data.data.surplus/100).toFixed(2)
+                })
+               });
+               quan.yuMing(that.data.userId, (res) => {
+                console.log(res);
+                that.setData({
+                  xi: res.data.data
+                })
+                let arr=that.data.xi;
+                for(var i=0;i<arr.length;i++){
+                  arr[i].amount=(arr[i].amount/100).toFixed(2)
+                }
+                that.setData({
+                  xi:arr
                 })
                });
              });
@@ -119,9 +138,7 @@ quan.create(obj ,(res) => {
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {
 
-  },
 
   /**
    * 生命周期函数--监听页面隐藏

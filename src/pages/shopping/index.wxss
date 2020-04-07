@@ -220,6 +220,9 @@ width: 174rpx
   width:20rpx;
   height: 20rpx
 }
+page{
+  background: #f8f8f8;
+}
 .subadd-money{
 /* width:85rpx; */
   /* height:35rpx; */

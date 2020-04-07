@@ -28,8 +28,8 @@
 <view style="padding:10px;">
 <view style="margin-bottom:15px;text-align:center;">积分明细</view>
 <view wx:for="{{xi}}" :key="index" style="margin-bottom:10px;">
- <view>{{item.paymentName}}</view>
- <view style="display:flex;justify-content:space-between;">
+ <!-- <view>{{item.paymentName}}</view> -->
+ <view style="display:flex;justify-content:space-between;font-size:30rpx;">
    <view style="color:#999;">{{item.dateTime}}</view>
     <view  style="color:#999;">积分数量：{{item.amount}}</view>
  </view>
