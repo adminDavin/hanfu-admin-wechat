@@ -35,7 +35,9 @@
     "components/order/group/group",
     "pages/myself/cang/cang",
     "pages/myself/history/history",
-    "pages/myself/Concern/Concern"
+    "pages/myself/Concern/Concern",
+    "pages/pay/pay",
+    "pages/paysubmit/paysubmit"
   ],
   "usingComponents": {
     "van-tab": "./pages/vant/weapp/dist/tab/index",

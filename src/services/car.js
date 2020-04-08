@@ -48,10 +48,51 @@ function delGoods(params={}, handleResult) {
     }
   });
 }
+function createOrder(params={}, handleResult) {
+  wx.request({
+    url: app.endpoint.order + '/hf-order/Ordercreate',
+    method: 'POST',
+    header: {
+      'content-type': 'application/x-www-form-urlencoded'
+    },
+    data: params,
+    success: res => handleResult(res),
+    fail: (res) => {
+      console.log(params, res);
+    }
+  });
+}
+function pay(params={}, handleResult) {
+  console.log(app.endpoint.payment + '/hf-payment/order')
+  wx.request({
+    url: app.endpoint.payment + '/hf-payment/order',
+    method: 'get',
+    data: params,
+    success: res => handleResult(res),
+    fail: (res) => {
+      console.log(params, res);
 
+    }
+  });
+}
+function complate(params,handleResult) {
+  console.log(app.endpoint.payment + '/hf-payment/complete')
+  wx.request({
+    url: app.endpoint.payment + '/hf-payment/complete',
+    method: 'GET',
+    data: params,
+    success: res => handleResult(res),
+    fail: (res) => {
+      console.log( res);
+    }
+  });
+}
 export default {
   addcar:addcar,
   checkcar:checkcar,
   delGoods:delGoods,
   updateCartNum:updateCartNum,
+  createOrder:createOrder,
+  pay:pay,
+  complate:complate
 };
