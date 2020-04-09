@@ -12,11 +12,14 @@ import tequan from '../../services/hf-tequan.js';
 
 Page({
   data: {
-  
+    elevalue:'',
+    textshow:true,
+    count1:'',
+    item:{},
     shangjiagoods:{},
     img:'',
     count:'',
-    competitive:false,
+    competitive:true,
     CouponId:'',
     showModalCreateOrder: false,
     tequan:[],//可用优惠
@@ -39,14 +42,19 @@ Page({
       name: 'balance'
     }]
   },
-
   /**
    * 生命周期函数--监听页面加载 quantity
    */
+  getVal: function(e) {
+    this.setData({
+      elevalue: e.detail.value
+    })
+   },
   onLoad: function (options) {
     
     this.setData(
       {
+        count1:options.count,
         count:options.count,
         shangjiagoods:JSON.parse(options.arr)
       }
@@ -71,6 +79,36 @@ Page({
         });
       }
     });
+    let arr =this.data.shangjiagoods;
+    let list=[];
+    for(var i=0;i<arr.length;i++){
+      for(var j=0;j<arr[i].goodList.length;j++){
+        if(arr[i].goodList[j].check==1){
+          let arr1={};
+          
+          arr1.goodsId=arr[i].goodList[j].productId;
+          arr1.quantity=arr[i].goodList[j].productNum;
+          arr1.stoneId=arr[i].goodList[j].stoneId;
+          list.push(arr1);
+        }
+      }
+     }
+    let obj={
+      userId: wx.getStorageSync('userId'),
+      state:0,
+      goodsList:JSON.stringify(list) 
+    }
+    var that=this;
+   car.getquan(obj, (res) => {
+      console.log(res);
+      for(var i=0;i<res.data.data.length;i++){
+        res.data.data[i].useLimit= JSON.parse(res.data.data[i].useLimit);
+      }
+     that.setData({
+      tequan:res.data.data
+     })
+    });
+    
     // let obj = {
     //   state: 0,
     //   userId: params.userId,
@@ -157,44 +195,49 @@ Page({
       });
   },
   changeCoupons(e) {
-    console.log(e.currentTarget.dataset.item)
+    let a1=this.data.count1;
+    let arr3=[];
+    arr3.push(e.currentTarget.dataset.item.id);
+    console.log(e.currentTarget.dataset.item);
     this.setData({
-      CouponId: e.currentTarget.dataset.item.id,
+      count: a1-e.currentTarget.dataset.item.useLimit.minus,
+      item:e.currentTarget.dataset.item,
+      CouponId:arr3,
       ['useLimit.full']: e.currentTarget.dataset.item.useLimit.full,
       ['useLimit.minus']: e.currentTarget.dataset.item.useLimit.minus,
       showModalCreateOrder: false
     });
-    console.log(this.data)
-    console.log(this.data.selectedGoods.id)
-    console.log(this.data.quantity)
-    let thta = this
-    wx.request({
-      url: app.endpoint.product + '/hf-goods/checkResp',
-      method: 'POST',
-      data: {
-        GoodsNum: this.data.quantity,
-        goodsId: this.data.selectedGoods.id,
-        discountCouponId:e.currentTarget.dataset.item.id
-      },
-      header: {
-        'content-type': 'application/x-www-form-urlencoded'
-      },
-      success(res) {
-        console.log(res)
-        console.log(res.data.data, 'dfddsfsafd');
-        if (res.data.data == 'understock') {
-          wx.showToast({
-            title: '库存不足',
-            icon: 'none'
-          });
-        }
-        thta.setData({
-          ['selectedGoods.sellPrices']: res.data.data.money,
-          ['selectedGoods.sellPrice']: res.data.data.money
-        });
-        console.log(thta.data.selectedGoods)
-      }
-    })
+    // console.log(this.data)
+    // console.log(this.data.selectedGoods.id)
+    // console.log(this.data.quantity)
+    // let thta = this
+    // wx.request({
+    //   url: app.endpoint.product + '/hf-goods/checkResp',
+    //   method: 'POST',
+    //   data: {
+    //     GoodsNum: this.data.quantity,
+    //     goodsId: this.data.selectedGoods.id,
+    //     discountCouponId:e.currentTarget.dataset.item.id
+    //   },
+    //   header: {
+    //     'content-type': 'application/x-www-form-urlencoded'
+    //   },
+    //   success(res) {
+    //     console.log(res)
+    //     console.log(res.data.data, 'dfddsfsafd');
+    //     if (res.data.data == 'understock') {
+    //       wx.showToast({
+    //         title: '库存不足',
+    //         icon: 'none'
+    //       });
+    //     }
+    //     thta.setData({
+    //       ['selectedGoods.sellPrices']: res.data.data.money,
+    //       ['selectedGoods.sellPrice']: res.data.data.money
+    //     });
+    //     console.log(thta.data.selectedGoods)
+    //   }
+    // })
   },
   onCloseGoodsSpec: function (e) {
     // 隐藏遮罩层
@@ -229,8 +272,8 @@ Page({
     for(var j=0;j<arr[i].goodList.length;j++){
       if(arr[i].goodList[j].check==1){
         let arr1={};
-        arr1.goodsId=arr[i].goodList[j].productId
-        arr1.hfDesc=arr[i].goodList[j].goodsSpec;
+        arr1.goodsId=arr[i].goodList[j].productId;
+        arr1.hfDesc=arr[i].goodList[j];
         arr1.quantity=arr[i].goodList[j].productNum;
         arr1.stoneId=arr[i].goodList[j].stoneId;
         list.push(arr1);
@@ -239,11 +282,13 @@ Page({
    }
    console.log(list)
     let params = {
+      disconuntId:this.data.CouponId,
+      taking_type:this.data.pickUp.wayOfPickUp,
       userId:wx.getStorageSync('userId'),
       userAddressId:'',
       orderType: 'nomalOrder',
       paymentName:'wechart',
-      hfRemark: "订单备注",
+      hfRemark: this.data.elevalue,
       goodsList :JSON.stringify(list) 
     };
     if (typeof (this.data.selectedAddress.id) != 'undefined') {
@@ -267,6 +312,7 @@ Page({
           })
           return false;
         }else{
+         
           car.createOrder(params, (res) => {
             console.log(res);
             if(res.data.status==200){

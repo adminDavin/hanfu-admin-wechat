@@ -530,6 +530,7 @@ Page({
         quantity: this.data.quantity,
         competitive: this.data.competitive,
       };
+      console.log(params);
       wx.navigateTo({
         url: '/pages/payment/index?params=' + encodeURIComponent(JSON.stringify(params))
       });

@@ -48,6 +48,21 @@ function delGoods(params={}, handleResult) {
     }
   });
 }
+
+function getquan(params={}, handleResult) { 
+  wx.request({
+    url: app.endpoint.product + '/discountCoupon/couponMy',
+    method: 'POST',
+    header: {
+      'content-type': 'application/x-www-form-urlencoded'
+    },
+    data: params,
+    success: res => handleResult(res),
+    fail: (res) => {
+      console.log(params, res);
+    }
+  });
+}
 function createOrder(params={}, handleResult) {
   wx.request({
     url: app.endpoint.order + '/hf-order/Ordercreate',
@@ -94,5 +109,6 @@ export default {
   updateCartNum:updateCartNum,
   createOrder:createOrder,
   pay:pay,
-  complate:complate
+  complate:complate,
+  getquan:getquan
 };
