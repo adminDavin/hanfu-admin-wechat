@@ -1,5 +1,5 @@
 
-<scroll-view scroll-y="true" style="margin-top:24rpx;">
+<scroll-view scroll-y="true" style="margin-top:24rpx;height: 1000rpx;">
   <view wx:for="{{productGroups}}" wx:key="id">
     <view class="flex-row p10" style="display: flex;" bind:tap="onSeletedProduct" data-item="{{item}}">
       <image class="flex-view-item" src="{{item.imageUrl}}" style="width:40%;height:250rpx"></image>
@@ -16,5 +16,5 @@
       </view>
     </view>
   </view>
+  <button bindtap="onSelectedMore">查看更多</button>
 </scroll-view>
-<button bindtap="onSelectedMore">查看更多</button>

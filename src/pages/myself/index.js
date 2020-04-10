@@ -118,7 +118,7 @@ Page({
      arr1[0].quantity=res.data.data.collectCount;
      arr1[1].quantity=res.data.data.concernCount;
      arr1[2].quantity=res.data.data.browseCount;
-     let arr2=this.data.orderStatuses;
+     let arr2=this.data.orderStatuses;  undefined
      arr2[0].quantity=res.data.data.order[1].orderCount;
      arr2[1].quantity=res.data.data.order[2].orderCount;
      arr2[2].quantity=res.data.data.order[0].orderCount;

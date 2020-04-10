@@ -1,30 +1,28 @@
-<view class="classify">
-  <view class="classify-header-box">
-    <image src="../../images/saoyisao.png" class="classify-tus" />
-    <view class="classify-header" bindtap="sousuo">
-      <image class="classify-tu" src="../../images/sousuo.png" />
-      <input type="text" class="classify-input" placeholder="显示器2K" />
+<!-- <scroll-view scroll-y="true" class="scrollView"> -->
+  <view class="classify">
+    <view class="classify-header-box">
+      <image src="../../images/saoyisao.png" class="classify-tus" />
+      <view class="classify-header" bindtap="sousuo">
+        <image class="classify-tu" src="../../images/sousuo.png" />
+        <input type="text" class="classify-input" placeholder="显示器2K" />
+      </view>
+      <image src="../../images/xiaoxi.png" class="classify-tus" />
     </view>
-    <image src="../../images/xiaoxi.png" class="classify-tus" />
-  </view>
-  <!-- banner区 -->
-  <view class="classify-banner">
-    <!-- 左 -->
-    <van-sidebar active-key="{{ activeKey }}">
-      <van-sidebar-item title="{{item.hfName}}" bind:click="onSelectedLeftMenu" custom-class="banner-box" wx:for="{{leftMenus}}" wx:key="index" data-selected="{{item}}" />
-    </van-sidebar>
-    <!-- 右 -->
-    
-    <view class="banner-text">
-      <image src="{{selectedLeftMenu.imageUrl}}" class="text-image" />
-      <view class="text-table" wx:for="{{rightMenu}}" wx:for-item="arritem" wx:key="index">
-        <view class="text-classify">{{arritem.twoLevelName}}</view>
-        <view class="shpping-big">
-          <view class="yige" wx:for="{{arritem.categories}}" wx:for-item="ait" wx:key="index" bindtap="goThreeLevel" data-categoryid="{{ait.id}}">
-            <view class="tupian">
-              <image src="{{ait.imageUrl}}" class="imagestu"  />
-            </view>
-            <view class="wenzi">
+    <!-- banner区 -->
+    <view class="classify-banner">
+      <!-- 左 -->
+      <van-sidebar active-key="{{ activeKey }}">
+        <van-sidebar-item title="{{item.hfName}}" bind:click="onSelectedLeftMenu" custom-class="banner-box" wx:for="{{leftMenus}}" wx:key="index" data-selected="{{item}}" />
+      </van-sidebar>
+      <!-- 右  -->
+
+      <view>
+        <image src="{{selectedLeftMenu.imageUrl}}" class="text-image" />
+        <view class="rightbox" wx:for="{{rightMenu}}" wx:for-item="arritem" wx:key="index">
+          <view>{{arritem.twoLevelName}}</view>
+          <view class="box">
+            <view wx:for="{{arritem.categories}}" wx:for-item="ait" wx:key="index" bindtap="goThreeLevel" data-categoryid="{{ait.id}}" class="yige">
+              <image src="{{ait.imageUrl}}" class="imagestu" />
               <text class="textwenzi">{{ait.hfName}}</text>
             </view>
           </view>
@@ -32,4 +30,4 @@
       </view>
     </view>
   </view>
-</view>
+<!-- </scroll-view> -->
