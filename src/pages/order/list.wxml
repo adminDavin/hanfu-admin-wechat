@@ -1,31 +1,37 @@
 <view class="mydingdan">
-  <scroll-view  scroll-x="true" class="nav" style="white-space: nowrap">
-    <view wx:for="{{orderStatuses}}" wx:key="index" data-action="{{item.action}}" bindtap="onSelectedNav" style="display:inline-block">
-    <view class="nav-item">
-          <view class="nav-ziti">{{item.desc}}</view>
-      <view class="{{item.selectedSytle}}"></view>
-    </view>
-    </view>
-  </scroll-view>
-  <view class="card" wx:for="{{hfOrders}}" wx:key="index"  data-hf-order="{{item}}">
-    <view class="card-top">
-      <view class="dingdanhao">店铺：{{item.stoneName}}</view>
-      <view style="color:red;font-size:24rpx" >{{item.orderStatusDesc}}</view>
-    </view>
-    <view class="card-center" data-orderstatus="{{item.orderDetailStatus}}">
-      <view class="danshop">
-        <image src="{{item.image}}" class="card-pic"></image>
-        <view class="dan-box">
-        <view class="danshop-name">{{item.goodsName}}</view>
-        <view  class="dan-box-2">
-        <view class="dan-guige">{{item.goodsDesc}}</view>
-        </view>
-        </view>
-      </view>
-      <view class="center-right">
-        <view style="font-size:34rpx;font-weight:500;color:rgba(21,21,21,1);text-align:center">￥{{item.amount}}</view>
-        <view style="font-size:24rpx;color:rgba(153,153,153,1);text-align:center">共{{item.quantity}}件</view>
-      </view>
-    </view>
-  </view>
+	<scroll-view scroll-x="true" class="nav" style="white-space: nowrap">
+		<view wx:for="{{orderStatuses}}" wx:key="index" data-action="{{item.action}}" bindtap="onSelectedNav" style="display:inline-block">
+			<view class="nav-item">
+				<view class="nav-ziti">{{item.desc}}</view>
+				<view class="{{item.selectedSytle}}"></view>
+			</view>
+		</view>
+	</scroll-view>
+	<view class="card" wx:for="{{hfOrders}}" wx:key="index" data-hf-order="{{item}}">
+		<view wx:for="{{item.detailRequestList}}" wx:for-item="professionitem">
+			<view class="dingdanhao">店铺：{{professionitem.stoneName}}</view>
+			<view wx:for="{{professionitem.hfOrderDetailList}}" wx:for-item="professionitem1">
+				<view class="card-top">
+
+					<view style="color:red;font-size:24rpx">{{professionitem1.hfDesc.orderStatusDesc}}</view>
+				</view>
+				<view class="card-center" data-orderstatus="{{professionitem1.hfDesc.orderDetailStatus}}">
+					<view class="danshop">
+						<image src="{{img}}/goods/getFile?fileId={{professionitem1.hfDesc.fileIds[0]}}" class="card-pic"></image>
+						<view class="dan-box">
+							<view class="danshop-name">{{professionitem1.hfDesc.goodsName}}</view>
+							<view class="dan-box-2">
+								<view class="dan-guige">{{professionitem1.hfDesc.goodsDesc}}</view>
+							</view>
+						</view>
+					</view>
+					<view class="center-right">
+						<view style="font-size:24rpx;color:rgba(153,153,153,1);text-align:center">共{{professionitem1.hfDesc.quantity}}件</view>
+					</view>
+				</view>
+			</view>
+		</view>
+    	<view style="text-align:right;color:red; font-size:34rpx;font-weight:500;margin-right:3px;">￥{{item.amount}}</view>
+	</view>
+
 </view>

@@ -119,16 +119,19 @@ Page({
      arr1[1].quantity=res.data.data.concernCount;
      arr1[2].quantity=res.data.data.browseCount;
      let arr2=this.data.orderStatuses;
+     console.log(res.data.data.order[0].orderCount)
      arr2[0].quantity=res.data.data.order[1].orderCount;
      arr2[1].quantity=res.data.data.order[2].orderCount;
      arr2[2].quantity=res.data.data.order[0].orderCount;
-     arr2[2].quantity=res.data.data.order[3].orderCount;
+     arr2[3].quantity=res.data.data.order[3].orderCount;
+     console.log(arr2[2]);
      this.setData({
       involveProducts:arr1,
       myWalletResoures:arr,
       hui:res.data.data.prerogative,
       orderStatuses:arr2,
     });
+    console.log(this.data.orderStatuses)
     });
   },
 
