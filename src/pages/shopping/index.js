@@ -75,7 +75,38 @@ Page({
       console.log(that.data.shangjiagoods);
     })   
   },
-  check:function(e){
+  submit:function(){
+    var that=this;
+    let arr=that.data.shangjiagoods;
+  let shi=0;
+    for(var i=0;i<arr.length;i++){
+      for(var j=0;j<arr[i].goodList.length;j++){
+        if(arr[i].goodList[j].check==1){
+          arr[i].check1=1;
+          shi=1;
+          continue;
+        }
+      }
+    }
+    if(shi==0){
+      wx.showToast({
+        title: '请选择商品',
+        icon:'none'
+      })
+      return false;
+    }
+    arr=JSON.stringify(arr);
+    // for(var i=0;i<arr.length;i++){
+    //   for(var j=0;j<arr[i].goodList.length;j++){
+    //     arr[i].goodList[j].check=0;
+    //   }
+    // }
+    
+    wx.navigateTo({
+      url: '../pay/pay?arr='+ arr +'&count='+that.data.count,
+    })
+  },
+    check:function(e){
     var that=this;
     // console.log(e);
     // console.log(e.currentTarget.dataset.index);
@@ -140,6 +171,7 @@ console.log(arr[e.currentTarget.dataset.index].goodList[e.currentTarget.dataset.
           count:count
         })
         let obj={
+          stoneId:arr[e.currentTarget.dataset.index].goodList[e.currentTarget.dataset.indexs].stoneId,
           goodsId:arr[e.currentTarget.dataset.index].goodList[e.currentTarget.dataset.indexs].productId,
           num :arr[e.currentTarget.dataset.index].goodList[e.currentTarget.dataset.indexs].productNum,
           userId :wx.getStorageSync('userId'),
@@ -195,6 +227,7 @@ console.log(arr[e.currentTarget.dataset.index].goodList[e.currentTarget.dataset.
         count:count
       })
       let obj={
+        stoneId:arr[e.currentTarget.dataset.index].goodList[e.currentTarget.dataset.indexs].stoneId,
         goodsId:arr[e.currentTarget.dataset.index].goodList[e.currentTarget.dataset.indexs].productId,
         num :arr[e.currentTarget.dataset.index].goodList[e.currentTarget.dataset.indexs].productNum,
         userId :wx.getStorageSync('userId'),

@@ -50,8 +50,8 @@ Page({
     product: {},
     showModalSelectionSpecification: false,
     showModalCreateOrder: false,
-    showModalShopPayment: false
-
+    showModalShopPayment: false,
+    
 
   },
   // 查询正在更多开团
@@ -123,10 +123,18 @@ Page({
     console.log(wx.getStorageSync('userId'))
     console.log(this.data.quantity);
     var that =this;
+    if(that.data.selectedGoods.stoneId==null){
+     wx.showToast({
+       title: '请选择规格',
+       icon:'none'
+     })
+     return false;
+    }
     let obj={
       goodsId :that.data.selectedGoods.id,
       num :that.data.quantity,
       userId : wx.getStorageSync('userId'),
+      stoneId:that.data.selectedGoods.stoneId,
     }
     car.addcar(obj, (res) => {
       console.log(res);
@@ -166,13 +174,15 @@ Page({
       productApi.getProductDetail(productId,stoneId, (res) => {
         console.log(res)
         let goods = res.data.data;
-        console.log('商品图', goods)
+        console.log('商品图', goods);
+     
         let imgageUrls = [];
 
         for (let fileId of goods.fileIds) {
           imgageUrls.push(app.endpoint.file + '/goods/getFile?fileId=' + fileId);
         }
         let product = res.data.data;
+        console.log(product);
         this.updateSelectedGoods(product.defaultGoodsId, product);
         this.setData({ imgageUrls: imgageUrls}); 
       })      
@@ -183,7 +193,7 @@ Page({
     goodsApi.getGoodsDetail({ goodsId: goodsId, quantity: '1'}, (res) => {
       let goods = res.data.data;
       let imgageUrls = [];
-
+      console.log('1111111',goods);
       for (let fileId of goods.fileIds) {
         imgageUrls.push(app.endpoint.file + '/goods/getFile?fileId=' + fileId);
       }
@@ -373,7 +383,8 @@ Page({
           }
           productApi.getProductDetail(params, (res) => {
               let goods = res.data.data;
-              console.log('商品图',goods)
+              console.log('商品图',goods);
+           
               let imgageUrls = [];
             console.log(goods)
             if (res.data.data.isConcern == 1) {
@@ -523,6 +534,7 @@ Page({
         quantity: this.data.quantity,
         competitive: this.data.competitive,
       };
+      console.log(params);
       wx.navigateTo({
         url: '/pages/payment/index?params=' + encodeURIComponent(JSON.stringify(params))
       });
