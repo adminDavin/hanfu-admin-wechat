@@ -85,7 +85,6 @@ Page({
       for(var j=0;j<arr[i].goodList.length;j++){
         if(arr[i].goodList[j].check==1){
           let arr1={};
-          
           arr1.goodsId=arr[i].goodList[j].productId;
           arr1.quantity=arr[i].goodList[j].productNum;
           arr1.stoneId=arr[i].goodList[j].stoneId;

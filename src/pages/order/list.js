@@ -10,6 +10,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    img:'',
+    action:'all',
     orderStatuses: [{
         action: "all",
         selectedSytle: 'hengxian',
@@ -53,99 +55,86 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    let userId = wx.getStorageSync('userId');
-    console.log(options);
-    if (util.isEmpty(userId)) {
-      wx.navigateTo({
-        url: '/pages/login/index?orderStatus=payment',
-      });
-    } else {
-      options.userId = userId;
-      if (typeof (options.action) == 'undefined' || options.action == 'finished') {
-        options.action = "all";
-      } else {
-        let orderStatuses = this.data.orderStatuses;
-        for (let selected of orderStatuses) {
-          if (selected.action == options.action) {
-            selected.selectedSytle = 'hengxian'
-          } else {
-            selected.selectedSytle = ""
-          }
-          this.setData({
-            orderStatuses: orderStatuses
-          })
-        }
-      }
-      this.setData(options);
-    }
+    // let userId = wx.getStorageSync('userId');
+    // console.log(options);
+    // if (util.isEmpty(userId)) {
+    //   wx.navigateTo({
+    //     url: '/pages/login/index?orderStatus=payment',
+    //   });
+    // } else {
+    //   options.userId = userId;
+    //   if (typeof (options.action) == 'undefined' || options.action == 'finished') {
+    //     options.action = "all";
+    //   } else {
+    //     let orderStatuses = this.data.orderStatuses;
+    //     for (let selected of orderStatuses) {
+    //       if (selected.action == options.action) {
+    //         selected.selectedSytle = 'hengxian'
+    //       } else {
+    //         selected.selectedSytle = ""
+    //       }
+    //       this.setData({
+    //         orderStatuses: orderStatuses
+    //       })
+    //     }
+    //   }
+    //   this.setData(options);
+    // }
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
+    this.setData({
+      img: app.endpoint.file
+     })
     console.log(this.data);
-    hfOrderApi.queryOrder(this.data.userId, this.data.action, (res) => {
-      console.log(res);
-      let status = {}
-      for (let orderStatus of this.data.orderStatuses) {
-        status[orderStatus.action] = orderStatus.desc;
+    hfOrderApi.queryOrder( wx.getStorageSync('userId'), this.data.action, (res) => {
+  
+      let arr=res.data.data;
+     for(var i=0;i<arr.length;i++){
+      for(var j=0;j<arr[i].detailRequestList.length;j++){
+        for(var a=0;a<arr[i].detailRequestList[j].hfOrderDetailList.length;a++){ 
+          arr[i].detailRequestList[j].hfOrderDetailList[a].hfDesc=JSON.parse(arr[i].detailRequestList[j].hfOrderDetailList[a].hfDesc)
+        }  
       }
-      let hfOrders = res.data.data;
-
-      for (let hfOrder of hfOrders) {
-        hfOrder.orderStatusDesc = status[hfOrder.orderStatus];
-        if (typeof(hfOrder.fileId) != 'undefined') {
-          hfOrder.image = app.endpoint.file + '/goods/getFile?fileId=' + hfOrder.fileId;
-        }
-        if (typeof(hfOrder.hfDesc) != 'undefined') {
-          hfOrder.gooodsDesc = JSON.parse(hfOrder.hfDesc);
-        }
-      }
+     }
       this.setData({
-        hfOrders: res.data.data,
-        hfOrdersAll: res.data.data
+        hfOrders:arr,
+       
       });
-      console.log(hfOrders)
+     
     });
   },
   onSelectedNav: function(e) {
-    let orderStatuses = this.data.orderStatuses;
+   
     let action = e.currentTarget.dataset.action;
-    let hfOrders = this.data.hfOrdersAll
-    for (let selected of orderStatuses) {
-      if (selected.action == action) {
-        selected.selectedSytle = 'hengxian'
-      } else {
-        selected.selectedSytle = ""
+    hfOrderApi.queryOrder( wx.getStorageSync('userId'), action, (res) => {
+      console.log(res);
+      console.log(action);
+      let arr=res.data.data;
+     for(var i=0;i<arr.length;i++){
+      for(var j=0;j<arr[i].detailRequestList.length;j++){
+        for(var a=0;a<arr[i].detailRequestList[j].hfOrderDetailList.length;a++){ 
+          arr[i].detailRequestList[j].hfOrderDetailList[a].hfDesc=JSON.parse(arr[i].detailRequestList[j].hfOrderDetailList[a].hfDesc)
+        }  
       }
+     }
       this.setData({
-        orderStatuses: orderStatuses
-      })
-    }
-    if (action == 'all') {
-      this.setData({
-        hfOrders: this.data.hfOrdersAll
-      })
-    } else {
-      let hf = hfOrders.filter((hfOrder, index) => {
-        console.log(hfOrder)
-        return hfOrder.orderStatus == action
-      })
-      this.setData({
-        hfOrders: hf
-      })
-    }
-  },
-  onSelectedOrder: function(e) {
-    if (e.currentTarget.dataset.hfOrder.orderType =='shoppingOrder'){
-      wx.navigateTo({
-        url: '/pages/payment/payment?userId=' + e.currentTarget.dataset.hfOrder.userId + '&outTradeNo=' + e.currentTarget.dataset.hfOrder.orderCode + '&paymentName=' + e.currentTarget.dataset.hfOrder.paymentName,
-      })
-    }else{
-      wx.redirectTo({
-        url: '/pages/order/detail?hfOrder=' + encodeURIComponent(JSON.stringify(e.currentTarget.dataset.hfOrder)),
-      })
-    }
-  }
+        hfOrders:arr,
+      });
+  })
+},
+  // onSelectedOrder : function(e) {
+  //   if (e.currentTarget.dataset.hfOrder.orderType =='shoppingOrder'){
+  //     wx.navigateTo({
+  //       url: '/pages/payment/payment?userId=' + e.currentTarget.dataset.hfOrder.userId + '&outTradeNo=' + e.currentTarget.dataset.hfOrder.orderCode + '&paymentName=' + e.currentTarget.dataset.hfOrder.paymentName,
+  //     })
+  //   }else{
+  //     wx.redirectTo({
+  //       url: '/pages/order/detail?hfOrder=' + encodeURIComponent(JSON.stringify(e.currentTarget.dataset.hfOrder)),
+  //     })
+  //   }
+  // }
 })
