@@ -6,11 +6,11 @@
 			<view style="margin-top:10rpx;">
 				{{item.productName}}
 			</view>
-			<view style="color:red;margin-top:10rpx;">
-				¥{{item.priceArea}}
-			</view>
-			<view style="margin-top:24px;">
+			<view style="margin-top:10rpx;">
 				{{item.productDesc}}
+			</view>
+			<view style="margin-top:24px;color:red;">
+				¥{{item.priceArea}}
 			</view>
 		</view>
 

@@ -205,22 +205,34 @@ Page({
     console.log(e.currentTarget.dataset);
     console.log(this.data.groupActivity);
     console.log(this.data.selectedGoods);
+     let that= this
+    let goodsList=[]
+    let obj= {
+      goodsId: that.data.selectedGoods.id,
+      hfDesc: 2, 
+      quantity: that.data.quantity,
+      stoneId: that.data.selectedGoods.stoneId
+    }
+    goodsList.push(obj)
+    console.log(goodsList)
     let params = {
+      requestId:'12334',
+      goodsList: JSON.stringify(goodsList),
       userId: this.data.userId,
-      amount: e.currentTarget.dataset.payment,
+      // amount: e.currentTarget.dataset.payment,
       orderType: 'nomalOrder',
       paymentName: this.data.paymentMethod[0].name,
       hfRemark: "订单备注",
-      //物品属性配置
-      goodsId: this.data.selectedGoods.id,
-      sellPrice: this.data.selectedGoods.sellPrice,
-      actualPrice: this.data.selectedGoods.sellPrices,
-      freight: this.data.pickUp.freight,
-      takingType: this.data.pickUp.wayOfPickUp,
-      quantity: this.data.quantity,
-      sellPrice: this.data.selectedGoods.sellPrice,
-      hfDesc: JSON.stringify(this.data.selectedGoods),
-      stoneId: this.data.stoneId
+      // //物品属性配置
+      // goodsId: this.data.selectedGoods.id,
+      // sellPrice: this.data.selectedGoods.sellPrice,
+      // actualPrice: this.data.selectedGoods.sellPrices,
+      // freight: this.data.pickUp.freight,
+      // takingType: this.data.pickUp.wayOfPickUp,
+      // quantity: this.data.quantity,
+      // sellPrice: this.data.selectedGoods.sellPrice,
+      // hfDesc: JSON.stringify(this.data.selectedGoods),
+      // stoneId: this.data.stoneId
     };
     if (typeof (this.data.selectedAddress.id) != 'undefined') {
       params.userAddressId = this.data.selectedAddress.id;
@@ -234,7 +246,7 @@ Page({
       console.log(res)
       console.log(params);
       wx.navigateTo({
-        url: '/pages/payment/payment?userId=' + this.data.userId + '&outTradeNo=' + res.data.data.orderCode + '&paymentName=' + params.paymentName + '&groupActivity=' + this.data.groupActivity + '&activityId=' + this.data.activityId + '&goodsId=' + this.data.selectedGoods.id + '&userId=' + this.data.userId + '&orderId=' + res.data.data.id + '&groupid=' + this.data.groupid,
+        url: '/pages/payment/payment?userId=' + this.data.userId + '&outTradeNo=' + res.data.data + '&paymentName=' + params.paymentName + '&groupActivity=' + this.data.groupActivity + '&activityId=' + this.data.activityId + '&goodsId=' + this.data.selectedGoods.id + '&userId=' + this.data.userId + '&orderId=' + res.data.data.id + '&groupid=' + this.data.groupid,
       })
       // if (this.data.groupActivity) {
       //   let param={

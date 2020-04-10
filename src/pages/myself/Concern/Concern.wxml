@@ -1,14 +1,14 @@
-<view wx:for="{{cang}}" :key="{{index}}" wx:for-item="dayItem">
+<view wx:for="{{cang}}" :key="{{index}}" wx:for-item="dayItem" style="padding:20rpx;">
 	<view style="margin-bottom:20rpx;margin-top:40rpx;margin-left:25rpx;">{{dayItem.date}}</view>
-	<view style="display:flex;border-bottom:1rpx solid #d6d6d6;margin-bottom:10rpx;" wx:for="{{dayItem.stoneInfo}}" wx:key="index1">
+	<view style="padding-bottom:20rpx; display:flex;margin-bottom:10rpx;border-bottom:1rpx solid #d6d6d6;" wx:for="{{dayItem.stoneInfo}}" wx:key="index1">
 		<view style="margin-left:15rpx;">
-			<view style="margin-top:10rpx;">
-				店铺名称：{{item.name}}
+			<view style="margin-top:10rpx;font-size:30rpx;color:#666;">
+				名称：{{item.name}}
 			</view>
-			<view style="margin-top:10rpx;">
-				店铺描述：{{item.stoneDesc}}
+			<view style="margin-top:10rpx;font-size:30rpx;color:#666;">
+				描述：{{item.stoneDesc}}
 			</view>
-			<view style="margin-top:14px;">
+			<view style="margin-top:10rpx;font-size:30rpx;color:#999;">
 			创建时间：	{{item.createTime}}
 			</view>
 		</view>

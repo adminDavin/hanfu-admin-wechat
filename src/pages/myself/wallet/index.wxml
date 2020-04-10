@@ -13,10 +13,10 @@
 <view style="padding:10px;">
 <view style="margin-bottom:15px;text-align:center;">交易明细</view>
 <view wx:for="{{xi}}" :key="index" style="margin-bottom:10px;">
- <view>{{item.paymentName}}</view>
+ <!-- <view>{{item.paymentName}}</view> -->
  <view style="display:flex;justify-content:space-between;">
-   <view style="color:#999;">{{item.dateTime}}</view>
-    <view  style="color:#999;">积分数量：{{item.amount}}</view>
+   <view style="color:#999;font-size:30rpx;">{{item.dateTime}}</view>
+    <view  style="color:#999;font-size:30rpx;">交易金额：{{item.type=='消费'?'-':'+'}}{{item.amount}}({{item.type}})</view>
  </view>
 </view>
 </view>

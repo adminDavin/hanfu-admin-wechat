@@ -1,19 +1,36 @@
-<view wx:for="{{tequan}}" wx:key="index" wx:if="{{num==1}}">
- 特权名称：{{item.prerogative}}
- 特权描述：{{item.levelDescribe}}
- 特权名称：{{item.prerogativeState==1?'生效':'失效'}}
- 特权开始时间：{{item.startTime}}
- 特权结束时间：{{item.expireTime}}
+<view wx:for="{{tequan}}" wx:key="index" wx:if="{{num==1}}" 
+style="padding:20rpx;border-bottom:1rpx solid #d5d5d5;">
+	<view>
+		特权名称：{{item.prerogative}}
+	</view>
+
+	<view style="color:#666;font-size:30rpx;margin-top:20rpx;">
+		描述：{{item.levelDescribe}}
+	</view>
+
+	<view style="color:#666;font-size:30rpx;">
+	状态：{{item.prerogativeState==1?'生效':'失效'}}
+	</view>
+
+		<view style="font-size:30rpx;color:#999;margin-top:20rpx;">
+		开始时间：{{item.startTime}}
+	</view>
+	<view style="font-size:30rpx;color:#999;margin-top:10rpx;">
+		结束时间：{{item.expireTime}}
+	</view>
+
+
+
 </view>
 <view style="padding:20rpx;" wx:if="{{num==0}}">
-	<view wx:for="{{levellist}}" bindtap="changlevel" data-id="{{index}}"  wx:key="index"  class="{{item.change==0?'qu':'qu1'}}">
+	<view wx:for="{{levellist}}" bindtap="changlevel" data-id="{{index}}" wx:key="index" class="{{item.change==0?'qu':'qu1'}}">
 		<view style="color:orange;">
 			{{item.levelName}}
 		</view>
 		<view style="color:orange;">
 			¥{{item.amount}}
 		</view>
-    <view class="{{item.change==0?'xiao':'xiao1'}}">从购买之日起30天之内有效</view>
+		<view class="{{item.change==0?'xiao':'xiao1'}}">从购买之日起30天之内有效</view>
 	</view>
 </view>
-<view  wx:if="{{num==0}}" bindtap="pay" style="left:5%;width:90%; position:fixed;bottom:60rpx; border-radius:60rpx;height:90rpx;color:#fff;background:orange;display:flex;align-items:center;justify-content:center;">立即充值</view>
+<view wx:if="{{num==0}}" bindtap="pay" style="left:5%;width:90%; position:fixed;bottom:60rpx; border-radius:60rpx;height:90rpx;color:#fff;background:orange;display:flex;align-items:center;justify-content:center;">立即充值</view>

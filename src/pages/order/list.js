@@ -21,20 +21,20 @@ Page({
       }, {
         action: "process",
         selectedSytle: '',
-        desc: "待处理"
+        desc: "处理中"
       }, {
-        action: "shipped",
-        selectedSytle: '',
-        desc: "待发货"
-      }, 
-       {
         action: "transport",
         selectedSytle: '',
-        desc: "待收货"
-      },{
-        action: "pickup",
+        desc: "运送中"
+      }, 
+       {
+        action: "complete",
         selectedSytle: '',
-        desc: "待提货"
+        desc: "已完成"
+      },{
+        action: "cancel",
+        selectedSytle: '',
+        desc: "已取消"
       }, {
         action: "evaluate",
         selectedSytle: '',
@@ -42,11 +42,7 @@ Page({
       }, {
         action: "controversial",
         selectedSytle: '',
-        desc: "退换/售后"
-      }, {
-        action: "cancel",
-        selectedSytle: '',
-        desc: "已取消"
+        desc: "交易纠纷"
       }
     ],
     hfOrders: [],

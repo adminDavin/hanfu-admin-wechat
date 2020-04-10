@@ -31,22 +31,18 @@ Page({
       action: "payment",
       quantity: 0,
       desc: "待付款"
-    }, {
+    },  {
       action: "process",
       quantity: 0,
-      desc: "待处理"
+      desc: "处理中"
     }, {
-      action: "transport",
+      action: "complete",
       quantity: 0,
-      desc: "待收货"
+      desc: "已完成"
     }, {
-      action: "evaluate",
+      action: "cancel",
       quantity: 0,
-      desc: "待评价"
-    }, {
-      action: "controversial",
-      quantity: 0,
-      desc: "退换/售后"
+      desc: "已取消"
     }],
     myWalletResoures: [{
       action: 'balance',
@@ -115,17 +111,23 @@ Page({
     tequan.findInfoByUserId(this.data.userId, (res) => {
      console.log(res);
      let arr=this.data.myWalletResoures;
-     arr[0].quantity=res.data.data.surplus;
+     arr[0].quantity=(res.data.data.surplus/100).toFixed(2);
      arr[1].quantity=res.data.data.integral;
      arr[2].quantity=res.data.data.couponCount;
      let arr1=this.data.involveProducts;
      arr1[0].quantity=res.data.data.collectCount;
      arr1[1].quantity=res.data.data.concernCount;
      arr1[2].quantity=res.data.data.browseCount;
+     let arr2=this.data.orderStatuses;
+     arr2[0].quantity=res.data.data.order[1].orderCount;
+     arr2[1].quantity=res.data.data.order[2].orderCount;
+     arr2[2].quantity=res.data.data.order[0].orderCount;
+     arr2[2].quantity=res.data.data.order[3].orderCount;
      this.setData({
       involveProducts:arr1,
       myWalletResoures:arr,
-      hui:res.data.data.prerogative
+      hui:res.data.data.prerogative,
+      orderStatuses:arr2,
     });
     });
   },
