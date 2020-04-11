@@ -28,21 +28,33 @@ Page({
       desc: "浏览历史"
     }],
     orderStatuses: [{
+      img:'../../img/daifukuan.png',
       action: "payment",
       quantity: 0,
       desc: "待付款"
     },  {
+      img:'../../img/chulizhong.png',
       action: "process",
       quantity: 0,
       desc: "处理中"
-    }, {
+    },
+    {
+      img:'../../img/shouhuo.png',
+      action: "process",
+      quantity: 0,
+      desc: "待收货"
+    },
+    {
+      img:'../../img/ziyuan.png',
+      action: "process",
+      quantity: 0,
+      desc: "待评价"
+    },
+     {
+      img:'../../img/daifukuan.png',
       action: "complete",
       quantity: 0,
-      desc: "已完成"
-    }, {
-      action: "cancel",
-      quantity: 0,
-      desc: "已取消"
+      desc: "退换/售后"
     }],
     myWalletResoures: [{
       action: 'balance',
@@ -96,6 +108,11 @@ Page({
    
   },
   onShow: function() {
+    wx.setNavigationBarColor({
+      frontColor: '#ffffff', // 必写项
+      backgroundColor: '#FF3333', // 传递的颜色值
+
+    })
     let userId = wx.getStorageSync('userId');
     if (util.isEmpty(wx.getStorageSync('userId'))) {
       wx.navigateTo({
@@ -120,9 +137,9 @@ Page({
      arr1[2].quantity=res.data.data.browseCount;
      let arr2=this.data.orderStatuses;
      console.log(res.data.data.order[0].orderCount)
-     arr2[0].quantity=res.data.data.order[1].orderCount;
-     arr2[1].quantity=res.data.data.order[2].orderCount;
-     arr2[2].quantity=res.data.data.order[0].orderCount;
+     arr2[2].quantity=res.data.data.order[2].orderCount;
+     arr2[1].quantity=res.data.data.order[1].orderCount;
+     arr2[0].quantity=res.data.data.order[0].orderCount;
      arr2[3].quantity=res.data.data.order[3].orderCount;
      console.log(arr2[2]);
      this.setData({

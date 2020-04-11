@@ -90,6 +90,12 @@
 					"pathName": "pages/product/ping-pay/ping-pay",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/paysubmit/paysubmit",
+					"pathName": "pages/paysubmit/paysubmit",
+					"scene": null
 				}
 			]
 		}

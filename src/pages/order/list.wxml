@@ -1,6 +1,6 @@
 <view class="mydingdan">
 	<scroll-view scroll-x="true" class="nav" style="white-space: nowrap">
-		<view wx:for="{{orderStatuses}}" wx:key="index" data-action="{{item.action}}" bindtap="onSelectedNav" style="display:inline-block">
+		<view wx:for="{{orderStatuses}}" wx:key="index" data-index="{{index}}" data-action="{{item.action}}" bindtap="onSelectedNav" style="display:inline-block">
 			<view class="nav-item">
 				<view class="nav-ziti">{{item.desc}}</view>
 				<view class="{{item.selectedSytle}}"></view>
@@ -10,6 +10,7 @@
 	<view class="card" wx:for="{{hfOrders}}" wx:key="index" data-hf-order="{{item}}">
 		<view wx:for="{{item.detailRequestList}}" wx:for-item="professionitem">
 			<view class="dingdanhao">店铺：{{professionitem.stoneName}}</view>
+			
 			<view wx:for="{{professionitem.hfOrderDetailList}}" wx:for-item="professionitem1">
 				<view class="card-top">
 

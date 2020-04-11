@@ -24,10 +24,16 @@ font-family:PingFang SC;
 font-weight:400;
 }
 /* banner区域 */
-
+page{
+  padding-top:88rpx;
+}
 .commodity-banner {
+  z-index:100;
   width: 100%;
+  position:fixed;
+  top:0;
   height: 88rpx;
+  background: #fff;
   display: flex;
   justify-content: space-around;
   font-size: 28rpx;
@@ -36,6 +42,7 @@ font-weight:400;
   color: rgba(21, 21, 21, 1);
   line-height:88rpx;
   text-align: center;
+  background: #fff;
 }
 .table {
   width: 25%;

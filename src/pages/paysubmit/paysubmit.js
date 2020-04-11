@@ -7,8 +7,11 @@ Page({
    * 页面的初始数据
    */
   data: {
+    show:false,
+    statusBarHeight:'',
     paymentName:'',
-    outTradeNo:''
+    outTradeNo:'',
+    str:''
   },
 
   /**
@@ -17,10 +20,12 @@ Page({
   onLoad: function (options) {
     console.log(options)
     this.setData({
+      outTradeNo :options.str, 
       outTradeNo :options.outTradeNo, 
       paymentName:options.paymentName,
     })
     let obj={
+      requestId:this.data.str,
       outTradeNo :this.data.outTradeNo,
       userId:wx.getStorageSync('userId')
     }
@@ -39,6 +44,7 @@ Page({
             success (res) { 
               console.log(res);
               let obj2={
+                requestId:that.data.str,
                 transactionType:'rechargeOrder',
                 outTradeNo :that.data.outTradeNo,
                 userId :wx.getStorageSync('userId'),
@@ -46,16 +52,19 @@ Page({
               console.log(obj2)
              car.complate(obj2, (res) => {
                 console.log('3',res);
-               
+                // if(res.data.status==200){
+                //   that.setData({
+                //    show:true
+                //   })
+                // }
                });
             },
             fail (res) { }
           })
         }else{
-          wx.showToast({
-            title: '支付成功',
-          })
+      
           let obj2={
+            requestId:that.data.str,
             transactionType:'rechargeOrder',
             outTradeNo :that.data.outTradeNo,
             userId :wx.getStorageSync('userId'),
@@ -63,7 +72,11 @@ Page({
           console.log(obj2)
          car.complate(obj2, (res) => {
             console.log('3',res);
-           
+           if(res.data.status==200){
+             that.setData({
+              show:true
+             })
+           }
            });
         }
       
@@ -82,7 +95,16 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    var that=this;
+    wx.getSystemInfo({
+      success: function (res) {
+        that.setData({
+          statusBarHeight:res.statusBarHeight
+        })
+          
+       }
+     
+  })
   },
 
   /**

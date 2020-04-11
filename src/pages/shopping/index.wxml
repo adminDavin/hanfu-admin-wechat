@@ -1,21 +1,21 @@
 <!--pages/shopping/shopping.wxml-->
 <view class="commodity">
-	<view class="editbtn">
-		<!-- <view bindtap="edit">{{editshow==true?'编辑':'完成'}}</view> -->
+	<!-- <view class="editbtn">
+		<view bindtap="edit">{{editshow==true?'编辑':'完成'}}</view>
 		<view class="edit" style="color:white;justify-content:center;">购物车</view>
-	</view>
+	</view> -->
 	<!-- banner区域 -->
-	<!-- <view class="commodity-banner">
+	<view class="commodity-banner">
     <view class="table" bindtap="toggle" data-index="1">
       <text class="">全部({{cartNum}})</text>
       <view class="sum-color {{bannertoggle==1?'colors':''}}"></view>
     </view>
     <view class="table" bindtap="toggle" data-index="2">
-      <view class="">降价</view>
+      <view class="color:#999999;">降价(0)</view>
       <view class="sum-color {{bannertoggle==2?'colors':''}}"></view>
     </view>
     <view class="table" bindtap="toggle" data-index="3">
-      <text class="">常买</text> 
+      <text class="">常买(0)</text> 
       <view class="sum-color {{bannertoggle==3?'colors':''}}"></view>
     </view>
     <view class="table ">
@@ -24,15 +24,15 @@
         <image src="../../images/cart/xiala1.png" class="sai-image" />
       </view>
     </view>
-  </view> -->
+  </view>
 	<!-- content -->
 	<view class="content">
 		<checkbox-group bindchange="checkboxChange">
 			<block wx:for='{{shangjiagoods}}' wx:for-index="index" wx:for-item="dayItem">
 				<view style="background:#fff;margin-bottom:30rpx;padding:30rpx 0;">
-					<view style="margin-left:80rpx;margin-bottom:30rpx;">
+					<!-- <view style="margin-left:80rpx;margin-bottom:30rpx;">
 						店铺名称：{{dayItem.name}}
-					</view>
+					</view> -->
 					<scroll-view scroll-x direction="horizonta" style="margin-top:30rpx" wx:for="{{dayItem.goodList}}" wx:for-index="indexs">
 						<view class="content-card">
 							<!-- <checkbox value="0" checked="{{item.check==1}}" bindtap="check" data-index='{{index}}'></checkbox> -->
@@ -55,7 +55,7 @@
 												<view style="text-align:center;line-height:60rpx; width:100rpx;height:60rpx;background:#f8f8f8;">-</view>
 											</view>
 											<!-- <image src="../../images/cart/sub.png" class="sub" catchtap='addCart' data-index="{{index}}" /> -->
-											<view class="subadd-money" style="margin-left:3px;margin-right:3px;">{{item.productNum}}</view>
+											<view class="subadd-money" style="margin-left:1px;margin-right:1px;width:16px;">{{item.productNum}}</view>
 											<view catchtap='addCart' data-indexs='{{indexs}}' data-index="{{index}}">
 												<view style="text-align:center;line-height:60rpx; width:100rpx;height:60rpx;background:#f8f8f8;">+</view>
 											</view>

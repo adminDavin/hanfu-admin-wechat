@@ -108,8 +108,18 @@ Page({
     });
   },
   onSelectedNav: function(e) {
-   
+   console.log(e);
     let action = e.currentTarget.dataset.action;
+    let arr1=this.data.orderStatuses;
+    console.log(arr1)
+    for(var i=0;i<arr1.length;i++){
+      arr1[i].selectedSytle = '';
+    }
+
+    arr1[e.currentTarget.dataset.index].selectedSytle= 'hengxian';
+   this.setData({
+    orderStatuses:  arr1
+   })
     hfOrderApi.queryOrder( wx.getStorageSync('userId'), action, (res) => {
       console.log(res);
       console.log(action);

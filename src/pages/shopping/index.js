@@ -298,6 +298,17 @@ console.log(arr[e.currentTarget.dataset.index].goodList[e.currentTarget.dataset.
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
+    wx.setNavigationBarTitle({
+          title: "购物车",
+        
+          
+      })
+      wx.setNavigationBarColor({
+        frontColor: '#ffffff', // 必写项
+        backgroundColor: '#FF3333', // 传递的颜色值
+
+      })
+
     this.setData({
      img: app.endpoint.file
     })

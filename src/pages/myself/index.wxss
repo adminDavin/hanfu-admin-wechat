@@ -27,12 +27,15 @@
 .middle {
   display: inline-flex;
   width: 92%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
   margin-left: 20rpx;
   margin-right: 20rpx;
 }
 
 .middle > view {
-  width: 184rpx;
+  /* width: 184rpx; */
   font-size: 24rpx;
 }
 
@@ -54,7 +57,7 @@
 
 .myLeft {
   float: left;
-  margin-left: 20rpx;
+  margin-left: 2px;
 }
 
 .t40 {
@@ -62,7 +65,9 @@
   margin-left: 30rpx;
   color: rgba(248, 248, 248, 1);
 }
-
+page{
+  background: #f8f8f8;
+}
 .t30 {
   font-size: 26rpx;
   font-family: PingFang SC;
@@ -71,11 +76,10 @@
 }
 
 .t20 {
-  margin-top: 30rpx;
+  padding-top: 30rpx;
   margin-right: 30rpx;
   text-align: end;
-  border-bottom-style: solid;
-  border-bottom-color: rgb(233, 233, 240);
+
 }
 
 .header-fl {

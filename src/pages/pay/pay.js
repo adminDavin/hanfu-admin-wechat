@@ -59,18 +59,7 @@ Page({
         shangjiagoods:JSON.parse(options.arr)
       }
     )
-    // let params = JSON.parse(decodeURIComponent(options.params))
-    // console.log(params)
-    // let userId = wx.getStorageSync('userId');
-    // this.data.competitive = params.competitive
-    // if (util.isEmpty(userId)) {
-    //   wx.navigateTo({
-    //     url: '/pages/login/index',
-    //   });
-    // } else {
-    //   params.userId = userId;
-    // }
-    // this.setData(params);
+    
     userAddressApi.query(wx.getStorageSync('userId'), (res) => {
       console.log(res.data.data, res.data.data.length);
       if (res.data.data.length > 0) {
@@ -107,36 +96,6 @@ Page({
       tequan:res.data.data
      })
     });
-    
-    // let obj = {
-    //   state: 0,
-    //   userId: params.userId,
-    //   GoodsNum: params.quantity,
-    //   goodsId: params.selectedGoods.id
-    // }
-    // console.log(obj);
-    // let idDeleted =0
-    // discount.myCoupon(obj, (res) => {
-    //   console.log(res.data.data);
-    //   this.setData({
-    //     tequan: res.data.data
-    //   })
-    //   let arr = this.data.tequan;
-    //   for (var i = 0; i < arr.length; i++) {
-    //     arr[i].useLimit = JSON.parse(arr[i].useLimit);
-    //     arr[i].startTime = arr[i].startTime.split(' ');
-    //     arr[i].startTime = arr[i].startTime[0];
-    //     arr[i].stopTime = arr[i].stopTime.split(' ');
-    //     arr[i].stopTime = arr[i].stopTime[0];
-    //   }
-    //   this.setData({
-    //     tequan: arr,
-    //   })
-    //   console.log(this.data.tequan);
-    // });
-    // console.log(options);
-    // console.log(JSON.parse(options.arr))
-  
   },
 
   /**
@@ -206,37 +165,7 @@ Page({
       ['useLimit.minus']: e.currentTarget.dataset.item.useLimit.minus,
       showModalCreateOrder: false
     });
-    // console.log(this.data)
-    // console.log(this.data.selectedGoods.id)
-    // console.log(this.data.quantity)
-    // let thta = this
-    // wx.request({
-    //   url: app.endpoint.product + '/hf-goods/checkResp',
-    //   method: 'POST',
-    //   data: {
-    //     GoodsNum: this.data.quantity,
-    //     goodsId: this.data.selectedGoods.id,
-    //     discountCouponId:e.currentTarget.dataset.item.id
-    //   },
-    //   header: {
-    //     'content-type': 'application/x-www-form-urlencoded'
-    //   },
-    //   success(res) {
-    //     console.log(res)
-    //     console.log(res.data.data, 'dfddsfsafd');
-    //     if (res.data.data == 'understock') {
-    //       wx.showToast({
-    //         title: '库存不足',
-    //         icon: 'none'
-    //       });
-    //     }
-    //     thta.setData({
-    //       ['selectedGoods.sellPrices']: res.data.data.money,
-    //       ['selectedGoods.sellPrice']: res.data.data.money
-    //     });
-    //     console.log(thta.data.selectedGoods)
-    //   }
-    // })
+   
   },
   onCloseGoodsSpec: function (e) {
     // 隐藏遮罩层
@@ -246,11 +175,16 @@ Page({
       });
     }
   },
-  // onConfirmSelectedGoods: function (e) {
-  //   this.setData({
-  //     showModalCreateOrder: false
-  //   });
-  // },
+  generateUUID:function () {
+    var d = new Date().getTime();
+    var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+    var r = (d + Math.random()*16)%16 | 0;
+    d = Math.floor(d/16);
+    return (c=='x' ? r : (r&0x3|0x8)).toString(16);
+    });
+      return uuid ;
+    },
+
   onPaymentMethod: function (e) {
     let paymentMethod = this.data.paymentMethod;
     for (let payment of this.data.paymentMethod) {
@@ -279,8 +213,11 @@ Page({
       }
     }
    }
-   console.log(list)
+   console.log(list);
+   let str =this.generateUUID();
+   console.log(str);
     let params = {
+      requestId: str,
       disconuntId:this.data.CouponId,
       taking_type:this.data.pickUp.wayOfPickUp,
       userId:wx.getStorageSync('userId'),
@@ -316,7 +253,7 @@ Page({
             console.log(res);
             if(res.data.status==200){
                 wx.navigateTo({
-                  url: '/pages/paysubmit/paysubmit?outTradeNo=' + res.data.data+'&paymentName='+pay,
+                  url: '/pages/paysubmit/paysubmit?outTradeNo=' + res.data.data+'&paymentName='+pay+'$str='+str,
                })
             }
           });
@@ -329,7 +266,7 @@ Page({
         console.log(res);
         if(res.data.status==200){
             wx.navigateTo({
-              url: '/pages/paysubmit/paysubmit?outTradeNo=' + res.data.data+'&paymentName='+pay,
+              url: '/pages/paysubmit/paysubmit?outTradeNo=' + res.data.data+'&paymentName='+pay+'$str='+str,
            })
         }
       });

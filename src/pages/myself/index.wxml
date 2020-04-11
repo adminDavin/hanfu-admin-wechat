@@ -1,62 +1,79 @@
 <view class='header'>
-  <view class="personcard-top">
-    <view class='headImageView'>
-      <open-data  type="userAvatarUrl"></open-data>
-    </view>
-    <view class="t40" bindtap='te'>
-      <open-data type="userNickName"></open-data>
-      <view class="t30" bindtap="recharge">{{hui}}</view>
-    </view>
-    <view class="header-fl">
-      <button class="header-sao" open-type="contact">
-        <image src="/images/xiaoxis.png" class="sao-tu" />
-        <view class="sao">客服</view>
-      </button>
-    </view>
-  </view>
-  <view class='middle'>
-    <view wx:for="{{involveProducts}}" wx:key="index" bindtap="onSelectedProduct" data-action='{{item.action}}' class="center">
-    <view>{{item.quantity}}</view>
-      <view>{{item.desc}}</view>
-    </view>
-  </view>
+	<view class="personcard-top">
+		<view class='headImageView'>
+			<open-data type="userAvatarUrl"></open-data>
+		</view>
+		<view class="t40" bindtap='te'>
+			<open-data type="userNickName"></open-data>
+			<view class="t30" bindtap="recharge">{{hui}}</view>
+		</view>
+		<view class="header-fl">
+			<button class="header-sao" open-type="contact">
+				<image src="/images/xiaoxis.png" class="sao-tu" />
+				<view class="sao">客服</view>
+			</button>
+		</view>
+	</view>
+	<view class='middle'>
+		<view wx:for="{{involveProducts}}" wx:key="index" bindtap="onSelectedProduct" data-action='{{item.action}}' class="center">
+			<view>{{item.quantity}}</view>
+
+			<view>{{item.desc}}</view>
+		</view>
+	</view>
 </view>
-<view  bindtap="onSelectedOrder" data-action='all'>
-<view class="t20">
-  <view>
-    <text class="myLeft">我的订单</text>
-    <image class="rightRow" src="/images/rightjiantou.png"></image>
-  </view>
-</view>
-<view class='middle'>
-  <view wx:for="{{orderStatuses}}" wx:key="index"  class="center-inner">
-    <view>{{item.quantity}}</view>
-    <view>{{item.desc}}</view>
-  </view>
-</view>
+<view bindtap="onSelectedOrder" data-action='all' style="background:#fff;padding-bottom:4px;">
+	<view class="t20">
+		<view style="display:flex;align-items:center;justify-content:space-between;">
+			<view style="display:flex;align-items:center;margin-left:7px;">
+				<view style="width:2px;height:10px;background:#FF0000;"></view>
+				<view class="myLeft">我的订单</view>
+			</view>
+			<image class="rightRow" src="/images/rightjiantou.png"></image>
+		</view>
+	</view>
+	<view class='middle'>
+		<view wx:for="{{orderStatuses}}" wx:key="index" class="center-inner">
+		      <image src="{{item.img}}" style="width:55rpx;height:55rpx;"></image>
+			<view>{{item.desc}}</view>
+		</view>
+	</view>
 </view>
 
+<view style="background:#fff;margin-top:20rpx;padding-bottom:4px;">
+	<view class="t20">
+		<view bindtap="onSelectedwallet" data-action='all'>
+			<view style="display:flex;align-items:center;justify-content:space-between;">
+				<view style="display:flex;align-items:center;margin-left:7px;">
+					<view style="width:2px;height:10px;background:#FF0000;"></view>
+					<view class="myLeft">我的钱包</view>
+				</view>
+				<image class="rightRow" src="/images/rightjiantou.png"></image>
+			</view>
+		</view>
+	</view>
+	<view class='middle'>
+		<view wx:for="{{myWalletResoures}}" wx:key="index" bind:tap="onSelectedwallet" data-action='{{item.action}}' class="center-inner">
+			<view>{{item.quantity}}</view>
+			<view>{{item.desc}}</view>
+		</view>
+	</view>
+</view>
 
-<view class="t20">
-  <view bindtap="onSelectedwallet" data-action='all'>
-    <text class="myLeft">我的钱包</text>
-    <image class="rightRow" src="/images/rightjiantou.png" bindtap="changeMethod"></image>
-  </view>
-</view>
-<view class='middle'>
-  <view wx:for="{{myWalletResoures}}" wx:key="index" bind:tap="onSelectedwallet" data-action='{{item.action}}' class="center-inner">
-    <view>{{item.quantity}}</view>
-    <view>{{item.desc}}</view>
-  </view>
-</view>
-
-<view class="t20">
-  <text class="myLeft">工具与服务</text>
-  <image class="rightRow" src="/images/rightjiantou.png" bindtap="changeMethod"></image>
-</view>
-<view class='middle'>
-  <view wx:for="{{toolAndService}}" wx:key="index" bindtap="onSelectedToolAndService" data-action='{{item.action}}'  data-uri='{{item.uri}}' class="center-inner">
-    <image src="{{item.image}}" style="width:96rpx;height:96rpx"></image>
-    <view>{{item.desc}}</view>
-  </view>
+<view style="background:#fff;margin-top:20rpx;padding-bottom:4px;">
+	<view class="t20">
+		<view style="display:flex;align-items:center;justify-content:space-between;">
+			<view style="display:flex;align-items:center;margin-left:7px;">
+				<view style="width:2px;height:10px;background:#FF0000;"></view>
+				<view class="myLeft">工程与服务</view>
+			</view>
+			<image class="rightRow" src="/images/rightjiantou.png"></image>
+		</view>
+	</view>
+	<view class='middle'>
+		<view wx:for="{{toolAndService}}" wx:key="index" bindtap="onSelectedToolAndService" data-action='{{item.action}}' data-uri='{{item.uri}}' class="center-inner">
+			<image src="{{item.image}}" style="width:96rpx;height:96rpx"></image>
+			<view>{{item.desc}}</view>
+		</view>
+	</view>
 </view>
