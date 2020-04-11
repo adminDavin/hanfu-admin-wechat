@@ -47,6 +47,7 @@ Page({
     console.log(this.data);
   },
   bindGetUserInfo: function (e) {
+    console.log(e.detail.userInfo)
     if (e.detail.userInfo) {
       wx.setStorageSync('isAuth', true);
       wx.setStorageSync('userInfo', e.detail.userInfo);

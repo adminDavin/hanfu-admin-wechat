@@ -1,7 +1,7 @@
 <!--src/pages/myself/address/list.wxml-->
 <view class="address">
-  <view bindtap="GetNextPageData" data-addressList="{{addressList}}"  data-index="{{index}}" class="address-card" wx:for="{{addressList}}" wx:key="index">
-    <view class="address-card-top">
+  <view  class="address-card" wx:for="{{addressList}}" wx:key="index">
+    <view data-index="{{index}}" bindtap="GetNextPageData" data-addressList="{{addressList}}" class="address-card-top">
       <view style="min-width:146rpx;" class="top-ziti">{{item.contact}}</view>
       <text class="top-ziti" style="margin-right:20rpx">{{item.phoneNumber}}</text>
       <view class="moren" wx:if="{{item.isFaultAddress==1}}">默认</view>
