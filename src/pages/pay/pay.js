@@ -251,9 +251,16 @@ Page({
          
           car.createOrder(params, (res) => {
             console.log(res);
+            if(res.data.data.goodsId){
+              wx.showToast({
+                title:'商品'+res.data.data.goodsName+ '库存不足',
+                icon:'none'
+              })
+              return false;
+            }
             if(res.data.status==200){
                 wx.navigateTo({
-                  url: '/pages/paysubmit/paysubmit?outTradeNo=' + res.data.data+'&paymentName='+pay+'$str='+str,
+                  url: '/pages/paysubmit/paysubmit?outTradeNo=' + res.data.data+'&paymentName='+pay+'&str='+str,
                })
             }
           });
@@ -263,10 +270,17 @@ Page({
     }else{
       console.log(params)
       car.createOrder(params, (res) => {
-        console.log(res);
+        console.log('创建订单',res);
+        if(res.data.data.goodsId){
+          wx.showToast({
+            title:'商品'+res.data.data.goodsName+ '库存不足',
+            icon:'none'
+          })
+          return false;
+        }
         if(res.data.status==200){
             wx.navigateTo({
-              url: '/pages/paysubmit/paysubmit?outTradeNo=' + res.data.data+'&paymentName='+pay+'$str='+str,
+              url: '/pages/paysubmit/paysubmit?outTradeNo=' + res.data.data+'&paymentName='+pay+'&str='+str,
            })
         }
       });

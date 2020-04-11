@@ -1,9 +1,37 @@
 <!--src/pages/myself/coupons/coupons.wxml-->
 <view class="discount">
-    <!-- 优惠券 -->
-    <van-tabs active="a" bindchange="tab">
-        <van-tab  title="未使用" name="a" >
-             <view  wx:for="{{tequan}}" wx:key="index" style='margin: 15rpx 20rpx 0 20rpx;'>
+	<!-- 优惠券 -->
+	<van-tabs active="a" bindchange="tab">
+		<van-tab title="未使用" name="a">
+			<view wx:for="{{tequan}}" wx:key="index" style='margin: 15rpx 20rpx 0 20rpx;'>
+				<view style="display:flex; background:#fff;margin-bottom:15rpx;border-radius:10rpx;">
+					<view style=' color:#fff; background:linear-gradient(-51deg,rgba(255,0,0,1),rgba(254,89,89,1));' class='item'>
+						<view>
+							<sub style="font-size:25rpx;">¥</sub>
+							<span style="font-weight:bold;font-size:40rpx;"> {{item.useLimit.minus}}</span>
+						</view>
+						<view style='font-size:26rpx;'>
+							满{{item.useLimit.full}}元可用
+						</view>
+					</view>
+					<view style='margin-left:20rpx;flex:1;' class='quan'>
+						<view style='margin-top:22rpx;'>
+							{{item.discountCouponName}}
+						</view>
+						<view style="display:flex;" class='qu'>
+							<view style='color:#666;font-size:24rpx;'>
+								{{item.startTime}}~{{item.stopTime}}
+							</view>
+							<view class='lingqu' bindtap="getCoupon" data-id="{{item.id}}" wx:if="{{state==0}}">
+								立即使用
+							</view>
+						</view>
+					</view>
+				</view>
+			</view>
+		</van-tab>
+		<van-tab title="已使用" name="b">
+			<view  wx:for="{{tequan}}" wx:key="index" style='margin: 15rpx 20rpx 0 20rpx;'>
         <view style="display:flex; background:#fff;margin-bottom:15rpx;border-radius:10rpx;">
           <view style=' color:#fff; background:linear-gradient(-51deg,rgba(255,0,0,1),rgba(254,89,89,1));' class='item'>
             <view>
@@ -18,77 +46,45 @@
             <view style='margin-top:22rpx;'>
               {{item.discountCouponName}}
             </view>
-            <view style="display:flex;" class='qu'>
-              <view style='color:#666;font-size:24rpx;'>
-               {{item.startTime}}~{{item.stopTime}}
-              </view>
-              <view class='lingqu' bindtap="getCoupon" data-id="{{item.id}}" wx:if="{{state==0}}">
-                立即使用
-              </view>
-            </view>
+         	<view style="display:flex;" class='qu1' wx:if="{state==1}}">
+							<view style='color:#666;font-size:24rpx;'>
+								{{item.startTime}}~{{item.stopTime}}
+							</view>
+
+							<image src="../../../img/shi.png" style=" width:100rpx;height:100rpx;"></image>
+						</view>
           </view>
         </view>
       </view>
+		</van-tab>
 
+		<van-tab title="已过期" name="b">
+			<view wx:for="{{tequan}}" wx:key="index" style='margin: 15rpx 20rpx 0 20rpx;'>
+				<view style="display:flex; background:#fff;margin-bottom:15rpx;border-radius:10rpx;">
+					<view style=' color:#fff; background:linear-gradient(-51deg,rgba(255,0,0,1),rgba(254,89,89,1));' class='item'>
+						<view>
+							<sub style="font-size:25rpx;">¥</sub>
+							<span style="font-weight:bold;font-size:40rpx;"> {{item.useLimit.minus}}</span>
+						</view>
+						<view style='font-size:26rpx;'>
+							满{{item.useLimit.full}}元可用
+						</view>
+					</view>
+					<view style='margin-left:20rpx;flex:1;' class='quan'>
+						<view style='margin-top:22rpx;'>
+							{{item.discountCouponName}}
+						</view>
+						<view style="display:flex;" class='qu1' wx:if="{state==2}}">
+							<view style='color:#666;font-size:24rpx;'>
+								{{item.startTime}}~{{item.stopTime}}
+							</view>
 
-
-        </van-tab>
-        <van-tab  title="已使用" name="b">
-              <!-- <view  wx:for="{{tequan}}" wx:key="index" style='margin: 15rpx 20rpx 0 20rpx;'>
-        <view style="display:flex; background:#fff;margin-bottom:15rpx;border-radius:10rpx;">
-          <view style=' color:#fff; background:linear-gradient(-51deg,rgba(255,0,0,1),rgba(254,89,89,1));' class='item'>
-            <view>
-              <sub style="font-size:25rpx;">¥</sub>
-              <span style="font-weight:bold;font-size:40rpx;"> {{item.useLimit.minus}}</span>
-            </view>
-            <view style='font-size:26rpx;'>
-              满{{item.useLimit.full}}元可用
-            </view>
-          </view>
-          <view style='margin-left:20rpx;flex:1;' class='quan'>
-            <view style='margin-top:22rpx;'>
-              {{item.discountCouponName}}
-            </view>
-            <view style="display:flex;" class='qu'>
-              <view style='color:#666;font-size:24rpx;'>
-               {{item.startTime}}~{{item.stopTime}}
-              </view>
-              <view class='lingqu' bindtap="getCoupon" data-id="{{item.id}}">
-                立即使用
-              </view>
-            </view>
-          </view>
-        </view>
-      </view> -->
-          </van-tab>
-
-          <van-tab  title="已过期" name="b">
-              <view  wx:for="{{tequan}}" wx:key="index" style='margin: 15rpx 20rpx 0 20rpx;'>
-        <view style="display:flex; background:#fff;margin-bottom:15rpx;border-radius:10rpx;">
-          <view style=' color:#fff; background:linear-gradient(-51deg,rgba(255,0,0,1),rgba(254,89,89,1));' class='item'>
-            <view>
-              <sub style="font-size:25rpx;">¥</sub>
-              <span style="font-weight:bold;font-size:40rpx;"> {{item.useLimit.minus}}</span>
-            </view>
-            <view style='font-size:26rpx;'>
-              满{{item.useLimit.full}}元可用
-            </view>
-          </view>
-          <view style='margin-left:20rpx;flex:1;' class='quan'>
-            <view style='margin-top:22rpx;'>
-              {{item.discountCouponName}}
-            </view>
-            <view style="display:flex;" class='qu1' wx:if="{state==2}}">
-              <view style='color:#666;font-size:24rpx;'>
-               {{item.startTime}}~{{item.stopTime}}
-              </view>
-              
-              <image src="../../../img/yiguoqi.png" style=" width:100rpx;height:100rpx;"></image>
-            </view>
-          </view>
-        </view>
-      </view>
-          </van-tab>
-    </van-tabs>
-    <view class="discount-footer"  bindtap='goling'>去领券大厅</view>
+							<image src="../../../img/yiguoqi.png" style=" width:100rpx;height:100rpx;"></image>
+						</view>
+					</view>
+				</view>
+			</view>
+		</van-tab>
+	</van-tabs>
+	<view class="discount-footer" bindtap='goling'>去领券大厅</view>
 </view>

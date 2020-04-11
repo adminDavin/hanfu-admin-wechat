@@ -8,9 +8,23 @@
 		</view>
 	</scroll-view>
 	<view class="card" wx:for="{{hfOrders}}" wx:key="index" data-hf-order="{{item}}">
+	<view style="display:flex;align-items:center;justify-content:space-between;">
+		  <view class="dingdanhao">订单号:{{item.orderCode}}</view>
+		
+      <view  class="dingdanhao1" wx:if="{{item.orderStatus=='payment'}}">待支付</view>
+      <view  class="dingdanhao1" wx:if="{{item.orderStatus=='transport'}}">运送中</view>
+      <view  class="dingdanhao1" wx:if="{{item.orderStatus=='process'}}">处理中</view>
+      <view  class="dingdanhao1" wx:if="{{item.orderStatus=='complete'}}">已完成</view>
+      <view  class="dingdanhao1" wx:if="{{item.orderStatus=='cancel'}}">已取消</view>
+      <view  class="dingdanhao1" wx:if="{{item.orderStatus=='evaluate'}}">待评价</view>
+      <view class="dingdanhao1" wx:if="{{item.orderStatus=='controversial'}}">交易纠纷</view>
+		
+	</view>
+	
+		
 		<view wx:for="{{item.detailRequestList}}" wx:for-item="professionitem">
-			<view class="dingdanhao">店铺：{{professionitem.stoneName}}</view>
-			
+			<!-- <view class="dingdanhao">店铺：{{professionitem.stoneName}}</view> -->
+		
 			<view wx:for="{{professionitem.hfOrderDetailList}}" wx:for-item="professionitem1">
 				<view class="card-top">
 
@@ -18,21 +32,26 @@
 				</view>
 				<view class="card-center" data-orderstatus="{{professionitem1.hfDesc.orderDetailStatus}}">
 					<view class="danshop">
-						<image src="{{img}}/goods/getFile?fileId={{professionitem1.hfDesc.fileIds[0]}}" class="card-pic"></image>
-						<view class="dan-box">
+					<view  style="display:flex;flex-wrap:wrap;">
+				<image wx:for="{{professionitem1.hfDesc.fileIds}}" wx:for-item="professionitem0"  src="{{img}}/goods/getFile?fileId={{professionitem0}}" class="card-pic"></image>
+					<image wx:for="{{professionitem1.hfDesc.fileIds}}" wx:for-item="professionitem0"  src="{{img}}/goods/getFile?fileId={{professionitem0}}" class="card-pic"></image>
+					</view>
+						
+						<!-- <view class="dan-box">
 							<view class="danshop-name">{{professionitem1.hfDesc.goodsName}}</view>
 							<view class="dan-box-2">
 								<view class="dan-guige">{{professionitem1.hfDesc.goodsDesc}}</view>
 							</view>
-						</view>
+						</view> -->
 					</view>
 					<view class="center-right">
-						<view style="font-size:24rpx;color:rgba(153,153,153,1);text-align:center">共{{professionitem1.hfDesc.quantity}}件</view>
+						<view style="font-size:34rpx;color:#151515;text-align:center">￥{{item.amount}}</view>
+							<view style="text-align:right;color:#999999; font-size:24rpx;font-weight:500;margin-right:3px;">共{{professionitem1.quantity}}件</view>
 					</view>
 				</view>
 			</view>
 		</view>
-    	<view style="text-align:right;color:red; font-size:34rpx;font-weight:500;margin-right:3px;">￥{{item.amount}}</view>
+    
 	</view>
 
 </view>

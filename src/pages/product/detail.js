@@ -14,6 +14,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    stoneId:'',
     goods:'',
     linePrice:'',// 下线价格
     loading:'',
@@ -84,6 +85,9 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
+    that.setData({
+      stoneId:  options.stoneId
+    })
     that.data.activityState = options.activityState;
     that.data.startTime = options.startTime;
     that.data.priceArea = options.priceArea;
@@ -134,8 +138,9 @@ Page({
       goodsId :that.data.selectedGoods.id,
       num :that.data.quantity,
       userId : wx.getStorageSync('userId'),
-      stoneId:that.data.selectedGoods.stoneId,
+      stoneId:that.data.stoneId,
     }
+    console.log(obj)
     car.addcar(obj, (res) => {
       console.log(res);
       if(res.data.data=="成功加入购物车"){

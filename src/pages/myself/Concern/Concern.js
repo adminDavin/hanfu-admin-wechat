@@ -24,9 +24,7 @@ Page({
       })
       
      
-      that.setData({
-        cang: arr
-      })
+     
     });
   },
   // 切换目录

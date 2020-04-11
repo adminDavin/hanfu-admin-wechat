@@ -34,6 +34,7 @@ Page({
     car.pay(obj, (res) => {
       console.log(res);
       if(res.data.status==200){
+        
         if(that.data.paymentName=='wechart'){
           wx.requestPayment({
             timeStamp: res.data.data.timeStamp,
