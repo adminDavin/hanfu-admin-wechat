@@ -20,6 +20,17 @@ Page({
   },
   // 切换目录
   clickTab: function (e) {
+    console.log(e)
+    this.setData({ currentTab: e.currentTarget.dataset.id });
+  },
+  // 切换价格
+  clickprice: function (e) {
+    console.log(e)
+    this.setData({ currentTab: e.currentTarget.dataset.id });
+  },
+  // 切换销量
+  clickSales: function (e) {
+    console.log(e)
     this.setData({ currentTab: e.currentTarget.dataset.id });
   },
   // 获取滚动条当前位置

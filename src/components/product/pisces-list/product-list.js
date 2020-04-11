@@ -46,14 +46,17 @@ Component({
     },
     onSeletedProduct: function (e) {
       let selected = e.currentTarget.dataset.item;
+      console.log(selected)
       wx.navigateTo({
-        url: '/pages/product/detail?productId=' + selected.id
+        url: '/pages/product/detail?productId=' + selected.id + '&stoneId=' + e.currentTarget.dataset.item.stoneId + '&action=' + 'competitive'
       });
     },
     loadImages: function () { },
     getProducts: function (params) {
+      console.log(params)
       productApi.getProducts(params, (res) => {
-        let products = res.data.data;
+        let products = res.data.data.list;
+        console.log(products)
         reuqestUtils.setImageUrls(products);
         for (let product of products) {
           console.log(product);
@@ -77,11 +80,11 @@ Component({
       setTimeout(() => {
         console.log(this.properties.parameters);
         let params = this.properties.parameters;
-        if (typeof(params.action) != 'undefined') {
-          this.getProducts(params); 
+        if (typeof (params.action) != 'undefined') {
+          this.getProducts(params);
         }
       }, 20);
-      
+
     },
     detached: function () {
       // 在组件实例被从页面节点树移除时执行

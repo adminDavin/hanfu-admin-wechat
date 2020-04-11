@@ -19,7 +19,7 @@ Page({
   },
   sousuo: function () {
     wx.navigateTo({
-      url: '../seckill/seek/seek',
+      url: '/pages/product/seek/seek',
     })
   },
   // 跳转到列表

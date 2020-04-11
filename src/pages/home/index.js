@@ -15,37 +15,43 @@ Page({
     currentTab: 0
   },
 
-  onLoad: function (options) {
+  onLoad: function(options) {
     projectUtils.adjustSystemInfo(this);
     productApi.getRotation((res) => {
       let list = res.data.data;
       requestUtils.setImageUrls(list);
-      this.setData({ imgUrls: list });
+      this.setData({
+        imgUrls: list
+      });
     });
   },
 
-  onShow: function () {
+  onShow: function() {
     projectUtils.activeTabBar(this, 0);
   },
 
-  swichNav: function (e) {
+  swichNav: function(e) {
     if (this.data.currentTab != e.target.dataset.current) {
-      this.setData({ currentTab: e.target.dataset.current });
+      this.setData({
+        currentTab: e.target.dataset.current
+      });
     }
   },
 
-  bindChange: function (e) {
-    this.setData({ currentTab: e.detail.current });
+  bindChange: function(e) {
+    this.setData({
+      currentTab: e.detail.current
+    });
   },
 
-  onSelectRotation: function (e) {
+  onSelectRotation: function(e) {
     console.log(e.currentTarget.dataset)
     wx.navigateTo({
       url: '/pages/product/detail?action=rotation&productId=' + e.currentTarget.dataset.id + '&stoneId=1'
     })
   },
 
-  chongqingjzb: function () {
+  chongqingjzb: function() {
     // wx.checkIsSoterEnrolledInDevice({
     //   success: function(res) {},
     //   fail: function(res) {},
@@ -53,11 +59,16 @@ Page({
     // })
     console.log(122)
     wx.navigateTo({
-      url: '/pages/scan/index' ,
+      url: '/pages/scan/index',
     })
   },
 
-  onPullDownRefresh: function (e) {
+  onPullDownRefresh: function(e) {
     console.log(e);
-  }
+  },
+  sousuo: function() {
+    wx.navigateTo({
+      url: '/pages/product/seek/seek',
+    })
+  },
 })
