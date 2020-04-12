@@ -34,9 +34,11 @@ Page({
   },
        //删除商品
        delGoods(e) {
+         console.log(e)
         var that = this;
         let obj={
-          productId:e.currentTarget.dataset.goodsid,
+          stoneId:e.currentTarget.dataset.stontid,
+          productId :e.currentTarget.dataset.goodsid,
           userId: wx.getStorageSync('userId'),
         }
         car.delGoods(obj, (res) => {
