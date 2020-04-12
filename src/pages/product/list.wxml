@@ -65,13 +65,6 @@
           </view>
           <view class="subject-table">
             <text class="tag"></text>
-            <text class="tag"></text>
-            <text class="tag"></text>
-            <text class="tag"></text>
-            <text class="tag"></text>
-            <text class="tag"></text>
-            <text class="tag"></text>
-            <text class="tag"></text>
           </view>
         </view>
       </view>
@@ -83,6 +76,6 @@
   </view>
 </view>
 <view>
-  <product-list scrollH="{{scrollH}}" imgWidth="{{imgWidth}}" wx:if="{{lists==false}}" parameters="{{parameters}}"></product-list>
-  <pisces-list scrollH="{{scrollH}}" imgWidth="{{imgWidth}}" wx:if="{{lists==true}}" parameters="{{parameters}}"></pisces-list>
+  <product-list id="product-id" sort="{{sort}}" scrollH="{{scrollH}}" imgWidth="{{imgWidth}}" wx:if="{{lists==false}}" parameters="{{parameters}}"></product-list>
+  <pisces-list id="product-id" sort="{{sort}}" scrollH="{{scrollH}}" imgWidth="{{imgWidth}}" wx:if="{{lists==true}}" parameters="{{parameters}}"></pisces-list>
 </view>

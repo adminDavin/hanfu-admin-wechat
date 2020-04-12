@@ -76,7 +76,7 @@ function groupStatus(groupId, userId, handleResult) {
 }
 
 function getProducts(params, handleResult) {
-  params.quantity = 3;
+  // params.quantity = 3;
   let uri = '/hfProduct/getProductsForRotation';
   if (params.action == "chosen") {
     // 精选 跳转过来的

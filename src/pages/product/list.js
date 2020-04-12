@@ -5,9 +5,11 @@ import requestUtils from '../../services/request-utils.js';
 
 Page({
   data: {
+    sort: '',
     scrollH: 0,
     imgWidth: 0,
     lists: false,
+    clickprice: false,
     currentTab: 0, //切换
     mosthigher: '',
     mostlower: '',
@@ -21,18 +23,37 @@ Page({
   // 切换目录
   clickTab: function (e) {
     console.log(e)
-    this.setData({ currentTab: e.currentTarget.dataset.id });
+    this.setData({ currentTab: e.currentTarget.dataset.id, sort: '' });
+    // 点击父组件传值给子组件
+    var header = this.selectComponent("#product-id");
+    header.getPro()
   },
   // 切换价格
   clickprice: function (e) {
-    console.log(e)
-    this.setData({ currentTab: e.currentTarget.dataset.id });
+    if (this.data.clickprice) {
+      console.log('小大')
+      this.setData({ currentTab: e.currentTarget.dataset.id, clickprice: false, sort: '-1' });
+      // 点击父组件传值给子组件
+      var header = this.selectComponent("#product-id");
+      header.getPro()
+    } else {
+      console.log('大小')
+      this.setData({ clickprice: true })
+      this.setData({ currentTab: e.currentTarget.dataset.id, clickprice: true, sort: '0' })
+      // 点击父组件传值给子组件
+      var header = this.selectComponent("#product-id");
+      header.getPro()
+    }
   },
   // 切换销量
   clickSales: function (e) {
     console.log(e)
-    this.setData({ currentTab: e.currentTarget.dataset.id });
+    this.setData({ currentTab: e.currentTarget.dataset.id, sort: '1' });
+    // 点击父组件传值给子组件
+    var header = this.selectComponent("#product-id");
+    header.getPro()
   },
+
   // 获取滚动条当前位置
   onPageScroll: function (e) {
     if (e.scrollTop > 100) {

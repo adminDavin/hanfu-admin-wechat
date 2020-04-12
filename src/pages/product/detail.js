@@ -31,6 +31,7 @@ Page({
     collecte:false,//收藏
     showModal:false,
     slideNumber: '1', //详情滑动跳动数字
+    amount:'',//图片总数
     current: 0,
     seckillActivity: false, //秒杀
     groupActivity:false,// 团购
@@ -282,14 +283,14 @@ Page({
     }.bind(this), 200)
   },
 
-  // //详情滑动跳动数字
-  // current: function (e) {
-  //   console.log(e)
-  //   // var that = this
-  //   // that.setData({
-  //   //   slideNumber: e.detail.current + 1
-  //   // })
-  // },
+  //详情滑动跳动数字
+  current: function (e) {
+    // console.log(e)
+    var that = this
+    that.setData({
+      slideNumber: e.detail.current + 1
+    })
+  },
 
   //关注
   collect: function () {
@@ -388,6 +389,7 @@ Page({
           }
           productApi.getProductDetail(params, (res) => {
               let goods = res.data.data;
+              
               console.log('商品图',goods);
            
               let imgageUrls = [];
@@ -409,7 +411,7 @@ Page({
               }
                 let product = res.data.data;
                 this.updateSelectedGoods(product.defaultGoodsId, product);
-            this.setData({ imgageUrls: imgageUrls, linePrice: goods.linePrice, goods: goods}); 
+            this.setData({ amount:goods.fileIds.length, imgageUrls: imgageUrls, linePrice: goods.linePrice, goods: goods}); 
             })
         }
     },

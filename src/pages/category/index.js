@@ -15,7 +15,8 @@ Page({
     activeKey: 0,
     parentCategoryId: "",
     firstId: '',
-    selectedLeftMenu: {}
+    selectedLeftMenu: {},
+    height:''
   },
   sousuo: function () {
     wx.navigateTo({
@@ -44,6 +45,12 @@ Page({
       });
       this.updateRightMenu(selectedLeftMenu);
     });
+    
+    let windowHeight = wx.getSystemInfoSync().windowHeight // 屏幕的高度
+    let windowWidth = wx.getSystemInfoSync().windowWidth // 屏幕的宽度
+    this.setData({
+      height: windowHeight * 750 / windowWidth - 30-420
+    })
   },
 
   

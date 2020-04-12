@@ -48,15 +48,14 @@
 <view class="particulars">
 	<!-- 图片 -->
 	<view class="header-images">
-		<swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+		<swiper bindchange="current" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
 			<block wx:for="{{imgageUrls}}" wx:key="index">
 				<swiper-item>
 					<image src="{{item}}" style="width:100%; display:flex" />
 				</swiper-item>
 			</block>
 		</swiper>
-
-    <!-- <view class="images-index">{{slideNumber}}/5</view> -->
+   <view class="images-index">{{slideNumber}}/{{amount}}</view>
   </view>
   <!-- 商品价格及名称 -->
   <view class="productName">

@@ -1,6 +1,6 @@
 // src/pages/product/seek/seek.js
 const app = getApp();
-// const apiCart = require('../../../utils/api/cart.js');
+const apiCart = require('../../../utils/cart.js');
 Page({
 
   /**
@@ -8,28 +8,29 @@ Page({
    */
   data: {
     inputval: '',
-    list: [],
+    list: [
+    ],
   },
   // 搜索
   getsousuo(e) {
-    // var that = this;
-    // console.log(e)
-    // that.setData({
-    //   inputval: e.detail.value
-    // })
-    // if (e.detail.value == '') { return }
-    // apiCart.toSettle(app.globalData.urlGoods, '/goods/queryList', {
-    //   goodName: that.data.inputval
-    // }, (res) => {
-    //   console.log(res)
-    //   let list = res.data.data;
-    //   for (var index in list) {
-    //     list[index].img = app.globalData.urlGoods + '/goods/getFile?fileId=' + list[index].fileId;
-    //   }
-    //   that.setData({
-    //     list: list
-    //   })
-    // });
+    var that = this;
+    console.log(e)
+    that.setData({
+      inputval: e.detail.value
+    })
+    if (e.detail.value == '') { return }
+    apiCart.toSettle(app.endpoint.product, '/hfProduct/getHfName', {
+      hfName: that.data.inputval
+    }, (res) => {
+      console.log(res)
+      let list = res.data.data.list;
+      for (var index in list) {
+        list[index].img = app.endpoint.product + '/goods/getFile?fileId=' + list[index].fileId;
+      }
+      that.setData({
+        list: list
+      })
+    });
   },
   // 取消
   quxiao() {
@@ -39,6 +40,13 @@ Page({
     })
     wx.switchTab({
       url: '../seckill',
+    })
+  },
+  onSeletedProduct: function (e) {
+    console.log(e.currentTarget.dataset)
+    let dataset = e.currentTarget.dataset.item
+    wx.navigateTo({
+      url: '/pages/product/detail?productId=' + dataset.id + '&stoneId=' + dataset.stoneId
     })
   },
   /**

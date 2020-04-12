@@ -23,6 +23,10 @@ Component({
     parameters: {
       type: Object,
       value: {}
+    },
+    sort: {
+      type: String,
+      value: '',
     }
   },
 
@@ -35,6 +39,8 @@ Component({
     loadingCount: 0,
     scrollH: 0,
     imgWidth: 0,
+    sort: '',
+    param: {},
   },
 
   /**
@@ -67,11 +73,38 @@ Component({
         this.setData({
           chosenData: products,
           scrollH: this.properties.scrollH,
-          imgWidth: this.properties.imgWidth
+          imgWidth: this.properties.imgWidth,
+          sort: this.properties.sort,
+          param: params
+        });
+      });
+    },
+    getPro: function () {
+      console.log(this.data.param)
+      let params = {
+        action: this.data.param.action,
+        activityId: this.data.param.activityId,
+      }
+      if (this.properties.sort != '') {
+        params.sort = this.properties.sort
+      }
+      productApi.getProducts(params, (res) => {
+        let products = res.data.data.list;
+        console.log(products)
+        reuqestUtils.setImageUrls(products);
+        for (let product of products) {
+          console.log(product);
+          if (typeof (product.priceArea) == 'undefined') {
+            product.newPrice = '商品配置异常';
+          }
+        }
+        this.setData({
+          chosenData: products,
+          scrollH: this.properties.scrollH,
+          imgWidth: this.properties.imgWidth,
         });
       });
     }
-
   },
 
   lifetimes: {
