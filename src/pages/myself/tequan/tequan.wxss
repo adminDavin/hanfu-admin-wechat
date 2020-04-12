@@ -1,11 +1,12 @@
 /* src/pages/myself/tequan/tequan.wxss */
 page{
-  background: #f8f8f8;
+  
  
 }
 .qu1{
   background:#fff; padding:20rpx;background:red;border-radius:10rpx;
 }
+::-webkit-scrollbar {display:none}
 .qu{
   background:#fff; padding:20rpx;margin-bottom:20rpx;border-radius:10rpx;
 }

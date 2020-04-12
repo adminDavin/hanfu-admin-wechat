@@ -37,15 +37,15 @@
 					<!-- <image wx:for="{{professionitem1.hfDesc.fileIds}}" wx:for-item="professionitem0"  src="{{img}}/goods/getFile?fileId={{professionitem0}}" class="card-pic"></image> -->
 					</view>
 						
-						<!-- <view class="dan-box">
+						<view class="dan-box">
 							<view class="danshop-name">{{professionitem1.hfDesc.goodsName}}</view>
 							<view class="dan-box-2">
 								<view class="dan-guige">{{professionitem1.hfDesc.goodsDesc}}</view>
 							</view>
-						</view> -->
+						</view>
 					</view>
 					<view class="center-right">
-					<view style="text-align:right;color:#999999; font-size:24rpx;font-weight:500;margin-right:3px;">共{{professionitem1.quantity}}件</view>
+					<view style="text-align:right;color:#999999; font-size:24rpx;font-weight:500;margin-right:3px;">x{{professionitem1.quantity}}</view>
 					</view>
 				</view>
 			</view>
