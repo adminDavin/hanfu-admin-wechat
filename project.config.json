@@ -95,6 +95,13 @@
 					"id": -1,
 					"name": "pages/paysubmit/paysubmit",
 					"pathName": "pages/paysubmit/paysubmit",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/myself/tequan/tequan",
+					"pathName": "pages/myself/tequan/tequan",
 					"scene": null
 				}
 			]

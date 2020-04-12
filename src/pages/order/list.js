@@ -94,11 +94,16 @@ Page({
   
       let arr=res.data.data;
      for(var i=0;i<arr.length;i++){
+       let count=0;
       for(var j=0;j<arr[i].detailRequestList.length;j++){
         for(var a=0;a<arr[i].detailRequestList[j].hfOrderDetailList.length;a++){ 
+          count+=arr[i].detailRequestList[j].hfOrderDetailList[a].quantity;
           arr[i].detailRequestList[j].hfOrderDetailList[a].hfDesc=JSON.parse(arr[i].detailRequestList[j].hfOrderDetailList[a].hfDesc)
+          
         }  
+       
       }
+      arr[i].userId=count;
      }
       this.setData({
         hfOrders:arr,

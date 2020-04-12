@@ -68,7 +68,7 @@
 }
 .dingdanhao1{
   font-size:24rpx;
-  color:#FF0000;
+  
 }
 .danshop {
   width: 80%;
