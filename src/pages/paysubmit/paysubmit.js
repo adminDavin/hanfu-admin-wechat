@@ -7,20 +7,27 @@ Page({
    * 页面的初始数据
    */
   data: {
+    count:'',
     show:false,
     statusBarHeight:'',
     paymentName:'',
     outTradeNo:'',
     str:''
   },
-
+  gohome:function(){
+    console.log(11)
+    wx.switchTab({
+      url: '../home/index',
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     console.log(options)
     this.setData({
-      outTradeNo :options.str, 
+      count:options.count,
+      str :options.str, 
       outTradeNo :options.outTradeNo, 
       paymentName:options.paymentName,
     })
@@ -53,11 +60,12 @@ Page({
               console.log(obj2)
              car.complate(obj2, (res) => {
                 console.log('3',res);
-                // if(res.data.status==200){
-                //   that.setData({
-                //    show:true
-                //   })
-                // }
+             
+                if(res.data.status==200){
+                  wx.switchTab({
+                    url: '../home/index',
+                  })
+                }
                });
             },
             fail (res) { }

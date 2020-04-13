@@ -262,7 +262,7 @@ Page({
             }
             if(res.data.status==200){
                 wx.navigateTo({
-                  url: '/pages/paysubmit/paysubmit?outTradeNo=' + res.data.data+'&paymentName='+pay+'&str='+str,
+                  url: '/pages/paysubmit/paysubmit?outTradeNo=' + res.data.data+'&paymentName='+pay+'&count='+this.data.count+'&str='+str,
                })
             }
           });
@@ -282,7 +282,7 @@ Page({
         }
         if(res.data.status==200){
             wx.navigateTo({
-              url: '/pages/paysubmit/paysubmit?outTradeNo=' + res.data.data+'&paymentName='+pay+'&str='+str,
+              url: '/pages/paysubmit/paysubmit?outTradeNo=' + res.data.data+'&paymentName='+pay+'&str='+str+'&count='+this.data.count,
            })
         }
       });

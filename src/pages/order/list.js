@@ -141,6 +141,11 @@ Page({
       });
   })
 },
+// onUnload: function () {
+//   wx.reLaunch({
+//     url: '../myself/index'
+//   })
+// },
   onSelectedOrder : function(e) {
     if (e.currentTarget.dataset.hfOrder.orderType =='shoppingOrder'){
       wx.navigateTo({

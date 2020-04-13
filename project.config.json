@@ -102,6 +102,13 @@
 					"id": -1,
 					"name": "pages/myself/tequan/tequan",
 					"pathName": "pages/myself/tequan/tequan",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "wuliu",
+					"pathName": "pages/wuliu/wuliu",
 					"scene": null
 				}
 			]

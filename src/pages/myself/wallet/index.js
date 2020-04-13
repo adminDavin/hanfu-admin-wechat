@@ -13,7 +13,15 @@ Page({
     amount:'',
     userId:'',
   },
-  
+  generateUUID:function () {
+    var d = new Date().getTime();
+    var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+    var r = (d + Math.random()*16)%16 | 0;
+    d = Math.floor(d/16);
+    return (c=='x' ? r : (r&0x3|0x8)).toString(16);
+    });
+      return uuid ;
+    },
 usernameInput: function (e) {
   this.setData({
     amount: e.detail.value
@@ -54,6 +62,7 @@ usernameInput: function (e) {
     })
   },
 create:function(){
+  let str =this.generateUUID();
   var that=this;
   if(that.data.amount==''){
     wx.showToast({
@@ -63,6 +72,7 @@ create:function(){
     return false;
   }
   let obj={
+    requestId:str,
     amount:that.data.amount*100,
     hfRemark :'充值订单',
     orderType :'rechargeOrder',
@@ -77,6 +87,7 @@ quan.create(obj ,(res) => {
       id:res.data.data.orderCode
     })
     let obj1={
+      requestId: str,
       outTradeNo :that.data.id,
       userId :that.data.userId,
     }
@@ -92,6 +103,7 @@ quan.create(obj ,(res) => {
           success (res) { 
             console.log(res);
             let obj2={
+              requestId:str,
               transactionType:'rechargeOrder',
               outTradeNo :that.data.id,
               userId :that.data.userId,
