@@ -11,7 +11,24 @@ Component({
       value: {}
     }
   },
-
+  onLoad: function (options) {
+    console.log(options);
+     let params = JSON.parse(decodeURIComponent(options.hfOrder));
+     console.log(params)
+     // if (params.paymentName =="wechart"){
+     //   params.paymentNameCN="微信支付"
+     // } else if(params.paymentName == "balance"){
+     //   params.paymentNameCN = "余额支付"
+     // }
+     // let hfGoodsSpecs = params.gooodsDesc.hfGoodsSpecs;
+     // let str='';
+     // for (let index in hfGoodsSpecs) {
+     //   str = str + hfGoodsSpecs[index].hfValue+''
+     // }
+     // params.goodsSpecs=str
+     this.setData({hfOrder: params});
+     console.log(params)
+   },
   /**
    * 组件的初始数据
    */

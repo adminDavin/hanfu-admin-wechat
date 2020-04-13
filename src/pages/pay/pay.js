@@ -196,7 +196,9 @@ Page({
     }
     this.setData({ paymentMethod: paymentMethod });
   },
+  shenback:function(){
 
+  },
   onCreateOrder: function (e) {
  
    let arr =this.data.shangjiagoods;
@@ -219,7 +221,7 @@ Page({
     let params = {
       requestId: str,
       disconuntId:this.data.CouponId,
-      taking_type:this.data.pickUp.wayOfPickUp,
+      takingType:this.data.pickUp.wayOfPickUp,
       userId:wx.getStorageSync('userId'),
       userAddressId:'',
       orderType: 'nomalOrder',

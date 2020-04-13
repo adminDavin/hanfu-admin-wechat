@@ -102,6 +102,32 @@ function complate(params,handleResult) {
     }
   });
 }
+
+function getdetail(params,handleResult) {
+  console.log(app.endpoint.order + '/hf-order/query')
+  wx.request({
+    url: app.endpoint.order+ '/hf-order/query',
+    method: 'GET',
+    data: params,
+    success: res => handleResult(res),
+    fail: (res) => {
+      console.log( res);
+    }
+  });
+}
+function modifyStatus(params,handleResult) {
+  console.log(app.endpoint.order + '/hf-order/modifyStatus')
+  wx.request({
+    url: app.endpoint.order+ '/hf-order/modifyStatus',
+    method: 'GET',
+    data: params,
+    success: res => handleResult(res),
+    fail: (res) => {
+      console.log( res);
+    }
+  });
+}
+
 export default {
   addcar:addcar,
   checkcar:checkcar,
@@ -110,5 +136,7 @@ export default {
   createOrder:createOrder,
   pay:pay,
   complate:complate,
-  getquan:getquan
+  getquan:getquan,
+  modifyStatus:modifyStatus,
+  getdetail:getdetail,
 };

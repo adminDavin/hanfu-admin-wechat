@@ -1,5 +1,5 @@
 const app = getApp();
-import quan from '../../../services/hf-tequan';
+import quan from '../../../services/hf-tequan.js';
 
 
 Page({

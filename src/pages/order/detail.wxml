@@ -1,5 +1,5 @@
 <image src="../../images/fanhuibai.png" style="width:30rpx;height:35rpx;position:absolute;left:24rpx;top:65rpx" bindtap="fanhui"></image>
-<payment hfOrder="{{hfOrder}}" wx:if="{{hfOrder.orderStatus=='payment'}}"></payment>
+<!-- <payment hfOrder="{{hfOrder}}" wx:if="{{hfOrder.orderStatus=='payment'}}"></payment>
 <shipped hfOrder="{{hfOrder}}" wx:if="{{hfOrder.orderStatus=='shipped'}}"></shipped>
 <cancel hfOrder="{{hfOrder}}" wx:if="{{hfOrder.orderStatus=='cancel'}}"></cancel>
 <finished hfOrder="{{hfOrder}}" wx:if="{{hfOrder.orderStatus=='finished'}}"></finished>
@@ -7,4 +7,126 @@
 <transport hfOrder="{{hfOrder}}" wx:if="{{hfOrder.orderStatus=='transport'}}"></transport>
 <pickup hfOrder="{{hfOrder}}" wx:if="{{hfOrder.orderStatus=='pickup'}}"></pickup>
 <evaluate hfOrder="{{hfOrder}}" wx:if="{{hfOrder.orderStatus=='evaluate'}}"></evaluate>
-<controversial hfOrder="{{hfOrder}}" wx:if="{{hfOrder.orderStatus=='controversial'}}"></controversial>
+<controversial hfOrder="{{hfOrder}}" wx:if="{{hfOrder.orderStatus=='controversial'}}"></controversial> -->
+<view class="orderprocessing">
+	<view class="nav" style="padding-top:100rpx;">
+		<view class="dai-box">
+			<view class="dai-title">
+				<image wx:if="{{hfOrder.orderStatus=='payment'}}" src="../../images/dengdai.png" style="width:36rpx;height:36rpx;margin-right:19rpx;"></image>
+				<view class="dai-ziti" wx:if="{{hfOrder.orderStatus=='process'}}">等待商家处理</view>
+				<view class="dai-ziti" wx:if="{{hfOrder.orderStatus=='payment'}}">等待付款</view>
+				<view class="dai-ziti" wx:if="{{hfOrder.orderStatus=='shipped'}}">待发货</view>
+				<view class="dai-ziti" wx:if="{{hfOrder.orderStatus=='cancel'}}">已取消</view>
+				<view class="dai-ziti" wx:if="{{hfOrder.orderStatus=='finished'}}">评价成功，感谢您</view>
+				<view class="dai-ziti" wx:if="{{hfOrder.orderStatus=='transport'}}">等待收货</view>
+				<view class="dai-ziti" wx:if="{{hfOrder.orderStatus=='evaluate'}}">待评价</view>
+				<view class="dai-ziti" wx:if="{{hfOrder.orderStatus=='controversial'}}">等待退款</view>
+				<view class="dai-ziti" wx:if="{{hfOrder.orderStatus=='pickup'}}">等待提货</view>
+			</view>
+			<!-- 待支付 -->
+			<view class="dai-content" style="margin-top:20rpx;" wx:if="{{hfOrder.orderStatus=='payment'}}">
+				<view wx:if="{{hfOrder.orderStatus=='payment'}}" class="content-ziti" style="margin-right:40rpx">需付款:¥{{hfOrder.amount}}</view>
+				<view wx:if="{{hfOrder.orderStatus=='payment'}}" class="content-ziti">剩余：23小时33分钟</view>
+			</view>
+			<view class="dai-content" style="margin-top:20rpx;" wx:if="{{hfOrder.orderStatus=='process'}}">
+				<view wx:if="{{hfOrder.orderStatus=='process'}}" class="content-ziti" style="margin-right:40rpx">10日23小时33分钟后 系统自动确认退款</view>
+			</view>
+			<view class="dai-content" style="margin-top:20rpx;" wx:if="{{hfOrder.orderStatus=='controversial'}}">
+				<view wx:if="{{hfOrder.orderStatus=='controversial'}}" class="content-ziti">交易纠纷</view>
+			</view>
+			<view class="dai-content" style="margin-top:20rpx;" wx:if="{{hfOrder.orderStatus=='cancel'}}">
+				<view wx:if="{{hfOrder.orderStatus=='cancel'}}" class="content-ziti" style="margin-right:40rpx">取消原因：超时未支付</view>
+			</view>
+			<view wx:if="{{hfOrder.orderStatus=='cancel'}}" bindtap="gopay" style="magin-right:0; margin-top:40rpx; border-radius:80rpx; width:226rpx;height:67rpx; color:#FE1D42;background:#FFFFFD;display:flex;align-items:center;justify-content:center;">
+				再次购买
+			</view>
+			<view wx:if="{{hfOrder.orderStatus=='payment'}}" bindtap="gopay" style="margin-top:40rpx; border-radius:80rpx; width:226rpx;height:67rpx; color:#FE1D42;background:#FFFFFD;display:flex;align-items:center;justify-content:center;">
+				立即支付
+			</view>
+			<view wx:if="{{hfOrder.orderStatus=='controversial'}}" style="margin-top:40rpx; border-radius:80rpx; width:226rpx;height:67rpx; color:#aaa;background:#eee;display:flex;align-items:center;justify-content:center;">
+				已申请
+			</view>
+			<view wx:if="{{hfOrder.orderStatus=='process'}}" bindtap="gopay" style="margin-top:40rpx; border-radius:80rpx; width:226rpx;height:67rpx; color:#FE1D42;background:#FFFFFD;display:flex;align-items:center;justify-content:center;">
+				提醒发货
+			</view>
+
+		</view>
+	</view>
+	<view class="address-card" style="overflow:hidden;" wx:if="{{hfOrder.addressId}}">
+		<view class="address-card-top" style="margin-top:20rpx;">
+			<view style="min-width:146rpx;font-size:29rpx;" class="top-ziti">{{hfOrder.contact}}</view>
+			<text class="top-ziti" style="margin-right:20rpx;font-size:29rpx;">{{hfOrder.phone}}</text>
+		</view>
+		<view class="address-card-bottom">
+			<view class="bot-ziti">地址：{{hfOrder.address}}</view>
+		</view>
+	</view>
+
+	<view class="content-card" wx:for="{{hfOrder.detailRequestList}}" :key="index">
+		<view style="margin-bottom:15rpx;color:#666666;font-size:29rpx;">店铺：{{item.stoneName}}</view>
+		<view class="xiajia-content" wx:for="{{item.hfOrderDetailList}}" wx:for-item="professionitem">
+			<image src="{{img}}/goods/getFile?fileId={{professionitem.hfDesc.fileIds[0]}}" style="width:230rpx;height:230rpx"></image>
+			<view class="contentitem-right" style="justify-content: flex-start;">
+				<text class="item-name" style="font-size:29rpx;">{{professionitem.hfDesc.goodsName}}</text>
+				<view class="serve">
+					{{professionitem.hfDesc.goodsSpecs}}
+				</view>
+				<view class="card-money" style="margin-top:50rpx">
+					<view class="discounts-money">
+						<view class="money-number">¥{{professionitem.hfDesc.sellPrice}}</view>
+					</view>
+					<view class="num">X{{professionitem.quantity}}</view>
+				</view>
+				<view class="dai-ziti1" wx:if="{{professionitem.hfStatus=='process'}}">等待商家处理</view>
+				<view class="dai-ziti1" wx:if="{{professionitem.hfStatus=='payment'}}">等待付款</view>
+				<view class="dai-ziti1" wx:if="{{professionitem.hfStatus=='shipped'}}">待发货</view>
+				<view class="dai-ziti1" wx:if="{{professionitem.hfStatus=='cancel'}}">已取消</view>
+				<view class="dai-ziti1" wx:if="{{professionitem.hfStatus=='finished'}}">评价成功，感谢您</view>
+				<view class="dai-ziti1" wx:if="{{professionitem.hfStatus=='transport'}}">等待收货</view>
+				<view class="dai-ziti1" wx:if="{{professionitem.hfStatus=='evaluate'}}">待评价</view>
+				<view class="dai-ziti1" wx:if="{{professionitem.hfStatus=='controversial'}}">等待退款</view>
+				<view class="dai-ziti1" wx:if="{{professionitem.hfStatus=='pickup'}}">等待提货</view>
+			</view>
+		</view>
+	</view>
+	<view style="color:#FF0000;text-align:right;background:#fff;padding-right:20rpx;">￥{{hfOrder.amount}}</view>
+	<view class="plus-card">
+		<image src="../../images/liuyan.png" style="width:37rpx;height:35rpx;margin-right:10rpx"></image>
+		<view style="font-size:28rpx;font-weight:500;color:rgba(21,21,21,1);">PLUS专属客服</view>
+	</view>
+	<view class="dingdan-card">
+		<view class="dingdan-card-item">
+			<view class="dingitem-ziti">订单编号：</view>
+			<view class="dingitem-ziti" style="color:black;margin-right:20rpx">{{hfOrder.orderCode}}</view>
+			<view class="fuzhi" bindtap="copy">复制</view>
+		</view>
+		<view class="dingdan-card-item">
+			<view class="dingitem-ziti">下单时间：</view>
+			<view class="dingitem-ziti" style="color:black;">{{hfOrder.modifyTime}}</view>
+		</view>
+		<view class="dingdan-card-item">
+			<view class="dingitem-ziti">支付方式：</view>
+			<view class="dingitem-ziti" style="color:black;">{{hfOrder.paymentName=='wechart'?'微信支付':'余额支付'}}</view>
+		</view>
+	</view>
+	<!-- <view class="yunfei-card">
+		<view class="dingdan-card-item" style="justify-content:space-between">
+			<view class="dingitem-ziti">商品金额：</view>
+			<view class="dingitem-ziti" style="color:black;">￥{{hfOrder.actualPrice}}</view>
+		</view>
+		<view class="dingdan-card-item" style="justify-content:space-between">
+			<view class="dingitem-ziti">运费：</view>
+			<view class="dingitem-ziti" style="color:black;">+￥{{hfOrder.freight}}</view>
+		</view>
+		<view class="yifu">
+			<view style="font-size:26rpx;font-weight:400;color:rgba(21,21,21,1);margin-right:19rpx">需付款</view>
+			<view style="font-size:32rpx;font-weight:500;color:rgba(255,0,0,1);">￥{{hfOrder.actualPrice}}</view>
+		</view>
+	</view> -->
+	<view style="height:98rpx"></view>
+	<view class="footer" wx:if="{{hfOrder.orderStatus!='controversial'}}">
+		<view class="querenbtn" wx:if="{{hfOrder.orderStatus=='process'}}" style="margin-right:30rpx" bindtap="shenback">申请退款</view>
+		<view class="querenbtn" wx:if="{{hfOrder.orderStatus=='payment'}}" style="margin-right:30rpx" bindtap="cancel">取消订单</view>
+		<view class="querenbtn" wx:if="{{hfOrder.orderStatus=='process'}}" style="background-color:red;color:white;border:none" bindtap="refund">提醒发货</view>
+	</view>
+</view>

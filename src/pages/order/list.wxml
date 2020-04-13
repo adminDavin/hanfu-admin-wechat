@@ -1,5 +1,5 @@
 <view class="mydingdan">
-	<scroll-view scroll-x="true" class="nav" style="white-space: nowrap">
+	<scroll-view scroll-x="true" class="nav" style="white-space:nowrap;position:fixed;top:0;" >
 		<view wx:for="{{orderStatuses}}" wx:key="index" data-index="{{index}}" data-action="{{item.action}}" bindtap="onSelectedNav" style="display:inline-block">
 			<view class="nav-item">
 				<view class="nav-ziti">{{item.desc}}</view>
@@ -7,7 +7,7 @@
 			</view>
 		</view>
 	</scroll-view>
-	<view class="card" wx:for="{{hfOrders}}" wx:key="index" data-hf-order="{{item}}">
+	<view class="card" wx:for="{{hfOrders}}" wx:key="index" data-hf-order="{{item}}" bindtap="onSelectedOrder">
 	<view style="display:flex;align-items:center;justify-content:space-between;">
 		  <view class="dingdanhao">订单号:{{item.orderCode}}</view>
 		
