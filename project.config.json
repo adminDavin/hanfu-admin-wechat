@@ -86,17 +86,11 @@
 				},
 				{
 					"id": -1,
-					"name": "pages/product/ping-pay/ping-pay",
-					"pathName": "pages/product/ping-pay/ping-pay",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
 					"name": "pages/paysubmit/paysubmit",
 					"pathName": "pages/paysubmit/paysubmit",
 					"query": "",
 					"scene": null
+<<<<<<< HEAD
 				},
 				{
 					"id": -1,
@@ -110,6 +104,8 @@
 					"name": "wuliu",
 					"pathName": "pages/wuliu/wuliu",
 					"scene": null
+=======
+>>>>>>> 7e2eafa5b49171bb5d7a71c7d379862665c08e7b
 				}
 			]
 		}
