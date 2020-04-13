@@ -4,3 +4,12 @@
   padding:0 24rpx;
   box-sizing: border-box
 }
+.text-stoneName {
+  color:#888;
+   font-size: 20rpx;
+}
+.product-price-wrap .product-price-new{
+  color: #e80080;
+  margin-left:5px;
+  font-weight:900;
+}

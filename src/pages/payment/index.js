@@ -211,13 +211,13 @@ Page({
       goodsId: that.data.selectedGoods.id,
       hfDesc: 2, 
       quantity: that.data.quantity,
-      stoneId: that.data.selectedGoods.stoneId
+      stoneId: this.data.stoneId
     }
     goodsList.push(obj)
     console.log(goodsList)
     let params = {
-      requestId:'12334',
       goodsList: JSON.stringify(goodsList),
+      requestId: JSON.stringify(new Date().getTime()),
       userId: this.data.userId,
       // amount: e.currentTarget.dataset.payment,
       orderType: 'nomalOrder',
