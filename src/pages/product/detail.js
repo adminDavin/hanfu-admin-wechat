@@ -128,13 +128,13 @@ Page({
     console.log(wx.getStorageSync('userId'))
     console.log(this.data.quantity);
     var that =this;
-    if(that.data.selectedGoods.stoneId==null){
-     wx.showToast({
-       title: '请选择规格',
-       icon:'none'
-     })
-     return false;
-    }
+    // if(that.data.selectedGoods.stoneId==null){
+    //  wx.showToast({
+    //    title: '请选择规格',
+    //    icon:'none'
+    //  })
+    //  return false;
+    // }
     let obj={
       goodsId :that.data.selectedGoods.id,
       num :that.data.quantity,
