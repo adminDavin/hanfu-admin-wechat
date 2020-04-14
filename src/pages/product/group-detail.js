@@ -141,6 +141,7 @@ Page({
   onLoad: function (options) {
     var that = this;
     that.data.priceArea = options.priceArea;
+    that.data.stoneName = options.stoneName;
     that.data.activityId = options.activityId;
     console.log(options)
     if (options.action == 'groupActivity') {

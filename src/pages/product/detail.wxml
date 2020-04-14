@@ -67,7 +67,7 @@
         <!-- <text class="news">新品</text> -->
       </view>
       <view class="productName-collect">
-      <text style="font-size: 24rpx;">{{goods.bossName}}</text>
+      <text style="font-size: 24rpx;">{{stoneName}}</text>
         <view class="collect-one collect-margin" bindtap="attention">
           <image src="../../images/tabs/chakantieziguanzhu.png" class="depreciate-image" bindtap="collect" wx:if="{{collects==false}}" />
           <image src="../../images/tabs/aixin.png" class="depreciate-image" bindtap="collect" wx:if="{{collects==true}}" />

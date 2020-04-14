@@ -42,7 +42,7 @@ Page({
     let selected = e.currentTarget.dataset.item;
     console.log(selected)
     wx.navigateTo({
-      url: '/pages/product/detail?productId=' + selected.id +'&stoneId'+ selected.stoneId
+      url: '/pages/product/detail?productId=' + selected.id + '&stoneId=' + selected.stoneId + '&priceArea=' + selected.priceArea + '&stoneName=' + selected.stoneName
     });
   },
 

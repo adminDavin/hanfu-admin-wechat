@@ -2,6 +2,7 @@
 
 .inner {
   background-color: #f8f8f8;
+  height: 750rpx;
 }
 .group {
   display: flex;

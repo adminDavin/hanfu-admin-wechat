@@ -1,6 +1,80 @@
 /* src/pages/product/group/list.wxss */
-.p10{
+
+.item {
+  width: 160rpx;
+  text-align: center;
+}
+
+.p10 {
   margin-bottom: 20rpx;
-  padding:0 24rpx;
-  box-sizing: border-box
+  padding: 0 24rpx;
+  box-sizing: border-box;
+}
+
+
+.on {
+ color: red;
+  /* border-bottom: 3rpx solid rgb(243, 238, 238)(243, 238, 238); */
+  background-color: #FFF
+}
+
+/* pages/home/components/flash-sale.wxss */
+
+.swiper-tab-list {
+  font-size: 30rpx;
+  display: inline-block;
+  width: 33.33%;
+  color: rgba(255, 255, 255, 1);
+}
+
+.star-table {
+  /* width: 127px;
+  height: 31px; */
+  font-size: 32rpx;
+  font-family: PingFang SC;
+  font-weight: bold;
+  color: rgba(255, 255, 255, 1);
+}
+
+.moldbaby {
+  background-color: #ff6064;
+  padding-left: 20rpx;
+  margin-top: 20rpx;
+}
+
+.row {
+  background-color: #ff3135;
+}
+
+.flex-row {
+  margin-bottom: 10rpx;
+}
+
+.text-stoneName {
+  color: #888;
+  font-size: 20rpx;
+}
+
+.product-price-wrap .product-price-new{
+  color: #e80080;
+  margin-left:5px;
+  font-weight:900;
+}
+
+.p10 {
+  margin-bottom: 20rpx;
+  padding: 0 24rpx;
+  box-sizing: border-box;
+}
+
+.background {
+  height: 160rpx;
+  width: 100%;
+  background-color: #ff6064;
+}
+
+.text-Hot {
+  margin-right: 80%;
+  font-size: 26rpx;
+  color: rgba(255, 255, 255, 1);
 }

@@ -92,6 +92,7 @@ Page({
     that.data.activityState = options.activityState;
     that.data.startTime = options.startTime;
     that.data.priceArea = options.priceArea;
+    that.data.stoneName = options.stoneName;
     that.data.endTime = options.endTime
     // that.data.sellPrices = options.sellPrices
     console.log(options)

@@ -54,7 +54,7 @@ Component({
       console.log(e.currentTarget.dataset.item)
       let dataset = e.currentTarget.dataset.item
       wx.navigateTo({
-        url: '/pages/product/detail?action=seckillActivity&productId=' + dataset.id + '&stoneId=' + dataset.stoneId + '&startTime=' + dataset.startTime + '&endTime=' + dataset.endTime + '&activityState=' + dataset.activityState + '&priceArea=' + dataset.priceArea + '&activityId=' + dataset.activityId 
+        url: '/pages/product/detail?action=seckillActivity&productId=' + dataset.id + '&stoneId=' + dataset.stoneId + '&startTime=' + dataset.startTime + '&endTime=' + dataset.endTime + '&activityState=' + dataset.activityState + '&priceArea=' + dataset.priceArea + '&activityId=' + dataset.activityId + '&stoneName=' + dataset.stoneName
       })
     },
     updateData: function(selectedTime) {

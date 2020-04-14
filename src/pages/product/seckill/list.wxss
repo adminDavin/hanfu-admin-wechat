@@ -15,20 +15,21 @@
   box-sizing: border-box;
 }
 
-
-.on {
-  color: red;
-  background-color: #fff;
-}
-
-/* pages/home/components/flash-sale.wxss */
-
 .swiper-tab-list {
   font-size: 30rpx;
   display: inline-block;
   width: 33.33%;
   color: rgba(255, 255, 255, 1);
 }
+
+.on {
+ color: red;
+  /* border-bottom: 3rpx solid rgb(243, 238, 238)(243, 238, 238); */
+  background-color: #FFF
+}
+
+/* pages/home/components/flash-sale.wxss */
+
 
 .star-table {
   /* width: 127px;
@@ -58,10 +59,10 @@
   font-size: 20rpx;
 }
 
-.product-price-wrap .product-price-new {
+.product-price-wrap .product-price-new{
   color: #e80080;
-  margin-left: 5px;
-  font-weight: 900;
+  margin-left:5px;
+  font-weight:900;
 }
 
 .p10 {

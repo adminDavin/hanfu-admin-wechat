@@ -1,11 +1,5 @@
-<scroll-view  scroll-x="true" wx:if="{{slotLen==false}}">
-  <!-- <view class="row">
-    <view wx:for="{{slots}}" wx:key="index" bindtap="onSelectedTime" data-ind="{{index}}" data-item="{{item}}" class="swiper-tab-list {{currentTab==index ? 'on' : ''}}" >
-      <view class="item">{{item.sTime}}</view>
-      <view class="item">{{item.desc}}</view>
-    </view>
-  </view> -->
-</scroll-view>
+<!-- <scroll-view  scroll-x="true" wx:if="{{slotLen==false}}">
+</scroll-view> -->
 <view class="background">
   <view class="text-Hot">今日爆款</view>
   <view class="row" style="display:flex;justify-content:space-around;align-items:center">
@@ -16,14 +10,19 @@
   </view>
 </view>
 <scroll-view scroll-y="true" style="height:{{scrollH}}px;margin-top:24rpx;" bindscrolltolower="loadImages">
-  <view wx:for="{{productSecKillData}}" wx:key="id">
+ <view wx:for="{{productSecKillData}}" wx:key="id">
     <view class="flex-row p10" style="display: flex;" bind:tap="onSeletedProduct" data-item="{{item}}">
       <image class="flex-view-item" src="{{item.imageUrl}}" style="width:40%;height:250rpx"></image>
       <view class="flex-view-item p10" style="width:60%">
         <view style="text-align: left">{{item.productName}}</view>
-        <view style="text-align: left">{{item.stoneName}}</view>
+        <view style="text-align: left; margin-top: 50rpx;color: red;">￥{{item.priceArea/100}}
+          <text style='color:#888;text-decoration:line-through;margin-left:10px; '>￥{{item.linePrice/100}}</text>
+        </view>
         <view class="product-price-wrap" style="text-align: right">
           <p class="product-price-new">{{item.newPrice}}</p>
+        </view>
+        <view style="text-align: left">
+          <text class="text-stoneName">{{item.stoneName}}</text>
         </view>
       </view>
     </view>
