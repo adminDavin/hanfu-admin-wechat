@@ -4,13 +4,15 @@
   <!-- 头部 -->
   <view class='head'>
     <image class='head_img' src='../../image/list_img.png'></image>
-    <label class='head_name'>已签收</label>
-    <label class='head_title'>圆通速递：8889993221341234</label>
+    <label class='head_name' wx:if="{{wu.state==3}}">签收</label>
+    <label class='head_name' wx:if="{{wu.state==2}}">在途中</label>
+    <label class='head_name' wx:if="{{wu.state==4}}">问题件</label>
+    <label class='head_title'>{{wu.company}}：{{wu.logisticCode}}</label>
     <label class='head_tel_name'>官方客服:95559</label>
     <label class="head_tell">物流客服</label>
   </view>
   <!-- 追踪 -->
-  <view class='logisit' wx:for="{{list}}" wx:key="key">
+  <view class='logisit' wx:for="{{wu.traces}}" wx:key="key">
     <!-- 列表 -->
     <view class='list'>
       <!-- 判断列表中id==0并且长度大于1  已完成ICON带线 -->
@@ -25,10 +27,10 @@
       <image class='list_img' wx:if="{{item.id==3}}" src='../../image/222.png'></image>
       <view class='list_name_page'>
         <!-- 列表名称 -->
-        <lable class='list_name'>{{item.name}}</lable>
+        <lable class='list_name'>{{item.AcceptStation}}</lable>
       </view>
       <!-- 时间 -->
-      <view class='list_dates_page'>{{item.dates}}</view>
+      <view class='list_dates_page'>{{item.AcceptTime}}</view>
  
     </view>
     <!-- 列表底线 -->

@@ -10,6 +10,12 @@ Page({
     hfOrder:{},
     img:'',
   },
+  gowuliu:function(e){
+    console.log(e.currentTarget.dataset.id)
+    wx.navigateTo({
+      url: '../wuliu/wuliu?orderId='+this.data.hfOrder.id+'&stoneId='+e.currentTarget.dataset.id,
+    })
+  },
   generateUUID:function () {
     var d = new Date().getTime();
     var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {

@@ -39,7 +39,9 @@
     "pages/pay/pay",
     "pages/paysubmit/paysubmit",
     "pages/product/seek/seek",
-    "pages/wuliu/wuliu"
+    "pages/wuliu/wuliu",
+    "pages/ping/ping",
+    "components/xing/xing"
   ],
   "usingComponents": {
     "van-tab": "./pages/vant/weapp/dist/tab/index",

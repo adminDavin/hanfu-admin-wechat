@@ -1,6 +1,8 @@
 // pages/userhome/address/address.js
+import car from '../../services/car.js';
 Page({
   data: {
+    wu:{},
     // 列表数据
     list: [{
         // 状态
@@ -26,12 +28,32 @@ Page({
       }
  
  
-    ]
+    ],
  
- 
+    orderId:'',
+    stoneId:"",
   },
+  
   onLoad: function(options) {
     // 页面初始化 options为页面跳转所带来的参数
+    this.setData({
+      orderId:options.orderId,
+      stoneId:options.stoneId
+    })
+    this.getwu();
+  },
+  getwu:function(){
+    let obj={
+      orderId: this.data.orderId,
+      stoneId:this.data.stoneId,
+    }
+    var that=this;
+    car.logistics(obj, (res) => {
+      console.log('3',res);
+      this.setData({
+          wu:res.data.data
+      })
+     });
   },
   onReady: function() {
     // 页面渲染完成

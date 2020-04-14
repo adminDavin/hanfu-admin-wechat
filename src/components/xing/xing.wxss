@@ -1,0 +1,110 @@
+/* components/star/star.wxss */
+
+.buy{
+  margin-top: 200rpx;
+  text-align: center;
+}
+.cover_screen {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000;
+  opacity: 0.2;
+  overflow: hidden;
+  z-index: 1000;
+  color: #fff;
+}
+.buy_box {
+  width: 100%;
+  box-sizing: border-box;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 2000;
+  background: #fff;
+  padding: 20rpx;
+  overflow: hidden;
+}
+.buy_box .startitle {
+    font-size: 28rpx;
+    text-align: center;
+    line-height: 40rpx;
+    color: #333;
+    padding: 20rpx 0;
+}
+/* 星星 */
+.footer_end{
+  display: flex
+}
+.footer_end button{
+  width: 30%;
+}
+/* 插入星星 */
+/*评价区域 */
+.container .evaluate_contant .evaluate_item {
+ font-size: 30rpx;
+ color: gray;
+
+ margin-top: 30rpx;
+}
+ 
+/*评价标题 */
+.container .evaluate_contant .evaluate_item .evaluate_title {
+ display: inline-block;
+}
+ 
+/*评价盒子 */
+.container .evaluate_contant .evaluate_item .evaluate_box {
+ position: absolute;
+ /* left: 220rpx; */
+
+ display: inline-block;
+}
+ 
+/*星星评价的每个图片 */
+.container .evaluate_contant .evaluate_item .evaluate_box .star-image {
+ position: absolute;
+ width: 40rpx;
+ height: 40rpx;
+ src: "../../image/star_gray.png";
+}
+
+/* 评价对应内容 */
+.evaluation{
+  text-align: center;
+  margin: 30rpx 0 40rpx;
+  color: #535353;
+}
+ 
+/*星星区域 */
+.container .evaluate_contant .evaluate_item .evaluate_box .star-image .staritem {
+ position: absolute;
+ top: 0rpx;
+ left: 0rpx;
+ width: 35rpx;
+ height: 35rpx;
+}
+ 
+/*按钮 */
+.container .evaluate_contant .sub_button {
+ height: 60rpx;
+ font-size: 30rpx;
+ line-height: 60rpx;
+ margin: 20rpx;
+}
+
+
+.detail-btn{
+  width: 750rpx;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 100rpx;
+}
+.done-person{
+  width:220rpx;
+  height:72rpx;
+  border-radius:36rpx;
+}

@@ -1,0 +1,16 @@
+<view>
+ <view style="border-radius:15rpx; display:flex; background:#fff;padding:20rpx;">
+   <image src="../../img/choose.png" style="width:170rpx;height:170rpx;"></image>
+   <view style="width:60%;margin-left:25rpx;">
+    <view style="font-size:26rpx;color:#151515;">夹克外套男秋冬季新款修身工装衣服男装加绒加厚学生春秋季上衣青...</view>
+    <star> </star> 
+   </view>
+ </view>
+ <view style="border-radius:15rpx; width:300rpx;background:#fff;width:100%;margin-top:20rpx;overflow:hidden;">
+  <textarea style="margin:40rpx;font-size:30rpx;" placeholder="这个东西不错，很符合本宝宝的品味。"></textarea>
+ </view>
+ <view style="margin-top:20rpx;">
+   <image src="../../img/tu.png" style="border-radius:15rpx;width:170rpx;height:170rpx;"></image>
+ </view>
+
+</view>

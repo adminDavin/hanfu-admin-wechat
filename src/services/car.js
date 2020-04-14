@@ -127,6 +127,18 @@ function modifyStatus(params,handleResult) {
     }
   });
 }
+function logistics(params,handleResult) {
+  console.log(app.endpoint.order + '/query/logistics')
+  wx.request({
+    url: app.endpoint.order+ '/query/logistics',
+    method: 'GET',
+    data: params,
+    success: res => handleResult(res),
+    fail: (res) => {
+      console.log( res);
+    }
+  });
+}
 
 export default {
   addcar:addcar,
@@ -139,4 +151,5 @@ export default {
   getquan:getquan,
   modifyStatus:modifyStatus,
   getdetail:getdetail,
+  logistics:logistics
 };

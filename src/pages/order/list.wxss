@@ -4,7 +4,9 @@
   height: 100%;
   background-color: #f8f8f8;
 }
-
+page{
+  padding-top:37px;
+}
 .nav {
   width: 100%;
   height: 88rpx;
@@ -69,6 +71,12 @@
 .dingdanhao1{
   font-size:24rpx;
   
+}
+.dingdanhao2{
+  margin-right:20rpx;
+  font-size: 26rpx;
+  font-weight: 400;
+  color: rgba(51, 51, 51, 1);
 }
 .danshop {
   width: 80%;

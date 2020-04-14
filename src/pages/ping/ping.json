@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "star": "../components/xing/xing"
+  },
+  "navigationBarTitleText": "评价晒单"
+}

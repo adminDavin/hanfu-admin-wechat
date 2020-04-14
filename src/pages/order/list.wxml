@@ -23,8 +23,19 @@
 	
 		
 		<view wx:for="{{item.detailRequestList}}" wx:for-item="professionitem">
-			<view class="dingdanhao" style="margin-top:3px;">店铺：{{professionitem.stoneName}}</view>
-		
+		<view style="display:flex;align-items:center;margin-top:3px;" >
+					<view class="dingdanhao2" >店铺：{{professionitem.stoneName}}</view>
+				<view class="dingdanhao" wx:if="{{professionitem.detailStatus=='process'}}">等待商家处理</view>
+				<view class="dingdanhao" wx:if="{{professionitem.detailStatus=='payment'}}">等待付款</view>
+				<view class="dingdanhao" wx:if="{{professionitem.detailStatus=='shipped'}}">待发货</view>
+				<view class="dingdanhao" wx:if="{{professionitem.detailStatus=='cancel'}}">已取消</view>
+				<view class="dingdanhao" wx:if="{{professionitem.detailStatus=='finished'}}">评价成功，感谢您</view>
+				<view class="dingdanhao" wx:if="{{professionitem.detailStatus=='transport'}}">等待收货</view>
+				<view class="dingdanhao" wx:if="{{professionitem.detailStatus=='evaluate'}}">待评价</view>
+				<view class="dingdanhao" wx:if="{{professionitem.detailStatus=='controversial'}}">等待退款</view>
+				<view class="dingdanhao" wx:if="{{professionitem.detailStatus=='pickup'}}">等待提货</view>
+		</view>
+	
 			<view wx:for="{{professionitem.hfOrderDetailList}}" wx:for-item="professionitem1">
 				<view class="card-top">
 

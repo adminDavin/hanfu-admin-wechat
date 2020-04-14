@@ -1,0 +1,22 @@
+	<view class='container'>
+		<view class='evaluate_contant'>
+			<!--外层循环控制有几个评价条目 -->
+			<block wx:for='{{evaluate_contant}}' wx:key='' wx:for-index='idx'>
+				<view class='evaluate_item'>
+					
+					<!--星星评价 -->
+					<view class='evaluate_box'>
+						<!--内层循环展示每个评价条目的星星 -->
+						<block wx:for="{{stars}}" wx:key=''>
+							<image class="star-image" style="left: {{item*57}}rpx" src="{{scores[idx] > item ?normalSrc:selectedSrc}}">
+								<view class="staritem" data-score="{{item + 1}}" data-idx='{{idx}}' bindtap="selectRight"></view>
+							</image>
+						</block>
+					</view>
+
+				</view>
+			</block>
+	
+	
+		</view>
+	</view>
