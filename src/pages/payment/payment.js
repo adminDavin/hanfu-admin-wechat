@@ -1,6 +1,5 @@
 // src/pages/payment/payment.js
 const app = getApp();
-
 import paymentApi from '../../services/hf-payment.js';
 import util from '../../utils/util.js';
 import orderApi from '../../services/hf-order.js';
@@ -59,8 +58,11 @@ Page({
         console.log(that.data.orderId)
         console.log(that.data.userId)
         console.log(that.data.groupid)
+        console.log(that.data)
         if (that.data.groupid == '') {
+          console.log(that.data.groupid == '')
           if (that.data.groupActivity) {
+            console.log(that.data.groupActivity)
             let param = {
               activityId: that.data.activityId,
               goodsId: that.data.goodsId,
@@ -79,8 +81,8 @@ Page({
               }
             })
           }
-        }
-        if (that.data.groupid !== '' || that.data.activityId !== undefined) {
+        } else
+          if (that.data.groupid !== '' && that.data.activityId !== undefined) {
           let param = {
             activityId: that.data.activityId,
             goodsId: that.data.goodsId,
@@ -143,8 +145,8 @@ Page({
               }
             })
           }
-        }
-        if (that.data.groupid !== '' || that.data.activityId !== undefined ) {
+        }else
+        if (that.data.groupid !== '' && that.data.activityId !== undefined ) {
           let param = {
             activityId: that.data.activityId,
             goodsId: that.data.goodsId,

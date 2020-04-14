@@ -54,7 +54,7 @@ Component({
       let selected = e.currentTarget.dataset.item;
       console.log(selected)
       wx.navigateTo({
-        url: '/pages/product/detail?productId=' + selected.id + '&stoneId=' + e.currentTarget.dataset.item.stoneId + '&action=' +'competitive'
+        url: '/pages/product/detail?productId=' + selected.id + '&stoneId=' + e.currentTarget.dataset.item.stoneId + '&action=' +'competitive'+'&priceArea='+selected.priceArea
       });
     },
     loadImages: function () { },

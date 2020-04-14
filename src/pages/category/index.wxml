@@ -1,12 +1,17 @@
 <scroll-view scroll-y="true" style="height:{{height}}px">
   <view class="classify">
     <view class="classify-header-box">
-      <image src="../../images/saoyisao.png" class="classify-tus" />
+      <button bindtap="chongqingjzb" class='kefubtn cu-btn content'>
+        <image  src="../../images/saoyisao.png" class="classify-tus" />
+      </button>
       <view class="classify-header" bindtap="sousuo">
         <image class="classify-tu" src="../../images/sousuo.png" />
         <input type="text" class="classify-input" placeholder="显示器2K" />
       </view>
+      <button class='kefubtn cu-btn content' open-type="contact">
       <image src="../../images/xiaoxi.png" class="classify-tus" />
+      </button>
+
     </view>
     <!-- banner区 -->
     <view class="classify-banner">

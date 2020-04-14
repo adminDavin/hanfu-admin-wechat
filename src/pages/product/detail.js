@@ -435,6 +435,7 @@ Page({
     },
     onSelectedGoodsSpec: function (e) { 
       console.log(this.data.selectedGoods)
+      console.log(this.data.selectedGoods)
         let animation = wx.createAnimation({
             duration: 200,
             timingFunction: "ease",
@@ -528,9 +529,9 @@ Page({
       console.log(this.data.selectedGoods, paymentType);
       console.log(this.data.quantity);
       this.data.selectedGoods.quantitys = this.data.quantity
-      if (this.data.selectedGoods.sellPrices == undefined) {
-        this.data.selectedGoods.sellPrices = this.data.selectedGoods.sellPrices
-      }
+      // if (this.data.selectedGoods.sellPrices == undefined) {
+      //   this.data.selectedGoods.sellPrices = this.data.selectedGoods.sellPrices
+      // }
       let params = {
         selectedGoods: this.data.selectedGoods,
         paymentType: paymentType,

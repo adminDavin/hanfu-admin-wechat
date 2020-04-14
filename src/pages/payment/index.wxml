@@ -46,7 +46,8 @@
     <view class="address-bottom">{{addressList.contact}} {{addressList.phoneNumber}}</view>
   </view>
   <view wx:else>
-    <button bind:tap="onAddUserAddress">新增收货地址</button>
+    <!-- <button bind:tap="onAddUserAddress">收货地址</button> -->
+    <button bind:tap="selectLocation">选择收货地址</button>
   </view>
 </view>
 
@@ -84,7 +85,7 @@
 <view class="youjicard">
   <view class="youji">
     <view class="ziti" style="line-height:80rpx">商品金额</view>
-    <text class="ziti" style="line-height:80rpx">￥{{selectedGoods.sellPrice}}</text>
+    <text class="ziti" style="line-height:80rpx">￥{{selectedGoods.sellPrice/100}}</text>
   </view>
 </view>
 
@@ -103,7 +104,7 @@
 <view style="height:98rpx"></view>
 <view class="footer">
   <view style="font-size:40rpx;font-weight:bold;color:rgba(255,0,0,1);line-height:98rpx">
-    ￥{{ selectedGoods.sellPrices + pickUp.freight }}
+    ￥{{ (selectedGoods.sellPrice + pickUp.freight)/100 }}
   </view>
-  <view class="submit" bindtap="onCreateOrder" data-payment="{{ selectedGoods.sellPrices + pickUp.freight }}">提交订单</view>
+  <view class="submit" bindtap="onCreateOrder" data-payment="{{ selectedGoods.sellPrice + pickUp.freight }}">提交订单</view>
 </view>

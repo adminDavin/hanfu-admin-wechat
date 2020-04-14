@@ -9,7 +9,8 @@
 
 .on {
   color: red;
-  border-bottom: 3rpx solid red;
+  /* border-bottom: 3rpx solid rgb(243, 238, 238)(243, 238, 238); */
+  background-color: #FFF
 }
 
 .star-table {

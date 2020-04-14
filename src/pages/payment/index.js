@@ -1,7 +1,6 @@
 // src/pages/payment/index.js
 
 const app = getApp();
-
 import userAddressApi from '../../services/hf-user-address.js';
 import orderApi from '../../services/hf-order.js';
 import util from '../../utils/util.js';
@@ -169,7 +168,6 @@ Page({
           });
         }
         thta.setData({
-          ['selectedGoods.sellPrices']: res.data.data.money,
           ['selectedGoods.sellPrice']: res.data.data.money
         });
         console.log(thta.data.selectedGoods)
@@ -246,18 +244,8 @@ Page({
       console.log(res)
       console.log(params);
       wx.navigateTo({
-        url: '/pages/payment/payment?userId=' + this.data.userId + '&outTradeNo=' + res.data.data + '&paymentName=' + params.paymentName + '&groupActivity=' + this.data.groupActivity + '&activityId=' + this.data.activityId + '&goodsId=' + this.data.selectedGoods.id + '&userId=' + this.data.userId + '&orderId=' + res.data.data.id + '&groupid=' + this.data.groupid,
+        url: '/pages/payment/payment?userId=' + this.data.userId + '&outTradeNo=' + res.data.data.orderCode + '&paymentName=' + params.paymentName + '&groupActivity=' + this.data.groupActivity + '&activityId=' + this.data.activityId + '&goodsId=' + this.data.selectedGoods.id + '&userId=' + this.data.userId + '&orderId=' + res.data.data.id + '&groupid=' + this.data.groupid,
       })
-      // if (this.data.groupActivity) {
-      //   let param={
-      //     activityId:this.data.activityId,
-      //     goodsId: this.data.selectedGoods.id,
-      //     userId: this.data.userId,
-      //   }
-      //   orderApi.addGroup(param, (res) => {
-      //     console.log('开团成功')
-      //   })
-      // }
     });
   }
 })

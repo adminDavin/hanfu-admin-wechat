@@ -41,8 +41,10 @@ swiper-item {
 
 .header-title {
     display: flex;
+    justify-content:space-between;
     height: 88rpx;
-    margin-left: 20rpx;
+    line-height: 44rpx;
+    margin: 0 20rpx;
 }
 
 .header-t {
@@ -74,10 +76,10 @@ swiper-item {
     padding-top: 14rpx;
 }
 
-.header-margin {
+/* .header-margin {
     margin-left: 280rpx;
     margin-right: 33rpx;
-}
+} */
 
 .sao-tu {
     width: 36rpx;

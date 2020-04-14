@@ -6,5 +6,5 @@
   display: flex;
 }
 .row view {
-  margin: 5rpx;
+  /* margin: 5rpx; */
 }

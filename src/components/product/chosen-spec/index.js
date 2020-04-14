@@ -102,9 +102,6 @@ Component({
     onSubmitSelectedGoods() {
       console.log(this.data);
       console.log(this.properties.selectedGoodsId);
-      if (this.data.selectedGoods.sellPrices == undefined) {
-        this.data.selectedGoods.sellPrices = this.data.selectedGoods.sellPrice
-      }
       if (this.properties.groupId !== 0) {
         this.data.selectedGoods.groupid = this.properties.groupId
       }
@@ -136,7 +133,7 @@ Component({
               });
             }
             that.setData({
-              ['selectedGoods.sellPrices']: res.data.data.money,
+              ['selectedGoods.sellPrice']: res.data.data.money,
             });
             console.log(that.data.selectedGoods)
           }
@@ -166,7 +163,7 @@ Component({
               });
             }
             that.setData({
-              ['selectedGoods.sellPrices']: res.data.data.money,
+              ['selectedGoods.sellPrice']: res.data.data.money,
             });
             // that.data.selectedGoods.sellPrices = 
             console.log(that.data.selectedGoods)
@@ -180,9 +177,6 @@ Component({
         console.log('跳订单页')
         console.log(this.data.selectedGoods)
         // 创建订单
-        if (this.data.selectedGoods.sellPrices == undefined) {
-          this.data.selectedGoods.sellPrices = this.data.selectedGoods.sellPrice
-        }
         console.log(this.data.groupActivity)
         let params = {
           selectedGoods: this.data.selectedGoods,
@@ -235,7 +229,7 @@ Component({
               that.setData({
                 selectedGoods: selectedGoods,
               });
-              that.data.selectedGoods.sellPrices = res.data.data.money
+              that.data.selectedGoods.sellPrice = res.data.data.money
               console.log(that.data.selectedGoods)
             }
           }
@@ -267,7 +261,7 @@ Component({
               that.setData({
                 selectedGoods: selectedGoods,
               });
-              that.data.selectedGoods.sellPrices = res.data.data.money
+              that.data.selectedGoods.sellPrice = res.data.data.money
               console.log(that.data.selectedGoods)
             }
           }
@@ -277,7 +271,7 @@ Component({
   },
   lifetimes: {
     ready: function () {
-      goodsApi.getGoodDetailByProductId({ productId: this.properties.productId, quantity: this.properties.quantity }, (res) => {
+      goodsApi.getGoodDetailByProductId({ productId: this.properties.productId, quantity: '1' }, (res) => {
         let goodsList = res.data.data;
         console.log(res.data.data)
         for (let goods of goodsList) {

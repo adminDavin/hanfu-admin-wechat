@@ -1,4 +1,4 @@
-<scroll-view class="row" scroll-x="true" wx:if="{{slotLen==false}}">
+<scroll-view  scroll-x="true" wx:if="{{slotLen==false}}">
   <!-- <view class="row">
     <view wx:for="{{slots}}" wx:key="index" bindtap="onSelectedTime" data-ind="{{index}}" data-item="{{item}}" class="swiper-tab-list {{currentTab==index ? 'on' : ''}}" >
       <view class="item">{{item.sTime}}</view>

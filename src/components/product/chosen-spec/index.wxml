@@ -4,7 +4,7 @@
     <view wx:for="{{selectedGoods.fileIds}}" wx:key="index">
       <image src="{{item}}" style="width:160rpx;height:160rpx"></image>
     </view>
-    <view >￥{{selectedGoods.sellPrice}}</view>
+    <view >￥{{selectedGoods.sellPrice/100}}</view>
   </view>
   <scroll-view scroll-y="true" class="guige-scroll">
     <view wx:for='{{goodsList}}' wx:key="index">
