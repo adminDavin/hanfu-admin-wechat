@@ -10,6 +10,18 @@ Page({
     hfOrder:{},
     img:'',
   },
+  ping:function(e){
+    console.log(e.currentTarget.dataset.id)
+    wx.navigateTo({
+      url: '../ping/ping?orderId='+this.data.hfOrder.id+'&item='+JSON.stringify(e.currentTarget.dataset.item),
+    })
+  },
+  getma:function(e){
+    console.log(e.currentTarget.dataset.id)
+    wx.navigateTo({
+      url: '../ma/ma?orderId='+this.data.hfOrder.id+'&stoneId='+e.currentTarget.dataset.id,
+    })
+  },
   gowuliu:function(e){
     console.log(e.currentTarget.dataset.id)
     wx.navigateTo({

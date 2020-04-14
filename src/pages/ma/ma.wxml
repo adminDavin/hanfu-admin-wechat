@@ -1,0 +1,5 @@
+<view style="text-align:center;margin-bottom:20rpx;margin-top:200rpx;">核销码</view>
+<view style="display:flex;justify-content:center;">
+  <image style="width: 340rpx;height: 340rpx;" src="{{img}}/cancel/activity/create/activity-code?orderId={{orderId}}&stoneId={{stoneId}}"></image>
+</view>
+

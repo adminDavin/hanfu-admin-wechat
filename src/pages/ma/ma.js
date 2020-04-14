@@ -1,27 +1,35 @@
-// src/pages/ping/ping.js
+// src/pages/ma/ma.js
+import car from '../../services/car.js';
+const app = getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    orderId:{},
-    storeorder:{}
+    img:'',
+    orderId:'',
+    stoneId:"",
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var that=this;
-    that.setData({
-      storeorder:  JSON.parse(options.item),
-      orderId:options.orderId
+    this.setData({
+      orderId:options.orderId,
+      stoneId:options.stoneId
     })
-    console.log(that.data.orderId);
-    console.log(that.data.storeorder);
+    this.ma();
   },
+ma:function(){
+    let obj={
+      orderId: this.data.orderId,
+      stoneId:this.data.stoneId,
+    }
 
+ 
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -33,7 +41,10 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.setData({
+      img: app.endpoint.order
+     })
+    
   },
 
   /**

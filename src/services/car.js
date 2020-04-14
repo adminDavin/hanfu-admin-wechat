@@ -139,6 +139,34 @@ function logistics(params,handleResult) {
     }
   });
 }
+function ma(params,handleResult) {
+  console.log(app.endpoint.order + '/cancel/activity/create/activity-code')
+  wx.request({
+    url: app.endpoint.order+ '/cancel/activity/create/activity-code',
+    method: 'GET',
+    data: params,
+    success: res => handleResult(res),
+    fail: (res) => {
+      console.log( res);
+    }
+  });
+}
+function ping(params,handleResult) {
+  console.log(app.endpoint.product + '/goods/addEvaluateProduct')
+  wx.request({
+    url: app.endpoint.product + '/goods/addEvaluateProduct',
+    header: {
+      'content-type': 'application/x-www-form-urlencoded'
+    },
+    method: 'post',
+    data:params,
+    success: res => handleResult(res),
+    fail: (res) => {
+      console.log( res);
+    }
+  });
+}
+
 
 export default {
   addcar:addcar,
@@ -151,5 +179,7 @@ export default {
   getquan:getquan,
   modifyStatus:modifyStatus,
   getdetail:getdetail,
-  logistics:logistics
+  logistics:logistics,
+  ma:ma,
+  ping:ping,
 };

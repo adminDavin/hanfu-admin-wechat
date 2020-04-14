@@ -46,6 +46,7 @@
 			<view wx:if="{{hfOrder.orderStatus=='controversial'}}" style="margin-top:40rpx; border-radius:80rpx; width:226rpx;height:67rpx; color:#aaa;background:#eee;display:flex;align-items:center;justify-content:center;">
 				已申请
 			</view>
+
 			<view wx:if="{{hfOrder.orderStatus=='process'}}"  style="margin-top:40rpx; border-radius:80rpx; width:226rpx;height:67rpx; color:#FE1D42;background:#FFFFFD;display:flex;align-items:center;justify-content:center;">
 				提醒发货
 			</view>
@@ -92,8 +93,12 @@
 
 			</view>
 		</view>
-		<view style="display:flex;justify-content:flex-end;padding-bottom:20rpx;" >
-			<view class="querenbtn" wx:if="{{item.detailStatus=='transport'}}"  data-id='{{item.stoneId}}' bindtap="gowuliu">订单跟踪</view>
+		<view  style="display:flex;justify-content:flex-end;padding-bottom:20rpx;" >
+			<view class="querenbtn" wx:if="{{item.detailStatus=='transport'&&item.takingType=='delivery'}}"  data-id='{{item.stoneId}}' bindtap="gowuliu">订单跟踪</view>
+			<view class="querenbtn" wx:if="{{item.detailStatus=='transport'&&item.takingType=='selfPickUp'}}"  data-id='{{item.stoneId}}' bindtap="getma">核销码</view>
+			<view  data-item='{{item}}' class="querenbtn" bindtap="ping" wx:if="{{item.detailStatus=='evaluate'}}" >
+				去评价
+			</view>
 		</view>
 		
 	</view>
