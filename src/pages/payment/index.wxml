@@ -18,7 +18,7 @@
       <view>
         <sub style="font-size:25rpx;">¥</sub>
         <span wx:if="{{item.discountCouponType=='1'}}" style="font-weight:bold;font-size:40rpx;"> {{we.toFixed(item.useLimit.minus/100)}}<span style="color:red;font-size:20rpx;">元</span></span>
-        <span wx:if="{{item.discountCouponType=='0'}}" style="font-weight:bold;font-size:40rpx;"> {{item.useLimit.minus}}<span style="color:red;font-size:20rpx;">折</span></span>
+        <span wx:if="{{item.discountCouponType=='0'}}" style="font-weight:bold;font-size:40rpx;"> {{we.toFixed(item.useLimit.minus/10)}}<span style="color:red;font-size:20rpx;">折</span></span>
       </view>
       <view style='font-size:26rpx;'>
         满{{we.toFixed(item.useLimit.full/100)}}元可用
@@ -28,7 +28,7 @@
       立即使用
     </view>
      <view style="font-size:30rpx;padding-top: 20rpx;" wx:if="{{item.idDeleted==1}}">
-      未满{{we.toFixed(item.useLimit.full)}}
+      未满{{we.toFixed(item.useLimit.full/100)}}
     </view>
   </view>
   <!-- <view class="guigeqr" bindtap="onConfirmSelectedGoods" data-type="createOrder">确认</view> -->
@@ -78,7 +78,7 @@
 
 <view wx:if="{{competitive}}" class="quhuomethod" style="margin-top:50rpx">
   <view class="ziti" style="width:260rpx">店铺优惠卷</view>
-  <text wx:if="{{useLimit.full!==''}}" bindtap="changeCoupon" style=" color:red;" class="ziti">满￥{{we.toFixed(useLimit.full/100)}}元减<text wx:if="{{useLimit.discountCouponType=='1'}}">￥{{we.toFixed(useLimit.minus/100)}}元</text><text wx:if="{{useLimit.discountCouponType=='0'}}">￥{{useLimit.minus}}折</text>
+  <text wx:if="{{useLimit.full!==''}}" bindtap="changeCoupon" style=" color:red;" class="ziti">满￥{{we.toFixed(useLimit.full/100)}}元减<text wx:if="{{useLimit.discountCouponType=='1'}}">￥{{we.toFixed(useLimit.minus/100)}}元</text><text wx:if="{{useLimit.discountCouponType=='0'}}">￥{{we.toFixed(useLimit.minus/10)}}折</text>
   </text>
   <text wx:if="{{useLimit.full==''}}" bindtap="changeCoupon" style=" color:red;" class="ziti">请选择优惠卷</text>
   <image src="/images/rightjiantou.png" style="width:12rpx;height:22rpx" bindtap="changeCoupon"></image>

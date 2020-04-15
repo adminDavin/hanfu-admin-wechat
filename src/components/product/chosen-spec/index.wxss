@@ -152,7 +152,8 @@
 .guige-scroll {
   margin-top: 20rpx;
   width: 100%;
-  height: 260rpx;
+  height: 570rpx;
+  /* background-color: red */
 }
 
 .guanbibox-sec {
