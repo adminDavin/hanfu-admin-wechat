@@ -39,18 +39,12 @@ Page({
       desc: "待理中"
     },
     {
-<<<<<<< HEAD
       img: '../../img/shouhuo.png',
       action: "process",
-=======
-      img:'../../img/shouhuo.png',
-      action: "transport",
->>>>>>> 19fcbb0ea6cb35769be855511f159c3970119ba3
       quantity: 0,
       desc: "运送中"
     },
     {
-<<<<<<< HEAD
       img: '../../img/ziyuan.png',
       action: "process",
       quantity: 0,
@@ -59,16 +53,6 @@ Page({
     {
       img: '../../img/daifukuan.png',
       action: "complete",
-=======
-      img:'../../img/ziyuan.png',
-      action: "evaluate",
-      quantity: 0,
-      desc: "待评价"
-    },
-     {
-      img:'../../img/daifukuan.png',
-      action: "controversial",
->>>>>>> 19fcbb0ea6cb35769be855511f159c3970119ba3
       quantity: 0,
       desc: "退换/售后"
     }],
@@ -173,22 +157,10 @@ Page({
   recharge: function (e) {
     console.log(123, this.data.hui)
     wx.navigateTo({
-<<<<<<< HEAD
       url: '/pages/myself/tequan/tequan',
     })
   },
   onSelectedOrder: function (e) {
-=======
-      url: '/pages/myself/tequan/tequan?hui='+this.data.hui,
-     })
-  },
-  onSelectedOrder1: function(e) {
-    console.log(e);
-    console.log(e);
-    this.handleSelected('/pages/order/list', e.currentTarget.dataset.action);
-  },
-  onSelectedOrder: function(e) {
->>>>>>> 19fcbb0ea6cb35769be855511f159c3970119ba3
     console.log(this.data.orderStatuses);
     console.log(e);
     this.handleSelected('/pages/order/list', e.currentTarget.dataset.action);
