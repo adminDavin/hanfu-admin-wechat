@@ -35,7 +35,17 @@ Page({
       userId: options.userId, outTradeNo: options.outTradeNo
     }, (res) => {
       let payment = res.data.data;
-
+      console.log(res)
+      if (res.data.status) {
+        wx.showToast({
+          title: '余额不足',
+          icon: 'none'
+        });
+        wx.navigateTo({
+          url: '/pages/order/list?action=all',
+        });
+        return
+      }
       if (options.paymentName == "wechart") {
         // 微信支付 待用户确认
         let params = {
