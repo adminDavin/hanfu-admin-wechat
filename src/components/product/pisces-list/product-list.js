@@ -53,9 +53,16 @@ Component({
     onSeletedProduct: function (e) {
       let selected = e.currentTarget.dataset.item;
       console.log(selected)
-      wx.navigateTo({
-        url: '/pages/product/detail?productId=' + selected.id + '&stoneId=' + e.currentTarget.dataset.item.stoneId + '&action=' + 'competitive' + '&priceArea=' + selected.priceArea + '&stoneName=' + selected.stoneName
-      });
+      if (selected.productActivityType == 'groupActivity') {
+        wx.navigateTo({
+          url: '/pages/product/group-detail?productId=' + selected.id + '&stoneId=' + selected.stoneId + '&action=' + 'competitive' + '&priceArea=' + selected.priceArea + '&stoneName=' + selected.stoneName + '&action=' + selected.productActivityType + '&activityId=' + selected.activityId + '&stoneName=' + selected.stoneName
+        });
+      } else {
+        wx.navigateTo({
+          url: '/pages/product/detail?productId=' + selected.id + '&stoneId=' + selected.stoneId + '&action=' + 'competitive' + '&priceArea=' + selected.priceArea + '&stoneName=' + selected.stoneName + '&action=' + selected.productActivityType + '&activityId=' + selected.activityId + '&stoneName=' + selected.stoneName
+        });
+      }
+
     },
     loadImages: function () { },
     getProducts: function (params) {

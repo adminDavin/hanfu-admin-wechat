@@ -1,5 +1,21 @@
 <view wx:if="{{!isAuth}}">
+  <view class="mask-dl">
+    <text class="mask-tible">您还未登录</text>
+    <view class="mask-tibles">申请获取以下权限</view>
+    <text class="mask-tibles">获得你的公开信息(昵称, 头像, 地址及性别)</text>
+  </view>
+  <view style="text-align: center;">
   <view class='headView'>
+    <open-data class='headImageView' type="userAvatarUrl"></open-data>
+  </view>
+  <open-data type="userNickName"></open-data>
+  </view>
+  <view class="mask-buttom">
+    <view class="buttom" bindtap="nologin">手机号登录</view>
+    <button  style="height:62rpx;width:183rpx;" class="buttom-two" type='primary' open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="bindGetUserInfo">微信授权</button>
+  </view>
+
+  <!-- <view class='headView'>
     <open-data class='headImageView' type="userAvatarUrl"></open-data>
     <open-data type="userNickName"></open-data>
   </view>
@@ -13,10 +29,26 @@
   </button>
   <button class='bottom' type='default' bindtap="mobilePhone">
     手机号登录
-  </button>
+  </button> -->
 </view>
 <view wx:else>
+
+  <view class="mask-dl">
+    <text class="mask-tible">您还未登录</text>
+    <view class="mask-tibles">申请获取以下权限</view>
+    <text class="mask-tibles">获得你的公开信息(昵称, 头像, 地址及性别)</text>
+  </view>
+  <view style="text-align: center;">
   <view class='headView'>
+    <open-data class='headImageView' type="userAvatarUrl"></open-data>
+  </view>
+  <open-data type="userNickName"></open-data>
+  </view>
+  <view class="mask-buttom">
+    <view class="register-deng"  bindtap="onWechartLogin">登录</view>
+    <button  style="height:62rpx;width:183rpx;" class="buttom-two" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">获取手机号</button>
+  </view>
+  <!-- <view class='headView'>
     <view class='headImageView'>
       <open-data type="userAvatarUrl"></open-data>
     </view>
@@ -40,5 +72,5 @@
     <view class="input-box input-bottom">
       <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">获取手机号</button>
     </view>
-  </view>
+  </view> -->
 </view>

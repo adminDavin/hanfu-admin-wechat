@@ -185,12 +185,13 @@ Component({
         let params = {
           selectedGoods: this.data.selectedGoods,
           userId: wx.getStorageSync('userId'),
-          stoneId: this.data.selectedGoods.stoneId,
+          stoneId: this.data.stoneId,
           groupActivity: this.data.groupActivity,
           activityId: that.properties.activityId,
           quantity: this.data.quantity,
           groupid: that.properties.groupId
         };
+        console.log(params)
         wx.navigateTo({
           url: '/pages/payment/index?params=' + encodeURIComponent(JSON.stringify(params))
         });

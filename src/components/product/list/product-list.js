@@ -24,7 +24,7 @@ Component({
       type: Object,
       value: {}
     },
-    sort:{
+    sort: {
       type: String,
       value: '',
     }
@@ -39,8 +39,8 @@ Component({
     loadingCount: 0,
     scrollH: 0,
     imgWidth: 0,
-    sort:'',
-    param:{},
+    sort: '',
+    param: {},
   },
 
   /**
@@ -53,9 +53,20 @@ Component({
     onSeletedProduct: function (e) {
       let selected = e.currentTarget.dataset.item;
       console.log(selected)
-      wx.navigateTo({
-        url: '/pages/product/detail?productId=' + selected.id + '&stoneId=' + selected.stoneId + '&action=' + 'competitive' + '&priceArea=' + selected.priceArea + '&stoneName=' + selected.stoneName
-      });
+      if (selected.productActivityType == 'groupActivity') {
+        wx.navigateTo({
+          url: '/pages/product/group-detail?productId=' + selected.id + '&stoneId=' + selected.stoneId + '&action=' + 'competitive' + '&priceArea=' + selected.priceArea + '&stoneName=' + selected.stoneName + '&action=' + selected.productActivityType + '&activityId=' + selected.activityId + '&stoneName=' + selected.stoneName
+        });
+      } else if (selected.productActivityType == 'seckillActivity') {
+        wx.navigateTo({
+          url: '/pages/product/detail?productId=' + selected.id + '&stoneId=' + selected.stoneId + '&action=' + 'competitive' + '&priceArea=' + selected.priceArea + '&stoneName=' + selected.stoneName + '&action=' + selected.productActivityType + '&activityId=' + selected.activityId + '&stoneName=' + selected.stoneName
+        });
+      } else {
+        wx.navigateTo({
+          url: '/pages/product/detail?productId=' + selected.id + '&stoneId=' + selected.stoneId + '&action=' + 'competitive' + '&priceArea=' + selected.priceArea + '&stoneName=' + selected.stoneName
+        });
+      }
+
     },
     loadImages: function () { },
     getProducts: function (params) {
@@ -79,15 +90,15 @@ Component({
         });
       });
     },
-     getPro: function () {
+    getPro: function () {
       console.log(this.data.param)
-       let params ={
-         action: this.data.param.action,
-         activityId: this.data.param.activityId,
-       }
-       if (this.properties.sort!=''){
+      let params = {
+        action: this.data.param.action,
+        activityId: this.data.param.activityId,
+      }
+      if (this.properties.sort != '') {
         params.sort = this.properties.sort
-       }
+      }
       productApi.getProducts(params, (res) => {
         let products = res.data.data.list;
         console.log(products)
@@ -113,11 +124,11 @@ Component({
       setTimeout(() => {
         console.log(this.properties.parameters);
         let params = this.properties.parameters;
-        if (typeof(params.action) != 'undefined') {
-          this.getProducts(params); 
+        if (typeof (params.action) != 'undefined') {
+          this.getProducts(params);
         }
       }, 20);
-      
+
     },
     detached: function () {
       // 在组件实例被从页面节点树移除时执行

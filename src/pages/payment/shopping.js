@@ -64,7 +64,14 @@ Page({
     this.setData({ paymentMethod: paymentMethod });
   },
   onInputPaymentAmount: function(e) {
-    if (util.isRealNum(e.detail.value)) {
+    var regNum = new RegExp('[0-9]', 'g');
+    var rsNum = regNum.exec(e.detail.value);
+    if (!rsNum) {
+        wx.showToast({
+          title: '只能输入数字',
+          icon: 'none'
+        })
+    }else {
       this.setData({ amount: e.detail.value });
     }
   },
@@ -75,22 +82,24 @@ Page({
         content: '您输入的是' + this.data.amount,
       });
     }  else {
-      let amount = parseInt(this.data.amount);
-      if (amount == 0) {
-        wx.showModal({
-          title: '输入的金额不合法',
-          content: '支付金额不可以为0',
-        });
-      } else {
+      let amount = parseInt(this.data.amount*100);
+      // console.log(amount)
+      // console.log(this.data.amount)
+      // if (amount == 0) {
+      //   wx.showModal({
+      //     title: '输入的金额不合法',
+      //     content: '支付金额不可以为0',
+      //   });
+      // } else {
         this.createOrder(amount);
-      }
+      // }
     }    
   },
   createOrder(amount) {
     let params = {
       requestId:JSON.stringify(new Date().getTime()),
       userId: wx.getStorageSync('userId'),
-      amount: this.data.amount,
+      amount: amount,
       orderType: 'shoppingOrder',
       paymentName: this.data.paymentMethod[0].name,
       hfRemark: "到店支付订单",

@@ -35,7 +35,7 @@ Page({
       userId: options.userId, outTradeNo: options.outTradeNo
     }, (res) => {
       let payment = res.data.data;
-      
+
       if (options.paymentName == "wechart") {
         // 微信支付 待用户确认
         let params = {
@@ -82,22 +82,22 @@ Page({
             })
           }
         } else
-          if (that.data.groupid !== '' && that.data.activityId !== undefined) {
-          let param = {
-            activityId: that.data.activityId,
-            goodsId: that.data.goodsId,
-            userId: that.data.userId,
-            orderId: that.data.orderId,
-            hfActivityGroupId: that.data.groupid
+          if (that.data.groupid !== 'undefined' && that.data.activityId !== 'undefined') {
+            let param = {
+              activityId: that.data.activityId,
+              goodsId: that.data.goodsId,
+              userId: that.data.userId,
+              orderId: that.data.orderId,
+              hfActivityGroupId: that.data.groupid
+            }
+            orderApi.entranceGroup(param, (res) => {
+              console.log('参团成功')
+              wx.showToast({
+                title: '参团成功',
+                icon: 'none'
+              });
+            })
           }
-          orderApi.entranceGroup(param, (res) => {
-            console.log('参团成功')
-            wx.showToast({
-              title: '参团成功',
-              icon: 'none'
-            });
-          })
-        }
       }
     });
 
@@ -145,23 +145,23 @@ Page({
               }
             })
           }
-        }else
-        if (that.data.groupid !== '' && that.data.activityId !== undefined ) {
-          let param = {
-            activityId: that.data.activityId,
-            goodsId: that.data.goodsId,
-            userId: that.data.userId,
-            orderId: that.data.orderId,
-            hfActivityGroupId: that.data.groupid
+        } else
+          if (that.data.groupid !== 'undefined' && that.data.activityId !== 'undefined') {
+            let param = {
+              activityId: that.data.activityId,
+              goodsId: that.data.goodsId,
+              userId: that.data.userId,
+              orderId: that.data.orderId,
+              hfActivityGroupId: that.data.groupid
+            }
+            orderApi.entranceGroup(param, (res) => {
+              console.log('参团成功')
+              wx.showToast({
+                title: '参团成功',
+                icon: 'none'
+              });
+            })
           }
-          orderApi.entranceGroup(param, (res) => {
-            console.log('参团成功')
-            wx.showToast({
-              title: '参团成功',
-              icon: 'none'
-            });
-          })
-        }
         wx.navigateTo({
           url: '/pages/order/list?action=all',
         });
