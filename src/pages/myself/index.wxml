@@ -33,8 +33,8 @@
 		</view>
 	</view>
 	<view class='middle'>
-		<view wx:for="{{orderStatuses}}" wx:key="index" class="center-inner">
-		      <image src="{{item.img}}" style="width:55rpx;height:55rpx;"></image>
+		<view data-action='{{item.action}}' catchtap="onSelectedOrder1" wx:for="{{orderStatuses}}" wx:key="index" class="center-inner">
+		  <image src="{{item.img}}" style="width:55rpx;height:55rpx;"></image>
 			<view>{{item.desc}}</view>
 		</view>
 	</view>

@@ -56,6 +56,9 @@ Page({
             arr[i].startTime=arr[i].startTime[0];
             arr[i].stopTime=arr[i].stopTime.split(' ');
             arr[i].stopTime=arr[i].stopTime[0];
+            if(arr[i].discountCouponType=='0'){
+              arr[i].useLimit.minus=arr[i].useLimit.minus*10
+            }
           }
           that.setData({
             tequan:arr
@@ -89,6 +92,9 @@ console.log(obj)
           arr[i].startTime=arr[i].startTime[0];
           arr[i].stopTime=arr[i].stopTime.split(' ');
           arr[i].stopTime=arr[i].stopTime[0];
+          if(arr[i].discountCouponType=='0'){
+            arr[i].useLimit.minus=arr[i].useLimit.minus*10
+          }
         }
         that.setData({
           tequan:arr

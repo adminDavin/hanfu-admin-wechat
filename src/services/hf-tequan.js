@@ -150,7 +150,22 @@ function create(params,handleResult) {
     }
   });
 }
-
+function couponHall(params,handleResult){
+  
+  console.log(app.endpoint.product + '/discountCoupon/couponHall')
+  wx.request({
+    url: app.endpoint.product + '/discountCoupon/couponHall',
+    header: {
+      'content-type': 'application/x-www-form-urlencoded'
+    },
+    method: 'post',
+    data:params,
+    success: res => handleResult(res),
+    fail: (res) => {
+      console.log( res);
+    }
+  });
+}
 export default {
   jifenMing:jifenMing,
   getquan: getquan,
@@ -163,4 +178,5 @@ export default {
   getcang:getcang,
   getlishi:getlishi,
   guan:guan,
+  couponHall:couponHall,
 };

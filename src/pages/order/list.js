@@ -14,7 +14,7 @@ Page({
     action:'all',
     orderStatuses: [{
         action: "all",
-        selectedSytle: 'hengxian',
+        selectedSytle: '',
         desc: "全部"
       }, {
         action: "payment",
@@ -55,6 +55,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    console.log(options);
     // let userId = wx.getStorageSync('userId');
     // console.log(options);
     // if (util.isEmpty(userId)) {
@@ -78,7 +79,45 @@ Page({
     //       })
     //     }
     //   }
-    //   this.setData(options);
+      this.setData({
+        action:options.action
+      });
+      console.log(this.data.action);
+
+      hfOrderApi.queryOrder( wx.getStorageSync('userId'), this.data.action, (res) => {
+        let orderStatuses=this.data.orderStatuses;
+        for(var i=0;i<orderStatuses.length;i++){
+           
+         orderStatuses[i].selectedSytle='';
+        }
+        for(var i=0;i<orderStatuses.length;i++){
+           if(orderStatuses[i].action==this.data.action){
+             orderStatuses[i].selectedSytle='hengxian';
+           }
+        
+        }
+        this.setData({
+          orderStatuses:orderStatuses
+        })
+         let arr=res.data.data;
+        for(var i=0;i<arr.length;i++){
+          let count=0;
+         for(var j=0;j<arr[i].detailRequestList.length;j++){
+           for(var a=0;a<arr[i].detailRequestList[j].hfOrderDetailList.length;a++){ 
+             count+=arr[i].detailRequestList[j].hfOrderDetailList[a].quantity;
+             arr[i].detailRequestList[j].hfOrderDetailList[a].hfDesc=JSON.parse(arr[i].detailRequestList[j].hfOrderDetailList[a].hfDesc)
+             
+           }  
+          
+         }
+         arr[i].userId=count;
+        }
+         this.setData({
+           hfOrders:arr,
+          
+         });
+        
+       });
     // }
   },
 
@@ -90,27 +129,7 @@ Page({
       img: app.endpoint.file
      })
     console.log(this.data);
-    hfOrderApi.queryOrder( wx.getStorageSync('userId'), this.data.action, (res) => {
   
-      let arr=res.data.data;
-     for(var i=0;i<arr.length;i++){
-       let count=0;
-      for(var j=0;j<arr[i].detailRequestList.length;j++){
-        for(var a=0;a<arr[i].detailRequestList[j].hfOrderDetailList.length;a++){ 
-          count+=arr[i].detailRequestList[j].hfOrderDetailList[a].quantity;
-          arr[i].detailRequestList[j].hfOrderDetailList[a].hfDesc=JSON.parse(arr[i].detailRequestList[j].hfOrderDetailList[a].hfDesc)
-          
-        }  
-       
-      }
-      arr[i].userId=count;
-     }
-      this.setData({
-        hfOrders:arr,
-       
-      });
-     
-    });
   },
   onSelectedNav: function(e) {
    console.log(e);

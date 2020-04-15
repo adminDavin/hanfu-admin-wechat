@@ -69,6 +69,7 @@ Page({
     for(var i=0;i<arr.length;i++){
       for(var j=0;j<arr[i].goodList.length;j++){
         arr[i].goodList[j].check=0;
+        arr[i].goodList[j].productPrice=(arr[i].goodList[j].productPrice/100).toFixed(2)
       }
     }
     that.setData({
@@ -148,6 +149,7 @@ Page({
       }
     }
   }
+  count=count.toFixed(2);
     that.setData({
       shangjiagoods:arr,
       count:count
@@ -167,7 +169,7 @@ console.log(arr[e.currentTarget.dataset.index].goodList[e.currentTarget.dataset.
         }
         
         arr[e.currentTarget.dataset.index].goodList[e.currentTarget.dataset.indexs].productNum=arr[e.currentTarget.dataset.index].goodList[e.currentTarget.dataset.indexs].productNum-1;
-       
+        count=count.toFixed(2);
         that.setData({
           shangjiagoods:arr,
           count:count
@@ -205,7 +207,7 @@ console.log(arr[e.currentTarget.dataset.index].goodList[e.currentTarget.dataset.
            count+=arr[i].goodList[j].productNum*arr[i].goodList[j].productPrice;
         }
        }
-      
+       count=count.toFixed(2);
        that.setData({
         count:count,
         isAllSelect:true
@@ -224,6 +226,7 @@ console.log(arr[e.currentTarget.dataset.index].goodList[e.currentTarget.dataset.
       if(arr[e.currentTarget.dataset.index].goodList[e.currentTarget.dataset.indexs].check==1){
         count= count+arr[e.currentTarget.dataset.index].goodList[e.currentTarget.dataset.indexs].productPrice;
       }
+      count=count.toFixed(2);
       that.setData({
         shangjiagoods:arr,
         count:count
