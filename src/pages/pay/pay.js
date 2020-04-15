@@ -95,6 +95,8 @@ Page({
         res.data.data[i].useLimit= JSON.parse(res.data.data[i].useLimit);
         if(res.data.data[i].discountCouponType==1){
           res.data.data[i].useLimit.minus= (res.data.data[i].useLimit.minus/100).toFixed(2);
+        }else{
+          res.data.data[i].useLimit.minus= res.data.data[i].useLimit.minus/10;
         }
         res.data.data[i].useLimit.full= (res.data.data[i].useLimit.full/100).toFixed(2);
       }

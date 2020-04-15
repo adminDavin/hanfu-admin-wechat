@@ -68,6 +68,8 @@ Page({
       
        if(arr[i].discountCouponType==1){
         arr[i].useLimit.minus= (arr[i].useLimit.minus/100).toFixed(2);
+        }else{
+          arr[i].useLimit.minus= arr[i].useLimit.minus/10;
         }
         arr[i].useLimit.full= (arr[i].useLimit.full/100).toFixed(2);
       }
