@@ -57,9 +57,13 @@ Component({
         wx.navigateTo({
           url: '/pages/product/group-detail?productId=' + selected.id + '&stoneId=' + selected.stoneId + '&action=' + 'competitive' + '&priceArea=' + selected.priceArea + '&stoneName=' + selected.stoneName + '&action=' + selected.productActivityType + '&activityId=' + selected.activityId + '&stoneName=' + selected.stoneName
         });
-      } else {
+      } else if (selected.productActivityType == 'seckillActivity') {
         wx.navigateTo({
           url: '/pages/product/detail?productId=' + selected.id + '&stoneId=' + selected.stoneId + '&action=' + 'competitive' + '&priceArea=' + selected.priceArea + '&stoneName=' + selected.stoneName + '&action=' + selected.productActivityType + '&activityId=' + selected.activityId + '&stoneName=' + selected.stoneName
+        });
+      } else {
+        wx.navigateTo({
+          url: '/pages/product/detail?productId=' + selected.id + '&stoneId=' + selected.stoneId + '&action=' + 'competitive' + '&priceArea=' + selected.priceArea + '&stoneName=' + selected.stoneName
         });
       }
 

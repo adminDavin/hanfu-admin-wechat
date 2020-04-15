@@ -1,3 +1,12 @@
+<wxs module="we">
+  var toFixed = function(value) {
+    return value.toFixed(2);
+  }
+  module.exports = {
+    toFixed: toFixed
+  }
+</wxs>
+
 <view class="ping-pay">
   <!-- 头部 -->
   <view class="pay-header">
@@ -30,7 +39,7 @@
       <view class="title-box">
         <text class="title-number"></text>
         <view class="title-money">
-          <text class="money-number">￥{{sellPrice}}</text>
+          <text class="money-number">￥{{we.toFixed(sellPrice/100)}}</text>
           <text class="money-del"></text>
         </view>
       </view>
@@ -50,14 +59,14 @@
         <image src="{{imgageUrls}}" class="photo-heads" />
         <text class="photo-title">{{userName}}</text>
       </view>
-      <!-- <view wx:for="{{groupSum-nowSum}}" class="photos-head">
+      <view wx:for="{{groupSum-nowSum}}" class="photos-head">
         <image src="../../../images/yuan.png" class="photo-heads" />
         <text class="photo-title">待邀请</text>
-      </view> -->
+      </view>
     </view>
     <view>
       <view class="more-all">
-        <text class="all-text">查看全部</text>
+        <!-- <text class="all-text">查看全部</text> -->
         <image src="../../../images/yuan.png" class="all-image" />
       </view>
       <view class="succeed-photos" style="display:none">
