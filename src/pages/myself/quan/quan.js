@@ -70,9 +70,10 @@ Page({
             arr[i].startTime=arr[i].startTime[0];
             arr[i].stopTime=arr[i].stopTime.split(' ');
             arr[i].stopTime=arr[i].stopTime[0];
-            if(arr[i].discountCouponType=='0'){
-              arr[i].useLimit.minus=arr[i].useLimit.minus*10
+            if(arr[i].discountCouponType==1){
+              arr[i].useLimit.minus= (arr[i].useLimit.minus/100).toFixed(2);
             }
+              arr[i].useLimit.full= (arr[i].useLimit.full/100).toFixed(2);
           }
           that.setData({
             tequan:arr
@@ -112,9 +113,10 @@ Page({
           arr[i].startTime=arr[i].startTime[0];
           arr[i].stopTime=arr[i].stopTime.split(' ');
           arr[i].stopTime=arr[i].stopTime[0];
-          if(arr[i].discountCouponType=='0'){
-            arr[i].useLimit.minus=arr[i].useLimit.minus*10
+          if(arr[i].discountCouponType==1){
+            arr[i].useLimit.minus= (arr[i].useLimit.minus/100).toFixed(2);
           }
+            arr[i].useLimit.full= (arr[i].useLimit.full/100).toFixed(2);
         }
         that.setData({
           tequan:arr

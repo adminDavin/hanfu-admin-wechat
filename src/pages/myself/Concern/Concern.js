@@ -4,6 +4,7 @@ import quan from '../../../services/hf-tequan';
 
 Page({
   data: {
+    img:'',
     scrollH: 0,
     imgWidth: 0,
     lists: false,
@@ -11,6 +12,12 @@ Page({
     mosthigher: '',
     mostlower: '',
     cang:[],
+  },
+  onShow(){
+    this.setData({
+      img: app.endpoint.file
+    })
+   
   },
   //列表切换
   list: function () {

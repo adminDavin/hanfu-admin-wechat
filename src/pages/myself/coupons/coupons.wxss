@@ -9,7 +9,9 @@ page{
     position: relative;
     overflow: hidden;
 }
-
+page{
+  padding-bottom:90rpx;
+}
 /* 内容 */
 .discount-box {
     width: 710rpx;

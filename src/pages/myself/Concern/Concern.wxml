@@ -1,15 +1,17 @@
-<view wx:for="{{cang}}" :key="{{index}}" wx:for-item="dayItem" style="padding:20rpx;">
-	<view style="margin-bottom:20rpx;margin-top:40rpx;margin-left:25rpx;">{{dayItem.date}}</view>
-	<view style="padding-bottom:20rpx; display:flex;margin-bottom:10rpx;border-bottom:1rpx solid #d6d6d6;" wx:for="{{dayItem.stoneInfo}}" wx:key="index1">
+<view wx:for="{{cang}}" :key="{{index}}" wx:for-item="dayItem" style=" " >
+	<!-- <view style="margin-bottom:20rpx;margin-top:40rpx;margin-left:25rpx;">{{dayItem.date}}</view> -->
+	<view style="display:flex;border-bottom:1rpx solid #d6d6d6;padding:25rpx 0;" wx:for="{{dayItem.stoneInfo}}" wx:key="index1">
+		
+		<image style="width:150rpx;height:150rpx;border-radius:50%;margin-left:10rpx;"  src="{{img}}/goods/getFile?fileId={{item.fileId[0]}}"></image>
 		<view style="margin-left:15rpx;">
-			<view style="margin-top:10rpx;font-size:30rpx;color:#666;">
-				名称：{{item.name}}
+			<view style="margin-top:10rpx;font-size:37rpx;color:#333;">
+				{{item.name}}
 			</view>
-			<view style="margin-top:10rpx;font-size:30rpx;color:#666;">
-				描述：{{item.stoneDesc}}
-			</view>
+			<!-- <view style="margin-top:10rpx;font-size:30rpx;color:#666;">
+				{{item.stoneDesc}}
+			</view> -->
 			<view style="margin-top:10rpx;font-size:30rpx;color:#999;">
-			创建时间：	{{item.createTime}}
+				{{item.concernCount}}人关注
 			</view>
 		</view>
 

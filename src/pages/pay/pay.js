@@ -12,6 +12,7 @@ import tequan from '../../services/hf-tequan.js';
 
 Page({
   data: {
+    str:'',
     discountCouponType:'',
     elevalue:'',
     textshow:true,
@@ -94,8 +95,6 @@ Page({
         res.data.data[i].useLimit= JSON.parse(res.data.data[i].useLimit);
         if(res.data.data[i].discountCouponType==1){
           res.data.data[i].useLimit.minus= (res.data.data[i].useLimit.minus/100).toFixed(2);
-        }else if(res.data.data[i].discountCouponType==0){
-          res.data.data[i].useLimit.minus=(res.data.data[i].useLimit.minus)/100;
         }
         res.data.data[i].useLimit.full= (res.data.data[i].useLimit.full/100).toFixed(2);
       }
@@ -164,9 +163,15 @@ Page({
     let arr3=[];
     arr3.push(e.currentTarget.dataset.item.id);
     console.log(e.currentTarget.dataset.item);
+    let a2= '';
+    if(e.currentTarget.dataset.item.discountCouponType==1){
+      a2=a1-e.currentTarget.dataset.item.useLimit.minus
+    }else{
+      a2=a1*(e.currentTarget.dataset.item.useLimit.minus/100)
+    }
     this.setData({
       discountCouponType:e.currentTarget.dataset.item.discountCouponType,
-      count: a1-e.currentTarget.dataset.item.useLimit.minus,
+      count:a2,
       item:e.currentTarget.dataset.item,
       CouponId:arr3,
       ['useLimit.full']: e.currentTarget.dataset.item.useLimit.full,
@@ -223,8 +228,17 @@ Page({
       }
     }
    }
-   console.log(list);
-   let str =this.generateUUID();
+   let str ='';
+   if(this.data.str==''){
+    str =this.generateUUID();
+    this.setData({
+      str: str
+     })
+   }else{
+    str=this.data.str;
+   }
+
+   
    console.log(str);
     let params = {
       requestId: str,
