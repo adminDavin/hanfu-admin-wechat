@@ -36,25 +36,25 @@ Page({
       img: '../../img/chulizhong.png',
       action: "process",
       quantity: 0,
-      desc: "待理中"
+      desc: "处理中"
     },
     {
       img: '../../img/shouhuo.png',
-      action: "process",
+      action: "transport",
       quantity: 0,
       desc: "运送中"
     },
     {
       img: '../../img/ziyuan.png',
-      action: "process",
+      action: "evaluate",
       quantity: 0,
       desc: "待评价"
     },
     {
       img: '../../img/daifukuan.png',
-      action: "complete",
+      action: "controversial",
       quantity: 0,
-      desc: "退换/售后"
+      desc: "交易纠纷"
     }],
     myWalletResoures: [{
       action: 'balance',
@@ -159,6 +159,11 @@ Page({
     wx.navigateTo({
       url: '/pages/myself/tequan/tequan',
     })
+  },
+  onSelectedOrder1: function (e) {
+    console.log(this.data.orderStatuses);
+    console.log(e);
+    this.handleSelected('/pages/order/list', e.currentTarget.dataset.action);
   },
   onSelectedOrder: function (e) {
     console.log(this.data.orderStatuses);
