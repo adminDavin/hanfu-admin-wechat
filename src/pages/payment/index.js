@@ -121,7 +121,7 @@ Page({
         pickUp: {
           wayOfPickUp: 'delivery',
           wayOfPickUpDesc: '邮寄',
-          freight: 10
+          freight: 0
         }
       });
     } else if (this.data.pickUp.wayOfPickUp == 'delivery') {
