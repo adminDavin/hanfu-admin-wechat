@@ -91,6 +91,7 @@
       </button>
     </view>
   </view>
+  
   <view wx:if="{{seckillActivity}}" class="pay-header">
    <view class="header-table">
     <image src="../../images/tabs/naozhong.png" class="times-begin" />
