@@ -88,7 +88,8 @@ Page({
   },
   createOrder(amount) {
     let params = {
-      userId: this.data.userId,
+      requestId:JSON.stringify(new Date().getTime()),
+      userId: wx.getStorageSync('userId'),
       amount: this.data.amount,
       orderType: 'shoppingOrder',
       paymentName: this.data.paymentMethod[0].name,
@@ -98,11 +99,12 @@ Page({
     for (let payment of this.data.paymentMethod) {
       if (payment.checked) {
         params.paymentName = payment.name;
+        
       }
     }
-    orderApi.createOrder(params, (res) => {
+    orderApi.create(params, (res) => {
       wx.navigateTo({
-        url: '/pages/payment/payment?userId=' + this.data.userId + '&outTradeNo=' + res.data.data.orderCode + '&paymentName=' + params.paymentName,
+        url: '/pages/payment/payment?userId=' + wx.getStorageSync('userId') + '&outTradeNo=' + res.data.data.orderCode + '&paymentName=' + params.paymentName,
       })
     });
   }

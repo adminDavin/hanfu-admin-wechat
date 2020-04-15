@@ -129,7 +129,7 @@ swiper-item {
     position: absolute;
     top: 200rpx;
     left: 18rpx;
-    background: pink;
+    background: #fff;
     margin: 0 auto;
     border-radius: 0.4rem;
 }

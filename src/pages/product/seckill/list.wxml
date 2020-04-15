@@ -1,5 +1,13 @@
 <!-- <scroll-view  scroll-x="true" wx:if="{{slotLen==false}}">
 </scroll-view> -->
+<wxs module="we">
+  var toFixed = function(value) {
+    return value.toFixed(2);
+  }
+  module.exports = {
+    toFixed: toFixed
+  }
+</wxs>
 <view class="background">
   <view class="text-Hot">今日爆款</view>
   <view class="row" style="display:flex;justify-content:space-around;align-items:center">
@@ -15,8 +23,8 @@
       <image class="flex-view-item" src="{{item.imageUrl}}" style="width:40%;height:250rpx"></image>
       <view class="flex-view-item p10" style="width:60%">
         <view style="text-align: left">{{item.productName}}</view>
-        <view style="text-align: left; margin-top: 50rpx;color: red;">￥{{item.priceArea/100}}
-          <text style='color:#888;text-decoration:line-through;margin-left:10px; '>￥{{item.linePrice/100}}</text>
+        <view style="text-align: left; margin-top: 50rpx;color: red;">￥{{we.toFixed(item.priceArea/100)}}
+          <text style='color:#888;text-decoration:line-through;margin-left:10px; '>￥{{we.toFixed(item.linePrice/100)}}</text>
         </view>
         <view class="product-price-wrap" style="text-align: right">
           <p class="product-price-new">{{item.newPrice}}</p>

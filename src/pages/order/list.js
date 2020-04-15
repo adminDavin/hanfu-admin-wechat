@@ -147,9 +147,10 @@ Page({
 //   })
 // },
   onSelectedOrder : function(e) {
+    console.log(e.currentTarget.dataset)
     if (e.currentTarget.dataset.hfOrder.orderType =='shoppingOrder'){
       wx.navigateTo({
-        url: '/pages/payment/payment?userId=' + e.currentTarget.dataset.hfOrder.userId + '&outTradeNo=' + e.currentTarget.dataset.hfOrder.orderCode + '&paymentName=' + e.currentTarget.dataset.hfOrder.paymentName,
+        url: '/pages/payment/payment?userId=' +  wx.getStorageSync('userId') + '&outTradeNo=' + e.currentTarget.dataset.hfOrder.orderCode + '&paymentName=' + e.currentTarget.dataset.hfOrder.paymentName,
       })
     }else{
       wx.navigateTo({

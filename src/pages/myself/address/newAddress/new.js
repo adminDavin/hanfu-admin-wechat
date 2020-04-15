@@ -118,7 +118,7 @@ Page({
       hfAddressDetail: e.detail.value
     })
   },
-  submit() {
+  submit(e) {
     var that = this;
     if (that.data.setshow == true) {
       that.setData({
@@ -189,12 +189,12 @@ Page({
           wx.showToast({
             title: '地址添加成功',
           })
-          wx.navigateTo({
-            url: '/pages/myself/address/list'
-          })
-          wx.navigateBack({
-            delta: 1
-          })
+          //返回上一个页面
+          var pages = getCurrentPages();
+          var currPage = pages[pages.length - 1];   //当前页面
+          var prevPage = pages[pages.length - 2];  //上一个页面
+          prevPage.getAddress();//触发父页面中的方法
+          wx.navigateBack()
         },
         fail: function (res) {
           console.log(res)

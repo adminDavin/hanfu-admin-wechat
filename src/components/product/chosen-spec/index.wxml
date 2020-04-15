@@ -1,10 +1,18 @@
 <!--components/product/chosen/index.wxml-->
+<wxs module="we">
+  var toFixed = function(value) {
+    return value.toFixed(2);
+  }
+  module.exports = {
+    toFixed: toFixed
+  }
+</wxs>
 <view class="inner">
   <view class="guigebox-top">
     <view wx:for="{{selectedGoods.fileIds}}" wx:key="index">
       <image src="{{item}}" style="width:160rpx;height:160rpx"></image>
     </view>
-    <view >￥{{selectedGoods.sellPrice/100}}</view>
+    <view>￥{{we.toFixed(selectedGoods.sellPrice/100)}}</view>
   </view>
   <scroll-view scroll-y="true" class="guige-scroll">
     <view wx:for='{{goodsList}}' wx:key="index">
@@ -13,7 +21,7 @@
           <view class="p10" wx:for='{{item.hfGoodsSpecs}}' wx:for-item="childItem" wx:key="goodsSpecChildKey" wx:for-index="childIndex">
             <label>
               <text>{{childItem.hfName}}:{{childItem.hfValue}}</text>
-            </label> 
+            </label>
           </view>
         </checkbox-group>
       </block>
@@ -22,22 +30,22 @@
           <view class="p10" wx:for='{{item.hfGoodsSpecs}}' wx:for-item="childItem" wx:key="goodsSpecChildKey" wx:for-index="childIndex">
             <label>
               <text>{{childItem.hfName}}:{{childItem.hfValue}}</text>
-            </label> 
+            </label>
           </view>
         </checkbox-group>
       </block>
     </view>
-    
+
     <view class="guigebox-num">
       <view style="font-size:16px;line-height:62rpx;">数量</view>
-      <view class="stepper">  
-        <!-- 减号 -->  
-        <text class="{{minusStatus}}" bind:tap="onBindMinus">-</text>  
-        <!-- 数值 -->  
-        <input type="number" bind:change="onBindManual" value="{{quantity}}" />  
-        <!-- 加号 -->  
-        <text class="normal" bind:tap="onBindPlus">+</text>  
-    </view>  
+      <view class="stepper">
+        <!-- 减号 -->
+        <text class="{{minusStatus}}" bind:tap="onBindMinus">-</text>
+        <!-- 数值 -->
+        <input type="number" bind:change="onBindManual" value="{{quantity}}" />
+        <!-- 加号 -->
+        <text class="normal" bind:tap="onBindPlus">+</text>
+      </view>
     </view>
   </scroll-view>
   <view class="guigeqr" bindtap="onSubmitSelectedGoods">确认</view>

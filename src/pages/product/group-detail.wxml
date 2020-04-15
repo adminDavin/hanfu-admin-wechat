@@ -1,4 +1,12 @@
 <!--src/pages/product/group-detail.wxml-->
+<wxs module="we">
+  var toFixed = function(value) {
+    return value.toFixed(2);
+  }
+  module.exports = {
+    toFixed: toFixed
+  }
+</wxs>
 
 <import src="/templates/user/login" />
 <!-- 立即购买弹窗内容 -->
@@ -10,7 +18,7 @@
         {{item.hfName}}: {{item.hfValue}}
       </view>
     </view>
-<view>购买数量:{{quantity}}<text style="margin-left: 16rpx">￥{{selectedGoods.sellPrice/100}}元</text></view>
+<view>购买数量:{{quantity}}<text style="margin-left: 16rpx">￥{{we.toFixed(selectedGoods.sellPrice/100)}}元</text></view>
   </view>
 </template>
 
@@ -125,8 +133,8 @@
     <view class="productName-box">
       <view class="productName-dollor">
         <text class="dollor">¥</text>
-        <text class="money">{{priceArea/100}}</text>
-        <text style='color:#888;text-decoration:line-through;margin-left:10px;'>￥{{linePrice/100}}</text>
+        <text class="money">{{we.toFixed(priceArea/100)}}</text>
+        <text style='color:#888;text-decoration:line-through;margin-left:10px;'>￥{{we.toFixed(linePrice/100)}}</text>
         <!-- <text class="news">新品</text> -->
       </view>
       <view class="productName-collect">

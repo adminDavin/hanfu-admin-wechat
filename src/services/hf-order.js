@@ -1,9 +1,25 @@
 const app = getApp();
-
+// 普通订单
 function createOrder(params={}, handleResult) {
   wx.request({
     // url: app.endpoint.order + '/hf-order/create',
     url: app.endpoint.order + '/hf-order/Ordercreate',
+    method: 'POST',
+    header: {
+      'content-type': 'application/x-www-form-urlencoded'
+    },
+    data: params,
+    success: res => handleResult(res),
+    fail: (res) => {
+      console.log(params, res);
+    }
+  });
+}
+// 到店支付订单
+function create(params = {}, handleResult) {
+  wx.request({
+    url: app.endpoint.order + '/hf-order/create',
+    // url: app.endpoint.order + '/hf-order/Ordercreate',
     method: 'POST',
     header: {
       'content-type': 'application/x-www-form-urlencoded'
@@ -114,5 +130,6 @@ export default {
   qrCode: qrCode,
   evaluate: evaluate,
   addGroup: addGroup,
-  entranceGroup:entranceGroup
+  entranceGroup:entranceGroup,
+  create: create
 };

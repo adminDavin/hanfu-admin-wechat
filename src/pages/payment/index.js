@@ -8,13 +8,17 @@ import discount from '../../services/discount.js';
 
 Page({
   data: {
-    competitive:false,
-    CouponId:'',
+    competitive: false,
+    CouponId: '',
     showModalCreateOrder: false,
-    tequan:[],//可用优惠
-    mistake: [],// 不可用优惠
-    useLimit: { full: "", minus: "" },//选中的优惠
-    quantity:'',
+    tequan: [], //可用优惠
+    mistake: [], // 不可用优惠
+    useLimit: {
+      full: "",
+      minus: "",
+      discountCouponType:"",
+    }, //选中的优惠
+    quantity: '',
     selectedAddress: {},
     pickUp: {
       wayOfPickUp: 'selfPickUp',
@@ -35,7 +39,7 @@ Page({
   /**
    * 生命周期函数--监听页面加载 quantity
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
     let params = JSON.parse(decodeURIComponent(options.params))
     console.log(params)
     let userId = wx.getStorageSync('userId');
@@ -63,7 +67,7 @@ Page({
       goodsId: params.selectedGoods.id
     }
     console.log(obj);
-    let idDeleted =0
+    let idDeleted = 0
     discount.myCoupon(obj, (res) => {
       console.log(res.data.data);
       this.setData({
@@ -87,19 +91,19 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
     console.log(this.data);
 
   },
   // 选择地址 跳到地址栏
-  selectLocation(){
+  selectLocation() {
     wx.navigateTo({
       url: '/pages/myself/address/list?action=Gotoaddress',
     })
@@ -111,7 +115,7 @@ Page({
       url: '/pages/myself/address/detail?action=addAddress&userId=' + this.data.userId,
     })
   },
-  changeMethod: function (e) {
+  changeMethod: function(e) {
     if (this.data.pickUp.wayOfPickUp == 'selfPickUp') {
       this.setData({
         pickUp: {
@@ -131,9 +135,9 @@ Page({
     }
   },
   changeCoupon(e) {
-      this.setData({
-        showModalCreateOrder: true
-      });
+    this.setData({
+      showModalCreateOrder: true
+    });
   },
   changeCoupons(e) {
     console.log(e.currentTarget.dataset.item)
@@ -141,6 +145,7 @@ Page({
       CouponId: e.currentTarget.dataset.item.id,
       ['useLimit.full']: e.currentTarget.dataset.item.useLimit.full,
       ['useLimit.minus']: e.currentTarget.dataset.item.useLimit.minus,
+      ['useLimit.discountCouponType']: e.currentTarget.dataset.item.discountCouponType,
       showModalCreateOrder: false
     });
     console.log(this.data)
@@ -153,7 +158,7 @@ Page({
       data: {
         GoodsNum: this.data.quantity,
         goodsId: this.data.selectedGoods.id,
-        discountCouponId:e.currentTarget.dataset.item.id
+        discountCouponId: e.currentTarget.dataset.item.id
       },
       header: {
         'content-type': 'application/x-www-form-urlencoded'
@@ -174,7 +179,7 @@ Page({
       }
     })
   },
-  onCloseGoodsSpec: function (e) {
+  onCloseGoodsSpec: function(e) {
     // 隐藏遮罩层
     if (e.currentTarget.dataset.type == "createOrder") {
       this.setData({
@@ -187,7 +192,7 @@ Page({
   //     showModalCreateOrder: false
   //   });
   // },
-  onPaymentMethod: function (e) {
+  onPaymentMethod: function(e) {
     let paymentMethod = this.data.paymentMethod;
     for (let payment of this.data.paymentMethod) {
       if (e.detail.value == payment.name) {
@@ -196,18 +201,20 @@ Page({
         payment.checked = false;
       }
     }
-    this.setData({ paymentMethod: paymentMethod });
+    this.setData({
+      paymentMethod: paymentMethod
+    });
   },
 
-  onCreateOrder: function (e) {
+  onCreateOrder: function(e) {
     console.log(e.currentTarget.dataset);
     console.log(this.data.groupActivity);
     console.log(this.data.selectedGoods);
-     let that= this
-    let goodsList=[]
-    let obj= {
+    let that = this
+    let goodsList = []
+    let obj = {
       goodsId: that.data.selectedGoods.id,
-      hfDesc: 2, 
+      hfDesc: 2,
       quantity: that.data.quantity,
       stoneId: this.data.stoneId
     }
@@ -232,7 +239,7 @@ Page({
       // hfDesc: JSON.stringify(this.data.selectedGoods),
       // stoneId: this.data.stoneId
     };
-    if (typeof (this.data.selectedAddress.id) != 'undefined') {
+    if (typeof(this.data.selectedAddress.id) != 'undefined') {
       params.userAddressId = this.data.selectedAddress.id;
     }
     for (let payment of this.data.paymentMethod) {

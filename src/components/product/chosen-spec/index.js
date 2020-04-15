@@ -37,6 +37,10 @@ Component({
     accession: {
       type: String,
       value: ''
+    },
+    stoneId:{
+      type: String,
+      value: ''
     }
   },
 
@@ -271,7 +275,7 @@ Component({
   },
   lifetimes: {
     ready: function () {
-      goodsApi.getGoodDetailByProductId({ productId: this.properties.productId, quantity: '1' }, (res) => {
+      goodsApi.getGoodDetailByProductId({ productId: this.properties.productId, quantity: '1', stoneId: this.properties.stoneId}, (res) => {
         let goodsList = res.data.data;
         console.log(res.data.data)
         for (let goods of goodsList) {

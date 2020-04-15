@@ -67,11 +67,6 @@ Page({
       }
       if (isContinue) {
         this.setData({ slots });
-        productApi.getProductSeckill(this.data.selectedSlot, (res) => {
-          let productSecKillData = res.data.data;
-          requestUtils.setImageUrls(productSecKillData);
-          this.setData({ productSecKillData });
-        });
       }
       if (!this.data.isCloseTimingTask) {
         this.timingTask();

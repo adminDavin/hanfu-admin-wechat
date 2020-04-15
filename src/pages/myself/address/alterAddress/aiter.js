@@ -1,5 +1,8 @@
 // src/pages/myself/address/alterAddress/aiter.js
 const app = getApp();
+const QQMapWX = require('../../../../utils/qqmap-wx-jssdk.min.js');
+const demo = new QQMapWX({ key: 'CLGBZ-V5SCF-PJ4JQ-NUZUA-2YP45-C6BMX' });
+
 Page({
 
   /**
@@ -68,8 +71,68 @@ Page({
       },
       success: function (res) {
         console.log('删除地址成功', res)
+        // 返回上一页
+        var pages = getCurrentPages();
+        var beforePage = pages[pages.length - 2];
+        beforePage.getAddress();//触发父页面中的方法
         wx.navigateBack({
-          delta: 1
+          delta: 1,
+        })
+      }
+    })
+  },
+  // 定位
+  getCurrentLocal() {
+    let that = this;
+    wx.getSetting({
+      success(res) {
+        if (res.authSetting['scope.userLocation'] == false) {// 如果已拒绝授权，则打开设置页面
+          wx.openSetting({
+            success(res) { }
+          });
+        } else { // 第一次授权，或者已授权，直接调用相关api
+          that.getMyLocation()
+        }
+      }
+    })
+  },
+
+  // 获取当前地理位置
+  getMyLocation() {
+    wx.getLocation({
+      type: 'gcj02',
+      success: (res) => {
+        wx.chooseLocation({
+          success: (res) => {
+            // 调用接口转换成具体位置
+            demo.reverseGeocoder({
+              location: {
+                latitude: res.latitude,
+                longitude: res.longitude
+              },
+              success: (res) => {
+                console.log(res.result);
+                let hfAddressDetail = res.result.address
+                let hfProvince = res.result.ad_info.city
+                let hfCity = res.result.ad_info.district
+                this.setData({ hfAddressDetail: hfAddressDetail, hfProvince: hfProvince, hfCity: hfCity });
+              },
+              fail: (res) => {
+                console.log(res);
+                wx.showModal({
+                  title: '解析地址失败',
+                  content: res,
+                })
+              }
+            });
+          },
+        })
+        console.log(res)
+      },
+      fail: (res) => {
+        wx.showModal({
+          title: '已选择地址',
+          content: res,
         })
       }
     })
@@ -144,8 +207,12 @@ Page({
         wx.showToast({
           title: '地址修改成功',
         })
-        wx.navigateTo({
-          url: '/pages/myself/address/list'
+        // 返回上一页
+        var pages = getCurrentPages();
+        var beforePage = pages[pages.length - 2];
+        beforePage.getAddress();//触发父页面中的方法
+        wx.navigateBack({
+          delta: 1,
         })
       },
       fail: function (res) {
