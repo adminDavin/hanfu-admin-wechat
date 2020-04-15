@@ -7,8 +7,9 @@
   <view wx:for="{{tequan}}" wx:key="index" style="display:flex">
     <view style="width:500rpx">
       <view>
-        <sub style="font-size:25rpx;">¥</sub>
-        <span style="font-weight:bold;font-size:40rpx;"> {{item.useLimit.minus}}</span>
+        <sub style="font-size:25rpx;" wx:if="{{item.discountCouponType==1}}">¥</sub>
+        <span  wx:if="{{item.discountCouponType==1}}" style="font-weight:bold;font-size:40rpx;"> {{item.useLimit.minus}}</span>
+        <span  wx:if="{{item.discountCouponType==0}}" style="font-weight:bold;font-size:40rpx;"> {{item.useLimit.minus}}折</span>
       </view>
       <view style='font-size:26rpx;'>
         满{{item.useLimit.full}}元可用
@@ -67,7 +68,8 @@
 
 <view wx:if="{{competitive}}" class="quhuomethod" style="margin-top:50rpx">
   <view class="ziti" style="width:300rpx">店铺优惠卷</view>
-  <text wx:if="{{useLimit.full!==''}}" bindtap="changeCoupon" style=" color:red;" class="ziti">满￥{{useLimit.full}}元减￥{{useLimit.minus}}元</text>
+  <text wx:if="{{useLimit.full!==''&&discountCouponType==1}}" bindtap="changeCoupon" style=" color:red;" class="ziti">满￥{{useLimit.full}}元 减￥{{useLimit.minus}}元</text>
+  <text  wx:if="{{useLimit.full!==''&&discountCouponType==0}}" bindtap="changeCoupon" style=" color:red;" class="ziti">满￥{{useLimit.full}} 折扣{{useLimit.minus}}</text>
   <text wx:if="{{useLimit.full==''}}" bindtap="changeCoupon" style=" color:red;" class="ziti">请选择优惠卷</text>
   <image src="/images/rightjiantou.png" style="width:12rpx;height:22rpx" bindtap="changeCoupon"></image>
 </view>

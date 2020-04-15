@@ -1,27 +1,3 @@
-<!-- <view wx:for="{{tequan}}" wx:key="index" wx:if="{{num==1}}" 
-style="padding:20rpx;border-bottom:1rpx solid #d5d5d5;">
-	<view>
-		特权名称：{{item.prerogative}}
-	</view>
-
-	<view style="color:#666;font-size:30rpx;margin-top:20rpx;">
-		描述：{{item.levelDescribe}}
-	</view>
-
-	<view style="color:#666;font-size:30rpx;">
-	状态：{{item.prerogativeState==1?'生效':'失效'}}
-	</view>
-
-		<view style="font-size:30rpx;color:#999;margin-top:20rpx;">
-		开始时间：{{item.startTime}}
-	</view>
-	<view style="font-size:30rpx;color:#999;margin-top:10rpx;">
-		结束时间：{{item.expireTime}}
-	</view>
-
-
-
-</view>
 <view style="padding:20rpx;" wx:if="{{num==0}}">
 	<view wx:for="{{levellist}}" bindtap="changlevel" data-id="{{index}}" wx:key="index" class="{{item.change==0?'qu':'qu1'}}">
 		<view style="color:orange;">
@@ -30,32 +6,62 @@ style="padding:20rpx;border-bottom:1rpx solid #d5d5d5;">
 		<view style="color:orange;">
 			¥{{item.amount}}
 		</view>
+		<open-data type="userNickName"></open-data>
+		<view class="t30" bindtap="recharge">{{hui}}</view>
 		<view class="{{item.change==0?'xiao':'xiao1'}}">从购买之日起30天之内有效</view>
 	</view>
 </view>
-<view wx:if="{{num==0}}" bindtap="pay" style="left:5%;width:90%; position:fixed;bottom:60rpx; border-radius:60rpx;height:90rpx;color:#fff;background:orange;display:flex;align-items:center;justify-content:center;">立即充值</view> -->
+<view wx:if="{{num==0}}" bindtap="pay" style="left:5%;width:90%; position:fixed;bottom:60rpx; border-radius:60rpx;height:90rpx;color:#fff;background:orange;display:flex;align-items:center;justify-content:center;">立即充值</view>
 <view style="padding:0 20rpx;margin-top:10rpx;">
 	<view style="justify-content:space-between; display:flex;align-items:center;border-radius:20rpx;height:154rpx; background-image: linear-gradient(to right, #F9C22C, #FFCA4D);padding:0 20rpx;">
 		<view style="display:flex;align-items:center;">
 			<image src="../../../img/hui.png" style="width:100rpx;height:100rpx;"></image>
 			<view style="color:#fff;font-size:30rpx;margin-left:30rpx;">
-				<view style="color:#fff;">会员昵称</view>
+				<open-data type="userNickName"></open-data>
 				<view style="display:flex;align-items:center;">
-					<view>￥50000.00</view>
-					<view>账单记录</view>
+					<!-- <view>￥50000.00</view>
+					<view>账单记录</view> -->
+					<view class="t30" bindtap="recharge">{{hui}}</view>
+					
+		
 				</view>
 			</view>
 		</view>
-
+<!-- 
 		<view style="background:#EBAA33;color:#fff;padding:3rpx 38rpx; border-radius:36rpx;">
 			充值
-		</view>
+		</view> -->
 	</view>
 	<view style="display:flex;align-items:center;margin-top:35rpx;">
 		<view style="width:8rpx;height:32rpx;background:#FFC129;border-radius:8rpx;"></view>
 		<view style="color:#151515;margin-left:10rpx;">PLUS会员专享特权</view>
 	</view>
-	<view style="display:flex;justify-content:space-between;padding:0 3%;margin-top:40rpx;">
+	<view wx:for="{{tequan}}" wx:key="index" wx:if="{{num==1&&item.prerogativeState==1}}" 
+style="padding:20rpx;border-bottom:1rpx solid #d5d5d5;">
+	<view>
+		{{index+1}}.{{item.prerogative}}
+	</view>
+
+	<view style="color:#666;font-size:30rpx;margin-top:20rpx;">
+	{{item.levelDescribe}}
+	</view>
+
+	<!-- <view style="color:#666;font-size:30rpx;">
+	状态：{{item.prerogativeState==1?'生效':'失效'}}
+	</view> -->
+
+		<!-- <view style="font-size:30rpx;color:#999;margin-top:20rpx;">
+		开始时间：{{item.startTime}}
+	</view>
+	<view style="font-size:30rpx;color:#999;margin-top:10rpx;">
+		结束时间：{{item.expireTime}}
+	</view> -->
+
+
+
+</view>
+
+	<!-- <view style="display:flex;justify-content:space-between;padding:0 3%;margin-top:40rpx;">
 		<view style="display:flex;align-items:center;flex-direction:column;">
 			<image style="width:57rpx;height:57rpx;" src="../../../img/yhq.png"></image>
 			<view style="color:#333333;font-size:28rpx;">PLUS专享券</view>
@@ -72,74 +78,35 @@ style="padding:20rpx;border-bottom:1rpx solid #d5d5d5;">
 			<image style="width:57rpx;height:57rpx;" src="../../../img/more.png"></image>
 			<view style="color:#333333;font-size:28rpx;">更多期待</view>
 		</view>
-	</view>
+	</view> -->
 	<view style="display:flex;align-items:center;margin-top:35rpx;">
 		<view style="width:8rpx;height:32rpx;background:#FFC129;border-radius:8rpx;"></view>
 		<view style="color:#151515;margin-left:10rpx;">PLUS会员专享劵</view>
 	</view>
 	<view style="margin-top:30rpx; display:flex; width: 100%;overflow-x: scroll;overflow-y:hidden;  flex-wrap:nowrap; justify-content:space-between">
-		<view style="background:#FEC229;height:185rpx;border-radius:14rpx;margin-right:20rpx;">
+		<view wx:for="{{quanlist}}" :key="index" class="{{item.useState==1?'bei':'bei1'}}">
 			<view style="display:flex;justify-content:space-between;width:340rpx;">
 				<view>
 					<view style="color:#fff;font-size:30rpx;margin-top:10rpx;margin-left:20rpx;">PLUS</view>
 					<view style="color:#fff;font-size:40rpx;font-weight:bold;text-align:center;">
-						¥200</view>
+						¥{{item.useLimit.minus}}</view>
 					<view style="color:#fff;font-size:30rpx;margin-left:20rpx;margin-top:10rpx;">
-						满298元可用
+						满{{item.useLimit.full}}元可用
 					</view>
 				</view>
-				<view style="border-radius: 0 14rpx 14rpx 0;height:100%; background:#FFDD86; writing-mode:tb-rl;width:75rpx;display:flex;align-items:center;justify-content:center;">
+				<view wx:if="{{item.useState==1}}" bindtap="goquan" style="border-radius: 0 14rpx 14rpx 0;height:100%; background:#FFDD86; writing-mode:tb-rl;width:75rpx;display:flex;align-items:center;justify-content:center;">
 					去使用
+				</view>
+				<view wx:if="{{item.useState==-1}}"  style="border-radius: 0 14rpx 14rpx 0;height:100%; background:#d9d9d9; writing-mode:tb-rl;width:75rpx;display:flex;align-items:center;justify-content:center;">
+					已领取
 				</view>
 			</view>
 		</view>
-		<view style="background:#FEC229;width:340rpx;height:185rpx;border-radius:14rpx;margin-right:20rpx;">
-			<view style="display:flex;justify-content:space-between;width:340rpx;">
-				<view>
-					<view style="color:#fff;font-size:30rpx;margin-top:10rpx;margin-left:20rpx;">PLUS</view>
-					<view style="color:#fff;font-size:40rpx;font-weight:bold;text-align:center;">
-						¥200</view>
-					<view style="color:#fff;font-size:30rpx;margin-left:20rpx;margin-top:10rpx;">
-						满298元可用
-					</view>
-				</view>
-				<view style="border-radius: 0 14rpx 14rpx 0;height:100%; background:#FFDD86; writing-mode:tb-rl;width:75rpx;display:flex;align-items:center;justify-content:center;">
-					去使用
-				</view>
-			</view>
-		</view>
-		<view style="background:#FEC229;width:340rpx;height:185rpx;border-radius:14rpx;margin-right:20rpx;">
-			<view style="display:flex;justify-content:space-between;width:340rpx;">
-				<view>
-					<view style="color:#fff;font-size:30rpx;margin-top:10rpx;margin-left:20rpx;">PLUS</view>
-					<view style="color:#fff;font-size:40rpx;font-weight:bold;text-align:center;">
-						¥200</view>
-					<view style="color:#fff;font-size:30rpx;margin-left:20rpx;margin-top:10rpx;">
-						满298元可用
-					</view>
-				</view>
-				<view style="border-radius: 0 14rpx 14rpx 0;height:100%; background:#FFDD86; writing-mode:tb-rl;width:75rpx;display:flex;align-items:center;justify-content:center;">
-					去使用
-				</view>
-			</view>
-		</view>
-		<view style="background:#FEC229;width:340rpx;height:185rpx;border-radius:14rpx;margin-right:20rpx;">
-			<view style="display:flex;justify-content:space-between;width:340rpx;">
-				<view>
-					<view style="color:#fff;font-size:30rpx;margin-top:10rpx;margin-left:20rpx;">PLUS</view>
-					<view style="color:#fff;font-size:40rpx;font-weight:bold;text-align:center;">
-						¥200</view>
-					<view style="color:#fff;font-size:30rpx;margin-left:20rpx;margin-top:10rpx;">
-						满298元可用
-					</view>
-				</view>
-				<view style="border-radius: 0 14rpx 14rpx 0;height:100%; background:#FFDD86; writing-mode:tb-rl;width:75rpx;display:flex;align-items:center;justify-content:center;">
-					去使用
-				</view>
-			</view>
-		</view>
+		
+
+
 	</view>
-	<view style="display:flex;align-items:center;margin-top:35rpx;">
+	<!-- <view style="display:flex;align-items:center;margin-top:35rpx;">
 		<view style="width:8rpx;height:32rpx;background:#FFC129;border-radius:8rpx;"></view>
 		<view style="color:#151515;margin-left:10rpx;">免运费券</view>
 	</view>
@@ -204,6 +171,6 @@ style="padding:20rpx;border-bottom:1rpx solid #d5d5d5;">
 				</view>
 			</view>
 		</view>
-	</view>
+	</view>-->
 	<view style="text-align:center;color:#999999;font-size:34rpx;margin-top:20rpx;">更多PLUS特权，敬请期待~</view>
-</view>
+</view> 

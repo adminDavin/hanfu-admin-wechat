@@ -12,3 +12,9 @@ page{
 }
 .xiao{text-align:right;color:#999;font-size:34rpx;}
 .xiao1{text-align:right;color:#000;font-size:34rpx;}
+.bei{
+  background:#FEC229;height:185rpx;border-radius:14rpx;margin-right:20rpx;
+}
+.bei1{
+  background:#b3b3b3;height:185rpx;border-radius:14rpx;margin-right:20rpx;
+}

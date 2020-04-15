@@ -7,8 +7,9 @@
         <view style="display:flex; background:#fff;margin-bottom:15rpx;border-radius:10rpx;">
           <view style=' color:#fff; background:linear-gradient(-51deg,rgba(255,0,0,1),rgba(254,89,89,1));' class='item'>
             <view>
-              <sub style="font-size:25rpx;">¥</sub>
-              <span style="font-weight:bold;font-size:40rpx;"> {{item.useLimit.minus}}</span>
+                       							<sub  wx:if="{{item.discountCouponType=='1'}}" style="font-size:25rpx;">¥</sub>
+						 <span wx:if="{{item.discountCouponType=='0'}}" style="font-weight:bold;font-size:40rpx;"> {{item.useLimit.minus}}折</span>
+						 <span  wx:if="{{item.discountCouponType=='1'}}" style="font-weight:bold;font-size:40rpx;"> {{item.useLimit.minus}}</span>
             </view>
             <view style='font-size:26rpx;'>
               满{{item.useLimit.full}}元可用
@@ -47,8 +48,9 @@
         <view style="display:flex; background:#fff;margin-bottom:15rpx;border-radius:10rpx;">
           <view style=' color:#fff; background:linear-gradient(-51deg,rgba(255,0,0,1),rgba(254,89,89,1));' class='item'>
             <view>
-              <sub style="font-size:25rpx;">¥</sub>
-              <span style="font-weight:bold;font-size:40rpx;"> {{item.useLimit.minus}}</span>
+                      							<sub  wx:if="{{item.discountCouponType=='1'}}" style="font-size:25rpx;">¥</sub>
+						 <span wx:if="{{item.discountCouponType=='0'}}" style="font-weight:bold;font-size:40rpx;"> {{item.useLimit.minus}}折</span>
+						 <span  wx:if="{{item.discountCouponType=='1'}}" style="font-weight:bold;font-size:40rpx;"> {{item.useLimit.minus}}</span>
             </view>
             <view style='font-size:26rpx;'>
               满{{item.useLimit.full}}元可用

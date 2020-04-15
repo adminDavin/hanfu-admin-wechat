@@ -12,6 +12,7 @@ import tequan from '../../services/hf-tequan.js';
 
 Page({
   data: {
+    discountCouponType:'',
     elevalue:'',
     textshow:true,
     count1:'',
@@ -91,6 +92,12 @@ Page({
       console.log(res);
       for(var i=0;i<res.data.data.length;i++){
         res.data.data[i].useLimit= JSON.parse(res.data.data[i].useLimit);
+        if(res.data.data[i].discountCouponType==1){
+          res.data.data[i].useLimit.minus= (res.data.data[i].useLimit.minus/100).toFixed(2);
+        }else if(res.data.data[i].discountCouponType==0){
+          res.data.data[i].useLimit.minus=(res.data.data[i].useLimit.minus)/100;
+        }
+        res.data.data[i].useLimit.full= (res.data.data[i].useLimit.full/100).toFixed(2);
       }
      that.setData({
       tequan:res.data.data
@@ -158,6 +165,7 @@ Page({
     arr3.push(e.currentTarget.dataset.item.id);
     console.log(e.currentTarget.dataset.item);
     this.setData({
+      discountCouponType:e.currentTarget.dataset.item.discountCouponType,
       count: a1-e.currentTarget.dataset.item.useLimit.minus,
       item:e.currentTarget.dataset.item,
       CouponId:arr3,

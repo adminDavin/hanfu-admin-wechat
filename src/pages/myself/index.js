@@ -36,23 +36,23 @@ Page({
       img:'../../img/chulizhong.png',
       action: "process",
       quantity: 0,
-      desc: "处理中"
+      desc: "待理中"
     },
     {
       img:'../../img/shouhuo.png',
-      action: "process",
+      action: "transport",
       quantity: 0,
-      desc: "待收货"
+      desc: "运送中"
     },
     {
       img:'../../img/ziyuan.png',
-      action: "process",
+      action: "evaluate",
       quantity: 0,
       desc: "待评价"
     },
      {
       img:'../../img/daifukuan.png',
-      action: "complete",
+      action: "controversial",
       quantity: 0,
       desc: "退换/售后"
     }],
@@ -155,8 +155,13 @@ Page({
   recharge: function (e) {
     console.log(123,this.data.hui)
     wx.navigateTo({
-      url: '/pages/myself/tequan/tequan',
+      url: '/pages/myself/tequan/tequan?hui='+this.data.hui,
      })
+  },
+  onSelectedOrder1: function(e) {
+    console.log(e);
+    console.log(e);
+    this.handleSelected('/pages/order/list', e.currentTarget.dataset.action);
   },
   onSelectedOrder: function(e) {
     console.log(this.data.orderStatuses);

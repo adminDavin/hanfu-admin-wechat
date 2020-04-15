@@ -6,6 +6,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    quanlist:[],
+    hui:'',
     num:0,
     id:'',
     levellist:[],
@@ -17,6 +19,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.setData({
+      hui:options.hui
+    })
     this.getlevelList();
     // console.log(111);
     var that = this;
@@ -26,10 +31,11 @@ Page({
         that.setData({
           userId: res.data
         })
-        console.log(res);
+        that.couponHall();
+        // console.log(res);
         quan.getquan(that.data.userId ,(res) => {
           // let list = res.data.data;
-          console.log(res);
+          // console.log(res);
           that.setData({
             tequan: res.data.data
           })
@@ -43,10 +49,45 @@ Page({
     })
    
   },
+  
+  couponHall:function(){
+    var that=this;
+    let obj={
+      scope :1,
+      userId :that.data.userId 
+    }
+    quan.couponHall(obj,(res) => {
+    //  var that=this;
+      console.log(res);
+      that.setData({
+        quanlist: res.data.data
+      })
+      let arr=that.data.quanlist;
+      for(var i=0;i<arr.length;i++){
+        arr[i].useLimit= JSON.parse(arr[i].useLimit) ;
+      
+       if(arr[i].discountCouponType==1){
+        arr[i].useLimit.minus= (arr[i].useLimit.minus/100).toFixed(2);
+        }else if(arr[i].discountCouponType==0){
+          arr[i].useLimit.minus=(arr[i].useLimit.minus)/100;
+        }
+        arr[i].useLimit.full= (arr[i].useLimit.full/100).toFixed(2);
+      }
+      that.setData({
+        quanlist: arr
+       })
+       console.log(that.data.quanlist)
+    });
+  },
+  goquan:function(){
+    wx.navigateTo({
+      url: '../quan/quan',
+    })
+  },
   getlevelList:function(){
     quan.getlevelList((res) => {
      var that=this;
-      console.log(res);
+      // console.log(res);
       that.setData({
        levellist: res.data.data
       })
@@ -57,12 +98,12 @@ Page({
       that.setData({
         levellist: arr
        })
-       console.log(that.data.levellist)
+      //  console.log(that.data.levellist)
     });
   },
   changlevel:function(e){
     var that=this;
-    console.log(e.currentTarget.dataset.id);
+    // console.log(e.currentTarget.dataset.id);
     let arr=that.data.levellist;
     for(var i=0;i<arr.length;i++){
       arr[i].change=0;
@@ -102,9 +143,9 @@ Page({
       paymentName :'wechart',
       userId :that.data.userId,
     }
-    console.log(obj)
+    // console.log(obj)
   quan.create(obj ,(res) => {
-    console.log('1',res);
+    // console.log('1',res);
     if(res.data.status==200){
       that.setData({
         id:res.data.data.orderCode
@@ -114,7 +155,7 @@ Page({
         userId :that.data.userId,
       }
       quan.pay(obj1 , (res) => {
-        console.log('2',res);
+        // console.log('2',res);
         if(res.data.status==200){
           wx.requestPayment({
             timeStamp: res.data.data.timeStamp,
@@ -123,7 +164,7 @@ Page({
             signType: 'MD5',
             paySign: res.data.data.paySign,
             success (res) { 
-              console.log(res);
+              // console.log(res);
               let obj2={
                 transactionType:'rechargeOrder',
                 outTradeNo :that.data.id,
@@ -131,7 +172,7 @@ Page({
                 level:ids,
               }
               quan.complate(obj2, (res) => {
-                console.log('3',res);
+                // console.log('3',res);
                 // quan.findInfoByUserId(that.data.userId, (res) => {
                 //   console.log(res);
                 //   that.setData({
