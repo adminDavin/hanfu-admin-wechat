@@ -37,20 +37,21 @@
 			<view class="dai-content" style="margin-top:20rpx;" wx:if="{{hfOrder.orderStatus=='cancel'}}">
 				<view wx:if="{{hfOrder.orderStatus=='cancel'}}" class="content-ziti" style="margin-right:40rpx">取消原因：超时未支付</view>
 			</view>
-			<view wx:if="{{hfOrder.orderStatus=='cancel'}}"  style="magin-right:0; margin-top:40rpx; border-radius:80rpx; width:226rpx;height:67rpx; color:#FE1D42;background:#FFFFFD;display:flex;align-items:center;justify-content:center;">
+			<!-- <view wx:if="{{hfOrder.orderStatus=='cancel'}}"  style="magin-right:0; margin-top:40rpx; border-radius:80rpx; width:226rpx;height:67rpx; color:#FE1D42;background:#FFFFFD;display:flex;align-items:center;justify-content:center;">
 				再次购买
-			</view>
+			</view> -->
 			<view wx:if="{{hfOrder.orderStatus=='payment'}}" bindtap="gopay" style="margin-top:40rpx; border-radius:80rpx; width:226rpx;height:67rpx; color:#FE1D42;background:#FFFFFD;display:flex;align-items:center;justify-content:center;">
 				立即支付
 			</view>
 			<view wx:if="{{hfOrder.orderStatus=='controversial'}}" style="margin-top:40rpx; border-radius:80rpx; width:226rpx;height:67rpx; color:#aaa;background:#eee;display:flex;align-items:center;justify-content:center;">
 				已申请
 			</view>
-
+			<view wx:if="{{hfOrder.orderStatus=='transport'}}" bindtap="yunsong" style="margin-top:40rpx; border-radius:80rpx; width:226rpx;height:67rpx; color:#FE1D42;background:#FFFFFD;display:flex;align-items:center;justify-content:center;">
+				确认收获
+			</view>
 			<view wx:if="{{hfOrder.orderStatus=='process'}}"  style="margin-top:40rpx; border-radius:80rpx; width:226rpx;height:67rpx; color:#FE1D42;background:#FFFFFD;display:flex;align-items:center;justify-content:center;">
 				提醒发货
 			</view>
-
 		</view>
 	</view>
 	<view class="address-card" style="overflow:hidden;" wx:if="{{hfOrder.addressId}}">

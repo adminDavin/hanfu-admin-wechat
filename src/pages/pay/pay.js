@@ -61,7 +61,7 @@ Page({
         shangjiagoods:JSON.parse(options.arr)
       }
     )
-    
+    console.log(this.data.shangjiagoods)
     userAddressApi.query(wx.getStorageSync('userId'), (res) => {
       console.log(res.data.data, res.data.data.length);
       if (res.data.data.length > 0) {

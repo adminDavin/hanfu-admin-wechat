@@ -16,6 +16,22 @@ Page({
       url: '../ping/ping?orderId='+this.data.hfOrder.id+'&item='+JSON.stringify(e.currentTarget.dataset.item),
     })
   },
+  zai:function(){
+    let arr=this.data.hfOrder.detailRequestList;
+    for(var i=0;i<arr.length;i++){
+      arr[i].check1=1;
+      for(var j=0;j<arr[i].hfOrderDetailList.length;j++){
+        arr[i].hfOrderDetailList[j].check=1;
+      }
+     
+    }
+    console.log(arr)
+    // arr=JSON.stringify(arr);
+   
+    // wx.navigateTo({
+    //   url: '../pay/pay?arr='+ arr +'&count='+this.data.hfOrder.amount,
+    // })
+  },
   getma:function(e){
     console.log(e.currentTarget.dataset.id)
     wx.navigateTo({
@@ -137,6 +153,36 @@ Page({
       }
     });
   },
+  // 确认收获
+  yunsong:function(){
+    var that=this;
+    let obj={
+      targetOrderStatus :'evaluate',
+      Id: that.data.hfOrder.id,
+      orderCode:that.data.hfOrder.orderCode,
+      originOrderStatus: 'transport',
+  
+    }
+    console.log(obj)
+    car.modifyStatus(obj, (res) => {
+      console.log(res);
+      if(res.data.status==200){
+        wx.showToast({
+          title: '已确认',
+        })
+        let hfOrder1=that.data.hfOrder;
+        hfOrder1.orderStatus='evaluate';
+        that.setData({
+          hfOrder:hfOrder1
+        })
+      }else{
+        wx.showToast({
+          title: '操作失败',
+          icon:'none'
+        })
+      }
+    });
+  },
  cancel:function(){
    var that=this;
   let obj={
@@ -183,6 +229,15 @@ Page({
   onLoad: function (options) {
    console.log(options);
     let params = JSON.parse(decodeURIComponent(options.hfOrder));
+    console.log(params);
+   
+    for(var i=0;i<params.detailRequestList.length;i++){
+     
+      for(var j=0;j<params.detailRequestList[i].hfOrderDetailList.length;j++){
+        params.detailRequestList[i].hfOrderDetailList[j].hfDesc.sellPrice=(params.detailRequestList[i].hfOrderDetailList[j].hfDesc.sellPrice/100).toFixed(2)
+      }
+     
+    }
     console.log(params);
     this.setData({hfOrder: params});
     // let obj={
