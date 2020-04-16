@@ -331,9 +331,11 @@ Page({
     var that = this;
     if (that.data.collecte) {
       let params = {
-        productId: this.data.productId,
+        stoneId:that.data.stoneId,
+        productId: that.data.productId,
         userId: wx.getStorageSync('userId')
       }
+      console.log(params)
       productApi.deleteProductCollect(params, (res) => {
         console.log(res)
         that.setData({
@@ -345,6 +347,7 @@ Page({
       })
     } else {
       let params = {
+        stoneId:that.data.stoneId,
         productId: this.data.productId,
         userId: wx.getStorageSync('userId')
       }
