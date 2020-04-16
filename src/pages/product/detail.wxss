@@ -36,12 +36,12 @@
 
 .p20 {
   margin: 20rpx;
+  margin-top:160rpx; 
+  font-size: 26rpx;
   text-align: start;
+  /* background-color: red; */
 }
 
-.p10 {
-  margin: 10rpx;
-}
 
 .right {
   margin: 20rpx;
@@ -49,9 +49,9 @@
 }
 
 .box {
+  margin:30rpx; 
   width:100%;
-  display: flex;
-  justify-content: space-between;
+  font-size: 36rpx;
 }
 
 /* 底部 */

@@ -39,7 +39,16 @@ Component({
     selectedSlot: {},
     productSecKillData: [],
   },
-
+  /**
+    * 生命周期函数--监听页面加载
+    */
+  onLoad: function (options) {
+    this.setData({
+      winHeight: getApp().globalData.winHeight -
+        wx.getSystemInfoSync().screenWidth / 750 * (155)
+    })
+    console.log(this.data.winHeight)
+  },
   /**
    * 组件的方法列表
    */

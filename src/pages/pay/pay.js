@@ -53,7 +53,7 @@ Page({
     })
    },
   onLoad: function (options) {
-    
+    console.log(JSON.parse(options.arr))
     this.setData(
       {
         count1:options.count,

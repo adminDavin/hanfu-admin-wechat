@@ -37,6 +37,8 @@
 
 .p20 {
   margin: 20rpx;
+  margin-top:160rpx; 
+  font-size: 26rpx;
   text-align: start;
 }
 
@@ -50,9 +52,9 @@
 }
 
 .box {
-  width:100%;
-  display: flex;
-  justify-content: space-between;
+ margin:30rpx; 
+ width:100%;
+ font-size: 36rpx;
 }
 
 /* 底部 */

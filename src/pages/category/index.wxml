@@ -1,15 +1,15 @@
-<scroll-view scroll-y="true" style="height:{{height}}px">
+<scroll-view scroll-y="true" current="{{currentTab}}" duration="300" style="height:{{winHeight}}px">
   <view class="classify">
     <view class="classify-header-box">
       <button bindtap="chongqingjzb" class='kefubtn cu-btn content'>
-        <image  src="../../images/saoyisao.png" class="classify-tus" />
+        <image src="../../images/saoyisao.png" class="classify-tus" />
       </button>
       <view class="classify-header" bindtap="sousuo">
         <image class="classify-tu" src="../../images/sousuo.png" />
         <input type="text" class="classify-input" placeholder="显示器2K" />
       </view>
       <button class='kefubtn cu-btn content' open-type="contact">
-      <image src="../../images/xiaoxi.png" class="classify-tus" />
+        <image src="../../images/xiaoxi.png" class="classify-tus" />
       </button>
 
     </view>
@@ -24,10 +24,12 @@
       <view>
         <image src="{{selectedLeftMenu.imageUrl}}" class="text-image" />
         <view class="rightbox" wx:for="{{rightMenu}}" wx:for-item="arritem" wx:key="index">
-          <view>{{arritem.twoLevelName}}</view>
+          <view style="margin:20rpx;">{{arritem.twoLevelName}}</view>
           <view class="box">
             <view wx:for="{{arritem.categories}}" wx:for-item="ait" wx:key="index" bindtap="goThreeLevel" data-categoryid="{{ait.id}}" class="yige">
-              <image src="{{ait.imageUrl}}" class="imagestu" />
+              <view>
+                <image src="{{ait.imageUrl}}" class="imagestu" />
+              </view>
               <text class="textwenzi">{{ait.hfName}}</text>
             </view>
           </view>

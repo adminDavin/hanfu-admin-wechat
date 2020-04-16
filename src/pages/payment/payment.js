@@ -36,7 +36,7 @@ Page({
     }, (res) => {
       let payment = res.data.data;
       console.log(res)
-      if (res.data.status) {
+      if (res.data.status==500) {
         wx.showToast({
           title: '余额不足',
           icon: 'none'

@@ -2,9 +2,10 @@ import productApi from '../../services/hf-product.js';
 import util from '../../utils/util.js';
 import projectUtils from '../../utils/project-utils.js';
 import requestUtils from '../../services/request-utils.js';
-
+const app = getApp();
 Page({
   data: {
+    winHeight:'',
     current: 0,
     indicatorDots: true,
     autoplay: true,
@@ -24,6 +25,10 @@ Page({
         imgUrls: list
       });
     });
+    this.setData({
+      winHeight: app.globalData.winHeight -
+        wx.getSystemInfoSync().screenWidth / 750 * (155)
+    })
   },
 
   onShow: function() {

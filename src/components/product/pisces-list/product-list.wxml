@@ -1,5 +1,5 @@
 <!-- components/product/pisces-list/product-list.wxml -->
-<scroll-view scroll-y="true" style="height:{{scrollH}}px" bindscrolltolower="loadImages">
+<scroll-view scroll-y="true"  current="{{currentTab}}" duration="300" style="height:{{winHeight}}px" bindscrolltolower="loadImages">
   <view class="top-outer">
     <view class="two-row" wx:for="{{chosenData}}" wx:key="id">
       <view class="flex-row p10" bind:tap="onSeletedProduct" data-item="{{item}}">

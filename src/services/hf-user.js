@@ -1,6 +1,6 @@
 const app = getApp();
 
-function login(params = {}, handleResult) {
+function login(params = {}, handleResult,) {
   wx.request({
     url: app.endpoint.user + '/login/wechart',
     data: params,

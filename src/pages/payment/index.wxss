@@ -282,3 +282,65 @@ font-size: 34rpx;
   border-radius: 5px;
   background-color: rgba(0, 0, 0, 0.3);
 }
+
+.content{
+  width:100%;
+  height: 100%;
+  margin-top:32rpx
+}
+.content-card{
+  width:100%;
+  height: 230rpx;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0 34rpx;
+  box-sizing:border-box;
+}
+.content-item{
+  width: 615rpx;
+  height: 100%;
+  display: flex;
+  justify-content: flex-start;
+  margin-right:68rpx
+}
+.contentitem-right{
+  width:364rpx;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-left:30rpx
+}
+.item-name{
+font-size:26rpx;
+font-family:PingFang SC;
+font-weight:500;
+color:rgba(21,21,21,1);
+
+}
+.card-money{
+  width:100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.discounts-money {
+  color: #f00;
+  /* margin-top: 22rpx; */
+  line-height: 26rpx;
+  display: flex;
+  align-items: center;
+}
+.subadd-money{
+/* width:85rpx; */
+  /* height:35rpx; */
+  text-align: center;
+  /* line-height:35rpx; */
+font-size:24rpx;
+font-family:PingFang SC;
+font-weight:500;
+color:rgba(51,51,51,1);
+/* background:rgba(240,240,240,1); */
+border-radius:18px;
+}

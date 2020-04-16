@@ -1,6 +1,7 @@
 // src/pages/payment/index.js
 
 const app = getApp();
+import reuqestUtils from '../../services/request-utils.js';
 import userAddressApi from '../../services/hf-user-address.js';
 import orderApi from '../../services/hf-order.js';
 import util from '../../utils/util.js';
@@ -8,6 +9,8 @@ import discount from '../../services/discount.js';
 
 Page({
   data: {
+    imgageUrls:'',
+    selectedGoods:'',
     competitive: false,
     CouponId: '',
     showModalCreateOrder: false,
@@ -100,7 +103,14 @@ Page({
    */
   onShow: function() {
     console.log(this.data);
-
+    let imgageUrls = ''
+    imgageUrls = app.endpoint.file + '/goods/getFile?fileId=' + this.data.selectedGoods.fileIds[0];
+    console.log(imgageUrls);
+   this.setData({
+     selectedGoods: this.data.selectedGoods,
+     imgageUrls: imgageUrls
+   })
+    console.log(this.data.selectedGoods);
   },
   // 选择地址 跳到地址栏
   selectLocation() {

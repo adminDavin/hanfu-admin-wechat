@@ -16,7 +16,7 @@ Page({
     parentCategoryId: "",
     firstId: '',
     selectedLeftMenu: {},
-    height:''
+    winHeight:''
   },
   sousuo: function () {
     wx.navigateTo({
@@ -56,12 +56,12 @@ Page({
       });
       this.updateRightMenu(selectedLeftMenu);
     });
-    
-    let windowHeight = wx.getSystemInfoSync().windowHeight // 屏幕的高度
-    let windowWidth = wx.getSystemInfoSync().windowWidth // 屏幕的宽度
+    console.log(app.globalData.winHeight)
     this.setData({
-      height: windowHeight * 750 / windowWidth - 30-420
+      winHeight: app.globalData.winHeight -
+        wx.getSystemInfoSync().screenWidth / 750 * (155)
     })
+    console.log(this.data.winHeight)
   },
 
   

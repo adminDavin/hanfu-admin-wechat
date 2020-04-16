@@ -2,22 +2,31 @@ page{
   height: 100%;  
   background-color: #F3F4F6;
 }
+.flex-row .flex-view-item{
+ display:flex;
+ flex-direction:column;
+ justify-content:space-between;
+ width:60%;
+ height:250rpx;
+ margin-left:10rpx;
+ /* box-sizing:border-box; */
+}
 .p10{
   padding: 10rpx;
   border-bottom: indigo;
 }
 .product-price-wrap .product-price-new{
   color: #e80080;
-  margin-left:5px;
+  margin-left:5rpx;
   font-weight:900;
 }
 .product-price-wrap .product-price-old{
   color: #888;
   text-decoration: line-through;
-  padding-left: 2px;
+  padding-left: 2rpx;
 }
 .product-price-wrap .discount{
-  margin-left: 30px;
+  margin-left: 30rpx;
   background-color: #000;
   color: #fff;
 }

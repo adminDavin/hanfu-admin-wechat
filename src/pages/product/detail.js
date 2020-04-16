@@ -329,10 +329,12 @@ Page({
  //收藏、
   eventCollect() {
     var that = this;
+    console.log(that.data.stoneId)
     if (that.data.collecte) {
       let params = {
         productId: this.data.productId,
-        userId: wx.getStorageSync('userId')
+        userId: wx.getStorageSync('userId'),
+        stoneId: that.data.stoneId
       }
       productApi.deleteProductCollect(params, (res) => {
         console.log(res)
@@ -346,7 +348,8 @@ Page({
     } else {
       let params = {
         productId: this.data.productId,
-        userId: wx.getStorageSync('userId')
+        userId: wx.getStorageSync('userId'),
+        stoneId: that.data.stoneId
       }
       productApi.addProductCollect(params, (res) => {
         console.log(res)
@@ -435,7 +438,6 @@ Page({
         });
     },
     onSelectedGoodsSpec: function (e) { 
-      console.log(this.data.selectedGoods)
       console.log(this.data.selectedGoods)
         let animation = wx.createAnimation({
             duration: 200,
@@ -542,6 +544,7 @@ Page({
         activityId: this.data.activityId,
         quantity: this.data.quantity,
         competitive: this.data.competitive,
+        stoneName: this.data.stoneName
       };
       console.log(params);
       wx.navigateTo({

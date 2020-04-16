@@ -1,14 +1,20 @@
 App({  
+  globalData: {
+    isIphoneX: false,
+    winHeight: '',
+    winWidth: ''
+  },
   onLaunch: function () {
     wx.getSystemInfo({
       success:  (e) => {
+        console.log(e)
         this.globalData.isIphoneX = e.model.indexOf("iPhone") != -1 && e.model.indexOf("X") != -1;
+        this.globalData.winWidth = e.windowWidth;
+        this.globalData.winHeight = e.windowHeight;
       }
     })
   },
-  globalData: {
-    isIphoneX: false
-  },
+
   endpoint: {
     product: 'https://www.tjsichuang.cn:1443/api/product',
     file: 'https://www.tjsichuang.cn:1443/api/product',

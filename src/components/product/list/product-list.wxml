@@ -7,13 +7,13 @@
     toFixed: toFixed
   }
 </wxs>
-<scroll-view scroll-y="true" style="height:{{scrollH}}px" bindscrolltolower="loadImages">
+<scroll-view scroll-y="true" current="{{currentTab}}" duration="300" style="height:{{winHeight}}px" bindscrolltolower="loadImages">
   <view wx:for="{{chosenData}}" wx:key="id">
     <view class="flex-row p10" style="display: flex;" bind:tap="onSeletedProduct" data-item="{{item}}">
-      <image class="flex-view-item" src="{{item.imageUrl}}" style="width:40%;height:250rpx"></image>
-      <view class="flex-view-item p10" style="width:60%">
+      <image src="{{item.imageUrl}}" style="width:40%;height:250rpx"></image>
+      <view class="flex-view-item">
         <view style="text-align: left">{{item.productName}}</view>
-        <view style="margin-top: 20rpx;color: red;">￥{{we.toFixed(item.priceArea/100)}}
+        <view style="color: red;">￥{{we.toFixed(item.priceArea/100)}}
           <!-- <text style='color:#888;text-decoration:line-through;margin-left:10px; '>￥{{item.linePrice/100}}</text> -->
         </view>
         <view wx:if="{{item.productActivityType!==null}}">

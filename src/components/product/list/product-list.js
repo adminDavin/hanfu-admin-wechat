@@ -41,6 +41,7 @@ Component({
     imgWidth: 0,
     sort: '',
     param: {},
+    winHeight:'',
   },
 
   /**
@@ -59,7 +60,7 @@ Component({
         });
       } else if (selected.productActivityType == 'seckillActivity') {
         wx.navigateTo({
-          url: '/pages/product/detail?productId=' + selected.id + '&stoneId=' + selected.stoneId + '&action=' + 'competitive' + '&priceArea=' + selected.priceArea + '&stoneName=' + selected.stoneName + '&action=' + selected.productActivityType + '&activityId=' + selected.activityId + '&stoneName=' + selected.stoneName
+          url: '/pages/product/detail?productId=' + selected.id + '&stoneId=' + selected.stoneId + '&action=' + 'competitive' + '&priceArea=' + selected.priceArea + '&stoneName=' + selected.stoneName + '&action=' + selected.productActivityType + '&activityId=' + selected.activityId + '&stoneName=' + selected.stoneName + '&startTime=' + selected.startTime + '&endTime=' + selected.endTime
         });
       } else {
         wx.navigateTo({
@@ -128,8 +129,14 @@ Component({
           this.getProducts(params);
         }
       }, 20);
-
+      console.log(app.globalData.winHeight)
+      this.setData({
+        winHeight: app.globalData.winHeight -
+          wx.getSystemInfoSync().screenWidth / 750 * (155)
+      })
+      console.log(this.data.winHeight)
     },
+    
     detached: function () {
       // 在组件实例被从页面节点树移除时执行
     },

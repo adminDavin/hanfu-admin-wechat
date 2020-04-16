@@ -12,13 +12,13 @@
 <!-- 立即购买弹窗内容 -->
 <template name="showSelectedSpec">
 	<view class="p20">
-		<text>已选规格</text>
+  <text style="font-size: 45rpx;">已选规格</text>
 		<view class="box">
-			<view class="p10" wx:for="{{selectedGoods.hfGoodsSpecs}}" wx:key="index">
-				{{item.hfName}}: {{item.hfValue}}
+			<view>
+				{{selectedGoods.goodsName}}
 			</view>
 		</view>
-		<view>购买数量:{{quantity}}<text style="margin-left: 16rpx">￥{{we.toFixed(selectedGoods.sellPrice/100)}}元</text></view>
+		<view style="margin-right: 30rpx">购买数量:{{quantity}}<text style="margin-left: 16rpx">￥{{we.toFixed(selectedGoods.sellPrice/100)}}元</text></view>
 	</view>
 </template>
 

@@ -4,6 +4,7 @@
   background-color: #f8f8f8;
   height: 750rpx;
 }
+
 .group {
   display: flex;
   align-items: center;
@@ -283,7 +284,7 @@ swiper {
 .money-del {
   font-size: 26rpx;
   font-weight: 500;
-  color: #999;
+  /* color: #999; */
   margin-left: 19rpx;
   text-decoration: line-through;
 }

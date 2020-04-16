@@ -336,9 +336,11 @@ Page({
   eventCollect() {
     var that = this;
     if (that.data.collecte) {
+      console.log(this.data.stoneId)
       let params = {
         productId: this.data.productId,
-        userId: wx.getStorageSync('userId')
+        userId: wx.getStorageSync('userId'),
+        stoneId: this.data.stoneId
       }
       productApi.deleteProductCollect(params, (res) => {
         console.log(res)
@@ -352,7 +354,8 @@ Page({
     } else {
       let params = {
         productId: this.data.productId,
-        userId: wx.getStorageSync('userId')
+        userId: wx.getStorageSync('userId'),
+        stoneId: that.data.stoneId
       }
       productApi.addProductCollect(params, (res) => {
         console.log(res)
@@ -585,7 +588,8 @@ Page({
       groupActivity: this.data.groupActivity,
       activityId: this.data.activityId,
       quantity: this.data.quantity,
-      groupid: this.data.groupid
+      groupid: this.data.groupid,
+      stoneName: this.data.stoneName
     };
     wx.navigateTo({
       url: '/pages/payment/index?params=' + encodeURIComponent(JSON.stringify(params))

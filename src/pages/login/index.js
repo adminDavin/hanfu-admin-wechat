@@ -77,6 +77,7 @@ Page({
     wx.login({
       success: (res) => {
         let code = res.code;
+        if (res.code) {
         wx.getUserInfo({
           success: (res) => userApi.login({
               code: code,
@@ -96,8 +97,28 @@ Page({
                 },
               });
               this.setData(result);
-            })
+              wx.showToast({
+                title: '登录成功',
+                icon: 'success',
+                duration: 2000
+              })
+              // 返回上一页
+              var pages = getCurrentPages();
+              var beforePage = pages[pages.length - 2];
+              // beforePage.getAddress();//触发父页面中的方法
+              wx.navigateBack({
+                delta: 1,
+              })
+            }), 
         });
+      } else {
+        console.log('登录失败！' + res.errMsg)
+          wx.showToast({
+            title: '登录失败！',
+            icon: 'none',
+            duration: 2000
+          })
+      }
       }
     });
   },
@@ -115,6 +136,11 @@ Page({
           result.userId = result.id;
           wx.setStorage(result);
           this.setData(result);
+          wx.showToast({
+            title: '获取成功',
+            icon: 'success',
+            duration: 2000
+          })
         });
       }
     });
