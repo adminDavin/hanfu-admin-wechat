@@ -117,7 +117,7 @@
 									<view class="card-money">
 										<view class="discounts-money">
 											<text class="money-title">¥</text>
-											<text class="money-number">{{selectedGoods.sellPrice}}</text>
+											<text class="money-number">{{we.toFixed(selectedGoods.sellPrice/100)}}</text>
 										</view>
 											<view class="subadd-money" style="margin-left:3px;margin-right:3px;">{{selectedGoods.quantitys}}</view>
 									</view>

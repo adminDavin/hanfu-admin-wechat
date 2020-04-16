@@ -10,9 +10,6 @@
       <view class="bot-ziti">{{item.hfProvince}}{{item.hfCity}}{{item.hfAddressDetail}}</view>
       <image src="../../../images/xiugai.png" style="width:30rpx;height:30rpx" bindtap="editadd" data-addid="{{item.id}}"></image>
     </view>
-    <view class="hid-item" style="background:rgba(255,0,0,1);" bindtap="delGoods" data-goodsid="{{item.productId}}" data-stontId="{{item.stoneId}}">
-      <view style="width:50rpx;color:white;margin-top:15rpx">删除</view>
-    </view>
   </view>
   <!-- <view hidden="{{!tipshow}}" class="bot-ziti" style="width:100%;text-align:center;margin-top:400rpx;">您还未登陆，请先登录</view> -->
   <view class="footer" bindtap="addaddress">+新建收货地址</view>
