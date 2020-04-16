@@ -10,11 +10,11 @@ Page({
   pickupScancode(){
     var that=this;
    let userId= wx.getStorageSync('userId');
-    // if (util.isEmpty(userId)) {
-    //   wx.navigateTo({
-    //     url: '/pages/login/index?orderStatus=payment',
-    //   });
-    // } else{
+    if (util.isEmpty(userId)) {
+      wx.navigateTo({
+        url: '/pages/login/index?orderStatus=payment',
+      });
+    } else{
       wx.scanCode({
         success: (res) => {
           console.log(res);
@@ -65,7 +65,7 @@ Page({
           })
         }
       })
-    // }
+    }
   },
   payScancode(){
     var that = this;

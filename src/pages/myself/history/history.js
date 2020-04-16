@@ -12,6 +12,24 @@ Page({
     mostlower: '',
     cang:[],
   },
+  onSeletedProduct: function (e) {
+    let selected = e.currentTarget.dataset.item;
+    console.log(selected)
+    if (selected.productActivityType == 'groupActivity') {
+      wx.navigateTo({
+        url: '/pages/product/group-detail?productId=' + selected.id + '&stoneId=' + selected.stoneId + '&action=' + 'competitive' + '&priceArea=' + selected.priceArea + '&stoneName=' + selected.stoneName + '&action=' + selected.productActivityType + '&activityId=' + selected.activityId + '&stoneName=' + selected.stoneName
+      });
+    } else if (selected.productActivityType == 'seckillActivity') {
+      wx.navigateTo({
+        url: '/pages/product/detail?productId=' + selected.id + '&stoneId=' + selected.stoneId + '&action=' + 'competitive' + '&priceArea=' + selected.priceArea + '&stoneName=' + selected.stoneName + '&action=' + selected.productActivityType + '&activityId=' + selected.activityId + '&stoneName=' + selected.stoneName
+      });
+    } else {
+      wx.navigateTo({
+        url: '/pages/product/detail?productId=' + selected.id + '&stoneId=' + selected.stoneId + '&action=' + 'competitive' + '&priceArea=' + selected.priceArea + '&stoneName=' + selected.stoneName
+      });
+    }
+
+  },
   //列表切换
   list: function () {
     var that=this;
@@ -26,6 +44,7 @@ Page({
       for(var i=0;i<arr.length;i++){
         for(var j=0;j<arr[i].list.length;j++){
           arr[i].list[j].fileId=app.endpoint.file + '/goods/getFile?fileId=' +arr[i].list[j].fileId
+          arr[i].list[j].priceArea=(arr[i].list[j].priceArea/100).toFixed(2);
         }
        
       }

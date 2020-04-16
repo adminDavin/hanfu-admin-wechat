@@ -169,7 +169,7 @@ Page({
     if(e.currentTarget.dataset.item.discountCouponType==1){
       a2=a1-e.currentTarget.dataset.item.useLimit.minus
     }else{
-      a2=a1*(e.currentTarget.dataset.item.useLimit.minus/100)
+      a2=a1*(e.currentTarget.dataset.item.useLimit.minus/10)
     }
     a2=a2.toFixed(2);
     this.setData({
