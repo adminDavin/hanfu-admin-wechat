@@ -102,9 +102,9 @@ function modifyStatus(id, orderCode, originOrderStatus, targetOrderStatus, handl
     }
   });
 }
-function qrCode(url,params,handleResult) {
+function qrCode(params,handleResult) {
   wx.request({
-    url: url,
+    url: app.endpoint.order + '/cancel/testCancel',
     data: params,
     success: res => handleResult(res),
     fail: (res) => {

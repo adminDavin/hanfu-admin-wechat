@@ -1,5 +1,6 @@
 // pages/shopping/shopping.js
 const app = getApp();
+import projectUtils from '../../utils/project-utils.js';
 import car from '../../services/car.js';
 // var util = require('../../utils/util.js')
 // const apiCart = require('../../utils/api/cart.js');
@@ -304,6 +305,12 @@ console.log(arr[e.currentTarget.dataset.index].goodList[e.currentTarget.dataset.
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
+    // if (typeof this.getTabBar === 'function' && this.getTabBar()) {
+    //   this.getTabBar().setData({
+    //     selected: 2
+    //   })
+    // }
+    projectUtils.activeTabBar(this, 3);
     wx.setNavigationBarTitle({
           title: "购物车",
         

@@ -171,6 +171,7 @@ Page({
     }else{
       a2=a1*(e.currentTarget.dataset.item.useLimit.minus/100)
     }
+    a2=a2.toFixed(2);
     this.setData({
       discountCouponType:e.currentTarget.dataset.item.discountCouponType,
       count:a2,

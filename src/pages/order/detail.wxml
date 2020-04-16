@@ -47,7 +47,7 @@
 				已申请
 			</view>
 			<view wx:if="{{hfOrder.orderStatus=='transport'}}" bindtap="yunsong" style="margin-top:40rpx; border-radius:80rpx; width:226rpx;height:67rpx; color:#FE1D42;background:#FFFFFD;display:flex;align-items:center;justify-content:center;">
-				确认收获
+				确认收货
 			</view>
 			<view wx:if="{{hfOrder.orderStatus=='process'}}"  style="margin-top:40rpx; border-radius:80rpx; width:226rpx;height:67rpx; color:#FE1D42;background:#FFFFFD;display:flex;align-items:center;justify-content:center;">
 				提醒发货

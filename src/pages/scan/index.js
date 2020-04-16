@@ -9,23 +9,22 @@ Page({
   },
   pickupScancode(){
     var that=this;
-    let url = app.endpoint.order + '/cancel/testCancel'
-    let userId = wx.getStorageSync('userId');
-    if (util.isEmpty(userId)) {
-      wx.navigateTo({
-        url: '/pages/login/index?orderStatus=payment',
-      });
-    } else{
+   let userId= wx.getStorageSync('userId');
+    // if (util.isEmpty(userId)) {
+    //   wx.navigateTo({
+    //     url: '/pages/login/index?orderStatus=payment',
+    //   });
+    // } else{
       wx.scanCode({
         success: (res) => {
+          console.log(res);
           let qrl = JSON.parse(res.result)
           console.log(qrl)
           let params = {
-            userId: 970,
-            UgoodsId: qrl[0].goodsId,
+            userId: wx.getStorageSync('userId'),
             UorderId: qrl[0].orderId
           };
-          orderApi.qrCode(url,params,(res)=>{
+          orderApi.qrCode(params,(res)=>{
             console.log(res)
             if (res.data.data == '对不起你不是核销员无法核销商品') {
               that.setData({
@@ -66,7 +65,7 @@ Page({
           })
         }
       })
-    }
+    // }
   },
   payScancode(){
     var that = this;
