@@ -166,9 +166,25 @@ function ping(params,handleResult) {
     }
   });
 }
+function getid(params,handleResult) {
+  console.log(app.endpoint.product + '/goods/selectEvaluateGoods')
+  wx.request({
+    url: app.endpoint.product + '/goods/selectEvaluateGoods',
+    header: {
+      'content-type': 'application/x-www-form-urlencoded'
+    },
+    method: 'get',
+    data:params,
+    success: res => handleResult(res),
+    fail: (res) => {
+      console.log( res);
+    }
+  });
+}
 
 
 export default {
+  getid:getid,
   addcar:addcar,
   checkcar:checkcar,
   delGoods:delGoods,

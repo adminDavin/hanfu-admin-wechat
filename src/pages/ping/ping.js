@@ -1,12 +1,17 @@
 // src/pages/ping/ping.js
+import car from '../../services/car.js';
+const app = getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    file:[],
     orderId:{},
-    storeorder:{}
+    storeorder:{},
+    star:'',
+    evaluate:""
   },
 
   /**
@@ -20,8 +25,67 @@ Page({
     })
     console.log(that.data.orderId);
     console.log(that.data.storeorder);
+    console.log(that.data.storeorder.id);
+  },
+  twoLevelCommentBtnClick (e) {
+    this.setData({
+      star: e.detail
+    });
+    // console.log("fu：" +this.data.star);
+  },
+  bind: function(e){
+    this.setData({
+      evaluate: e.detail.value
+    });
+  //  console.log(this.data.evaluate); 
+},
+  loadpicture:function(){
+    var that=this;
+    wx.chooseImage({
+      count: 9,
+      success (res) {
+        console.log(res);
+        const tempFilePaths = res.tempFilePaths;
+        let arr =that.data.file;
+        for(var i=0;i<tempFilePaths.length;i++){
+          arr.push(tempFilePaths[i])
+        }
+        // arr.push(res.tempFilePaths[0])
+        that.setData({
+          file:arr
+        })
+        // wx.uploadFile({
+        //   url: 'https://example.weixin.qq.com/upload', //仅为示例，非真实的接口地址
+        //   filePath: tempFilePaths[0],
+        //   name: 'file',
+        //   formData: {
+        //     'user': 'test'
+        //   },
+        //   success (res){
+        //     const data = res.data
+        //     //do something
+        //   }
+        // })
+      }
+    })
   },
 
+  pingjia:function(){
+    var that=this;
+    let obj={
+      evaluate:that.data.evaluate,
+      file:that.data.file,
+      goodId:that.data.storeorder.goodsId,
+      orderDetailId:that.data.storeorder.id,
+      star:that.data.star,
+      stoneId:that.data.storeorder.stoneId
+    }
+    console.log(obj);
+      car.ping(obj, (res) => {
+        console.log(res);
+      
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

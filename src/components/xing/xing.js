@@ -38,7 +38,8 @@ Component({
     //点击星
     selectRight: function(e) {
       var score = e.currentTarget.dataset.score
-      console.log(score)
+      console.log(score);
+      this.triggerEvent("twoLevelCommentBtn", score);
       this.data.scores[e.currentTarget.dataset.idx] = score
 
       let evaluation = score == 1 ? '很不满意' : (score == 2 ? '不满意' : (score == 3 ? '一般' : (score == 4 ? '还不错' : (score == 5 ? '很满意' : ''))))

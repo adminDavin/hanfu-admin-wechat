@@ -144,7 +144,9 @@
   display: flex;
   justify-content: flex-start;
 }
-
+page{
+  background: #f8f8f8;
+}
 .contentitem-right {
   width: 440rpx;
   height: 100%;

@@ -10,8 +10,17 @@ Page({
     hfOrder:{},
     img:'',
   },
+  getid:function(){
+    let obj={
+      userId:wx.getStorageSync('userId')
+    }
+    car.getid(obj, (res) => {
+      console.log(res);
+ 
+    });
+  },
   ping:function(e){
-    console.log(e.currentTarget.dataset.id)
+    // console.log(e.currentTarget.dataset.id)
     wx.navigateTo({
       url: '../ping/ping?orderId='+this.data.hfOrder.id+'&item='+JSON.stringify(e.currentTarget.dataset.item),
     })
@@ -227,6 +236,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.getid();
    console.log(options);
     let params = JSON.parse(decodeURIComponent(options.hfOrder));
     console.log(params);
