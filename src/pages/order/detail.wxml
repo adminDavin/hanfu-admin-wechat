@@ -47,7 +47,7 @@
 				已申请
 			</view>
 			<view wx:if="{{hfOrder.orderStatus=='transport'}}" bindtap="yunsong" style="margin-top:40rpx; border-radius:80rpx; width:226rpx;height:67rpx; color:#FE1D42;background:#FFFFFD;display:flex;align-items:center;justify-content:center;">
-				确认收获
+				确认收货
 			</view>
 			<view wx:if="{{hfOrder.orderStatus=='process'}}"  style="margin-top:40rpx; border-radius:80rpx; width:226rpx;height:67rpx; color:#FE1D42;background:#FFFFFD;display:flex;align-items:center;justify-content:center;">
 				提醒发货
@@ -91,15 +91,17 @@
 					</view>
 					<view class="num">X{{professionitem.quantity}}</view>
 				</view>
-
+			<view  style="display:flex;justify-content:flex-end;marggin-bottom:10rpx;margin-top:10rpx;" >
+				<view  data-item='{{professionitem}}' class="querenbtn" bindtap="ping" wx:if="{{item.detailStatus=='evaluate'}}" >
+				去评价
+			</view>
+			</view>
 			</view>
 		</view>
 		<view  style="display:flex;justify-content:flex-end;padding-bottom:20rpx;" >
 			<view class="querenbtn" wx:if="{{item.detailStatus=='transport'&&item.takingType=='delivery'}}"  data-id='{{item.stoneId}}' bindtap="gowuliu">订单跟踪</view>
 			<view class="querenbtn" wx:if="{{item.detailStatus=='transport'&&item.takingType=='selfPickUp'}}"  data-id='{{item.stoneId}}' bindtap="getma">核销码</view>
-			<view  data-item='{{item}}' class="querenbtn" bindtap="ping" wx:if="{{item.detailStatus=='evaluate'}}" >
-				去评价
-			</view>
+		
 		</view>
 		
 	</view>
@@ -139,7 +141,7 @@
 		</view>
 	</view> -->
 	<view style="height:98rpx"></view>
-	<view class="footer" wx:if="{{hfOrder.orderStatus!='controversial'||hfOrder.orderStatus!='transport'}}">
+	<view class="footer" wx:if="{{hfOrder.orderStatus=='process'||hfOrder.orderStatus=='payment'}}">
 		<view class="querenbtn" wx:if="{{hfOrder.orderStatus=='process'}}" style="margin-right:30rpx" bindtap="shenback">申请退款</view>
 		<view class="querenbtn" wx:if="{{hfOrder.orderStatus=='payment'}}" style="margin-right:30rpx" bindtap="cancel">取消订单</view>
 		<view class="querenbtn" wx:if="{{hfOrder.orderStatus=='process'}}" style="background-color:red;color:white;border:none" bindtap="refund">提醒发货</view>

@@ -117,8 +117,11 @@
 				<checkbox value="all" checked="{{isAllSelect}}" style="width:50rpx;" /><text class='checkAll'>全选</text>
 			</checkbox-group>
 		</view>
-		<view style="color:rgba(51,51,51,1);font-size:28rpx;margin-left:180rpx">合计：</view>
-		<view style="color:rgba(255,0,0,1);font-size:32rpx;font-weight:500">￥{{count}}</view>
+		<view style="display:flex;align-items:center;">
+				<view style="color:rgba(51,51,51,1);font-size:28rpx;">合计：</view>
+				<view style="color:rgba(255,0,0,1);font-size:32rpx;font-weight:500">￥{{count}}</view>
+		</view>
+	
 		<view class="gojiesuan" wx:if="{{editshow}}" bindtap="submit">去结算</view>
 		<view class="gojiesuan" wx:if="{{!editshow}}" bindtap="submitdel">删除</view>
 

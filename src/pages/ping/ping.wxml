@@ -3,14 +3,22 @@
    <image src="../../img/choose.png" style="width:170rpx;height:170rpx;"></image>
    <view style="width:60%;margin-left:25rpx;">
     <view style="font-size:26rpx;color:#151515;">夹克外套男秋冬季新款修身工装衣服男装加绒加厚学生春秋季上衣青...</view>
-    <star> </star> 
+    <star bind:twoLevelCommentBtn='twoLevelCommentBtnClick'> </star> 
    </view>
  </view>
  <view style="border-radius:15rpx; width:300rpx;background:#fff;width:100%;margin-top:20rpx;overflow:hidden;">
-  <textarea style="margin:40rpx;font-size:30rpx;" placeholder="这个东西不错，很符合本宝宝的品味。"></textarea>
+  <textarea bindinput="bind" style="margin:40rpx;font-size:30rpx;" placeholder="这个东西不错，很符合本宝宝的品味。"></textarea>
  </view>
- <view style="margin-top:20rpx;">
-   <image src="../../img/tu.png" style="border-radius:15rpx;width:170rpx;height:170rpx;"></image>
+ <view style=" margin-top:80rpx;display:flex;flex-wrap:wrap;align-items:flex-end; ">
+  <view wx:for="{{file}}" style="position:relative;margin-right:80rpx;margin-bottom:40rpx;"> 
+     <image src="../../img/shanchu.png"style="position:absolute;top:-10px;right:-10px; width:20px;height:20px;"></image>
+     <image src="{{item}}"  style="width:72px;height:72px;"></image>
+  </view>
+  
+   <image bindtap="loadpicture" src="../../img/tu.png" style="border-radius:15rpx;width:170rpx;height:170rpx;"></image>
  </view>
 
+<view bindtap="pingjia" style="margin:0 auto;margin-top:30rpx;  color:#fff; width:90%;height:90rpx;background:red;display:flex;align-items:center;justify-content:center;">
+提交
+</view>
 </view>

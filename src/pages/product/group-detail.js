@@ -12,6 +12,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    stoneId:'',
     linePrice:'',
     loading: '',
     accession: '',//判断是不是加入拼团进入的
@@ -338,6 +339,7 @@ Page({
     if (that.data.collecte) {
       console.log(this.data.stoneId)
       let params = {
+        stoneId:that.data.stoneId,
         productId: this.data.productId,
         userId: wx.getStorageSync('userId'),
         stoneId: this.data.stoneId
@@ -353,6 +355,7 @@ Page({
       })
     } else {
       let params = {
+        stoneId:that.data.stoneId,
         productId: this.data.productId,
         userId: wx.getStorageSync('userId'),
         stoneId: that.data.stoneId

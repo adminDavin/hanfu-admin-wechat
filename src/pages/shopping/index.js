@@ -1,5 +1,6 @@
 // pages/shopping/shopping.js
 const app = getApp();
+import projectUtils from '../../utils/project-utils.js';
 import car from '../../services/car.js';
 // var util = require('../../utils/util.js')
 // const apiCart = require('../../utils/api/cart.js');
@@ -145,7 +146,7 @@ Page({
       for(var j=0;j<arr[i].goodList.length;j++){
         // console.log('xuan1')
       if(arr[i].goodList[j].check==1){
-        count+=arr[i].goodList[j].productNum*arr[i].goodList[j].productPrice;
+        count+=Number(arr[i].goodList[j].productNum*arr[i].goodList[j].productPrice);
       }
     }
   }
@@ -154,6 +155,7 @@ Page({
       shangjiagoods:arr,
       count:count
     })
+    
     },
     subCart: function(e) { //减少商品数量
       var that = this;
@@ -167,9 +169,9 @@ console.log(arr[e.currentTarget.dataset.index].goodList[e.currentTarget.dataset.
         if(arr[e.currentTarget.dataset.index].goodList[e.currentTarget.dataset.indexs].check==1){
           count= count-arr[e.currentTarget.dataset.index].goodList[e.currentTarget.dataset.indexs].productPrice;
         }
-        
-        arr[e.currentTarget.dataset.index].goodList[e.currentTarget.dataset.indexs].productNum=arr[e.currentTarget.dataset.index].goodList[e.currentTarget.dataset.indexs].productNum-1;
         count=count.toFixed(2);
+        arr[e.currentTarget.dataset.index].goodList[e.currentTarget.dataset.indexs].productNum=arr[e.currentTarget.dataset.index].goodList[e.currentTarget.dataset.indexs].productNum-1;
+        // count=count.toFixed(2);
         that.setData({
           shangjiagoods:arr,
           count:count
@@ -224,13 +226,10 @@ console.log(arr[e.currentTarget.dataset.index].goodList[e.currentTarget.dataset.
       arr[e.currentTarget.dataset.index].goodList[e.currentTarget.dataset.indexs].productNum=arr[e.currentTarget.dataset.index].goodList[e.currentTarget.dataset.indexs].productNum+1;
       let count =that.data.count;
       if(arr[e.currentTarget.dataset.index].goodList[e.currentTarget.dataset.indexs].check==1){
-        count= count+arr[e.currentTarget.dataset.index].goodList[e.currentTarget.dataset.indexs].productPrice;
+        count= Number(count)+Number(arr[e.currentTarget.dataset.index].goodList[e.currentTarget.dataset.indexs].productPrice-0);
       }
+      // count= count-0;
       count=count.toFixed(2);
-      that.setData({
-        shangjiagoods:arr,
-        count:count
-      })
       let obj={
         stoneId:arr[e.currentTarget.dataset.index].goodList[e.currentTarget.dataset.indexs].stoneId,
         goodsId:arr[e.currentTarget.dataset.index].goodList[e.currentTarget.dataset.indexs].productId,
@@ -240,7 +239,12 @@ console.log(arr[e.currentTarget.dataset.index].goodList[e.currentTarget.dataset.
       console.log(obj);
       car.updateCartNum(obj, (res) => {
         console.log(res);
-      })   
+      })  
+      // count=(count-0).toFixed(2);
+      that.setData({
+        shangjiagoods:arr,
+        count:count
+      }) 
     },
  
  
@@ -304,6 +308,12 @@ console.log(arr[e.currentTarget.dataset.index].goodList[e.currentTarget.dataset.
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
+    // if (typeof this.getTabBar === 'function' && this.getTabBar()) {
+    //   this.getTabBar().setData({
+    //     selected: 2
+    //   })
+    // }
+    projectUtils.activeTabBar(this, 3);
     wx.setNavigationBarTitle({
           title: "购物车",
         
