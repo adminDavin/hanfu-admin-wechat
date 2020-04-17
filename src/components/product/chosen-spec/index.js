@@ -114,67 +114,27 @@ Component({
       // TODO 获取物品价格及库存检查
       console.log('活动ID', that.properties.activityId)
       console.log('团购活动ID', that.properties.groupId)
-      if (this.data.activityId !== 0) {
-        console.log('活动校验')
-        wx.request({
-          url: app.endpoint.product + '/hf-goods/checkResp',
-          method: 'POST',
-          data: {
-            activityId: this.data.activityId,
-            GoodsNum: this.data.quantity,
-            goodsId: this.data.selectedGoods.id
-          },
-          header: {
-            'content-type': 'application/x-www-form-urlencoded'
-          },
-          success(res) {
-            console.log(res)
-            console.log(res.data.data, 'dfddsfsafd');
-            if (res.data.data == 'understock') {
-              wx.showToast({
-                title: '库存不足',
-                icon: 'none'
-              });
-            }
-            that.setData({
-              ['selectedGoods.sellPrice']: res.data.data.money,
-            });
-            console.log(that.data.selectedGoods)
-          }
-        })
-      } else {
-        console.log('普通校验')
-        wx.request({
-          url: app.endpoint.product + '/hf-goods/checkResp',
-          method: 'POST',
-          data: {
-            GoodsNum: this.data.quantity,
-            goodsId: this.data.selectedGoods.id
-          },
-          header: {
-            'content-type': 'application/x-www-form-urlencoded'
-          },
-          success(res) {
-            console.log(res)
-            console.log(res.data.data, 'dfddsfsafd');
-            if (res.data.data == 'understock') {
-              wx.showToast({
-                title: '库存不足',
-                icon: 'none'
-              });
-              that.setData({
-                quantity: 1
-              });
-            }
-            that.setData({
-              ['selectedGoods.sellPrice']: res.data.data.money,
-            });
-            // that.data.selectedGoods.sellPrices = 
-            console.log(that.data.selectedGoods)
-
-          }
-        })
-      }
+        console.log('校验')
+        let params = {
+          activityId: this.data.activityId,
+          GoodsNum: this.data.quantity,
+          goodsId: this.data.selectedGoods.id
+        }
+      productApi.checkResp(params,(res) => {
+        console.log(res)
+        console.log(res.data.data, 'dfddsfsafd');
+        if (res.data.data == 'understock') {
+          wx.showToast({
+            title: '库存不足',
+            icon: 'none'
+          });
+          return
+        }
+        that.setData({
+          ['selectedGoods.sellPrice']: res.data.data.money,
+        });
+        console.log(that.data.selectedGoods)
+      })
       console.log('参加拼团', that.properties.accession)
       console.log('参加拼团data', that.data.accession)
       if (that.data.accession == 'accession') {
@@ -205,78 +165,38 @@ Component({
       // TODO 获取物品价格及库存检查
       console.log(e.currentTarget.dataset.item)
       console.log('活动ID', this.properties.activityId)
-      if (this.properties.activityId !== 0) {
-        console.log('活动校验')
-        wx.request({
-          url: app.endpoint.product + '/hf-goods/checkResp',
-          method: 'POST',
-          data: {
-            activityId: this.properties.activityId,
-            GoodsNum: this.data.quantity,
-            goodsId: selectedGoods.id
-          },
-          header: {
-            'content-type': 'application/x-www-form-urlencoded'
-          },
-          success(res) {
-            console.log(res)
-            console.log(res.data.data, 'dfddsfsafd');
-            if (res.data.data == 'understock') {
-              wx.showToast({
-                title: '库存不足',
-                icon: 'none'
-              });
-              that.setData({
-                quantity: 1
-              });
-              console.log(that.data.quantity)
-            } else {
-              that.setData({
-                selectedGoods: selectedGoods,
-              });
-              that.data.selectedGoods.sellPrice = res.data.data.money
-              console.log(that.data.selectedGoods)
-            }
-          }
-        })
-      } else {
-        console.log('普通校验')
-        wx.request({
-          url: app.endpoint.product + '/hf-goods/checkResp',
-          method: 'POST',
-          data: {
-            GoodsNum: this.data.quantity,
-            goodsId: selectedGoods.id
-          },
-          header: {
-            'content-type': 'application/x-www-form-urlencoded'
-          },
-          success(res) {
-            console.log(res)
-            console.log(res.data.data, 'dfddsfsafd');
-            if (res.data.data == 'understock') {
-              wx.showToast({
-                title: '库存不足',
-                icon: 'none'
-              });
-              that.setData({
-                quantity: 1
-              });
-            } else {
-              that.setData({
-                selectedGoods: selectedGoods,
-              });
-              that.data.selectedGoods.sellPrice = res.data.data.money
-              console.log(that.data.selectedGoods)
-            }
-          }
-        })
+        console.log('校验')
+      console.log('校验')
+      let params = {
+        activityId: this.properties.activityId,
+        GoodsNum: this.data.quantity,
+        goodsId: selectedGoods.id
       }
+      productApi.checkResp(params, (res) => {
+        console.log(res)
+        console.log(res.data.data, 'dfddsfsafd');
+        if (res.data.data == 'understock') {
+          wx.showToast({
+            title: '库存不足',
+            icon: 'none'
+          });
+          that.setData({
+            quantity: 1
+          });
+          console.log(that.data.quantity)
+        } else {
+          that.setData({
+            selectedGoods: selectedGoods,
+          });
+          that.data.selectedGoods.sellPrice = res.data.data.money
+          console.log(that.data.selectedGoods)
+        }
+      })
     }
   },
   lifetimes: {
     ready: function () {
-      goodsApi.getGoodDetailByProductId({ productId: this.properties.productId, quantity: '1', stoneId: this.properties.stoneId}, (res) => {
+      goodsApi.getGoodDetailByProductId({ productId: this.properties.productId, quantity: '1', stoneId: this.properties.stoneId, activityId: this.properties.activityId}, (res) => {
         let goodsList = res.data.data;
         console.log(res.data.data)
         for (let goods of goodsList) {

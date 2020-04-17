@@ -196,6 +196,21 @@ function deleteProductCollect(params, handleResult) {
     }
   });
 }
+//库存校验 
+function checkResp(params, handleResult) {
+  wx.request({
+    url: app.endpoint.product + '/hf-goods/checkResp',
+    method: 'POST',
+    header: {
+      'content-type': 'application/x-www-form-urlencoded'
+    },
+    data: params,
+    success: res => handleResult(res),
+    fail: (res) => {
+      console.log(params, res);
+    }
+  });
+}
 export default {
   getProductForRotation: getProductForRotation,
   getProductDetail: getProductDetail,
@@ -210,5 +225,6 @@ export default {
   addStoneConcern:addStoneConcern,
   deleteStoneConcern: deleteStoneConcern,
   addProductCollect: addProductCollect,
-  deleteProductCollect: deleteProductCollect
+  deleteProductCollect: deleteProductCollect,
+  checkResp:checkResp
 };

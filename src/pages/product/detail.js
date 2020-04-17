@@ -214,7 +214,7 @@ Page({
     });
   },
   
-  onSelectedGoodsSpec: function(e) {
+  onSelectedChoice: function(e) {
     console.log(this.data.selectedGoods)
     let animation = wx.createAnimation({
       duration: 200,
@@ -439,42 +439,56 @@ Page({
           // this.setData({ product: product, imgageUrls: imgageUrls, selectedGoods: goods }); 
         });
     },
-    onSelectedGoodsSpec: function (e) { 
-      console.log(this.data.selectedGoods)
-        let animation = wx.createAnimation({
-            duration: 200,
-            timingFunction: "ease",
-            delay: 0
+  onSelectedGoodsSpec: function (e) {
+    console.log(this.data.selectedGoods)
+    let params = {
+      GoodsNum: this.data.quantity,
+      goodsId: this.data.selectedGoods.id
+    }
+    productApi.checkResp(params, (res) => {
+      if (res.data.data == 'understock') {
+        wx.showToast({
+          title: '库存不足',
+          icon: 'none'
         });
-        this.animation = animation;
-        animation.translateY(300).step();
+        return
+      }
+      if (e.currentTarget.dataset.type == "createOrder") {
+        this.setData({
+          animationData: animation.export(), // export 方法每次调用后会清掉之前的动画操作。
+          showModalCreateOrder: true
+        });
+      }
 
-        console.log(e.currentTarget.dataset);
-        if (e.currentTarget.dataset.type == "selectionSpecification") {
-            this.setData({
-                animationData: animation.export(), // export 方法每次调用后会清掉之前的动画操作。
-                showModalSelectionSpecification: true
-            });
-        } else if (e.currentTarget.dataset.type == "createOrder") {
-            this.setData({
-                animationData: animation.export(), // export 方法每次调用后会清掉之前的动画操作。
-                showModalCreateOrder: true
-            });
+    })
+    let animation = wx.createAnimation({
+      duration: 200,
+      timingFunction: "ease",
+      delay: 0
+    });
+    this.animation = animation;
+    animation.translateY(300).step();
 
-        } else if (e.currentTarget.dataset.type == "shopPayment") {
-            this.setData({
-                animationData: animation.export(), // export 方法每次调用后会清掉之前的动画操作。
-                showModalShopPayment: true
-            });
-        }
-        setTimeout(() => {
-            animation.translateY(0).step()
-            this.setData({
-                animationData: animation.export()  // export 方法每次调用后会清掉之前的动画操作。
-            });
-            console.log(this.data);
-        }, 200);
-    },
+    console.log(e.currentTarget.dataset);
+    if (e.currentTarget.dataset.type == "selectionSpecification") {
+      this.setData({
+        animationData: animation.export(), // export 方法每次调用后会清掉之前的动画操作。
+        showModalSelectionSpecification: true
+      });
+    } else if (e.currentTarget.dataset.type == "shopPayment") {
+      this.setData({
+        animationData: animation.export(), // export 方法每次调用后会清掉之前的动画操作。
+        showModalShopPayment: true
+      });
+    }
+    setTimeout(() => {
+      animation.translateY(0).step()
+      this.setData({
+        animationData: animation.export()  // export 方法每次调用后会清掉之前的动画操作。
+      });
+      console.log(this.data);
+    }, 200);
+  },
     onCloseGoodsSpec: function (e) {
         // 隐藏遮罩层
         var animation = wx.createAnimation({

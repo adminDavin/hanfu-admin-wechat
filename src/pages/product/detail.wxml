@@ -83,7 +83,7 @@
    </view>
   <!-- 地址及已选 -->
   <view class="site">
-    <view class="site-selected" bind:tap="onSelectedGoodsSpec" data-type="selectionSpecification" >
+    <view class="site-selected" bind:tap="onSelectedChoice" data-type="selectionSpecification" >
       <view class="selected-box" name="showSelectedSpec">
         <text class="selected">已选择</text>
         <text class="selected-text"></text>

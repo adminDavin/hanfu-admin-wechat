@@ -222,7 +222,7 @@ Page({
     });
   },
 
-  onSelectedGoodsSpec: function (e) {
+  onSelectedChoice: function (e) {
     let animation = wx.createAnimation({
       duration: 200,
       timingFunction: "ease",
@@ -490,6 +490,26 @@ Page({
       timingFunction: "ease",
       delay: 0
     });
+    let params = {
+      GoodsNum: this.data.quantity,
+      goodsId: this.data.selectedGoods.id
+    }
+    productApi.checkResp(params, (res) => {
+      if (res.data.data == 'understock') {
+        wx.showToast({
+          title: '库存不足',
+          icon: 'none'
+        });
+        return
+      }
+      if (e.currentTarget.dataset.type == "createOrder") {
+        this.setData({
+          animationData: animation.export(), // export 方法每次调用后会清掉之前的动画操作。
+          showModalCreateOrder: true
+        });
+      }
+
+    })
     this.animation = animation;
     animation.translateY(300).step();
 
@@ -499,12 +519,6 @@ Page({
         animationData: animation.export(), // export 方法每次调用后会清掉之前的动画操作。
         showModalSelectionSpecification: true
       });
-    } else if (e.currentTarget.dataset.type == "createOrder") {
-      this.setData({
-        animationData: animation.export(), // export 方法每次调用后会清掉之前的动画操作。
-        showModalCreateOrder: true
-      });
-
     } else if (e.currentTarget.dataset.type == "shopPayment") {
       this.setData({
         animationData: animation.export(), // export 方法每次调用后会清掉之前的动画操作。
