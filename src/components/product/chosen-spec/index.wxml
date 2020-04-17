@@ -7,6 +7,7 @@
     toFixed: toFixed
   }
 </wxs>
+
 <view class="inner">
   <view class="guigebox-top">
     <view wx:for="{{selectedGoods.fileIds}}" wx:key="index">
@@ -18,7 +19,7 @@
   <scroll-view scroll-y="true" class="guige-scroll">
     <view wx:for='{{goodsList}}' wx:key="index">
       <block wx:if="{{item.id==selectedGoods.id}}">
-        <checkbox-group class="p10  selected" style="display:flex" bindtap="onCheckboxChange" data-item="{{item}}">
+        <checkbox-group class="p10  selected" bindtap="onCheckboxChange" data-item="{{item}}">
           <view class="p10" wx:for='{{item.hfGoodsSpecs}}' wx:for-item="childItem" wx:key="goodsSpecChildKey" wx:for-index="childIndex">
             <label>
               <text>{{childItem.hfName}}:{{childItem.hfValue}}</text>
@@ -36,9 +37,11 @@
         </checkbox-group>
       </block>
     </view>
+       <!-- 分割线 -->
+    <view class="divLine"></view>
 
     <view class="guigebox-num">
-      <view style="font-size:16px;line-height:62rpx;">数量</view>
+      <view style="font-size:18px;line-height:62rpx;">数量</view>
       <view class="stepper">
         <!-- 减号 -->
         <text class="{{minusStatus}}" bind:tap="onBindMinus">-</text>

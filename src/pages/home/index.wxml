@@ -28,7 +28,7 @@
   <!-- 轮播图 -->
     <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
       <block wx:for="{{imgUrls}}" wx:key="index">
-        <swiper-item bindtap="onSelectRotation"  data-id="{{item.id}}">
+        <swiper-item bindtap="onSelectRotation" data-stoneId="{{item.stoneId}}" data-stoneName="{{item.stoneName}}" data-priceArea="{{item.priceArea}}" data-id="{{item.productId}}">
           <image src="{{item.imageUrl}}" class="slide-image" />
         </swiper-item>
       </block>

@@ -1,9 +1,0 @@
-{
-  "usingComponents": {
-    "van-rate": "/pages/vant/weapp/dist/rate/index",
-    "van-field": "/pages/vant/weapp/dist/field/index",
-    "van-uploader": "/pages/vant/weapp/dist/uploader/index"
-  },
- 
-  "navigationBarTitleText": "评价晒单"
-}

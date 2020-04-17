@@ -10,6 +10,8 @@ Page({
    * Page initial data
    */
   data: {
+    count:'',
+    show: false,
     groupid: '',
     activityId: '',
     goodsId: '',
@@ -17,7 +19,12 @@ Page({
     orderId: '',
     groupActivity: false,
   },
-
+  gohome: function () {
+    console.log(11)
+    wx.switchTab({
+      url: '../home/index',
+    })
+  },
   /**
    * Lifecycle function--Called when page load
    */
@@ -30,6 +37,9 @@ Page({
     that.data.orderId = options.orderId;
     that.data.userId = options.userId;
     that.data.groupid = options.groupid;
+    that.setData({
+      count: options.payment
+    })
 
     paymentApi.paymentOrder({
       userId: options.userId, outTradeNo: options.outTradeNo
@@ -58,9 +68,12 @@ Page({
         paymentApi.completeOrder(options.outTradeNo, options.userId, (res) => console.log(res));
         console.log(res)
         if (that.data.groupid !== '') {
-          wx.navigateTo({
-            url: '/pages/order/list?action=all',
+          this.setData({
+            show: true
           });
+          // wx.navigateTo({
+          //   url: '/pages/order/list?action=all',
+          // });
         }
         console.log(that.data.groupActivity)
         console.log(that.data.goodsId)

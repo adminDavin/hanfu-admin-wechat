@@ -25,24 +25,6 @@
 
 <view class="cover_screen" bindtap="onCloseGoodsSpec" wx:if="{{showModalSelectionSpecification}}" data-type="selectionSpecification"></view>
 
-<!-- 底部 -->
-<!-- <view class="footer">
-  <view class="footer-inner">
-    <view class="footter-service">
-      <image src="../../images/tabs/xiaoxi.png" class="footer-image" />
-      <text class="foot-text">客服</text>
-    </view>
-    <view class="footter-service" bindtap="gouwucar"> -->
-<!--  1-->
-<!-- <image src="../../images/tabs/buycar.png" class="footer-image" />
-        <text class="foot-text">购物车</text> -->
-<!-- 1 -->
-<!-- </view>
-    <view class="footer-shppingcar" bind:tap="onConfirmSelectedGoods" data-type="shopPayment">到店支付</view>
-    <view class="footer-shppingcar purchase" bind:tap="onSelectedGoodsSpec" data-type="createOrder">立即购买</view>
-  </view>
-</view> -->
-
 <view class="cover_screen" bindtap="onCloseGoodsSpec" wx:if="{{showModalCreateOrder}}" data-type="createOrder"></view>
 
 <view animation="{{animationData}}" class="buy_box" wx:if="{{showModalCreateOrder}}">

@@ -46,7 +46,7 @@ function getRotation(handleResult) {
   let params = {
   };
   wx.request({
-    url: app.endpoint.product + '/product/slideshow',
+    url: app.endpoint.product + '/hfProductActivity/getActivityRatation',
     success: res => handleResult(res),
     fail: (res) => {
       console.log(params, res);

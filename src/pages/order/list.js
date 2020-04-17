@@ -162,11 +162,11 @@ Page({
       });
   })
 },
-// onUnload: function () {
-//   wx.reLaunch({
-//     url: '../myself/index'
-//   })
-// },
+onUnload: function () {
+  wx.navigateBack({
+    delta: 3   //默认值是1
+  })
+},
   onSelectedOrder : function(e) {
     console.log(e.currentTarget.dataset)
     if (e.currentTarget.dataset.hfOrder.orderType =='shoppingOrder'){

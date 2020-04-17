@@ -437,10 +437,13 @@ swiper {
 }
 
 .selected {
+  display:flex;
   font-size: 28rpx;
   font-family: 'PingFang SC';
   font-weight: 500;
-  color: rgba(21, 21, 21, 1);
+  border-radius: 5px;
+ border: 1px solid rgb(240, 9, 9);
+  color: rgba(240, 9, 9);
 }
 
 .selected-text {
@@ -1007,12 +1010,10 @@ button {
 }
 
 .p10 {
-  padding: 10rpx;
-}
-
-.selected {
+  padding: 6rpx;
+  margin: 10rpx;
   border-radius: 5px;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(221, 211, 211, 0.3);
 }
 
 /*主容器*/
@@ -1059,4 +1060,11 @@ button {
 
 .stepper .disabled {
   color: #ccc;
+}
+/* 分割线 */
+.divLine{
+ background: #E0E3DA;
+ width: 100%;
+ height: 5rpx;
+ margin: 20rpx 0;
 }

@@ -21,6 +21,7 @@ Page({
     productApi.getRotation((res) => {
       let list = res.data.data;
       requestUtils.setImageUrls(list);
+      console.log(list)
       this.setData({
         imgUrls: list
       });
@@ -51,8 +52,9 @@ Page({
 
   onSelectRotation: function(e) {
     console.log(e.currentTarget.dataset)
+    let dataset = e.currentTarget.dataset
     wx.navigateTo({
-      url: '/pages/product/detail?action=rotation&productId=' + e.currentTarget.dataset.id + '&stoneId=1'
+      url: '/pages/product/detail?action=rotation&productId=' + dataset.id + '&stoneId=' + dataset.stoneid + '&priceArea=' + dataset.pricearea +'&stoneName='+ dataset.stonename
     })
   },
 

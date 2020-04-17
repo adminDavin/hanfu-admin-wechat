@@ -1,6 +1,0 @@
-{
-  "usingComponents": {
-    "van-steps": "/pages/vant/weapp/steps/index"
-  },
-  "navigationBarTitleText": "订单跟踪"
-}

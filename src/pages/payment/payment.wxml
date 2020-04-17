@@ -1,0 +1,27 @@
+<wxs module="we">
+  var toFixed = function(value) {
+    return value.toFixed(2);
+  }
+  module.exports = {
+    toFixed: toFixed
+  }
+</wxs>
+<view wx:if="{{show}}">
+	<view style='height: {{statusBarHeight}}px;margin-top:160rpx;'></view>
+	<view style="display:flex;flex-direction:column;align-items:center;">
+		<image style="width:75rpx;height:100rpx;" src="../../img/zhifuchenggong.png"></image>
+		<view style="color:#FF3333;font-size:36rpx;">
+			支付成功</view>
+	</view>
+	<view style="color:#151515;font-size:66rpx;text-align:center;margin-top:105rpx;">
+		￥{{we.toFixed(count/100)}}</view>
+	<view style="color:#666666;font-size:26rpx;text-align:center;margin-top:30rpx;">
+		核销员</view>
+	<view style="margin:0 auto;margin-top:10rpx; display:flex;justify-content:center;margin-top:3px;width:150rpx;height:150rpx;">
+		<!-- <image style="width:130rpx;height:130rpx;" src="../../images/category-selected.png"></image> -->
+		<open-data type="userAvatarUrl"></open-data>
+	</view>
+	<view style="text-align:center;">
+			<open-data type="userNickName"></open-data></view>
+	<view bindtap="gohome" style="border-radius:10px;  margin:0 auto; margin-top:140rpx;text-align:center;width:370rpx;line-height:80rpx; height:80rpx;color:#FF3333;border:1px solid #FF3333;">完成</view>
+</view>

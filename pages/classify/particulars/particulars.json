@@ -1,7 +1,0 @@
-{
-  "usingComponents": {
-        "component-tag-name": "./comp/choose-spec",
-        "component-address": "./address/address",
-        "component-service": "./service/service"
-      }
-}

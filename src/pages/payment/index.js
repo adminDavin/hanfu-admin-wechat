@@ -9,6 +9,7 @@ import discount from '../../services/discount.js';
 
 Page({
   data: {
+    disconuntId:'', //优惠卷ID
     imgageUrls:'',
     selectedGoods:'',
     competitive: false,
@@ -156,6 +157,7 @@ Page({
       ['useLimit.full']: e.currentTarget.dataset.item.useLimit.full,
       ['useLimit.minus']: e.currentTarget.dataset.item.useLimit.minus,
       ['useLimit.discountCouponType']: e.currentTarget.dataset.item.discountCouponType,
+      disconuntId: e.currentTarget.dataset.item.id,
       showModalCreateOrder: false
     });
     console.log(this.data)
@@ -234,6 +236,7 @@ Page({
       goodsList: JSON.stringify(goodsList),
       requestId: JSON.stringify(new Date().getTime()),
       userId: this.data.userId,
+      disconuntId: this.data.disconuntId,
       // amount: e.currentTarget.dataset.payment,
       orderType: 'nomalOrder',
       paymentName: this.data.paymentMethod[0].name,
@@ -261,7 +264,7 @@ Page({
       console.log(res)
       console.log(params);
       wx.navigateTo({
-        url: '/pages/payment/payment?userId=' + this.data.userId + '&outTradeNo=' + res.data.data.orderCode + '&paymentName=' + params.paymentName + '&groupActivity=' + this.data.groupActivity + '&activityId=' + this.data.activityId + '&goodsId=' + this.data.selectedGoods.id + '&userId=' + this.data.userId + '&orderId=' + res.data.data.id + '&groupid=' + this.data.groupid,
+        url: '/pages/payment/payment?userId=' + this.data.userId + '&outTradeNo=' + res.data.data.orderCode + '&paymentName=' + params.paymentName + '&groupActivity=' + this.data.groupActivity + '&activityId=' + this.data.activityId + '&goodsId=' + this.data.selectedGoods.id + '&userId=' + this.data.userId + '&orderId=' + res.data.data.id + '&groupid=' + this.data.groupid + '&payment=' + e.currentTarget.dataset.payment,
       })
     });
   }
