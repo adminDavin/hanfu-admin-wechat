@@ -1,0 +1,16 @@
+ <van-tabs active="a" bindchange="tab">
+ 	<van-tab title="待评价" name="a" style="">
+ 		<view style="padding:20rpx;">
+ 			<view style="display:flex;background:#fff;padding:20rpx;">
+ 				<image src="../../../img/choose.png" style="width:170rpx;height:170rpx;"></image>
+ 				<view style="flex:1;margin-left:30rpx;">
+ 					<view style="color:#151515;font-size:26rpx;">夹克外套男秋冬季新款修身工装衣服男装加绒加厚学生春秋季上衣青...</view>
+ 				</view>
+         <view>评价</view>
+ 			</view>
+ 		</view>
+ 	</van-tab>
+ 	<van-tab title="已评价" name="b">
+ 		2
+ 	</van-tab>
+ </van-tabs>

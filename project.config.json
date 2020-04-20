@@ -90,6 +90,19 @@
 					"pathName": "pages/paysubmit/paysubmit",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/myself/myPing/myPing",
+					"pathName": "pages/myself/myPing/myPing",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/pu/pu",
+					"pathName": "pages/pu/pu",
+					"scene": null
 				}
 			]
 		}

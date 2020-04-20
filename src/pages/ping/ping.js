@@ -73,8 +73,9 @@ Page({
   pingjia:function(){
     var that=this;
     let obj={
+      userId:wx.getStorageSync('userId'),
       evaluate:that.data.evaluate,
-      file:that.data.file,
+      // file:that.data.file,
       goodId:that.data.storeorder.goodsId,
       orderDetailId:that.data.storeorder.id,
       star:that.data.star,
@@ -83,7 +84,17 @@ Page({
     console.log(obj);
       car.ping(obj, (res) => {
         console.log(res);
-      
+       if(res.data.status==200){
+          wx.showToast({
+            title: '评价成功',
+          })
+          setTimeout(function(){
+            wx.navigateTo({
+              url: '../myPing/myPing',
+            })
+          },1000)
+         
+       }
     })
   },
   /**

@@ -19,6 +19,12 @@ Page({
     })
    
   },
+  godetail:function(e){
+    console.log(e.currentTarget.dataset.stoneid);
+    wx.navigateTo({
+      url: '../../pu/pu?id='+e.currentTarget.dataset.stoneid+'&name='+e.currentTarget.dataset.name,
+    })
+  },
   //列表切换
   list: function () {
     var that=this;
