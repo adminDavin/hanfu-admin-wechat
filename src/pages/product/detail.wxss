@@ -1169,3 +1169,17 @@ swiper {
   background: rgba(255,51,51,1);
   margin-bottom: 20rpx;
 }
+.headbox {
+  display: flex;
+  margin: 16rpx 0;
+}
+.headPo {
+  width:60rpx;
+  height:60rpx;
+  background: rgba(255,51,51,1);
+  border-radius:50%;
+  margin: 10rpx;
+}
+/* .evaluate_star evaluate_item {
+  margin-top: 0; 
+} */

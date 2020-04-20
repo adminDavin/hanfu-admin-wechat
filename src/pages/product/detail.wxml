@@ -11,15 +11,17 @@
 <import src="/templates/user/login" />
 <!-- 立即购买弹窗内容 -->
 <template name="showSelectedSpec">
-	<view class="p20">
-  <text style="font-size: 45rpx;">已选规格</text>
-		<view class="box">
-			<view>
-				{{selectedGoods.goodsName}}
-			</view>
-		</view>
-		<view style="margin-right: 30rpx">购买数量:{{quantity}}<text style="margin-left: 16rpx">￥{{we.toFixed(selectedGoods.sellPrice/100)}}元</text></view>
-	</view>
+  <view class="p20">
+    <text style="font-size: 45rpx;">已选规格</text>
+    <view class="box">
+      <view>
+        {{selectedGoods.goodsName}}
+      </view>
+    </view>
+    <view style="margin-right: 30rpx">购买数量:{{quantity}}
+      <text style="margin-left: 16rpx">￥{{we.toFixed(selectedGoods.sellPrice/100)}}元</text>
+    </view>
+  </view>
 </template>
 
 
@@ -28,24 +30,24 @@
 <view class="cover_screen" bindtap="onCloseGoodsSpec" wx:if="{{showModalCreateOrder}}" data-type="createOrder"></view>
 
 <view animation="{{animationData}}" class="buy_box" wx:if="{{showModalCreateOrder}}">
-	<view>
-		<template is="showSelectedSpec" data="{{ selectedGoods, ...{quantity: quantity} }}"></template>
-		<view class="guigeqr" bindtap="onConfirmSelectedGoods" data-type="createOrder">确认</view>
-	</view>
+  <view>
+    <template is="showSelectedSpec" data="{{ selectedGoods, ...{quantity: quantity} }}"></template>
+    <view class="guigeqr" bindtap="onConfirmSelectedGoods" data-type="createOrder">确认</view>
+  </view>
 </view>
 
 
 <view class="particulars">
-	<!-- 图片 -->
-	<view class="header-images">
-		<swiper bindchange="current" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
-			<block wx:for="{{imgageUrls}}" wx:key="index">
-				<swiper-item>
-					<image src="{{item}}" style="width:100%; display:flex" />
-				</swiper-item>
-			</block>
-		</swiper>
-   <view class="images-index">{{slideNumber}}/{{amount}}</view>
+  <!-- 图片 -->
+  <view class="header-images">
+    <swiper bindchange="current" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+      <block wx:for="{{imgageUrls}}" wx:key="index">
+        <swiper-item>
+          <image src="{{item}}" style="width:100%; display:flex" />
+        </swiper-item>
+      </block>
+    </swiper>
+    <view class="images-index">{{slideNumber}}/{{amount}}</view>
   </view>
   <!-- 商品价格及名称 -->
   <view class="productName">
@@ -57,7 +59,7 @@
         <!-- <text class="news">新品</text> -->
       </view>
       <view class="productName-collect">
-      <text style="font-size: 24rpx;">{{stoneName}}</text>
+        <text style="font-size: 24rpx;">{{stoneName}}</text>
         <view class="collect-one collect-margin" bindtap="attention">
           <image src="../../images/tabs/chakantieziguanzhu.png" class="depreciate-image" bindtap="collect" wx:if="{{collects==false}}" />
           <image src="../../images/tabs/aixin.png" class="depreciate-image" bindtap="collect" wx:if="{{collects==true}}" />
@@ -73,17 +75,17 @@
       </button>
     </view>
   </view>
-  
+
   <view wx:if="{{seckillActivity}}" class="pay-header">
-   <view class="header-table">
-    <image src="../../images/tabs/naozhong.png" class="times-begin" />
+    <view class="header-table">
+      <image src="../../images/tabs/naozhong.png" class="times-begin" />
       <text class="table-time">{{eventStatus}}：</text>
       <text class="table-number">{{countdown}}</text>
     </view>
-   </view>
+  </view>
   <!-- 地址及已选 -->
   <view class="site">
-    <view class="site-selected" bind:tap="onSelectedChoice" data-type="selectionSpecification" >
+    <view class="site-selected" bind:tap="onSelectedChoice" data-type="selectionSpecification">
       <view class="selected-box" name="showSelectedSpec">
         <text class="selected">已选择</text>
         <text class="selected-text"></text>
@@ -101,155 +103,117 @@
       </view>
       <image src="../../images/tabs/diandian.png" class="selected-images" bindtap="showSiteList" />
     </view> -->
-		<view class="site-freight">
-			<text class="selected">运费</text>
-			<text class="selected-text">免运费</text>
-		</view>
-		<view class="site-refund">
-			<view class="refund-flex">
-				<image src="../../images/tabs/fangxingou.png" class="refund-image" />
-				<view class="refund-box">
-					<text class="refund-text">闪电退款</text>
-					<view class="refund-d"></view>
-					<text class="refund-text">极速审核</text>
-					<view class="refund-d"></view>
-					<text class="refund-text">7天价保</text>
-				</view>
-			</view>
-			<image src="../../images/tabs/diandian.png" class="selected-images" />
-		</view>
-		<view class="site-safeguard">
-			<image src="../../images/tabs/对.png" class="safeguard-image" />
-			<text class="safeguard-text">店铺发货&售后</text>
-			<image src="../../images/tabs/对.png" class="safeguard-image" />
-			<text class="safeguard-text">7天无理由退货</text>
-			<image src="../../images/tabs/对.png" class="safeguard-image" />
-			<text class="safeguard-text">货到付款</text>
-		</view>
-	</view>
-	<!-- 拼团 -->
-	<view class="open-roll" wx:if="{{groupActivity}}">
-		<view class="open-more">
-			<text class="roll-text">{{groupList.length}}人在开团,可直接参与</text>
-			<view class="roll-more">
-				<text class="more-titles" bindtap="more">查看更多</text>
-			</view>
-		</view>
-		<view wx:for="{{groupList}}" wx:key="groupId">
-			<view class="open-client">
-				<view class="client">
-					<image src="{{item.imageUrl}}" class="client-head" />
-					<text class="client-title">{{item.groupUserName}}</text>
-				</view>
-				<view class="client-roll">
-					<view class="client-time">
-						<view class="photos">
-							<text class="client-photo">还差</text>
-							<text class="client-photo photo-color">{{item.groupSum-item.nowSum}}人</text>
-							<text class="client-photo">拼成</text>
-						</view>
-						<text class="client-second">2019.12.09 19:00</text>
-					</view>
-					<view class="client-button" bindtap="guigeshow">去拼单</view>
-				</view>
-			</view>
-		</view>
-	</view>
-	<!-- 评价 -->
-	<view class="appraise">
-		<view class="appraise-title">
-			<view class="appraise-number">
-				<image src="../../images/tabs/yuanjiaoju.png" class="number-image" />
-				<text class="number-table">评价</text>
-				<text class="number-text"></text>
-			</view>
-			<view class="appraise-limit">
-				<text class="limit"></text>
-				<image src="../../images/tabs/jinru (1).png" class="limit-image" bindtap="discuss" />
-			</view>
-		</view>
-		<view class="appraise-more">
-			<text class="more-title" bindtap="discuss">暂无评论</text>
-		</view>
-	</view>
-	<!-- 商品详情 -->
-	<view class="description">
-		<view class="description-title">商品详情</view>
-		<view class="description-contents">
-			<view>
-				<text>商品编号: </text>
-				<text>{{product.id}}</text>
-			</view>
-			<view>
-				<text>商品名称: </text>
-				<text>{{product.productName}}</text>
-			</view>
-			<view>
-				<text>更新时间: </text>
-				<text>{{product.modifyTime}}</text>
-			</view>
-		</view>
-		<view class="description-title">商品介绍</view>
-		<view class="description-contents">
-			<view>
+    <view class="site-freight">
+      <text class="selected">运费</text>
+      <text class="selected-text">免运费</text>
+    </view>
+    <view class="site-refund">
+      <view class="refund-flex">
+        <image src="../../images/tabs/fangxingou.png" class="refund-image" />
+        <view class="refund-box">
+          <text class="refund-text">闪电退款</text>
+          <view class="refund-d"></view>
+          <text class="refund-text">极速审核</text>
+          <view class="refund-d"></view>
+          <text class="refund-text">7天价保</text>
+        </view>
+      </view>
+      <image src="../../images/tabs/diandian.png" class="selected-images" />
+    </view>
+    <view class="site-safeguard">
+      <image src="../../images/tabs/对.png" class="safeguard-image" />
+      <text class="safeguard-text">店铺发货&售后</text>
+      <image src="../../images/tabs/对.png" class="safeguard-image" />
+      <text class="safeguard-text">7天无理由退货</text>
+      <image src="../../images/tabs/对.png" class="safeguard-image" />
+      <text class="safeguard-text">货到付款</text>
+    </view>
+  </view>
+  <!-- 评价 -->
+  <view class="appraise">
+    <view class="appraise-title">
+      <view class="appraise-number">
+        <image src="../../images/tabs/yuanjiaoju.png" class="number-image" />
+        <text class="number-table">评价</text>
+        <text class="number-text"></text>
+      </view>
+      <view class="appraise-limit">
+        <text class="limit"></text>
+        <image src="../../images/tabs/jinru (1).png" class="limit-image" bindtap="discuss" />
+      </view>
+    </view>
+    <view style="margin-left: 16rpx;">
+      <view wx:for="{{evaluation}}">
+        <view class="headbox">
+          <view class="headPo">
 
-			</view>
-		</view>
-	</view>
-	<!-- 弹窗 -->
-	<view animation="{{animationData}}" class="buy_box" wx:if="{{showModalSelectionSpecification}}">
-		<chosen activity-id="{{activityId}}" product-id="{{productId}}" selected-goods-id="{{selectedGoods.id}}" stoneId="{{stoneId}}" quantity="{{quantity}}" bind:chooseGoodsCommitEvent="listenChooseGoodsCommitEvent"></chosen>
-	</view>
-	<!-- 查看更多拼团 -->
-	<view class="modalDlg" wx:if="{{showModal}}">
-		<image src="../../images/tabs/guanbi.png" class="modalDlg-over" bindtap="close_mask" />
-		<text class="modalDlg-text">正在开团</text>
-		<view class="modalDlg-box">
-			<view class="open-client" wx:for="{{groupList}}" wx:key="index">
-				<view class="open-client-box">
-					<image src="{{item.imageUrl}}" class="client-head" />
-					<view class="client-flex">
-						<text class="client-title title-margin">{{item.groupUserName}}</text>
-						<text class="client-second">2019.12.09 19:00</text>
-					</view>
-				</view>
-				<view class="client-roll">
-					<view class="client-time time-heights">
-						<view class="photos">
-							<text class="client-photo">还差</text>
-							<text class="client-photo photo-color">{{item.number}}人</text>
-							<text class="client-photo">拼成</text>
-						</view>
-					</view>
-					<view class="client-button" bindtap="guigeshow">去拼单</view>
-				</view>
-			</view>
-		</view>
-		<text class="open-text">仅显示10个正在开团的人</text>
-	</view>
-	<!-- 底部 -->
-	<view class="footer">
-		<view class="footer-inner" style="width:100%;">
-			<view style="display:flex;margin-left:20px;margin-right:20rpx;">
-				<view class="footter-service">
-					<image src="../../images/tabs/xiaoxi.png" class="footer-image" />
-					<text class="foot-text">客服</text>
-				</view>
-				<view class="footter-service" style="margin-left:15px;" bindtap="eventCollect">
-					<image src="../../images/collect.png" wx:if="{{collecte==false}}" class="footer-image" />
-					<image src="../../images/hcollect.png" wx:if="{{collecte==true}}" class="footer-image" />
-					<text class="foot-text" >收藏</text>
-				</view>
-			</view>
-			<view style="display:flex; flex:1;justify-content:space-around;" >
-				<view class="footter-service" bindtap="addcar" wx:if="{{competitive==true}}">
-					<text class="footer-shppingcar">加入购物车</text>
-				</view>
-				<view class="{{competitive==true?'footer-shppingcar':'footer-shppingcar1'}}"  bind:tap="onConfirmSelectedGoods" data-type="shopPayment">到店支付</view>
-				<view class="{{competitive==true?'footer-shppingcar purchase':'footer-shppingcar1 purchase'}} " style="margin-right:10rpx;" bind:tap="onSelectedGoodsSpec" data-type="createOrder">立即购买</view>
-			</view>
+          </view>
+          <view>
+            <view>{{item.parentEvaluate.username}}</view>
+            <star i-class="evaluate_star" starCoun="{{item.parentEvaluate.star}}"></star>
+          </view>
+        </view>
+        <view style="margin-top: 26rpx;">
+          <text>{{item.parentEvaluate.comment}}</text>
+        </view>
+      </view>
 
-		</view>
-	</view>
+      <view wx:if="{{evaluation == false}}" class="appraise-more">
+        <text class="more-title" bindtap="discuss">暂无评论</text>
+      </view>
+    </view>
+  </view>
+  <!-- 商品详情 -->
+  <view class="description">
+    <view class="description-title">商品详情</view>
+    <view class="description-contents">
+      <view>
+        <text>商品编号: </text>
+        <text>{{product.id}}</text>
+      </view>
+      <view>
+        <text>商品名称: </text>
+        <text>{{product.productName}}</text>
+      </view>
+      <view>
+        <text>更新时间: </text>
+        <text>{{product.modifyTime}}</text>
+      </view>
+    </view>
+    <view class="description-title">商品介绍</view>
+    <view class="description-contents">
+      <view>
+
+      </view>
+    </view>
+  </view>
+  <!-- 弹窗 -->
+  <view animation="{{animationData}}" class="buy_box" wx:if="{{showModalSelectionSpecification}}">
+    <chosen activity-id="{{activityId}}" product-id="{{productId}}" selected-goods-id="{{selectedGoods.id}}" stoneId="{{stoneId}}" quantity="{{quantity}}" bind:chooseGoodsCommitEvent="listenChooseGoodsCommitEvent"></chosen>
+  </view>
+  <!-- 底部 -->
+  <view class="footer">
+    <view class="footer-inner" style="width:100%;">
+      <view style="display:flex;margin-left:20px;margin-right:20rpx;">
+        <view class="footter-service">
+          <image src="../../images/tabs/xiaoxi.png" class="footer-image" />
+          <text class="foot-text">客服</text>
+        </view>
+        <view class="footter-service" style="margin-left:15px;" bindtap="eventCollect">
+          <image src="../../images/collect.png" wx:if="{{collecte==false}}" class="footer-image" />
+          <image src="../../images/hcollect.png" wx:if="{{collecte==true}}" class="footer-image" />
+          <text class="foot-text">收藏</text>
+        </view>
+      </view>
+      <view style="display:flex; flex:1;justify-content:space-around;">
+        <view class="footter-service" bindtap="addcar" wx:if="{{competitive==true}}">
+          <text class="footer-shppingcar">加入购物车</text>
+        </view>
+        <view class="{{competitive==true?'footer-shppingcar':'footer-shppingcar1'}}" bind:tap="onConfirmSelectedGoods" data-type="shopPayment">到店支付</view>
+        <view class="{{competitive==true?'footer-shppingcar purchase':'footer-shppingcar1 purchase'}} " style="margin-right:10rpx;" bind:tap="onSelectedGoodsSpec" data-type="createOrder">立即购买</view>
+      </view>
+
+    </view>
+  </view>
 
 </view>

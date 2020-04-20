@@ -5,7 +5,10 @@ Component({
    * 组件的属性列表
    */
   properties: {
-
+    starCoun: {
+      type: Number,
+      value: 0,
+    },
   },
 
   /**
@@ -39,6 +42,7 @@ Component({
     selectRight: function(e) {
       var score = e.currentTarget.dataset.score
       console.log(score);
+      console.log(e.currentTarget.dataset);
       this.triggerEvent("twoLevelCommentBtn", score);
       this.data.scores[e.currentTarget.dataset.idx] = score
 
@@ -108,7 +112,24 @@ Component({
         // console.log(this)
       }.bind(this), 200)
     }
+  },
 
+  lifetimes: {
+    attached: function () {
+      // 在组件实例进入页面节点树时执行
+      // setTimeout(() => {
+        console.log(this.properties.starCoun);
+        this.setData({
+          score: this.properties.starCoun,
+          scores: [this.properties.starCoun],
+        })
+      // }, 20);
+  
+    },
 
+    detached: function () {
+      // 在组件实例被从页面节点树移除时执行
+    },
   }
+
 })

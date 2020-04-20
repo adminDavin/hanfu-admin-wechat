@@ -54,19 +54,9 @@ Component({
     onSeletedProduct: function (e) {
       let selected = e.currentTarget.dataset.item;
       console.log(selected)
-      if (selected.productActivityType == 'groupActivity') {
-        wx.navigateTo({
-          url: '/pages/product/group-detail?productId=' + selected.id + '&stoneId=' + selected.stoneId + '&action=' + 'competitive' + '&priceArea=' + selected.priceArea + '&stoneName=' + selected.stoneName + '&action=' + selected.productActivityType + '&activityId=' + selected.activityId + '&stoneName=' + selected.stoneName
-        });
-      } else if (selected.productActivityType == 'seckillActivity') {
-        wx.navigateTo({
-          url: '/pages/product/detail?productId=' + selected.id + '&stoneId=' + selected.stoneId + '&action=' + 'competitive' + '&priceArea=' + selected.priceArea + '&stoneName=' + selected.stoneName + '&action=' + selected.productActivityType + '&activityId=' + selected.activityId + '&stoneName=' + selected.stoneName + '&startTime=' + selected.startTime + '&endTime=' + selected.endTime
-        });
-      } else {
         wx.navigateTo({
           url: '/pages/product/detail?productId=' + selected.id + '&stoneId=' + selected.stoneId + '&action=' + 'competitive' + '&priceArea=' + selected.priceArea + '&stoneName=' + selected.stoneName
         });
-      }
 
     },
     loadImages: function () { },

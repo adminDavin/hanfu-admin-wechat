@@ -211,6 +211,21 @@ function checkResp(params, handleResult) {
     }
   });
 }
+// 获取评论
+function selectInstanceEvaluate(params, handleResult) {
+  wx.request({
+    url: app.endpoint.product + '/goods/selectInstanceEvaluate',
+    header: {
+      'content-type': 'application/x-www-form-urlencoded'
+    },
+    method: 'get',
+    data: params,
+    success: res => handleResult(res),
+    fail: (res) => {
+      console.log(res);
+    }
+  });
+}
 export default {
   getProductForRotation: getProductForRotation,
   getProductDetail: getProductDetail,
@@ -226,5 +241,6 @@ export default {
   deleteStoneConcern: deleteStoneConcern,
   addProductCollect: addProductCollect,
   deleteProductCollect: deleteProductCollect,
-  checkResp:checkResp
+  checkResp: checkResp,
+  selectInstanceEvaluate: selectInstanceEvaluate
 };
