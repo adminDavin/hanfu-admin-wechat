@@ -1,5 +1,6 @@
 {
   "usingComponents": {
+    "star": "/components/xing/xing",
     "chosen": "/components/product/chosen-spec/index",
     "login": "/components/user/login/index"
   }

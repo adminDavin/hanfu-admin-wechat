@@ -1,4 +1,13 @@
 <!-- components/product/pisces-list/product-list.wxml -->
+<wxs module="we">
+  var toFixed = function(value) {
+    return value.toFixed(2);
+  }
+  module.exports = {
+    toFixed: toFixed
+  }
+</wxs>
+
 <scroll-view scroll-y="true"  current="{{currentTab}}" duration="300" style="height:{{winHeight}}px" bindscrolltolower="loadImages">
   <view class="top-outer">
     <view class="two-row" wx:for="{{chosenData}}" wx:key="id">
@@ -6,12 +15,7 @@
         <image class="flex-view-item" src="{{item.imageUrl}}" style="width:90%;height:250rpx"></image>
         <view class="flex-view-item p10" style="width:100%">
           <view style="text-align: left">{{item.productName}}</view>
-          <view style="text-align: left">{{item.stoneName}}</view>
-          <view style="margin-top: 20rpx;color: red;">￥{{item.priceArea/100}}</view>
-          <view wx:if="{{item.productActivityType!==null}}">
-            <text wx:if="{{item.productActivityType!=='seckillActivity'}}" style=";color: red;font-size: 18rpx;">团购商品</text>
-            <text wx:if="{{item.productActivityType!=='groupActivity'}}" style="font-size: 18rpx;;color: red;">秒杀商品</text>
-          </view>
+          <view style="margin-top: 10rpx;color: red;">￥{{we.toFixed(item.priceArea/100)}}</view>
           <view class="product-price-wrap" style="text-align: right">
             <p class="product-price-new">{{item.newPrice}}</p>
           </view>

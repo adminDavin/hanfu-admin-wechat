@@ -1,4 +1,4 @@
-<scroll-view scroll-y="true" current="{{currentTab}}" duration="300" style="height:{{winHeight}}px">
+<scroll-view scroll-y="true" current="{{currentTab}}" duration="300" style="height:{{winHeight-30}}px">
   <view class="classify">
     <view class="classify-header-box">
       <button bindtap="chongqingjzb" class='kefubtn cu-btn content'>
@@ -24,9 +24,9 @@
       <view>
         <image src="{{selectedLeftMenu.imageUrl}}" class="text-image" />
         <view class="rightbox" wx:for="{{rightMenu}}" wx:for-item="arritem" wx:key="index">
-          <view style="margin:20rpx;">{{arritem.twoLevelName}}</view>
+          <view style="margin:0 20rpx;">{{arritem.twoLevelName}}</view>
           <view class="box">
-            <view wx:for="{{arritem.categories}}" wx:for-item="ait" wx:key="index" bindtap="goThreeLevel" data-categoryid="{{ait.id}}" class="yige">
+            <view  wx:for="{{arritem.categories}}" wx:for-item="ait" wx:key="index" bindtap="goThreeLevel" data-categoryid="{{ait.id}}" class="yige">
               <view>
                 <image src="{{ait.imageUrl}}" class="imagestu" />
               </view>

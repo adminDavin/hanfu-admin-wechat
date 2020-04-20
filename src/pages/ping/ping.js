@@ -78,7 +78,8 @@ Page({
       goodId:that.data.storeorder.goodsId,
       orderDetailId:that.data.storeorder.id,
       star:that.data.star,
-      stoneId:that.data.storeorder.stoneId
+      stoneId:that.data.storeorder.stoneId,
+      userId:wx.getStorageSync('userId')
     }
     console.log(obj);
       car.ping(obj, (res) => {

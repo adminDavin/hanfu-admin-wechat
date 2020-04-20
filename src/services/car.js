@@ -166,6 +166,21 @@ function ping(params,handleResult) {
     }
   });
 }
+// 获取评论
+function selectInstanceEvaluate(params, handleResult) {
+  wx.request({
+    url: app.endpoint.product + '/goods/selectInstanceEvaluate',
+    header: {
+      'content-type': 'application/x-www-form-urlencoded'
+    },
+    method: 'get',
+    data: params,
+    success: res => handleResult(res),
+    fail: (res) => {
+      console.log(res);
+    }
+  });
+}
 function getid(params,handleResult) {
   console.log(app.endpoint.product + '/goods/selectEvaluateGoods')
   wx.request({
@@ -198,4 +213,5 @@ export default {
   logistics:logistics,
   ma:ma,
   ping:ping,
+  selectInstanceEvaluate: selectInstanceEvaluate,
 };
