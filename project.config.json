@@ -102,6 +102,27 @@
 					"id": -1,
 					"name": "pages/pu/pu",
 					"pathName": "pages/pu/pu",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/myPing",
+					"pathName": "pages/myself/myPing/myPing",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/product/detail",
+					"pathName": "pages/product/detail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/myself/allPing/allPing",
+					"pathName": "pages/myself/allPing/allPing",
 					"scene": null
 				}
 			]

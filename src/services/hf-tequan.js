@@ -193,6 +193,33 @@ function name(id,handleResult){
   });
 }
 
+function getpingjia(id,handleResult){
+  
+  console.log(app.endpoint.product + '/goods/selectEvaluateCompleteGoods')
+  wx.request({
+    url: app.endpoint.product + '/goods/selectEvaluateCompleteGoods',
+    method: 'get',
+    data:id,
+    success: res => handleResult(res),
+    fail: (res) => {
+      console.log( res);
+    }
+  });
+}
+function getwait(id,handleResult){
+  
+  console.log(app.endpoint.product + '/goods/selectEvaluateGoods')
+  wx.request({
+    url: app.endpoint.product + '/goods/selectEvaluateGoods',
+    method: 'get',
+    data:id,
+    success: res => handleResult(res),
+    fail: (res) => {
+      console.log( res);
+    }
+  });
+}
+
 export default {
   jifenMing:jifenMing,
   getquan: getquan,
@@ -208,4 +235,6 @@ export default {
   couponHall:couponHall,
   getstoneproduct:getstoneproduct,
   name:name,
+  getwait:getwait,
+  getpingjia:getpingjia
 };

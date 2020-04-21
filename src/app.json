@@ -44,7 +44,8 @@
     "components/xing/xing",
     "pages/ma/ma",
     "pages/myself/myPing/myPing",
-    "pages/pu/pu"
+    "pages/pu/pu",
+    "pages/myself/allPing/allPing"
   ],
   "usingComponents": {
     "van-tab": "./pages/vant/weapp/dist/tab/index",

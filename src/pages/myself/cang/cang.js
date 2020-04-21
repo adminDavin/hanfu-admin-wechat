@@ -41,15 +41,15 @@ Page({
     console.log(selected)
     if (selected.productActivityType == 'groupActivity') {
       wx.navigateTo({
-        url: '/pages/product/group-detail?productId=' + selected.id + '&stoneId=' + selected.stoneId + '&action=' + 'competitive' + '&priceArea=' + selected.priceArea*100 + '&stoneName=' + selected.stoneName + '&action=' + selected.productActivityType + '&activityId=' + selected.activityId + '&stoneName=' + selected.stoneName
+        url: '/pages/product/group-detail?productId=' + selected.id + '&stoneId=' + selected.stoneId + '&action=' + 'competitive' + '&priceArea=' + selected.priceArea*100 + '&stoneName=' + selected.stoneName + '&action=' + selected.productActivityType + '&activityId=' + selected.activityId + '&stoneName=' + selected.stoneName+'&evaluateRatio='+selected.evaluateRatio+'&evaluateCount='+selected.evaluateCount
       });
     } else if (selected.productActivityType == 'seckillActivity') {
       wx.navigateTo({
-        url: '/pages/product/detail?productId=' + selected.id + '&stoneId=' + selected.stoneId + '&action=' + 'competitive' + '&priceArea=' + selected.priceArea*100 + '&stoneName=' + selected.stoneName + '&action=' + selected.productActivityType + '&activityId=' + selected.activityId + '&stoneName=' + selected.stoneName
+        url: '/pages/product/detail?productId=' + selected.id + '&stoneId=' + selected.stoneId + '&action=' + 'competitive' + '&priceArea=' + selected.priceArea*100 + '&stoneName=' + selected.stoneName + '&action=' + selected.productActivityType + '&activityId=' + selected.activityId + '&stoneName=' + selected.stoneName+'&evaluateRatio='+selected.evaluateRatio+'&evaluateCount='+selected.evaluateCount
       });
     } else {
       wx.navigateTo({
-        url: '/pages/product/detail?productId=' + selected.id + '&stoneId=' + selected.stoneId + '&action=' + 'competitive' + '&priceArea=' + selected.priceArea*100+ '&stoneName=' + selected.stoneName
+        url: '/pages/product/detail?productId=' + selected.id + '&stoneId=' + selected.stoneId + '&action=' + 'competitive' + '&priceArea=' + selected.priceArea*100+ '&stoneName=' + selected.stoneName+'&evaluateRatio='+selected.evaluateRatio+'&evaluateCount='+selected.evaluateCount
       });
     }
 

@@ -91,7 +91,7 @@ Page({
           })
           setTimeout(function(){
             wx.navigateTo({
-              url: '../myPing/myPing',
+              url: '../myself/myPing/myPing',
             })
           },1000)
          

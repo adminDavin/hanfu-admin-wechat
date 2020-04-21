@@ -947,13 +947,17 @@ swiper {
   width: 5rpx;
   height: 21rpx;
 }
-
+.imgs{
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+}
 .number-table {
   font-size: 30rpx;
   font-family: PingFang SC;
   font-weight: 500;
   margin-left: 10rpx;
-  color: rgba(21, 21, 21, 1);
+  color: #151515;
 }
 
 .number-text {
@@ -969,12 +973,18 @@ swiper {
   align-items: center;
   margin-right: 19rpx;
 }
-
+.limit1{
+  font-size: 24rpx;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #999;
+  margin-left:10rpx;
+}
 .limit {
   font-size: 24rpx;
   font-family: PingFang SC;
   font-weight: 400;
-  color: rgba(153, 153, 153, 1);
+  color: #999;
 }
 
 .limit-image {

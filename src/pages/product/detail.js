@@ -12,6 +12,11 @@ Page({
    * 页面的初始数据
    */
   data: {
+    evaluateRatio:0,
+    evaluateCount:0,
+    stars: [0, 1, 2, 3, 4],
+    pinglist:false,
+    productId:'',
     evaluation: '', //评价
     stoneId: '',
     goods: '',
@@ -90,14 +95,19 @@ Page({
    */
   onLoad: function(options) {
     var that = this;
+    console.log(options)
     that.setData({
-      stoneId: options.stoneId
+      evaluateCount: options.evaluateCount,
+      evaluateRatio: options.evaluateRatio,
+      stoneId: options.stoneId,
+      productId:options.productId,
     })
     that.data.activityState = options.activityState;
     that.data.startTime = options.startTime;
     that.data.priceArea = options.priceArea;
     that.data.stoneName = options.stoneName;
-    that.data.endTime = options.endTime
+    that.data.endTime = options.endTime;
+    that.ping();
     // that.data.sellPrices = options.sellPrices
     console.log(options)
     that.countTime()
@@ -126,6 +136,36 @@ Page({
           ...options
         });
       }
+    });
+  },
+  cha:function(){
+    wx.navigateTo({
+      url: '../myself/allPing/allPing?stoneId='+this.data.stoneId+'&productId='+this.data.productId,
+    })
+  },
+  ping:function(){
+    
+    let obj = {
+      stoneId:this.data.stoneId,
+      pageNum:1,
+      pageSize:1,
+      productId:this.data.productId,
+     
+    }
+    console.log(obj)
+    car.selectInstanceEvaluate(obj, (res) => {
+      console.log(res);
+
+      for(var i=0;i<res.data.data.list.length;i++){
+        res.data.data.list[i].parentEvaluate.hfDesc=JSON.parse(res.data.data.list[i].parentEvaluate.hfDesc)
+      }
+      if(res.data.data.list.length>0){
+        this.setData({
+          pinglist:res.data.data.list
+        })
+      }
+   
+      console.log(this.data.pinglist)
     });
   },
   // 加入购物车
@@ -447,6 +487,7 @@ Page({
         pageNum:1,
         pageSize:2
       }
+      console.log(ping)
       productApi.selectInstanceEvaluate(ping, (res) => {
         console.log(res)
         let evaluation = res.data.data.list;
@@ -630,8 +671,8 @@ Page({
     var now = date.getTime();
     var endDate = new Date(that.data.endTime); //设置截止时间
     var end = endDate.getTime();
-    console.log(now)
-    console.log(end)
+    // console.log(now)
+    // console.log(end)
     var leftTime = end - now; //时间差                           
     var d, h, m, s, ms;
     if (this.data.activityState == -1) {

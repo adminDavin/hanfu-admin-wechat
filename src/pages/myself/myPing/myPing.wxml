@@ -1,16 +1,38 @@
  <van-tabs active="a" bindchange="tab">
  	<van-tab title="待评价" name="a" style="">
- 		<view style="padding:20rpx;">
- 			<view style="display:flex;background:#fff;padding:20rpx;">
- 				<image src="../../../img/choose.png" style="width:170rpx;height:170rpx;"></image>
- 				<view style="flex:1;margin-left:30rpx;">
- 					<view style="color:#151515;font-size:26rpx;">夹克外套男秋冬季新款修身工装衣服男装加绒加厚学生春秋季上衣青...</view>
+ 		<view style="padding:20rpx;" wx:for="{{wait}}">
+ 			<view style="padding-left:20rpx;display:flex;background:#fff;padding:20rpx;margin-bottom:30rpx;">
+ 				<image src="{{img}}/goods/getFile?fileId={{item.hfDesc.fileIds[0]}}" style="width:170rpx;height:170rpx;"></image>
+ 				<view style="flex:1;justify-content:space-between; margin-left:30rpx;display:flex;flex-direction:column;">
+ 					<view style="color:#151515;font-size:26rpx;display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 2;overflow: hidden;">{{item.hfDesc.goodsDesc}}</view>
+ 					<view style="display:flex;justify-content:flex-end;"  data-item='{{item}}'  bindtap="ping">
+					 	 <view style="border-radius:28rpx; font-size:26rpx; display:flex;align-items:center;justify-content:center;  width:120rpx;height:50rpx; color:#FF0000;border:1rpx  solid #FF0000;">评价</view>
+					 </view>
+					
  				</view>
-         <view>评价</view>
  			</view>
  		</view>
  	</van-tab>
  	<van-tab title="已评价" name="b">
- 		2
+ 		<view style="padding:20rpx;">
+		 <view style="background:#fff;padding:20rpx;margin-bottom:30rpx;" wx:for="{{pingjia}}" >	
+		 		<view style="display:flex;margin-bottom:10rpx;">
+ 				<image src="{{img}}/goods/getFile?fileId={{item.list.hfDesc.fileIds[0]}}" style="width:170rpx;height:170rpx;"></image>
+ 				<view style="flex:1;margin-left:30rpx;display:flex;flex-direction:column;">
+ 					<view style="color:#151515;font-size:26rpx;display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 2;overflow: hidden;">{{item.list.hfDesc.goodsDesc}}</view>
+ 					<view style="display:flex;align-items:center;margin-top:30rpx;">
+ 						<view style="font-size:32rpx;color:#151515;">评分</view>
+ 						<view style="display:flex;align-items:center;margin-left:15rpx;">
+ 							<image wx:for='{{stars}}' :key="index" style="margin-right:10rpx;width:33rpx;height:33rpx;" wx:for-item="img_pic" src="{{index<item.star?'../../../img/wuxing1.png':'../../../img/wuxing.png'}}"></image>
+ 						</view>
+ 					</view>
+ 				</view>
+ 			</view>
+			 <view style="color:#151515;font-size:28rpx;">
+			 {{item.comment}}
+			 </view>
+		 </view>
+ 		
+ 		</view>
  	</van-tab>
  </van-tabs>
