@@ -19,19 +19,19 @@
   <scroll-view scroll-y="true" class="guige-scroll">
     <view wx:for='{{goodsList}}' wx:key="index">
       <block wx:if="{{item.id==selectedGoods.id}}">
-        <checkbox-group class="p10  selected" bindtap="onCheckboxChange" data-item="{{item}}">
-          <view class="p10" wx:for='{{item.hfGoodsSpecs}}' wx:for-item="childItem" wx:key="goodsSpecChildKey" wx:for-index="childIndex">
+        <checkbox-group bindtap="onCheckboxChange" data-item="{{item}}">
+          <view class="p9" wx:for='{{item.hfGoodsSpecs}}' wx:for-item="childItem" wx:key="goodsSpecChildKey" wx:for-index="childIndex">
             <label>
-              <text>{{childItem.hfName}}:{{childItem.hfValue}}</text>
+              <text class="p10 selected">{{childItem.hfName}}:{{childItem.hfValue}}</text>
             </label>
           </view>
         </checkbox-group>
       </block>
       <block wx:else>
-        <checkbox-group class="p10" style="display:flex" bindtap="onCheckboxChange" data-item="{{item}}">
-          <view class="p10" wx:for='{{item.hfGoodsSpecs}}' wx:for-item="childItem" wx:key="goodsSpecChildKey" wx:for-index="childIndex">
+        <checkbox-group  style="display:flex" bindtap="onCheckboxChange" data-item="{{item}}">
+          <view class="p9"  wx:for='{{item.hfGoodsSpecs}}' wx:for-item="childItem" wx:key="goodsSpecChildKey" wx:for-index="childIndex">
             <label>
-              <text>{{childItem.hfName}}:{{childItem.hfValue}}</text>
+              <text class="p10">{{childItem.hfName}}:{{childItem.hfValue}}</text>
             </label>
           </view>
         </checkbox-group>

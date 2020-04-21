@@ -7,7 +7,7 @@
     toFixed: toFixed
   }
 </wxs>
-<scroll-view scroll-y="true" current="{{currentTab}}" duration="300" style="height:{{winHeight}}px" bindscrolltolower="loadImages">
+<scroll-view scroll-y="true" current="{{currentTab}}" duration="300" style="height:{{winHeight}}px;margin-left: 20rpx;" bindscrolltolower="loadImages">
   <view wx:for="{{chosenData}}" wx:key="id">
     <view class="flex-row p10" style="display: flex;" bind:tap="onSeletedProduct" data-item="{{item}}">
       <image src="{{item.imageUrl}}" style="width:40%;height:250rpx"></image>
@@ -16,10 +16,7 @@
         <view style="color: red;">￥{{we.toFixed(item.priceArea/100)}}
           <!-- <text style='color:#888;text-decoration:line-through;margin-left:10px; '>￥{{item.linePrice/100}}</text> -->
         </view>
-        <view wx:if="{{item.productActivityType!==null}}">
-        <text wx:if="{{item.productActivityType!=='seckillActivity'}}"style=";color: red;font-size: 18rpx;">团购商品</text>
-        <text wx:if="{{item.productActivityType!=='groupActivity'}}" style="font-size: 18rpx;;color: red;">秒杀商品</text>
-        </view>
+
         <view class="product-price-wrap" style="text-align: right">
           <p class="product-price-new">{{item.newPrice}}</p>
         </view>

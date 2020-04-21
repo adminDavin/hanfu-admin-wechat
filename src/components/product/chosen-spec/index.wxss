@@ -435,14 +435,29 @@ swiper {
 .selected-box {
   margin-left: 23rpx;
 }
+.p20 {
+  padding: 20rpx;
+}
+.p9 {
+  padding: 6rpx;
+  margin: 10rpx;
+  border-radius: 5px;
+}
+.p10 {
+  padding: 6rpx;
+  margin: 10rpx;
+  border-radius: 5px;
+  background-color: rgba(221, 211, 211, 0.3);
+  border: 1px solid rgba(221, 211, 211, 0.3);
+}
 
 .selected {
-  display:flex;
   font-size: 28rpx;
   font-family: 'PingFang SC';
   font-weight: 500;
   border-radius: 5px;
- border: 1px solid rgb(240, 9, 9);
+  background-color: #FFCDCD;
+  border: 1px solid #FF4545;
   color: rgba(240, 9, 9);
 }
 
@@ -1005,16 +1020,7 @@ button {
   padding: 0 10rpx;
 }
 
-.p20 {
-  padding: 20rpx;
-}
 
-.p10 {
-  padding: 6rpx;
-  margin: 10rpx;
-  border-radius: 5px;
-  background-color: rgba(221, 211, 211, 0.3);
-}
 
 /*主容器*/
 

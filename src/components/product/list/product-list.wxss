@@ -1,6 +1,14 @@
 page{  
   height: 100%;  
-  background-color: #F3F4F6;
+  background-color: #F8F8F8;
+}
+.flex-row{
+height:140px;
+padding-top:16rpx; 
+padding-bottom:16rpx; 
+background:rgba(255,255,255,1);
+border-radius:10px;
+border-bottom:1rpx solid rgba(229,229,229,1);
 }
 .flex-row .flex-view-item{
  display:flex;
@@ -12,8 +20,7 @@ page{
  /* box-sizing:border-box; */
 }
 .p10{
-  padding: 10rpx;
-  border-bottom: indigo;
+  background:rgba(255,255,255,1);
 }
 .product-price-wrap .product-price-new{
   color: #e80080;
