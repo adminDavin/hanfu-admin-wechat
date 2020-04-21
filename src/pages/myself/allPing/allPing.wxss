@@ -1,0 +1,51 @@
+.appraise {
+  width: 100%;
+  margin-top: 20rpx;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.number-table {
+  font-size: 30rpx;
+  font-family: PingFang SC;
+  font-weight: 500;
+  margin-left: 10rpx;
+  color: #151515;
+}
+.imgs{
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+}
+.limit1{
+  font-size: 24rpx;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #999;
+  margin-left:10rpx;
+}
+.limit {
+  margin-right:20rpx;
+  font-size: 24rpx;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #999;
+}
+.number-image {
+  width: 5rpx;
+  height: 21rpx;
+}
+.appraise-title {
+  align-items: center;
+
+  height: 28rpx;
+  margin-left: 21rpx;
+  margin-top: 23rpx;
+  display: flex;
+  justify-content: space-between;
+}
+.appraise-number {
+  display: flex;
+  align-items: center;
+  line-height: 28rpx;
+}

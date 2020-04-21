@@ -1,0 +1,4 @@
+/* src/pages/myself/myPing/myPing.wxss */
+page{
+  background: #f8f8f8;
+}

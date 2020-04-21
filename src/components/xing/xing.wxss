@@ -47,7 +47,7 @@
  font-size: 30rpx;
  color: gray;
 
- margin-top: 30rpx;
+ /* margin-top: 30rpx; */
 }
  
 /*评价标题 */

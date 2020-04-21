@@ -1,0 +1,31 @@
+	<!-- 评价 -->
+	<view class="appraise">
+		<view class="appraise-title">
+			<view class="appraise-number">
+				<image src="../../../images/tabs/yuanjiaoju.png" class="number-image" />
+				<text class="number-table">评价</text>
+				<text class="limit1">600+</text>
+			</view>
+			<view class="appraise-limit">
+				<text class="limit">好评度99%</text>
+				<!-- <image src="../../../images/tabs/jinru (1).png" class="limit-image" bindtap="discuss" /> -->
+			</view>
+		</view>
+		<view>
+		<view style="margin-left:21rpx;margin-bottom:20rpx;" wx:for="{{pinglist}}"  :key='index'>
+				<view style="display:flex;align-items:center;margin-top:14rpx;">
+					<image class="imgs" src="../../../img/choose.png"></image>
+					<view style="margin-left:15rpx;">
+						<view style="font-size:26rpx;color:#151515;">{{item.parentEvaluate.username}}</view>
+						<view style="display:flex;align-items:center;">
+							<image wx:for="{{stars}}" wx:for-item="img_pic" src="{{index<item.parentEvaluate.star?'../../../img/wuxing1.png':'../../../img/wuxing.png'}}" style="margin-right:10rpx;width:33rpx;height:33rpx;"></image>
+						
+						</view>
+					</view>
+				</view>
+				<view style="color:#151515;font-size:26rpx;margin-top:19rpx;">{{item.parentEvaluate.comment}}</view>
+				<view style="color:#999999;font-size:24rpx;">{{item.parentEvaluate.time}} {{item.parentEvaluate.hfDesc.goodsDesc}}</view>
+			</view>
+ 
+		</view>
+	</view>

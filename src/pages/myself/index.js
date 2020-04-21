@@ -52,9 +52,9 @@ Page({
     },
     {
       img: '../../img/daifukuan.png',
-      action: "controversial",
+      action: "cancel",
       quantity: 0,
-      desc: "交易纠纷"
+      desc: "已取消"
     }],
     myWalletResoures: [{
       action: 'balance',
@@ -171,8 +171,12 @@ Page({
     this.handleSelected('/pages/order/list', e.currentTarget.dataset.action);
   },
   onSelectedToolAndService: function (e) {
-    console.log('/pages/myself' + e.currentTarget.dataset.uri);
-    this.handleSelected('/pages/myself' + e.currentTarget.dataset.uri, e.currentTarget.dataset.action);
+    console.log(e)
+    console.log('/pages/myPing/myPing' + e.currentTarget.dataset.action);
+    if(e.currentTarget.dataset.action=='evaluated'){
+      this.handleSelected('myPing/myPing');
+    }
+   
 
   },
   onSelectedwallet: function (e) {

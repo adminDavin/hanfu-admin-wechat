@@ -12,6 +12,10 @@ Page({
    * 页面的初始数据
    */
   data: {
+    pinglist:false,
+    productId:'',
+    evaluateCount:'',
+    evaluateRatio:'',
     stoneId:'',
     linePrice:'',
     loading: '',
@@ -48,6 +52,36 @@ Page({
     showModalShopPayment: false
 
 
+  },
+  cha:function(){
+    wx.navigateTo({
+      url: '../myself/allPing/allPing?stoneId='+this.data.stoneId+'&productId='+this.data.productId,
+    })
+  },
+  ping:function(){
+    
+    let obj = {
+      stoneId:this.data.stoneId,
+      pageNum:1,
+      pageSize:1,
+      productId:this.data.productId,
+     
+    }
+    console.log(obj)
+    car.selectInstanceEvaluate(obj, (res) => {
+      console.log(res);
+
+      for(var i=0;i<res.data.data.list.length;i++){
+        res.data.data.list[i].parentEvaluate.hfDesc=JSON.parse(res.data.data.list[i].parentEvaluate.hfDesc)
+      }
+      if(res.data.data.list.length>0){
+        this.setData({
+          pinglist:res.data.data.list
+        })
+      }
+   
+      console.log(this.data.pinglist)
+    });
   },
   addcar:function(){
     console.log(this.data.selectedGoods);
@@ -141,6 +175,14 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
+    console.log(options);
+    that.setData({
+      evaluateCount: options.evaluateCount,
+      evaluateRatio: options.evaluateRatio,
+      stoneId: options.stoneId,
+      productId:options.productId,
+    })
+    that.ping();
     that.data.priceArea = options.priceArea;
     that.data.stoneName = options.stoneName;
     that.data.activityId = options.activityId;

@@ -1,0 +1,71 @@
+  	<van-tabs active="a" bindchange="tab">
+  		<van-tab title="精选" name="a">
+  		</van-tab>
+  		<van-tab title="商品" name="b">
+  			<view style="background:#fff;">
+  				<view class="commodity-header-box">
+  					<!-- <image src="" class="commodity-tus" /> -->
+  					<view class="commodity-header">
+  						<image bindtap="name"  class="commodity-tu" src="../../images/sousuo.png" />
+  						<input   bindinput='diseaseNameInput' value="{{hfName}}" type="text" class="commodity-input" placeholder="搜一下" />
+  					</view>
+  					<image src="../../images/saoyisao.png" class="commodity-tus" />
+  				</view>
+  				<view class="commodity-banner">
+  					<view class="banner-table">
+  						<!-- 综合 -->
+  						<view class="banner-box">
+  							<view class="table">
+  								<view class="table-sum" bindtap="clickTab" data-id="0">
+  									<text class="sum-text">综合</text>
+  									<view class="sum-color {{currentTab==0?'colors':''}}"></view>
+  								</view>
+  								<image src="../../images/xiangxia.png" class="sum-image" />
+  							</view>
+  							<view bindtap="clickTab" class="table-sum" data-id="1">
+  								<text class="sum-text">销量</text>
+  								<view class="sum-color {{currentTab==1?'colors':''}}"></view>
+  							</view>
+  							<view bindtap="clickTab" class="table-sum" data-id="2">
+  								<text class="sum-text">价格</text>
+  								<view class="sum-color {{currentTab==2?'colors':''}}"></view>
+  							</view>
+  						</view>
+  						<view class="banner-box-two">
+  							<image src="../../images/liebiao2.png" bindtap="list" wx:if="{{lists==false}}" class="image-saoma" />
+  							<image src="../../images/liebiaomoshi.png" bindtap="list" wx:if="{{lists==true}}" class="image-saoma" />
+  							<view class="table">
+  								<view class="table-sum">
+  									<text class="sum-text sales" bindtap="translate">筛选</text>
+  									<view class="sum-color"></view>
+  								</view>
+  								<image src="../../images/shaixuan.png" class="sai-image" />
+  							</view>
+  						</view>
+  					</view>
+  				</view>
+  			</view>
+  			<view class="{{lists==false?'list1':'list2'}}" style="width:100%;">
+  				<view bindtap="onSeletedProduct" data-item="{{item}}"   class="{{lists==false?'out1':'out2'}}" wx:for="{{listpro}}" :key="index">
+  					<view class="{{lists==false?'':'item2'}}">
+  						<image mode="widthFix" class="{{lists==false?'img1':'img2'}}" src="{{img}}/goods/getFile?fileId={{item.fileId}}"></image>
+  					</view>
+
+  					<view class="{{lists==false?'bor1':'bor2'}}">
+  						<view style="font-size:26rpx;color:#151515;display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 2;overflow: hidden;">{{item.productDesc}}</view>
+  						<view style="color:#FF0000;display:flex;margin-top:37rpx;">
+  							<sub>¥</sub>
+  							<view>{{item.priceArea}}</view>
+  						</view>
+  						<view style="margin-top:7rpx;color:#999999;font-size:22rpx;"><text>23万+条评论</text><text style="margin-left:30rpx;">99%好评</text></view>
+  					</view>
+  				</view>
+  			</view>
+  		</van-tab>
+  		<van-tab title="活动" name="c">
+  		</van-tab>
+  		<van-tab title="上新" name="d">
+  		</van-tab>
+				<van-tab title="会员" name="e">
+  		</van-tab>
+  	</van-tabs>

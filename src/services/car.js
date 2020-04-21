@@ -181,6 +181,21 @@ function selectInstanceEvaluate(params, handleResult) {
     }
   });
 }
+function findEvaluateDetail(params, handleResult) {
+  wx.request({
+    url: app.endpoint.product + '/goods/findEvaluateDetail',
+    header: {
+      'content-type': 'application/x-www-form-urlencoded'
+    },
+    method: 'get',
+    data: params,
+    success: res => handleResult(res),
+    fail: (res) => {
+      console.log(res);
+    }
+  });
+}
+
 function getid(params,handleResult) {
   console.log(app.endpoint.product + '/goods/selectEvaluateGoods')
   wx.request({

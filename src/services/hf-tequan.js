@@ -166,6 +166,60 @@ function couponHall(params,handleResult){
     }
   });
 }
+function getstoneproduct(id,handleResult){
+  
+  console.log(app.endpoint.product + '/hfProduct/getstone')
+  wx.request({
+    url: app.endpoint.product + '/hfProduct/getstone',
+    method: 'get',
+    data:id,
+    success: res => handleResult(res),
+    fail: (res) => {
+      console.log( res);
+    }
+  });
+}
+function name(id,handleResult){
+  
+  console.log(app.endpoint.product + '/hfProduct/getHfName')
+  wx.request({
+    url: app.endpoint.product + '/hfProduct/getHfName',
+    method: 'get',
+    data:id,
+    success: res => handleResult(res),
+    fail: (res) => {
+      console.log( res);
+    }
+  });
+}
+
+function getpingjia(id,handleResult){
+  
+  console.log(app.endpoint.product + '/goods/selectEvaluateCompleteGoods')
+  wx.request({
+    url: app.endpoint.product + '/goods/selectEvaluateCompleteGoods',
+    method: 'get',
+    data:id,
+    success: res => handleResult(res),
+    fail: (res) => {
+      console.log( res);
+    }
+  });
+}
+function getwait(id,handleResult){
+  
+  console.log(app.endpoint.product + '/goods/selectEvaluateGoods')
+  wx.request({
+    url: app.endpoint.product + '/goods/selectEvaluateGoods',
+    method: 'get',
+    data:id,
+    success: res => handleResult(res),
+    fail: (res) => {
+      console.log( res);
+    }
+  });
+}
+
 export default {
   jifenMing:jifenMing,
   getquan: getquan,
@@ -179,4 +233,8 @@ export default {
   getlishi:getlishi,
   guan:guan,
   couponHall:couponHall,
+  getstoneproduct:getstoneproduct,
+  name:name,
+  getwait:getwait,
+  getpingjia:getpingjia
 };
