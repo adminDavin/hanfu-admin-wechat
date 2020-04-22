@@ -150,18 +150,21 @@
 						<view style="font-size:26rpx;color:#151515;">{{item.parentEvaluate.username}}</view>
 						<view style="display:flex;align-items:center;">
 							<image wx:for="{{stars}}" wx:for-item="img_pic" src="{{index<item.parentEvaluate.star?'../../img/wuxing1.png':'../../img/wuxing.png'}}" style="margin-right:10rpx;width:33rpx;height:33rpx;"></image>
-						
+
 						</view>
 					</view>
 				</view>
 				<view style="color:#151515;font-size:26rpx;margin-top:19rpx;">{{item.parentEvaluate.comment}}</view>
 				<view style="color:#999999;font-size:24rpx;">{{item.parentEvaluate.time}} {{item.parentEvaluate.hfDesc.goodsDesc}}</view>
+				<view style="display:flex;flex-wrap:wrap;">
+					<image wx:for="{{item.parentEvaluate.fileId}}" wx:for-item="img_pic1" src="{{img}}/goods/getFile?fileId={{img_pic1}}" mode="widthFix" style="width:23%;margin-bottom:10rpx;margin-right:10rpx;"></image>
+				</view>
 			</view>
-      <view wx:if="{{pinglist}}" bindtap="cha"  style="margin:0 auto;margin-top:20rpx; border-radius:24px;border:1px solid rgba(235,235,235,1);color:#151515;font-size:24rpx;width:239rpx;height:48rpx;display:flex;align-items:center;justify-content:center;">
+			<view wx:if="{{pinglist}}" bindtap="cha" style="margin:0 auto;margin-top:20rpx; border-radius:24px;border:1px solid rgba(235,235,235,1);color:#151515;font-size:24rpx;width:239rpx;height:48rpx;display:flex;align-items:center;justify-content:center;">
 				查看全部评论
 			</view>
-			 <view wx:if="{{pinglist==false}}" bindtap="cha"  style="margin:0 auto;margin-top:20rpx; border-radius:24px;color:#151515;font-size:24rpx;width:239rpx;height:48rpx;display:flex;align-items:center;justify-content:center;">
-			暂无评论
+			<view wx:if="{{pinglist==false}}" bindtap="cha" style="margin:0 auto;margin-top:20rpx; border-radius:24px;color:#151515;font-size:24rpx;width:239rpx;height:48rpx;display:flex;align-items:center;justify-content:center;">
+				暂无评论
 			</view>
 		</view>
 	</view>

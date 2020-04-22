@@ -7,13 +7,31 @@ Page({
    * 页面的初始数据
    */
   data: {
+    imgs:[],
     file:[],
     orderId:{},
     storeorder:{},
-    star:'',
+    star:0,
     evaluate:""
   },
-
+  delete:function(e){
+    console.log(e.currentTarget.dataset.item);
+    let imgs=this.data.imgs;
+    let file=this.data.file;
+    let obj={
+      fileId:file[e.currentTarget.dataset.item]
+    }
+    car.deleteGoodsFile(obj, (res) => {
+      console.log(res);
+    })
+    imgs.splice(e.currentTarget.dataset.item);
+    file.splice(e.currentTarget.dataset.item);
+    this.setData({
+      imgs:imgs,
+      file:file
+    })
+ 
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -42,40 +60,56 @@ Page({
   loadpicture:function(){
     var that=this;
     wx.chooseImage({
-      count: 9,
+      count:1,
       success (res) {
         console.log(res);
         const tempFilePaths = res.tempFilePaths;
-        let arr =that.data.file;
-        for(var i=0;i<tempFilePaths.length;i++){
-          arr.push(tempFilePaths[i])
+        let img=that.data.imgs;
+        if(img.length>=9){
+          return false;
         }
-        // arr.push(res.tempFilePaths[0])
-        that.setData({
-          file:arr
+        img.push(tempFilePaths[0]);
+         that.setData({
+          imgs:img
+         })
+        console.log(that.data.file,app.endpoint.product+'/fileUpLoad')
+        wx.uploadFile({
+          url: app.endpoint.product+'/goods/fileUpLoad', //仅为示例，非真实的接口地址
+          filePath: tempFilePaths[0],
+          name: 'file',
+          formData: {
+            'file': tempFilePaths[0]
+          },
+          success (res){
+           console.log(res)
+           res.data=JSON.parse(res.data)
+           console.log(res.data)
+           let arr =that.data.file;
+           arr.push(res.data.data)
+           that.setData({
+             file:arr
+           })
+            //do something
+          }
         })
-        // wx.uploadFile({
-        //   url: 'https://example.weixin.qq.com/upload', //仅为示例，非真实的接口地址
-        //   filePath: tempFilePaths[0],
-        //   name: 'file',
-        //   formData: {
-        //     'user': 'test'
-        //   },
-        //   success (res){
-        //     const data = res.data
-        //     //do something
-        //   }
-        // })
       }
     })
   },
 
   pingjia:function(){
     var that=this;
+//     var formdata=new FormData();
+// //可以通过append()方法来追加数据
+//      formdata.append("file",that.data.file);
+//      formdata.append("userId",that.data.file);
+//      formdata.append("file",that.data.file);
+//      formdata.append("file",that.data.file);
+//      formdata.append("file",that.data.file);
+
     let obj={
       userId:wx.getStorageSync('userId'),
       evaluate:that.data.evaluate,
-      // file:that.data.file,
+      fileId:that.data.file,
       goodId:that.data.storeorder.goodsId,
       orderDetailId:that.data.storeorder.id,
       star:that.data.star,
@@ -109,7 +143,14 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    let img=this.data.imgs;
+    let file=this.data.file;
+    img=[];
+    file=[];
+    this.setData({
+      imgs:img,
+      file:file
+    })
   },
 
   /**

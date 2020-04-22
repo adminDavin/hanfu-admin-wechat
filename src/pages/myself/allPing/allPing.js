@@ -1,4 +1,5 @@
 // src/pages/myself/allPing/allPing.js
+const app = getApp();
 import car from '../../../services/car.js';
 Page({
 
@@ -6,6 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    img:'',
     stoneId: '',
     stars: [0, 1, 2, 3, 4],
     productId:'',
@@ -54,7 +56,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.setData({
+      img: app.endpoint.file
+     })
   },
 
   /**

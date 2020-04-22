@@ -139,6 +139,19 @@ function logistics(params,handleResult) {
     }
   });
 }
+function deleteGoodsFile(params,handleResult) {
+  console.log(app.endpoint.product + '/goods/deleteGoodsFile')
+  wx.request({
+    url: app.endpoint.product+ '/goods/deleteGoodsFile',
+    method: 'GET',
+    data: params,
+    success: res => handleResult(res),
+    fail: (res) => {
+      console.log( res);
+    }
+  });
+}
+
 function ma(params,handleResult) {
   console.log(app.endpoint.order + '/cancel/activity/create/activity-code')
   wx.request({
@@ -229,4 +242,5 @@ export default {
   ma:ma,
   ping:ping,
   selectInstanceEvaluate: selectInstanceEvaluate,
+  deleteGoodsFile:deleteGoodsFile
 };

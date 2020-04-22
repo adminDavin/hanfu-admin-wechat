@@ -12,6 +12,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    img:'',
     evaluateRatio:0,
     evaluateCount:0,
     stars: [0, 1, 2, 3, 4],
@@ -214,6 +215,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
+   
     let productId = this.data.productId;
     let stoneId = this.data.stoneId;
     if (typeof(productId) == 'undefined') {
@@ -433,6 +435,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
+    this.setData({
+      img: app.endpoint.file
+     })
     let productId = this.data.productId;
     let stoneId = this.data.stoneId;
     if (typeof(productId) == 'undefined') {
