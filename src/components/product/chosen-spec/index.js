@@ -41,6 +41,10 @@ Component({
     stoneId:{
       type: String,
       value: ''
+    },
+    instanceId: {
+      type: String,
+      value: ''
     }
   },
 
@@ -114,9 +118,11 @@ Component({
       // TODO 获取物品价格及库存检查
       console.log('活动ID', that.properties.activityId)
       console.log('团购活动ID', that.properties.groupId)
+      console.log('instanceId', this.properties.instanceId)
         console.log('校验')
         let params = {
-          activityId: this.data.activityId,
+          instanceId: this.properties.instanceId,
+          activityId: this.properties.activityId,
           GoodsNum: this.data.quantity,
           goodsId: this.data.selectedGoods.id
         }
@@ -165,9 +171,11 @@ Component({
       // TODO 获取物品价格及库存检查
       console.log(e.currentTarget.dataset.item)
       console.log('活动ID', this.properties.activityId)
+      console.log('instanceId', this.properties.instanceId)
         console.log('校验')
       console.log('校验')
       let params = {
+        instanceId: this.properties.instanceId,
         activityId: this.properties.activityId,
         GoodsNum: this.data.quantity,
         goodsId: selectedGoods.id

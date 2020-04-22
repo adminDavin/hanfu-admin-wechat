@@ -12,6 +12,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    introduceimgurl: [], //介绍图
     pinglist:false,
     productId:'',
     evaluateCount:'',
@@ -37,6 +38,7 @@ Page({
     showModal: false,
     slideNumber: '1', //详情滑动跳动数字
     current: 0,
+    instanceId:'',
     seckillActivity: false, //秒杀
     groupActivity: false,// 团购
     indicatorDots: true,
@@ -186,6 +188,7 @@ Page({
     that.data.priceArea = options.priceArea;
     that.data.stoneName = options.stoneName;
     that.data.activityId = options.activityId;
+    that.data.instanceId = options.instanceId;
     console.log(options)
     if (options.action == 'groupActivity') {
       console.log('拼团')
@@ -471,6 +474,15 @@ Page({
         this.updateSelectedGoods(product.defaultGoodsId, product);
         this.setData({ imgageUrls: imgageUrls, linePrice: goods.linePrice});
       })
+
+      productApi.selectProductIntroducePictrue({ productId: productId }, (res) => {
+        let evaluation = res.data.data;
+        requestUtils.setImageUrls(evaluation);
+        console.log('商品介绍', evaluation);
+        this.setData({
+          introduceimgurl: evaluation
+        });
+      })
     }
   },
 
@@ -648,7 +660,8 @@ Page({
       activityId: this.data.activityId,
       quantity: this.data.quantity,
       groupid: this.data.groupid,
-      stoneName: this.data.stoneName
+      stoneName: this.data.stoneName,
+      instanceId: this.data.instanceId
     };
     wx.navigateTo({
       url: '/pages/payment/index?params=' + encodeURIComponent(JSON.stringify(params))

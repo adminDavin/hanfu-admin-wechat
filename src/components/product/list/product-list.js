@@ -64,7 +64,7 @@ Component({
       //   });
       // } else {
         wx.navigateTo({
-          url: '/pages/product/detail?productId=' + selected.id + '&stoneId=' + selected.stoneId + '&action=' + 'competitive' + '&priceArea=' + selected.priceArea + '&stoneName=' + selected.stoneName+'&evaluateRatio='+selected.evaluateRatio+'&evaluateCount='+selected.evaluateCount
+          url: '/pages/product/detail?productId=' + selected.id + '&stoneId=' + selected.stoneId + '&action=' + 'competitive' + '&priceArea=' + selected.priceArea + '&stoneName=' + selected.stoneName + '&evaluateRatio=' + selected.evaluateRatio + '&evaluateCount=' + selected.evaluateCount + '&instanceId=' + selected.instanceId
         });
       // }
 

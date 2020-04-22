@@ -32,7 +32,7 @@ Component({
       console.log(e.currentTarget.dataset)
       let dataset = e.currentTarget.dataset.item
       wx.navigateTo({
-        url: '/pages/product/group-detail?action=groupActivity&productId=' + dataset.id + '&stoneId=' + dataset.stoneId + '&activityId=' + dataset.activityId + '&priceArea=' + dataset.priceArea + '&stoneName=' + dataset.stoneName+'&evaluateRatio='+dataset.evaluateRatio+'&evaluateCount='+dataset.evaluateCount
+        url: '/pages/product/group-detail?action=groupActivity&productId=' + dataset.id + '&stoneId=' + dataset.stoneId + '&activityId=' + dataset.activityId + '&priceArea=' + dataset.priceArea + '&stoneName=' + dataset.stoneName + '&evaluateRatio=' + dataset.evaluateRatio + '&evaluateCount=' + dataset.evaluateCount + '&instanceId=' + dataset.instanceId
       })
     }
   },

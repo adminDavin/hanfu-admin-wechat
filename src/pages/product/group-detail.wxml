@@ -211,14 +211,14 @@
     </view>
     <view class="description-title">商品介绍</view>
       <view class="description-contents">
-        <view>
-          
-        </view>
+        <view wx:for="{{introduceimgurl}}">
+        <image class="imageUrl" src="{{item.imageUrl}}"></image>
+			</view>
       </view>
   </view>
   <!-- 弹窗 -->
   <view animation="{{animationData}}" class="buy_box" wx:if="{{showModalSelectionSpecification}}">
-    <chosen accession="{{accession}}" activity-id="{{activityId}}" group-id="{{groupid}}" product-id="{{productId}}" stoneId="{{stoneId}}" selected-goods-id="{{selectedGoods.id}}" quantity="{{quantity}}" bind:chooseGoodsCommitEvent="listenChooseGoodsCommitEvent"></chosen>
+    <chosen instance-id="{{instanceId}}" accession="{{accession}}" activity-id="{{activityId}}" group-id="{{groupid}}" product-id="{{productId}}" stoneId="{{stoneId}}" selected-goods-id="{{selectedGoods.id}}" quantity="{{quantity}}" bind:chooseGoodsCommitEvent="listenChooseGoodsCommitEvent"></chosen>
   </view>
   <!-- 查看更多拼团 -->
   <view class="modalDlg" wx:if="{{showModal}}">

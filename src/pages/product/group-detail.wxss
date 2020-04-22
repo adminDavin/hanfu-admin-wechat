@@ -1161,3 +1161,14 @@ swiper {
   background: rgba(255,51,51,1);
   margin-bottom: 20rpx;
 }
+.imgs{
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+}
+.imageUrl {
+ width: 100%;
+ height: 800rpx;
+ display: inline-block;
+ overflow: hidden;
+}

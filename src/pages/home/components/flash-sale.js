@@ -63,7 +63,7 @@ Component({
       console.log(e.currentTarget.dataset.item)
       let dataset = e.currentTarget.dataset.item
       wx.navigateTo({
-        url: '/pages/product/detail?action=seckillActivity&productId=' + dataset.id + '&stoneId=' + dataset.stoneId + '&startTime=' + dataset.startTime + '&endTime=' + dataset.endTime + '&activityState=' + dataset.activityState + '&priceArea=' + dataset.priceArea + '&activityId=' + dataset.activityId + '&stoneName=' + dataset.stoneName+'&evaluateRatio='+dataset.evaluateRatio+'&evaluateCount='+dataset.evaluateCount
+        url: '/pages/product/detail?action=seckillActivity&productId=' + dataset.id + '&stoneId=' + dataset.stoneId + '&startTime=' + dataset.startTime + '&endTime=' + dataset.endTime + '&activityState=' + dataset.activityState + '&priceArea=' + dataset.priceArea + '&activityId=' + dataset.activityId + '&stoneName=' + dataset.stoneName + '&evaluateRatio=' + dataset.evaluateRatio + '&evaluateCount=' + dataset.evaluateCount + '&instanceId=' + dataset.instanceId
       })
     },
     updateData: function(selectedTime) {

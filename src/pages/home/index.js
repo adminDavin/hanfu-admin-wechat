@@ -13,9 +13,30 @@ Page({
     duration: 800,
     circular: true,
     imgUrls: [],
-    currentTab: 0
+    swiperList: [], // 获取的数组长度
+    isDeal: false, // 是否逻辑操作
+    curCurrent: 0, // 当前滑块位置
+    toRight: false // 是否从左往右滑动
   },
-
+  bindanimationfinish(e) {
+    let len = 2;
+    let current = e.detail.current;
+    if (len == (Number(current) + 1)) {
+      if (this.data.toRight) {
+        this.setData({
+          isDeal: false,
+          toRight: false
+        })
+      } else {
+        this.setData({
+          isDeal: true
+        })
+      }
+      if (this.data.isDeal) {
+        console.log("进行跳转")
+      }
+    }
+  },
   onLoad: function(options) {
     projectUtils.adjustSystemInfo(this);
     productApi.getRotation((res) => {
@@ -78,4 +99,5 @@ Page({
       url: '/pages/product/seek/seek',
     })
   },
+
 })

@@ -226,6 +226,18 @@ function selectInstanceEvaluate(params, handleResult) {
     }
   });
 }
+
+function selectProductIntroducePictrue(params, handleResult) {
+  wx.request({
+    url: app.endpoint.product + '/product/selectProductIntroducePictrue',
+    method: 'get',
+    data: params,
+    success: res => handleResult(res),
+    fail: (res) => {
+      console.log(res);
+    }
+  });
+}
 export default {
   getProductForRotation: getProductForRotation,
   getProductDetail: getProductDetail,
@@ -242,5 +254,6 @@ export default {
   addProductCollect: addProductCollect,
   deleteProductCollect: deleteProductCollect,
   checkResp: checkResp,
-  selectInstanceEvaluate: selectInstanceEvaluate
+  selectInstanceEvaluate: selectInstanceEvaluate,
+  selectProductIntroducePictrue: selectProductIntroducePictrue
 };

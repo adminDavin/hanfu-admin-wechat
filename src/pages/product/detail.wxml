@@ -184,14 +184,14 @@
 		</view>
 		<view class="description-title">商品介绍</view>
 		<view class="description-contents">
-			<view>
-
+			<view wx:for="{{introduceimgurl}}">
+        <image class="imageUrl" src="{{item.imageUrl}}"></image>
 			</view>
 		</view>
 	</view>
 	<!-- 弹窗 -->
 	<view animation="{{animationData}}" class="buy_box" wx:if="{{showModalSelectionSpecification}}">
-		<chosen activity-id="{{activityId}}" product-id="{{productId}}" selected-goods-id="{{selectedGoods.id}}" stoneId="{{stoneId}}" quantity="{{quantity}}" bind:chooseGoodsCommitEvent="listenChooseGoodsCommitEvent"></chosen>
+		<chosen instance-id="{{instanceId}}" activity-id="{{activityId}}" product-id="{{productId}}" selected-goods-id="{{selectedGoods.id}}" stoneId="{{stoneId}}" quantity="{{quantity}}" bind:chooseGoodsCommitEvent="listenChooseGoodsCommitEvent"></chosen>
 	</view>
 	<!-- 底部 -->
 	<view class="footer">
