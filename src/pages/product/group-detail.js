@@ -252,18 +252,14 @@ Page({
   updateSelectedGoods: function (goodsId, product) {
     goodsApi.getGoodsDetail({ goodsId: goodsId, quantity: this.data.quantity }, (res) => {
       let goods = res.data.data;
-      let imgageUrls = [];
-
-      for (let fileId of goods.fileIds) {
-        imgageUrls.push(app.endpoint.file + '/goods/getFile?fileId=' + fileId);
-      }
+ 
       if (goods.quantity > this.data.quantity) {
         goods.quantity = this.data.quantity;
       } else {
         // 库存不足
         goods.quantity = 0;
       }
-      this.setData({ product: product, imgageUrls: imgageUrls, selectedGoods: goods });
+      this.setData({ product: product, selectedGoods: goods });
     });
   },
 

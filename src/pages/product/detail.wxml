@@ -40,7 +40,7 @@
 <view class="particulars">
 	<!-- 图片 -->
 	<view class="header-images">
-		<swiper bindchange="current" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+		<swiper circular="true" bindchange="current" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
 			<block wx:for="{{imgageUrls}}" wx:key="index">
 				<swiper-item>
 					<image src="{{item}}" style="width:100%; display:flex" />
@@ -187,7 +187,7 @@
 		</view>
 		<view class="description-title">商品介绍</view>
 		<view class="description-contents">
-			<view wx:for="{{introduceimgurl}}">
+			<view style="height: 800rpx;" wx:for="{{introduceimgurl}}">
         <image class="imageUrl" src="{{item.imageUrl}}"></image>
 			</view>
 		</view>

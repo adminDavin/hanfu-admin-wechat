@@ -39,7 +39,7 @@
 <view class="particulars">
   <!-- 图片 -->
   <view class="header-images">
-    <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" bindchange="current">
+    <swiper circular="true" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" bindchange="current">
       <block wx:for="{{imgageUrls}}" wx:key="index">
         <swiper-item>
           <image src="{{item}}" style="width:100%; display:flex" />

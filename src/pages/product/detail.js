@@ -11,6 +11,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    imgageUrls:[],
     img:'',
     evaluateRatio:0,
     evaluateCount:0,
@@ -241,7 +242,7 @@ Page({
         console.log(product);
         this.updateSelectedGoods(product.defaultGoodsId, product);
         this.setData({
-          imgageUrls: imgageUrls
+          // imgageUrls: imgageUrls
         });
       })
     }
@@ -266,7 +267,7 @@ Page({
       }
       this.setData({
         product: product,
-        imgageUrls: imgageUrls,
+        // imgageUrls: imgageUrls,
         selectedGoods: goods
       });
     });
@@ -456,11 +457,16 @@ Page({
       }
       productApi.getProductDetail(params, (res) => {
         let goods = res.data.data;
-
+        // let imgageUrls = res.data.data;
+        // requestUtils.setImageUrls(goods.fileIds);
         console.log('商品图', goods);
 
         let imgageUrls = [];
+        for (let fileId of goods.fileIds) {
+          imgageUrls.push(app.endpoint.file + '/goods/getFile?fileId=' + fileId);
+        }
         console.log(goods)
+        console.log('商品图imgageUrls',imgageUrls)
         if (res.data.data.isConcern == 1) {
           console.log('关注')
           this.setData({
@@ -472,9 +478,6 @@ Page({
           this.setData({
             collecte: !this.data.collecte,
           })
-        }
-        for (let fileId of goods.fileIds) {
-          imgageUrls.push(app.endpoint.file + '/goods/getFile?fileId=' + fileId);
         }
         let product = res.data.data;
         this.updateSelectedGoods(product.defaultGoodsId, product);
@@ -518,7 +521,7 @@ Page({
         product: product,
         selectedGoods: goods
       });
-      this.setData({ product: product, imgageUrls: imgageUrls, selectedGoods: goods }); 
+      this.setData({ product: product, selectedGoods: goods }); 
     });
   },
   onSelectedGoodsSpec: function(e) {
