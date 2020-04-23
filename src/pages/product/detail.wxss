@@ -82,7 +82,11 @@
   flex-direction: column;
   align-items: center;
 }
-
+.footter-occupied {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .footer-image {
   width: 48rpx;
   height: 48rpx;
