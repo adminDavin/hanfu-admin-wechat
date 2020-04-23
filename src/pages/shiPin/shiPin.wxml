@@ -1,0 +1,15 @@
+<view>
+	<view style="border-radius:15rpx; width:300rpx;background:#fff;width:100%;margin-top:20rpx;overflow:hidden;">
+		<textarea bindinput="bind" style="margin:40rpx;font-size:30rpx;" placeholder="说点什么吧"></textarea>
+	</view>
+	<view style=" margin-top:80rpx;display:flex;flex-wrap:wrap;align-items:flex-end; ">
+		<view style="display:flex;flex:1;justify-content:center;" wx:if="{{imgs}}">
+			<video wx:if="{{imgs}}" style="height:320rpx;" id="myVideo" src="{{imgs}}" enable-danmu danmu-btn controls></video>
+		</view>
+		<image bindtap="loadpicture" src="../../img/tu.png" style="border-radius:15rpx;width:170rpx;height:170rpx;"></image>
+	</view>
+
+	<view bindtap="pingjia" style="margin:0 auto;margin-top:30rpx;  color:#fff; width:90%;height:90rpx;background:red;display:flex;align-items:center;justify-content:center;">
+		提交
+	</view>
+</view>

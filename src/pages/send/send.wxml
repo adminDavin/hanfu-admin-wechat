@@ -1,0 +1,14 @@
+<view style="display:flex;align-items:center;justify-content:space-around;margin-top:50%;">
+	<view bindtap="faxin" style="dislay:flex;flex-direction:column;align-items:center;">
+		<image src="../../img/xin.png" style="width:100rpx;height:100rpx;"></image>
+		<view style="font-size:30rpx;">发心情</view>
+	</view>
+  <view bindtap="fashi" style="dislay:flex;flex-direction:column;align-items:center;">
+		<image src="../../img/video.png" style="width:100rpx;height:100rpx;"></image>
+		<view style="font-size:30rpx;">发视频</view>
+	</view>
+  <view style="dislay:flex;flex-direction:column;align-items:center;">
+		<image src="../../img/wen.png" style="width:100rpx;height:100rpx;"></image>
+		<view style="font-size:30rpx;">发文章</view>
+	</view>
+</view>

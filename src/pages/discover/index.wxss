@@ -1,1 +1,4 @@
-/* src/pages/discover/index.wxss */
+page{
+  /* padding-bottom:100rpx; */
+  background: #f8f8f8;
+}

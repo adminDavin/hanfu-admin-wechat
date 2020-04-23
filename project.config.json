@@ -123,6 +123,34 @@
 					"id": -1,
 					"name": "pages/myself/allPing/allPing",
 					"pathName": "pages/myself/allPing/allPing",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/discover/index",
+					"pathName": "pages/discover/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/send/send",
+					"pathName": "pages/send/send",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/xinQing/xinQing",
+					"pathName": "pages/xinQing/xinQing",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/shiPin/shiPin",
+					"pathName": "pages/shiPin/shiPin",
 					"scene": null
 				}
 			]

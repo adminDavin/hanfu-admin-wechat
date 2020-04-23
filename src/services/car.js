@@ -224,6 +224,35 @@ function getid(params,handleResult) {
     }
   });
 }
+function addDiscoverXin(params,handleResult) {
+  console.log(app.endpoint.order + '/Discover/addDiscover')
+  wx.request({
+    url: app.endpoint.order + '/Discover/addDiscover',
+    header: {
+      'content-type': 'application/x-www-form-urlencoded'
+    },
+    method: 'post',
+    data:params,
+    success: res => handleResult(res),
+    fail: (res) => {
+      console.log( res);
+    }
+  });
+}
+function selectDiscover(handleResult) {
+  console.log(app.endpoint.order + '/Discover/selectDiscover')
+  wx.request({
+    url: app.endpoint.order + '/Discover/selectDiscover',
+    header: {
+      'content-type': 'application/x-www-form-urlencoded'
+    },
+    method: 'get',
+    success: res => handleResult(res),
+    fail: (res) => {
+      console.log( res);
+    }
+  });
+}
 
 
 export default {
@@ -242,5 +271,7 @@ export default {
   ma:ma,
   ping:ping,
   selectInstanceEvaluate: selectInstanceEvaluate,
-  deleteGoodsFile:deleteGoodsFile
+  deleteGoodsFile:deleteGoodsFile,
+  addDiscoverXin:addDiscoverXin,
+  selectDiscover:selectDiscover
 };

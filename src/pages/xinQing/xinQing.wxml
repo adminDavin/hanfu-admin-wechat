@@ -1,0 +1,16 @@
+<view>
+ <view style="border-radius:15rpx; width:300rpx;background:#fff;width:100%;margin-top:20rpx;overflow:hidden;">
+  <textarea bindinput="bind" style="margin:40rpx;font-size:30rpx;" placeholder="说点什么吧"></textarea>
+ </view>
+ <view style=" margin-top:80rpx;display:flex;flex-wrap:wrap;align-items:flex-end; ">
+  <view wx:for="{{imgs}}" style="position:relative;margin-right:80rpx;margin-bottom:40rpx;"> 
+     <image src="../../img/shanchu.png"style="position:absolute;top:-10px;right:-10px; width:20px;height:20px;" bindtap="delete" data-item="{{index}}"></image>
+     <image src="{{item}}"  style="width:72px;height:72px;"></image>
+  </view>
+   <image bindtap="loadpicture" src="../../img/tu.png" style="border-radius:15rpx;width:170rpx;height:170rpx;"></image>
+ </view>
+
+<view bindtap="pingjia" style="margin:0 auto;margin-top:30rpx;  color:#fff; width:90%;height:90rpx;background:red;display:flex;align-items:center;justify-content:center;">
+提交
+</view>
+</view>
