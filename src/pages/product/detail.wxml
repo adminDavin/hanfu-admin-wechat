@@ -40,7 +40,7 @@
 <view class="particulars">
 	<!-- 图片 -->
 	<view class="header-images">
-		<swiper bindchange="current" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+		<swiper circular="true" bindchange="current" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
 			<block wx:for="{{imgageUrls}}" wx:key="index">
 				<swiper-item>
 					<image src="{{item}}" style="width:100%; display:flex" />
@@ -187,14 +187,14 @@
 		</view>
 		<view class="description-title">商品介绍</view>
 		<view class="description-contents">
-			<view>
-
+			<view style="height: 800rpx;" wx:for="{{introduceimgurl}}">
+				<image class="imageUrl" src="{{item.imageUrl}}"></image>
 			</view>
 		</view>
 	</view>
 	<!-- 弹窗 -->
 	<view animation="{{animationData}}" class="buy_box" wx:if="{{showModalSelectionSpecification}}">
-		<chosen activity-id="{{activityId}}" product-id="{{productId}}" selected-goods-id="{{selectedGoods.id}}" stoneId="{{stoneId}}" quantity="{{quantity}}" bind:chooseGoodsCommitEvent="listenChooseGoodsCommitEvent"></chosen>
+		<chosen instance-id="{{instanceId}}" activity-id="{{activityId}}" product-id="{{productId}}" selected-goods-id="{{selectedGoods.id}}" stoneId="{{stoneId}}" quantity="{{quantity}}" bind:chooseGoodsCommitEvent="listenChooseGoodsCommitEvent"></chosen>
 	</view>
 	<!-- 底部 -->
 	<view class="footer">
@@ -210,11 +210,15 @@
 					<text class="foot-text">收藏</text>
 				</view>
 			</view>
+			<view class="footter-service" bind:tap="onConfirmSelectedGoods" data-type="shopPayment">
+				<image src="../../images/fk.png" class="footer-image" />
+				<text class="foot-text">到店支付</text>
+			</view>
 			<view style="display:flex; flex:1;justify-content:space-around;">
 				<view class="footter-service" bindtap="addcar" wx:if="{{competitive==true}}">
 					<text class="footer-shppingcar">加入购物车</text>
 				</view>
-				<view class="{{competitive==true?'footer-shppingcar':'footer-shppingcar1'}}" bind:tap="onConfirmSelectedGoods" data-type="shopPayment">到店支付</view>
+				<view class="footter-occupied" wx:if="{{competitive!=true}}"></view>
 				<view class="{{competitive==true?'footer-shppingcar purchase':'footer-shppingcar1 purchase'}} " style="margin-right:10rpx;" bind:tap="onSelectedGoodsSpec" data-type="createOrder">立即购买</view>
 			</view>
 

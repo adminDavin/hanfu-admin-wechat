@@ -1,6 +1,5 @@
 // src/pages/product/detail.js
 const app = getApp();
-
 import requestUtils from '../../services/request-utils.js';
 import productApi from '../../services/hf-product.js';
 import goodsApi from '../../services/hf-goods.js';
@@ -12,18 +11,20 @@ Page({
    * 页面的初始数据
    */
   data: {
+    imgageUrls:[],
     img:'',
     evaluateRatio:0,
     evaluateCount:0,
     stars: [0, 1, 2, 3, 4],
     pinglist:false,
     productId:'',
-    evaluation: '', //评价
+    introduceimgurl: [], //介绍图
     stoneId: '',
     goods: '',
     linePrice: '', // 下线价格
     loading: '',
     priceArea: '',
+    instanceId:'',
     goodsId: '',
     activityState: '', // 活动状态
     countdown: '',
@@ -108,6 +109,7 @@ Page({
     that.data.priceArea = options.priceArea;
     that.data.stoneName = options.stoneName;
     that.data.endTime = options.endTime;
+    that.data.instanceId = options.instanceId;
     that.ping();
     // that.data.sellPrices = options.sellPrices
     console.log(options)
@@ -240,7 +242,7 @@ Page({
         console.log(product);
         this.updateSelectedGoods(product.defaultGoodsId, product);
         this.setData({
-          imgageUrls: imgageUrls
+          // imgageUrls: imgageUrls
         });
       })
     }
@@ -265,7 +267,7 @@ Page({
       }
       this.setData({
         product: product,
-        imgageUrls: imgageUrls,
+        // imgageUrls: imgageUrls,
         selectedGoods: goods
       });
     });
@@ -455,11 +457,16 @@ Page({
       }
       productApi.getProductDetail(params, (res) => {
         let goods = res.data.data;
-
+        // let imgageUrls = res.data.data;
+        // requestUtils.setImageUrls(goods.fileIds);
         console.log('商品图', goods);
 
         let imgageUrls = [];
+        for (let fileId of goods.fileIds) {
+          imgageUrls.push(app.endpoint.file + '/goods/getFile?fileId=' + fileId);
+        }
         console.log(goods)
+        console.log('商品图imgageUrls',imgageUrls)
         if (res.data.data.isConcern == 1) {
           console.log('关注')
           this.setData({
@@ -472,9 +479,6 @@ Page({
             collecte: !this.data.collecte,
           })
         }
-        for (let fileId of goods.fileIds) {
-          imgageUrls.push(app.endpoint.file + '/goods/getFile?fileId=' + fileId);
-        }
         let product = res.data.data;
         this.updateSelectedGoods(product.defaultGoodsId, product);
         this.setData({
@@ -485,20 +489,12 @@ Page({
         });
       })
 
-      // 评价
-      let ping = {
-        productId: productId,
-        stoneId: stoneId,
-        pageNum:1,
-        pageSize:2
-      }
-      console.log(ping)
-      productApi.selectInstanceEvaluate(ping, (res) => {
-        console.log(res)
-        let evaluation = res.data.data.list;
-        console.log('评价', evaluation);
+      productApi.selectProductIntroducePictrue({ productId: productId}, (res) => {
+        let evaluation = res.data.data;
+        requestUtils.setImageUrls(evaluation);
+        console.log('商品介绍', evaluation);
         this.setData({
-          evaluation: evaluation
+          introduceimgurl: evaluation
         });
       })
     }
@@ -525,12 +521,13 @@ Page({
         product: product,
         selectedGoods: goods
       });
-      // this.setData({ product: product, imgageUrls: imgageUrls, selectedGoods: goods }); 
+      this.setData({ product: product, selectedGoods: goods }); 
     });
   },
   onSelectedGoodsSpec: function(e) {
     console.log(this.data.selectedGoods)
     let params = {
+      instanceId: this.data.instanceId,
       GoodsNum: this.data.quantity,
       goodsId: this.data.selectedGoods.id
     }
@@ -651,7 +648,8 @@ Page({
       activityId: this.data.activityId,
       quantity: this.data.quantity,
       competitive: this.data.competitive,
-      stoneName: this.data.stoneName
+      stoneName: this.data.stoneName,
+      instanceId: this.data.instanceId
     };
     console.log(params);
     wx.navigateTo({

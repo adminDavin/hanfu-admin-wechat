@@ -12,7 +12,6 @@ Page({
    * 页面的初始数据
    */
   data: {
-    img:'',
     pinglist:false,
     productId:'',
     evaluateCount:'',
@@ -433,9 +432,6 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.setData({
-      img: app.endpoint.file
-     })
     let productId = this.data.productId;
     let stoneId = this.data.stoneId;
     if (typeof (productId) == 'undefined') {

@@ -13,9 +13,7 @@ Page({
     duration: 800,
     circular: true,
     imgUrls: [],
-    currentTab: 0
   },
-
   onLoad: function(options) {
     projectUtils.adjustSystemInfo(this);
     productApi.getRotation((res) => {
@@ -78,4 +76,5 @@ Page({
       url: '/pages/product/seek/seek',
     })
   },
+
 })
