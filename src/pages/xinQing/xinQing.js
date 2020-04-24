@@ -105,13 +105,15 @@ Page({
 //      formdata.append("file",that.data.file);
 //      formdata.append("file",that.data.file);
 //      formdata.append("file",that.data.file);
-
+if(that.data.file.length==0){
+  return false;
+}
     let obj={
-      discoverType:'heart',
+      type:'discover',
+      typeContent:'heart',
       userId:wx.getStorageSync('userId'),
-      discoverContent:that.data.evaluate,
+      evaluate:that.data.evaluate,
       fileId:that.data.file,
-      userId:wx.getStorageSync('userId')
     }
     console.log(obj);
       car.addDiscoverXin(obj, (res) => {

@@ -225,9 +225,9 @@ function getid(params,handleResult) {
   });
 }
 function addDiscoverXin(params,handleResult) {
-  console.log(app.endpoint.order + '/Discover/addDiscover')
+  console.log(app.endpoint.product + '/goods/addEvaluateProduct')
   wx.request({
-    url: app.endpoint.order + '/Discover/addDiscover',
+    url: app.endpoint.product + '/goods/addEvaluateProduct',
     header: {
       'content-type': 'application/x-www-form-urlencoded'
     },
@@ -239,21 +239,51 @@ function addDiscoverXin(params,handleResult) {
     }
   });
 }
-function selectDiscover(handleResult) {
-  console.log(app.endpoint.order + '/Discover/selectDiscover')
+function selectDiscover(params,handleResult) {
+  console.log(app.endpoint.product + '/goods/selectDiscover')
   wx.request({
-    url: app.endpoint.order + '/Discover/selectDiscover',
+    url: app.endpoint.product + '/goods/selectDiscover',
     header: {
       'content-type': 'application/x-www-form-urlencoded'
     },
     method: 'get',
+    data:params,
     success: res => handleResult(res),
     fail: (res) => {
       console.log( res);
     }
   });
 }
-
+function zan(params,handleResult) {
+  console.log(app.endpoint.product + '/goods/addEvaluatePraise')
+  wx.request({
+    url: app.endpoint.product + '/goods/addEvaluatePraise',
+    header: {
+      'content-type': 'application/x-www-form-urlencoded'
+    },
+    method: 'post',
+    data:params,
+    success: res => handleResult(res),
+    fail: (res) => {
+      console.log( res);
+    }
+  });
+}
+function getfadetail(params,handleResult) {
+  console.log(app.endpoint.product + '/goods/selectInstanceEvaluate')
+  wx.request({
+    url: app.endpoint.product + '/goods/selectInstanceEvaluate',
+    header: {
+      'content-type': 'application/x-www-form-urlencoded'
+    },
+    method: 'get',
+    data:params,
+    success: res => handleResult(res),
+    fail: (res) => {
+      console.log( res);
+    }
+  });
+}
 
 export default {
   getid:getid,
@@ -273,5 +303,7 @@ export default {
   selectInstanceEvaluate: selectInstanceEvaluate,
   deleteGoodsFile:deleteGoodsFile,
   addDiscoverXin:addDiscoverXin,
-  selectDiscover:selectDiscover
+  selectDiscover:selectDiscover,
+  zan:zan,
+  getfadetail:getfadetail
 };

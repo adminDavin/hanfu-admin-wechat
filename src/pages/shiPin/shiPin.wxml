@@ -6,7 +6,7 @@
 		<view style="display:flex;flex:1;justify-content:center;" wx:if="{{imgs}}">
 			<video wx:if="{{imgs}}" style="height:320rpx;" id="myVideo" src="{{imgs}}" enable-danmu danmu-btn controls></video>
 		</view>
-		<image bindtap="loadpicture" src="../../img/tu.png" style="border-radius:15rpx;width:170rpx;height:170rpx;"></image>
+		<image bindtap="loadpicture" src="../../img/shangchuanshipin.png" style="border-radius:15rpx;width:170rpx;height:170rpx;"></image>
 	</view>
 
 	<view bindtap="pingjia" style="margin:0 auto;margin-top:30rpx;  color:#fff; width:90%;height:90rpx;background:red;display:flex;align-items:center;justify-content:center;">

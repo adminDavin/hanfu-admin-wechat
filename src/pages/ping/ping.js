@@ -107,14 +107,15 @@ Page({
 //      formdata.append("file",that.data.file);
 
     let obj={
-      userId:wx.getStorageSync('userId'),
+      type:'evaluate',
       evaluate:that.data.evaluate,
       fileId:that.data.file,
       goodId:that.data.storeorder.goodsId,
       orderDetailId:that.data.storeorder.id,
       star:that.data.star,
       stoneId:that.data.storeorder.stoneId,
-      userId:wx.getStorageSync('userId')
+      userId:wx.getStorageSync('userId'),
+      typeContent:'heart'
     }
     console.log(obj);
       car.ping(obj, (res) => {

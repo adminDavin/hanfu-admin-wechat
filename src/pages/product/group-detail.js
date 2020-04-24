@@ -12,6 +12,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    introduceimgurl: [], //介绍图
     pinglist:false,
     productId:'',
     evaluateCount:'',
@@ -37,6 +38,7 @@ Page({
     showModal: false,
     slideNumber: '1', //详情滑动跳动数字
     current: 0,
+    instanceId:'',
     seckillActivity: false, //秒杀
     groupActivity: false,// 团购
     indicatorDots: true,
@@ -186,6 +188,7 @@ Page({
     that.data.priceArea = options.priceArea;
     that.data.stoneName = options.stoneName;
     that.data.activityId = options.activityId;
+    that.data.instanceId = options.instanceId;
     console.log(options)
     if (options.action == 'groupActivity') {
       console.log('拼团')
@@ -249,18 +252,14 @@ Page({
   updateSelectedGoods: function (goodsId, product) {
     goodsApi.getGoodsDetail({ goodsId: goodsId, quantity: this.data.quantity }, (res) => {
       let goods = res.data.data;
-      let imgageUrls = [];
-
-      for (let fileId of goods.fileIds) {
-        imgageUrls.push(app.endpoint.file + '/goods/getFile?fileId=' + fileId);
-      }
+ 
       if (goods.quantity > this.data.quantity) {
         goods.quantity = this.data.quantity;
       } else {
         // 库存不足
         goods.quantity = 0;
       }
-      this.setData({ product: product, imgageUrls: imgageUrls, selectedGoods: goods });
+      this.setData({ product: product, selectedGoods: goods });
     });
   },
 
@@ -471,6 +470,15 @@ Page({
         this.updateSelectedGoods(product.defaultGoodsId, product);
         this.setData({ imgageUrls: imgageUrls, linePrice: goods.linePrice});
       })
+
+      productApi.selectProductIntroducePictrue({ productId: productId }, (res) => {
+        let evaluation = res.data.data;
+        requestUtils.setImageUrls(evaluation);
+        console.log('商品介绍', evaluation);
+        this.setData({
+          introduceimgurl: evaluation
+        });
+      })
     }
   },
 
@@ -648,7 +656,8 @@ Page({
       activityId: this.data.activityId,
       quantity: this.data.quantity,
       groupid: this.data.groupid,
-      stoneName: this.data.stoneName
+      stoneName: this.data.stoneName,
+      instanceId: this.data.instanceId
     };
     wx.navigateTo({
       url: '/pages/payment/index?params=' + encodeURIComponent(JSON.stringify(params))

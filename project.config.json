@@ -151,6 +151,14 @@
 					"id": -1,
 					"name": "pages/shiPin/shiPin",
 					"pathName": "pages/shiPin/shiPin",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/faDetail/faDetail",
+					"pathName": "pages/faDetail/faDetail",
+					"query": "",
 					"scene": null
 				}
 			]

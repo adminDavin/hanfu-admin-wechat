@@ -1,0 +1,44 @@
+<!--src/pages/discover/index.wxml-->
+<view style="padding:20rpx;padding-bottom:200rpx;">
+	<view bindtap="godetail" style="margin-bottom:20rpx; background:#fff;padding:21rpx 19rpx 18rpx 31rpx;border-radius:10px;">
+		<view style="color:#999;font-size:24rpx;">
+			{{list.time}}
+		</view>
+		<view style="font-size:28rpx;color:#151515;margin-top:19rpx;margin-bottom:17rpx;">{{list.comment}}</view>
+		<view wx:if="{{list.typeContent=='video'}}" style="display:flex;flex:1;justify-content:center;">
+			<video style="height:320rpx;" id="myVideo" src="{{img}}/goods/getVedio?fileId={{list.fileId[0]}}" enable-danmu danmu-btn controls></video>
+		</view>
+		<view wx:if="{{list.typeContent=='heart'}}" style="display:flex;flex:1;flex-wrap:wrap;">
+			<image data-src="{{img}}/goods/getFile?fileId={{img_pic1}}" bindtap="previewImage" wx:for="{{list.fileId}}" wx:for-item="img_pic1" src="{{img}}/goods/getFile?fileId={{img_pic1}}" style="border-radius:10rpx; height:160rpx;margin-bottom:9rpx; width:23%;margin-right:10rpx;"></image>
+
+		</view>
+		<view style="margin-top:17rpx; display:flex;align-items:center;justify-content:space-around;">
+
+			<button class="table-box " style="margin:0;width:100rpx; display:flex;align-items:center; " open-type="share">
+				<image style="width:36rpx;height:36rpx;" src="../../img/fenxiang.png"></image>
+				<text style="margin-left:10rpx; color:#151515;font-size:26rpx;">{{list.transmitCount}}</text>
+			</button>
+
+
+			<view style="display:flex;align-items:center;">
+				<image style="width:36rpx;height:36rpx;" src="../../img/liuyan.png"></image>
+				<text style="margin-left:10rpx; color:#151515;font-size:26rpx;">{{list.comment_count}}</text>
+			</view>
+			<view style="display:flex;align-items:center;" catchtap="zan">
+				<image style="width:36rpx;height:36rpx;"  src="{{list.isPraise==0?'../../img/zanpress.png':'../../img/dianzan.png'}}"></image>
+				<text style="margin-left:10rpx; color:#151515;font-size:26rpx;">{{list.praise}}</text>
+			</view>
+		</view>
+	</view>
+
+</view>
+
+<view style="display:flex;align-items:center;justify-content:center; width:100%; background:#fff;position:fixed;bottom:0;height:50px;z-index:100px;">
+	<view style="display:flex;align-items:center;justify-content:space-around;width:100%;">
+		<view style="display:flex;align-items:center; background:#eee;width:70%;height:35px;border-radius:10rpx;">
+			<input style="padding-left:30rpx; width:95%;" placeholder="说点什么"></input>
+		</view>
+		<view style="width:140rpx;height:34px; border-radius:10rpx; display:flex;align-items:center;justify-content:center;background:#FF0000;color:#fff;">发表</view>
+	</view>
+
+</view>

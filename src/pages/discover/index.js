@@ -22,13 +22,41 @@ Page({
         time: 3
     }]
   },
+  go:function(){
+    console.log(1)
+  },
+  zan:function(e){
+    let obj={
+      type:1,
+      id:e.currentTarget.dataset.id,
+      userId:wx.getStorageSync('userId'),
+    }
+    console.log(obj)
+    car.zan(obj, (res) => {
+      console.log(res);
+      if(res.data.status==200){
+        this.selectDiscover();
+      }
+  })
+  },
+  godetail:function(e){
+    console.log(e.currentTarget.dataset.item)
+    
+    wx.navigateTo({
+      url: '../faDetail/faDetail?item='+JSON.stringify(e.currentTarget.dataset.item) ,
+    })
+  },
   gosend:function(){
     wx.navigateTo({
       url: '../send/send',
     })
   },
   selectDiscover:function(){
-    car.selectDiscover( (res) => {
+    let obj={
+      type:'discover',
+      userId:wx.getStorageSync('userId'),
+    }
+    car.selectDiscover(obj, (res) => {
       console.log(res);
      this.setData({
        list:res.data.data
@@ -42,7 +70,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.selectDiscover();
+   
   },
   getRandomColor:function  () {
     let rgb = []
@@ -85,6 +113,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    this.selectDiscover();
     this.setData({
       img: app.endpoint.file
      })

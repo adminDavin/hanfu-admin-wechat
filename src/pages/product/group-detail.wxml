@@ -39,7 +39,7 @@
 <view class="particulars">
   <!-- 图片 -->
   <view class="header-images">
-    <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" bindchange="current">
+    <swiper circular="true" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" bindchange="current">
       <block wx:for="{{imgageUrls}}" wx:key="index">
         <swiper-item>
           <image src="{{item}}" style="width:100%; display:flex" />
@@ -211,14 +211,14 @@
     </view>
     <view class="description-title">商品介绍</view>
       <view class="description-contents">
-        <view>
-          
-        </view>
+        <view wx:for="{{introduceimgurl}}">
+        <image class="imageUrl" src="{{item.imageUrl}}"></image>
+			</view>
       </view>
   </view>
   <!-- 弹窗 -->
   <view animation="{{animationData}}" class="buy_box" wx:if="{{showModalSelectionSpecification}}">
-    <chosen accession="{{accession}}" activity-id="{{activityId}}" group-id="{{groupid}}" product-id="{{productId}}" stoneId="{{stoneId}}" selected-goods-id="{{selectedGoods.id}}" quantity="{{quantity}}" bind:chooseGoodsCommitEvent="listenChooseGoodsCommitEvent"></chosen>
+    <chosen instance-id="{{instanceId}}" accession="{{accession}}" activity-id="{{activityId}}" group-id="{{groupid}}" product-id="{{productId}}" stoneId="{{stoneId}}" selected-goods-id="{{selectedGoods.id}}" quantity="{{quantity}}" bind:chooseGoodsCommitEvent="listenChooseGoodsCommitEvent"></chosen>
   </view>
   <!-- 查看更多拼团 -->
   <view class="modalDlg" wx:if="{{showModal}}">
@@ -263,7 +263,11 @@
         <image src="../../images/hcollect.png" wx:if="{{collecte==true}}" class="footer-image" />
         <text class="foot-text">收藏</text>
       </view>
-      <view class="footer-shppingcar" bind:tap="onConfirmSelectedGoods" data-type="shopPayment">到店支付</view>
+      <view class="footter-service" bind:tap="onConfirmSelectedGoods" data-type="shopPayment">
+        <image src="../../images/fk.png" class="footer-image" />
+        <text class="foot-text">到店支付</text>
+      </view>
+      <view class="footer-shppingcar" ></view>
       <view class="footer-shppingcar purchase" bind:tap="onSelectedGoodsSpec" data-type="createOrder">发起拼团</view>
     </view>
   </view>

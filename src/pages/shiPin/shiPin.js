@@ -99,18 +99,26 @@ Page({
 //      formdata.append("file",that.data.file);
 //      formdata.append("file",that.data.file);
 //      formdata.append("file",that.data.file);
+console.log(that.data.file)
+ if(that.data.file.length==0){
+   return false;
+ }
 
     let obj={
-      discoverType:'heart',
+      type:'discover',
+      typeContent:'video',
       userId:wx.getStorageSync('userId'),
-      discoverContent:that.data.evaluate,
+      evaluate:that.data.evaluate,
       fileId:that.data.file,
-      userId:wx.getStorageSync('userId')
     }
     console.log(obj);
       car.addDiscoverXin(obj, (res) => {
+        
         console.log(res);
        if(res.data.status==200){
+         that.setData({
+          file:[]
+         })
           wx.showToast({
             title: '添加成功',
           })
