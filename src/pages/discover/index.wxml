@@ -28,5 +28,5 @@
 		</view>
 	</view>
 
-	<image bindtap="gosend" src="../../img/tianjiayin.png" style="position:fixed;right:30rpx;bottom:150rpx; width:100rpx;height:100rpx;"></image>
+	<image bindtap="gosend" src="../../img/tianjiayin.png" style="position:fixed;right:30rpx;bottom:250rpx; width:100rpx;height:100rpx;"></image>
 </view>
