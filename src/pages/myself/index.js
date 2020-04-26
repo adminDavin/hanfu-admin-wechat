@@ -173,10 +173,18 @@ Page({
   onSelectedToolAndService: function (e) {
     console.log(e)
     console.log('/pages/myPing/myPing' + e.currentTarget.dataset.action);
-    if(e.currentTarget.dataset.action=='evaluated'){
+    if (e.currentTarget.dataset.action =='address'){
+      this.handleSelected('address/list');
+    }
+    if (e.currentTarget.dataset.action == 'evaluated') {
       this.handleSelected('myPing/myPing');
     }
-   
+    if (e.currentTarget.dataset.action == 'qRCode') {
+      this.handleSelected('qr-code/index');
+    }
+    if (e.currentTarget.dataset.action == 'balancePayment') {
+      this.handleSelected('wallet/balance/payment');
+    }
 
   },
   onSelectedwallet: function (e) {
