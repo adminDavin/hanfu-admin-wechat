@@ -49,7 +49,8 @@
     "pages/send/send",
     "pages/xinQing/xinQing",
     "pages/shiPin/shiPin",
-    "pages/faDetail/faDetail"
+    "pages/faDetail/faDetail",
+    "pages/myself/storeDetail/storeDetail"
   ],
   "usingComponents": {
     "van-tab": "./pages/vant/weapp/dist/tab/index",

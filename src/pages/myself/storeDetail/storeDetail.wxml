@@ -1,0 +1,39 @@
+<view style="position:relative;overflow:hidden;height:270px;">
+	<view style="border-radius:10rpx; display:flex;align-items:center; top:54rpx; position:absolute;left:4%; width:82%;z-index:10;">
+		<image bindtap="fan" style="width:51rpx;height:40rpx;" src="../../../images/cart/fanhuibai.png"></image>
+		<text style="margin-left:34%;color:#fff;">店铺详情</text>
+	</view>
+	<image style="position:absolute;Opacity:0.8;width:100%;height:100%;" src="{{img}}/goods/getFile?fileId={{list.backgroundId}}"></image>
+	<view style="border-radius:10rpx; top:160rpx;padding:30rpx 30rpx 30rpx 40rpx;border-radius:10rpx;left:4%; width:82%;z-index:10; position:absolute;justify-content:space-between;display:flex;align-items:center;background:#fff;">
+		<view style="display:flex;align-items:center;">
+			<image style="width:100rpx;height:100rpx;" src="{{img}}/goods/getFile?fileId={{list.avatarId}}"></image>
+			<view style="margin-left:20rpx;">
+				<view style="font-size:45rpx;">{{list.stoneName}}</view>
+				<view style="font-size:26rpx;color:#999;">{{list.concernCount}}人关注</view>
+			</view>
+		</view>
+		<view style="border-radius:30rpx; display:flex;align-items:center;justify-content:center;font-size:34rpx;border:1px solid #aaa;width:150rpx;height:60rpx;">关注</view>
+	</view>
+	<view style="border-radius:10rpx; left:4%;width:86%;z-index:10; position:absolute;top:175px;padding:20rpx;margin-bottom:20rpx; justify-content:space-between;display:flex;align-items:center;background:#fff;">
+		<view>店铺二维码</view>
+		<image style="width:50rpx;height:50rpx;" src="../../../img/erweima.png"></image>
+	</view>
+</view>
+<view style="padding:20rpx;">
+
+	<view>
+	</view>
+	<view style="border-radius:10rpx 10rpx 0 0; padding:20rpx; display:flex;align-item:center;background:#fff;">
+		<view>店铺简介</view>
+		<view style="color:#999;margin-left:30rpx;">{{list.stoneDesc}}</view>
+	</view>
+	<view style="border-radius: 0 0 10rpx 10rpx;padding:20rpx;margin-bottom:20rpx; display:flex;align-item:center;background:#fff;">
+		<view>开店时间</view>
+		<view style="color:#999;margin-left:30rpx;">{{list.createTime}}</view>
+	</view>
+	<view style="border-radius:10rpx; margin-bottom:40rpx;padding:20rpx;display:flex;align-item:center;background:#fff;">
+		<view>销售品牌</view>
+		<view style="color:#999;margin-left:30rpx;">{{list.expireTime}}</view>
+	</view>
+	<view bindtap="cha" style="border-radius:10rpx; padding:20rpx;color:#FF0000;background:#fff;text-align:center;">去看看全部商品</view>
+</view>
