@@ -1,5 +1,4 @@
 <cover-view class="tab-bar" style='height:{{isIphoneX?166:120}}rpx;'>
-  <cover-view class="tab-bar-border"></cover-view>
   <cover-view wx:for="{{list}}" wx:key="index" class="tab-bar-item" data-path="{{item.pagePath}}" data-index="{{index}}" bindtap="switchTab">
   
     <cover-image wx:if="{{item.isSpecial != null && item.isSpecial == true}}" src="{{item.iconPath}}" class='cover-image'></cover-image>

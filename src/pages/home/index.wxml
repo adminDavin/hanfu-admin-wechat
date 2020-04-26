@@ -1,10 +1,9 @@
-
 <view class="seckill">
   <view class="seckill-header">
     <view class="header-title">
       <view class="header-t">
         <view class="header-tu">
-        <open-data type="userAvatarUrl"></open-data>
+          <open-data type="userAvatarUrl"></open-data>
         </view>
         <open-data class="header-text" type="userNickName"></open-data>
       </view>
@@ -14,7 +13,7 @@
           <view class="sao">扫一扫</view>
         </view>
         <button class="header-sao" style="padding:0;margin:0;width:75rpx;background:rgba(255,51,51,1);margin-top:15rpx" open-type="contact">
-          <image src="../../images/xiaoxi.png" class="sao-tu" />
+          <image src="../../images/xiaoxis.png" class="sao-tu" />
           <view class="sao">客服</view>
         </button>
       </view>
@@ -25,7 +24,7 @@
     </view>
   </view>
   <view class="seckill-img">
-  <!-- 轮播图 -->
+    <!-- 轮播图 -->
     <swiper circular="true" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
       <block wx:for="{{imgUrls}}" wx:key="index">
         <swiper-item bindtap="onSelectRotation" data-stoneId="{{item.stoneId}}" data-stoneName="{{item.stoneName}}" data-priceArea="{{item.priceArea}}" data-id="{{item.productId}}">
@@ -37,13 +36,19 @@
   <view class="seckill-box"></view>
   <!-- tab效果 -->
   <view class="swiper-tab">
-    <view class="swiper-tab-list {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="swichNav">精选</view>
-    <view class="swiper-tab-list {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="swichNav">团购</view>
-    <view class="swiper-tab-list {{currentTab==2 ? 'on' : ''}}" data-current="2" bindtap="swichNav">秒杀</view>
+    <view class="swiper-tab-list" data-current="0" bindtap="swichNav">
+      <text bindtap="swichNav" data-current="0" class="{{currentTab==0 ? 'on' : ''}}">精选</text>
+    </view>
+    <view class="swiper-tab-list" data-current="1" bindtap="swichNav">
+      <text bindtap="swichNav" data-current="1" class="{{currentTab==1 ? 'on' : ''}}">团购</text>
+    </view>
+    <view class="swiper-tab-list" data-current="2" bindtap="swichNav">
+      <text bindtap="swichNav" data-current="2" class="{{currentTab==2 ? 'on' : ''}}">秒杀</text>
+    </view>
   </view>
 
   <swiper current="{{currentTab}}" class="swiper-box" duration="300" style="height:{{winHeight}}px" bindchange="bindChange">
-    <swiper-item >
+    <swiper-item>
       <chosen scrollH="{{scrollH}}" imgWidth="{{imgWidth}}"></chosen>
     </swiper-item>
     <swiper-item>

@@ -1,4 +1,4 @@
-<scroll-view scroll-y="true" current="{{currentTab}}" duration="300" style="height:{{winHeight-30}}px">
+<scroll-view scroll-y="true" current="{{currentTab}}" duration="300" style="height:{{winHeight}}px">
   <view class="classify">
     <view class="classify-header-box">
       <button bindtap="chongqingjzb" class='kefubtn cu-btn content'>

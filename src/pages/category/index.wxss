@@ -36,8 +36,8 @@ button::after {
 }
 
 .classify-tus {
-  width: 36rpx;
-  height: 40rpx;
+  width: 46rpx;
+  height: 46rpx;
 }
 
 .classify-header {
@@ -47,6 +47,7 @@ button::after {
   align-items: center;
   border-radius: 30rpx;
   background-color: #ebebeb;
+  margin: 0 10rpx;
 }
 
 .classify-tu {
@@ -56,8 +57,8 @@ button::after {
 }
 
 .classify-input {
-  width: 557rpx;
-  height: 72rpx;
+  width: 500rpx;
+  height: 70rpx;
   margin-left: 20rpx;
   font-family: 'PingFang-SC-Regular';
   font-size: 26rpx;
@@ -89,7 +90,9 @@ button::after {
 .van-sidebar-item {
   text-align: center;
 }
-
+van-sidebar {
+  background:rgba(238,238,238,1);
+}
 /* .van-sidebar-item__text {
   position: absolute;
   top: -17rpx;
@@ -125,7 +128,10 @@ height: 1000rpx;
   flex-wrap: wrap;
   justify-content : space-between;
 }
-
+.box:after{
+  content: '';
+  width: 170rpx;
+ }
 .yige {
   display: flex;
   width: 170rpx;
@@ -135,7 +141,8 @@ height: 1000rpx;
 }
 
 .text-image {
-  width: 530rpx;
+  margin-left: 27rpx;
+  width: 524rpx;
   height: 260rpx;
 }
 
