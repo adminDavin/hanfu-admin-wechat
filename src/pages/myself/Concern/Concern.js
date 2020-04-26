@@ -1,5 +1,5 @@
 const app = getApp();
-import quan from '../../../services/hf-tequan';
+import quan from '../../../services/hf-tequan.js';
 
 
 Page({
@@ -21,8 +21,11 @@ Page({
   },
   godetail:function(e){
     console.log(e.currentTarget.dataset.stoneid);
+    // wx.navigateTo({
+    //   url: '../../pu/pu?id='+e.currentTarget.dataset.stoneid+'&name='+e.currentTarget.dataset.name,
+    // })
     wx.navigateTo({
-      url: '../../pu/pu?id='+e.currentTarget.dataset.stoneid+'&name='+e.currentTarget.dataset.name,
+      url: '../storeDetail/storeDetail?id='+e.currentTarget.dataset.stoneid+'&name='+e.currentTarget.dataset.name,
     })
   },
   //列表切换

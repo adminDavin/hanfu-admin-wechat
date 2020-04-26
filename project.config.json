@@ -160,6 +160,12 @@
 					"pathName": "pages/faDetail/faDetail",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/myself/storeDetail/storeDetail",
+					"pathName": "pages/myself/storeDetail/storeDetail",
+					"scene": null
 				}
 			]
 		}

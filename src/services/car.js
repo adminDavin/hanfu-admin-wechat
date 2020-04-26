@@ -284,7 +284,21 @@ function getfadetail(params,handleResult) {
     }
   });
 }
-
+function getstoreDetail(params,handleResult){
+  console.log(app.endpoint.product + '/stone/selectById')
+  wx.request({
+    url: app.endpoint.product + '/stone/selectById',
+    header: {
+      'content-type': 'application/x-www-form-urlencoded'
+    },
+    method: 'get',
+    data:params,
+    success: res => handleResult(res),
+    fail: (res) => {
+      console.log( res);
+    }
+  });
+}
 export default {
   getid:getid,
   addcar:addcar,
@@ -305,5 +319,7 @@ export default {
   addDiscoverXin:addDiscoverXin,
   selectDiscover:selectDiscover,
   zan:zan,
-  getfadetail:getfadetail
+  getfadetail:getfadetail,
+  getstoreDetail:getstoreDetail
+
 };

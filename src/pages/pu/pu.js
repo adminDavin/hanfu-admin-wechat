@@ -257,9 +257,9 @@ console.log(obj)
     let obj={
       stoneId:this.data.id
     }
-    wx.setNavigationBarTitle({
-      title: options.name
-    })
+      // wx.setNavigationBarTitle({
+      //   title: options.name
+      // })
     quan.getstoneproduct(obj, (res) => {
       console.log(res);
       this.setData({
