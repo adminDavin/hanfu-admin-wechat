@@ -42,7 +42,7 @@
     <swiper circular="true" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" bindchange="current">
       <block wx:for="{{imgageUrls}}" wx:key="index">
         <swiper-item>
-          <image src="{{item}}" style="width:100%; display:flex" />
+          <image mode="aspectFit" src="{{item}}" style="width:100%; display:flex" />
         </swiper-item>
       </block>
     </swiper>
@@ -69,7 +69,7 @@
     </view>
     <view class="productName-box-two">
       <text class="productName-table">{{product.productDesc}}</text>
-      <button class="table-box" open-type="share" style="width:120rpx">
+      <button class="table-box" open-type="share" style="width:140rpx">
         <image src="../../images/tabs/fenxiang.png" class="table-images" />
         <text class="share">分享</text>
       </button>
@@ -267,7 +267,7 @@
         <image src="../../images/fk.png" class="footer-image" />
         <text class="foot-text">到店支付</text>
       </view>
-      <view class="footer-shppingcar" ></view>
+      <view class="footer-shppingcars" ></view>
       <view class="footer-shppingcar purchase" bind:tap="onSelectedGoodsSpec" data-type="createOrder">发起拼团</view>
     </view>
   </view>

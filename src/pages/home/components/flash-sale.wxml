@@ -13,7 +13,7 @@
   <view class="text-Hot">今日爆款</view>
   <view class="row" style="display:flex;justify-content:space-around;align-items:center">
     <view wx:for="{{slots}}" class="swiper-tab-list {{currentTab==index ? 'on' : ''}}" wx:key="index" bindtap="onSelectedTime" data-item="{{item}}" data-ind="{{index}}">
-      <view class="item">{{item.endTimes}}</view>
+      <view class="item">{{item.startTimes}}</view>
       <view class="item">{{item.activityState==-1?'即将开始':(item.activityState==0?'抢购中':'已结束')}}</view>
     </view>
   </view>
@@ -21,7 +21,7 @@
 <scroll-view scroll-y="true" urrent="{{currentTab}}" duration="300" style="height:{{winHeight}}px" style="margin-top:24rpx;">
   <view wx:for="{{productSecKillData}}" wx:key="id">
     <view class="flex-row p10" style="display: flex;" bind:tap="onSeletedProduct" data-item="{{item}}">
-      <image class="flex-view-item" src="{{item.imageUrl}}" style="width:40%;height:250rpx"></image>
+      <image mode="aspectFit" class="flex-view-item" src="{{item.imageUrl}}" style="width:40%;height:250rpx"></image>
       <view class="flex-view-item p10" style="width:60%">
         <view style="text-align: left">{{item.productName}}</view>
         <view style="text-align: left; margin-top: 50rpx;color: red;">￥{{we.toFixed(item.priceArea/100)}}

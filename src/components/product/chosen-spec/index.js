@@ -38,7 +38,7 @@ Component({
       type: String,
       value: ''
     },
-    stoneId:{
+    stoneId: {
       type: String,
       value: ''
     },
@@ -119,14 +119,14 @@ Component({
       console.log('活动ID', that.properties.activityId)
       console.log('团购活动ID', that.properties.groupId)
       console.log('instanceId', this.properties.instanceId)
-        console.log('校验')
-        let params = {
-          instanceId: this.properties.instanceId,
-          activityId: this.properties.activityId,
-          GoodsNum: this.data.quantity,
-          goodsId: this.data.selectedGoods.id
-        }
-      productApi.checkResp(params,(res) => {
+      console.log('校验')
+      let params = {
+        instanceId: this.properties.instanceId,
+        activityId: this.properties.activityId,
+        GoodsNum: this.data.quantity,
+        goodsId: this.data.selectedGoods.id
+      }
+      productApi.checkResp(params, (res) => {
         console.log(res)
         console.log(res.data.data, 'dfddsfsafd');
         if (res.data.data == 'understock') {
@@ -172,7 +172,7 @@ Component({
       console.log(e.currentTarget.dataset.item)
       console.log('活动ID', this.properties.activityId)
       console.log('instanceId', this.properties.instanceId)
-        console.log('校验')
+      console.log('校验')
       console.log('校验')
       let params = {
         instanceId: this.properties.instanceId,
@@ -204,7 +204,7 @@ Component({
   },
   lifetimes: {
     ready: function () {
-      goodsApi.getGoodDetailByProductId({ productId: this.properties.productId, quantity: '1', stoneId: this.properties.stoneId, activityId: this.properties.activityId}, (res) => {
+      goodsApi.getGoodDetailByProductId({ productId: this.properties.productId, quantity: '1', stoneId: this.properties.stoneId, activityId: this.properties.activityId }, (res) => {
         let goodsList = res.data.data;
         console.log(res.data.data)
         for (let goods of goodsList) {
