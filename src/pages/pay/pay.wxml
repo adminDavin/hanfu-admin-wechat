@@ -1,147 +1,162 @@
 <!-- pages/order/order.wxml -->
 <import src="/templates/product/selectedGoods" />
-
-<view class="cover_screen" bindtap="onCloseGoodsSpec" wx:if="{{showModalCreateOrder}}" data-type="createOrder"></view>
-<!-- 弹窗内容 -->
-<view animation="{{animationData}}" class="buy_box" wx:if="{{showModalCreateOrder}}">
-  <view wx:for="{{tequan}}" wx:key="index" style="display:flex">
-    <view style="width:500rpx">
-      <view>
-        <sub style="font-size:25rpx;" wx:if="{{item.discountCouponType==1}}">¥</sub>
-        <span  wx:if="{{item.discountCouponType==1}}" style="font-weight:bold;font-size:40rpx;"> {{item.useLimit.minus}}</span>
-        <span  wx:if="{{item.discountCouponType==0}}" style="font-weight:bold;font-size:40rpx;"> {{item.useLimit.minus}}折</span>
+<view class="BigBoX">
+  <view class="cover_screen" bindtap="onCloseGoodsSpec" wx:if="{{showModalCreateOrder}}" data-type="createOrder"></view>
+  <!-- 弹窗内容 -->
+  <view animation="{{animationData}}" class="buy_box" wx:if="{{showModalCreateOrder}}">
+    <view wx:for="{{tequan}}" wx:key="index" style="display:flex">
+      <view style="width:500rpx">
+        <view>
+          <sub style="font-size:25rpx;" wx:if="{{item.discountCouponType==1}}">¥</sub>
+          <span wx:if="{{item.discountCouponType==1}}" style="font-weight:bold;font-size:40rpx;"> {{item.useLimit.minus}}</span>
+          <span wx:if="{{item.discountCouponType==0}}" style="font-weight:bold;font-size:40rpx;"> {{item.useLimit.minus}}折</span>
+        </view>
+        <view style='font-size:26rpx;'>
+          满{{item.useLimit.full}}元可用
+        </view>
       </view>
-      <view style='font-size:26rpx;'>
-        满{{item.useLimit.full}}元可用
+      <view wx:if="{{item.idDeleted==0}}" class="lingqu" bindtap="changeCoupons" data-item="{{item}}">
+        立即使用
+      </view>
+      <view style="font-size:30rpx;padding-top: 20rpx;" wx:if="{{item.idDeleted==1}}">
+        未满{{item.useLimit.full}}
       </view>
     </view>
-    <view wx:if="{{item.idDeleted==0}}" class="lingqu" bindtap="changeCoupons" data-item="{{item}}">
-      立即使用
-    </view>
-     <view style="font-size:30rpx;padding-top: 20rpx;" wx:if="{{item.idDeleted==1}}">
-      未满{{item.useLimit.full}}
-    </view>
+    <!-- <view class="guigeqr" bindtap="onConfirmSelectedGoods" data-type="createOrder">确认</view> -->
   </view>
-  <!-- <view class="guigeqr" bindtap="onConfirmSelectedGoods" data-type="createOrder">确认</view> -->
-</view>
 
-<view class="address">
-  <view wx:if="{{selectedAddress.hfCity }}">
-    <view class="address-top">
-      <view style="font-size:24rpx;line-height:35rpx;font-weight:400;color:rgba(21,21,21,1);">
-        {{selectedAddress.hfCity}} ({{selectedAddress.hfDesc}})
-      </view>
-    </view>
+  <view class="address">
+    <view class="address-box" wx:if="{{selectedAddress.hfCity }}">
     <view>
-      <view style="font-size:24rpx;line-height:35rpx;font-weight:400;color:rgba(21,21,21,1);">
-        详细地址: {{selectedAddress.hfAddressDetail}}
+      <view class="address-top">
+        <view style="font-size:24rpx;line-height:35rpx;font-weight:400;color:rgba(21,21,21,1);">
+          {{selectedAddress.hfCity}} ({{selectedAddress.hfDesc}})
+        </view>
       </view>
       <view>
-        联系人: {{selectedAddress.contact}}
+        <view style="font-size:24rpx;line-height:35rpx;font-weight:400;color:rgba(21,21,21,1);">
+          详细地址: {{selectedAddress.hfAddressDetail}}
+        </view>
+        <view>
+          联系人: {{selectedAddress.contact}}
+        </view>
+        <view>
+          联系电话: {{selectedAddress.phoneNumber}}
+        </view>
+        <!-- <view bind:tap="selectLocation" style="margin-left: 40%;">选择地址</view> -->
       </view>
-      <view>
-        联系电话: {{selectedAddress.phoneNumber}}
+      <view class="address-bottom">{{addressList.contact}} {{addressList.phoneNumber}}</view>
+   </view>
+
+      <view bind:tap="selectLocation" class="toAddress">
+        <image class="image" src="/images/rightjiantou.png"></image>
       </view>
-      <view bind:tap="selectLocation" style="margin-left: 40%;">选择地址</view>
+
     </view>
-    <view class="address-bottom">{{addressList.contact}} {{addressList.phoneNumber}}</view>
+    <view wx:else>
+      <button bind:tap="selectLocation">新增收货地址</button>
+    </view>
   </view>
-  <view wx:else>
-    <button bind:tap="onAddUserAddress">新增收货地址</button>
+
+  <view style="width:100%;height:5rpx;margin-top:-30rpx">
+    <image src="/images/line.png" style="width:100%;height:100%;"></image>
   </view>
-</view>
-
-<view style="width:100%;height:5rpx;margin-top:-30rpx">
-  <image src="/images/line.png" style="width:100%;height:100%;"></image>
-</view>
 
 
-<view class="quhuomethod" style="margin-top:50rpx">
-  <view class="ziti" style="width:600rpx">取货方式</view>
-  <text bindtap="changeMethod" class="ziti">{{pickUp.wayOfPickUpDesc}}</text>
-  <image src="/images/rightjiantou.png" style="width:12rpx;height:22rpx" bindtap="changeMethod"></image>
-</view>
-<view class="youfei" hidden="{{quhuomethod}}">
-  <view class="ziti" style="line-height:40rpx">邮费</view>
-  <text class="ziti" style="line-height:40rpx;color:red;">+￥0</text>
-</view>
+  <view class="quhuomethod" style="margin-top:50rpx">
+    <view class="ziti" style="width:600rpx">取货方式</view>
+    <text bindtap="changeMethod" class="ziti">{{pickUp.wayOfPickUpDesc}}</text>
+    <image src="/images/rightjiantou.png" style="width:12rpx;height:22rpx" bindtap="changeMethod"></image>
+  </view>
 
-<view wx:if="{{competitive}}" class="quhuomethod" style="margin-top:50rpx">
-  <view class="ziti" style="width:300rpx">店铺优惠卷</view>
-  <text wx:if="{{useLimit.full!==''&&discountCouponType==1}}" bindtap="changeCoupon" style=" color:red;" class="ziti">满￥{{useLimit.full}}元 减￥{{useLimit.minus}}元</text>
-  <text  wx:if="{{useLimit.full!==''&&discountCouponType==0}}" bindtap="changeCoupon" style=" color:red;" class="ziti">满￥{{useLimit.full}} 折扣{{useLimit.minus}}</text>
-  <text wx:if="{{useLimit.full==''}}" bindtap="changeCoupon" style=" color:red;" class="ziti">请选择优惠卷</text>
-  <image src="/images/rightjiantou.png" style="width:12rpx;height:22rpx" bindtap="changeCoupon"></image>
-</view>
 
-<view class="p20">支付方式</view>
-<view class="paymentMethod">
-  <radio-group class="item-right radio-group" wx:for="{{paymentMethod}}" wx:key="index" bindchange="onPaymentMethod">
-    <label class="radio">
-      <radio value="{{item.name}}" checked="{{item.checked}}" />{{item.desc}}
-    </label>
-  </radio-group>
-</view>
+
+  <view style="margin-top:20rpx" class="p20">支付方式</view>
+  <view class="paymentMethod">
+    <radio-group class="item-right radio-group" wx:for="{{paymentMethod}}" wx:key="index" bindchange="onPaymentMethod">
+      <label class="radio">
+        <radio value="{{item.name}}" checked="{{item.checked}}" />{{item.desc}}
+      </label>
+    </radio-group>
+  </view>
+
+
+
+  
+  <!-- ========================= -->
+  <view class="commodity">
+
+    <view class="content">
+      <checkbox-group bindchange="checkboxChange">
+        <block wx:for='{{shangjiagoods}}' wx:for-index="index" wx:for-item="dayItem">
+          <view style="background:#fff;margin-bottom:30rpx;padding:30rpx 0;">
+            <view style="margin-left:80rpx;margin-bottom:30rpx;" wx:if='{{dayItem.check1==1}}'>
+              店铺名称：{{dayItem.name}}
+            </view>
+            <scroll-view scroll-x direction="horizonta" style="margin-top:30rpx" wx:if='{{item.check==1}}' wx:for="{{dayItem.goodList}}" wx:for-index="indexs">
+              <view class="content-card">
+                <view class="content-item">
+                  <image src="{{img}}/goods/getFile?fileId={{item.productIcon}}" style="width:230rpx;height:100%"></image>
+                  <view class="contentitem-right">
+                    <text class="item-name">{{item.productName}}{{indexs}}{{index}}</text>
+                    <view class="card-money">
+                      <view class="discounts-money">
+                        <text class="money-title">¥</text>
+                        <text class="money-number">{{item.productPrice}}</text>
+                      </view>
+                      <view class="subadd-money" style="margin-left:3px;margin-right:3px;">x{{item.productNum}}</view>
+                    </view>
+                  </view>
+                </view>
+              </view>
+            </scroll-view>
+          </view>
+        </block>
+      </checkbox-group>
+    </view>
+
+    <view class="jiesuan" style="margin-top:40rpx;">
+      <view style="color:rgba(51,51,51,1);font-size:28rpx;margin-left:180rpx">合计
+        <text style="color:red;">￥{{count}}</text>
+      </view>
+      <view class="gojiesuan" bindtap="submit">提交订单</view>
+    </view>
+  </view>
+
+  <view wx:if="{{competitive}}" class="quhuomethod" style="margin-top:20rpx">
+    <view class="ziti" style="width:300rpx">店铺优惠卷</view>
+    <text wx:if="{{useLimit.full!==''&&discountCouponType==1}}" bindtap="changeCoupon" style=" color:red;" class="ziti">满￥{{useLimit.full}}元 减￥{{useLimit.minus}}元</text>
+    <text wx:if="{{useLimit.full!==''&&discountCouponType==0}}" bindtap="changeCoupon" style=" color:red;" class="ziti">满￥{{useLimit.full}} 折扣{{useLimit.minus}}</text>
+    <text wx:if="{{useLimit.full==''}}" bindtap="changeCoupon" style=" color:red;" class="ziti">请选择优惠卷</text>
+    <image src="/images/rightjiantou.png" style="width:12rpx;height:22rpx" bindtap="changeCoupon"></image>
+  </view>
 
 <view class="youjicard">
-  <view class="youji">
-    <view class="ziti" style="line-height:80rpx">商品金额</view>
-    <text class="ziti" style="line-height:80rpx">￥{{count}}</text>
+    <view class="youji">
+      <view class="ziti" style="line-height:80rpx">商品金额</view>
+      <text class="ziti" style="line-height:80rpx">￥{{count}}</text>
+    </view>
   </view>
-</view>
-<!-- ========================= -->
-<view class="commodity">
-	
-	<view class="content">
-		<checkbox-group bindchange="checkboxChange">
-			<block wx:for='{{shangjiagoods}}' wx:for-index="index" wx:for-item="dayItem">
-				<view style="background:#fff;margin-bottom:30rpx;padding:30rpx 0;">
-					<view style="margin-left:80rpx;margin-bottom:30rpx;" wx:if='{{dayItem.check1==1}}'>
-						店铺名称：{{dayItem.name}}
-					</view>
-					<scroll-view scroll-x direction="horizonta" style="margin-top:30rpx" wx:if='{{item.check==1}}'  wx:for="{{dayItem.goodList}}" wx:for-index="indexs">
-						<view class="content-card">
-							<view class="content-item">
-								<image src="{{img}}/goods/getFile?fileId={{item.productIcon}}" style="width:230rpx;height:100%"></image>
-								<view class="contentitem-right">
-									<text class="item-name">{{item.productName}}{{indexs}}{{index}}</text>
-									<view class="card-money">
-										<view class="discounts-money">
-											<text class="money-title">¥</text>
-											<text class="money-number">{{item.productPrice}}</text>
-										</view>
-											<view class="subadd-money" style="margin-left:3px;margin-right:3px;">x{{item.productNum}}</view>
-									</view>
-								</view>
-							</view>
-						</view>
-					</scroll-view>
-				</view>
-			</block>
-		</checkbox-group>
-	</view>
-
-	<view class="jiesuan" style="margin-top:40rpx;">
-		<view style="color:rgba(51,51,51,1);font-size:28rpx;margin-left:180rpx">合计<text style="color:red;">￥{{count}}</text></view>
-		<view class="gojiesuan"  bindtap="submit">提交订单</view>
-	</view>
-</view>
-
-<!-- ============ -->
-<view class="quhuomethod" style="height:80rpx">
-  <view class="ziti" style="width:400rpx;line-height:80rpx">备注</view>
-  <view class="ziti" style="width:230rpx;line-height:80rpx;text-overflow:ellipsis;white-space:nowrap;overflow:hidden">
-    <!-- {{elevalue}} -->
+  <view class="youfei" hidden="{{quhuomethod}}">
+    <view class="ziti" style="line-height:40rpx">邮费</view>
+    <text class="ziti" style="line-height:40rpx;color:red;">+￥0</text>
   </view>
-  <image src="/images/rightjiantou.png" style="width:12rpx;height:22rpx" bindtap="showtext"></image>
-</view>
-<textarea wx:if="{{textshow==true}}" value="{{elevalue}}" bindinput="getVal" style="padding:10rpx 24rpx;width:100%;height:90rpx" placeholder="请输入您的备注"></textarea>
-<view style="height:98rpx"></view>
-<view class="footer">
-  <view style="font-size:40rpx;font-weight:bold;color:rgba(255,0,0,1);line-height:98rpx">
-    ￥{{ count }}
+  
+  <!-- ============ -->
+  <view class="quhuomethod" style="height:80rpx">
+    <view class="ziti" style="width:400rpx;line-height:80rpx">备注</view>
+    <view class="ziti" style="width:230rpx;line-height:80rpx;text-overflow:ellipsis;white-space:nowrap;overflow:hidden">
+      <!-- {{elevalue}} -->
+    </view>
+    <image src="/images/rightjiantou.png" style="width:12rpx;height:22rpx" bindtap="showtext"></image>
   </view>
-  <view class="submit" bindtap="onCreateOrder" data-payment="{{ selectedGoods.sellPrices + pickUp.freight }}">提交订单</view>
+  <textarea wx:if="{{textshow==true}}" value="{{elevalue}}" bindinput="getVal" style="padding:10rpx 24rpx;width:100%;height:90rpx" placeholder="请输入您的备注"></textarea>
+  <view style="height:98rpx"></view>
+  <view class="footer">
+    <view style="font-size:40rpx;font-weight:bold;color:rgba(255,0,0,1);line-height:98rpx">
+      ￥{{ count }}
+    </view>
+    <view class="submit" bindtap="onCreateOrder" data-payment="{{ selectedGoods.sellPrices + pickUp.freight }}">提交订单</view>
+  </view>
+  <!-- ============= -->
 </view>
-<!-- ============= -->
-

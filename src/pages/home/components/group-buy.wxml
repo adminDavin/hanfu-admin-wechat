@@ -9,7 +9,7 @@
 <scroll-view scroll-y="true" style="margin-top:24rpx;height: 1000rpx;">
   <view wx:for="{{productGroups}}" wx:key="id">
     <view class="flex-row p10" style="display: flex;" bind:tap="onSeletedProduct" data-item="{{item}}">
-      <image class="flex-view-item" src="{{item.imageUrl}}" style="width:40%;height:250rpx"></image>
+      <image  mode="aspectFit" class="flex-view-item" src="{{item.imageUrl}}" style="width:40%;height:250rpx"></image>
       <view class="flex-view-item p10" style="width:60%">
         <view style="text-align: left">{{item.productName}}</view>
         <view style="text-align: left; margin-top: 50rpx;color: red;">￥{{we.toFixed(item.priceArea/100)}}

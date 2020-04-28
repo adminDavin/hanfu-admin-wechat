@@ -6,7 +6,7 @@ const app = getApp();
 Page({
   data: {
     winHeight:'',
-    current: 0,
+    currentTab: 0,
     indicatorDots: true,
     autoplay: true,
     interval: 3000,

@@ -3,28 +3,30 @@
   height: 100%;
   background-color: #f8f8f8;
 }
-.lingqu{
-margin-top:25rpx; 
-bottom: 10rpx;
-width: 30%;
-height: 100%;
-background: rgba(255, 51, 51, 1);
-border-radius: 22rpx;
-text-align: center;
-line-height: 44rpx;
-color: white;
-font-weight: 500;
-font-size: 34rpx;
+
+.lingqu {
+  margin-top: 25rpx;
+  bottom: 10rpx;
+  width: 30%;
+  height: 100%;
+  background: rgba(255, 51, 51, 1);
+  border-radius: 22rpx;
+  text-align: center;
+  line-height: 44rpx;
+  color: white;
+  font-weight: 500;
+  font-size: 34rpx;
 }
+
 .address {
   width: 100%;
-  height: 300rpx;
+  /* height: 300rpx; */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   padding: 20rpx 24rpx;
   box-sizing: border-box;
-  background-color: white;
+  background:rgba(255,255,255,1);
 }
 
 .address-top {
@@ -75,10 +77,12 @@ font-size: 34rpx;
   box-sizing: border-box;
   margin-top: 20rpx;
 }
+
 .p20 {
   width: 100%;
   padding-top: 24rpx;
   padding-left: 24rpx;
+  background:rgba(255,255,255,1);
 }
 
 .paymentMethod {
@@ -90,7 +94,9 @@ font-size: 34rpx;
   justify-content: space-between;
   align-items: center;
   box-sizing: border-box;
+  padding-bottom:4rpx; 
 }
+
 .buy_box {
   width: 100%;
   height: 504rpx;
@@ -103,6 +109,7 @@ font-size: 34rpx;
   padding: 20rpx;
   overflow: hidden;
 }
+
 .guigeqr {
   bottom: 10rpx;
   width: 100%;
@@ -115,6 +122,7 @@ font-size: 34rpx;
   font-weight: 500;
   font-size: 34rpx;
 }
+
 .ziti {
   font-size: 26rpx;
   font-family: PingFang SC;
@@ -122,6 +130,7 @@ font-size: 34rpx;
   color: rgb(8, 8, 8);
   line-height: 100rpx;
 }
+
 .youji {
   width: 100%;
   line-height: 80rpx;
@@ -132,10 +141,12 @@ font-size: 34rpx;
   box-sizing: border-box;
   margin-top: 20rpx;
 }
+
 .youjicard {
   width: 100%;
   background-color: white;
 }
+
 .youfei {
   width: 100%;
   display: flex;
@@ -143,7 +154,9 @@ font-size: 34rpx;
   align-items: center;
   padding: 0 24rpx;
   box-sizing: border-box;
+  background:rgba(255,255,255,1);
 }
+
 /* 商品详情 */
 
 .content-card {
@@ -161,7 +174,8 @@ font-size: 34rpx;
   display: flex;
   justify-content: flex-start;
 }
-.item-goodname{
+
+.item-goodname {
   height: 80rpx;
 }
 
@@ -238,7 +252,9 @@ font-size: 34rpx;
   font-weight: 500;
   color: rgba(51, 51, 51, 1);
 }
+
 /* footer */
+
 .footer {
   width: 100%;
   height: 98rpx;
@@ -251,6 +267,7 @@ font-size: 34rpx;
   padding: 0 24rpx;
   box-sizing: border-box;
 }
+
 .submit {
   width: 176rpx;
   height: 60rpx;
@@ -263,6 +280,7 @@ font-size: 34rpx;
   line-height: 60rpx;
   text-align: center;
 }
+
 /** 自底部弹出 **/
 
 .cover_screen {
@@ -283,48 +301,53 @@ font-size: 34rpx;
   background-color: rgba(0, 0, 0, 0.3);
 }
 
-.content{
-  width:100%;
+.content {
+  width: 100%;
   height: 100%;
-  margin-top:32rpx
+  margin-top: 32rpx;
 }
-.content-card{
-  width:100%;
+
+.content-card {
+  width: 100%;
   height: 230rpx;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   padding: 0 34rpx;
-  box-sizing:border-box;
+  box-sizing: border-box;
 }
-.content-item{
+
+.content-item {
   width: 615rpx;
   height: 100%;
   display: flex;
   justify-content: flex-start;
-  margin-right:68rpx
+  margin-right: 68rpx;
 }
-.contentitem-right{
-  width:364rpx;
+
+.contentitem-right {
+  width: 364rpx;
   height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  margin-left:30rpx
+  margin-left: 30rpx;
 }
-.item-name{
-font-size:26rpx;
-font-family:PingFang SC;
-font-weight:500;
-color:rgba(21,21,21,1);
 
+.item-name {
+  font-size: 26rpx;
+  font-family: PingFang SC;
+  font-weight: 500;
+  color: rgba(21, 21, 21, 1);
 }
-.card-money{
-  width:100%;
+
+.card-money {
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
+
 .discounts-money {
   color: #f00;
   /* margin-top: 22rpx; */
@@ -332,15 +355,41 @@ color:rgba(21,21,21,1);
   display: flex;
   align-items: center;
 }
-.subadd-money{
-/* width:85rpx; */
-  /* height:35rpx; */
+
+.subadd-money {
+  /* width:85rpx; *//* height:35rpx; */
   text-align: center;
   /* line-height:35rpx; */
-font-size:24rpx;
-font-family:PingFang SC;
-font-weight:500;
-color:rgba(51,51,51,1);
-/* background:rgba(240,240,240,1); */
-border-radius:18px;
+  font-size: 24rpx;
+  font-family: PingFang SC;
+  font-weight: 500;
+  color: rgba(51, 51, 51, 1);
+  /* background:rgba(240,240,240,1); */
+  border-radius: 18px;
+}
+
+.toAddress {
+  width: 20rpx;
+  height: 29rpx;
+  float: left;
+  /* background-color: red; */
+}
+
+.address-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  display: block;
+  overflow: hidden;
+}
+.BigBoX {
+  background-color: #F8F8F8;
+}
+.radio {
+  font-size:24rpx;
 }

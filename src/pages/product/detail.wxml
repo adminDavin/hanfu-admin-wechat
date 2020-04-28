@@ -43,7 +43,7 @@
 		<swiper circular="true" bindchange="current" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
 			<block wx:for="{{imgageUrls}}" wx:key="index">
 				<swiper-item>
-					<image src="{{item}}" style="width:100%; display:flex" />
+					<image mode="aspectFit" src="{{item}}" style="width:100%; display:flex" />
 				</swiper-item>
 			</block>
 		</swiper>
@@ -59,7 +59,7 @@
 				<!-- <text class="news">新品</text> -->
 			</view>
 			<view class="productName-collect">
-				<text style="font-size: 24rpx;">{{stoneName}}</text>
+      <text class="productName-text" style="font-size: 24rpx;">{{stoneName}}</text>
 				<view class="collect-one collect-margin" bindtap="attention">
 					<image src="../../images/tabs/chakantieziguanzhu.png" class="depreciate-image" bindtap="collect" wx:if="{{collects==false}}" />
 					<image src="../../images/tabs/aixin.png" class="depreciate-image" bindtap="collect" wx:if="{{collects==true}}" />
@@ -69,7 +69,7 @@
 		</view>
 		<view class="productName-box-two">
 			<text class="productName-table">{{product.productDesc}}</text>
-			<button class="table-box" open-type="share" style="width:120rpx">
+			<button class="table-box" open-type="share" style="width:140rpx">
 				<image src="../../images/tabs/fenxiang.png" class="table-images" />
 				<text class="share">分享</text>
 			</button>

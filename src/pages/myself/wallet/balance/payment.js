@@ -61,7 +61,7 @@ Page({
   bindKeyInput: function (e) {
     console.log(e);
       this.setData({
-        money: e.detail.value
+        money: e.detail.value*100
       })
     console.log(this.data.money);
   },

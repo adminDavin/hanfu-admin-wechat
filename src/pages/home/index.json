@@ -1,4 +1,5 @@
 {
+  "navigationBarBackgroundColor": "#FF3333",
   "usingComponents": {
     "chosen": "./components/chosen",
     "flash-sale": "./components/flash-sale",

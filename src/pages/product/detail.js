@@ -617,7 +617,8 @@ Page({
     this.onCloseGoodsSpec(e);
   },
   onConfirmSelectedGoods: function(e) {
-    this.onCloseGoodsSpec(e);
+    console.log(e)
+    console.log(this.data.goods)
     let userId = wx.getStorageSync('userId');
 
     if (util.isEmpty(userId)) {
@@ -664,7 +665,8 @@ Page({
     let params = {
       paymentType: paymentType,
       stoneId: this.data.product.stoneId,
-      stoneName: this.data.product.stoneName
+      stoneName: this.data.product.stoneName,
+      stoneAddress: this.data.goods.stoneAddress
     };
     wx.navigateTo({
       url: '/pages/payment/shopping?params=' + encodeURIComponent(JSON.stringify(params)),

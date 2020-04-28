@@ -9,6 +9,8 @@ import discount from '../../services/discount.js';
 
 Page({
   data: {
+    elevalue: '',
+    textshow: true,
     disconuntId:'', //优惠卷ID
     imgageUrls:'',
     selectedGoods:'',
@@ -98,7 +100,11 @@ Page({
   onReady: function() {
 
   },
-
+  getVal: function (e) {
+    this.setData({
+      elevalue: e.detail.value
+    })
+  },
   /**
    * 生命周期函数--监听页面显示
    */
@@ -240,7 +246,7 @@ Page({
       // amount: e.currentTarget.dataset.payment,
       orderType: 'nomalOrder',
       paymentName: this.data.paymentMethod[0].name,
-      hfRemark: "订单备注",
+      hfRemark: this.data.elevalue,
       // //物品属性配置
       // goodsId: this.data.selectedGoods.id,
       // sellPrice: this.data.selectedGoods.sellPrice,
