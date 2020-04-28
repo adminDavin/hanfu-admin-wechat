@@ -7,6 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    img:'',
     imgs:[],
     file:[],
     orderId:{},
@@ -144,6 +145,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    this.setData({
+      img: app.endpoint.file
+     })
     // let img=this.data.imgs;
     // let file=this.data.file;
     // img=[];

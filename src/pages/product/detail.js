@@ -104,13 +104,14 @@ Page({
       stoneId: options.stoneId,
       productId:options.productId,
     })
+    that.ping();
     that.data.activityState = options.activityState;
     that.data.startTime = options.startTime;
     that.data.priceArea = options.priceArea;
     that.data.stoneName = options.stoneName;
     that.data.endTime = options.endTime;
     that.data.instanceId = options.instanceId;
-    that.ping();
+
     // that.data.sellPrices = options.sellPrices
     console.log(options)
     that.countTime()
@@ -143,11 +144,11 @@ Page({
   },
   cha:function(){
     wx.navigateTo({
-      url: '../myself/allPing/allPing?stoneId='+this.data.stoneId+'&productId='+this.data.productId,
+      url: '../myself/allPing/allPing?stoneId='+this.data.stoneId+'&productId='+this.data.productId+'&evaluateCount='+this.data.product.evaluateCount+'&evaluateRatio='+this.data.product.evaluateRatio,
     })
   },
   ping:function(){
-    
+    console.log(this.data.product)
     let obj = {
       stoneId:this.data.stoneId,
       pageNum:1,
@@ -186,6 +187,7 @@ Page({
     //  return false;
     // }
     let obj = {
+      type:0,
       goodsId: that.data.selectedGoods.id,
       num: that.data.quantity,
       userId: wx.getStorageSync('userId'),
@@ -245,6 +247,7 @@ Page({
           // imgageUrls: imgageUrls
         });
       })
+    
     }
   },
 

@@ -1,8 +1,8 @@
 <view>
  <view style="border-radius:15rpx; display:flex; background:#fff;padding:20rpx;">
-   <image src="../../img/choose.png" style="width:170rpx;height:170rpx;"></image>
+   <image src="{{img}}/goods/getFile?fileId={{storeorder.hfDesc.fileIds[0]}}" style="width:170rpx;height:170rpx;"></image>
    <view style="width:60%;margin-left:25rpx;">
-    <view style="font-size:26rpx;color:#151515;">夹克外套男秋冬季新款修身工装衣服男装加绒加厚学生春秋季上衣青...</view>
+    <view style="font-size:26rpx;color:#151515;">{{storeorder.hfDesc.goodsDesc}}</view>
     <star bind:twoLevelCommentBtn='twoLevelCommentBtnClick'> </star> 
    </view>
  </view>

@@ -162,10 +162,10 @@
 			<view class="appraise-number">
 				<image src="../../images/tabs/yuanjiaoju.png" class="number-image" />
 				<text class="number-table">评价</text>
-				<text class="limit1">{{evaluateCount}}+</text>
+				<text class="limit1">{{product.evaluateCount}}+</text>
 			</view>
 			<view class="appraise-limit">
-				<text class="limit">好评度{{evaluateRatio}}%</text>
+				<text class="limit">好评度{{product.evaluateRatio}}%</text>
 				<image src="../../images/tabs/jinru (1).png" class="limit-image" bindtap="discuss" />
 			</view>
 		</view>
@@ -187,7 +187,7 @@
       <view wx:if="{{pinglist}}" bindtap="cha"  style="margin:0 auto;margin-top:20rpx; border-radius:24px;border:1px solid rgba(235,235,235,1);color:#151515;font-size:24rpx;width:239rpx;height:48rpx;display:flex;align-items:center;justify-content:center;">
 				查看全部评论
 			</view>
-			 <view wx:if="{{pinglist==false}}" bindtap="cha"  style="margin:0 auto;margin-top:20rpx; border-radius:24px;color:#151515;font-size:24rpx;width:239rpx;height:48rpx;display:flex;align-items:center;justify-content:center;">
+			 <view wx:if="{{pinglist==false}}"   style="margin:0 auto;margin-top:20rpx; border-radius:24px;color:#151515;font-size:24rpx;width:239rpx;height:48rpx;display:flex;align-items:center;justify-content:center;">
 			暂无评论
 			</view>
 		</view>

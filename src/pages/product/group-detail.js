@@ -57,7 +57,7 @@ Page({
   },
   cha:function(){
     wx.navigateTo({
-      url: '../myself/allPing/allPing?stoneId='+this.data.stoneId+'&productId='+this.data.productId,
+      url: '../myself/allPing/allPing?stoneId='+this.data.stoneId+'&productId='+this.data.productId+'&evaluateCount='+this.data.product.evaluateCount+'&evaluateRatio='+this.data.product.evaluateRatio,
     })
   },
   ping:function(){
