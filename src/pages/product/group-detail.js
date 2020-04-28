@@ -116,6 +116,7 @@ Page({
     let params = {
       bossId: 1,
       productId: this.data.productId,
+      activityId: this.data.activityId,
     }
     goodsApi.getListGrou(params, (res) => {
       console.log('团购列表', res.data.data)
@@ -504,6 +505,7 @@ Page({
     let params = {
       bossId: 1,
       productId: this.data.selectedGoods.productId,
+      activityId: this.data.activityId,
       sum: 2
     }
     goodsApi.getListGrou(params, (res) => {
