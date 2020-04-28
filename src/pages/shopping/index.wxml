@@ -7,7 +7,7 @@
 
 	<!-- banner区域 -->
 	<view class="commodity-banner">
-    <view class="table" bindtap="toggle" data-index="1">
+    <view class="table" bindtap="checkcar" data-index="1">
       <text class="">全部({{cartNum}})</text>
       <view class="sum-color {{bannertoggle==1?'colors':''}}"></view>
     </view>
@@ -65,8 +65,8 @@
 									</view>
 								</view>
 							</view>
-							<view class="hid-item">
-								<view style="width:50rpx;" wx:if="{{isOftenBuy==true}}" bindtap="oftenbuy" data-goodsid="{{item.productId}}">设为常买</view>
+							<view class="hid-item" wx:if='{{bannertoggle!=3}}'>
+								<view  style="width:50rpx;" wx:if="{{isOftenBuy==true}}" bindtap="oftenbuy" data-goodsid="{{item.productId}}"  data-stontId="{{item.stoneId}}">设为常买</view>
 								<view style="width:50rpx;" wx:if="{{isOftenBuy==false}}" bindtap="delOftenBuy" data-goodsid="{{item.productId}}">取消常买</view>
 							</view>
 							<view class="hid-item" style="background:rgba(255,204,0,1);" bindtap="concern" data-goodsid="{{item.productsId}}"  data-stontId="{{item.stoneId}}">

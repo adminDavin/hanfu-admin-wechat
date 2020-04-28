@@ -33,6 +33,34 @@ Page({
     isAllSelect: false, //全选
     selectValue: [], //选中的数据
   },
+  toggle:function(e){
+    console.log(e.currentTarget.dataset.index)
+    this.setData({
+      bannertoggle: e.currentTarget.dataset.index,
+    })
+    let obj={
+      type:1,
+      userId: wx.getStorageSync('userId'),
+    }
+    var that=this;
+   car.checkcar(obj, (res) => {
+      console.log(res);
+      // that.setData({
+      //   shangjiagoods:res.data.data
+      // })
+    let arr=res.data.data;
+    for(var i=0;i<arr.length;i++){
+      for(var j=0;j<arr[i].goodList.length;j++){
+        arr[i].goodList[j].check=0;
+        arr[i].goodList[j].productPrice=(arr[i].goodList[j].productPrice/100).toFixed(2)
+      }
+    }
+    that.setData({
+      shangjiagoods:arr
+    })
+      console.log(that.data.shangjiagoods);
+    })   
+  },
   concern:function(e){
     
     let obj={
@@ -44,7 +72,7 @@ Page({
     car.cartconcern(obj, (res) => {
       if(res.data.status==200){
         wx.showToast({
-          title: '关注成功',
+          title: '已关注',
         })
        
       }else{
@@ -55,9 +83,34 @@ Page({
       }
     });
   },
+  oftenbuy:function(e){
+    let obj={
+      num:1,
+      type:1,
+      goodsId:e.currentTarget.dataset.goodsid,
+      stoneId:e.currentTarget.dataset.stontid,
+      userId : wx.getStorageSync('userId'),
+    }
+    console.log(obj)
+    car.buy(obj, (res) => {
+      console.log(res)
+      if(res.data.status==200){
+        wx.showToast({
+          title: '设置成功',
+        })
+        
+      }else{
+        wx.showToast({
+          title: '设置失败',
+          icon:'none'
+        })
+      }
+    });
+  },
        //删除商品
        delGoods(e) {
          console.log(e)
+    
         var that = this;
         let obj={
           type:0,
@@ -65,12 +118,46 @@ Page({
           productId :e.currentTarget.dataset.goodsid,
           userId: wx.getStorageSync('userId'),
         }
+        if(that.data.bannertoggle==1){
+          obj.type=0;
+        }else if(that.data.bannertoggle==3){
+          obj.type=1;
+        }
+     
         car.delGoods(obj, (res) => {
+          var that = this;
           if(res.data.status==200){
             wx.showToast({
               title: '删除成功',
             })
-            that.checkcar();
+            if(that.data.bannertoggle==1){
+              that.checkcar();
+            }else if(that.data.bannertoggle==3){
+              console.log(3)
+              let obj={
+                type:1,
+                userId: wx.getStorageSync('userId'),
+              }
+              var that=this;
+             car.checkcar(obj, (res) => {
+                console.log(res);
+                // that.setData({
+                //   shangjiagoods:res.data.data
+                // })
+              let arr=res.data.data;
+              for(var i=0;i<arr.length;i++){
+                for(var j=0;j<arr[i].goodList.length;j++){
+                  arr[i].goodList[j].check=0;
+                  arr[i].goodList[j].productPrice=(arr[i].goodList[j].productPrice/100).toFixed(2)
+                }
+              }
+              that.setData({
+                shangjiagoods:arr
+              })
+                console.log(that.data.shangjiagoods);
+              }) 
+            }
+           
           }else{
             wx.showToast({
               title: '删除失败',
@@ -129,12 +216,15 @@ Page({
       userId: wx.getStorageSync('userId'),
     }
     var that=this;
+    that.setData({
+      bannertoggle: 1,
+    })
    car.checkcar(obj, (res) => {
       console.log(res);
-      that.setData({
-        shangjiagoods:res.data.data
-      })
-    let arr=that.data.shangjiagoods;
+      // that.setData({
+      //   shangjiagoods:res.data.data
+      // })
+    let arr=res.data.data;
     for(var i=0;i<arr.length;i++){
       for(var j=0;j<arr[i].goodList.length;j++){
         arr[i].goodList[j].check=0;

@@ -363,13 +363,13 @@ function addStoneConcern(params,handleResult){
   });
 }
 function buy(params,handleResult){
-  console.log(app.endpoint.product + '/product/addStoneConcern')
+  console.log(app.endpoint.product + '/cart/add')
   wx.request({
-    url: app.endpoint.product + '/product/addStoneConcern',
+    url: app.endpoint.product + '/cart/add',
     header: {
       'content-type': 'application/x-www-form-urlencoded'
     },
-    method: 'post',
+    method: 'get',
     data:params,
     success: res => handleResult(res),
     fail: (res) => {
