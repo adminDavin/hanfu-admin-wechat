@@ -347,6 +347,22 @@ function deletemore(params,handleResult){
     }
   });
 }
+function getCartListInfo(params,handleResult){
+  console.log(app.endpoint.product + '/cart/getCartListInfo')
+  wx.request({
+    url: app.endpoint.product + '/cart/getCartListInfo',
+    header: {
+      'content-type': 'application/x-www-form-urlencoded'
+    },
+    method: 'get',
+    data:params,
+    success: res => handleResult(res),
+    fail: (res) => {
+      console.log( res);
+    }
+  });
+}
+
 function addStoneConcern(params,handleResult){
   console.log(app.endpoint.product + '/product/addStoneConcern')
   wx.request({
@@ -403,5 +419,6 @@ export default {
   deleteStoneConcern:deleteStoneConcern,
   cartconcern:cartconcern,
   deletemore:deletemore,
-  buy:buy
+  buy:buy,
+  getCartListInfo:getCartListInfo
 };

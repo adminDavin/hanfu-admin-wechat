@@ -8,7 +8,7 @@
 	<!-- banner区域 -->
 	<view class="commodity-banner">
     <view class="table" bindtap="checkcar" data-index="1">
-      <text class="">全部({{cartNum}})</text>
+      <text class="">全部({{infor.all}})</text>
       <view class="sum-color {{bannertoggle==1?'colors':''}}"></view>
     </view>
     <view class="table" bindtap="toggle" data-index="2">
@@ -16,7 +16,7 @@
       <view class="sum-color {{bannertoggle==2?'colors':''}}"></view>
     </view>
     <view class="table" bindtap="toggle" data-index="3">
-      <text class="">常买(0)</text> 
+      <text class="">常买({{infor.ofenBuyCount}})</text> 
       <view class="sum-color {{bannertoggle==3?'colors':''}}"></view>
     </view>
     <view class="table ">

@@ -11,6 +11,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    infor:{},
     img:'',
     count:0,
     carlist:[],
@@ -61,6 +62,17 @@ Page({
       console.log(that.data.shangjiagoods);
     })   
   },
+  getCartListInfo:function(){
+    let obj={
+      userId: wx.getStorageSync('userId'),
+    }
+    car.getCartListInfo(obj, (res) => {
+       console.log(res);
+       this.setData({
+         infor:res.data.data
+       })
+    });
+  },
   concern:function(e){
     
     let obj={
@@ -105,6 +117,7 @@ Page({
           icon:'none'
         })
       }
+      this.getCartListInfo();
     });
   },
        //删除商品
@@ -164,6 +177,7 @@ Page({
               icon:'none'
             })
           }
+          that.getCartListInfo();
         });
       },
       
@@ -194,6 +208,11 @@ Page({
          productStoneId :JSON.stringify(arr1),
          userId: wx.getStorageSync('userId'),
        }
+       if(that.data.bannertoggle==1){
+        obj.type=0;
+      }else if(that.data.bannertoggle==3){
+        obj.type=1;
+      }
        console.log(obj)
        car.deletemore(obj, (res) => {
          console.log(res)
@@ -208,6 +227,7 @@ Page({
              icon:'none'
            })
          }
+         that.getCartListInfo();
        });
      },
   checkcar:function(){
@@ -337,11 +357,16 @@ console.log(arr[e.currentTarget.dataset.index].goodList[e.currentTarget.dataset.
           count:count
         })
         let obj={
+          type:0,
           stoneId:arr[e.currentTarget.dataset.index].goodList[e.currentTarget.dataset.indexs].stoneId,
           goodsId:arr[e.currentTarget.dataset.index].goodList[e.currentTarget.dataset.indexs].productId,
           num :arr[e.currentTarget.dataset.index].goodList[e.currentTarget.dataset.indexs].productNum,
           userId :wx.getStorageSync('userId'),
         }
+        if(this.data.bannertoggle==3){
+          obj.type=1;
+        }
+        console.log(obj);
         car.updateCartNum(obj, (res) => {
           console.log(res);
         })   
@@ -392,10 +417,14 @@ console.log(arr[e.currentTarget.dataset.index].goodList[e.currentTarget.dataset.
       // count= count-0;
      
       let obj={
+        type:0,
         stoneId:arr[e.currentTarget.dataset.index].goodList[e.currentTarget.dataset.indexs].stoneId,
         goodsId:arr[e.currentTarget.dataset.index].goodList[e.currentTarget.dataset.indexs].productId,
         num :arr[e.currentTarget.dataset.index].goodList[e.currentTarget.dataset.indexs].productNum,
         userId :wx.getStorageSync('userId'),
+      }
+      if(this.data.bannertoggle==3){
+        obj.type=1;
       }
       console.log(obj);
       car.updateCartNum(obj, (res) => {
@@ -475,6 +504,7 @@ console.log(arr[e.currentTarget.dataset.index].goodList[e.currentTarget.dataset.
     //     selected: 2
     //   })
     // }
+    this.getCartListInfo();
     projectUtils.activeTabBar(this, 3);
     wx.setNavigationBarTitle({
           title: "购物车",
