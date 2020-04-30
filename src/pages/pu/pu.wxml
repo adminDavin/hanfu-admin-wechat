@@ -1,16 +1,51 @@
+  	<view style="position:relative;overflow:hidden;height:200px;">
+  		<view style="border-radius:10rpx; display:flex;align-items:center; top:54rpx; position:absolute;left:4%; width:82%;z-index:10;">
+  			<image bindtap="fan" style="width:51rpx;height:40rpx;" src="../../images/cart/fanhuibai.png"></image>
+  			<view class="commodity-header-box">
+  				<!-- <image src="" class="commodity-tus" /> -->
+  				<view class="commodity-header">
+  					<image bindtap="name" class="commodity-tu" src="../../images/sousuo.png" />
+  					<input bindinput='diseaseNameInput' value="{{hfName}}" type="text" class="commodity-input" placeholder="搜一下" />
+  				</view>
+
+  			</view>
+  		</view>
+  		<image style="position:absolute;Opacity:0.8;width:100%;height:100%;" src="{{img}}/goods/getFile?fileId={{list.backgroundId}}"></image>
+  		<view style="border-radius:10rpx; top:160rpx;padding:30rpx 30rpx 30rpx 40rpx;border-radius:10rpx;left:4%; width:82%;z-index:10; position:absolute;justify-content:space-between;display:flex;align-items:center;">
+  			<view style="display:flex;align-items:center;">
+  				<image style="width:100rpx;height:100rpx;border-radius:10rpx;" src="{{img}}/goods/getFile?fileId={{list.avatarId}}"></image>
+  				<view style="margin-left:20rpx;">
+  					<view style="font-size:45rpx;">{{list.stoneName}}</view>
+  					<view style="font-size:26rpx;">{{list.concernCount}}人关注</view>
+  				</view>
+  			</view>
+  			<view wx:if='{{list.isConcern==0}}' bindtap="guan" style="border-radius:30rpx; display:flex;align-items:center;justify-content:center;font-size:34rpx;border:1px solid #aaa;width:150rpx;height:60rpx;">关注</view>
+  			<view wx:if='{{list.isConcern==1}}'  bindtap="quxiao" style="border-radius:30rpx; display:flex;align-items:center;justify-content:center;font-size:34rpx;color:#bbb;border:1px solid #bbb;width:150rpx;height:60rpx;">已关注</view>
+  		</view>
+  		<!-- <view style="border-radius:10rpx; left:4%;width:86%;z-index:10; position:absolute;top:175px;padding:20rpx;margin-bottom:20rpx; justify-content:space-between;display:flex;align-items:center;background:#fff;">
+  			<view>店铺二维码</view>
+  			<image style="width:50rpx;height:50rpx;" src="../../img/erweima.png" bindtap="sao"></image>
+  		</view> -->
+  	</view>
+
+
+
+
+
+  	<view wx:if="{{show}}" catchtap="sao1" style="z-index:100; position:fixed;top:0;;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5)">
+  		<view catchtap="sao2" style="justify-content:center; display:flex;align-items:center;flex-direction:column; border-radius:20rpx; margin-left:10%;margin-top:40%;background:#fff;width:80%;height:600rpx;">
+  			<view style="font-size:45rpx;">{{list.stoneName}}</view>
+  			<view style="font-size:35rpx;margin-top:10rpx;">邀请好友扫一扫分享店铺给TA</view>
+  			<image style="margin-top:10rpx;width:300rpx;height:300rpx;" mode="fixWidth" src="{{img}}/goods/getFile?fileId={{list.codeId}}"></image>
+  		</view>
+
+  	</view>
   	<van-tabs active="a" bindchange="tab">
   		<van-tab title="精选" name="a">
   		</van-tab>
   		<van-tab title="商品" name="b">
   			<view style="background:#fff;">
-  				<view class="commodity-header-box">
-  					<!-- <image src="" class="commodity-tus" /> -->
-  					<view class="commodity-header">
-  						<image bindtap="name"  class="commodity-tu" src="../../images/sousuo.png" />
-  						<input   bindinput='diseaseNameInput' value="{{hfName}}" type="text" class="commodity-input" placeholder="搜一下" />
-  					</view>
-  					<image src="../../images/saoyisao.png" class="commodity-tus" />
-  				</view>
+
   				<view class="commodity-banner">
   					<view class="banner-table">
   						<!-- 综合 -->
@@ -46,9 +81,9 @@
   				</view>
   			</view>
   			<view class="{{lists==false?'list1':'list2'}}" style="width:100%;">
-  				<view bindtap="onSeletedProduct" data-item="{{item}}"   class="{{lists==false?'out1':'out2'}}" wx:for="{{listpro}}" :key="index">
+  				<view bindtap="onSeletedProduct" data-item="{{item}}" class="{{lists==false?'out1':'out2'}}" wx:for="{{listpro}}" :key="index">
   					<view class="{{lists==false?'':'item2'}}">
-  						<image mode="widthFix" class="{{lists==false?'img1':'img2'}}" src="{{img}}/goods/getFile?fileId={{item.fileId}}"></image>
+  						<image style="height:200rpx;" class="{{lists==false?'img1':'img2'}}" src="{{img}}/goods/getFile?fileId={{item.fileId}}"></image>
   					</view>
 
   					<view class="{{lists==false?'bor1':'bor2'}}">
@@ -66,6 +101,6 @@
   		</van-tab>
   		<van-tab title="上新" name="d">
   		</van-tab>
-				<van-tab title="会员" name="e">
+  		<van-tab title="会员" name="e">
   		</van-tab>
   	</van-tabs>

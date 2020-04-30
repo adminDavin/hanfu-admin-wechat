@@ -7,6 +7,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    evaluateRatio:'',
+    evaluateCount:'',
     img:'',
     stoneId: '',
     stars: [0, 1, 2, 3, 4],
@@ -39,6 +41,8 @@ Page({
     var that = this;
     console.log(options)
     that.setData({
+      evaluateCount:options.evaluateCount,
+      evaluateRatio:options.evaluateRatio,
       stoneId: options.stoneId,
       productId:options.productId,
     })

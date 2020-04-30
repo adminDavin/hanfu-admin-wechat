@@ -12,11 +12,12 @@
 				<view style="font-size:26rpx;color:#999;">{{list.concernCount}}人关注</view>
 			</view>
 		</view>
-		<view style="border-radius:30rpx; display:flex;align-items:center;justify-content:center;font-size:34rpx;border:1px solid #aaa;width:150rpx;height:60rpx;">关注</view>
+		<view wx:if='{{list.isConcern==0}}' bindtap="guan"  style="border-radius:30rpx; display:flex;align-items:center;justify-content:center;font-size:34rpx;border:1px solid #aaa;width:150rpx;height:60rpx;">关注</view>
+			<view wx:if='{{list.isConcern==1}}' bindtap="quxiao" style="border-radius:30rpx; display:flex;align-items:center;justify-content:center;font-size:34rpx;color:#bbb;border:1px solid #bbb;width:150rpx;height:60rpx;">已关注</view>
 	</view>
 	<view style="border-radius:10rpx; left:4%;width:86%;z-index:10; position:absolute;top:175px;padding:20rpx;margin-bottom:20rpx; justify-content:space-between;display:flex;align-items:center;background:#fff;">
 		<view>店铺二维码</view>
-		<image style="width:50rpx;height:50rpx;" src="../../../img/erweima.png"></image>
+		<image style="width:50rpx;height:50rpx;" src="../../../img/erweima.png" bindtap="sao"></image>
 	</view>
 </view>
 <view style="padding:20rpx;">
@@ -32,8 +33,16 @@
 		<view style="color:#999;margin-left:30rpx;">{{list.createTime}}</view>
 	</view>
 	<view style="border-radius:10rpx; margin-bottom:40rpx;padding:20rpx;display:flex;align-item:center;background:#fff;">
-		<view>销售品牌</view>
-		<view style="color:#999;margin-left:30rpx;">{{list.expireTime}}</view>
+		<view>店铺地址</view>
+		<view style="color:#999;margin-left:30rpx;">{{list.address}}</view>
 	</view>
 	<view bindtap="cha" style="border-radius:10rpx; padding:20rpx;color:#FF0000;background:#fff;text-align:center;">去看看全部商品</view>
+</view>
+<view wx:if="{{show}}" catchtap="sao1" style="z-index:100; position:fixed;top:0;;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5)">
+  <view catchtap="sao2"   style="justify-content:center; display:flex;align-items:center;flex-direction:column; border-radius:20rpx; margin-left:10%;margin-top:40%;background:#fff;width:80%;height:600rpx;">
+	 <view style="font-size:45rpx;">{{list.stoneName}}</view>
+	 <view style="font-size:35rpx;margin-top:10rpx;">邀请好友扫一扫分享店铺给TA</view>
+	 <image style="margin-top:10rpx;width:300rpx;height:300rpx;" mode="fixWidth" src="{{img}}/goods/getFile?fileId={{list.codeId}}"></image>
+	</view>
+
 </view>

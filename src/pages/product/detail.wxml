@@ -135,17 +135,17 @@
 			<view class="appraise-number">
 				<image src="../../images/tabs/yuanjiaoju.png" class="number-image" />
 				<text class="number-table">评价</text>
-				<text class="limit1">{{evaluateCount}}+</text>
+				<text class="limit1">{{product.evaluateCount}}+</text>
 			</view>
 			<view class="appraise-limit">
-				<text class="limit">好评度{{evaluateRatio}}%</text>
+				<text class="limit">好评度{{product.evaluateRatio}}%</text>
 				<image src="../../images/tabs/jinru (1).png" class="limit-image" bindtap="discuss" />
 			</view>
 		</view>
 		<view>
 			<view style="margin-left:21rpx;" wx:for="{{pinglist}}" :key='index'>
 				<view style="display:flex;align-items:center;margin-top:14rpx;">
-					<image class="imgs" src="../../img/choose.png"></image>
+					<image class="imgs" src="{{img}}/goods/getFile?fileId={{item.parentEvaluate.avatar}}"></image>
 					<view style="margin-left:15rpx;">
 						<view style="font-size:26rpx;color:#151515;">{{item.parentEvaluate.username}}</view>
 						<view style="display:flex;align-items:center;">
@@ -155,15 +155,16 @@
 					</view>
 				</view>
 				<view style="color:#151515;font-size:26rpx;margin-top:19rpx;">{{item.parentEvaluate.comment}}</view>
-				<view style="color:#999999;font-size:24rpx;">{{item.parentEvaluate.time}} {{item.parentEvaluate.hfDesc.goodsDesc}}</view>
+			
 				<view style="display:flex;flex-wrap:wrap;">
-					<image wx:for="{{item.parentEvaluate.fileId}}" wx:for-item="img_pic1" src="{{img}}/goods/getFile?fileId={{img_pic1}}" mode="widthFix" style="width:23%;margin-bottom:10rpx;margin-right:10rpx;"></image>
+					<image wx:for="{{item.parentEvaluate.fileId}}" wx:for-item="img_pic1" src="{{img}}/goods/getFile?fileId={{img_pic1}}"  style="height:200rpx; border-radius:10rpx;width:23%;margin-bottom:10rpx;margin-right:10rpx;height:200rpx;"></image>
 				</view>
+					<view style="color:#999999;font-size:24rpx;">{{item.parentEvaluate.time}} {{item.parentEvaluate.hfDesc.goodsDesc}}</view>
 			</view>
 			<view wx:if="{{pinglist}}" bindtap="cha" style="margin:0 auto;margin-top:20rpx; border-radius:24px;border:1px solid rgba(235,235,235,1);color:#151515;font-size:24rpx;width:239rpx;height:48rpx;display:flex;align-items:center;justify-content:center;">
 				查看全部评论
 			</view>
-			<view wx:if="{{pinglist==false}}" bindtap="cha" style="margin:0 auto;margin-top:20rpx; border-radius:24px;color:#151515;font-size:24rpx;width:239rpx;height:48rpx;display:flex;align-items:center;justify-content:center;">
+			<view wx:if="{{pinglist==false}}"  style="margin:0 auto;margin-top:20rpx; border-radius:24px;color:#151515;font-size:24rpx;width:239rpx;height:48rpx;display:flex;align-items:center;justify-content:center;">
 				暂无评论
 			</view>
 		</view>

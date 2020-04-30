@@ -284,10 +284,104 @@ function getfadetail(params,handleResult) {
     }
   });
 }
+
 function getstoreDetail(params,handleResult){
   console.log(app.endpoint.product + '/stone/selectById')
   wx.request({
     url: app.endpoint.product + '/stone/selectById',
+    header: {
+      'content-type': 'application/x-www-form-urlencoded'
+    },
+    method: 'get',
+    data:params,
+    success: res => handleResult(res),
+    fail: (res) => {
+      console.log( res);
+    }
+  });
+}
+
+function deleteStoneConcern(params,handleResult){
+  console.log(app.endpoint.product + '/product/deleteStoneConcern')
+  wx.request({
+    url: app.endpoint.product + '/product/deleteStoneConcern',
+    header: {
+      'content-type': 'application/x-www-form-urlencoded'
+    },
+    method: 'get',
+    data:params,
+    success: res => handleResult(res),
+    fail: (res) => {
+      console.log( res);
+    }
+  });
+}
+function cartconcern(params,handleResult){
+  console.log(app.endpoint.product + '/product/addProductCollect')
+  wx.request({
+    url: app.endpoint.product + '/product/addProductCollect',
+    header: {
+      'content-type': 'application/x-www-form-urlencoded'
+    },
+    method: 'post',
+    data:params,
+    success: res => handleResult(res),
+    fail: (res) => {
+      console.log( res);
+    }
+  });
+}
+
+function deletemore(params,handleResult){
+  console.log(app.endpoint.product + '/cart/delGoods')
+  wx.request({
+    url: app.endpoint.product + '/cart/delGoods',
+    header: {
+      'content-type': 'application/x-www-form-urlencoded'
+    },
+    method: 'get',
+    data:params,
+    success: res => handleResult(res),
+    fail: (res) => {
+      console.log( res);
+    }
+  });
+}
+function getCartListInfo(params,handleResult){
+  console.log(app.endpoint.product + '/cart/getCartListInfo')
+  wx.request({
+    url: app.endpoint.product + '/cart/getCartListInfo',
+    header: {
+      'content-type': 'application/x-www-form-urlencoded'
+    },
+    method: 'get',
+    data:params,
+    success: res => handleResult(res),
+    fail: (res) => {
+      console.log( res);
+    }
+  });
+}
+
+function addStoneConcern(params,handleResult){
+  console.log(app.endpoint.product + '/product/addStoneConcern')
+  wx.request({
+    url: app.endpoint.product + '/product/addStoneConcern',
+    header: {
+      'content-type': 'application/x-www-form-urlencoded'
+    },
+    method: 'post',
+    data:params,
+    success: res => handleResult(res),
+    fail: (res) => {
+      console.log( res);
+    }
+  });
+}
+function buy(params,handleResult){
+  console.log(app.endpoint.product + '/cart/add')
+  wx.request({
+    url: app.endpoint.product + '/cart/add',
     header: {
       'content-type': 'application/x-www-form-urlencoded'
     },
@@ -320,6 +414,11 @@ export default {
   selectDiscover:selectDiscover,
   zan:zan,
   getfadetail:getfadetail,
-  getstoreDetail:getstoreDetail
-
+  getstoreDetail:getstoreDetail,
+  addStoneConcern:addStoneConcern,
+  deleteStoneConcern:deleteStoneConcern,
+  cartconcern:cartconcern,
+  deletemore:deletemore,
+  buy:buy,
+  getCartListInfo:getCartListInfo
 };

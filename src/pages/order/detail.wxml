@@ -22,6 +22,8 @@
 				<view class="dai-ziti" wx:if="{{hfOrder.orderStatus=='evaluate'}}">待评价</view>
 				<view class="dai-ziti" wx:if="{{hfOrder.orderStatus=='controversial'}}">等待退款</view>
 				<view class="dai-ziti" wx:if="{{hfOrder.orderStatus=='pickup'}}">等待提货</view>
+					<view class="dai-ziti" wx:if="{{hfOrder.orderStatus=='complete'}}">已完成</view>
+				
 			</view>
 			<!-- 待支付 -->
 			<view class="dai-content" style="margin-top:20rpx;" wx:if="{{hfOrder.orderStatus=='payment'}}">
@@ -71,6 +73,7 @@
 						<view class="dai-ziti1" wx:if="{{item.detailStatus=='payment'}}">等待付款</view>
 						<view class="dai-ziti1" wx:if="{{item.detailStatus=='shipped'}}">待发货</view>
 						<view class="dai-ziti1" wx:if="{{item.detailStatus=='cancel'}}">已取消</view>
+
 						<view class="dai-ziti1" wx:if="{{item.detailStatus=='finished'}}">评价成功，感谢您</view>
 						<view class="dai-ziti1" wx:if="{{item.detailStatus=='transport'}}">等待收货</view>
 						<view class="dai-ziti1" wx:if="{{item.detailStatus=='evaluate'}}">待评价</view>
@@ -92,7 +95,7 @@
 					<view class="num">X{{professionitem.quantity}}</view>
 				</view>
 			<view  style="display:flex;justify-content:flex-end;marggin-bottom:10rpx;margin-top:10rpx;" >
-				<view  data-item='{{professionitem}}' class="querenbtn" bindtap="ping" wx:if="{{item.detailStatus=='evaluate'}}" >
+				<view  data-item='{{professionitem}}' class="querenbtn" bindtap="ping" wx:if="{{professionitem.hfStatus=='evaluate'}}" >
 				去评价
 			</view>
 			</view>

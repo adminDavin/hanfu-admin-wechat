@@ -1,9 +1,13 @@
 const app = getApp();
 import quan from '../../services/hf-tequan.js';
-
+import car from '../../services/car.js';
 
 Page({
   data: {
+    show:false,
+    img:'',
+    id:'',
+    list:{},
     hfName:'',
     price:0,
     img:'',
@@ -17,6 +21,84 @@ Page({
     currentTab: 0, //切换
     mosthigher: '',
     mostlower: '',
+  },
+  quxiao:function(){
+    let obj={
+      stoneId:this.data.id,
+      userId:wx.getStorageSync('userId')
+     }
+     console.log( obj)
+      car.deleteStoneConcern(obj, (res) => {
+        console.log(res);
+        if(res.data.data=='删除成功'){
+          wx.showToast({
+            title: '取消成功',
+          })
+        }
+       let list= this.data.list;
+       list.isConcern=0;
+        this.setData({
+          list:list
+        })
+      });
+  },
+  fan:function(){
+    wx.navigateBack({
+      delta: 1,  // 返回上一级页面。
+      success: function() {
+          console.log('成功！')
+      }
+    })
+  },
+  guan:function(){
+   let obj={
+    stoneId:this.data.id,
+    userId:wx.getStorageSync('userId')
+   }
+
+    car.addStoneConcern(obj, (res) => {
+      console.log(res);
+      if(res.data.status==200){
+        wx.showToast({
+          title: '已关注',
+        })
+      }
+      let list= this.data.list;
+       list.isConcern=1;
+        this.setData({
+          list:list
+        })
+    });
+  },
+  cha:function(){
+    wx.navigateTo({
+      url: '../../pu/pu?id='+this.data.id+'&name='+this.data.name,
+    })
+  },
+  sao1:function(){
+    this.setData({
+      show:false
+    })
+     },
+     sao2:function(){
+    console.log(1)
+       },
+  sao:function(){
+ this.setData({
+   show:true
+ })
+  },
+  getstoreDetail:function(){
+    let obj={
+     id:this.data.id,
+     userId:wx.getStorageSync('userId')
+    }
+    car.getstoreDetail(obj, (res) => {
+      console.log(res);
+      this.setData({
+        list:res.data.data
+      })
+    });
   },
   onSeletedProduct: function (e) {
     let selected = e.currentTarget.dataset.item;
@@ -257,6 +339,8 @@ console.log(obj)
     let obj={
       stoneId:this.data.id
     }
+
+    this.getstoreDetail();
       // wx.setNavigationBarTitle({
       //   title: options.name
       // })

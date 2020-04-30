@@ -4,10 +4,10 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 710rpx;
+  width: 76%;
   height: 72rpx;
-  margin: 0 auto;
-  margin-top: 20rpx;
+  /* margin: 0 auto; */
+  /* margin-top: 20rpx; */
 }
 
 .commodity-tus {
@@ -31,22 +31,24 @@
 }
 
 .commodity-input {
-  width: 557rpx;
+  /* width: 557rpx; */
   height: 72rpx;
   margin-left: 20rpx;
   font-family: 'PingFang-SC-Regular';
   font-size: 26rpx;
   color: #999;
+
   text-indent: 10rpx;
 }
 /* banner区域 */
 
 .commodity-banner {
-  width: 730rpx;
+  width: 100%;
   height: 48rpx;
   margin: 0 auto;
-  margin-top: 37rpx;
-  margin-bottom: 12rpx;
+  margin-top: 25rpx;
+  padding:10rpx 0;
+  /* margin-bottom: 12rpx; */
 }
 
 .banner-table {

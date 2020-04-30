@@ -1,13 +1,14 @@
 <!--pages/shopping/shopping.wxml-->
-<view class="commodity">
 	<!-- <view class="editbtn">
-		<view bindtap="edit">{{editshow==true?'编辑':'完成'}}</view>
+		<view bindtap="edit" >{{editshow==true?'编辑':'完成'}}</view>
 		<view class="edit" style="color:white;justify-content:center;">购物车</view>
 	</view> -->
+<view class="commodity">
+
 	<!-- banner区域 -->
 	<view class="commodity-banner">
-    <view class="table" bindtap="toggle" data-index="1">
-      <text class="">全部({{cartNum}})</text>
+    <view class="table" bindtap="checkcar" data-index="1">
+      <text class="">全部({{infor.all}})</text>
       <view class="sum-color {{bannertoggle==1?'colors':''}}"></view>
     </view>
     <view class="table" bindtap="toggle" data-index="2">
@@ -15,13 +16,13 @@
       <view class="sum-color {{bannertoggle==2?'colors':''}}"></view>
     </view>
     <view class="table" bindtap="toggle" data-index="3">
-      <text class="">常买(0)</text> 
+      <text class="">常买({{infor.ofenBuyCount}})</text> 
       <view class="sum-color {{bannertoggle==3?'colors':''}}"></view>
     </view>
     <view class="table ">
       <view class="table-sum">
-        <text class="" bindtap="translate">分类</text>
-        <image src="../../images/cart/xiala1.png" class="sai-image" />
+        <text class="" bindtap="edit" style="font-weight:bold;">{{editshow==true?'编辑':'完成'}}</text>
+        <!-- <image src="../../images/cart/xiala1.png" class="sai-image" /> -->
       </view>
     </view>
   </view>
@@ -30,9 +31,9 @@
 		<checkbox-group bindchange="checkboxChange">
 			<block wx:for='{{shangjiagoods}}' wx:for-index="index" wx:for-item="dayItem">
 				<view style="background:#fff;margin-bottom:30rpx;padding:30rpx 0;">
-					<!-- <view style="margin-left:80rpx;margin-bottom:30rpx;">
-						店铺名称：{{dayItem.name}}
-					</view> -->
+					<view style="margin-left:80rpx;margin-bottom:30rpx;color: #333;font-size: 28rpx;">
+					{{dayItem.name}}
+					</view>
 					<scroll-view scroll-x direction="horizonta" style="margin-top:30rpx" wx:for="{{dayItem.goodList}}" wx:for-index="indexs">
 						<view class="content-card">
 							<!-- <checkbox value="0" checked="{{item.check==1}}" bindtap="check" data-index='{{index}}'></checkbox> -->
@@ -64,13 +65,13 @@
 									</view>
 								</view>
 							</view>
-							<view class="hid-item">
-								<view style="width:50rpx;" wx:if="{{isOftenBuy==true}}" bindtap="oftenbuy" data-goodsid="{{item.productId}}">设为常买</view>
+							<view class="hid-item" wx:if='{{bannertoggle!=3}}'>
+								<view  style="width:50rpx;" wx:if="{{isOftenBuy==true}}" bindtap="oftenbuy" data-goodsid="{{item.productId}}"  data-stontId="{{item.stoneId}}">设为常买</view>
 								<view style="width:50rpx;" wx:if="{{isOftenBuy==false}}" bindtap="delOftenBuy" data-goodsid="{{item.productId}}">取消常买</view>
 							</view>
-							<view class="hid-item" style="background:rgba(255,204,0,1);">
-								<view style="width:50rpx;color:white" wx:if="{{isGuanzhu==true}}" bindtap="concern" data-goodsid="{{item.productId}}">移入关注</view>
-								<view style="width:50rpx;color:white" wx:if="{{isGuanzhu==false}}" bindtap="delconcern" data-goodsid="{{item.productId}}">移出关注</view>
+							<view class="hid-item" style="background:rgba(255,204,0,1);" bindtap="concern" data-goodsid="{{item.productsId}}"  data-stontId="{{item.stoneId}}">
+								<view style="width:50rpx;color:white"  >移入关注</view>
+						
 							</view>
 							<view class="hid-item" style="background:rgba(255,0,0,1);" bindtap="delGoods" data-goodsid="{{item.productId}}"  data-stontId="{{item.stoneId}}">
 								<view style="width:50rpx;color:white;margin-top:15rpx">删除</view>
@@ -123,7 +124,7 @@
 		</view>
 	
 		<view class="gojiesuan" wx:if="{{editshow}}" bindtap="submit">去结算</view>
-		<view class="gojiesuan" wx:if="{{!editshow}}" bindtap="submitdel">删除</view>
+		<view class="gojiesuan" wx:if="{{!editshow}}" bindtap="delGoodsmore">删除</view>
 
 	</view>
 	<!-- 购物车空时提示 -->

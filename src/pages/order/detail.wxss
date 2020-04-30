@@ -140,7 +140,7 @@
 .xiajia-content {
 
   width: 100%;
-  height: 270rpx;
+  /* height: 270rpx; */
   display: flex;
   justify-content: flex-start;
 }

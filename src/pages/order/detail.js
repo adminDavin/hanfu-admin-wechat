@@ -20,7 +20,7 @@ Page({
     });
   },
   ping:function(e){
-    // console.log(e.currentTarget.dataset.id)
+    // console.log(e.currentTarget.dataset)
     wx.navigateTo({
       url: '../ping/ping?orderId='+this.data.hfOrder.id+'&item='+JSON.stringify(e.currentTarget.dataset.item),
     })
