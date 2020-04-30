@@ -127,6 +127,10 @@ Page({
       console.log('精选')
       this.data.competitive = true
     }
+    if (options.action == 'rotation') {
+      console.log('轮播')
+      this.data.competitive = true
+    }
     wx.getSystemInfo({
       success: (res) => {
         let ww = res.windowWidth;
@@ -534,22 +538,22 @@ Page({
       GoodsNum: this.data.quantity,
       goodsId: this.data.selectedGoods.id
     }
-    productApi.checkResp(params, (res) => {
-      if (res.data.data == 'understock') {
-        wx.showToast({
-          title: '库存不足',
-          icon: 'none'
-        });
-        return
-      }
-      if (e.currentTarget.dataset.type == "createOrder") {
-        this.setData({
-          animationData: animation.export(), // export 方法每次调用后会清掉之前的动画操作。
-          showModalCreateOrder: true
-        });
-      }
+    // productApi.checkResp(params, (res) => {
+    //   if (res.data.data == 'understock') {
+    //     wx.showToast({
+    //       title: '库存不足',
+    //       icon: 'none'
+    //     });
+    //     return
+    //   }
+    //   // if (e.currentTarget.dataset.type == "createOrder") {
+    //   //   this.setData({
+    //   //     animationData: animation.export(), // export 方法每次调用后会清掉之前的动画操作。
+    //   //     showModalCreateOrder: true
+    //   //   });
+    //   // }
 
-    })
+    // })
     let animation = wx.createAnimation({
       duration: 200,
       timingFunction: "ease",
@@ -639,6 +643,8 @@ Page({
   createOrder: function(paymentType, userId) {
     console.log(this.data.selectedGoods, paymentType);
     console.log(this.data.quantity);
+    console.log(this.data.competitive);
+    console.log(this.data.stoneName);
     this.data.selectedGoods.quantitys = this.data.quantity
     // if (this.data.selectedGoods.sellPrices == undefined) {
     //   this.data.selectedGoods.sellPrices = this.data.selectedGoods.sellPrices
@@ -657,7 +663,7 @@ Page({
     };
     console.log(params);
     wx.navigateTo({
-      url: '/pages/payment/index?params=' + encodeURIComponent(JSON.stringify(params))
+      // url: '/pages/payment/index?params=' + encodeURIComponent(JSON.stringify(params))
     });
   },
   // 到店支付

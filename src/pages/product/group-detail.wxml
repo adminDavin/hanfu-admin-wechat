@@ -268,7 +268,7 @@
         <text class="foot-text">到店支付</text>
       </view>
       <view class="footer-shppingcars" ></view>
-      <view class="footer-shppingcar purchase" bind:tap="onSelectedGoodsSpec" data-type="createOrder">发起拼团</view>
+      <view class="footer-shppingcar purchase" bind:tap="onSelectedChoice" data-type="selectionSpecification">发起拼团</view>
     </view>
   </view>
   
