@@ -35,6 +35,9 @@
   width: 5rpx;
   height: 21rpx;
 }
+page{
+  padding-bottom: 55px;
+}
 .appraise-title {
   align-items: center;
 

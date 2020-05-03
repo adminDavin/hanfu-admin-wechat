@@ -27,7 +27,7 @@ Page({
   },
   zan:function(e){
     let obj={
-      type:1,
+      type:'discover',
       id:e.currentTarget.dataset.id,
       userId:wx.getStorageSync('userId'),
     }
@@ -53,6 +53,7 @@ Page({
   },
   selectDiscover:function(){
     let obj={
+      parentEvaluateId:-1,
       type:'discover',
       userId:wx.getStorageSync('userId'),
     }

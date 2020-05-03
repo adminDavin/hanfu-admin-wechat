@@ -48,3 +48,12 @@
 
 		</view>
 	</view>
+	<view style="display:flex;align-items:center;justify-content:center; width:100%; position:fixed;bottom:0;height:50px;z-index:100px;">
+		<view style="display:flex;align-items:center;justify-content:space-around;width:100%;">
+			<view style="display:flex;align-items:center; background:#eee;width:70%;height:35px;border-radius:10rpx;">
+				<input style="padding-left:30rpx; width:95%;" placeholder="说点什么"></input>
+			</view>
+			<view style="width:140rpx;height:34px; border-radius:10rpx; display:flex;align-items:center;justify-content:center;background:#FF0000;color:#fff;">发表</view>
+		</view>
+
+	</view>

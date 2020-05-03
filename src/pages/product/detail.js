@@ -154,7 +154,8 @@ Page({
       pageNum:1,
       pageSize:1,
       productId:this.data.productId,
-     
+      userId:wx.getStorageSync('userId'),
+      type:'evaluate'
     }
     console.log(obj)
     car.selectInstanceEvaluate(obj, (res) => {

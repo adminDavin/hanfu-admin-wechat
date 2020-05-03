@@ -116,7 +116,9 @@ Page({
       star:that.data.star,
       stoneId:that.data.storeorder.stoneId,
       userId:wx.getStorageSync('userId'),
-      typeContent:'heart'
+      typeContent:'heart',
+      parentEvaluateId:-1,
+      levelId:0
     }
     console.log(obj);
       car.ping(obj, (res) => {

@@ -15,6 +15,7 @@ Page({
   },
   getfadetail:function(){
     let obj={
+      type:'discover',
       id:this.data.list.id,
       userId:wx.getStorageSync('userId'),
     }
@@ -27,7 +28,7 @@ Page({
   },
   zan:function(){
     let obj={
-      type:1,
+      type:'discover',
       id:this.data.list.id,
       userId:wx.getStorageSync('userId'),
     }

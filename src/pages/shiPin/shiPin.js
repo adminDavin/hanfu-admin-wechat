@@ -110,6 +110,8 @@ console.log(that.data.file)
       userId:wx.getStorageSync('userId'),
       evaluate:that.data.evaluate,
       fileId:that.data.file,
+      parentEvaluateId:-1,
+      levelId:0
     }
     console.log(obj);
       car.addDiscoverXin(obj, (res) => {

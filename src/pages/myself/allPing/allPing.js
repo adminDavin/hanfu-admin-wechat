@@ -20,7 +20,8 @@ Page({
     let obj = {
       stoneId:this.data.stoneId,
       productId:this.data.productId,
-     
+      userId:wx.getStorageSync('userId'),
+      type:'evaluate'
     }
     console.log(obj)
     car.selectInstanceEvaluate(obj, (res) => {
