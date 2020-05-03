@@ -195,7 +195,7 @@
 	</view>
 	<!-- 弹窗 -->
 	<view animation="{{animationData}}" class="buy_box" wx:if="{{showModalSelectionSpecification}}">
-		<chosen instance-id="{{instanceId}}" activity-id="{{activityId}}" product-id="{{productId}}" selected-goods-id="{{selectedGoods.id}}" stoneId="{{stoneId}}" quantity="{{quantity}}" bind:chooseGoodsCommitEvent="listenChooseGoodsCommitEvent"></chosen>
+		<chosen stoneName="{{stoneName}}" competitive="{{competitive}}"  instance-id="{{instanceId}}" activity-id="{{activityId}}" product-id="{{productId}}" selected-goods-id="{{selectedGoods.id}}" stoneId="{{stoneId}}" quantity="{{quantity}}" bind:chooseGoodsCommitEvent="listenChooseGoodsCommitEvent"></chosen>
 	</view>
 	<!-- 底部 -->
 	<view class="footer">
@@ -215,12 +215,12 @@
 				<image src="../../images/fk.png" class="footer-image" />
 				<text class="foot-text">到店支付</text>
 			</view>
-			<view style="display:flex; flex:1;justify-content:space-around;">
+			<view style="display:flex; flex:1;justify-content:space-around;padding: 0 16rpx;">
 				<view class="footter-service" bindtap="addcar" wx:if="{{competitive==true}}">
 					<text class="footer-shppingcar">加入购物车</text>
 				</view>
 				<view class="footter-occupied" wx:if="{{competitive!=true}}"></view>
-				<view class="{{competitive==true?'footer-shppingcar purchase':'footer-shppingcar1 purchase'}} " style="margin-right:10rpx;" bind:tap="onSelectedGoodsSpec" data-type="createOrder">立即购买</view>
+				<view class="{{competitive==true?'footer-shppingcar purchase':'footer-shppingcar1 purchase'}} " style="margin-right:10rpx;" bind:tap="onSelectedChoice" data-type="selectionSpecification">立即购买</view>
 			</view>
 
 		</view>

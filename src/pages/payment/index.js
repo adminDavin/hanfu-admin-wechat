@@ -111,7 +111,7 @@ Page({
   onShow: function() {
     console.log(this.data);
     let imgageUrls = ''
-    imgageUrls = app.endpoint.file + '/goods/getFile?fileId=' + this.data.selectedGoods.fileIds[0];
+    imgageUrls = this.data.selectedGoods.fileIds[0];
     console.log(imgageUrls);
    this.setData({
      selectedGoods: this.data.selectedGoods,

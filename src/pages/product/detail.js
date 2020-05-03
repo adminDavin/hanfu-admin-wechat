@@ -127,6 +127,10 @@ Page({
       console.log('精选')
       this.data.competitive = true
     }
+    if (options.action == 'rotation') {
+      console.log('轮播')
+      this.data.competitive = true
+    }
     wx.getSystemInfo({
       success: (res) => {
         let ww = res.windowWidth;
@@ -535,22 +539,22 @@ Page({
       GoodsNum: this.data.quantity,
       goodsId: this.data.selectedGoods.id
     }
-    productApi.checkResp(params, (res) => {
-      if (res.data.data == 'understock') {
-        wx.showToast({
-          title: '库存不足',
-          icon: 'none'
-        });
-        return
-      }
-      if (e.currentTarget.dataset.type == "createOrder") {
-        this.setData({
-          animationData: animation.export(), // export 方法每次调用后会清掉之前的动画操作。
-          showModalCreateOrder: true
-        });
-      }
+    // productApi.checkResp(params, (res) => {
+    //   if (res.data.data == 'understock') {
+    //     wx.showToast({
+    //       title: '库存不足',
+    //       icon: 'none'
+    //     });
+    //     return
+    //   }
+    //   // if (e.currentTarget.dataset.type == "createOrder") {
+    //   //   this.setData({
+    //   //     animationData: animation.export(), // export 方法每次调用后会清掉之前的动画操作。
+    //   //     showModalCreateOrder: true
+    //   //   });
+    //   // }
 
-    })
+    // })
     let animation = wx.createAnimation({
       duration: 200,
       timingFunction: "ease",
@@ -640,6 +644,8 @@ Page({
   createOrder: function(paymentType, userId) {
     console.log(this.data.selectedGoods, paymentType);
     console.log(this.data.quantity);
+    console.log(this.data.competitive);
+    console.log(this.data.stoneName);
     this.data.selectedGoods.quantitys = this.data.quantity
     // if (this.data.selectedGoods.sellPrices == undefined) {
     //   this.data.selectedGoods.sellPrices = this.data.selectedGoods.sellPrices
@@ -658,7 +664,7 @@ Page({
     };
     console.log(params);
     wx.navigateTo({
-      url: '/pages/payment/index?params=' + encodeURIComponent(JSON.stringify(params))
+      // url: '/pages/payment/index?params=' + encodeURIComponent(JSON.stringify(params))
     });
   },
   // 到店支付
@@ -680,15 +686,17 @@ Page({
     var now = date.getTime();
     var endDate = new Date(that.data.endTime); //设置截止时间
     var end = endDate.getTime();
-    // console.log(now)
-    // console.log(end)
+    console.log(now)
+    console.log(end)
     var leftTime = end - now; //时间差                           
     var d, h, m, s, ms;
     if (this.data.activityState == -1) {
+      console.log(1)
       var staDate = new Date(that.data.startTime); //设置截止时间
       var sta = staDate.getTime();
       var leftTime = sta - now; //时间差   
       if (leftTime >= 0) {
+        console.log(2)
         d = Math.floor(leftTime / 1000 / 60 / 60 / 24);
         h = Math.floor(leftTime / 1000 / 60 / 60 % 24);
         m = Math.floor(leftTime / 1000 / 60 % 60);
@@ -698,10 +706,6 @@ Page({
         s = s < 10 ? "0" + s : s
         m = m < 10 ? "0" + m : m
         h = h < 10 ? "0" + h : h
-        //递归每秒调用countTime方法，显示动态时间效果
-        that.setData({
-          loading: setTimeout(that.countTime, 1000)
-        })
       }
       this.setData({
         eventStatus: '距活动开始时间',
@@ -709,10 +713,12 @@ Page({
       })
       console.log('活动未开始')
       //递归每秒调用countTime方法，显示动态时间效果
-      setTimeout(that.countTime, 1000);
+      // setTimeout(that.countTime, 1000);
     }
     if (this.data.activityState !== -1) {
+      console.log(3)
       if (leftTime >= 0) {
+        console.log(4)
         d = Math.floor(leftTime / 1000 / 60 / 60 / 24);
         h = Math.floor(leftTime / 1000 / 60 / 60 % 24);
         m = Math.floor(leftTime / 1000 / 60 % 60);
@@ -730,6 +736,8 @@ Page({
           loading: setTimeout(that.countTime, 1000)
         })
       } else {
+        console.log(5)
+
         console.log('已截止')
         that.setData({
           eventStatus: '活动已结束',

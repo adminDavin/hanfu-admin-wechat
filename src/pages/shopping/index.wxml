@@ -42,7 +42,7 @@
 								<image src="../../img/wei.png" bindtap="check" data-indexs='{{indexs}}' wx:if="{{item.check==0}}" data-index='{{index}}' style="width:20px;height:20px;"></image>
 							</view>
 							<view class="content-item">
-								<image src="{{img}}/goods/getFile?fileId={{item.productIcon}}" style="width:230rpx;height:100%"></image>
+								<image mode="aspectFit" src="{{img}}/goods/getFile?fileId={{item.productIcon}}" style="width:230rpx;height:100%"></image>
 								<view class="contentitem-right">
 									<text class="item-name">{{item.productName}}{{indexs}}{{index}}</text>
 									<view class="card-money">
