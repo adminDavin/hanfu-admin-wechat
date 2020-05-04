@@ -7,6 +7,9 @@ Page({
    * 页面的初始数据
    */
   data: {
+    evaluate:"",
+    pingid:'',
+    huiuser:'说点什么',
     evaluateRatio:'',
     evaluateCount:'',
     img:'',
@@ -14,6 +17,71 @@ Page({
     stars: [0, 1, 2, 3, 4],
     productId:'',
     pinglist:[]
+  },
+  zan:function(e){
+    let obj={
+      type:'evaluate',
+      id:e.currentTarget.dataset.id,
+      userId:wx.getStorageSync('userId'),
+    }
+    console.log(obj)
+    car.zan(obj, (res) => {
+      console.log(res);
+      if(res.data.status==200){
+        this.ping();
+      }
+  })
+  },
+  gopingdetail:function(e){
+    console.log(e);
+    wx.navigateTo({
+      url: '../allPingdetail/allPingdetail?id='+e.currentTarget.dataset.item.id+'&item='+JSON.stringify(e.currentTarget.dataset.item),
+    })
+},
+  getcommont:function(e){
+      console.log(e);
+      this.setData({
+        pingid:e.currentTarget.dataset.item.id,
+        huiuser:'回复：'+ e.currentTarget.dataset.item.username,
+      })
+  },
+  bind: function(e){
+    this.setData({
+      evaluate: e.detail.value
+    });
+  //  console.log(this.data.evaluate); 
+},
+  pingjia:function(){
+    var that=this;
+    if(that.data.pingid==''){
+      return false;
+    }
+    if(that.data.evaluate==''){
+      return false;
+    }
+    let obj={
+      type:'evaluate',
+      evaluate:that.data.evaluate,
+      userId:wx.getStorageSync('userId'),
+      typeContent:'heart',
+      parentEvaluateId:that.data.pingid,
+      levelId:1,
+    }
+    console.log(obj);
+      car.ping(obj, (res) => {
+        console.log(res);
+       if(res.data.status==200){
+          wx.showToast({
+            title: '评价成功',
+          })
+          that.setData({
+            pingid: '',
+            evaluate:''
+          })
+          that.ping()
+         
+       }
+    })
   },
   ping:function(){
     

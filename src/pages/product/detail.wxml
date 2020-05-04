@@ -59,7 +59,7 @@
 				<!-- <text class="news">新品</text> -->
 			</view>
 			<view class="productName-collect">
-      <text class="productName-text" style="font-size: 24rpx;">{{stoneName}}</text>
+				<text class="productName-text" style="font-size: 24rpx;">{{stoneName}}</text>
 				<view class="collect-one collect-margin" bindtap="attention">
 					<image src="../../images/tabs/chakantieziguanzhu.png" class="depreciate-image" bindtap="collect" wx:if="{{collects==false}}" />
 					<image src="../../images/tabs/aixin.png" class="depreciate-image" bindtap="collect" wx:if="{{collects==true}}" />
@@ -143,7 +143,7 @@
 			</view>
 		</view>
 		<view>
-			<view style="margin-left:21rpx;" wx:for="{{pinglist}}" :key='index'>
+			<view style="padding:0 35rpx; " wx:for="{{pinglist}}" :key='index'>
 				<view style="display:flex;align-items:center;margin-top:14rpx;">
 					<image class="imgs" src="{{img}}/goods/getFile?fileId={{item.parentEvaluate.avatar}}"></image>
 					<view style="margin-left:15rpx;">
@@ -155,16 +155,26 @@
 					</view>
 				</view>
 				<view style="color:#151515;font-size:26rpx;margin-top:19rpx;">{{item.parentEvaluate.comment}}</view>
-			
+
 				<view style="display:flex;flex-wrap:wrap;">
-					<image wx:for="{{item.parentEvaluate.fileId}}" wx:for-item="img_pic1" src="{{img}}/goods/getFile?fileId={{img_pic1}}"  style="height:200rpx; border-radius:10rpx;width:23%;margin-bottom:10rpx;margin-right:10rpx;height:200rpx;"></image>
+					<image wx:for="{{item.parentEvaluate.fileId}}" wx:for-item="img_pic1" src="{{img}}/goods/getFile?fileId={{img_pic1}}" style="height:200rpx; border-radius:10rpx;width:23%;margin-bottom:10rpx;margin-right:10rpx;height:200rpx;"></image>
 				</view>
-					<view style="color:#999999;font-size:24rpx;">{{item.parentEvaluate.time}} {{item.parentEvaluate.hfDesc.goodsDesc}}</view>
+				<view style="color:#999999;font-size:24rpx;">{{item.parentEvaluate.time}} {{item.parentEvaluate.hfDesc.goodsDesc}}</view>
+					<view style="display:flex;align-items:center;justify-content:flex-end;">
+					<view style="display:flex;align-items:center;" bindtap="zan" data-id="{{item.parentEvaluate.id}}">
+						<view style=" color:#151515;font-size:26rpx;">{{item.parentEvaluate.praise}}</view>
+						<image style="width:36rpx;height:36rpx;margin-left:10rpx;" src="{{item.parentEvaluate.isPraise==0?'../../img/zanpress.png':'../../img/dianzan.png'}}"></image>
+					</view>
+					<view style="display:flex;align-items:center;margin-left:20rpx;" bindtap="gopingdetail" data-item='{{item.parentEvaluate}}'>
+						<view style=" color:#151515;font-size:26rpx;">{{item.parentEvaluate.comment_count}}</view>
+						<image style="width:36rpx;height:36rpx;margin-left:10rpx;" src="../../img/liuyan.png"></image>
+					</view>
+				</view>
 			</view>
 			<view wx:if="{{pinglist}}" bindtap="cha" style="margin:0 auto;margin-top:20rpx; border-radius:24px;border:1px solid rgba(235,235,235,1);color:#151515;font-size:24rpx;width:239rpx;height:48rpx;display:flex;align-items:center;justify-content:center;">
 				查看全部评论
 			</view>
-			<view wx:if="{{pinglist==false}}"  style="margin:0 auto;margin-top:20rpx; border-radius:24px;color:#151515;font-size:24rpx;width:239rpx;height:48rpx;display:flex;align-items:center;justify-content:center;">
+			<view wx:if="{{pinglist==false}}" style="margin:0 auto;margin-top:20rpx; border-radius:24px;color:#151515;font-size:24rpx;width:239rpx;height:48rpx;display:flex;align-items:center;justify-content:center;">
 				暂无评论
 			</view>
 		</view>
@@ -195,7 +205,7 @@
 	</view>
 	<!-- 弹窗 -->
 	<view animation="{{animationData}}" class="buy_box" wx:if="{{showModalSelectionSpecification}}">
-		<chosen stoneName="{{stoneName}}" competitive="{{competitive}}"  instance-id="{{instanceId}}" activity-id="{{activityId}}" product-id="{{productId}}" selected-goods-id="{{selectedGoods.id}}" stoneId="{{stoneId}}" quantity="{{quantity}}" bind:chooseGoodsCommitEvent="listenChooseGoodsCommitEvent"></chosen>
+		<chosen stoneName="{{stoneName}}" competitive="{{competitive}}" instance-id="{{instanceId}}" activity-id="{{activityId}}" product-id="{{productId}}" selected-goods-id="{{selectedGoods.id}}" stoneId="{{stoneId}}" quantity="{{quantity}}" bind:chooseGoodsCommitEvent="listenChooseGoodsCommitEvent"></chosen>
 	</view>
 	<!-- 底部 -->
 	<view class="footer">
