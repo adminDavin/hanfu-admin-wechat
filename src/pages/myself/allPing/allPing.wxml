@@ -12,7 +12,7 @@
 			</view>
 		</view>
 		<view>
-			<view style="margin-left:21rpx;margin-bottom:20rpx;" wx:for="{{pinglist}}" :key='index'>
+			<view style="padding:0 35rpx; margin-bottom:20rpx;" wx:for="{{pinglist}}" :key='index'>
 				<view style="display:flex;align-items:center;margin-top:14rpx;">
 					<image class="imgs" src="{{img}}/goods/getFile?fileId={{item.parentEvaluate.avatar}}"></image>
 					<view style="margin-left:15rpx;">
@@ -22,29 +22,34 @@
 						</view>
 					</view>
 				</view>
-				<view style="padding-left: 20px;color:#151515;font-size:26rpx;margin-top:19rpx;">{{item.parentEvaluate.comment}}</view>
+				<view bindtap="getcommont" data-item='{{item.parentEvaluate}}' style="padding-left: 20px;color:#151515;font-size:26rpx;margin-top:19rpx;">{{item.parentEvaluate.comment}}</view>
 
 				<view style="display:flex;flex-wrap:wrap;padding-left:25rpx;">
 					<image wx:for="{{item.parentEvaluate.fileId}}" wx:for-item="img_pic1" src="{{img}}/goods/getFile?fileId={{img_pic1}}" style="padding-left: 30rpx;height:200rpx; width:23%;margin-bottom:10rpx;margin-right:10rpx;"></image>
 				</view>
-				<view style="padding-left:20px;padding-right:35rpx;font-size:24rpx;margin-top:10rx;margin-bottom:10rpx;">
-					<view style="padding: 14rpx 16rpx;background:#F3F3F3;">
-						<view style="display:flex;align-items:center;">
-							<image style="width:60rpx;height:60rpx;border-radius:50%;" src="../../../images/tabs/yuanjiaoju.png">
-							</image>
-							<view style="margin-left:16rpx;">
-								<view style="color:#151515;font-size:26rpx;">欢乐小可</view>
-								<view style="color:#999999;font-size:24rpx;">2018-02-03</view>
-							</view>
-						</view>
-						<view style="padding-left:70rpx;"><text style="color:#151515;">回复</text><text style="color:#999;">欢乐小可</text><text style="color:#999;">欢乐小可</text>
-							<text style="color:#151515;">:西安都进入春天啦，才想起来买东西</text>
-						</view>
+				<view style="display:flex;align-items:center;justify-content:flex-end;">
+					<view style="display:flex;align-items:center;" bindtap="zan" data-id="{{item.parentEvaluate.id}}">
+						<view style=" color:#151515;font-size:26rpx;">{{item.parentEvaluate.praise}}</view>
+						<image style="width:36rpx;height:36rpx;margin-left:10rpx;" src="{{item.parentEvaluate.isPraise==0?'../../../img/zanpress.png':'../../../img/dianzan.png'}}"></image>
+					</view>
+					<view style="display:flex;align-items:center;margin-left:20rpx;" bindtap="gopingdetail" data-item='{{item.parentEvaluate}}'>
+						<view style=" color:#151515;font-size:26rpx;">{{item.parentEvaluate.comment_count}}</view>
+						<image style="width:36rpx;height:36rpx;margin-left:10rpx;" src="../../../img/liuyan.png"></image>
 					</view>
 				</view>
+	
 
 				<view style="color:#999999;font-size:24rpx;padding-left:44rpx;">{{item.parentEvaluate.time}} {{item.parentEvaluate.hfDesc.goodsDesc}}</view>
 			</view>
 
 		</view>
+	</view>
+	<view style="background: #fff;display:flex;align-items:center;justify-content:center; width:100%; position:fixed;bottom:0;height:50px;z-index:100px;">
+		<view style="display:flex;align-items:center;justify-content:space-around;width:100%;">
+			<view style="display:flex;align-items:center; background:#eee;width:70%;height:35px;border-radius:10rpx;">
+				<input value="{{evaluate}}" bindinput="bind" style="padding-left:30rpx; width:95%;" placeholder="{{huiuser}}"></input>
+			</view>
+			<view bindtap="pingjia" style="width:140rpx;height:34px; border-radius:10rpx; display:flex;align-items:center;justify-content:center;background:#FF0000;color:#fff;">发表</view>
+		</view>
+
 	</view>

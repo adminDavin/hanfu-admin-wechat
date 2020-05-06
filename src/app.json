@@ -50,7 +50,8 @@
     "pages/xinQing/xinQing",
     "pages/shiPin/shiPin",
     "pages/faDetail/faDetail",
-    "pages/myself/storeDetail/storeDetail"
+    "pages/myself/storeDetail/storeDetail",
+    "pages/myself/allPingdetail/allPingdetail"
   ],
   "usingComponents": {
     "van-tab": "./pages/vant/weapp/dist/tab/index",

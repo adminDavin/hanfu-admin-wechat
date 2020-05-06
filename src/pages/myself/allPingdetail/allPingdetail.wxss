@@ -32,8 +32,9 @@
   color: #999;
 }
 .number-image {
-  width: 5rpx;
-  height: 21rpx;
+  width: 10rpx;
+  height: 15px;
+  
 }
 page{
   padding-bottom: 55px;

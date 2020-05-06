@@ -1,0 +1,57 @@
+	<!-- 评价 -->
+	<view class="appraise">
+		<view>
+			<view style="padding:0 35rpx; margin-bottom:20rpx;">
+				<view style="display:flex;align-items:center;margin-top:14rpx;">
+					<image class="imgs" src="{{img}}/goods/getFile?fileId={{list.avatar}}"></image>
+					<view style="margin-left:15rpx;">
+						<view style="font-size:26rpx;color:#151515;">{{list.username}}</view>
+						<view style="display:flex;align-items:center;">
+							<image wx:for="{{stars}}" wx:for-item="img_pic" src="{{index<list.star?'../../../img/wuxing1.png':'../../../img/wuxing.png'}}" style="margin-right:10rpx;width:33rpx;height:33rpx;"></image>
+						</view>
+					</view>
+				</view>
+				<view bindtap="getcommont" style="padding-left: 20px;color:#151515;font-size:26rpx;margin-top:19rpx;">{{item.parentEvaluate.comment}}</view>
+
+				<view style="flex-wrap:wrap;padding-left:25rpx;">
+					<image mode="widthFix" wx:for="{{list.fileId}}" wx:for-item="img_pic1" src="{{img}}/goods/getFile?fileId={{img_pic1}}" ></image>
+				</view>
+      <view style="display:flex;align-items:center;">
+     	<image src="../../../images/tabs/yuanjiaoju.png" class="number-image" />
+       <view style="margin-left:20rpx;">{{listcommmit.length}}  条回复</view>
+      </view>
+				<view wx:for="{{listcommmit}}" style="padding-left:20px;padding-right:35rpx;font-size:24rpx;margin-top:10rx;margin-bottom:10rpx;">
+					<view style="padding: 17px 16rpx;border-bottom: 1px solid #F3F3F3;">
+						<view>
+							<view style="display:flex;align-items:center;">
+								<image style="width:60rpx;height:60rpx;border-radius:50%;" src="{{img}}/goods/getFile?fileId={{item.avatar}}">
+								</image>
+								<view style="margin-left:16rpx;">
+									<view style="color:#151515;font-size:26rpx;">{{item.username}}</view>
+									<view style="color:#999999;font-size:24rpx;">{{item.time}}</view>
+								</view>
+							</view>
+							<!-- <view style="padding-left:70rpx;"><text style="color:#151515;">回复</text><text style="color:#999;">欢乐小可</text><text style="color:#999;">欢乐小可</text>
+								<text style="color:#151515;">:西安都进入春天啦，才想起来买东西</text>
+							</view> -->
+							<view style="padding-left:70rpx;">
+								<text style="color:#151515;">{{item.comment}}</text>
+							</view>
+						</view>
+					</view>
+				</view>
+
+			
+			</view>
+
+		</view>
+	</view>
+	<!-- <view style="background: #fff;display:flex;align-items:center;justify-content:center; width:100%; position:fixed;bottom:0;height:50px;z-index:100px;">
+		<view style="display:flex;align-items:center;justify-content:space-around;width:100%;">
+			<view style="display:flex;align-items:center; background:#eee;width:70%;height:35px;border-radius:10rpx;">
+				<input value="{{evaluate}}" bindinput="bind" style="padding-left:30rpx; width:95%;" placeholder="{{huiuser}}"></input>
+			</view>
+			<view bindtap="pingjia" style="width:140rpx;height:34px; border-radius:10rpx; display:flex;align-items:center;justify-content:center;background:#FF0000;color:#fff;">发表</view>
+		</view>
+
+	</view> -->

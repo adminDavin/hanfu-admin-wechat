@@ -69,6 +69,26 @@ Page({
 
 
   },
+  zan:function(e){
+    let obj={
+      type:'evaluate',
+      id:e.currentTarget.dataset.id,
+      userId:wx.getStorageSync('userId'),
+    }
+    console.log(obj)
+    car.zan(obj, (res) => {
+      console.log(res);
+      if(res.data.status==200){
+        this.ping();
+      }
+  })
+  },
+  gopingdetail:function(e){
+    console.log(e);
+    wx.navigateTo({
+      url: '../myself/allPingdetail/allPingdetail?id='+e.currentTarget.dataset.item.id+'&item='+JSON.stringify(e.currentTarget.dataset.item),
+    })
+},
   // externalClasses: ['i-class'],
   // 查询正在更多开团
   more: function(e) {
@@ -163,7 +183,8 @@ Page({
       pageNum:1,
       pageSize:1,
       productId:this.data.productId,
-     
+      userId:wx.getStorageSync('userId'),
+      type:'evaluate'
     }
     console.log(obj)
     car.selectInstanceEvaluate(obj, (res) => {

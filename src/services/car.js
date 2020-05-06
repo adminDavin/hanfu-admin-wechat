@@ -251,6 +251,7 @@ function selectDiscover(params,handleResult) {
     success: res => handleResult(res),
     fail: (res) => {
       console.log( res);
+      
     }
   });
 }
