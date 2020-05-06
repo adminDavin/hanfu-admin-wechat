@@ -3,6 +3,7 @@ const app = getApp();
 
 import productApi from '../../../services/hf-product.js';
 import goodsApi from '../../../services/hf-goods.js';
+import car from '../../../services/car.js';
 import util from '../../../utils/util.js';
 
 Component({
@@ -53,6 +54,10 @@ Component({
     competitive: {
       type: String,
       value: 'false'
+    },
+     dataType: {
+      type: String,
+      value: ''
     }
   },
 
@@ -105,6 +110,35 @@ Component({
       this.setData({
         quantity: quantity,
         minusStatus: minusStatus
+      });
+    },
+    // 加入购物车
+    addcar: function () {
+      console.log(this.properties.selectedGoodsId);
+      console.log(wx.getStorageSync('userId'))
+      console.log(this.data.quantity);
+      console.log(this.properties.dataType);
+      var that = this;
+      let obj = {
+        type: 0,
+        goodsId: this.properties.selectedGoodsId,
+        num: that.data.quantity,
+        userId: wx.getStorageSync('userId'),
+        stoneId: that.data.stoneId,
+      }
+      console.log(obj)
+      car.addcar(obj, (res) => {
+        console.log(res);
+        if (res.data.data == "成功加入购物车") {
+          wx.showToast({
+            title: '加入购物车成功',
+          })
+        } else {
+          wx.showToast({
+            title: '加入购物车失败',
+            icon: 'none'
+          })
+        }
       });
     },
     /* 输入框事件 */
@@ -233,14 +267,21 @@ Component({
     }
   },
   lifetimes: {
+   
     ready: function () {
       goodsApi.getGoodDetailByProductId({ productId: this.properties.productId, quantity: '1', stoneId: this.properties.stoneId, activityId: this.properties.activityId }, (res) => {
         let goodsList = res.data.data;
         console.log(res.data.data)
         for (let goods of goodsList) {
           for (let index in goods.fileIds) {
+            console.log(index)
             goods.fileIds[index] = app.endpoint.file + '/goods/getFile?fileId=' + goods.fileIds[index]
           }
+          // goods.hfNames=''
+          // for (let index in goods.hfGoodsSpecs) {
+          //   console.log(index)
+          //   goods.hfNames.push(goods.hfGoodsSpecs[index].hfValue + ':' + goods.hfGoodsSpecs[index].hfName)
+          // }
         }
         let selectedGoods = goodsList.filter(item => this.properties.selectedGoodsId == item.id)[0];
         this.setData({ ...this.data, ...this.properties, ...{ goodsList: goodsList, selectedGoods: selectedGoods } });

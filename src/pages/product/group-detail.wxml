@@ -267,7 +267,7 @@
         <image src="../../images/fk.png" class="footer-image" />
         <text class="foot-text">到店支付</text>
       </view>
-      <view class="footer-shppingcars" ></view>
+      <view data-type="purchased" bind:tap="onSelectedChoice" class="footer-shppingcar">单独购买</view>
       <view class="footer-shppingcar purchase" bind:tap="onSelectedChoice" data-type="selectionSpecification">发起拼团</view>
     </view>
   </view>
