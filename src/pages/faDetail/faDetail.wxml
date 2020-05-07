@@ -19,10 +19,10 @@
 		</view>
 		<view style="font-size:28rpx;color:#151515;margin-top:19rpx;margin-bottom:17rpx;">{{list.comment}}</view>
 		<view wx:if="{{list.typeContent=='video'}}" style="display:flex;flex:1;justify-content:center;">
-			<video style="height:320rpx;" id="myVideo" src="{{img}}/goods/getVedio?fileId={{list.fileId[0]}}" enable-danmu danmu-btn controls></video>
+			<video style="width:100%; height:320rpx;" id="myVideo" src="{{img}}/goods/getVedio?fileId={{list.fileId[0]}}" enable-danmu danmu-btn controls></video>
 		</view>
 		<view wx:if="{{list.typeContent=='heart'}}" style="display:flex;flex:1;flex-wrap:wrap;">
-			<image data-src="{{img}}/goods/getFile?fileId={{img_pic1}}" bindtap="previewImage" wx:for="{{list.fileId}}" wx:for-item="img_pic1" src="{{img}}/goods/getFile?fileId={{img_pic1}}" style="border-radius:10rpx; height:160rpx;margin-bottom:9rpx; width:23%;margin-right:10rpx;"></image>
+			<image data-src="{{img}}/goods/getFile?fileId={{img_pic1}}" bindtap="previewImage" wx:for="{{list.fileId}}" wx:for-item="img_pic1" src="{{img}}/goods/getFile?fileId={{img_pic1}}" style="border-radius:10rpx; height:160rpx; margin-bottom:12rpx;width: 31%;margin-right:2%"></image>
 
 		</view>
 		<view style="margin-top:17rpx; display:flex;align-items:center;justify-content:space-around;">

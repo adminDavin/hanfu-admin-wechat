@@ -1,17 +1,21 @@
 /* src/pages/myself/tequan/tequan.wxss */
 page{
   
- 
+  
+
 }
+.qus{color:#666}
+.qus1{color: #fff}
 .qu1{
-  background:#fff; padding:20rpx;background:red;border-radius:10rpx;
+  padding:20rpx;background-image: linear-gradient(to right,  #ffae1a,   #ffc966);border-radius:10rpx;color:#fff;
 }
 ::-webkit-scrollbar {display:none}
 .qu{
-  background:#fff; padding:20rpx;margin-bottom:20rpx;border-radius:10rpx;
+  /* box-shadow: 10px 10px 15px #FF0000; */
+  background: #f8f8f8; padding:20rpx;margin-bottom:20rpx;border-radius:10rpx;
 }
 .xiao{text-align:right;color:#999;font-size:34rpx;}
-.xiao1{text-align:right;color:#000;font-size:34rpx;}
+.xiao1{text-align:right;color:orange;font-size:34rpx;}
 .bei{
   background:#FEC229;height:185rpx;border-radius:14rpx;margin-right:20rpx;
 }

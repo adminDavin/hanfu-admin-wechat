@@ -1,11 +1,13 @@
 // src/pages/myself/tequan/tequan.js
 import quan from '../../../services/hf-tequan.js';
+import car from '../../../services/car.js';
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    str:'',
     quanlist:[],
     hui:'',
     num:0,
@@ -49,6 +51,15 @@ Page({
     })
    
   },
+  generateUUID:function () {
+    var d = new Date().getTime();
+    var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+    var r = (d + Math.random()*16)%16 | 0;
+    d = Math.floor(d/16);
+    return (c=='x' ? r : (r&0x3|0x8)).toString(16);
+    });
+      return uuid ;
+    },
   
   couponHall:function(){
     var that=this;
@@ -63,19 +74,22 @@ Page({
         quanlist: res.data.data
       })
       let arr=that.data.quanlist;
-      for(var i=0;i<arr.length;i++){
-        arr[i].useLimit= JSON.parse(arr[i].useLimit) ;
-      
-       if(arr[i].discountCouponType==1){
-        arr[i].useLimit.minus= (arr[i].useLimit.minus/100).toFixed(2);
-        }else{
-          arr[i].useLimit.minus= arr[i].useLimit.minus/10;
+      if(arr){
+        for(var i=0;i<arr.length;i++){
+          arr[i].useLimit= JSON.parse(arr[i].useLimit) ;
+        
+         if(arr[i].discountCouponType==1){
+          arr[i].useLimit.minus= (arr[i].useLimit.minus/100).toFixed(2);
+          }else{
+            arr[i].useLimit.minus= arr[i].useLimit.minus/10;
+          }
+          arr[i].useLimit.full= (arr[i].useLimit.full/100).toFixed(2);
         }
-        arr[i].useLimit.full= (arr[i].useLimit.full/100).toFixed(2);
+        that.setData({
+          quanlist: arr
+         })
       }
-      that.setData({
-        quanlist: arr
-       })
+      
        console.log(that.data.quanlist)
     });
   },
@@ -87,7 +101,7 @@ Page({
   getlevelList:function(){
     quan.getlevelList((res) => {
      var that=this;
-      // console.log(res);
+      console.log(res);
       that.setData({
        levellist: res.data.data
       })
@@ -95,6 +109,7 @@ Page({
       for(var i=0;i<arr.length;i++){
         arr[i].change=0;
       }
+      arr[0].change=1;
       that.setData({
         levellist: arr
        })
@@ -108,13 +123,22 @@ Page({
     for(var i=0;i<arr.length;i++){
       arr[i].change=0;
     }
-
+   
     arr[e.currentTarget.dataset.id].change=1;
     that.setData({
       levellist: arr
      })
   },
   pay:function(){
+    let str ='';
+    if(this.data.str==''){
+     str =this.generateUUID();
+     this.setData({
+       str: str
+      })
+    }else{
+     str=this.data.str;
+    }
     var that=this;
     let kai=0;
     let amount=0;
@@ -137,25 +161,29 @@ Page({
     }
 
     let obj={
-      amount:amount,
+      requestId: str,
+      sellPrice:amount*100,
       hfRemark :'充值订单',
       orderType :'rechargeOrder',
       paymentName :'wechart',
       userId :that.data.userId,
     }
-    // console.log(obj)
-  quan.create(obj ,(res) => {
-    // console.log('1',res);
+    console.log(obj)
+    car.createOrder(obj ,(res) => {
+    console.log('1',res);
     if(res.data.status==200){
       that.setData({
-        id:res.data.data.orderCode
+        id:res.data.data.id,
       })
       let obj1={
-        outTradeNo :that.data.id,
+        requestId: str,
+        payOrderId :that.data.id,
         userId :that.data.userId,
+        type:1,
       }
+      console.log(obj1)
       quan.pay(obj1 , (res) => {
-        // console.log('2',res);
+        console.log('2',res);
         if(res.data.status==200){
           wx.requestPayment({
             timeStamp: res.data.data.timeStamp,
@@ -167,18 +195,25 @@ Page({
               // console.log(res);
               let obj2={
                 transactionType:'rechargeOrder',
-                outTradeNo :that.data.id,
+                payOrderId :that.data.id,
                 userId :that.data.userId,
                 level:ids,
+                requestId: str,
               }
+              console.log(obj2);
               quan.complate(obj2, (res) => {
-                // console.log('3',res);
-                // quan.findInfoByUserId(that.data.userId, (res) => {
-                //   console.log(res);
-                //   that.setData({
-                //     surplus: res.data.data.surplus
-                //   })
-                //  });
+                quan.getquan(that.data.userId ,(res) => {
+                  // let list = res.data.data;
+                  // console.log(res);
+                  that.setData({
+                    tequan: res.data.data
+                  })
+                  if(that.data.tequan.length>0){
+                    that.setData({
+                      num:1
+                    })
+                  }
+                });
                });
             },
             fail (res) { }

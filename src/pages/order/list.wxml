@@ -21,9 +21,10 @@
 		
 	</view>
 	
-		
+		 <view  class="dingdanhao2" wx:if="{{item.orderType=='rechargeOrder'}}">充值订单</view>
 		<view wx:for="{{item.detailRequestList}}" wx:for-item="professionitem">
 		<view style="display:flex;align-items:center;margin-top:3px;" >
+		
 					<view class="dingdanhao2" >店铺：{{professionitem.stoneName}}</view>
 				<view class="dingdanhao" wx:if="{{professionitem.detailStatus=='process'}}">等待商家处理</view>
 				<view class="dingdanhao" wx:if="{{professionitem.detailStatus=='payment'}}">等待付款</view>

@@ -7,13 +7,60 @@ Page({
    * 页面的初始数据
    */
   data: {
+    evaluate:'',
+    pingid:'',
+    huiuser:'说点什么',
     listcommmit:[],
     id:'',
     list:{},
     img:'',
     stars: [0, 1, 2, 3, 4],
   },
-
+  bind: function(e){
+    this.setData({
+      evaluate: e.detail.value
+    });
+  //  console.log(this.data.evaluate); 
+},
+  getcommont:function(e){
+    console.log(e);
+    this.setData({
+      pingid:e.currentTarget.dataset.item.id,
+      huiuser:'回复：'+ e.currentTarget.dataset.item.username,
+    })
+},
+pingjia:function(){
+  var that=this;
+  if(that.data.pingid==''){
+    return false;
+  }
+  if(that.data.evaluate==''){
+    return false;
+  }
+  let obj={
+    type:'evaluate',
+    evaluate:that.data.evaluate,
+    userId:wx.getStorageSync('userId'),
+    typeContent:'heart',
+    parentEvaluateId:that.data.pingid,
+    levelId:1,
+  }
+  console.log(obj);
+    car.ping(obj, (res) => {
+      console.log(res);
+     if(res.data.status==200){
+        wx.showToast({
+          title: '评价成功',
+        })
+        that.setData({
+          pingid: '',
+          evaluate:''
+        })
+        that.selectDiscover();
+       
+     }
+  })
+},
   /**
    * 生命周期函数--监听页面加载
    */

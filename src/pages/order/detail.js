@@ -69,7 +69,7 @@ Page({
     var that=this;
     let obj={
       // requestId:str,
-      outTradeNo:that.data.hfOrder.orderCode,
+      payOrderId:that.data.hfOrder.payOrderId,
       userId:wx.getStorageSync('userId')
     }
     console.log(obj)
@@ -89,7 +89,7 @@ Page({
               console.log(res);
               let obj2={
                 transactionType:'rechargeOrder',
-                outTradeNo :that.data.hfOrder.orderCode,
+                payOrderId :that.data.hfOrder.payOrderId,
                 userId :wx.getStorageSync('userId'),
               }
               console.log(obj2)
@@ -112,7 +112,7 @@ Page({
           let obj2={
             requestId:str,
             transactionType:'rechargeOrder',
-            outTradeNo :that.data.hfOrder.orderCode,
+            payOrderId :that.data.hfOrder.payOrderId,
             userId :wx.getStorageSync('userId'),
           }
           console.log(obj2)
@@ -141,7 +141,7 @@ Page({
       Id: that.data.hfOrder.id,
       orderCode:that.data.hfOrder.orderCode,
       originOrderStatus: 'process',
-  
+       
     }
     console.log(obj)
     car.modifyStatus(obj, (res) => {

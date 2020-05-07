@@ -33,7 +33,7 @@ Page({
     })
     let obj={
       requestId:this.data.str,
-      outTradeNo :this.data.outTradeNo,
+      payOrderId :this.data.outTradeNo,
       userId:wx.getStorageSync('userId')
     }
     console.log(obj)
@@ -54,7 +54,7 @@ Page({
               let obj2={
                 requestId:that.data.str,
                 transactionType:'rechargeOrder',
-                outTradeNo :that.data.outTradeNo,
+                payOrderId :that.data.outTradeNo,
                 userId :wx.getStorageSync('userId'),
               }
               console.log(obj2)
@@ -75,7 +75,7 @@ Page({
           let obj2={
             requestId:that.data.str,
             transactionType:'rechargeOrder',
-            outTradeNo :that.data.outTradeNo,
+            payOrderId :that.data.outTradeNo,
             userId :wx.getStorageSync('userId'),
           }
           console.log(obj2)

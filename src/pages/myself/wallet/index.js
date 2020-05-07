@@ -1,4 +1,5 @@
 import quan from '../../../services/hf-tequan.js';
+import car from '../../../services/car.js';
 const app = getApp();
 // var util = require('../../../utils/util.js')
 // const apiCart = require('../../../utils/api/cart.js');
@@ -8,6 +9,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    str:'',
     surplus:0,
     id:'',
     amount:'',
@@ -62,7 +64,15 @@ usernameInput: function (e) {
     })
   },
 create:function(){
-  let str =this.generateUUID();
+  let str ='';
+  if(this.data.str==''){
+   str =this.generateUUID();
+   this.setData({
+     str: str
+    })
+  }else{
+   str=this.data.str;
+  }
   var that=this;
   if(that.data.amount==''){
     wx.showToast({
@@ -73,24 +83,25 @@ create:function(){
   }
   let obj={
     requestId:str,
-    amount:that.data.amount*100,
+    sellPrice:that.data.amount*100,
     hfRemark :'充值订单',
     orderType :'rechargeOrder',
     paymentName :'wechart',
     userId :that.data.userId,
   }
   console.log(obj)
-quan.create(obj ,(res) => {
+  car.createOrder(obj ,(res) => {
   console.log(res);
   if(res.data.status==200){
     that.setData({
-      id:res.data.data.orderCode
+      id:res.data.data.id
     })
     let obj1={
       requestId: str,
-      outTradeNo :that.data.id,
+      payOrderId :that.data.id,
       userId :that.data.userId,
     }
+    console.log(obj1)
     quan.pay(obj1 , (res) => {
       console.log(res);
       if(res.data.status==200){
@@ -108,7 +119,7 @@ quan.create(obj ,(res) => {
               outTradeNo :that.data.id,
               userId :that.data.userId,
             }
-            quan.complate(obj2, (res) => {
+          car.complate(obj2, (res) => {
               console.log(res);
               quan.findInfoByUserId(that.data.userId, (res) => {
                 console.log(res);
@@ -119,7 +130,8 @@ quan.create(obj ,(res) => {
                quan.yuMing(that.data.userId, (res) => {
                 console.log(res);
                 that.setData({
-                  xi: res.data.data
+                  xi: res.data.data,
+                  str:''
                 })
                 let arr=that.data.xi;
                 for(var i=0;i<arr.length;i++){
