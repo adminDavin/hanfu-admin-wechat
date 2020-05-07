@@ -27,7 +27,7 @@ function refundOrder(params = {}, handleResult) {
 function completeOrder(orderCode, userId, handleResult) {
   let params = {
     transactionType: 'paymentOrder',
-    outTradeNo: orderCode,
+    payOrderId: orderCode,
     userId: userId
   }
   wx.request({

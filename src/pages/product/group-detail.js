@@ -22,6 +22,7 @@ Page({
     loading: '',
     accession: '',//判断是不是加入拼团进入的
     activityId: '',//活动ID
+    activityIds: '',//活动ID
     groupid: '',//拼团ID
     priceArea: '',
     goodsId: '',
@@ -189,6 +190,7 @@ Page({
     that.data.priceArea = options.priceArea;
     that.data.stoneName = options.stoneName;
     that.data.activityId = options.activityId;
+    that.data.activityIds = options.activityId;
     that.data.instanceId = options.instanceId;
     console.log(options)
     if (options.action == 'groupActivity') {
@@ -274,8 +276,16 @@ Page({
     animation.translateY(300).step();
 
     console.log(e.currentTarget.dataset);
+    if (e.currentTarget.dataset.type == 'purchased') {
+      console.log('单独购买')
+     this.setData({
+       activityId:0,
+       showModalSelectionSpecification: true
+     })
+    }
     if (e.currentTarget.dataset.type == "selectionSpecification") {
       this.setData({
+        activityId: this.data.activityIds,
         animationData: animation.export(), // export 方法每次调用后会清掉之前的动画操作。
         showModalSelectionSpecification: true
       });

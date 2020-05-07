@@ -11,6 +11,9 @@ Page({
    * 页面的初始数据
    */
   data: {
+    activityId: '',//活动ID
+    activityIds: '',//活动ID
+    datatype:'',//判断点击的是购买还是加入购物车
     imgageUrls:[],
     img:'',
     evaluateRatio:0,
@@ -128,6 +131,8 @@ Page({
     that.data.activityState = options.activityState;
     that.data.startTime = options.startTime;
     that.data.priceArea = options.priceArea;
+    that.data.activityId = options.activityId;
+    that.data.activityIds = options.activityId;
     that.data.stoneName = options.stoneName;
     that.data.endTime = options.endTime;
     that.data.instanceId = options.instanceId;
@@ -198,40 +203,21 @@ Page({
     });
   },
   // 加入购物车
-  addcar: function() {
-    console.log(this.data.selectedGoods);
-    console.log(this.data.goodsId);
-    console.log(wx.getStorageSync('userId'))
-    console.log(this.data.quantity);
-    var that = this;
-    // if(that.data.selectedGoods.stoneId==null){
-    //  wx.showToast({
-    //    title: '请选择规格',
-    //    icon:'none'
-    //  })
-    //  return false;
-    // }
-    let obj = {
-      type:0,
-      goodsId: that.data.selectedGoods.id,
-      num: that.data.quantity,
-      userId: wx.getStorageSync('userId'),
-      stoneId: that.data.stoneId,
-    }
-    console.log(obj)
-    car.addcar(obj, (res) => {
-      console.log(res);
-      if (res.data.data == "成功加入购物车") {
-        wx.showToast({
-          title: '加入购物车成功',
-        })
-      } else {
-        wx.showToast({
-          title: '加入购物车失败',
-          icon: 'none'
-        })
-      }
+  addcar: function(e) {
+    console.log(e);
+    let animation = wx.createAnimation({
+      duration: 200,
+      timingFunction: "ease",
+      delay: 0
     });
+    this.animation = animation;
+    animation.translateY(300).step();
+    this.setData({
+      datatype: e.currentTarget.dataset.type,
+      //  animationData: animation.export(), // export 方法每次调用后会清掉之前的动画操作。
+      showModalSelectionSpecification: true
+    });
+    
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -310,10 +296,19 @@ Page({
     });
     this.animation = animation;
     animation.translateY(300).step();
-
+    
     console.log(e.currentTarget.dataset);
+
+    if (e.currentTarget.dataset.type == 'purchased') {
+      console.log('单独购买')
+      this.setData({
+        activityId: 0,
+        showModalSelectionSpecification: true
+      })
+    }
     if (e.currentTarget.dataset.type == "selectionSpecification") {
       this.setData({
+        activityId: this.data.activityIds,
         animationData: animation.export(), // export 方法每次调用后会清掉之前的动画操作。
         showModalSelectionSpecification: true
       });

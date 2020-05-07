@@ -52,7 +52,10 @@
       </view>
     </view>
   </scroll-view>
-  <view class="guigeqr" bindtap="onSubmitSelectedGoods">确认</view>
+  <view style="display:flex">
+    <view wx:if="{{dataType=='AddtoCart'}}" style=" margin-right: 20rpx;" class="guigeqr" bindtap="addcar">加入购物车</view>
+    <view class="guigeqr" bindtap="onSubmitSelectedGoods">{{dataType=='AddtoCart'?'立即购买':'确认'}}</view>
+  </view>
 </view>
 
 <slot></slot>

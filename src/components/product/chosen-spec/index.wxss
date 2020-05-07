@@ -181,10 +181,10 @@
 }
 
 .guigeqr {
-  position: fixed;
-  bottom: 76rpx;
+  /* position: fixed; */
+  /* bottom: 76rpx; */
   width: 702rpx;
-  height: 88rpx;
+  /* height: 88rpx; */
   background: rgba(255, 51, 51, 1);
   border-radius: 44rpx;
   text-align: center;
