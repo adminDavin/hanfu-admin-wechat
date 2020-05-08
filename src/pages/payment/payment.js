@@ -68,7 +68,7 @@ Page({
         //余额支付 直接跳转到订单列表
         paymentApi.completeOrder(options.payOrderId, options.userId, (res) => console.log(res));
         console.log(res)
-        if (that.data.groupid !== '') {
+        if (that.data.groupid !== 'undefined') {
           this.setData({
             show: true
           });
@@ -83,8 +83,8 @@ Page({
         console.log(that.data.userId)
         console.log(that.data.groupid)
         console.log(that.data)
-        if (that.data.groupid == '') {
-          console.log(that.data.groupid == '')
+        if (that.data.groupid == 'undefined') {
+          console.log(that.data.groupid == 'undefined')
           if (that.data.groupActivity) {
             console.log(that.data.groupActivity)
             let param = {
@@ -149,7 +149,7 @@ Page({
         console.log(that.data.orderId)
         console.log(that.data.userId)
         console.log(that.data.groupid)
-        if (that.data.groupid == '') {
+        if (that.data.groupid == 'undefined') {
           if (that.data.groupActivity) {
             let param = {
               activityId: that.data.activityId,

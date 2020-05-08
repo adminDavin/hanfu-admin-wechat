@@ -14,28 +14,30 @@
   <view class="cover_screen" bindtap="onCloseGoodsSpec" wx:if="{{showModalCreateOrder}}" data-type="createOrder"></view>
   <!-- 弹窗内容 -->
   <view animation="{{animationData}}" class="buy_box" wx:if="{{showModalCreateOrder}}">
-    <view wx:for="{{tequan}}" wx:key="index" style="display:flex">
-      <view style="width:500rpx">
-        <view>
-          <sub style="font-size:25rpx;">¥</sub>
-          <span wx:if="{{item.discountCouponType=='1'}}" style="font-weight:bold;font-size:40rpx;"> {{we.toFixed(item.useLimit.minus/100)}}
-            <span style="color:red;font-size:20rpx;">元</span>
-          </span>
-          <span wx:if="{{item.discountCouponType=='0'}}" style="font-weight:bold;font-size:40rpx;"> {{we.toFixed(item.useLimit.minus/100)}}
-            <span style="color:red;font-size:20rpx;">折</span>
-          </span>
+    <scroll-view scroll-y="true" class="guige-scroll">
+      <view wx:for="{{tequan}}" wx:key="index" style="display:flex">
+        <view style="width:500rpx">
+          <view>
+            <sub style="font-size:25rpx;">¥</sub>
+            <span wx:if="{{item.discountCouponType=='1'}}" style="font-weight:bold;font-size:40rpx;"> {{we.toFixed(item.useLimit.minus/100)}}
+              <span style="color:red;font-size:20rpx;">元</span>
+            </span>
+            <span wx:if="{{item.discountCouponType=='0'}}" style="font-weight:bold;font-size:40rpx;"> {{we.toFixed(item.useLimit.minus/100)}}
+              <span style="color:red;font-size:20rpx;">折</span>
+            </span>
+          </view>
+          <view style='font-size:26rpx;'>
+            满{{we.toFixed(item.useLimit.full/100)}}元可用
+          </view>
         </view>
-        <view style='font-size:26rpx;'>
-          满{{we.toFixed(item.useLimit.full/100)}}元可用
+        <view wx:if="{{item.idDeleted==0}}" class="lingqu" bindtap="changeCoupons" data-item="{{item}}">
+          立即使用
+        </view>
+        <view style="font-size:30rpx;padding-top: 20rpx;" wx:if="{{item.idDeleted==1}}">
+          未满{{we.toFixed(item.useLimit.full/100)}}
         </view>
       </view>
-      <view wx:if="{{item.idDeleted==0}}" class="lingqu" bindtap="changeCoupons" data-item="{{item}}">
-        立即使用
-      </view>
-      <view style="font-size:30rpx;padding-top: 20rpx;" wx:if="{{item.idDeleted==1}}">
-        未满{{we.toFixed(item.useLimit.full/100)}}
-      </view>
-    </view>
+    </scroll-view>
     <!-- <view class="guigeqr" bindtap="onConfirmSelectedGoods" data-type="createOrder">确认</view> -->
   </view>
 

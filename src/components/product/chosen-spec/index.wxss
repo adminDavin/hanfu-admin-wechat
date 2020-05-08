@@ -445,9 +445,9 @@ swiper {
 }
 .p10 {
   font-size: 30rpx;
-  padding: 6rpx 0;
+  padding: 6rpx 20rpx;
   margin: 10rpx 0;
-  /* border-radius: 5px; */
+  border-radius: 24rpx;
   background-color: rgba(221, 211, 211, 0.3);
   border: 1px solid rgba(221, 211, 211, 0.3);
 }
@@ -456,9 +456,9 @@ swiper {
   font-size: 30rpx;
   font-family: 'PingFang SC';
   font-weight: 500;
-  /* border-radius: 5px; */
+  border-radius: 24rpx;
   background-color: rgba(252, 217, 217, 0.521);
-  /* border: 1px solid #FF4545; */
+  border: 1px solid #FF4545;
   color: rgba(240, 9, 9);
 }
 
