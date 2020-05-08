@@ -204,10 +204,10 @@ Component({
           url: '/pages/payment/index?params=' + encodeURIComponent(JSON.stringify(params))
         });
       } else {
-        // console.log(this.data.selectedGoods)
+        console.log(this.data.selectedGoods)
         // console.log(this.data.quantity)
         console.log(this.data.competitive)
-        console.log(this.data.stoneName)
+        console.log(this.data.groupActivity)
         // console.log(this.data.instanceId)
         let params = {
           selectedGoods: this.data.selectedGoods,

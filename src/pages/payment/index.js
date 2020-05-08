@@ -111,7 +111,7 @@ Page({
   onShow: function() {
     console.log(this.data);
     let imgageUrls = ''
-    imgageUrls = this.data.selectedGoods.fileIds[0];
+    // imgageUrls = this.data.selectedGoods.fileIds[0];
     console.log(imgageUrls);
    this.setData({
      selectedGoods: this.data.selectedGoods,
@@ -232,9 +232,9 @@ Page({
     let goodsList = []
     let obj = {
       goodsId: that.data.selectedGoods.id,
-      hfDesc: 2,
+      hfDesc: this.data.instanceId,
       quantity: that.data.quantity,
-      stoneId: this.data.stoneId
+      stoneId: this.data.stoneId,
     }
     goodsList.push(obj)
     console.log(goodsList)
@@ -247,6 +247,7 @@ Page({
       orderType: 'nomalOrder',
       paymentName: this.data.paymentMethod[0].name,
       hfRemark: this.data.elevalue,
+      activityId: this.data.activityId,
       // //物品属性配置
       // goodsId: this.data.selectedGoods.id,
       // sellPrice: this.data.selectedGoods.sellPrice,
