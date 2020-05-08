@@ -277,12 +277,14 @@ Component({
             console.log(index)
             goods.fileIds[index] = app.endpoint.file + '/goods/getFile?fileId=' + goods.fileIds[index]
           }
-          // goods.hfNames=''
-          // for (let index in goods.hfGoodsSpecs) {
-          //   console.log(index)
-          //   goods.hfNames.push(goods.hfGoodsSpecs[index].hfValue + ':' + goods.hfGoodsSpecs[index].hfName)
-          // }
+          goods.hfNames=[]
+          for (let index in goods.hfGoodsSpecs) {
+            console.log(index)
+            goods.hfNames.push(goods.hfGoodsSpecs[index].hfValue + ':' + goods.hfGoodsSpecs[index].hfName)
+          }
+          goods.hfNames=goods.hfNames.join("|")
         }
+       
         let selectedGoods = goodsList.filter(item => this.properties.selectedGoodsId == item.id)[0];
         this.setData({ ...this.data, ...this.properties, ...{ goodsList: goodsList, selectedGoods: selectedGoods } });
         console.log(this.data.goodsList)

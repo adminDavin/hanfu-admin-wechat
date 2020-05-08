@@ -3,7 +3,12 @@
   height: 100%;
   background-color: #f8f8f8;
 }
-
+.guige-scroll {
+  margin-top: 10rpx;
+  width: 100%;
+  height: 480rpx;
+  /* background-color: red */
+}
 .lingqu {
   margin-top: 25rpx;
   bottom: 10rpx;

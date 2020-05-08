@@ -20,18 +20,18 @@
     <view wx:for='{{goodsList}}' wx:key="index">
       <block wx:if="{{item.id==selectedGoods.id}}">
         <checkbox-group  style="display: flex;" bindtap="onCheckboxChange" data-item="{{item}}">
-          <view  class="p9" wx:for='{{item.hfGoodsSpecs}}' wx:for-item="childItem" wx:key="goodsSpecChildKey" wx:for-index="childIndex">
+          <view  class="p9">
             <label class="p10 selected">
-              <text>{{childItem.hfName}}:{{childItem.hfValue}}</text>
+              <text>{{item.hfNames}}</text>
             </label>
           </view>
         </checkbox-group>
       </block>
       <block wx:else>
         <checkbox-group  style="display:flex" bindtap="onCheckboxChange" data-item="{{item}}">
-          <view class="p9"  wx:for='{{item.hfGoodsSpecs}}' wx:for-item="childItem" wx:key="goodsSpecChildKey" wx:for-index="childIndex">
+          <view class="p9">
             <label>
-              <text class="p10">{{childItem.hfName}}:{{childItem.hfValue}}</text>
+              <text class="p10">{{item.hfNames}}</text>
             </label>
           </view>
         </checkbox-group>

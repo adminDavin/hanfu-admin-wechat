@@ -66,15 +66,23 @@ Page({
         });
       }
     });
+    let goodsList =[]
     let obj = {
+      goodsId: this.data.selectedGoods.id,
+      hfDesc: this.data.instanceId,
+      quantity: params.quantity,
+      stoneId: this.data.stoneId,
+    }
+    goodsList.push(obj)
+    console.log(goodsList)
+    let objs = {
       state: 0,
       userId: params.userId,
-      GoodsNum: params.quantity,
-      goodsId: params.selectedGoods.id
+      goodsList: JSON.stringify(goodsList),
     }
     console.log(obj);
     let idDeleted = 0
-    discount.myCoupon(obj, (res) => {
+    discount.myCoupon(objs, (res) => {
       console.log(res.data.data);
       this.setData({
         tequan: res.data.data
