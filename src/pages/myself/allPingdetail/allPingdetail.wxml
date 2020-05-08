@@ -11,14 +11,14 @@
 						</view>
 					</view>
 				</view>
-				<view bindtap="getcommont" data-item='{{list}}'   style="padding-left: 20px;color:#151515;font-size:26rpx;margin-top:19rpx;">{{list.comment}}</view>
+				<view bindtap="getcommont" data-item='{{list}}' style="padding-left: 20px;color:#151515;font-size:26rpx;margin-top:19rpx;">{{list.comment}}</view>
 				<view style="flex-wrap:wrap;padding-left:25rpx;">
-					<image mode="widthFix" wx:for="{{list.fileId}}" wx:for-item="img_pic1" src="{{img}}/goods/getFile?fileId={{img_pic1}}" ></image>
+					<image mode="widthFix" wx:for="{{list.fileId}}" wx:for-item="img_pic1" src="{{img}}/goods/getFile?fileId={{img_pic1}}"></image>
 				</view>
-      <view style="display:flex;align-items:center;">
-     	<image src="../../../images/tabs/yuanjiaoju.png" class="number-image" />
-       <view style="margin-left:20rpx;">{{listcommmit.length}}  条回复</view>
-      </view>
+				<view style="display:flex;align-items:center;">
+					<image src="../../../images/tabs/yuanjiaoju.png" class="number-image" />
+					<view style="margin-left:20rpx;">{{listcommmit.length}} 条回复</view>
+				</view>
 				<view wx:for="{{listcommmit}}" style="padding-left:20px;padding-right:35rpx;font-size:24rpx;margin-top:10rx;margin-bottom:10rpx;">
 					<view style="padding: 17px 16rpx;border-bottom: 1px solid #F3F3F3;">
 						<view>
@@ -40,7 +40,7 @@
 					</view>
 				</view>
 
-			
+
 			</view>
 
 		</view>

@@ -116,7 +116,7 @@ create:function(){
             let obj2={
               requestId:str,
               transactionType:'rechargeOrder',
-              outTradeNo :that.data.id,
+              payOrderId :that.data.id,
               userId :that.data.userId,
             }
           car.complate(obj2, (res) => {

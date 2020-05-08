@@ -394,6 +394,21 @@ function buy(params,handleResult){
     }
   });
 }
+function share(params,handleResult){
+  console.log(app.endpoint.product + '/goods/transmit')
+  wx.request({
+    url: app.endpoint.product + '/goods/transmit',
+    header: {
+      'content-type': 'application/x-www-form-urlencoded'
+    },
+    method: 'post',
+    data:params,
+    success: res => handleResult(res),
+    fail: (res) => {
+      console.log( res);
+    }
+  });
+}
 export default {
   getid:getid,
   addcar:addcar,
@@ -421,5 +436,6 @@ export default {
   cartconcern:cartconcern,
   deletemore:deletemore,
   buy:buy,
-  getCartListInfo:getCartListInfo
+  getCartListInfo:getCartListInfo,
+  share:share
 };
