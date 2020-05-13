@@ -51,6 +51,7 @@ Page({
     this.setData({
       imgs: arr
     })
+    console.log(this.data.imgs);
     wx.previewImage({
       current: current, // 当前显示图片的http链接  
       urls:this.data.imgs// 需要预览的图片http链接列表  
