@@ -282,7 +282,7 @@ Component({
             console.log(index)
             goods.hfNames.push(goods.hfGoodsSpecs[index].hfValue + ':' + goods.hfGoodsSpecs[index].hfName)
           }
-          goods.hfNames=goods.hfNames.join("|")
+          goods.hfNames=goods.hfNames.join(" | ")
         }
        
         let selectedGoods = goodsList.filter(item => this.properties.selectedGoodsId == item.id)[0];
