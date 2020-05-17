@@ -21,20 +21,7 @@
 		<view bindtap="swichNav" data-current="6" class="{{currentTab==6 ? 'on' : ''}}">文章</view>
 	</view>
 </scroll-view>
-<!-- <view class="swiper-tab">
-	<view class="swiper-tab-list" data-current="0" bindtap="swichNav">
-		<text bindtap="swichNav" data-current="0" class="{{currentTab==0 ? 'on' : ''}}">关注</text>
-	</view>
-	<view class="swiper-tab-list" data-current="1" bindtap="swichNav">
-		<text bindtap="swichNav" data-current="1" class="{{currentTab==1 ? 'on' : ''}}">推荐</text>
-	</view>
-	<view class="swiper-tab-list" data-current="2" bindtap="swichNav">
-		<text bindtap="swichNav" data-current="2" class="{{currentTab==2 ? 'on' : ''}}">广场</text>
-	</view>
-	<view class="swiper-tab-list" data-current="3" bindtap="swichNav">
-		<text bindtap="swichNav" data-current="3" class="{{currentTab==3 ? 'on' : ''}}">视频</text>
-	</view>
-</view> -->
+
 
 <swiper style="height: {{clientHeight?clientHeight+'px':'auto'}}" current="{{currentTab}}" duration="300" bindchange="bindChange">
 	<swiper-item style="overflow-y: scroll">
@@ -114,8 +101,8 @@
 
 
 
-<!-- 
-<van-tabs active="a" bindchange="tab" >
+
+<!-- <van-tabs active="a" bindchange="tab" >
 	<van-tab title="关注" name="a"  >
 		<view style="padding:20rpx;padding-bottom:200rpx;">
 			<view bindtap="godetail" data-item="{{item}}" wx:for="{{list}}" style="margin-bottom:20rpx; background:#fff;padding:21rpx 19rpx 18rpx 31rpx;border-radius:10px;">

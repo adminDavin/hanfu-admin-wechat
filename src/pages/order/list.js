@@ -2,6 +2,7 @@
 const app = getApp();
 
 import hfOrderApi from '../../services/hf-order.js';
+import car from '../../services/car.js';
 import util from '../../utils/util.js';
 
 Page({
@@ -121,7 +122,200 @@ Page({
        });
     // }
   },
+  ping:function(e){
+    // console.log(e.currentTarget.dataset)
+    wx.navigateTo({
+      url: '../ping/ping?orderId='+e.currentTarget.dataset.item1.id+'&item='+JSON.stringify(e.currentTarget.dataset.item),
+    })
+  },
+  refund:function(){
 
+  },
+  yunsong:function(e){
+    var that=this;
+    let obj={
+      targetOrderStatus :'evaluate',
+      Id:  e.currentTarget.dataset.item.id,
+      orderCode: e.currentTarget.dataset.item.orderCode,
+      originOrderStatus: 'transport',
+  
+    }
+    console.log(obj)
+    car.modifyStatus(obj, (res) => {
+      console.log(res);
+      if(res.data.status==200){
+        wx.showToast({
+          title: '已确认',
+        })
+        that.chong();
+      }else{
+        wx.showToast({
+          title: '操作失败',
+          icon:'none'
+        })
+      }
+    });
+  },
+  shenback:function(e){
+    var that=this;
+    let obj={
+      targetOrderStatus :'controversial',
+      Id: e.currentTarget.dataset.item.id,
+      orderCode:e.currentTarget.dataset.item.orderCode,
+      originOrderStatus: 'process',
+       
+    }
+    console.log(obj)
+    car.modifyStatus(obj, (res) => {
+      console.log(res);
+      if(res.data.status==200){
+        wx.showToast({
+          title: '申请成功',
+        })
+      that.chong();
+      }else{
+        wx.showToast({
+          title: '申请失败',
+        })
+      }
+    });
+  },
+  chong:function(){
+    var that=this;
+    hfOrderApi.queryOrder( wx.getStorageSync('userId'), that.data.action, (res) => {
+      let orderStatuses=that.data.orderStatuses;
+      for(var i=0;i<orderStatuses.length;i++){
+         
+       orderStatuses[i].selectedSytle='';
+      }
+      for(var i=0;i<orderStatuses.length;i++){
+         if(orderStatuses[i].action==that.data.action){
+           orderStatuses[i].selectedSytle='hengxian';
+         }
+      
+      }
+      that.setData({
+        orderStatuses:orderStatuses
+      })
+       let arr=res.data.data;
+      for(var i=0;i<arr.length;i++){
+        let count=0;
+        arr[i].amount=(arr[i].amount/100).toFixed(2);
+       for(var j=0;j<arr[i].detailRequestList.length;j++){
+         for(var a=0;a<arr[i].detailRequestList[j].hfOrderDetailList.length;a++){ 
+           count+=arr[i].detailRequestList[j].hfOrderDetailList[a].quantity;
+           arr[i].detailRequestList[j].hfOrderDetailList[a].hfDesc=JSON.parse(arr[i].detailRequestList[j].hfOrderDetailList[a].hfDesc)
+           
+         }  
+        
+       }
+       arr[i].userId=count;
+      }
+      that.setData({
+         hfOrders:arr,
+        
+       });
+      
+     });
+  },
+  cancel:function(e){
+    var that=this;
+   let obj={
+     targetOrderStatus :'cancel',
+     Id: e.currentTarget.dataset.item.id,
+     orderCode:e.currentTarget.dataset.item.orderCode,
+     originOrderStatus: 'payment',
+ 
+   }
+   console.log(obj)
+   car.modifyStatus(obj, (res) => {
+     console.log(res);
+     if(res.data.status==200){
+       wx.showToast({
+         title: '取消成功',
+       })
+       that.chong();
+     }else{
+       wx.showToast({
+         title: '取消失败',
+       })
+     }
+   });
+   
+  },
+  generateUUID:function () {
+    var d = new Date().getTime();
+    var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+    var r = (d + Math.random()*16)%16 | 0;
+    d = Math.floor(d/16);
+    return (c=='x' ? r : (r&0x3|0x8)).toString(16);
+    });
+      return uuid ;
+    },
+  gopay:function(e){
+    console.log(e);
+    this.generateUUID();
+    let str =this.generateUUID();
+    var that=this;
+    let obj={
+      // requestId:str,
+      payOrderId:e.currentTarget.dataset.item.payOrderId,
+      userId:wx.getStorageSync('userId')
+    }
+    console.log(obj)
+    var that=this;
+    car.pay(obj, (res) => {
+      console.log(res);
+      if(res.data.status==200){
+        
+        if(e.currentTarget.dataset.item.paymentName=='wechart'){
+          wx.requestPayment({
+            timeStamp: res.data.data.timeStamp,
+            nonceStr: res.data.data.nonce_str,
+            package: res.data.data.package,
+            signType: 'MD5',
+            paySign: res.data.data.paySign,
+            success (res) { 
+              console.log(res);
+              let obj2={
+                transactionType:'rechargeOrder',
+                payOrderId :e.currentTarget.dataset.item.payOrderId,
+                userId :wx.getStorageSync('userId'),
+              }
+              console.log(obj2)
+             car.complate(obj2, (res) => {
+                console.log('3',res);
+                if(res.data.status==200){
+
+                  that.chong();
+                }
+               });
+            },
+            fail (res) { }
+          })
+        }else{
+      
+          let obj2={
+            requestId:str,
+            transactionType:'rechargeOrder',
+            payOrderId :e.currentTarget.dataset.item.payOrderId,
+            userId :wx.getStorageSync('userId'),
+          }
+          console.log(obj2)
+         car.complate(obj2, (res) => {
+            console.log('3',res);
+            if(res.data.status==200){
+              wx.showToast({
+                title: '支付成功',
+              })
+              that.chong();
+            }
+           });
+        }
+      
+      }
+    });
+  },
   /**
    * 生命周期函数--监听页面显示
    */
@@ -143,7 +337,8 @@ Page({
 
     arr1[e.currentTarget.dataset.index].selectedSytle= 'hengxian';
    this.setData({
-    orderStatuses:  arr1
+    orderStatuses:  arr1,
+    action:action
    })
     hfOrderApi.queryOrder( wx.getStorageSync('userId'), action, (res) => {
       console.log(res);

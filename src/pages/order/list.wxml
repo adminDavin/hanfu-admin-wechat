@@ -1,5 +1,5 @@
 <view class="mydingdan">
-	<scroll-view scroll-x="true" class="nav" style="white-space:nowrap;position:fixed;top:0;" >
+	<scroll-view scroll-x="true" class="nav" style="white-space:nowrap;position:fixed;top:0;">
 		<view wx:for="{{orderStatuses}}" wx:key="index" data-index="{{index}}" data-action="{{item.action}}" bindtap="onSelectedNav" style="display:inline-block">
 			<view class="nav-item">
 				<view class="nav-ziti">{{item.desc}}</view>
@@ -8,24 +8,24 @@
 		</view>
 	</scroll-view>
 	<view class="card" wx:for="{{hfOrders}}" wx:key="index" data-hf-order="{{item}}" bindtap="onSelectedOrder">
-	<view style="display:flex;align-items:center;justify-content:space-between;">
-		  <view class="dingdanhao">订单号:{{item.orderCode}}</view>
-		
-      <view  class="dingdanhao1" wx:if="{{item.orderStatus=='payment'}}">待支付</view>
-      <view  class="dingdanhao1" wx:if="{{item.orderStatus=='transport'}}">运送中</view>
-      <view  class="dingdanhao1" wx:if="{{item.orderStatus=='process'}}">处理中</view>
-      <view  class="dingdanhao1" wx:if="{{item.orderStatus=='complete'}}">已完成</view>
-      <view  class="dingdanhao1" wx:if="{{item.orderStatus=='cancel'}}">已取消</view>
-      <view  class="dingdanhao1" wx:if="{{item.orderStatus=='evaluate'}}">待评价</view>
-      <view class="dingdanhao1" wx:if="{{item.orderStatus=='controversial'}}">交易纠纷</view>
-		
-	</view>
-	
-		 <view  class="dingdanhao2" wx:if="{{item.orderType=='rechargeOrder'}}">充值订单</view>
+		<view style="display:flex;align-items:center;justify-content:space-between;">
+			<view class="dingdanhao">订单号:{{item.orderCode}}</view>
+
+			<view class="dingdanhao1" wx:if="{{item.orderStatus=='payment'}}">待支付</view>
+			<view class="dingdanhao1" wx:if="{{item.orderStatus=='transport'}}">运送中</view>
+			<view class="dingdanhao1" wx:if="{{item.orderStatus=='process'}}">处理中</view>
+			<view class="dingdanhao1" wx:if="{{item.orderStatus=='complete'}}">已完成</view>
+			<view class="dingdanhao1" wx:if="{{item.orderStatus=='cancel'}}">已取消</view>
+			<view class="dingdanhao1" wx:if="{{item.orderStatus=='evaluate'}}">待评价</view>
+			<view class="dingdanhao1" wx:if="{{item.orderStatus=='controversial'}}">交易纠纷</view>
+
+		</view>
+
+		<view class="dingdanhao2" wx:if="{{item.orderType=='rechargeOrder'}}">充值订单</view>
 		<view wx:for="{{item.detailRequestList}}" wx:for-item="professionitem">
-		<view style="display:flex;align-items:center;margin-top:3px;" >
-		
-					<view class="dingdanhao2" >店铺：{{professionitem.stoneName}}</view>
+			<view style="display:flex;align-items:center;margin-top:3px;">
+
+				<view class="dingdanhao2">店铺：{{professionitem.stoneName}}</view>
 				<view class="dingdanhao" wx:if="{{professionitem.detailStatus=='process'}}">等待商家处理</view>
 				<view class="dingdanhao" wx:if="{{professionitem.detailStatus=='payment'}}">等待付款</view>
 				<view class="dingdanhao" wx:if="{{professionitem.detailStatus=='shipped'}}">待发货</view>
@@ -35,35 +35,53 @@
 				<view class="dingdanhao" wx:if="{{professionitem.detailStatus=='evaluate'}}">待评价</view>
 				<view class="dingdanhao" wx:if="{{professionitem.detailStatus=='controversial'}}">等待退款</view>
 				<view class="dingdanhao" wx:if="{{professionitem.detailStatus=='pickup'}}">等待提货</view>
-		</view>
-	
+			</view>
+
 			<view wx:for="{{professionitem.hfOrderDetailList}}" wx:for-item="professionitem1">
 				<view class="card-top">
 
 					<view style="color:red;font-size:24rpx">{{professionitem1.hfDesc.orderStatusDesc}}</view>
 				</view>
-				<view class="card-center" data-orderstatus="{{professionitem1.hfDesc.orderDetailStatus}}">
-					<view class="danshop">
-					<view  style="display:flex;flex-wrap:wrap;">
-				<image   src="{{img}}/goods/getFile?fileId={{professionitem1.hfDesc.fileIds[0]}}" class="card-pic"></image>
-					<!-- <image wx:for="{{professionitem1.hfDesc.fileIds}}" wx:for-item="professionitem0"  src="{{img}}/goods/getFile?fileId={{professionitem0}}" class="card-pic"></image> -->
-					</view>
-						
-						<view class="dan-box">
-							<view class="danshop-name">{{professionitem1.hfDesc.goodsName}}</view>
-							<view class="dan-box-2">
-								<view class="dan-guige">{{professionitem1.hfDesc.goodsDesc}}</view>
+				<view>
+					<view style="display:flex;justify-content:flex-end;margin-top:11px;margin-bottom:11px;">
+
+							<view wx:if="{{professionitem1.hfStatus=='evaluate'}}" catchtap="ping" data-item="{{professionitem1}}" data-item1="{{item}}" style="display:flex;align-items:center;justify-content:center; color:#FF3333;width:160rpx;height:50rpx;background:rgba(255,255,255,1);border:1px solid rgba(255,51,51,1);border-radius:25px;">去评价</view>
+
+						</view>
+					<view class="card-center" data-orderstatus="{{professionitem1.hfDesc.orderDetailStatus}}">
+						<view class="danshop">
+							<view style="display:flex;flex-wrap:wrap;">
+								<image src="{{img}}/goods/getFile?fileId={{professionitem1.hfDesc.fileIds[0]}}" class="card-pic"></image>
+								<!-- <image wx:for="{{professionitem1.hfDesc.fileIds}}" wx:for-item="professionitem0"  src="{{img}}/goods/getFile?fileId={{professionitem0}}" class="card-pic"></image> -->
+							</view>
+
+							<view class="dan-box">
+								<view class="danshop-name">{{professionitem1.hfDesc.goodsName}}</view>
+								<view class="dan-box-2">
+									<view class="dan-guige">{{professionitem1.hfDesc.goodsDesc}}</view>
+								</view>
 							</view>
 						</view>
+						<view class="center-right">
+							<view style="text-align:right;color:#999999; font-size:24rpx;font-weight:500;margin-right:3px;">x{{professionitem1.quantity}}</view>
+						</view>
+					
 					</view>
-					<view class="center-right">
-					<view style="text-align:right;color:#999999; font-size:24rpx;font-weight:500;margin-right:3px;">x{{professionitem1.quantity}}</view>
-					</view>
+						
 				</view>
+
 			</view>
 		</view>
-    	<view style="color:#FF0000;text-align:right; font-size:34rpx;">￥{{item.amount}}</view>
-			
+		<view style="color:#FF0000;text-align:right; font-size:34rpx;">￥{{item.amount}}</view>
+		<view style="display:flex;justify-content:flex-end;margin-top:11px;">
+			<view class="querenbtn" wx:if="{{item.orderStatus=='process'}}" data-item="{{item}}" style="margin-right:20rpx" catchtap="shenback">申请退款</view>
+			<view wx:if="{{item.orderStatus=='payment'}}" catchtap="gopay" data-item="{{item}}" style="margin-right:20rpx;display:flex;align-items:center;justify-content:center; color:#FF3333;width:160rpx;height:50rpx;background:rgba(255,255,255,1);border:1px solid rgba(255,51,51,1);border-radius:25px;">立即支付</view>
+			<view class="querenbtn" wx:if="{{item.orderStatus=='payment'}}" data-item="{{item}}"  catchtap="cancel">取消订单</view>
+			<view class="querenbtn" wx:if="{{item.orderStatus=='process'}}" style="background-color:red;color:white;border:none" catchtap="refund">提醒发货</view>
+			<view wx:if="{{item.orderStatus=='transport'}}" catchtap="yunsong" data-item="{{item}}" style="margin-right:20rpx;display:flex;align-items:center;justify-content:center; color:#FF3333;width:160rpx;height:50rpx;background:rgba(255,255,255,1);border:1px solid rgba(255,51,51,1);border-radius:25px;">确认收货</view>
+
+		</view>
+
 	</view>
 
 </view>
