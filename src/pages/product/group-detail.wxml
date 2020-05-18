@@ -218,7 +218,7 @@
   </view>
   <!-- 弹窗 -->
   <view animation="{{animationData}}" class="buy_box" wx:if="{{showModalSelectionSpecification}}">
-    <chosen bind:onConfirmSelectedGoods="onConfirmSelectedGoods" instance-id="{{instanceId}}" accession="{{accession}}" activity-id="{{activityId}}" group-id="{{groupid}}" product-id="{{productId}}" stoneId="{{stoneId}}" selected-goods-id="{{selectedGoods.id}}" quantity="{{quantity}}" bind:chooseGoodsCommitEvent="listenChooseGoodsCommitEvent"></chosen>
+    <chosen groupActivity="{{groupActivity}}" bind:onConfirmSelectedGoods="onConfirmSelectedGoods" instance-id="{{instanceId}}" accession="{{accession}}" activity-id="{{activityId}}" group-id="{{groupid}}" product-id="{{productId}}" stoneId="{{stoneId}}" selected-goods-id="{{selectedGoods.id}}" quantity="{{quantity}}" bind:chooseGoodsCommitEvent="listenChooseGoodsCommitEvent"></chosen>
   </view>
   <!-- 查看更多拼团 -->
   <view class="modalDlg" wx:if="{{showModal}}">

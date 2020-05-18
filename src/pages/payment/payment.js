@@ -85,7 +85,7 @@ Page({
         console.log(that.data)
         if (that.data.groupid == 'undefined') {
           console.log(that.data.groupid == 'undefined')
-          if (that.data.groupActivity) {
+          if (that.data.groupActivity !== 'false') {
             console.log(that.data.groupActivity)
             let param = {
               activityId: that.data.activityId,
@@ -104,6 +104,10 @@ Page({
                 });
               }
             })
+          } else {
+            wx.navigateTo({
+              url: '/pages/order/list?action=all',
+            });
           }
         } else
           if (that.data.groupid !== 'undefined' && that.data.activityId !== 'undefined') {
@@ -114,6 +118,8 @@ Page({
               orderId: that.data.orderId,
               hfActivityGroupId: that.data.groupid
             }
+            console.log('参团成功')
+
             orderApi.entranceGroup(param, (res) => {
               console.log('参团成功')
               wx.showToast({
@@ -150,7 +156,7 @@ Page({
         console.log(that.data.userId)
         console.log(that.data.groupid)
         if (that.data.groupid == 'undefined') {
-          if (that.data.groupActivity) {
+          if (that.data.groupActivity !== 'false') {
             let param = {
               activityId: that.data.activityId,
               goodsId: that.data.goodsId,
@@ -168,6 +174,10 @@ Page({
                 });
               }
             })
+          } else {
+            wx.navigateTo({
+              url: '/pages/order/list?action=all',
+            });
           }
         } else
           if (that.data.groupid !== 'undefined' && that.data.activityId !== 'undefined') {

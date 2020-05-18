@@ -58,6 +58,10 @@ Component({
      dataType: {
       type: String,
       value: ''
+    },
+    groupActivity: {
+      type: Boolean,
+      value: false
     }
   },
 
@@ -114,14 +118,14 @@ Component({
     },
     // 加入购物车
     addcar: function () {
-      console.log(this.properties.selectedGoodsId);
+      console.log(this.data.selectedGoods.id);
       console.log(wx.getStorageSync('userId'))
       console.log(this.data.quantity);
       console.log(this.properties.dataType);
       var that = this;
       let obj = {
         type: 0,
-        goodsId: this.properties.selectedGoodsId,
+        goodsId: this.data.selectedGoods.id,
         num: that.data.quantity,
         userId: wx.getStorageSync('userId'),
         stoneId: that.data.stoneId,
@@ -207,14 +211,14 @@ Component({
         console.log(this.data.selectedGoods)
         // console.log(this.data.quantity)
         console.log(this.data.competitive)
-        console.log(this.data.groupActivity)
+        console.log(this.properties.groupActivity)
         // console.log(this.data.instanceId)
         let params = {
           selectedGoods: this.data.selectedGoods,
           paymentType: 'createOrder',
           userId: wx.getStorageSync('userId'),
           stoneId: this.data.stoneId,
-          // groupActivity: this.data.groupActivity,
+          groupActivity: this.properties.groupActivity,
           activityId: that.properties.activityId,
           quantity: this.data.quantity,
           competitive: this.data.competitive,

@@ -308,6 +308,7 @@ Page({
     }
     if (e.currentTarget.dataset.type == "selectionSpecification") {
       this.setData({
+        datatype: '',
         activityId: this.data.activityIds,
         animationData: animation.export(), // export 方法每次调用后会清掉之前的动画操作。
         showModalSelectionSpecification: true
