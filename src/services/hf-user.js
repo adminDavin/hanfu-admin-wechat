@@ -4,6 +4,9 @@ function login(params = {}, handleResult,) {
   wx.request({
     url: app.endpoint.user + '/login/wechart',
     data: params,
+    header: {
+      'bossId': app.globalData.bossId
+    },
     success: res => handleResult(res),
     fail: (res) => {
       console.log(params, res);
@@ -25,7 +28,9 @@ function modifyUserInfo(params = {}, handleResult) {
 function selectCoupons(params = {}, handleResult) {
   wx.request({
     url: app.endpoint.payment + '/Coupons/selectCoupons?userId=' + wx.getStorageSync('userId') + '&status=' + params,
-  
+    header: {
+      'bossId': app.globalData.bossId
+    },
     success: res => handleResult(res),
     fail: (res) => {
       console.log(params, res);

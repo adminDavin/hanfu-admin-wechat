@@ -5,7 +5,8 @@ function getTingQuan(params,handleResult) {
   wx.request({
     url: app.endpoint.product + '/discountCoupon/couponHall',
     header: {
-      'content-type': 'application/x-www-form-urlencoded'
+      'content-type': 'application/x-www-form-urlencoded',
+      'bossId': app.globalData.bossId
     },
     method: 'post',
     data:params,
@@ -22,7 +23,8 @@ function myCoupon(params={}, handleResult) {
     url: app.endpoint.product + '/discountCoupon/couponMy',
     method: 'POST',
     header: {
-      'content-type': 'application/x-www-form-urlencoded'
+      'content-type': 'application/x-www-form-urlencoded',
+      'bossId': app.globalData.bossId
     },
     data: params,
     success: res => handleResult(res),
@@ -36,7 +38,8 @@ function getCoupon(params={}, handleResult) {
     url: app.endpoint.product + '/discountCoupon/addCouponForUser',
     method: 'POST',
     header: {
-      'content-type': 'application/x-www-form-urlencoded'
+      'content-type': 'application/x-www-form-urlencoded',
+      'bossId': app.globalData.bossId
     },
     data: params,
     success: res => handleResult(res),

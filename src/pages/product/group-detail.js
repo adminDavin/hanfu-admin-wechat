@@ -115,7 +115,7 @@ Page({
   more: function (e) {
     console.log(this.data.productId)
     let params = {
-      bossId: 1,
+      bossId: app.globalData.bossId,
       productId: this.data.productId,
       activityId: this.data.activityId,
     }
@@ -513,7 +513,7 @@ Page({
   },
   countTime() {
     let params = {
-      bossId: 1,
+      bossId: app.globalData.bossId,
       productId: this.data.selectedGoods.productId,
       activityId: this.data.activityId,
       sum: 2

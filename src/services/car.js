@@ -4,6 +4,9 @@ function addcar(params={}, handleResult) {
     url: app.endpoint.product + '/cart/add',
     method: 'get',
     data: params,
+    header: {
+      'bossId': app.globalData.bossId
+    },
     success: res => handleResult(res),
     fail: (res) => {
       
@@ -16,6 +19,9 @@ function checkcar(params={}, handleResult) {
     url: app.endpoint.product + '/cart/getCartList',
     method: 'get',
     data: params,
+    header: {
+      'bossId': app.globalData.bossId
+    },
     success: res => handleResult(res),
     fail: (res) => {
       console.log(params, res);
@@ -29,6 +35,9 @@ function updateCartNum(params={}, handleResult) {
     url: app.endpoint.product + '/cart/updateCartNum',
     method: 'get',
     data: params,
+    header: {
+      'bossId': app.globalData.bossId
+    },
     success: res => handleResult(res),
     fail: (res) => {
       console.log(params, res);
@@ -41,6 +50,9 @@ function delGoods(params={}, handleResult) {
     url: app.endpoint.product + '/cart/delGoods',
     method: 'get',
     data: params,
+    header: {
+      'bossId': app.globalData.bossId
+    },
     success: res => handleResult(res),
     fail: (res) => {
       console.log(params, res);
@@ -54,7 +66,8 @@ function getquan(params={}, handleResult) {
     url: app.endpoint.product + '/discountCoupon/couponMy',
     method: 'POST',
     header: {
-      'content-type': 'application/x-www-form-urlencoded'
+      'content-type': 'application/x-www-form-urlencoded',
+      'bossId': app.globalData.bossId
     },
     data: params,
     success: res => handleResult(res),
@@ -83,6 +96,9 @@ function pay(params={}, handleResult) {
     url: app.endpoint.payment + '/hf-payment/order',
     method: 'get',
     data: params,
+    header: {
+      'bossId': app.globalData.bossId
+    },
     success: res => handleResult(res),
     fail: (res) => {
       console.log(params, res);
@@ -96,6 +112,9 @@ function complate(params,handleResult) {
     url: app.endpoint.payment + '/hf-payment/complete',
     method: 'GET',
     data: params,
+    header: {
+      'bossId': app.globalData.bossId
+    },
     success: res => handleResult(res),
     fail: (res) => {
       console.log( res);
@@ -109,6 +128,9 @@ function getdetail(params,handleResult) {
     url: app.endpoint.order+ '/hf-order/query',
     method: 'GET',
     data: params,
+    header: {
+      'bossId': app.globalData.bossId
+    },
     success: res => handleResult(res),
     fail: (res) => {
       console.log( res);
@@ -121,6 +143,9 @@ function modifyStatus(params,handleResult) {
     url: app.endpoint.order+ '/hf-order/modifyStatus',
     method: 'GET',
     data: params,
+    header: {
+      'bossId': app.globalData.bossId
+    },
     success: res => handleResult(res),
     fail: (res) => {
       console.log( res);
@@ -133,6 +158,9 @@ function logistics(params,handleResult) {
     url: app.endpoint.order+ '/query/logistics',
     method: 'GET',
     data: params,
+    header: {
+      'bossId': app.globalData.bossId
+    },
     success: res => handleResult(res),
     fail: (res) => {
       console.log( res);
@@ -145,6 +173,9 @@ function deleteGoodsFile(params,handleResult) {
     url: app.endpoint.product+ '/goods/deleteGoodsFile',
     method: 'GET',
     data: params,
+    header: {
+      'bossId': app.globalData.bossId
+    },
     success: res => handleResult(res),
     fail: (res) => {
       console.log( res);
@@ -158,6 +189,9 @@ function ma(params,handleResult) {
     url: app.endpoint.order+ '/cancel/activity/create/activity-code',
     method: 'GET',
     data: params,
+    header: {
+      'bossId': app.globalData.bossId
+    },
     success: res => handleResult(res),
     fail: (res) => {
       console.log( res);
@@ -184,7 +218,8 @@ function selectInstanceEvaluate(params, handleResult) {
   wx.request({
     url: app.endpoint.product + '/goods/selectInstanceEvaluate',
     header: {
-      'content-type': 'application/x-www-form-urlencoded'
+      'content-type': 'application/x-www-form-urlencoded',
+      'bossId': app.globalData.bossId
     },
     method: 'get',
     data: params,
@@ -198,7 +233,8 @@ function findEvaluateDetail(params, handleResult) {
   wx.request({
     url: app.endpoint.product + '/goods/findEvaluateDetail',
     header: {
-      'content-type': 'application/x-www-form-urlencoded'
+      'content-type': 'application/x-www-form-urlencoded',
+      'bossId': app.globalData.bossId
     },
     method: 'get',
     data: params,
@@ -214,7 +250,8 @@ function getid(params,handleResult) {
   wx.request({
     url: app.endpoint.product + '/goods/selectEvaluateGoods',
     header: {
-      'content-type': 'application/x-www-form-urlencoded'
+      'content-type': 'application/x-www-form-urlencoded',
+      'bossId': app.globalData.bossId
     },
     method: 'get',
     data:params,
@@ -229,7 +266,8 @@ function addDiscoverXin(params,handleResult) {
   wx.request({
     url: app.endpoint.product + '/goods/addEvaluateProduct',
     header: {
-      'content-type': 'application/x-www-form-urlencoded'
+      'content-type': 'application/x-www-form-urlencoded',
+      'bossId': app.globalData.bossId
     },
     method: 'post',
     data:params,
@@ -244,7 +282,8 @@ function selectDiscover(params,handleResult) {
   wx.request({
     url: app.endpoint.product + '/goods/selectDiscover',
     header: {
-      'content-type': 'application/x-www-form-urlencoded'
+      'content-type': 'application/x-www-form-urlencoded',
+      'bossId': app.globalData.bossId
     },
     method: 'get',
     data:params,
@@ -260,7 +299,8 @@ function zan(params,handleResult) {
   wx.request({
     url: app.endpoint.product + '/goods/addEvaluatePraise',
     header: {
-      'content-type': 'application/x-www-form-urlencoded'
+      'content-type': 'application/x-www-form-urlencoded',
+      'bossId': app.globalData.bossId
     },
     method: 'post',
     data:params,
@@ -275,7 +315,8 @@ function getfadetail(params,handleResult) {
   wx.request({
     url: app.endpoint.product + '/goods/selectInstanceEvaluate',
     header: {
-      'content-type': 'application/x-www-form-urlencoded'
+      'content-type': 'application/x-www-form-urlencoded',
+      'bossId': app.globalData.bossId
     },
     method: 'get',
     data:params,
@@ -291,7 +332,8 @@ function getstoreDetail(params,handleResult){
   wx.request({
     url: app.endpoint.product + '/stone/selectById',
     header: {
-      'content-type': 'application/x-www-form-urlencoded'
+      'content-type': 'application/x-www-form-urlencoded',
+      'bossId': app.globalData.bossId
     },
     method: 'get',
     data:params,
@@ -307,7 +349,8 @@ function deleteStoneConcern(params,handleResult){
   wx.request({
     url: app.endpoint.product + '/product/deleteStoneConcern',
     header: {
-      'content-type': 'application/x-www-form-urlencoded'
+      'content-type': 'application/x-www-form-urlencoded',
+      'bossId': app.globalData.bossId
     },
     method: 'get',
     data:params,
@@ -322,7 +365,8 @@ function cartconcern(params,handleResult){
   wx.request({
     url: app.endpoint.product + '/product/addProductCollect',
     header: {
-      'content-type': 'application/x-www-form-urlencoded'
+      'content-type': 'application/x-www-form-urlencoded',
+      'bossId': app.globalData.bossId
     },
     method: 'post',
     data:params,
@@ -338,7 +382,8 @@ function deletemore(params,handleResult){
   wx.request({
     url: app.endpoint.product + '/cart/delGoods',
     header: {
-      'content-type': 'application/x-www-form-urlencoded'
+      'content-type': 'application/x-www-form-urlencoded',
+      'bossId': app.globalData.bossId
     },
     method: 'get',
     data:params,
@@ -353,7 +398,8 @@ function getCartListInfo(params,handleResult){
   wx.request({
     url: app.endpoint.product + '/cart/getCartListInfo',
     header: {
-      'content-type': 'application/x-www-form-urlencoded'
+      'content-type': 'application/x-www-form-urlencoded',
+      'bossId': app.globalData.bossId
     },
     method: 'get',
     data:params,
@@ -369,7 +415,8 @@ function addStoneConcern(params,handleResult){
   wx.request({
     url: app.endpoint.product + '/product/addStoneConcern',
     header: {
-      'content-type': 'application/x-www-form-urlencoded'
+      'content-type': 'application/x-www-form-urlencoded',
+      'bossId': app.globalData.bossId
     },
     method: 'post',
     data:params,
@@ -384,7 +431,8 @@ function buy(params,handleResult){
   wx.request({
     url: app.endpoint.product + '/cart/add',
     header: {
-      'content-type': 'application/x-www-form-urlencoded'
+      'content-type': 'application/x-www-form-urlencoded',
+      'bossId': app.globalData.bossId
     },
     method: 'get',
     data:params,
@@ -399,7 +447,8 @@ function share(params,handleResult){
   wx.request({
     url: app.endpoint.product + '/goods/transmit',
     header: {
-      'content-type': 'application/x-www-form-urlencoded'
+      'content-type': 'application/x-www-form-urlencoded',
+      'bossId': app.globalData.bossId
     },
     method: 'post',
     data:params,

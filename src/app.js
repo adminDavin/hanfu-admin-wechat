@@ -2,7 +2,8 @@ App({
   globalData: {
     isIphoneX: false,
     winHeight: '',
-    winWidth: ''
+    winWidth: '',
+    bossId:'1',
   },
   onLaunch: function () {
     wx.getSystemInfo({

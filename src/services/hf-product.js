@@ -9,6 +9,9 @@ function getProductForRotation(rotationQuantity, handleResult) {
     data: {
       quantity: rotationQuantity
     },
+    header: {
+      'bossId': app.globalData.bossId
+    },
     success: res => handleResult(res),
     fail: (res) => {
       console.log(params, res);
@@ -22,6 +25,9 @@ function getProductDetail(params, handleResult) {
   wx.request({
     url: app.endpoint.product + '/hfProduct/getDetail',
     data: params,
+    header: {
+      'bossId': app.globalData.bossId
+    },
     success: res => handleResult(res),
     fail: (res) => {
       console.log(params, res);
@@ -34,6 +40,9 @@ function getTopRanking(handleResult) {
   };
   wx.request({
     url: app.endpoint.product + '/hfProductActivity/findProdcutActivity?activityType=seniorityActivity',
+    header: {
+      'bossId': app.globalData.bossId
+    },
     success: res => handleResult(res),
     fail: (res) => {
       console.log(params, res);
@@ -47,6 +56,9 @@ function getRotation(handleResult) {
   };
   wx.request({
     url: app.endpoint.product + '/hfProductActivity/getActivityRatation',
+    header: {
+      'bossId': app.globalData.bossId
+    },
     success: res => handleResult(res),
     fail: (res) => {
       console.log(params, res);
@@ -58,6 +70,9 @@ function requestProducts(uri, params, handleResult) {
   wx.request({
     url: app.endpoint.product + uri,
     data: params,
+    header: {
+      'bossId': app.globalData.bossId
+    },
     success: res => handleResult(res),
     fail: (res) => {
       console.log(params, res);
@@ -68,6 +83,9 @@ function requestProducts(uri, params, handleResult) {
 function groupStatus(groupId, userId, handleResult) {
   wx.request({
     url: app.endpoint.product + '/hfProductActivity/groupStatus?groupId=' + groupId + '&userId=' + userId,
+    header: {
+      'bossId': app.globalData.bossId
+    },
     success: res => handleResult(res),
     fail: (res) => {
       console.log(params, res);
@@ -102,6 +120,9 @@ function getCategory(params = {}, handleResult) {
   wx.request({
     url: app.endpoint.product + '/product/category',
     data: params,
+    header: {
+      'bossId': app.globalData.bossId
+    },
     success: res => handleResult(res),
     fail: (res) => {
       console.log(params, res);
@@ -112,6 +133,9 @@ function getCategory(params = {}, handleResult) {
 function getProductGroup(handleResult) {
   wx.request({
     url: app.endpoint.product + '/hfProduct/getActivityProductList?activityType=groupActivity',
+    header: {
+      'bossId': app.globalData.bossId
+    },
     success: res => handleResult(res),
     fail: (res) => {
       console.log(params, res);
@@ -125,6 +149,9 @@ function getSeckillTimeBar(handleResult) {
   wx.request({
     url: app.endpoint.product + '/hfProduct/getProductsForRotation',
     data: params,
+    header: {
+      'bossId': app.globalData.bossId
+    },
     success: res => handleResult(res),
     fail: (res) => {
       console.log(params, res);
@@ -138,6 +165,9 @@ function getProductSeckill(params = {}, handleResult) {
     // url: app.endpoint.product + '/hfProduct/getProductsForRotation',
     url: app.endpoint.product + '/hfProduct/getActivityProductList?activityType=seckillActivity',
     data: params,
+    header: {
+      'bossId': app.globalData.bossId
+    },
     success: res => handleResult(res),
     fail: (res) => {
       console.log(params, res);
@@ -150,7 +180,8 @@ function addStoneConcern(params, handleResult) {
     url: app.endpoint.product + '/product/addStoneConcern',
     method: 'POST',
     header: {
-      'content-type': 'application/x-www-form-urlencoded'
+      'content-type': 'application/x-www-form-urlencoded',
+        'bossId': app.globalData.bossId
     },
     data: params,
     success: res => handleResult(res),
@@ -164,6 +195,9 @@ function deleteStoneConcern(params, handleResult) {
   wx.request({
     url: app.endpoint.product + '/product/deleteStoneConcern',
     data: params,
+    header: {
+      'bossId': app.globalData.bossId
+    },
     success: res => handleResult(res),
     fail: (res) => {
       console.log(params, res);
@@ -176,7 +210,8 @@ function addProductCollect(params, handleResult) {
     url: app.endpoint.product + '/product/addProductCollect',
     method: 'POST',
     header: {
-      'content-type': 'application/x-www-form-urlencoded'
+      'content-type': 'application/x-www-form-urlencoded',
+        'bossId': app.globalData.bossId
     },
     data: params,
     success: res => handleResult(res),
@@ -190,6 +225,9 @@ function deleteProductCollect(params, handleResult) {
   wx.request({
     url: app.endpoint.product + '/product/deleteProductCollect',
     data: params,
+    header: {
+      'bossId': app.globalData.bossId
+    },
     success: res => handleResult(res),
     fail: (res) => {
       console.log(params, res);
@@ -202,7 +240,8 @@ function checkResp(params, handleResult) {
     url: app.endpoint.product + '/hf-goods/checkResp',
     method: 'POST',
     header: {
-      'content-type': 'application/x-www-form-urlencoded'
+      'content-type': 'application/x-www-form-urlencoded',
+        'bossId': app.globalData.bossId
     },
     data: params,
     success: res => handleResult(res),
@@ -216,7 +255,8 @@ function selectInstanceEvaluate(params, handleResult) {
   wx.request({
     url: app.endpoint.product + '/goods/selectInstanceEvaluate',
     header: {
-      'content-type': 'application/x-www-form-urlencoded'
+      'content-type': 'application/x-www-form-urlencoded',
+      'bossId': app.globalData.bossId
     },
     method: 'get',
     data: params,
@@ -232,6 +272,9 @@ function selectProductIntroducePictrue(params, handleResult) {
     url: app.endpoint.product + '/product/selectProductIntroducePictrue',
     method: 'get',
     data: params,
+    header: {
+      'bossId': app.globalData.bossId
+    },
     success: res => handleResult(res),
     fail: (res) => {
       console.log(res);

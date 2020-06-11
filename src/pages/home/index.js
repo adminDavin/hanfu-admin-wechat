@@ -28,6 +28,11 @@ Page({
       winHeight: app.globalData.winHeight -
         wx.getSystemInfoSync().screenWidth / 750 * (155)
     })
+    
+    console.log('测试bossid')
+    let extConfig = wx.getExtConfigSync ? wx.getExtConfigSync() : {}
+    console.log(extConfig);
+
   },
 
   onShow: function() {
@@ -67,7 +72,6 @@ Page({
       url: '/pages/scan/index',
     })
   },
-
   onPullDownRefresh: function(e) {
     console.log(e);
   },

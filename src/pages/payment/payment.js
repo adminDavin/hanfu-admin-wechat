@@ -42,7 +42,7 @@ Page({
     })
 
     paymentApi.paymentOrder({
-      userId: options.userId, payOrderId: options.payOrderId
+      userId: options.userId, payOrderId: options.payOrderId, bossId: app.globalData.bossId
     }, (res) => {
       console.log(res)
       let payment = res.data.data;
@@ -66,7 +66,7 @@ Page({
         this.wechartPaymentConfirm(params, payment)
       } else {
         //余额支付 直接跳转到订单列表
-        paymentApi.completeOrder(options.payOrderId, options.userId, (res) => console.log(res));
+        paymentApi.completeOrder(options.payOrderId, options.userId, that.data.goodsId, (res) => console.log(res));
         console.log(res)
         if (that.data.groupid !== 'undefined') {
           this.setData({
@@ -144,7 +144,7 @@ Page({
       paySign: payment.paySign,
       success: (response) => {
         // 微信确认支付成功后 
-        paymentApi.completeOrder(options.payOrderId, options.userId, (res) => console.log(res));
+        paymentApi.completeOrder(options.payOrderId, options.userId, that.data.goodsId, (res) => console.log(res));
         wx.showModal({
           title: '订单支付',
           content: '支付成功',

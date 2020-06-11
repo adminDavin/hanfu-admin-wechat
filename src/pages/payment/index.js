@@ -239,7 +239,7 @@ Page({
     let that = this
     let goodsList = []
     let obj = {
-      goodsId: that.data.selectedGoods.id,
+      goodsId: that.data.selectedGoods.goodsId,
       hfDesc: this.data.instanceId,
       quantity: that.data.quantity,
       stoneId: this.data.stoneId,
@@ -256,12 +256,12 @@ Page({
       paymentName: this.data.paymentMethod[0].name,
       hfRemark: this.data.elevalue,
       activityId: this.data.activityId,
+      takingType: this.data.pickUp.wayOfPickUp,
       // //物品属性配置
       // goodsId: this.data.selectedGoods.id,
       // sellPrice: this.data.selectedGoods.sellPrice,
       // actualPrice: this.data.selectedGoods.sellPrices,
       // freight: this.data.pickUp.freight,
-      // takingType: this.data.pickUp.wayOfPickUp,
       // quantity: this.data.quantity,
       // sellPrice: this.data.selectedGoods.sellPrice,
       // hfDesc: JSON.stringify(this.data.selectedGoods),

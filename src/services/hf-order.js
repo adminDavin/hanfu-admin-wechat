@@ -6,7 +6,8 @@ function createOrder(params={}, handleResult) {
     url: app.endpoint.order + '/hf-order/Ordercreate',
     method: 'POST',
     header: {
-      'content-type': 'application/x-www-form-urlencoded'
+      'content-type': 'application/x-www-form-urlencoded',
+      'bossId': app.globalData.bossId
     },
     data: params,
     success: res => handleResult(res),
@@ -22,7 +23,8 @@ function create(params = {}, handleResult) {
     // url: app.endpoint.order + '/hf-order/Ordercreate',
     method: 'POST',
     header: {
-      'content-type': 'application/x-www-form-urlencoded'
+      'content-type': 'application/x-www-form-urlencoded',
+      'bossId': app.globalData.bossId
     },
     data: params,
     success: res => handleResult(res),
@@ -36,7 +38,8 @@ function addGroup(params = {}, handleResult) {
     url: app.endpoint.product + '/hfProductActivity/addGroup',
     method: 'POST',
     header: {
-      'content-type': 'application/x-www-form-urlencoded'
+      'content-type': 'application/x-www-form-urlencoded',
+      'bossId': app.globalData.bossId
     },
     data: params,
     success: res => handleResult(res),
@@ -50,7 +53,8 @@ function entranceGroup(params = {}, handleResult) {
     url: app.endpoint.product + '/hfProductActivity/entranceGroup',
     method: 'POST',
     header: {
-      'content-type': 'application/x-www-form-urlencoded'
+      'content-type': 'application/x-www-form-urlencoded',
+      'bossId': app.globalData.bossId
     },
     data: params,
     success: res => handleResult(res),
@@ -67,6 +71,9 @@ function queryOrder(userId, action, handleResult) {
   wx.request({
     url: app.endpoint.order + '/hf-order/query',
     data: params,
+    header: {
+      'bossId': app.globalData.bossId
+    },
     success: res => handleResult(res),
     fail: (res) => {
       console.log(params, res);
@@ -80,6 +87,9 @@ function queryOrderStatistics(userId, handleResult) {
   wx.request({
     url: app.endpoint.order + '/hf-order/statistics',
     data: params,
+    header: {
+      'bossId': app.globalData.bossId
+    },
     success: res => handleResult(res),
     fail: (res) => {
       console.log(params, res);
@@ -96,6 +106,9 @@ function modifyStatus(id, orderCode, originOrderStatus, targetOrderStatus, handl
   wx.request({
     url: app.endpoint.order + '/hf-order/modifyStatus',
     data: params,
+    header: {
+      'bossId': app.globalData.bossId
+    },
     success: res => handleResult(res),
     fail: (res) => {
       console.log(params, res);
@@ -106,6 +119,9 @@ function qrCode(params,handleResult) {
   wx.request({
     url: app.endpoint.order + '/cancel/testCancel',
     data: params,
+    header: {
+      'bossId': app.globalData.bossId
+    },
     success: res => handleResult(res),
     fail: (res) => {
       console.log(params, res);
@@ -116,6 +132,9 @@ function evaluate(params={}, handleResult) {
   wx.request({
     url: app.endpoint.order + '/message/insertReply',
     data: params,
+    header: {
+      'bossId': app.globalData.bossId
+    },
     success: res => handleResult(res),
     fail: (res) => {
       console.log(params, res);

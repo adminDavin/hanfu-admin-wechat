@@ -183,53 +183,54 @@ Component({
           return
         }
         that.setData({
-          ['selectedGoods.sellPrice']: res.data.data.money,
+          selectedGoods: res.data.data,
         });
+        that.data.selectedGoods.sellPrice = res.data.data.money
         console.log(that.data.selectedGoods)
+        console.log('参加拼团', that.properties.accession)
+        console.log('参加拼团data', that.data.accession)
+        if (that.data.accession == 'accession') {
+          console.log('跳订单页')
+          console.log(this.data.selectedGoods)
+          // 创建订单
+          console.log(this.data.groupActivity)
+          let params = {
+            selectedGoods: this.data.selectedGoods,
+            userId: wx.getStorageSync('userId'),
+            stoneId: this.data.stoneId,
+            groupActivity: this.data.groupActivity,
+            activityId: that.properties.activityId,
+            quantity: this.data.quantity,
+            groupid: that.properties.groupId
+          };
+          console.log(params)
+          wx.navigateTo({
+            url: '/pages/payment/index?params=' + encodeURIComponent(JSON.stringify(params))
+          });
+        } else {
+          // console.log(this.data.quantity)
+          console.log(this.data.competitive)
+          console.log(this.properties.groupActivity)
+          // console.log(this.data.instanceId)
+          let params = {
+            selectedGoods: this.data.selectedGoods,
+            paymentType: 'createOrder',
+            userId: wx.getStorageSync('userId'),
+            stoneId: this.data.stoneId,
+            groupActivity: this.properties.groupActivity,
+            activityId: that.properties.activityId,
+            quantity: this.data.quantity,
+            competitive: this.data.competitive,
+            stoneName: this.data.stoneName,
+            instanceId: this.data.instanceId
+          };
+          console.log(params);
+          wx.navigateTo({
+            url: '/pages/payment/index?params=' + encodeURIComponent(JSON.stringify(params))
+          });
+        }
       })
-      console.log('参加拼团', that.properties.accession)
-      console.log('参加拼团data', that.data.accession)
-      if (that.data.accession == 'accession') {
-        console.log('跳订单页')
-        console.log(this.data.selectedGoods)
-        // 创建订单
-        console.log(this.data.groupActivity)
-        let params = {
-          selectedGoods: this.data.selectedGoods,
-          userId: wx.getStorageSync('userId'),
-          stoneId: this.data.stoneId,
-          groupActivity: this.data.groupActivity,
-          activityId: that.properties.activityId,
-          quantity: this.data.quantity,
-          groupid: that.properties.groupId
-        };
-        console.log(params)
-        wx.navigateTo({
-          url: '/pages/payment/index?params=' + encodeURIComponent(JSON.stringify(params))
-        });
-      } else {
-        console.log(this.data.selectedGoods)
-        // console.log(this.data.quantity)
-        console.log(this.data.competitive)
-        console.log(this.properties.groupActivity)
-        // console.log(this.data.instanceId)
-        let params = {
-          selectedGoods: this.data.selectedGoods,
-          paymentType: 'createOrder',
-          userId: wx.getStorageSync('userId'),
-          stoneId: this.data.stoneId,
-          groupActivity: this.properties.groupActivity,
-          activityId: that.properties.activityId,
-          quantity: this.data.quantity,
-          competitive: this.data.competitive,
-          stoneName: this.data.stoneName,
-          instanceId: this.data.instanceId
-        };
-        console.log(params);
-        wx.navigateTo({
-          url: '/pages/payment/index?params=' + encodeURIComponent(JSON.stringify(params))
-        });
-      }
+      
       this.triggerEvent('chooseGoodsCommitEvent', { selectedGoods: this.data.selectedGoods, quantity: this.data.quantity });
     },
 

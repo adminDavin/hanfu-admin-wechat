@@ -122,7 +122,7 @@
     </checkbox-group>
   </view>
 
-  <view wx:if="{{competitive}}" class="quhuomethod" style="margin-top:20rpx">
+  <view wx:if="{{competitive!='false'}}" class="quhuomethod" style="margin-top:20rpx">
     <view class="ziti" style="width:260rpx">店铺优惠卷</view>
     <text wx:if="{{useLimit.full!==''}}" bindtap="changeCoupon" style=" color:red;" class="ziti">满￥{{we.toFixed(useLimit.full/100)}}元减<text wx:if="{{useLimit.discountCouponType=='1'}}">￥{{we.toFixed(useLimit.minus/100)}}元</text>
     <text wx:if="{{useLimit.discountCouponType=='0'}}">￥{{we.toFixed(useLimit.minus/100)}}折</text>

@@ -96,6 +96,13 @@ Page({
                   console.log(res);
                 },
               });
+              wx.setStorageSync("token", result.token);
+              wx.getStorage({
+                key: 'token',
+                success: function (res) {
+                  console.log(res);
+                },
+              });
               this.setData(result);
               wx.showToast({
                 title: '登录成功',
